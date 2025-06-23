@@ -1,0 +1,16 @@
+#ifndef PRIVATE_BRST_ENCODING_CNS_H
+#define PRIVATE_BRST_ENCODING_CNS_H
+
+BRST_STATUS
+GBK_EUC_H_Init(BRST_Encoder encoder);
+
+BRST_STATUS
+GBK_EUC_V_Init(BRST_Encoder encoder);
+
+BRST_STATUS
+GB_EUC_H_Init(BRST_Encoder encoder);
+
+BRST_STATUS
+GB_EUC_V_Init(BRST_Encoder encoder);
+
+#endif /* PRIVATE_BRST_ENCODING_CNS_H */

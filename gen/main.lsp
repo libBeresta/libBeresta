@@ -1,0 +1,10 @@
+(:файл "main"
+ :импорты ("external"
+	   "types"
+	   "base"
+	   "doc"
+	   "page"
+	   "doc_page"
+	   "ext_gstate"
+	   "page_routines"
+	   "save"))

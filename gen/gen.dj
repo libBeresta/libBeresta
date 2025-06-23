@@ -1,0 +1,41 @@
+{% include "лицензия.txt" %}
+#ifndef {{ файл | upper | pre }}_H
+#define {{ файл | upper | pre }}_H
+{% if импорты %}{% for импорт in импорты %}
+#include "{{импорт|pre|lower}}.h"{% endfor %}
+{% endif %}{% if указатели %}{% for ук in указатели %}
+struct _{{ ук.имя | pre }}_Rec;
+typedef struct _{{ ук.имя | pre }}_Rec* {{ ук.имя | pre }};
+{% endfor %}{% endif %}{% if определения %}{% for оп in определения %}
+typedef {{ оп.оригинал | pre }} {{ оп.имя | pre }};
+{% endfor %}{% endif %}{% if перечисления %}{% for пер in перечисления %}
+/**
+ {{ пер | docf }}
+ */
+typedef enum _{{пер.имя | pre}} { {% for эл in пер.элементы %}
+
+    /// {{ эл | docf }}
+    {{эл.элемент | pre}}{% if эл.значение%} = {{эл.значение}}{% endif %},{% endfor %}
+    {{пер.имя | pre | upper}}_LAST
+} {{пер.имя | pre}};
+{% endfor %}{% endif %}{% if функции %}{% for фн in функции %}
+/**
+  \ingroup {{ фн.группа }}
+  \brief {{ фн | docf }}
+{%if фн.параметры %}{% for парам in фн.параметры %}
+  \param {{парам.имя}} {{ парам | docf }}{% endfor %}
+{%endif%}
+  \return {{ фн.результат | docf }}
+{% if фн.см %}
+  \see {% for см in фн.см %}
+    {{см | pre}}{% endfor %}
+{% endif %}{% if фн.ошибки %}
+  {{error-codes}}{% for ошибка in фн.ошибки %}
+    - \ref {{ошибка | pre}}{% endfor %}
+{% endif %}*/
+{{"" | pre }}EXPORT({{фн.результат.тип | pre}})
+{{ фн.название | pre}}{%if фн.параметры %}({% for парам in фн.параметры %}
+   {{ парам.тип | pre }} {{ парам.имя }}{% if not forloop.last %},{% endif %}{% endfor %}
+);{% else %}();{% endif %}
+{% endfor %}{% endif %}
+#endif /* {{ файл | upper | pre }}_H */

@@ -1,0 +1,126 @@
+#ifndef BRST_ANNOTATION_H
+#define BRST_ANNOTATION_H
+
+// TODO дополнить определения аннотаций из стандарта
+// TODO разложить определения по группам стандартов (1.2 -- 1.7)
+
+#include "brst_types.h"
+#include "brst_dict.h"
+#include "brst_destination.h"
+
+typedef enum _BRST_AnnotType {
+    BRST_ANNOT_TEXT_NOTES,
+    BRST_ANNOT_LINK,
+    BRST_ANNOT_SOUND,
+    BRST_ANNOT_FREE_TEXT,
+    BRST_ANNOT_STAMP,
+    BRST_ANNOT_SQUARE,
+    BRST_ANNOT_CIRCLE,
+    BRST_ANNOT_STRIKE_OUT,
+    BRST_ANNOT_HIGHTLIGHT,
+    BRST_ANNOT_UNDERLINE,
+    BRST_ANNOT_INK,
+    BRST_ANNOT_FILE_ATTACHMENT,
+    BRST_ANNOT_POPUP,
+    BRST_ANNOT_3D,
+    BRST_ANNOT_SQUIGGLY,
+    BRST_ANNOT_LINE,
+    BRST_ANNOT_PROJECTION,
+    BRST_ANNOT_WIDGET
+} BRST_AnnotType;
+
+typedef enum _BRST_AnnotFlags {
+    BRST_ANNOT_INVISIBLE,
+    BRST_ANNOT_HIDDEN,
+    BRST_ANNOT_PRINT,
+    BRST_ANNOT_NOZOOM,
+    BRST_ANNOT_NOROTATE,
+    BRST_ANNOT_NOVIEW,
+    BRST_ANNOT_READONLY
+} BRST_AnnotFlags;
+
+typedef enum _BRST_AnnotHighlightMode {
+    /// No highlighting.
+    BRST_ANNOT_NO_HIGHTLIGHT = 0,
+    /// Invert annotation area contents.
+    BRST_ANNOT_INVERT_BOX,
+    /// Invert annotation border.
+    BRST_ANNOT_INVERT_BORDER,
+    /// Dent annotation.
+    BRST_ANNOT_DOWN_APPEARANCE,
+    /// Last annotation highlight mode at enumeration.
+    BRST_ANNOT_HIGHTLIGHT_MODE_EOF
+} BRST_AnnotHighlightMode;
+
+/**
+  Default types of annotation icon
+
+  PDF book, table 172
+*/
+typedef enum _BRST_AnnotIcon {
+    /// "Comment"
+    BRST_ANNOT_ICON_COMMENT = 0,
+    /// "Key"
+    BRST_ANNOT_ICON_KEY,
+    /// "Note"
+    BRST_ANNOT_ICON_NOTE,
+    /// "Help"
+    BRST_ANNOT_ICON_HELP,
+    /// "NewParagraph"
+    BRST_ANNOT_ICON_NEW_PARAGRAPH,
+    /// "Paragraph"
+    BRST_ANNOT_ICON_PARAGRAPH,
+    /// "Insert"
+    BRST_ANNOT_ICON_INSERT,
+    /// Last icon type at enumeration
+    BRST_ANNOT_ICON_EOF
+} BRST_AnnotIcon;
+
+typedef enum _BRST_AnnotIntent {
+    BRST_ANNOT_INTENT_FREETEXTCALLOUT = 0,
+    BRST_ANNOT_INTENT_FREETEXTTYPEWRITER,
+    BRST_ANNOT_INTENT_LINEARROW,
+    BRST_ANNOT_INTENT_LINEDIMENSION,
+    BRST_ANNOT_INTENT_POLYGONCLOUD,
+    BRST_ANNOT_INTENT_POLYLINEDIMENSION,
+    BRST_ANNOT_INTENT_POLYGONDIMENSION
+} BRST_AnnotIntent;
+
+typedef enum _BRST_LineAnnotEndingStyle {
+    BRST_LINE_ANNOT_NONE = 0,
+    BRST_LINE_ANNOT_SQUARE,
+    BRST_LINE_ANNOT_CIRCLE,
+    BRST_LINE_ANNOT_DIAMOND,
+    BRST_LINE_ANNOT_OPENARROW,
+    BRST_LINE_ANNOT_CLOSEDARROW,
+    BRST_LINE_ANNOT_BUTT,
+    BRST_LINE_ANNOT_ROPENARROW,
+    BRST_LINE_ANNOT_RCLOSEDARROW,
+    BRST_LINE_ANNOT_SLASH
+} BRST_LineAnnotEndingStyle;
+
+typedef enum _BRST_LineAnnotCapPosition{
+    BRST_LINE_ANNOT_CAP_INLINE = 0,
+    BRST_LINE_ANNOT_CAP_TOP
+} BRST_LineAnnotCapPosition;
+
+typedef enum _BRST_StampAnnotName{
+    BRST_STAMP_ANNOT_APPROVED = 0,
+    BRST_STAMP_ANNOT_EXPERIMENTAL,
+    BRST_STAMP_ANNOT_NOTAPPROVED,
+    BRST_STAMP_ANNOT_ASIS,
+    BRST_STAMP_ANNOT_EXPIRED,
+    BRST_STAMP_ANNOT_NOTFORPUBLICRELEASE,
+    BRST_STAMP_ANNOT_CONFIDENTIAL,
+    BRST_STAMP_ANNOT_FINAL,
+    BRST_STAMP_ANNOT_SOLD,
+    BRST_STAMP_ANNOT_DEPARTMENTAL,
+    BRST_STAMP_ANNOT_FORCOMMENT,
+    BRST_STAMP_ANNOT_TOPSECRET,
+    BRST_STAMP_ANNOT_DRAFT,
+    BRST_STAMP_ANNOT_FORPUBLICRELEASE
+} BRST_StampAnnotName;
+
+typedef BRST_Dict BRST_Annotation;
+
+#endif /* BRST_ANNOTATION_H */

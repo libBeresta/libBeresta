@@ -1,0 +1,10 @@
+#ifndef PRIVATE_BRST_ENCODING_CNT_H
+#define PRIVATE_BRST_ENCODING_CNT_H
+
+BRST_STATUS
+ETen_B5_H_Init(BRST_Encoder encoder);
+
+BRST_STATUS
+ETen_B5_V_Init(BRST_Encoder encoder);
+
+#endif /* PRIVATE_BRST_ENCODING_CNT_H */

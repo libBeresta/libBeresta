@@ -1,0 +1,314 @@
+(:файл "asian"
+ :функции
+       (
+	;; === UseJPFonts
+	(:название "UseJPFonts"
+	 :группа "font"
+	 :en "Enable Japanese fonts. Application can use following Japanese fonts after call:
+
+  | Font name             |
+  | ---------             |
+  | MS-Mincyo             |
+  | MS-Mincyo,Bold        |
+  | MS-Mincyo,Italic      |
+  | MS-Mincyo,BoldItalic  |
+  | MS-Gothic             |
+  | MS-Gothic,Bold        |
+  | MS-Gothic,Italic      |
+  | MS-Gothic,BoldItalic  |
+  | MS-PMincyo            |
+  | MS-PMincyo,Bold       |
+  | MS-PMincyo,Italic     |
+  | MS-PMincyo,BoldItalic |
+  | MS-PGothic            |
+  | MS-PGothic,Bold       |
+  | MS-PGothic,Italic     |
+  | MS-PGothic,BoldItalic |"
+
+	 :ru "Делает доступными японские шрифты. После вызова этой функции в приложении доступны следующие шрифты:
+
+  | Название шрифта       |
+  | ---------             |
+  | MS-Mincyo             |
+  | MS-Mincyo,Bold        |
+  | MS-Mincyo,Italic      |
+  | MS-Mincyo,BoldItalic  |
+  | MS-Gothic             |
+  | MS-Gothic,Bold        |
+  | MS-Gothic,Italic      |
+  | MS-Gothic,BoldItalic  |
+  | MS-PMincyo            |
+  | MS-PMincyo,Bold       |
+  | MS-PMincyo,Italic     |
+  | MS-PMincyo,BoldItalic |
+  | MS-PGothic            |
+  | MS-PGothic,Bold       |
+  | MS-PGothic,Italic     |
+  | MS-PGothic,BoldItalic |"
+
+	 :параметры ((:тип "Doc"
+		      :имя "pdf"
+		      :ru ":param_pdf"
+		      :en ":param_pdf"))
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
+	 :ошибки ("INVALID_DOCUMENT"
+		  "FAILED_TO_ALLOC_MEM"
+		  "DUPLICATE_REGISTRATION"))
+
+	;; === UseKRFonts
+	(:название "UseKRFonts"
+	 :группа "font"
+	 :en "Enable Korean fonts. Application can use following fonts after call:
+
+  | Font name            |
+  | ---------            |
+  | DotumChe             |
+  | DotumChe,Bold        |
+  | DotumChe,Italic      |
+  | DotumChe,BoldItalic  |
+  | Dotum                |
+  | Dotum,Bold           |
+  | Dotum,Italic         |
+  | Dotum,BoldItalic     |
+  | BatangChe            |
+  | BatangChe,Bold       |
+  | BatangChe,Italic     |
+  | BatangChe,BoldItalic |
+  | Batang               |
+  | Batang,Bold          |
+  | Batang,Italic        |
+  | Batang,BoldItalic    |"
+
+	 :ru "Делает доступными корейские шрифты. После вызова этой функции в приложении доступны следующие шрифты:
+
+  | Название шрифта      |
+  | ---------            |
+  | DotumChe             |
+  | DotumChe,Bold        |
+  | DotumChe,Italic      |
+  | DotumChe,BoldItalic  |
+  | Dotum                |
+  | Dotum,Bold           |
+  | Dotum,Italic         |
+  | Dotum,BoldItalic     |
+  | BatangChe            |
+  | BatangChe,Bold       |
+  | BatangChe,Italic     |
+  | BatangChe,BoldItalic |
+  | Batang               |
+  | Batang,Bold          |
+  | Batang,Italic        |
+  | Batang,BoldItalic    |"
+		   
+	 :параметры ((:тип "Doc"
+		      :имя "pdf"
+		      :ru ":param_pdf"
+		      :en ":param_pdf"))
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
+	 :ошибки ("INVALID_DOCUMENT"
+		  "FAILED_TO_ALLOC_MEM"
+		  "DUPLICATE_REGISTRATION"))
+
+	;; === UseCNSFonts
+	(:название "UseCNSFonts"
+	 :группа "font"
+	 :en "Enable Chinese Simplified fonts. Application can use following fonts after call:
+
+  | Font name         |
+  | ---------         |
+  | SimSun            |
+  | SimSun,Bold       |
+  | SimSun,Italic     |
+  | SimSun,BoldItalic |
+  | SimHei            |
+  | SimHei,Bold       |
+  | SimHei,Italic     |
+  | SimHei,BoldItalic |"
+
+	 :ru "Делает доступными шрифты для китайского упрощенного. После вызова этой функции в приложении доступны следующие шрифты:
+
+  | Название шрифта   |
+  | ---------         |
+  | SimSun            |
+  | SimSun,Bold       |
+  | SimSun,Italic     |
+  | SimSun,BoldItalic |
+  | SimHei            |
+  | SimHei,Bold       |
+  | SimHei,Italic     |
+  | SimHei,BoldItalic |"
+		   
+	 :параметры ((:тип "Doc"
+		      :имя "pdf"
+		      :ru ":param_pdf"
+		      :en ":param_pdf"))
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
+	 :ошибки ("INVALID_DOCUMENT"
+		  "FAILED_TO_ALLOC_MEM"
+		  "DUPLICATE_REGISTRATION"))
+
+	;; === UseCNTFonts
+	(:название "UseCNTFonts"
+	 :группа "font"
+	 :en "Enable Chinese Traditional fonts. Application can use following fonts after call:
+
+  | Font name          |
+  | ---------          |
+  | MingLiU            |
+  | MingLiU,Bold       |
+  | MingLiU,Italic     |
+  | MingLiU,BoldItalic |"
+
+	 :ru "Делает доступными шрифты для китайского традиционного. После вызова этой функции в приложении доступны следующие шрифты:
+
+  | Название шрифта    |
+  | ---------          |
+  | MingLiU            |
+  | MingLiU,Bold       |
+  | MingLiU,Italic     |
+  | MingLiU,BoldItalic |"
+		   
+	 :параметры ((:тип "Doc"
+		      :имя "pdf"
+		      :ru ":param_pdf"
+		      :en ":param_pdf"))
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
+	 :ошибки ("INVALID_DOCUMENT"
+		  "FAILED_TO_ALLOC_MEM"
+		  "DUPLICATE_REGISTRATION"))
+
+	;; === UseJPEncodings
+	(:название "UseJPEncodings"
+	 :группа "encode"
+	 :en "Enable Japanese encodings. Application can use following encodings after call:
+
+  | Encoding     |
+  | --------     |
+  | 90ms-RKSJ-H  |
+  | 90ms-RKSJ-V  |
+  | 90msp-RKSJ-H |
+  | EUC-H        |
+  | EUC-V        |"
+
+	 :ru "Делает доступными японские кодировки. После вызова этой функции в приложении доступны следующие кодировки:
+
+  | Кодировка    |
+  | --------     |
+  | 90ms-RKSJ-H  |
+  | 90ms-RKSJ-V  |
+  | 90msp-RKSJ-H |
+  | EUC-H        |
+  | EUC-V        |"
+		   
+	 :параметры ((:тип "Doc"
+		      :имя "pdf"
+		      :ru ":param_pdf"
+		      :en ":param_pdf"))
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
+	 :ошибки ("INVALID_DOCUMENT"
+		  "FAILED_TO_ALLOC_MEM"
+		  "DUPLICATE_REGISTRATION"))
+
+	;; === UseKREncodings
+	(:название "UseKREncodings"
+	 :группа "encode"
+	 :en "Enable Korean encodings. Application can use following encodings after call:
+
+  | Encoding       |
+  | --------       |
+  | KSC-EUC-H      |
+  | KSC-EUC-V      |
+  | KSCms-UHC-H    |
+  | KSCms-UHC-HW-H |
+  | KSCms-UHC-HW-V |"
+
+	 :ru "Делает доступными корейские кодировки. После вызова этой функции в приложении доступны следующие кодировки:
+
+  | Кодировка      |
+  | --------       |
+  | KSC-EUC-H      |
+  | KSC-EUC-V      |
+  | KSCms-UHC-H    |
+  | KSCms-UHC-HW-H |
+  | KSCms-UHC-HW-V |"
+		   
+	 :параметры ((:тип "Doc"
+		      :имя "pdf"
+		      :ru ":param_pdf"
+		      :en ":param_pdf"))
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
+	 :ошибки ("INVALID_DOCUMENT"
+		  "FAILED_TO_ALLOC_MEM"
+		  "DUPLICATE_REGISTRATION"))
+
+	;; === UseCNSEncodings
+	(:название "UseCNSEncodings"
+	 :группа "encode"
+	 :en "Enable Chinese Simplified encodings. Application can use following encodings after call:
+
+  | Encoding  |
+  | --------  |
+  | GB-EUC-H  |
+  | GB-EUC-V  |
+  | GBK-EUC-H |
+  | GBK-EUC-V |"
+
+	 :ru "Делает доступными китайские упрощенные кодировки. После вызова этой функции в приложении доступны следующие кодировки:
+
+  | Кодировка |
+  | --------  |
+  | GB-EUC-H  |
+  | GB-EUC-V  |
+  | GBK-EUC-H |
+  | GBK-EUC-V |"
+		   
+	 :параметры ((:тип "Doc"
+		      :имя "pdf"
+		      :ru ":param_pdf"
+		      :en ":param_pdf"))
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
+	 :ошибки ("INVALID_DOCUMENT"
+		  "FAILED_TO_ALLOC_MEM"
+		  "DUPLICATE_REGISTRATION"))
+
+	;; === UseCNTEncodings
+	(:название "UseCNTEncodings"
+	 :группа "encode"
+	 :en "Enable Chinese Traditional encodings. Application can use following encodings after call:
+
+  | Encoding  |
+  | --------  |
+  | ETen-B5-H |
+  | ETen-B5-V |"
+
+	 :ru "Делает доступными китайские традиционные кодировки. После вызова этой функции в приложении доступны следующие кодировки:
+
+  | Кодировка |
+  | --------  |
+  | ETen-B5-H |
+  | ETen-B5-V |"
+		   
+	 :параметры ((:тип "Doc"
+		      :имя "pdf"
+		      :ru ":param_pdf"
+		      :en ":param_pdf"))
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
+	 :ошибки ("INVALID_DOCUMENT"
+		  "FAILED_TO_ALLOC_MEM"
+		  "DUPLICATE_REGISTRATION"))))
