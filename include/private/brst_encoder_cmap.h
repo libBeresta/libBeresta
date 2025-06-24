@@ -16,7 +16,7 @@ typedef struct _BRST_CMapEncoderAttr_Rec {
     BRST_WritingMode               writing_mode;
     char                           registry[BRST_LIMIT_MAX_NAME_LEN + 1];
     char                           ordering[BRST_LIMIT_MAX_NAME_LEN + 1];
-    BRST_INT                       suppliment;
+    BRST_INT                       supplement;
     BRST_CMapEncoder_ByteType_Func is_lead_byte_fn;
     BRST_CMapEncoder_ByteType_Func is_trial_byte_fn;
     BRST_INT                       uid_offset;

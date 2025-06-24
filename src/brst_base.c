@@ -21,7 +21,6 @@
 #include "private/brst_doc_fontdef.h"
 #include "private/brst_doc_encoder.h"
 #include "brst_version.h"
-#include "brst_conf.h"
 #include "brst_doc_info.h"
 
 BRST_EXPORT(const char*)

@@ -4,6 +4,8 @@
 #include "private/brst_utils.h"
 #include "brst_geometry_defines.h"
 
+#define G3CODES
+
 /* Размер массива для объектов-списков */
 #define BRST_DEF_ITEMS_PER_BLOCK    20
 
@@ -46,7 +48,7 @@
 #define BRST_DEF_RANGE_TBL_NUM      128
 
 /* default array size of cross-reference-table */
-#define BRST_DEFALUT_XREF_ENTRY_NUM 1024
+#define BRST_DEFAULT_XREF_ENTRY_NUM 1024
 
 /* default array size of widths-table of cid-fontdef */
 #define BRST_DEF_CHAR_WIDTHS_NUM    128
@@ -92,6 +94,8 @@
 #define BRST_MIN_MAGNIFICATION_FACTOR   0.08 // 8 percent
 #define BRST_MAX_MAGNIFICATION_FACTOR  64.00 // 6400 percent
 
+/* default array size of page-list-tablef */
+#define BRST_DEF_PAGE_LIST_NUM      256
 
 static const BRST_Point INIT_POS = {0, 0};
 static const BRST_DashMode INIT_MODE = {{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f}, 0, 0.0f};

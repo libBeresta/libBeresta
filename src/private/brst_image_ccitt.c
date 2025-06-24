@@ -10,7 +10,7 @@
 #include "brst_xref.h"
 #include "private/brst_xref.h"
 #include "private/brst_utils.h"
-#include "brst_conf.h"
+#include "private/brst_defines.h"
 
 #include "private/t4.h"
 

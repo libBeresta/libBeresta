@@ -17,7 +17,7 @@ typedef enum _BRST_AnnotType {
     BRST_ANNOT_SQUARE,
     BRST_ANNOT_CIRCLE,
     BRST_ANNOT_STRIKE_OUT,
-    BRST_ANNOT_HIGHTLIGHT,
+    BRST_ANNOT_HIGHLIGHT,
     BRST_ANNOT_UNDERLINE,
     BRST_ANNOT_INK,
     BRST_ANNOT_FILE_ATTACHMENT,
@@ -41,7 +41,7 @@ typedef enum _BRST_AnnotFlags {
 
 typedef enum _BRST_AnnotHighlightMode {
     /// No highlighting.
-    BRST_ANNOT_NO_HIGHTLIGHT = 0,
+    BRST_ANNOT_NO_HIGHLIGHT = 0,
     /// Invert annotation area contents.
     BRST_ANNOT_INVERT_BOX,
     /// Invert annotation border.
@@ -49,7 +49,7 @@ typedef enum _BRST_AnnotHighlightMode {
     /// Dent annotation.
     BRST_ANNOT_DOWN_APPEARANCE,
     /// Last annotation highlight mode at enumeration.
-    BRST_ANNOT_HIGHTLIGHT_MODE_EOF
+    BRST_ANNOT_HIGHLIGHT_MODE_EOF
 } BRST_AnnotHighlightMode;
 
 /**

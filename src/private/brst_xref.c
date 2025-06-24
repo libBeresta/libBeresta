@@ -45,7 +45,7 @@ BRST_Xref_New(BRST_MMgr mmgr,
     xref->error        = BRST_MMgr_Error(mmgr);
     xref->start_offset = offset;
 
-    xref->entries = BRST_List_New(mmgr, BRST_DEFALUT_XREF_ENTRY_NUM);
+    xref->entries = BRST_List_New(mmgr, BRST_DEFAULT_XREF_ENTRY_NUM);
     if (!xref->entries)
         goto Fail;
 

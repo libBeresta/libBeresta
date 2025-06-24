@@ -58,7 +58,9 @@ void BRST_MD5Update(struct BRST_MD5Context* ctx,
         ctx->bits[1]++; /* Carry from low to high */
     ctx->bits[1] += len >> 29;
 
-    t = (t >> 3) & 0x3f; /* Bytes already in shsInfo->data */
+    t = (t >> 3) & 0x3f;
+    /* TODO Убрать сноску на странный идентификатор
+       Bytes already in shsInfo->data */
 
     /* Handle any leading odd-sized chunks */
 

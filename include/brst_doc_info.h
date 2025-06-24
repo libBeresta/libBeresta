@@ -73,7 +73,7 @@ BRST_Doc_SetInfoAttr(
     - \ref BRST_INFO_KEYWORDS
     \endparblock
 
-  \return String value from \c info dictionary. If the infomation has not been set or an error has occurred, it returns \c NULL.
+  \return String value from \c info dictionary. If the information has not been set or an error has occurred, it returns \c NULL.
 
   \copydoc dox_error_codes
 

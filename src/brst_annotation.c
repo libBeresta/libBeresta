@@ -29,7 +29,6 @@
 #include "brst_image.h"
 #include "brst_page_xobject.h"
 #include "private/brst_catalog.h"
-#include "brst_conf.h"
 #include "private/brst_destination.h"
 #include "brst_exdata.h"
 #include "brst_javascript.h"
@@ -283,7 +282,7 @@ BRST_LinkAnnot_SetHighlightMode(BRST_Annotation annot,
         return BRST_INVALID_ANNOTATION;
 
     switch (mode) {
-    case BRST_ANNOT_NO_HIGHTLIGHT:
+    case BRST_ANNOT_NO_HIGHLIGHT:
         ret = BRST_Dict_AddName(annot, "H", "N");
         break;
     case BRST_ANNOT_INVERT_BORDER:
@@ -417,7 +416,7 @@ BRST_TextAnnot_SetOpened(BRST_Annotation annot,
 {
     BRST_Boolean b;
 
-    BRST_PTRACE((" BRST_TextAnnot_SetOpend\n"));
+    BRST_PTRACE((" BRST_TextAnnot_SetOpened\n"));
 
     if (!CheckSubType(annot, BRST_ANNOT_TEXT_NOTES))
         return BRST_INVALID_ANNOTATION;
@@ -435,7 +434,7 @@ BRST_PopupAnnot_SetOpened(BRST_Annotation annot,
 {
     BRST_Boolean b;
 
-    BRST_PTRACE((" BRST_TextAnnot_SetOpend\n"));
+    BRST_PTRACE((" BRST_TextAnnot_SetOpened\n"));
 
     if (!CheckSubType(annot, BRST_ANNOT_POPUP))
         return BRST_INVALID_ANNOTATION;
@@ -1219,7 +1218,7 @@ BRST_Page_CreateHighlightAnnot(BRST_Page page,
 {
     BRST_PTRACE((" BRST_Page_CreateHighlightAnnot\n"));
 
-    return BRST_Page_CreateTextMarkupAnnot(page, rect, text, encoder, BRST_ANNOT_HIGHTLIGHT);
+    return BRST_Page_CreateTextMarkupAnnot(page, rect, text, encoder, BRST_ANNOT_HIGHLIGHT);
 }
 
 BRST_EXPORT(BRST_Annotation)

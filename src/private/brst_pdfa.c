@@ -390,7 +390,7 @@ BRST_PDFA_AddXmpMetadata(BRST_Doc pdf)
         /* Update the PDF number version */
         pdf->pdf_version = (pdf->pdf_version > conformanceVersion ? pdf->pdf_version : conformanceVersion);
 
-        /* Append additionnal specific XMP extensions */
+        /* Append additional specific XMP extensions */
         {
             BRST_UINT i;
             BRST_List list;

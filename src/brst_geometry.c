@@ -21,7 +21,7 @@
 #include "private/brst_encrypt_dict.h"
 #include "brst_outline.h"
 #include "private/brst_catalog.h"
-#include "brst_conf.h"
+#include "private/brst_c.h"
 
 static BRST_STATUS
 InternalArc(BRST_Page page,

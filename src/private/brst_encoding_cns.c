@@ -110,7 +110,7 @@ GBK_EUC_H_Init(BRST_Encoder encoder)
     attr->is_trial_byte_fn = GBK_EUC_IsTrialByte;
     BRST_StrCpy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
     BRST_StrCpy(attr->ordering, "GB1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
-    attr->suppliment = 2;
+    attr->supplement = 2;
     attr->uid_offset = -1;
     attr->xuid[0]    = 1;
     attr->xuid[1]    = 10;
@@ -151,7 +151,7 @@ GBK_EUC_V_Init(BRST_Encoder encoder)
     attr->is_trial_byte_fn = GBK_EUC_IsTrialByte;
     BRST_StrCpy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
     BRST_StrCpy(attr->ordering, "GB1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
-    attr->suppliment = 2;
+    attr->supplement = 2;
     attr->uid_offset = -1;
     attr->xuid[0]    = 1;
     attr->xuid[1]    = 10;
@@ -223,7 +223,7 @@ GB_EUC_H_Init(BRST_Encoder encoder)
     attr->is_trial_byte_fn = GB_EUC_IsTrialByte;
     BRST_StrCpy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
     BRST_StrCpy(attr->ordering, "GB1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
-    attr->suppliment = 0;
+    attr->supplement = 0;
     attr->uid_offset = 100;
     attr->xuid[0]    = 1;
     attr->xuid[1]    = 10;
@@ -263,7 +263,7 @@ GB_EUC_V_Init(BRST_Encoder encoder)
     attr->is_trial_byte_fn = GB_EUC_IsTrialByte;
     BRST_StrCpy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
     BRST_StrCpy(attr->ordering, "GB1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
-    attr->suppliment   = 0;
+    attr->supplement   = 0;
     attr->writing_mode = BRST_WMODE_VERTICAL;
     attr->uid_offset   = 310;
     attr->xuid[0]      = 1;

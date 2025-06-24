@@ -11,7 +11,7 @@
 typedef struct _BRST_List_Rec {
     BRST_MMgr mmgr;
     BRST_Error error;
-    BRST_UINT block_siz;
+    BRST_UINT block_size;
     BRST_UINT items_per_block;
     BRST_UINT count;
     void** obj;
@@ -47,7 +47,7 @@ BRST_List_New(BRST_MMgr mmgr,
     if (list) {
         list->mmgr            = mmgr;
         list->error           = BRST_MMgr_Error(mmgr);
-        list->block_siz       = 0;
+        list->block_size      = 0;
         list->items_per_block = (items_per_block <= 0 ? BRST_DEF_ITEMS_PER_BLOCK : items_per_block);
         list->count           = 0;
         list->obj             = NULL;
@@ -74,9 +74,9 @@ BRST_List_Add(BRST_List list,
 {
     BRST_PTRACE((" BRST_List_Add\n"));
 
-    if (list->count >= list->block_siz) {
+    if (list->count >= list->block_size) {
         BRST_STATUS ret = Resize(list,
-            list->block_siz + list->items_per_block);
+            list->block_size + list->items_per_block);
 
         if (ret != BRST_OK) {
             return ret;
@@ -249,9 +249,9 @@ void BRST_List_Clear(BRST_List list)
     if (list->obj)
         BRST_FreeMem(list->mmgr, list->obj);
 
-    list->block_siz = 0;
-    list->count     = 0;
-    list->obj       = NULL;
+    list->block_size = 0;
+    list->count      = 0;
+    list->obj        = NULL;
 }
 
 /*
@@ -287,9 +287,9 @@ Resize(BRST_List list,
 
     if (list->obj)
         BRST_MemCpy((BRST_BYTE*)new_obj, (BRST_BYTE*)list->obj,
-            list->block_siz * sizeof(void*));
+            list->block_size * sizeof(void*));
 
-    list->block_siz = count;
+    list->block_size = count;
     if (list->obj)
         BRST_FreeMem(list->mmgr, list->obj);
     list->obj = new_obj;

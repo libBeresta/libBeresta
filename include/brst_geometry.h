@@ -330,7 +330,7 @@ BRST_Page_Ellipse(
   \copydoc dox_param_page
   \param x, y Center point of the circle.
   \param radius Radius of the circle.
-  \param angle1 Angle at the begining of the arc.
+  \param angle1 Angle at the beginning of the arc.
   \param angle2 Angle at the end of the arc. It must be greater than \c ang1.
 
   \copydoc dox_graphics_mode
@@ -941,7 +941,7 @@ BRST_Page_CurveTo2(
 /**
 
   \ingroup graphics
-  \brief Append Bézier curve to the current path using two spesified points.
+  \brief Append Bézier curve to the current path using two specified points.
   The point (x<sub>1</sub>, y<sub>1</sub>) and the point (x<sub>3</sub>, y<sub>3</sub>)
   are used as the control points for a Bézier curve and current point is moved to the point
   (x<sub>3</sub>, y<sub>3</sub>).
@@ -1442,7 +1442,7 @@ BRST_Page_Flat_Value(
 
   \copydoc dox_param_page
 
-  \return Page current transfomation matrix \ref BRST_TransMatrix on success, otherwise it returns default transformation matrix `BRST_TransMatrix{1, 0, 0, 1, 0, 0}`.
+  \return Page current transformation matrix \ref BRST_TransMatrix on success, otherwise it returns default transformation matrix `BRST_TransMatrix{1, 0, 0, 1, 0, 0}`.
 
   \see BRST_Page_Concat()
 

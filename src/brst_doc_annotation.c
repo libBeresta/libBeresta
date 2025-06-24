@@ -39,7 +39,6 @@
 #include "private/brst_doc_fontdef.h"
 #include "private/brst_doc_encoder.h"
 #include "brst_version.h"
-#include "brst_conf.h"
 #include "brst_geometry_defines.h"
 #include "private/brst_destination.h"
 #include "brst_exdata.h"
@@ -55,7 +54,7 @@ BRST_Page_CreateWidgetAnnot_WhiteOnlyWhilePrint(BRST_Doc pdf,
 {
     BRST_XObject fxobj;
     BRST_Annotation annot;
-    BRST_Dict appearence;
+    BRST_Dict appearance;
     BRST_Dict mk;
     BRST_STATUS ret = BRST_OK;
     BRST_Array array_bg;
@@ -68,15 +67,15 @@ BRST_Page_CreateWidgetAnnot_WhiteOnlyWhilePrint(BRST_Doc pdf,
     if (!fxobj)
         return NULL;
 
-    appearence = BRST_Dict_New(annot->mmgr);
-    if (!appearence)
+    appearance = BRST_Dict_New(annot->mmgr);
+    if (!appearance)
         return NULL;
 
-    ret = BRST_Dict_Add(annot, "AP", appearence);
+    ret = BRST_Dict_Add(annot, "AP", appearance);
     if (ret != BRST_OK)
         return NULL;
 
-    ret = BRST_Dict_Add(appearence, "N", fxobj);
+    ret = BRST_Dict_Add(appearance, "N", fxobj);
     if (ret != BRST_OK)
         return NULL;
 

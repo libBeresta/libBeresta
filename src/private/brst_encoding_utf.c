@@ -228,7 +228,7 @@ UTF8_Init(BRST_Encoder encoder)
 
     BRST_StrCpy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
     BRST_StrCpy(attr->ordering, "Identity-H", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
-    attr->suppliment   = 0;
+    attr->supplement   = 0;
     attr->writing_mode = BRST_WMODE_HORIZONTAL;
 
     /* Not sure about this

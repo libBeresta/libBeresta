@@ -325,7 +325,7 @@ CIDFontType0_New(BRST_Font parent, BRST_Xref xref)
     ret += BRST_Dict_Add(cid_system_info, "Ordering",
         BRST_String_New(parent->mmgr, encoder_attr->ordering, NULL));
     ret += BRST_Dict_AddNumber(cid_system_info, "Supplement",
-        encoder_attr->suppliment);
+        encoder_attr->supplement);
 
     if (ret != BRST_OK)
         return NULL;
@@ -486,7 +486,7 @@ CIDFontType2_New(BRST_Font parent, BRST_Xref xref)
     ret += BRST_Dict_Add(cid_system_info, "Ordering",
         BRST_String_New(parent->mmgr, encoder_attr->ordering, NULL));
     ret += BRST_Dict_AddNumber(cid_system_info, "Supplement",
-        encoder_attr->suppliment);
+        encoder_attr->supplement);
 
     if (ret != BRST_OK)
         return NULL;
@@ -882,7 +882,7 @@ CreateCMap(BRST_Encoder encoder,
 
     ret += BRST_Dict_Add(sysinfo, "Registry", BRST_String_New(encoder->mmgr, attr->registry, NULL));
     ret += BRST_Dict_Add(sysinfo, "Ordering", BRST_String_New(encoder->mmgr, attr->ordering, NULL));
-    ret += BRST_Dict_AddNumber(sysinfo, "Supplement", attr->suppliment);
+    ret += BRST_Dict_AddNumber(sysinfo, "Supplement", attr->supplement);
     ret += BRST_Dict_AddNumber(cmap, "WMode",
         (BRST_UINT32)attr->writing_mode);
 
@@ -906,7 +906,7 @@ CreateCMap(BRST_Encoder encoder,
     *pbuf++ = ' ';
     pbuf    = (char*)BRST_StrCpy(pbuf, attr->ordering, eptr);
     *pbuf++ = ' ';
-    pbuf    = BRST_IToA(pbuf, attr->suppliment, eptr);
+    pbuf    = BRST_IToA(pbuf, attr->supplement, eptr);
     BRST_StrCpy(pbuf, ")\r\n", eptr);
     ret += BRST_Stream_WriteStr(cmap->stream, buf);
 
@@ -936,7 +936,7 @@ CreateCMap(BRST_Encoder encoder,
     ret += BRST_Stream_WriteStr(cmap->stream, buf);
 
     pbuf = (char*)BRST_StrCpy(buf, "  /Supplement ", eptr);
-    pbuf = BRST_IToA(pbuf, attr->suppliment, eptr);
+    pbuf = BRST_IToA(pbuf, attr->supplement, eptr);
     pbuf = (char*)BRST_StrCpy(pbuf, " def\r\n", eptr);
     BRST_StrCpy(pbuf, "end def\r\n\r\n", eptr);
     ret += BRST_Stream_WriteStr(cmap->stream, buf);

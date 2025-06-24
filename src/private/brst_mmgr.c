@@ -167,9 +167,9 @@ void* BRST_GetMem(BRST_MMgr mmgr,
     if (mmgr->mpool) {
         BRST_MPool_Node node = mmgr->mpool;
 
-#ifdef BRST_ALINMENT_SIZ
-        size = (size + (BRST_ALINMENT_SIZ - 1)) / BRST_ALINMENT_SIZ;
-        size *= BRST_ALINMENT_SIZ;
+#ifdef BRST_ALIGNMENT_SIZE
+        size = (size + (BRST_ALIGNMENT_SIZE - 1)) / BRST_ALIGNMENT_SIZE;
+        size *= BRST_ALIGNMENT_SIZE;
 #endif
 
         if (node->size - node->used_size >= size) {

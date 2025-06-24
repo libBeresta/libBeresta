@@ -181,7 +181,7 @@ BRST_Font_TextWidth(
   \return Byte length which can be included within the specified width in
   current font size, character spacing and word spacing. Otherwise it returns \c 0 and calls error handler.
 
-  \todo Check if function return byte length or character lenght, it differs in multiple cases.
+  \todo Check if function return byte length or character length, it differs in multiple cases.
 
   \todo \c len is byte length or character length?
 

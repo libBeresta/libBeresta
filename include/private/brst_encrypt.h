@@ -49,7 +49,7 @@ typedef struct _BRST_Encrypt_Rec {
 typedef struct _BRST_Encrypt_Rec* BRST_Encrypt;
 
 void
-BRST_PadOrTrancatePasswd(
+BRST_PadOrTruncatePasswd(
     const char* pwd,
     BRST_BYTE* new_pwd);
 

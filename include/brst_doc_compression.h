@@ -12,8 +12,8 @@
   | \ref BRST_COMP_NONE     | No compression                                              |
   | \ref BRST_COMP_TEXT     | Compress the contents stream of the page                    |
   | \ref BRST_COMP_IMAGE    | Compress the streams of the image objects.                  |
-  | \ref BRST_COMP_METADATA | Other stream datas (fonts, cmaps and so on) are compressed. |
-  | \ref BRST_COMP_ALL      | All stream datas are compressed <br/>(combination of \ref BRST_COMP_TEXT, \ref BRST_COMP_IMAGE and \ref BRST_COMP_METADATA). |
+  | \ref BRST_COMP_METADATA | Other stream data (fonts, cmaps and so on) compressed.      |
+  | \ref BRST_COMP_ALL      | All stream data compressed <br/>(combination of \ref BRST_COMP_TEXT, \ref BRST_COMP_IMAGE and \ref BRST_COMP_METADATA). |
   \endparblock
 
   \copydoc dox_return_ok

@@ -1,3 +1,5 @@
+// TODO Включить в компиляцию
+
 /* "Perceptual", "RelativeColorimetric", "Saturation", "AbsoluteColorimetric" */
 BRST_EXPORT(BRST_OutputIntent)
 BRST_ICC_LoadIccFromMem(BRST_Doc pdf,
@@ -33,8 +35,8 @@ BRST_ICC_LoadIccFromMem(BRST_Doc pdf,
     }
 
     for (;;) {
-        BRST_BYTE buf[BRST_STREAM_BUF_SIZ];
-        BRST_UINT len = BRST_STREAM_BUF_SIZ;
+        BRST_BYTE buf[BRST_STREAM_BUF_SIZE];
+        BRST_UINT len = BRST_STREAM_BUF_SIZE;
         ret           = BRST_Stream_Read(iccdata, buf, &len);
 
         if (ret != BRST_OK) {
