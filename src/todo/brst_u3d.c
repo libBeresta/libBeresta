@@ -181,8 +181,8 @@ BRST_U3D_LoadU3D   (BRST_MMgr        mmgr,
 	}
 
 	for (;;) {
-		BRST_BYTE buf[BRST_STREAM_BUF_SIZ];
-		BRST_UINT len = BRST_STREAM_BUF_SIZ;
+		BRST_BYTE buf[BRST_STREAM_BUF_SIZE];
+		BRST_UINT len = BRST_STREAM_BUF_SIZE;
 		BRST_STATUS ret = BRST_Stream_Read (u3d_data, buf, &len);
 
 		if (ret != BRST_OK) {
@@ -282,11 +282,11 @@ BRST_EXPORT(BRST_STATUS) BRST_U3D_Add3DView(BRST_U3D u3d, BRST_Dict view)
 }
 
 
-BRST_EXPORT(BRST_STATUS) BRST_U3D_AddOnInstanciate(BRST_U3D u3d, BRST_JavaScript javascript)
+BRST_EXPORT(BRST_STATUS) BRST_U3D_AddOnInstantiate(BRST_U3D u3d, BRST_JavaScript javascript)
 {
 	BRST_STATUS ret = BRST_OK;
 
-	BRST_PTRACE ((" BRST_U3D_AddOnInstanciate\n"));
+	BRST_PTRACE ((" BRST_U3D_AddOnInstantiate\n"));
 
 	if (u3d == NULL || javascript == NULL) {
 		return BRST_INVALID_U3D_DATA;
@@ -1130,8 +1130,8 @@ BRST_EXPORT(BRST_JavaScript) BRST_LoadJSFromFile  (BRST_Doc pdf, const char *fil
 	js->filter = BRST_STREAM_FILTER_FLATE_DECODE; // or BRST_STREAM_FILTER_NONE
 
 	for (;;) {
-		BRST_BYTE buf[BRST_STREAM_BUF_SIZ];
-		BRST_UINT len = BRST_STREAM_BUF_SIZ;
+		BRST_BYTE buf[BRST_STREAM_BUF_SIZE];
+		BRST_UINT len = BRST_STREAM_BUF_SIZE;
 		BRST_STATUS ret = BRST_Stream_Read (js_data, buf, &len);
 
 		if (ret != BRST_OK) {

@@ -20,6 +20,7 @@ Library Capabilities:
   * Japanese
 
 The library allows creating PDF documents without requiring an understanding of the internal structure of the Portable Document Format.
+
 Programming Language: ANSI C
 
 
@@ -62,4 +63,5 @@ Several reasons motivated this development effort:
 
 ## License 
 The library is developed and distributed under the MIT license. The full text of the license can be found in the file [`ЛИЦЕНЗИЯ`](ЛИЦЕНЗИЯ).
+
 The original libHaru library's license text is located in the [`LICENSE.libHaru`](LICENSE.libHaru) file.

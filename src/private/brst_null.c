@@ -7,8 +7,6 @@ typedef struct _BRST_Null_Rec {
     BRST_Obj_Header header;
 } BRST_Null_Rec;
 
-// typedef struct BRST_Obj_Header BRST_Obj_Header;
-
 BRST_Null
 BRST_Null_New(BRST_MMgr mmgr)
 {

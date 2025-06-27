@@ -64,7 +64,7 @@ UTF8_Encoder_ByteType_Func(BRST_Encoder encoder,
     // Not logical ! (look at function BRST_String_Write in brst_string.c)
 
     // When BRST_BYTE_TYPE_SINGLE is returned, the current byte is the
-    //   CODE argument in call ToUnicode_Func
+    //   CODE argument in call ToUnicodeFunc
     // When BRST_BYTE_TYPE_LEAD is returned, the current byte (msb) and the
     //   next byte (lsb) is the CODE argument in call ToUnicodeFunc
     // When BRST_BYTE_TYPE_TRAIL is returned, the current byte is ignored

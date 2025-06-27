@@ -192,7 +192,7 @@ BRST_PDFA_GenerateID(BRST_Doc pdf)
     return BRST_OK;
 }
 
-// TODO Разобраься с именованием функций, они должны включать _Doc_?
+// TODO Разобраться с именованием функций, они должны включать _Doc_?
 /* Add XMP Metadata for PDF/A */
 BRST_STATUS
 BRST_PDFA_AddXmpMetadata(BRST_Doc pdf)

@@ -93,7 +93,7 @@ BRST_U3D_SetDefault3DView(
 );
 
 BRST_EXPORT(BRST_STATUS) 
-BRST_U3D_AddOnInstanciate(
+BRST_U3D_AddOnInstantiate(
     BRST_U3D        u3d,
     BRST_JavaScript javaScript
 );
