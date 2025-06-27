@@ -1,18 +1,18 @@
-# Prerequisites
+# Предусловия
 *.d
 
-# Object files
+# Объектные файлы
 *.o
 *.ko
 *.obj
 *.elf
 
-# Linker output
+# Вывод компоновщика
 *.ilk
 *.map
 *.exp
 
-# Precompiled Headers
+# Предкомпилированные заголовки
 *.gch
 *.pch
 
@@ -22,13 +22,13 @@
 *.la
 *.lo
 
-# Shared objects (inc. Windows DLLs)
+# Динамические объекты (включая Windows DLL)
 *.dll
 *.so
 *.so.*
 *.dylib
 
-# Executables
+# Исполнимые файлы
 *.exe
 *.out
 *.app
@@ -36,17 +36,8 @@
 *.x86_64
 *.hex
 
-# Debug files
+# Отладочные файлы
 *.dSYM/
 *.su
 *.idb
 *.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
