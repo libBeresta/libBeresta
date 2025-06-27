@@ -1,7 +1,7 @@
 #!/bin/sh
 #
-# Этот скрипт пересоздает файлы hpdf_page_sizes.h 
-# и hpdf_page_sizes_minimal.h
+# Этот скрипт пересоздает файлы brst_page_sizes.h 
+# и brst_page_sizes_minimal.h
 # 
 # Для запуска генерации используется Jinja2, 
 # ставится с помощью
