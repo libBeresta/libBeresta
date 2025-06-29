@@ -1,6 +1,6 @@
 (:файл "doc_embedded_file"
  :функции
-       ((:название "AttachFile"
+       ((:название "Doc_AttachFile"
 	 :группа "doc"
 	 :ошибки ("FAILED_TO_ALLOC_MEM")
 	 :результат (:тип "EmbeddedFile"
