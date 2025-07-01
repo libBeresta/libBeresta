@@ -37,6 +37,7 @@ DSCW
 édition
 EmbeddedFiles
 ENCD
+endif
 enum
 FLATE
 fname
@@ -101,3 +102,5 @@ unicode
 unit
 Univers
 utf
+ÓÔŐÖ
+ŘŮ

@@ -5,9 +5,9 @@
 #include <setjmp.h>
 
 BRST_HANDLER(void)
-demo_error_handler  (BRST_STATUS   error_no,
-                     BRST_STATUS   detail_no,
-                     void         *user_data);
+demo_error_handler(BRST_STATUS error_no,
+    BRST_STATUS detail_no,
+    void* user_data);
 
 static jmp_buf env;
 

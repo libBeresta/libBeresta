@@ -1,4 +1,6 @@
 /*
+ * `libBeresta`
+ *
  * line_demo.c - Примеры создания линий
  * ===========
  *
@@ -7,17 +9,13 @@
  * Текст лиценции смотри в файле `ЛИЦЕНЗИЯ`
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include "brst.h"
 #include "handler.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-void
-draw_line(BRST_Page page,
-          float     x,
-          float     y,
-          BRST_CSTR label)
+void draw_line(BRST_Page page, float x, float y, BRST_CSTR label)
 {
     BRST_Page_BeginText(page);
     BRST_Page_MoveTextPos(page, x, y - 10);
@@ -29,11 +27,7 @@ draw_line(BRST_Page page,
     BRST_Page_Stroke(page);
 }
 
-void
-draw_line2(BRST_Page page,
-           float     x,
-           float     y,
-           BRST_CSTR label)
+void draw_line2(BRST_Page page, float x, float y, BRST_CSTR label)
 {
     BRST_Page_BeginText(page);
     BRST_Page_MoveTextPos(page, x, y);
@@ -45,11 +39,7 @@ draw_line2(BRST_Page page,
     BRST_Page_Stroke(page);
 }
 
-void
-draw_rect(BRST_Page page,
-          double    x,
-          double    y,
-          BRST_CSTR label)
+void draw_rect(BRST_Page page, double x, double y, BRST_CSTR label)
 {
     BRST_Page_BeginText(page);
     BRST_Page_MoveTextPos(page, x, y - 10);
@@ -59,18 +49,18 @@ draw_rect(BRST_Page page,
     BRST_Page_Rectangle(page, x, y - 40, 220, 25);
 }
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
     BRST_CSTR page_title = "Line Example";
 
-    BRST_Doc  pdf;
+    BRST_Doc pdf;
     BRST_Font font;
     BRST_Page page;
     char fname[256];
 
-    const BRST_REAL DASH_MODE1[] = {3};
-    const BRST_REAL DASH_MODE2[] = {3, 7};
-    const BRST_REAL DASH_MODE3[] = {8, 7, 2, 7};
+    const BRST_REAL DASH_MODE1[] = { 3 };
+    const BRST_REAL DASH_MODE2[] = { 3, 7 };
+    const BRST_REAL DASH_MODE3[] = { 8, 7, 2, 7 };
 
     double x;
     double y;
@@ -83,13 +73,13 @@ int main(int argc, char **argv)
 
     float tw;
 
-    strcpy (fname, argv[0]);
-    strcat (fname, ".pdf");
+    strcpy(fname, argv[0]);
+    strcat(fname, ".pdf");
 
     // Создание объекта документа
-    pdf = BRST_Doc_New (demo_error_handler, NULL);
+    pdf = BRST_Doc_New(demo_error_handler, NULL);
     if (!pdf) {
-        printf ("error: cannot create Doc object\n");
+        printf("error: cannot create Doc object\n");
         return 1;
     }
 
@@ -107,7 +97,7 @@ int main(int argc, char **argv)
     // Прямоугольник с границами страницы
     BRST_Page_SetLineWidth(page, 1);
     BRST_Page_Rectangle(page, 50, 50, BRST_Page_Width(page) - 100,
-                BRST_Page_Height(page) - 110);
+        BRST_Page_Height(page) - 110);
     BRST_Page_Stroke(page);
 
     // Заголовок страницы с центровкой
@@ -115,7 +105,7 @@ int main(int argc, char **argv)
     tw = BRST_Page_TextWidth(page, page_title);
     BRST_Page_BeginText(page);
     BRST_Page_MoveTextPos(page, (BRST_Page_Width(page) - tw) / 2,
-                BRST_Page_Height(page) - 50);
+        BRST_Page_Height(page) - 50);
     BRST_Page_ShowText(page, page_title);
     BRST_Page_EndText(page);
 
@@ -135,12 +125,14 @@ int main(int argc, char **argv)
     BRST_Page_SetLineWidth(page, 1.0);
 
     BRST_Page_SetDash(page, DASH_MODE1, 1, 1.0);
-    draw_line(page, 60, 680, "dash_ptn=[3], phase=1 -- "
-                "2 on, 3 off, 3 on...");
+    draw_line(page, 60, 680,
+        "dash_ptn=[3], phase=1 -- "
+        "2 on, 3 off, 3 on...");
 
     BRST_Page_SetDash(page, DASH_MODE2, 2, 2.0);
-    draw_line(page, 60, 650, "dash_ptn=[7, 3], phase=2 -- "
-                "5 on 3 off, 7 on,...");
+    draw_line(page, 60, 650,
+        "dash_ptn=[7, 3], phase=2 -- "
+        "5 on 3 off, 7 on,...");
 
     BRST_Page_SetDash(page, DASH_MODE3, 4, 0.0);
     draw_line(page, 60, 620, "dash_ptn=[8, 7, 2, 7], phase=0");
@@ -223,12 +215,11 @@ int main(int argc, char **argv)
     BRST_Page_BeginText(page);
     BRST_Page_MoveTextPos(page, 290, 600);
     BRST_Page_SetTextLeading(page, 12);
-    BRST_Page_ShowText(page,
-                "Clip Clip Clip Clip Clip Clipi Clip Clip Clip");
+    BRST_Page_ShowText(page, "Clip Clip Clip Clip Clip Clipi Clip Clip Clip");
     BRST_Page_ShowTextNextLine(page,
-                "Clip Clip Clip Clip Clip Clip Clip Clip Clip");
+        "Clip Clip Clip Clip Clip Clip Clip Clip Clip");
     BRST_Page_ShowTextNextLine(page,
-                "Clip Clip Clip Clip Clip Clip Clip Clip Clip");
+        "Clip Clip Clip Clip Clip Clip Clip Clip Clip");
     BRST_Page_EndText(page);
 
     // Восстановление графического состояния
@@ -237,8 +228,8 @@ int main(int argc, char **argv)
     // Пример создания кривой по двум точкам:
     // - контрольная целевой
     // - целевая
-    x = 330;
-    y = 440;
+    x  = 330;
+    y  = 440;
     x1 = 430;
     y1 = 530;
     x2 = 480;
@@ -362,4 +353,3 @@ int main(int argc, char **argv)
 
     return 0;
 }
-
