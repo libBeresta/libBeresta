@@ -1,4 +1,6 @@
 /*
+ * `libBeresta`
+ *
  * minimal.c - Минимально возможный пример
  * =========
  *
@@ -16,11 +18,22 @@
 
   Last action is to clean up everything.
 */
-#include <stdio.h>
-#include <string.h>
-#include <setjmp.h>
+
+/** ru
+  \par Минимальная демонстрационная программа библиотеки libBeresta.
+
+  Минимально возможная программа для создания PDF-документа.
+  Создается \ref BRST_Doc, в него добавляется объект \ref BRST_Page,
+  устанавливаются размер и ориентация страницы и документ сохраняется.
+
+  Последним действием все очищается.
+*/
+
 #include "brst.h"
 #include "handler.h"
+#include <setjmp.h>
+#include <stdio.h>
+#include <string.h>
 
 int main(int argc, char** argv)
 {

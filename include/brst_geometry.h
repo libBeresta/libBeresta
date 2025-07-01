@@ -1225,7 +1225,7 @@ BRST_Page_SetFlat(
 
 */
 BRST_EXPORT(BRST_RGBColor)
-BRST_Page_RGBFill_Value(
+BRST_Page_RGBFill(
     BRST_Page page
 );
 
@@ -1242,7 +1242,7 @@ BRST_Page_RGBFill_Value(
 
 */
 BRST_EXPORT(BRST_RGBColor)
-BRST_Page_RGBStroke_Value(
+BRST_Page_RGBStroke(
     BRST_Page page
 );
 
@@ -1259,7 +1259,7 @@ BRST_Page_RGBStroke_Value(
 
 */
 BRST_EXPORT(BRST_CMYKColor)
-BRST_Page_CMYKFill_Value(
+BRST_Page_CMYKFill(
     BRST_Page page
 );
 
@@ -1276,7 +1276,7 @@ BRST_Page_CMYKFill_Value(
 
 */
 BRST_EXPORT(BRST_CMYKColor)
-BRST_Page_CMYKStroke_Value(
+BRST_Page_CMYKStroke(
     BRST_Page page
 );
 
@@ -1293,7 +1293,7 @@ BRST_Page_CMYKStroke_Value(
 
 */
 BRST_EXPORT(BRST_REAL)
-BRST_Page_GrayFill_Value(
+BRST_Page_GrayFill(
     BRST_Page page
 );
 
@@ -1310,7 +1310,7 @@ BRST_Page_GrayFill_Value(
 
 */
 BRST_EXPORT(BRST_REAL)
-BRST_Page_GrayStroke_Value(
+BRST_Page_GrayStroke(
     BRST_Page page
 );
 
@@ -1325,7 +1325,7 @@ BRST_Page_GrayStroke_Value(
 
 */
 BRST_EXPORT(BRST_ColorSpace)
-BRST_Page_StrokingColorSpace_Value(
+BRST_Page_StrokingColorSpace(
     BRST_Page page
 );
 
@@ -1340,7 +1340,7 @@ BRST_Page_StrokingColorSpace_Value(
 
 */
 BRST_EXPORT(BRST_ColorSpace)
-BRST_Page_FillingColorSpace_Value(
+BRST_Page_FillingColorSpace(
     BRST_Page page
 );
 
@@ -1355,7 +1355,7 @@ BRST_Page_FillingColorSpace_Value(
 
 */
 BRST_EXPORT(BRST_REAL)
-BRST_Page_LineWidth_Value(
+BRST_Page_LineWidth(
     BRST_Page page
 );
 
@@ -1370,7 +1370,7 @@ BRST_Page_LineWidth_Value(
 
 */
 BRST_EXPORT(BRST_LineCap)
-BRST_Page_LineCap_Value(
+BRST_Page_LineCap(
     BRST_Page page
 );
 
@@ -1385,7 +1385,7 @@ BRST_Page_LineCap_Value(
 
 */
 BRST_EXPORT(BRST_LineJoin)
-BRST_Page_LineJoin_Value(
+BRST_Page_LineJoin(
     BRST_Page page
 );
 
@@ -1400,7 +1400,7 @@ BRST_Page_LineJoin_Value(
 
 */
 BRST_EXPORT(BRST_REAL)
-BRST_Page_MiterLimit_Value(
+BRST_Page_MiterLimit(
     BRST_Page page
 );
 
@@ -1416,7 +1416,7 @@ BRST_Page_MiterLimit_Value(
 
 */
 BRST_EXPORT(BRST_DashMode)
-BRST_Page_Dash_Value(
+BRST_Page_Dash(
     BRST_Page page
 );
 
@@ -1431,7 +1431,7 @@ BRST_Page_Dash_Value(
 
 */
 BRST_EXPORT(BRST_REAL)
-BRST_Page_Flat_Value(
+BRST_Page_Flat(
     BRST_Page page
 );
 
