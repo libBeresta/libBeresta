@@ -132,9 +132,9 @@ BRST_Doc_Destroy_All(BRST_Doc pdf)
 }
 
 BRST_EXPORT(void)
-BRST_Free(BRST_Doc pdf)
+BRST_Doc_Free(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Free\n"));
+    BRST_PTRACE((" BRST_Doc_Free\n"));
 
     if (pdf) {
         BRST_MMgr mmgr = pdf->mmgr;
@@ -215,7 +215,7 @@ BRST_Doc_Initialize(BRST_Doc pdf)
 }
 
 BRST_EXPORT(BRST_Doc)
-BRST_NewEx(BRST_Error_Handler user_error_fn,
+BRST_Doc_New_Ex(BRST_Error_Handler user_error_fn,
     BRST_Alloc_Func user_alloc_fn,
     BRST_Free_Func user_free_fn,
     BRST_UINT mem_pool_buf_size,
@@ -225,7 +225,7 @@ BRST_NewEx(BRST_Error_Handler user_error_fn,
     BRST_MMgr mmgr;
     BRST_Error tmp_error = BRST_Error_New();
 
-    BRST_PTRACE((" BRST_NewEx\n"));
+    BRST_PTRACE((" BRST_New_Doc_Ex\n"));
 
     /* initialize temporary-error object */
     BRST_Error_Init(tmp_error, user_data);
@@ -261,7 +261,7 @@ BRST_NewEx(BRST_Error_Handler user_error_fn,
     //    mmgr->error = pdf->error;
 
     if (BRST_Doc_Initialize(pdf) != BRST_OK) {
-        BRST_Free(pdf);
+        BRST_Doc_Free(pdf);
         BRST_Error_Check(tmp_error);
         return NULL;
     }
@@ -272,12 +272,12 @@ BRST_NewEx(BRST_Error_Handler user_error_fn,
 }
 
 BRST_EXPORT(BRST_Doc)
-BRST_New(BRST_Error_Handler user_error_fn,
+BRST_Doc_New(BRST_Error_Handler user_error_fn,
     void* user_data)
 {
-    BRST_PTRACE((" BRST_New\n"));
+    BRST_PTRACE((" BRST_Doc_New\n"));
 
-    return BRST_NewEx(user_error_fn, NULL, NULL, 0, user_data);
+    return BRST_Doc_New_Ex(user_error_fn, NULL, NULL, 0, user_data);
 }
 
 BRST_EXPORT(BRST_STATUS)

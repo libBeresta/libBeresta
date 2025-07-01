@@ -36,12 +36,12 @@ BRST_Version(
   \return A handle of document object on success and \c NULL on failure.
 
   \see
-    BRST_New()
-    BRST_Free()
+    BRST_Doc_New()
+    BRST_Doc_Free()
 
 */
 BRST_EXPORT(BRST_Doc)
-BRST_NewEx(
+BRST_Doc_New_Ex(
     BRST_Error_Handler user_error_fn,
     BRST_Alloc_Func    user_alloc_fn,
     BRST_Free_Func     user_free_fn,
@@ -60,16 +60,16 @@ BRST_NewEx(
   \return A handle of document object on success and \c NULL on failure.
 
   \see
-    BRST_NewEx()
-    BRST_Free()
+    BRST_Doc_New_Ex()
+    BRST_Doc_Free()
 
   \note Same as \code{.c}
-  BRST_NewEx(user_error_fn, NULL, NULL, 0, user_data)
+  BRST_Doc_New_Ex(user_error_fn, NULL, NULL, 0, user_data)
   \endcode
 
 */
 BRST_EXPORT(BRST_Doc)
-BRST_New(
+BRST_Doc_New(
     BRST_Error_Handler user_error_fn,
     void*              user_data
 );
@@ -82,12 +82,12 @@ BRST_New(
   \copydoc dox_param_pdf
 
   \see
-    BRST_New()
-    BRST_NewEx()
+    BRST_Doc_New()
+    BRST_Doc_New_Ex()
 
 */
 BRST_EXPORT(void)
-BRST_Free(
+BRST_Doc_Free(
     BRST_Doc pdf
 );
 
