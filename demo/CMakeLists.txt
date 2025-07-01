@@ -1,6 +1,7 @@
 set(
   demos_NAMES
     minimal
+    line_demo
 )
 
 # we need to add some definitions for win 32
