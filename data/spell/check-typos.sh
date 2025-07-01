@@ -11,5 +11,7 @@
 
 ~/.cargo/bin/typos -c ./typos.toml ../../src
 ~/.cargo/bin/typos -c ./typos.toml ../../include
+~/.cargo/bin/typos -c ./typos.toml ../../demo
 rg -I "//" ../../src | rg -v http | hunspell -d ru_RU,en_US -p hunspell.dict -l
 rg -I "//" ../../include | rg -v http | hunspell -d ru_RU,en_US -p hunspell.dict -l
+rg -I "//" ../../demo | hunspell -d ru_RU,en_US -p hunspell.dict -l
