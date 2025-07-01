@@ -1650,9 +1650,9 @@ BRST_Page_SetFlat(BRST_Page page,
 }
 
 BRST_EXPORT(BRST_RGBColor)
-BRST_Page_RGBFill_Value(BRST_Page page)
+BRST_Page_RGBFill(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_RGBFill_Value\n"));
+    BRST_PTRACE((" BRST_Page_RGBFill\n"));
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -1665,9 +1665,9 @@ BRST_Page_RGBFill_Value(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_RGBColor)
-BRST_Page_RGBStroke_Value(BRST_Page page)
+BRST_Page_RGBStroke(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_RGBStroke_Value\n"));
+    BRST_PTRACE((" BRST_Page_RGBStroke\n"));
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -1680,9 +1680,9 @@ BRST_Page_RGBStroke_Value(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_CMYKColor)
-BRST_Page_CMYKFill_Value(BRST_Page page)
+BRST_Page_CMYKFill(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_CMYKFill_Value\n"));
+    BRST_PTRACE((" BRST_Page_CMYKFill\n"));
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -1695,9 +1695,9 @@ BRST_Page_CMYKFill_Value(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_CMYKColor)
-BRST_Page_CMYKStroke_Value(BRST_Page page)
+BRST_Page_CMYKStroke(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_CMYKStroke_Value\n"));
+    BRST_PTRACE((" BRST_Page_CMYKStroke\n"));
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -1710,9 +1710,9 @@ BRST_Page_CMYKStroke_Value(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_REAL)
-BRST_Page_GrayFill_Value(BRST_Page page)
+BRST_Page_GrayFill(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_GrayFill_Value\n"));
+    BRST_PTRACE((" BRST_Page_GrayFill\n"));
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -1725,9 +1725,9 @@ BRST_Page_GrayFill_Value(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_REAL)
-BRST_Page_GrayStroke_Value(BRST_Page page)
+BRST_Page_GrayStroke(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_GrayStroke_Value\n"));
+    BRST_PTRACE((" BRST_Page_GrayStroke\n"));
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -1740,9 +1740,9 @@ BRST_Page_GrayStroke_Value(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_ColorSpace)
-BRST_Page_StrokingColorSpace_Value(BRST_Page page)
+BRST_Page_StrokingColorSpace(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_StrokingColorSpace_Value\n"));
+    BRST_PTRACE((" BRST_Page_StrokingColorSpace\n"));
 
     if (BRST_Page_Validate(page))
         return ((BRST_PageAttr)page->attr)->gstate->cs_stroke;
@@ -1751,9 +1751,9 @@ BRST_Page_StrokingColorSpace_Value(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_ColorSpace)
-BRST_Page_FillingColorSpace_Value(BRST_Page page)
+BRST_Page_FillingColorSpace(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_FillingColorSpace_Value\n"));
+    BRST_PTRACE((" BRST_Page_FillingColorSpace\n"));
 
     if (BRST_Page_Validate(page))
         return ((BRST_PageAttr)page->attr)->gstate->cs_fill;
@@ -1762,9 +1762,9 @@ BRST_Page_FillingColorSpace_Value(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_REAL)
-BRST_Page_LineWidth_Value(BRST_Page page)
+BRST_Page_LineWidth(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_LineWidth_Value\n"));
+    BRST_PTRACE((" BRST_Page_LineWidth\n"));
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -1775,9 +1775,9 @@ BRST_Page_LineWidth_Value(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_LineCap)
-BRST_Page_LineCap_Value(BRST_Page page)
+BRST_Page_LineCap(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_LineCap_Value\n"));
+    BRST_PTRACE((" BRST_Page_LineCap\n"));
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -1788,9 +1788,9 @@ BRST_Page_LineCap_Value(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_LineJoin)
-BRST_Page_LineJoin_Value(BRST_Page page)
+BRST_Page_LineJoin(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_LineJoin_Value\n"));
+    BRST_PTRACE((" BRST_Page_LineJoin\n"));
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -1801,9 +1801,9 @@ BRST_Page_LineJoin_Value(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_REAL)
-BRST_Page_MiterLimit_Value(BRST_Page page)
+BRST_Page_MiterLimit(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_MiterLimit_Value\n"));
+    BRST_PTRACE((" BRST_Page_MiterLimit\n"));
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -1814,11 +1814,11 @@ BRST_Page_MiterLimit_Value(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_DashMode)
-BRST_Page_Dash_Value(BRST_Page page)
+BRST_Page_Dash(BRST_Page page)
 {
     BRST_DashMode mode = { { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f }, 0, 0.0f };
 
-    BRST_PTRACE((" BRST_Page_Dash_Value\n"));
+    BRST_PTRACE((" BRST_Page_Dash\n"));
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -1830,9 +1830,9 @@ BRST_Page_Dash_Value(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_REAL)
-BRST_Page_Flat_Value(BRST_Page page)
+BRST_Page_Flat(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_Flat_Value\n"));
+    BRST_PTRACE((" BRST_Page_Flat\n"));
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
