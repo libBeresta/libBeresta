@@ -254,7 +254,7 @@ BRST_PDFA_AddXmpMetadata(BRST_Doc pdf)
         || (xmp_CreateDate != NULL) || (xmp_ModifyDate != NULL) || (xmp_CreatorTool != NULL)
         || (pdf_Keywords != NULL)) {
 
-        xmp = BRST_DictStream_New(pdf->mmgr, pdf->xref);
+        xmp = BRST_Dict_New_Stream_Init(pdf->mmgr, pdf->xref);
         if (!xmp) {
             return BRST_INVALID_STREAM;
         }
@@ -455,7 +455,7 @@ void BRST_PDFA_ClearXmpExtensions(BRST_Doc pdf)
  *
  * How to use:
  * 1. Create dictionary with ICC profile
- *    BRST_Dict icc = BRST_DictStream_New (pDoc->mmgr, pDoc->xref);
+ *    BRST_Dict icc = BRST_Dict_New_Stream_Init (pDoc->mmgr, pDoc->xref);
  *    if(icc==NULL) return false;
  *    BRST_Dict_AddNumber (icc, "N", 3);
  *    BRST_STATUS ret = BRST_Stream_Write (icc->stream, (const BRST_BYTE *)pICCData, dwICCSize);

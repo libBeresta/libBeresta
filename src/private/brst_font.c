@@ -3,6 +3,7 @@
 #include "brst_encoder.h"
 #include "brst_stream.h"
 #include "brst_mmgr.h"
+#include "brst_xref.h"
 #include "brst_dict.h"
 #include "private/brst_dict.h"
 #include "brst_font.h"

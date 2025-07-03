@@ -166,7 +166,7 @@ BRST_Image_Jpeg_Load(BRST_MMgr mmgr,
 
     BRST_PTRACE((" BRST_Image_Jpeg_Load\n"));
 
-    image = BRST_DictStream_New(mmgr, xref);
+    image = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!image)
         return NULL;
 

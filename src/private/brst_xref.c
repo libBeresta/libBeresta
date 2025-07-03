@@ -2,9 +2,9 @@
 #define BRST_IN_USE_ENTRY 'n'
 
 #include "brst_stream.h"
+#include "brst_xref.h"
 #include "brst_mmgr.h"
 #include "brst_dict.h"
-#include "brst_xref.h"
 #include "brst_encrypt.h"
 #include "private/brst_xref.h"
 #include "private/brst_stream.h"
@@ -347,47 +347,4 @@ WriteTrailer(BRST_Xref xref,
         return ret;
 
     return BRST_OK;
-}
-
-// TODO Похоже, что эту функцию надо как-то переименовать
-BRST_Dict
-BRST_DictStream_New(BRST_MMgr mmgr,
-    BRST_Xref xref)
-{
-    BRST_Dict obj;
-    BRST_Number length;
-    BRST_STATUS ret = 0;
-
-    obj = BRST_Dict_New(mmgr);
-    if (!obj)
-        return NULL;
-
-    /* only stream object is added to xref automatically */
-    ret += BRST_Xref_Add(xref, obj);
-    if (ret != BRST_OK)
-        return NULL;
-
-    length = BRST_Number_New(mmgr, 0);
-    if (!length)
-        return NULL;
-
-    ret = BRST_Xref_Add(xref, length);
-    if (ret != BRST_OK)
-        return NULL;
-
-    ret = BRST_Dict_Add(obj, "Length", length);
-    if (ret != BRST_OK)
-        return NULL;
-
-    BRST_Stream s = BRST_MemStream_New(mmgr, BRST_STREAM_BUF_SIZE);
-    if (!s)
-        return NULL;
-
-    BRST_Dict_SetStream(obj, s);
-    // TODO Stream
-    //    obj->stream =
-    //    if (!obj->stream)
-    //        return NULL;
-
-    return obj;
 }

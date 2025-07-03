@@ -4,9 +4,9 @@
 #include "brst_encrypt.h"
 #include "brst_stream.h"
 #include "private/brst_stream.h"
+#include "brst_xref.h"
 #include "brst_dict.h"
 #include "private/brst_dict.h"
-#include "brst_xref.h"
 #include "brst_encoder.h"
 #include "private/brst_encoder.h"
 #include "brst_error.h"
@@ -49,7 +49,7 @@ BRST_Doc_Page_XObject_CreateFromImage(BRST_Doc pdf,
 
     BRST_PTRACE((" BRST_Doc_Page_XObject_CreateFromImage\n"));
 
-    fromxobject = BRST_DictStream_New(pdf->mmgr, pdf->xref);
+    fromxobject = BRST_Dict_New_Stream_Init(pdf->mmgr, pdf->xref);
     if (!fromxobject)
         return NULL;
 
@@ -178,7 +178,7 @@ BRST_Doc_Page_XObject_CreateAsWhiteRect(BRST_Doc pdf,
 
     BRST_PTRACE((" BRST_Doc_Page_XObject_CreateAsWhiteRect\n"));
 
-    fromxobject = BRST_DictStream_New(pdf->mmgr, pdf->xref);
+    fromxobject = BRST_Dict_New_Stream_Init(pdf->mmgr, pdf->xref);
     if (!fromxobject)
         return NULL;
 

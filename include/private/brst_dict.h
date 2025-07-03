@@ -1,6 +1,7 @@
 #ifndef PRIVATE_BRST_DICT_H
 #define PRIVATE_BRST_DICT_H
 
+#include "brst_xref.h"
 #include "brst_dict.h"
 #include "brst_list.h"
 #include "brst_mmgr.h"
@@ -127,6 +128,12 @@ void
 BRST_Dict_SetStream(
     BRST_Dict dict,
     BRST_Stream stream
+);
+
+BRST_Dict
+BRST_Dict_New_Stream_Init(
+    BRST_MMgr mmgr,
+    BRST_Xref xref
 );
 
 #endif /* PRIVATE_BRST_DICT_H */

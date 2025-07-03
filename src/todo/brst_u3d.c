@@ -158,7 +158,7 @@ BRST_U3D_LoadU3D   (BRST_MMgr        mmgr,
 
 	BRST_PTRACE ((" BRST_U3D_LoadU3D\n"));
 
-	u3d = BRST_DictStream_New (mmgr, xref);
+	u3d = BRST_Dict_New_Stream_Init (mmgr, xref);
 	if (!u3d) {
 		return NULL;
 	}
@@ -1086,7 +1086,7 @@ BRST_EXPORT(BRST_JavaScript) BRST_CreateJavaScript( BRST_Doc pdf, const char *co
 
 	BRST_PTRACE ((" BRST_CreateJavaScript\n"));
 
-	javaScript = (BRST_JavaScript) BRST_DictStream_New(pdf->mmgr, pdf->xref);
+	javaScript = (BRST_JavaScript) BRST_Dict_New_Stream_Init(pdf->mmgr, pdf->xref);
 	if (!javaScript) {
 		return NULL;
 	}
@@ -1121,7 +1121,7 @@ BRST_EXPORT(BRST_JavaScript) BRST_LoadJSFromFile  (BRST_Doc pdf, const char *fil
 		return NULL;
 	}
 
-	js = (BRST_JavaScript) BRST_DictStream_New(pdf->mmgr, pdf->xref);
+	js = (BRST_JavaScript) BRST_Dict_New_Stream_Init(pdf->mmgr, pdf->xref);
 	if (!js) {
 		BRST_Stream_Free (js_data);
 		return NULL;

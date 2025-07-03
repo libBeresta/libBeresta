@@ -456,7 +456,7 @@ BRST_Page_New_Content_Stream(BRST_Page page,
     }
 
     /* create new contents stream and add it to the page's contents array */
-    attr->contents         = BRST_DictStream_New(page->mmgr, attr->xref);
+    attr->contents         = BRST_Dict_New_Stream_Init(page->mmgr, attr->xref);
     attr->contents->filter = filter;
     attr->stream           = attr->contents->stream;
 

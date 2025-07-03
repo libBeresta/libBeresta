@@ -6,6 +6,7 @@
 #include "private/brst_encoder.h"
 #include "private/brst_encoder_basic.h"
 #include "private/brst_encoder_cmap.h"
+#include "brst_xref.h"
 #include "brst_dict.h"
 #include "private/brst_dict.h"
 #include "private/brst_string.h"
@@ -16,7 +17,6 @@
 #include "private/brst_fontdef.h"
 #include "private/brst_fontdef_cid.h"
 #include "private/brst_fontdef_ttf.h"
-#include "brst_xref.h"
 #include "private/brst_xref.h"
 #include "brst_font.h"
 #include "private/brst_font.h"
@@ -446,7 +446,7 @@ CIDFontType2_New(BRST_Font parent, BRST_Xref xref)
 
         /* create "CIDToGIDMap" data */
         if (fontdef_attr->embedding) {
-            attr->map_stream = BRST_DictStream_New(font->mmgr, xref);
+            attr->map_stream = BRST_Dict_New_Stream_Init(font->mmgr, xref);
             if (!attr->map_stream)
                 return NULL;
 
@@ -518,7 +518,7 @@ CIDFontType2_BeforeWrite_Func(BRST_Dict obj)
             return BRST_Error_Code(obj->error);
 
         if (def_attr->embedding) {
-            BRST_Dict font_data = BRST_DictStream_New(obj->mmgr,
+            BRST_Dict font_data = BRST_Dict_New_Stream_Init(obj->mmgr,
                 font_attr->xref);
 
             if (!font_data)
@@ -858,7 +858,7 @@ CreateCMap(BRST_Encoder encoder,
     BRST_Xref xref)
 {
     BRST_STATUS ret           = BRST_OK;
-    BRST_Dict cmap            = BRST_DictStream_New(encoder->mmgr, xref);
+    BRST_Dict cmap            = BRST_Dict_New_Stream_Init(encoder->mmgr, xref);
     BRST_CMapEncoderAttr attr = (BRST_CMapEncoderAttr)encoder->attr;
     char buf[BRST_TMP_BUF_SIZE];
     char* pbuf;

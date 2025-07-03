@@ -3,9 +3,9 @@
 #include "brst_mmgr.h"
 #include "brst_encrypt.h"
 #include "brst_stream.h"
+#include "brst_xref.h"
 #include "brst_dict.h"
 #include "private/brst_dict.h"
-#include "brst_xref.h"
 #include "private/brst_xref.h"
 #include "brst_encoder.h"
 #include "brst_error.h"
@@ -115,7 +115,7 @@ BRST_Doc_IccProfile_LoadFromMem(BRST_Doc pdf,
 
     BRST_PTRACE((" BRST_Doc_IccProfile_LoadFromMem\n"));
 
-    icc = BRST_DictStream_New(mmgr, xref);
+    icc = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!icc)
         return NULL;
 

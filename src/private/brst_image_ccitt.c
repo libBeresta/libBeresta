@@ -3,11 +3,11 @@
 #include "brst_encrypt.h"
 #include "brst_stream.h"
 #include "private/brst_stream.h"
+#include "brst_xref.h"
 #include "brst_dict.h"
 #include "private/brst_dict.h"
 #include "brst_consts.h"
 #include "brst_image.h"
-#include "brst_xref.h"
 #include "private/brst_xref.h"
 #include "private/brst_utils.h"
 #include "private/brst_defines.h"
@@ -707,7 +707,7 @@ BRST_Image_Raw1Bit_LoadFromMem(BRST_MMgr mmgr,
 
     BRST_PTRACE((" BRST_Image_Raw1Bit_LoadFromMem\n"));
 
-    image = BRST_DictStream_New(mmgr, xref);
+    image = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!image)
         return NULL;
 

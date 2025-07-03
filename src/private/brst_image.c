@@ -7,6 +7,7 @@
 #include "brst_stream.h"
 #include "private/brst_boolean.h"
 #include "private/brst_name.h"
+#include "brst_xref.h"
 #include "brst_dict.h"
 #include "private/brst_dict.h"
 #include "private/brst_utils.h"

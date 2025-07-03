@@ -3,6 +3,7 @@
 #include "brst_encrypt.h"
 #include "brst_encoder.h"
 #include "brst_array.h"
+#include "brst_xref.h"
 #include "brst_dict.h"
 #include "private/brst_array.h"
 #include "private/brst_object.h"

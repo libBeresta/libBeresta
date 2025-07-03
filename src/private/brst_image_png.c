@@ -5,6 +5,7 @@
 #include "brst_mmgr.h"
 #include "brst_stream.h"
 #include "private/brst_stream.h"
+#include "brst_xref.h"
 #include "brst_dict.h"
 #include "private/brst_dict.h"
 #include "brst_array.h"
@@ -14,7 +15,6 @@
 #include "brst_error.h"
 #include "private/brst_utils.h"
 #include "brst_image.h"
-#include "brst_xref.h"
 #include "private/brst_image.h"
 #include "private/brst_image_png.h"
 #include "private/brst_xref.h"
@@ -425,7 +425,7 @@ BRST_Image_Png_Load(BRST_MMgr mmgr,
         return NULL;
     }
 
-    image = BRST_DictStream_New(mmgr, xref);
+    image = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!image)
         return NULL;
 
@@ -506,7 +506,7 @@ LoadPngData(BRST_Dict image,
             goto no_transparent_color_in_palette;
         }
 
-        smask = BRST_DictStream_New(image->mmgr, xref);
+        smask = BRST_Dict_New_Stream_Init(image->mmgr, xref);
         if (!smask) {
             ret = BRST_FAILED_TO_ALLOC_MEM;
             goto Exit;
@@ -566,7 +566,7 @@ no_transparent_color_in_palette:
         BRST_Dict smask;
         png_bytep smask_data;
 
-        smask = BRST_DictStream_New(image->mmgr, xref);
+        smask = BRST_Dict_New_Stream_Init(image->mmgr, xref);
         if (!smask) {
             ret = BRST_FAILED_TO_ALLOC_MEM;
             goto Exit;

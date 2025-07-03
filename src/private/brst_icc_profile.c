@@ -13,7 +13,7 @@ BRST_ICC_LoadIccFromMem(BRST_Doc pdf,
 
     BRST_PTRACE((" BRST_ICC_LoadIccFromMem\n"));
 
-    icc = BRST_DictStream_New(mmgr, xref);
+    icc = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!icc)
         return NULL;
 

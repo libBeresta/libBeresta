@@ -62,12 +62,6 @@ BRST_Xref_GetEntryByObjectId(
     BRST_UINT obj_id
 );
 
-BRST_Dict
-BRST_DictStream_New(
-    BRST_MMgr mmgr,
-    BRST_Xref xref
-);
-
 BRST_List
 BRST_Xref_Entries(
     BRST_Xref xref

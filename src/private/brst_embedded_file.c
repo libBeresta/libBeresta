@@ -32,7 +32,7 @@ BRST_EmbeddedFile_New(
     if (BRST_Xref_Add(xref, ef) != BRST_OK)
         return NULL;
 
-    filestream = BRST_DictStream_New(mmgr, xref);
+    filestream = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!filestream)
         return NULL;
     stream = BRST_FileReader_New(mmgr, file);

@@ -2,13 +2,13 @@
 #include "brst_encoder.h"
 #include "brst_stream.h"
 #include "brst_mmgr.h"
+#include "brst_xref.h"
 #include "brst_dict.h"
 #include "private/brst_dict.h"
 #include "private/brst_stream.h"
 #include "brst_array.h"
 #include "private/brst_real.h"
 #include "private/brst_array.h"
-#include "brst_xref.h"
 #include "private/brst_xref.h"
 #include "brst_image.h"
 #include "private/brst_image.h"
@@ -136,7 +136,7 @@ BRST_Shading_New(
         return NULL;
     }
 
-    shading = BRST_DictStream_New(mmgr, xref);
+    shading = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!shading) {
         return NULL;
     }

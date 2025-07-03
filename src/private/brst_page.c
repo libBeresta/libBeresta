@@ -151,7 +151,7 @@ BRST_Page_New(BRST_MMgr mmgr,
         return NULL;
 
     attr->gstate   = BRST_GState_New(page->mmgr, NULL);
-    attr->contents = BRST_DictStream_New(page->mmgr, xref);
+    attr->contents = BRST_Dict_New_Stream_Init(page->mmgr, xref);
 
     if (!attr->gstate || !attr->contents)
         return NULL;

@@ -1,6 +1,7 @@
 #include "brst_types.h"
 #include "brst_mmgr.h"
 #include "brst_encrypt.h"
+#include "brst_xref.h"
 #include "brst_dict.h"
 #include "brst_stream.h"
 #include "brst_encoder.h"

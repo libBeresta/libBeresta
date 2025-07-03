@@ -1,6 +1,7 @@
 #include "brst_mmgr.h"
 #include "brst_types.h"
 #include "brst_stream.h"
+#include "brst_xref.h"
 #include "brst_dict.h"
 #include "private/brst_proxy.h"
 #include "private/brst_object.h"
@@ -484,3 +485,46 @@ void BRST_Dict_SetStream(BRST_Dict dict,
     if (dict)
         dict->stream = stream;
 }
+
+BRST_Dict
+BRST_Dict_New_Stream_Init(BRST_MMgr mmgr,
+    BRST_Xref xref)
+{
+    BRST_Dict obj;
+    BRST_Number length;
+    BRST_STATUS ret = 0;
+
+    obj = BRST_Dict_New(mmgr);
+    if (!obj)
+        return NULL;
+
+    /* only stream object is added to xref automatically */
+    ret += BRST_Xref_Add(xref, obj);
+    if (ret != BRST_OK)
+        return NULL;
+
+    length = BRST_Number_New(mmgr, 0);
+    if (!length)
+        return NULL;
+
+    ret = BRST_Xref_Add(xref, length);
+    if (ret != BRST_OK)
+        return NULL;
+
+    ret = BRST_Dict_Add(obj, "Length", length);
+    if (ret != BRST_OK)
+        return NULL;
+
+    BRST_Stream s = BRST_MemStream_New(mmgr, BRST_STREAM_BUF_SIZE);
+    if (!s)
+        return NULL;
+
+    BRST_Dict_SetStream(obj, s);
+    // TODO Stream
+    //    obj->stream =
+    //    if (!obj->stream)
+    //        return NULL;
+
+    return obj;
+}
+

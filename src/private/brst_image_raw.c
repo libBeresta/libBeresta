@@ -33,7 +33,7 @@ BRST_Image_Raw_Load(BRST_MMgr mmgr,
         return NULL;
     }
 
-    image = BRST_DictStream_New(mmgr, xref);
+    image = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!image)
         return NULL;
 
@@ -102,7 +102,7 @@ BRST_Image_Raw_LoadFromMem(BRST_MMgr mmgr,
         return NULL;
     }
 
-    image = BRST_DictStream_New(mmgr, xref);
+    image = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!image)
         return NULL;
 

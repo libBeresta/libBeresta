@@ -5,6 +5,7 @@
 #include "brst_encoder.h"
 #include "private/brst_encoder.h"
 #include "private/brst_encoder_basic.h"
+#include "brst_xref.h"
 #include "brst_dict.h"
 #include "private/brst_dict.h"
 #include "brst_array.h"
@@ -13,7 +14,6 @@
 #include "brst_fontdef.h"
 #include "private/brst_fontdef.h"
 #include "private/brst_fontdef_type1.h"
-#include "brst_xref.h"
 #include "private/brst_xref.h"
 #include "brst_font.h"
 #include "private/brst_font.h"
@@ -189,7 +189,7 @@ Type1Font_CreateDescriptor(BRST_MMgr mmgr,
             return BRST_Error_Code(font->error);
 
         if (def_attr->font_data) {
-            BRST_Dict font_data = BRST_DictStream_New(mmgr, xref);
+            BRST_Dict font_data = BRST_Dict_New_Stream_Init(mmgr, xref);
 
             if (!font_data)
                 return BRST_Error_Code(font->error);
