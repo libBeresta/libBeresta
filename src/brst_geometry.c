@@ -814,7 +814,7 @@ BRST_Page_SetRGBStroke(BRST_Page page,
 }
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Page_SetRGBStrokeHex(BRST_Page page,
+BRST_Page_SetRGBStrokeUint(BRST_Page page,
     BRST_UINT8 r,
     BRST_UINT8 g,
     BRST_UINT8 b)
@@ -824,6 +824,31 @@ BRST_Page_SetRGBStrokeHex(BRST_Page page,
     BRST_REAL rb = (BRST_REAL)b / 255.0;
 
     return BRST_Page_SetRGBStroke(page, rr, rg, rb);
+}
+
+BRST_EXPORT(BRST_STATUS)
+BRST_Page_SetRGBStrokeHex(BRST_Page page, BRST_UINT32 rgb)
+{
+    return BRST_Page_SetRGBStrokeUint(page, (rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF);
+}
+
+BRST_EXPORT(BRST_STATUS)
+BRST_Page_SetRGBFillUint(BRST_Page page,
+    BRST_UINT8 r,
+    BRST_UINT8 g,
+    BRST_UINT8 b)
+{
+    BRST_REAL rr = (BRST_REAL)r / 255.0;
+    BRST_REAL rg = (BRST_REAL)g / 255.0;
+    BRST_REAL rb = (BRST_REAL)b / 255.0;
+
+    return BRST_Page_SetRGBFill(page, rr, rg, rb);
+}
+
+BRST_EXPORT(BRST_STATUS)
+BRST_Page_SetRGBFillHex(BRST_Page page, BRST_UINT32 rgb)
+{
+    return BRST_Page_SetRGBFillUint(page, (rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF);
 }
 
 /* k */

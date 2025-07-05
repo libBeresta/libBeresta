@@ -45,9 +45,10 @@ int main(int argc, char** argv)
     strcpy(fname, argv[0]);
     strcat(fname, ".pdf");
 
+    // Создание объекта документа
     pdf = BRST_Doc_New(demo_error_handler, NULL);
     if (!pdf) {
-        printf("error: cannot create PdfDoc object\n");
+        printf("Error: cannot create Doc object\n");
         return 1;
     }
 
@@ -56,69 +57,71 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    /* add a new page object. */
+    // Добавление страницы
     page = BRST_Doc_Page_Add(pdf);
 
-    BRST_Page_SetHeight(page, 220);
-    BRST_Page_SetWidth(page, 200);
+    // Настройка размера и ориентации страницы
+    BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_PORTRAIT);
 
-    /* draw grid to the page */
-    print_grid(pdf, page);
+    // Подготовка миллимитровой бумаги
+    print_grid(pdf, page, BRST_ORANGE_FILL, BRST_ORANGE_LINE);
 
-    /* draw pie chart
-     *
-     *   A: 45% Red
-     *   B: 25% Blue
-     *   C: 15% green
-     *   D: other yellow
-     */
+    // Отображение круговой диаграммы
+    // A: 45% Красный
+    // B: 25% Синий
+    // C: 15% Зеленый
+    // D: Другое
 
-    /* A */
-    BRST_Page_SetRGBFill(page, 1.0, 0, 0);
-    BRST_Page_MoveTo(page, 100, 100);
-    BRST_Page_LineTo(page, 100, 180);
-    BRST_Page_Arc(page, 100, 100, 80, 0, 360 * 0.45);
+    BRST_REAL cx = BRST_Page_Width(page) / 2.0;
+    BRST_REAL cy = BRST_Page_Height(page) / 2.0;
+    BRST_REAL r  = BRST_Page_Width(page) / 3.0;
+
+    // A
+    BRST_Page_SetRGBFillHex(page, 0xC51D34);
+    BRST_Page_MoveTo(page, cx, cy);
+    BRST_Page_LineTo(page, cx, cx + r);
+    BRST_Page_Arc(page, cx, cy, r, 0, 360 * 0.45);
     pos = BRST_Page_CurrentPos(page);
-    BRST_Page_LineTo(page, 100, 100);
+    BRST_Page_LineTo(page, cx, cy);
     BRST_Page_Fill(page);
 
-    /* B */
-    BRST_Page_SetRGBFill(page, 0, 0, 1.0);
-    BRST_Page_MoveTo(page, 100, 100);
+    // B
+    BRST_Page_SetRGBFillHex(page, 0x0047AB);
+    BRST_Page_MoveTo(page, cx, cy);
     BRST_Page_LineTo(page, pos.x, pos.y);
-    BRST_Page_Arc(page, 100, 100, 80, 360 * 0.45, 360 * 0.7);
+    BRST_Page_Arc(page, cx, cy, r, 360 * 0.45, 360 * 0.7);
     pos = BRST_Page_CurrentPos(page);
-    BRST_Page_LineTo(page, 100, 100);
+    BRST_Page_LineTo(page, cx, cy);
     BRST_Page_Fill(page);
 
-    /* C */
-    BRST_Page_SetRGBFill(page, 0, 1.0, 0);
-    BRST_Page_MoveTo(page, 100, 100);
+    // C
+    BRST_Page_SetRGBFillHex(page, 0x20603D);
+    BRST_Page_MoveTo(page, cx, cy);
     BRST_Page_LineTo(page, pos.x, pos.y);
-    BRST_Page_Arc(page, 100, 100, 80, 360 * 0.7, 360 * 0.85);
+    BRST_Page_Arc(page, cx, cy, r, 360 * 0.7, 360 * 0.85);
     pos = BRST_Page_CurrentPos(page);
-    BRST_Page_LineTo(page, 100, 100);
+    BRST_Page_LineTo(page, cx, cy);
     BRST_Page_Fill(page);
 
-    /* D */
-    BRST_Page_SetRGBFill(page, 1.0, 1.0, 0);
-    BRST_Page_MoveTo(page, 100, 100);
+    // D
+    BRST_Page_SetRGBFillHex(page, 0xFFDC33);
+    BRST_Page_MoveTo(page, cx, cy);
     BRST_Page_LineTo(page, pos.x, pos.y);
-    BRST_Page_Arc(page, 100, 100, 80, 360 * 0.85, 360);
+    BRST_Page_Arc(page, cx, cy, r, 360 * 0.85, 360);
     pos = BRST_Page_CurrentPos(page);
-    BRST_Page_LineTo(page, 100, 100);
+    BRST_Page_LineTo(page, cx, cy);
     BRST_Page_Fill(page);
 
-    /* draw center circle */
+    // Отображение центральной окружности
     BRST_Page_SetGrayStroke(page, 0);
-    BRST_Page_SetGrayFill(page, 1);
-    BRST_Page_Circle(page, 100, 100, 30);
+    BRST_Page_SetRGBFillHex(page, 0xF5FFFA);
+    BRST_Page_Circle(page, cx, cy, r / 2.0);
     BRST_Page_Fill(page);
 
-    /* save the document to a file */
+    // Сохранение документа в файл
     BRST_Doc_SaveToFile(pdf, fname);
 
-    /* clean up */
+    // Очистка
     BRST_Doc_Free(pdf);
 
     return 0;

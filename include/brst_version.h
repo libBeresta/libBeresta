@@ -1,3 +1,4 @@
+#define BRST_LIBRARY_NAME "libBeresta"
 #define BRST_MAJOR_VERSION 1
 #define BRST_MINOR_VERSION 0
 #define BRST_BUGFIX_VERSION 0

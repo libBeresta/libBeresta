@@ -79,7 +79,7 @@ int main(int argc, char** argv)
     // Создание объекта документа
     pdf = BRST_Doc_New(demo_error_handler, NULL);
     if (!pdf) {
-        printf("error: cannot create Doc object\n");
+        printf("Error: cannot create Doc object\n");
         return 1;
     }
 

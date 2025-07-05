@@ -17,112 +17,162 @@
 #include <stdlib.h>
 #include <string.h>
 
-void print_grid(BRST_Doc pdf, BRST_Page page)
+void print_grid(BRST_Doc pdf, BRST_Page page, BRST_UINT32 page_color, BRST_UINT32 page_lines_color)
 {
-    BRST_REAL height = BRST_Page_Height(page);
-    BRST_REAL width  = BRST_Page_Width(page);
-    BRST_Font font   = BRST_Doc_Font(pdf, "Helvetica", NULL);
-    BRST_UINT x, y;
+    // Рисуем миллиметровую сетку для листа формата A4 портретной ориентации.
+    BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_PORTRAIT);
 
-    BRST_Page_SetFontAndSize(page, font, 5);
-    BRST_Page_SetGrayFill(page, 0.5);
-    BRST_Page_SetGrayStroke(page, 0.8);
+    BRST_REAL l01mm = 0.03 * BRST_MM;
+    BRST_REAL l05mm = 0.07 * BRST_MM;
+    BRST_REAL l10mm = 0.10 * BRST_MM;
+    BRST_REAL l50mm = 0.20 * BRST_MM;
 
-    // Добавление горизонтальных линий
-    y = 0;
-    while (y < height) {
-        if (y % 10 == 0)
-            BRST_Page_SetLineWidth(page, 0.5);
-        else {
-            if (BRST_Page_LineWidth(page) != 0.25)
-                BRST_Page_SetLineWidth(page, 0.25);
+    BRST_UINT i = 0;
+
+    // Сохранение состояния для сдвига
+    BRST_Page_GSave(page);
+
+    BRST_REAL w = BRST_Page_Width(page);
+    BRST_REAL h = BRST_Page_Height(page);
+
+    BRST_Page_Translate(page, (w - 190 * BRST_MM) / 2, (h - 280 * BRST_MM) / 2);
+
+    // Подложка миллиметровой бумаги
+    BRST_Page_GSave(page);
+    BRST_Page_SetRGBFillHex(page, page_color);
+    BRST_Page_Rectangle(page, 0, 0, 190 * BRST_MM, 280 * BRST_MM);
+    BRST_Page_Fill(page);
+    BRST_Page_GRestore(page);
+
+    // Цвета линий миллиметровой бумаги
+    BRST_Page_SetRGBStrokeHex(page, page_lines_color);
+
+    // Горизонтальные линии
+    // ====================
+
+    // Шаг в 1 миллиметр
+    BRST_Page_SetLineWidth(page, l01mm);
+    while (i < 280) {
+        if ((i % 5 != 0) && (i % 10 != 0) && (i % 50 != 0)) {
+            BRST_Page_MoveTo(page, 0 * BRST_MM, (280 - i) * BRST_MM);
+            BRST_Page_LineTo(page, 190 * BRST_MM, (280 - i) * BRST_MM);
         }
-
-        BRST_Page_MoveTo(page, 0, y);
-        BRST_Page_LineTo(page, width, y);
-        BRST_Page_Stroke(page);
-
-        if (y % 10 == 0 && y > 0) {
-            BRST_Page_SetGrayStroke(page, 0.5);
-
-            BRST_Page_MoveTo(page, 0, y);
-            BRST_Page_LineTo(page, 5, y);
-            BRST_Page_Stroke(page);
-
-            BRST_Page_SetGrayStroke(page, 0.8);
-        }
-
-        y += 5;
+        i++;
     }
+    BRST_Page_Stroke(page);
 
-    // Добавление вертикальных линий
-    x = 0;
-    while (x < width) {
-        if (x % 10 == 0)
-            BRST_Page_SetLineWidth(page, 0.5);
-        else {
-            if (BRST_Page_LineWidth(page) != 0.25)
-                BRST_Page_SetLineWidth(page, 0.25);
+    // Шаг в 5 миллиметров
+    BRST_Page_SetLineWidth(page, l05mm);
+    i = 0;
+    while (i < 280) {
+        if ((i % 10 != 0) && (i % 50 != 0)) {
+            BRST_Page_MoveTo(page, 0 * BRST_MM, (280 - i) * BRST_MM);
+            BRST_Page_LineTo(page, 190 * BRST_MM, (280 - i) * BRST_MM);
         }
-
-        BRST_Page_MoveTo(page, x, 0);
-        BRST_Page_LineTo(page, x, height);
-        BRST_Page_Stroke(page);
-
-        if (x % 50 == 0 && x > 0) {
-            BRST_Page_SetGrayStroke(page, 0.5);
-
-            BRST_Page_MoveTo(page, x, 0);
-            BRST_Page_LineTo(page, x, 5);
-            BRST_Page_Stroke(page);
-
-            BRST_Page_MoveTo(page, x, height);
-            BRST_Page_LineTo(page, x, height - 5);
-            BRST_Page_Stroke(page);
-
-            BRST_Page_SetGrayStroke(page, 0.8);
-        }
-
-        x += 5;
+        i += 5;
     }
+    BRST_Page_Stroke(page);
 
-    // Добавление горизонтальных надписей
-    y = 0;
-    while (y < height) {
-        if (y % 10 == 0 && y > 0) {
-            char buf[12];
-
-            BRST_Page_BeginText(page);
-            BRST_Page_MoveTextPos(page, 5, y - 2);
-            BRST_snprintf(buf, 12, "%u", y);
-            BRST_Page_ShowText(page, buf);
-            BRST_Page_EndText(page);
+    // Шаг в 10 миллиметров
+    BRST_Page_SetLineWidth(page, l10mm);
+    i = 0;
+    while (i < 280) {
+        if (i % 50 != 0) {
+            BRST_Page_MoveTo(page, 0 * BRST_MM, (280 - i) * BRST_MM);
+            BRST_Page_LineTo(page, 190 * BRST_MM, (280 - i) * BRST_MM);
         }
-
-        y += 5;
+        i += 10;
     }
+    BRST_Page_Stroke(page);
 
-    // Добавление вертикальных надписей
-    x = 0;
-    while (x < width) {
-        if (x % 50 == 0 && x > 0) {
-            char buf[12];
+    // Шаг в 50 миллиметров
+    BRST_Page_SetLineWidth(page, l50mm);
+    i = 0;
+    while (i < 280) {
+        BRST_Page_MoveTo(page, 0 * BRST_MM, (280 - i) * BRST_MM);
+        BRST_Page_LineTo(page, 190 * BRST_MM, (280 - i) * BRST_MM);
+        i += 50;
+    }
+    BRST_Page_Stroke(page);
 
-            BRST_Page_BeginText(page);
-            BRST_Page_MoveTextPos(page, x, 5);
-            BRST_snprintf(buf, 12, "%u", x);
-            BRST_Page_ShowText(page, buf);
-            BRST_Page_EndText(page);
+    // Вертикальные линии
+    // ==================
 
-            BRST_Page_BeginText(page);
-            BRST_Page_MoveTextPos(page, x, height - 10);
-            BRST_Page_ShowText(page, buf);
-            BRST_Page_EndText(page);
+    // Шаг в 1 миллиметр
+    BRST_Page_SetLineWidth(page, l01mm);
+    i = 0;
+    while (i < 190) {
+        if ((i % 5 != 0) && (i % 10 != 0) && (i % 50 != 0)) {
+            BRST_Page_MoveTo(page, i * BRST_MM, 0 * BRST_MM);
+            BRST_Page_LineTo(page, i * BRST_MM, 280 * BRST_MM);
         }
-
-        x += 5;
+        i++;
     }
+    BRST_Page_Stroke(page);
 
-    BRST_Page_SetGrayFill(page, 0);
-    BRST_Page_SetGrayStroke(page, 0);
+    // Шаг в 5 миллиметров
+    BRST_Page_SetLineWidth(page, l05mm);
+    i = 0;
+    while (i < 190) {
+        if ((i % 10 != 0) && (i % 50 != 0)) {
+            BRST_Page_MoveTo(page, i * BRST_MM, 0 * BRST_MM);
+            BRST_Page_LineTo(page, i * BRST_MM, 280 * BRST_MM);
+        }
+        i += 5;
+    }
+    BRST_Page_Stroke(page);
+
+    // Шаг в 10 миллиметров
+    BRST_Page_SetLineWidth(page, l10mm);
+    i = 0;
+    while (i < 190) {
+        if (i % 50 != 0) {
+            BRST_Page_MoveTo(page, i * BRST_MM, 0 * BRST_MM);
+            BRST_Page_LineTo(page, i * BRST_MM, 280 * BRST_MM);
+        }
+        i += 10;
+    }
+    BRST_Page_Stroke(page);
+
+    // Шаг в 50 миллиметров
+    BRST_Page_SetLineWidth(page, l50mm);
+    i = 0;
+    while (i < 190) {
+        BRST_Page_MoveTo(page, i * BRST_MM, 0 * BRST_MM);
+        BRST_Page_LineTo(page, i * BRST_MM, 280 * BRST_MM);
+        i += 50;
+    }
+    BRST_Page_Stroke(page);
+
+    // Прямоугольник вокруг миллимитровой сетки
+    BRST_Page_Rectangle(page, 0, 0, 190 * BRST_MM, 280 * BRST_MM);
+    BRST_Page_Stroke(page);
+
+    // Отображение текста версии библиотеки
+    // Подготовка шрифта для отображения текста версии библиотеки
+    BRST_Font font = BRST_Doc_Font(pdf, "Helvetica", NULL);
+
+    // Вход в текстовый режим
+    BRST_Page_BeginText(page);
+
+    // Установка выбранного шрифта и размера для текста
+    BRST_Page_SetFontAndSize(page, font, 4);
+
+    // Подготовка буфера для строки версии
+    char buf[256];
+    BRST_snprintf(buf, 256, "%s %s", BRST_LIBRARY_NAME, BRST_VERSION_TEXT);
+
+    // Цвет текста версии библиотеки
+    BRST_Page_SetRGBFillHex(page, page_color);
+
+    // Отображение текста версии библиотеки
+    BRST_Page_TextRect(page,
+        0, 0, 190 * BRST_MM, -10 * BRST_MM,
+        buf, BRST_TALIGN_RIGHT, NULL);
+
+    // Выход из текстового режима
+    BRST_Page_EndText(page);
+
+    // Восстановление состояния после после сдвига
+    BRST_Page_GRestore(page);
 }

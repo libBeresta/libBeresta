@@ -435,6 +435,40 @@ BRST_Page_SetRGBFill(
 /**
 
   \ingroup graphics
+  \brief Set filling color (RGB) using \ref BRST_UINT8 values.
+
+  \copydoc dox_param_page
+  \param r, g, b Level of each color element. They must be between \c 0 and \c 1.
+
+  \copydoc dox_graphics_mode
+
+  \arg Before \ref BRST_GMODE_PAGE_DESCRIPTION or \ref BRST_GMODE_TEXT_OBJECT.
+  \arg After \ref BRST_GMODE_PAGE_DESCRIPTION or \ref BRST_GMODE_TEXT_OBJECT.
+
+  \copydoc dox_return_ok
+
+  \see BRST_Page_RGBFill()
+
+  \copydoc dox_pdf_cmd
+  \c rg
+
+*/
+BRST_EXPORT(BRST_STATUS)
+BRST_Page_SetRGBFillUint(
+    BRST_Page  page,
+    BRST_UINT8 r,
+    BRST_UINT8 g,
+    BRST_UINT8 b);
+
+BRST_EXPORT(BRST_STATUS)
+BRST_Page_SetRGBFillHex(
+    BRST_Page   page,
+    BRST_UINT32 rgb);
+
+
+/**
+
+  \ingroup graphics
   \brief Set stroke color (RGB).
 
   \copydoc dox_param_page
@@ -483,12 +517,17 @@ BRST_Page_SetRGBStroke(
 
 */
 BRST_EXPORT(BRST_STATUS)
-BRST_Page_SetRGBStrokeHex(
+BRST_Page_SetRGBStrokeUint(
     BRST_Page  page,
     BRST_UINT8  r,
     BRST_UINT8  g,
     BRST_UINT8  b
 );
+
+BRST_EXPORT(BRST_STATUS)
+BRST_Page_SetRGBStrokeHex(
+    BRST_Page   page,
+    BRST_UINT32 r);
 
 /**
 

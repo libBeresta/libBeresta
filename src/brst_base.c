@@ -23,7 +23,7 @@
 #include "brst_version.h"
 #include "brst_doc_info.h"
 
-BRST_EXPORT(const char*)
+BRST_EXPORT(BRST_CSTR)
 BRST_Version(void)
 {
     return BRST_VERSION_TEXT;
