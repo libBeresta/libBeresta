@@ -3,6 +3,7 @@ set(
     minimal
     line_demo
     attach
+    raw_image_demo
 )
 
 set(

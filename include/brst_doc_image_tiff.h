@@ -38,7 +38,7 @@ BRST_Doc_Image_Raw1Bit_LoadFromMem(
   \see \ref colorspaces, BRST_LoadRawImageFromMem()
 */
 BRST_EXPORT(BRST_Image)
-BRST_Doc_Image_Raw_LoadromFile(
+BRST_Doc_Image_Raw_LoadFromFile(
     BRST_Doc        pdf,
     BRST_CSTR       filename,
     BRST_UINT       width,

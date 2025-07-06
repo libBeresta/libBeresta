@@ -18,5 +18,9 @@
 #include "brst_geometry.h"
 #include "brst_embedded_file.h"
 #include "brst_doc_embedded_file.h"
+#include "brst_image.h"
+#include "brst_doc_image_tiff.h"
+#include "brst_page_image.h"
+#include "brst_doc_compression.h"
 
 #endif /* BRST_H */
