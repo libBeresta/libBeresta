@@ -2,11 +2,13 @@ set(
   demos_NAMES
     minimal
     line_demo
+    attach
 )
 
 set(
   demos_with_grid_NAMES
     arc_demo
+    grid_demo
 )
 
 # we need to add some definitions for win 32

@@ -16,5 +16,7 @@
 #include "brst_text.h"
 #include "brst_doc_font.h"
 #include "brst_geometry.h"
+#include "brst_embedded_file.h"
+#include "brst_doc_embedded_file.h"
 
 #endif /* BRST_H */
