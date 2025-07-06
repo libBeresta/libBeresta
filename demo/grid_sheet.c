@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void print_grid(BRST_Doc pdf, BRST_Page page, BRST_UINT32 page_color, BRST_UINT32 page_lines_color)
+void print_grid(BRST_Doc pdf, BRST_Page page, BRST_UINT32 page_lines_color)
 {
     // Рисуем миллиметровую сетку для листа формата A4 портретной ориентации.
     BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_PORTRAIT);
@@ -36,13 +36,6 @@ void print_grid(BRST_Doc pdf, BRST_Page page, BRST_UINT32 page_color, BRST_UINT3
     BRST_REAL h = BRST_Page_Height(page);
 
     BRST_Page_Translate(page, (w - 190 * BRST_MM) / 2, (h - 280 * BRST_MM) / 2);
-
-    // Подложка миллиметровой бумаги
-    BRST_Page_GSave(page);
-    BRST_Page_SetRGBFillHex(page, page_color);
-    BRST_Page_Rectangle(page, 0, 0, 190 * BRST_MM, 280 * BRST_MM);
-    BRST_Page_Fill(page);
-    BRST_Page_GRestore(page);
 
     // Цвета линий миллиметровой бумаги
     BRST_Page_SetRGBStrokeHex(page, page_lines_color);
@@ -163,7 +156,7 @@ void print_grid(BRST_Doc pdf, BRST_Page page, BRST_UINT32 page_color, BRST_UINT3
     BRST_snprintf(buf, 256, "%s %s", BRST_LIBRARY_NAME, BRST_VERSION_TEXT);
 
     // Цвет текста версии библиотеки
-    BRST_Page_SetRGBFillHex(page, page_color);
+    BRST_Page_SetRGBFillHex(page, page_lines_color);
 
     // Отображение текста версии библиотеки
     BRST_Page_TextRect(page,

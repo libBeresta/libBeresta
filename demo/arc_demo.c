@@ -64,7 +64,7 @@ int main(int argc, char** argv)
     BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_PORTRAIT);
 
     // Подготовка миллимитровой бумаги
-    print_grid(pdf, page, BRST_ORANGE_FILL, BRST_ORANGE_LINE);
+    print_grid(pdf, page, BRST_ORANGE_LINE);
 
     // Отображение круговой диаграммы
     // A: 45% Красный
