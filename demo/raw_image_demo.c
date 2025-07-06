@@ -51,7 +51,7 @@ int main(int argc, char **argv)
 
     BRST_Doc_SetCompressionMode(pdf, BRST_COMP_ALL);
 
-    /* create default-font */
+    // Подготовка шрифта для отображения текста примера
     font = BRST_Doc_Font(pdf, "Helvetica", NULL);
 
     // Добавление страницы
@@ -63,10 +63,10 @@ int main(int argc, char **argv)
     BRST_Page_BeginText(page);
     BRST_Page_SetFontAndSize(page, font, 20);
     BRST_Page_MoveTextPos(page, 220, BRST_Page_Height(page) - 70);
-    BRST_Page_ShowText(page, "RawImageDemo");
+    BRST_Page_ShowText(page, "Raw Image Demo");
     BRST_Page_EndText(page);
 
-    /* load RGB raw-image file. */
+    // Загрузка RGB изображений из файлов
     #ifndef __WIN32__
     image = BRST_Doc_Image_Raw_LoadFromFile(pdf, "rawimage/32_32_rgb.dat",
             32, 32, BRST_CS_DEVICE_RGB);
@@ -78,10 +78,10 @@ int main(int argc, char **argv)
     x = 20;
     y = 20;
 
-    /* Draw image to the canvas. (normal-mode with actual size.)*/
+    // Отображение изображения на холсте
     BRST_Page_DrawImage(page, image, x, y, 32, 32);
 
-    /* load GrayScale raw-image file. */
+    // Загрузка полутонового изображения из файла
     #ifndef __WIN32__
     image = BRST_Doc_Image_Raw_LoadFromFile(pdf, "rawimage/32_32_gray.dat",
             32, 32, BRST_CS_DEVICE_GRAY);
@@ -93,23 +93,23 @@ int main(int argc, char **argv)
     x = 70;
     y = 20;
 
-    /* Draw image to the canvas. (normal-mode with actual size.)*/
+    // Отображение изображения на холсте
     BRST_Page_DrawImage(page, image, x, y, 32, 32);
 
-    /* load GrayScale raw-image (1bit) file from memory. */
+    // Загрузка полутонового одно-битного изображения из памяти
     image = BRST_Doc_Image_Raw_LoadFromMem(pdf, RAW_IMAGE_DATA, 32, 32,
                 BRST_CS_DEVICE_GRAY, 1);
 
     x = 120;
     y = 20;
 
-    /* Draw image to the canvas. (normal-mode with actual size.)*/
+    // Отображение изображения на холсте
     BRST_Page_DrawImage(page, image, x, y, 32, 32);
 
-    /* save the document to a file */
+    // Сохранение документа в файл
     BRST_Doc_SaveToFile(pdf, fname);
 
-    /* clean up */
+    // Очистка
     BRST_Doc_Free(pdf);
 
     return 0;
