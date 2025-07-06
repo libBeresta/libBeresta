@@ -63,7 +63,7 @@ int main(int argc, char** argv)
     // Настройка размера и ориентации страницы
     BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_PORTRAIT);
 
-    // Подготовка миллимитровой бумаги
+    // Подготовка миллиметровой бумаги
     print_grid(pdf, page, BRST_ORANGE_LINE);
 
     // Отображение круговой диаграммы

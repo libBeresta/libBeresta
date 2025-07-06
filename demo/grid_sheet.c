@@ -137,7 +137,7 @@ void print_grid(BRST_Doc pdf, BRST_Page page, BRST_UINT32 page_lines_color)
     }
     BRST_Page_Stroke(page);
 
-    // Прямоугольник вокруг миллимитровой сетки
+    // Прямоугольник вокруг миллиметровой сетки
     BRST_Page_Rectangle(page, 0, 0, 190 * BRST_MM, 280 * BRST_MM);
     BRST_Page_Stroke(page);
 
