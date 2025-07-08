@@ -1325,7 +1325,7 @@ BRST_Page_GrayStroke_Value(
 
 */
 BRST_EXPORT(BRST_ColorSpace)
-BRST_Page_StrokingColorSpace_Value(
+BRST_Page_StrokeColorSpace_Value(
     BRST_Page page
 );
 
@@ -1340,7 +1340,7 @@ BRST_Page_StrokingColorSpace_Value(
 
 */
 BRST_EXPORT(BRST_ColorSpace)
-BRST_Page_FillingColorSpace_Value(
+BRST_Page_FillColorSpace_Value(
     BRST_Page page
 );
 
