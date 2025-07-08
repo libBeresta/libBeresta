@@ -21,7 +21,7 @@ typedef enum _{{пер.имя | pre}} { {% for эл in пер.элементы %
 {% endfor %}{% endif %}{% if функции %}{% for фн in функции %}
 /**
   \ingroup {{ фн.группа }}
-  \brief {{ фн | docf }}
+  \brief {{ фн | docf | safe | escape }}
 {%if фн.параметры %}{% for парам in фн.параметры %}
   \param {{парам.имя}} {{ парам | docf }}{% endfor %}
 {%endif%}
