@@ -1,15 +1,62 @@
-(:файл ""
+(:файл "geometry"
  :функции
        (
         ;; BRST_Page_GSave
         (:название "Page_GSave"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
-         :ru ""
-         :en "Save the page's current graphics state to the stack."
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
+         :ru "Сохранение в стек текущего графического состояния страницы.
+
+Функция BRST_Page_GSave() сохраняет графическое состояние и восстанавливает ранее сохранённое состояние с помощью функции BRST_Page_GRestore().
+
+Параметры состояния, сохраняемые функцией BRST_Page_GSave(), включают:
+
+    - Межбуквенный интервал
+    - Область отсечения
+    - Шаблон пунктира
+    - Цвет заливки
+    - Точность аппроксимации
+    - Шрифт
+    - Размер шрифта
+    - Горизонтальное масштабирование
+    - Толщина линии
+    - Стиль конца линии (line cap)
+    - Стиль стыка линий (line join)
+    - Gредельное значение острого угла линии (miter limit)
+    - Режим отображения (rendering mode)
+    - Цвет штриха
+    - Межстрочный интервал текста
+    - Подъём базовой линии текста (text rise)
+    - Матрица преобразований
+    - Межсловный интервал"
+
+         :en "Save the page's current graphics state to the stack.
+
+  Application can call BRST_Page_GSave() and can restore saved state by calling BRST_Page_GRestore().
+
+  Saved by BRST_Page_GSave() state parameters are:
+
+    - Character Spacing
+    - Clipping Path
+    - Dash Mode
+    - Fill Color
+    - Flatness
+    - Font
+    - Font Size
+    - Horizontal Scaling
+    - Line Width
+    - Line Cap Style
+    - Line Join Style
+    - Miter Limit
+    - Rendering Mode
+    - Stroke Color
+    - Text Leading
+    - Text Rise
+    - Transformation Matrix
+    - Word Spacing"
          :команда "q"
          :параметры ((:тип "Page"
                       :имя "page"
@@ -20,9 +67,9 @@
         (:название "Page_GRestore"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Restore graphics state which is saved by BRST_Page_GSave()."
          :команда "Q"
@@ -35,9 +82,9 @@
         (:название "Page_Concat"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Concatenate the page's transformation matrix and specified matrix."
          :команда "cm"
@@ -74,9 +121,9 @@
         (:название "Page_Translate"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Concatenate the page's transformation matrix with translation matrix."
          :команда "cm"
@@ -97,9 +144,9 @@
         (:название "Page_Scale"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Concatenate the page's transformation matrix with scale matrix."
          :команда "cm"
@@ -120,9 +167,9 @@
         (:название "Page_RotateDeg"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Concatenate the page's transformation matrix with rotate matrix."
          :команда "cm"
@@ -139,9 +186,9 @@
         (:название "Page_Rotate"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Concatenate the page's transformation matrix with rotate matrix."
          :команда "cm"
@@ -158,9 +205,9 @@
         (:название "Page_Skew"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Concatenate the page's transformation matrix with skew matrix."
          :команда "cm"
@@ -181,9 +228,9 @@
         (:название "Page_Circle"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Append circle to current path."
          :параметры ((:тип "Page"
@@ -207,9 +254,9 @@
         (:название "Page_Ellipse"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Append ellipse to current path."
          :параметры ((:тип "Page"
@@ -273,11 +320,11 @@
         (:название "Page_SetGrayFill"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
-         :en "Set the filling color (Gray)."
+         :en "Set the fill color (Gray)."
          :команда "g"
          :параметры ((:тип "Page"
                       :имя "page"
@@ -292,11 +339,11 @@
         (:название "Page_SetGrayStroke"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
-         :en "Set stroking color (Gray)."
+         :en "Set stroke color (Gray)."
          :команда "G"
          :параметры ((:тип "Page"
                       :имя "page"
@@ -311,11 +358,11 @@
         (:название "Page_SetRGBFill"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
-         :en "Set filling color (RGB)."
+         :en "Set fill color (RGB)."
          :команда "rg"
          :параметры ((:тип "Page"
                       :имя "page"
@@ -338,11 +385,11 @@
         (:название "Page_SetRGBFillUint"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
-         :en "Set filling color (RGB) using \\ref BRST_UINT8 values."
+         :en "Set fill color (RGB) using \\ref BRST_UINT8 values."
          :команда "rg"
          :параметры ((:тип "Page"
                       :имя "page"
@@ -365,9 +412,9 @@
         (:название "Page_SetRGBStroke"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Set stroke color (RGB)."
          :команда "RG"
@@ -392,9 +439,9 @@
         (:название "Page_SetRGBStrokeUint"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Set stroke color (RGB) using \\ref BRST_UINT8 values."
          :команда "RG"
@@ -419,11 +466,11 @@
         (:название "Page_SetCMYKFill"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
-         :en "Set filling color (CMYK)."
+         :en "Set fill color (CMYK)."
          :команда "k"
          :параметры ((:тип "Page"
                       :имя "page"
@@ -450,9 +497,9 @@
         (:название "Page_SetCMYKStroke"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Set stroke color (CMYK)."
          :команда "K"
@@ -481,9 +528,9 @@
         (:название "Page_Clip"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Modify current clipping path by intersecting it with current path using the nonzero winding number rule."
          :команда "W"
@@ -496,9 +543,9 @@
         (:название "Page_Eoclip"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Modifies the current clipping path by intersecting it with current path using the even-odd rule."
          :команда "W*"
@@ -526,9 +573,9 @@
         (:название "Page_ClosePathStroke"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Close and paint current path."
          :команда "s"
@@ -541,9 +588,9 @@
         (:название "Page_Fill"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Fill current path using non-zero winding number rule."
          :команда "f"
@@ -556,9 +603,9 @@
         (:название "Page_Eofill"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Fill current path using even-odd rule."
          :команда "f*"
@@ -571,9 +618,9 @@
         (:название "Page_FillStroke"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Fill current path using the even-odd rule."
          :команда "B"
@@ -586,9 +633,9 @@
         (:название "Page_EofillStroke"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Fill current path using the even-odd rule and then paint the path."
          :команда "B*"
@@ -601,24 +648,24 @@
         (:название "Page_ClosePathFillStroke"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Close current path, fill current path using the non-zero winding number rule, then paint path."
          :команда "b"
          :параметры ((:тип "Page"
                       :имя "page"
-                      :ru ""
-                      :en "")))
+                      :ru ":param_page"
+                      :en ":param_page")))
 
         ;; BRST_Page_ClosePathEofillStroke
         (:название "Page_ClosePathEofillStroke"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Close current path, fill current path using the even-odd rule and then paint the path."
          :команда "b*"
@@ -631,11 +678,11 @@
         (:название "Page_EndPath"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
-         :en "Finish path object without filling or painting."
+         :en "Finish path object without fill or painting."
          :команда "n"
          :параметры ((:тип "Page"
                       :имя "page"
@@ -646,9 +693,9 @@
         (:название "Page_MoveTo"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Start new subpath and move current point for drawing path."
          :команда "m"
@@ -669,9 +716,9 @@
         (:название "Page_LineTo"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Append path from current point to specified point."
          :команда "l"
@@ -692,9 +739,9 @@
         (:название "Page_CurveTo"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Append Bézier curve to current path using control points."
          :команда "c"
@@ -731,9 +778,9 @@
         (:название "Page_CurveTo2"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Append Bézier curve to current path using current point and (x2, y2), (x3, y3) as control points."
          :команда "v"
@@ -762,9 +809,9 @@
         (:название "Page_CurveTo3"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Append Bézier curve to the current path using two specified points."
          :команда "y"
@@ -793,9 +840,9 @@
         (:название "Page_ClosePath"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Append straight line from current point to the start point of subpath."
          :команда "h"
@@ -808,9 +855,9 @@
         (:название "Page_Rectangle"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Append rectangle to the current path."
          :команда "re"
@@ -839,9 +886,9 @@
         (:название "Page_SetLineWidth"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Set width of the line used to stroke paths."
          :команда "w"
@@ -859,9 +906,9 @@
         (:название "Page_SetLineCap"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Set lines endpoints shape style."
          :команда "J"
@@ -878,9 +925,9 @@
         (:название "Page_SetLineJoin"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Set line join shape style."
          :команда "j"
@@ -897,9 +944,9 @@
         (:название "Page_SetMiterLimit"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Set miter limit for line joins."
          :команда "M"
@@ -916,9 +963,9 @@
         (:название "Page_SetDash"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Set dash pattern for lines in the page."
          :команда "d"
@@ -943,9 +990,9 @@
         (:название "Page_SetFlat"
          :группа "graphics"
          :ошибки ()
-         :результат (:тип "STATUS"
-                     :ru ""
-                     :en "")
+	 :результат (:тип "STATUS"
+		     :ru ":return_ok"
+		     :en ":return_ok")
          :ru ""
          :en "Set flatness tolerance for curves rendering."
          :команда "i"
@@ -963,10 +1010,12 @@
          :группа "page"
          :ошибки ()
          :результат (:тип "RGBColor"
-                     :ru ""
-                     :en "")
-         :ru ""
-         :en "Get page current filling color value (RGB)."
+                     :ru "Текущее значение цвета заливки (RGB) при успехе, в противном случае возвращается `BRST_RGBColor{0, 0, 0}`."
+                     :en "Page current fill color value (RGB) on success, otherwise it returns `BRST_RGBColor{0, 0, 0}`.")
+         :ru "Текущее значение цвета заливки (RGB).
+  BRST_Page_RGBFill() действительна только в случае использования цветового пространства \\ref BRST_CS_DEVICE_RGB."
+         :en "Get page current fill color value (RGB).
+  BRST_Page_RGBFill() is valid only when the page's fill color space is \\ref BRST_CS_DEVICE_RGB."
          :параметры ((:тип "Page"
                       :имя "page"
                       :ru ":param_page"
@@ -977,10 +1026,12 @@
          :группа "page"
          :ошибки ()
          :результат (:тип "RGBColor"
-                     :ru ""
-                     :en "")
-         :ru ""
-         :en "Get page current stroke color value (RGB)."
+                     :ru "Текущее значение цвета штриха (RGB) при успехе, в противном случае возвращается `BRST_RGBColor{0, 0, 0}`."
+                     :en "Page current stroke color value (RGB) on success, otherwise it returns `BRST_RGBColor{0, 0, 0}`.")
+         :ru "Текущее значение цвета штриха (RGB).
+  BRST_Page_RGBStroke() действительна только в случае использования цветового пространства \\ref BRST_CS_DEVICE_RGB."
+         :en "Get page current stroke color value (RGB).
+  BRST_Page_RGBStroke() is valid only when the page's stroke color space is \\ref BRST_CS_DEVICE_RGB."
          :параметры ((:тип "Page"
                       :имя "page"
                       :ru ":param_page"
@@ -991,10 +1042,12 @@
          :группа "page"
          :ошибки ()
          :результат (:тип "CMYKColor"
-                     :ru ""
-                     :en "")
-         :ru ""
-         :en "Get page current filling color value (CMYK)."
+                     :ru "Текущее значение цвета заливки (CMYK) при успехе, в противном случае возвращается `BRST_CMYKColor{0, 0, 0, 0}`."
+                     :en "Page current fill color value (CMYK) on success, otherwise it returns `BRST_CMYKColor{0, 0, 0, 0}`.")
+         :ru "Текущее значение цвета заливки (CMYK).
+  BRST_Page_CMYKFill() действительна только в случае использования цветового пространства \\ref BRST_CS_DEVICE_CMYK."
+         :en "Get page current fill color value (CMYK).
+  BRST_Page_CMYKFill() is valid only when the page's fill color space is \\ref BRST_CS_DEVICE_CMYK."
          :параметры ((:тип "Page"
                       :имя "page"
                       :ru ":param_page"
@@ -1005,10 +1058,12 @@
          :группа "page"
          :ошибки ()
          :результат (:тип "CMYKColor"
-                     :ru ""
-                     :en "")
-         :ru ""
-         :en "Get page current stroke color value (CMYK)."
+                     :ru "Текущее значение цвета штриха (CMYK) при успехе, в противном случае возвращается `BRST_CMYKColor{0, 0, 0, 0}`."
+                     :en "Page current stroke color value (CMYK) on success, otherwise it returns `BRST_CMYKColor{0, 0, 0, 0}`.")
+         :ru "Текущее значение цвета штриха (CMYK).
+  BRST_Page_CMYKFill() действительна только в случае использования цветового пространства \\ref BRST_CS_DEVICE_CMYK."
+         :en "Get page current stroke color value (CMYK).
+  BRST_Page_CMYKFill() is valid only when the page's stroke color space is \\ref BRST_CS_DEVICE_CMYK."
          :параметры ((:тип "Page"
                       :имя "page"
                       :ru ":param_page"
@@ -1019,10 +1074,12 @@
          :группа "page"
          :ошибки ()
          :результат (:тип "REAL"
-                     :ru ""
-                     :en "")
-         :ru ""
-         :en "Get page current filling color value (Gray)."
+                     :ru "Текущее значение цвета заливки (Gray) при успехе, в противном случае возвращается `0.0`."
+                     :en "Page current fill color value (Gray) on success, otherwise it returns `0.0`.")
+         :ru "Текущее значение цвета заливки (Gray).
+  BRST_Page_GrayFill() действительна только в случае использования цветового пространства \\ref BRST_CS_DEVICE_GRAY."
+         :en "Get page current fill color value (Gray).
+  BRST_Page_GrayFill() is valid only when the page's fill color space is \\ref BRST_CS_DEVICE_GRAY."
          :параметры ((:тип "Page"
                       :имя "page"
                       :ru ":param_page"
@@ -1033,38 +1090,40 @@
          :группа "page"
          :ошибки ()
          :результат (:тип "REAL"
-                     :ru ""
-                     :en "")
-         :ru ""
-         :en "Get page current stroke color value (Gray)."
+                     :ru "Текущее значение цвета штриха (Gray) при успехе, в противном случае возвращается `0.0`."
+                     :en "Page current fill color value (Gray) on success, otherwise it returns `0.0`.")
+         :ru "Текущее значение цвета штриха (Gray).
+  BRST_Page_GrayStroke() действительна только в случае использования цветового пространства \\ref BRST_CS_DEVICE_GRAY."
+         :en "Get page current stroke color value (Gray).
+  BRST_Page_Gray() is valid only when the page's fill color space is \\ref BRST_CS_DEVICE_GRAY."
          :параметры ((:тип "Page"
                       :имя "page"
                       :ru ":param_page"
                       :en ":param_page")))
 
-        ;; BRST_Page_StrokingColorSpace
-        (:название "Page_StrokingColorSpace"
+        ;; BRST_Page_StrokeColorSpace
+        (:название "Page_StrokeColorSpace"
          :группа "page"
          :ошибки ()
          :результат (:тип "ColorSpace"
-                     :ru ""
-                     :en "")
-         :ru ""
+                     :ru "Текущее значение цветового пространства штриха при успехе, в противном случае возвращается \\ref BRST_CS_EOF."
+                     :en "Page current stroke color space on success, otherwise it returns \\ref BRST_CS_EOF.")
+         :ru "Текущее значение цветового пространства штриха."
          :en "Get page current stroke color space."
          :параметры ((:тип "Page"
                       :имя "page"
                       :ru ":param_page"
                       :en ":param_page")))
 
-        ;; BRST_Page_FillingColorSpace
-        (:название "Page_FillingColorSpace"
+        ;; BRST_Page_FillColorSpace
+        (:название "Page_FillColorSpace"
          :группа "page"
          :ошибки ()
          :результат (:тип "ColorSpace"
-                     :ru ""
-                     :en "")
-         :ru ""
-         :en "Get page current filling color space."
+                     :ru "Текущее значение цветового пространства заливки при успехе, в противном случае возвращается \\ref BRST_CS_EOF."
+                     :en "Page current fill color space on success, otherwise it returns \\ref BRST_CS_EOF.")
+         :ru "Текущее значение цветового пространства заливки."
+         :en "Get page current fill color space."
          :параметры ((:тип "Page"
                       :имя "page"
                       :ru ":param_page"
@@ -1075,9 +1134,9 @@
          :группа "page"
          :ошибки ()
          :результат (:тип "REAL"
-                     :ru ""
-                     :en "")
-         :ru ""
+                     :ru "Текущее значение толщины линии для отображения путей, в противном случае возвращается \\ref BRST_DEF_LINEWIDTH."
+                     :en "Page current line width for path painting on success, otherwise it returns \\ref BRST_DEF_LINEWIDTH.")
+         :ru "Текущее значение толщины линии."
          :en "Get page current line width."
          :параметры ((:тип "Page"
                       :имя "page"
@@ -1089,9 +1148,9 @@
          :группа "page"
          :ошибки ()
          :результат (:тип "LineCap"
-                     :ru ""
-                     :en "")
-         :ru ""
+                     :ru "Текущее значение стиля конца линии для отображения путей, в противном случае возвращается \\ref BRST_DEF_LINECAP."
+                     :en "Page current line cap for path painting on success, otherwise it returns \\ref BRST_DEF_LINECAP.")
+         :ru "Стиль конца линии."
          :en "Get page current line cap."
          :параметры ((:тип "Page"
                       :имя "page"
@@ -1103,9 +1162,9 @@
          :группа "page"
          :ошибки ()
          :результат (:тип "LineJoin"
-                     :ru ""
-                     :en "")
-         :ru ""
+                     :ru "Текущее значение стиля стыка линии для отображения путей при успехе, в противном случае возвращается \\ref BRST_DEF_LINEJOIN."
+                     :en "Page current line join for path painting on success, otherwise it returns \\ref BRST_DEF_LINEJOIN.")
+         :ru "Текущий стиль стыка линий."
          :en "Get page current line join."
          :параметры ((:тип "Page"
                       :имя "page"
@@ -1117,9 +1176,9 @@
          :группа "page"
          :ошибки ()
          :результат (:тип "REAL"
-                     :ru ""
-                     :en "")
-         :ru ""
+                     :ru "Текущее предельное значение острого угла линии для отображения путей при успехе, в противном случае возвращается \\ref BRST_DEF_MITERLIMIT."
+                     :en "Page current line miter limit for path painting on success, otherwise it returns \\ref BRST_DEF_MITERLIMIT.")
+         :ru "Текущее предельное значение острого угла (miter limit)."
          :en "Get page current miter limit."
          :параметры ((:тип "Page"
                       :имя "page"
@@ -1131,9 +1190,11 @@
          :группа "page"
          :ошибки ()
          :результат (:тип "DashMode"
-                     :ru ""
-                     :en "")
-         :ru ""
+                     :ru "Текущее значение шаблона пунктира \\ref BRST_DashMode для отображения линий при успехе,
+  в противном случае возвращается `BRST_DashMode{{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f}, 0.0f, 0.0f}`."
+                     :en "Page current line dash pattern \\ref BRST_DashMode for path painting on success,
+  otherwise it returns `BRST_DashMode{{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f}, 0.0f, 0.0f}`.")
+         :ru "Текущий шаблон пунктира (line dash pattern)."
          :en "Get page current line dash pattern."
          :параметры ((:тип "Page"
                       :имя "page"
@@ -1145,9 +1206,9 @@
          :группа "page"
          :ошибки ()
          :результат (:тип "REAL"
-                     :ru ""
-                     :en "")
-         :ru ""
+                     :ru "Текущее значение точности аппроксимации (flatness) при успехе, в противном случае возвращается \\ref BRST_DEF_FLATNESS."
+                     :en "Page current flatness value on success, otherwise it returns \\ref BRST_DEF_FLATNESS.")
+         :ru "Текущее значение точности аппроксимации (flatness)."
          :en "Get page current flatness value."
          :параметры ((:тип "Page"
                       :имя "page"
@@ -1159,9 +1220,9 @@
          :группа "page"
          :ошибки ()
          :результат (:тип "TransMatrix"
-                     :ru ""
-                     :en "")
-         :ru ""
+                     :ru "Матрица преобразований \\ref BRST_TransMatrix при успехе, в противном случае возвращается `BRST_TransMatrix{1, 0, 0, 1, 0, 0}` (тождественная матрица преобразований)."
+                     :en "Page current transformation matrix \\ref BRST_TransMatrix on success, otherwise it returns `BRST_TransMatrix{1, 0, 0, 1, 0, 0}` (identity transfromation matrix).")
+         :ru "Текущая матрица преобразований."
          :en "Get page current transformation matrix."
          :параметры ((:тип "Page"
                       :имя "page"
