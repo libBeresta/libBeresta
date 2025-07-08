@@ -1765,7 +1765,7 @@ BRST_Page_GrayStroke(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_ColorSpace)
-BRST_Page_StrokeColorSpace(BRST_Page page)
+BRST_Page_StrokeColorSpace_Value(BRST_Page page)
 {
     BRST_PTRACE((" BRST_Page_StrokeColorSpace\n"));
 
@@ -1776,7 +1776,7 @@ BRST_Page_StrokeColorSpace(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_ColorSpace)
-BRST_Page_FillColorSpace_Value(BRST_Page page)
+BRST_Page_FillColorSpace(BRST_Page page)
 {
     BRST_PTRACE((" BRST_Page_FillColorSpace\n"));
 
