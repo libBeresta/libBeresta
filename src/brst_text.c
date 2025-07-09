@@ -182,13 +182,13 @@ BRST_Page_SetTextRenderingMode(BRST_Page page,
 
 /* Ts */
 BRST_EXPORT(BRST_STATUS)
-BRST_Page_SetTextRaise(BRST_Page page,
+BRST_Page_SetTextRise(BRST_Page page,
     BRST_REAL value)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_SetTextRaise\n"));
+    BRST_PTRACE((" BRST_Page_SetTextRise\n"));
 
     if (ret != BRST_OK)
         return ret;
