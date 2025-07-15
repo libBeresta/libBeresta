@@ -121,6 +121,7 @@ set(
     include/brst_stream.h
     include/brst_text.h
     include/brst_types.h
+    include/brst_stream_geometry.h
     include/brst_u3d.h
     include/brst_version.h
     ${PROJECT_BINARY_DIR}/include/brst_config.h

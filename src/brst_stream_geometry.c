@@ -3,6 +3,7 @@
 #include "brst_mmgr.h"
 #include "brst_encrypt.h"
 #include "brst_stream.h"
+#include "private/brst_stream.h"
 #include "brst_dict.h"
 #include "brst_xref.h"
 #include "brst_encoder.h"
@@ -12,22 +13,17 @@
 #include "brst_ext_gstate.h"
 #include "brst_font.h"
 #include "brst_shading.h"
-#include "private/brst_page.h"
 #include "brst_geometry_defines.h"
-#include "private/brst_pages.h"
 #include "private/brst_gstate.h"
-#include "private/brst_page_attr.h"
-#include "private/brst_encrypt_dict.h"
-#include "brst_outline.h"
-#include "private/brst_catalog.h"
 #include "private/brst_c.h"
+#include "private/brst_defines.h"
 
 
 /* q */
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_GSave(BRST_Stream stream)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_GSave\n"));
 
@@ -44,7 +40,7 @@ BRST_Stream_GSave(BRST_Stream stream)
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_GRestore(BRST_Stream stream)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_GRestore\n"));
 
@@ -67,7 +63,9 @@ BRST_Stream_Concat(BRST_Stream stream,
     BRST_REAL x,
     BRST_REAL y)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
+    printf("HIA: 0 %ld\n", ret);
+
     char buf[BRST_TMP_BUF_SIZE];
     char* pbuf = buf;
     char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
@@ -93,9 +91,11 @@ BRST_Stream_Concat(BRST_Stream stream,
     pbuf    = BRST_FToA(pbuf, y, eptr);
     BRST_StrCpy(pbuf, " cm\012", eptr);
 
-    if (BRST_Stream_WriteStr(stream, buf) != BRST_OK)
+    if (BRST_Stream_WriteStr(stream, buf) != BRST_OK) {
         return BRST_Error_Check(stream->error);
+    }
 
+    printf("HIA: 2\n");
     return ret;
 }
 
@@ -289,7 +289,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Stream_SetGrayFill(BRST_Stream stream,
     BRST_REAL gray)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_SetGrayFill\n"));
 
@@ -313,7 +313,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Stream_SetGrayStroke(BRST_Stream stream,
     BRST_REAL gray)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_SetGrayStroke\n"));
 
@@ -339,7 +339,7 @@ BRST_Stream_SetRGBFill(BRST_Stream stream,
     BRST_REAL g,
     BRST_REAL b)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     char buf[BRST_TMP_BUF_SIZE];
     char* pbuf = buf;
@@ -362,8 +362,8 @@ BRST_Stream_SetRGBFill(BRST_Stream stream,
     pbuf    = BRST_FToA(pbuf, b, eptr);
     BRST_StrCpy(pbuf, " rg\012", eptr);
 
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
-        return BRST_Error_Check(page->error);
+    if (BRST_Stream_WriteStr(stream, buf) != BRST_OK)
+        return BRST_Error_Check(stream->error);
 
     return ret;
 }
@@ -375,7 +375,7 @@ BRST_Stream_SetRGBStroke(BRST_Stream stream,
     BRST_REAL g,
     BRST_REAL b)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     char buf[BRST_TMP_BUF_SIZE];
     char* pbuf = buf;
@@ -425,7 +425,7 @@ BRST_Stream_SetCMYKFill(BRST_Stream stream,
     BRST_REAL y,
     BRST_REAL k)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     char buf[BRST_TMP_BUF_SIZE];
     char* pbuf = buf;
@@ -464,7 +464,7 @@ BRST_Stream_SetCMYKStroke(BRST_Stream stream,
     BRST_REAL y,
     BRST_REAL k)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     char buf[BRST_TMP_BUF_SIZE];
     char* pbuf = buf;
@@ -499,7 +499,7 @@ BRST_Stream_SetCMYKStroke(BRST_Stream stream,
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_Clip(BRST_Stream stream)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_Clip\n"));
 
@@ -516,7 +516,7 @@ BRST_Stream_Clip(BRST_Stream stream)
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_Eoclip(BRST_Stream stream)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_Eoclip\n"));
 
@@ -533,7 +533,7 @@ BRST_Stream_Eoclip(BRST_Stream stream)
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_Stroke(BRST_Stream stream)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_Stroke\n"));
 
@@ -550,7 +550,7 @@ BRST_Stream_Stroke(BRST_Stream stream)
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_ClosePathStroke(BRST_Stream stream)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_ClosePathStroke\n"));
 
@@ -567,7 +567,7 @@ BRST_Stream_ClosePathStroke(BRST_Stream stream)
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_Fill(BRST_Stream stream)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_Fill\n"));
 
@@ -584,7 +584,7 @@ BRST_Stream_Fill(BRST_Stream stream)
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_Eofill(BRST_Stream stream)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_Eofill\n"));
 
@@ -601,15 +601,15 @@ BRST_Stream_Eofill(BRST_Stream stream)
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_FillStroke(BRST_Stream stream)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_FillStroke\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    if (BRST_Stream_WriteStr(attrS->stream, "B\012") != BRST_OK)
-        return BRST_Error_Check(page->error);
+    if (BRST_Stream_WriteStr(stream, "B\012") != BRST_OK)
+        return BRST_Error_Check(stream->error);
 
     return ret;
 }
@@ -618,7 +618,7 @@ BRST_Stream_FillStroke(BRST_Stream stream)
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_EofillStroke(BRST_Stream stream)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_EofillStroke\n"));
 
@@ -633,9 +633,9 @@ BRST_Stream_EofillStroke(BRST_Stream stream)
 
 /* b */
 BRST_EXPORT(BRST_STATUS)
-BRST_Stream_ClosePathFillStroke(BRST_Page page)
+BRST_Stream_ClosePathFillStroke(BRST_Stream stream)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_ClosePathFillStroke\n"));
 
@@ -652,7 +652,7 @@ BRST_Stream_ClosePathFillStroke(BRST_Page page)
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_ClosePathEofillStroke(BRST_Stream stream)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_ClosePathEofillStroke\n"));
 
@@ -669,7 +669,7 @@ BRST_Stream_ClosePathEofillStroke(BRST_Stream stream)
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_EndPath(BRST_Stream stream)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_PageEndPath\n"));
 
@@ -688,7 +688,7 @@ BRST_Stream_MoveTo(BRST_Stream stream,
     BRST_REAL x,
     BRST_REAL y)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     char buf[BRST_TMP_BUF_SIZE];
     char* pbuf = buf;
@@ -718,7 +718,7 @@ BRST_Stream_LineTo(BRST_Stream stream,
     BRST_REAL x,
     BRST_REAL y)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     char buf[BRST_TMP_BUF_SIZE];
     char* pbuf = buf;
@@ -752,7 +752,7 @@ BRST_Stream_CurveTo(BRST_Stream stream,
     BRST_REAL x3,
     BRST_REAL y3)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     char buf[BRST_TMP_BUF_SIZE];
     char* pbuf = buf;
@@ -792,7 +792,7 @@ BRST_Stream_CurveTo2(BRST_Stream stream,
     BRST_REAL x3,
     BRST_REAL y3)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     char buf[BRST_TMP_BUF_SIZE];
     char* pbuf = buf;
@@ -822,13 +822,13 @@ BRST_Stream_CurveTo2(BRST_Stream stream,
 
 /* y */
 BRST_EXPORT(BRST_STATUS)
-BRST_Stream_CurveTo3(BRST_Page page,
+BRST_Stream_CurveTo3(BRST_Stream stream,
     BRST_REAL x1,
     BRST_REAL y1,
     BRST_REAL x3,
     BRST_REAL y3)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     char buf[BRST_TMP_BUF_SIZE];
     char* pbuf = buf;
@@ -860,7 +860,7 @@ BRST_Stream_CurveTo3(BRST_Page page,
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_ClosePath(BRST_Stream stream)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_ClosePath\n"));
 
@@ -881,7 +881,7 @@ BRST_Stream_Rectangle(BRST_Stream stream,
     BRST_REAL width,
     BRST_REAL height)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     char buf[BRST_TMP_BUF_SIZE];
     char* pbuf = buf;
@@ -914,7 +914,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Stream_SetLineWidth(BRST_Stream stream,
     BRST_REAL line_width)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_SetLineWidth\n"));
 
@@ -938,7 +938,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Stream_SetLineCap(BRST_Stream stream,
     BRST_LineCap line_cap)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_SetLineCap\n"));
 
@@ -967,7 +967,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Stream_SetLineJoin(BRST_Stream stream,
     BRST_LineJoin line_join)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_SetLineJoin\n"));
 
@@ -992,7 +992,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Stream_SetMiterLimit(BRST_Stream stream,
     BRST_REAL miter_limit)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_SetMitterLimit\n"));
 
@@ -1018,7 +1018,7 @@ BRST_Stream_SetDash(BRST_Stream stream,
     BRST_UINT num_param,
     BRST_REAL phase)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     char buf[BRST_TMP_BUF_SIZE];
     char* pbuf                 = buf;
@@ -1067,7 +1067,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Stream_SetFlat(BRST_Stream stream,
     BRST_REAL flatness)
 {
-    BRST_STATUS ret =  BRST_Stream_Validate(stream);
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
 
     BRST_PTRACE((" BRST_Stream_SetFlat\n"));
 

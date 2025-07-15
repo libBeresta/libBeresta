@@ -22,6 +22,7 @@
 #include "brst_outline.h"
 #include "private/brst_catalog.h"
 #include "private/brst_c.h"
+#include "brst_stream_geometry.h"
 
 static BRST_STATUS
 InternalArc(BRST_Page page,
@@ -297,7 +298,7 @@ InternalArc(BRST_Page page,
     BRST_StrCpy(pbuf, " c\012", eptr);
 
     if ((ret = BRST_Stream_WriteStr(attr->stream, buf)) != BRST_OK)
-        return BRST_Error_Check(page->error);
+        return BRST_Error_Check(attr->stream->error);
 
     attr->cur_pos.x = (BRST_REAL)x3;
     attr->cur_pos.y = (BRST_REAL)y3;
@@ -438,9 +439,7 @@ BRST_Page_Concat(BRST_Page page,
     BRST_REAL y)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
+
     BRST_PageAttr attr;
     BRST_TransMatrix tm;
 
@@ -451,23 +450,10 @@ BRST_Page_Concat(BRST_Page page,
 
     attr = (BRST_PageAttr)page->attr;
 
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-
-    pbuf    = BRST_FToA(pbuf, a, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, b, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, c, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, d, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, x, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y, eptr);
-    BRST_StrCpy(pbuf, " cm\012", eptr);
-
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
+    if (BRST_Stream_Concat(attr->stream, a, b, c, d, x, y) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     tm = attr->gstate->trans_matrix;
     /*
@@ -682,14 +668,10 @@ BRST_Page_SetGrayFill(BRST_Page page,
 
     attr = (BRST_PageAttr)page->attr;
 
-    if (gray < 0 || gray > 1)
-        return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE, 0);
-
-    if (BRST_Stream_WriteReal(attr->stream, gray) != BRST_OK)
+    if (BRST_Stream_SetGrayFill(attr->stream, gray) != BRST_OK){
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
-
-    if (BRST_Stream_WriteStr(attr->stream, " g\012") != BRST_OK)
-        return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->gray_fill = gray;
     attr->gstate->cs_fill   = BRST_CS_DEVICE_GRAY;
@@ -712,14 +694,10 @@ BRST_Page_SetGrayStroke(BRST_Page page,
 
     attr = (BRST_PageAttr)page->attr;
 
-    if (gray < 0 || gray > 1)
-        return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE, 0);
-
-    if (BRST_Stream_WriteReal(attr->stream, gray) != BRST_OK)
+    if (BRST_Stream_SetGrayStroke(attr->stream, gray) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
-
-    if (BRST_Stream_WriteStr(attr->stream, " G\012") != BRST_OK)
-        return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->gray_stroke = gray;
     attr->gstate->cs_stroke   = BRST_CS_DEVICE_GRAY;
@@ -735,32 +713,18 @@ BRST_Page_SetRGBFill(BRST_Page page,
     BRST_REAL b)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_TEXT_OBJECT | BRST_GMODE_PAGE_DESCRIPTION);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
-    BRST_PageAttr attr;
-
+    
     BRST_PTRACE((" BRST_Page_SetRGBFill\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    if (r < 0 || r > 1 || g < 0 || g > 1 || b < 0 || b > 1)
-        return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE, 0);
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    attr = (BRST_PageAttr)page->attr;
-
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-
-    pbuf    = BRST_FToA(pbuf, r, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, g, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, b, eptr);
-    BRST_StrCpy(pbuf, " rg\012", eptr);
-
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
+    if (BRST_Stream_SetRGBFill(attr->stream, r, g, b) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->rgb_fill.r = r;
     attr->gstate->rgb_fill.g = g;
@@ -778,32 +742,18 @@ BRST_Page_SetRGBStroke(BRST_Page page,
     BRST_REAL b)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_TEXT_OBJECT | BRST_GMODE_PAGE_DESCRIPTION);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_SetRGBStroke\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    if (r < 0 || r > 1 || g < 0 || g > 1 || b < 0 || b > 1)
-        return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE, 0);
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    attr = (BRST_PageAttr)page->attr;
-
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-
-    pbuf    = BRST_FToA(pbuf, r, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, g, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, b, eptr);
-    BRST_StrCpy(pbuf, " RG\012", eptr);
-
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
+    if (BRST_Stream_SetRGBStroke(attr->stream, r, g, b) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->rgb_stroke.r = r;
     attr->gstate->rgb_stroke.g = g;
@@ -860,34 +810,18 @@ BRST_Page_SetCMYKFill(BRST_Page page,
     BRST_REAL k)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_TEXT_OBJECT | BRST_GMODE_PAGE_DESCRIPTION);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_SetCMYKFill\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    if (c < 0 || c > 1 || m < 0 || m > 1 || y < 0 || y > 1 || k < 0 || k > 1)
-        return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE, 0);
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    attr = (BRST_PageAttr)page->attr;
-
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-
-    pbuf    = BRST_FToA(pbuf, c, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, m, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, k, eptr);
-    BRST_StrCpy(pbuf, " k\012", eptr);
-
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
+    if (BRST_Stream_SetCMYKFill(attr->stream, c, m, y, k) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->cmyk_fill.c = c;
     attr->gstate->cmyk_fill.m = m;
@@ -907,34 +841,18 @@ BRST_Page_SetCMYKStroke(BRST_Page page,
     BRST_REAL k)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_TEXT_OBJECT | BRST_GMODE_PAGE_DESCRIPTION);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_SetCMYKStroke\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    if (c < 0 || c > 1 || m < 0 || m > 1 || y < 0 || y > 1 || k < 0 || k > 1)
-        return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE, 0);
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    attr = (BRST_PageAttr)page->attr;
-
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-
-    pbuf    = BRST_FToA(pbuf, c, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, m, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, k, eptr);
-    BRST_StrCpy(pbuf, " K\012", eptr);
-
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
+    if (BRST_Stream_SetCMYKStroke(attr->stream, c, m, y, k) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->cmyk_stroke.c = c;
     attr->gstate->cmyk_stroke.m = m;
