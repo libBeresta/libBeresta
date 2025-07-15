@@ -70,4 +70,10 @@ BRST_Error_UserData(
     BRST_Error error
 );
 
+void
+BRST_Error_Copy(
+    BRST_Error dst,
+    BRST_Error src
+);
+
 #endif /* PRIVATE_BRST_ERROR_H */

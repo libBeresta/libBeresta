@@ -60,7 +60,7 @@ BRST_Error_DetailCode(BRST_Error error)
     return error->detail_no;
 }
 
-void BRST_CopyError(BRST_Error dst,
+void BRST_Error_Copy(BRST_Error dst,
     BRST_Error src)
 {
     dst->error_no  = src->error_no;
