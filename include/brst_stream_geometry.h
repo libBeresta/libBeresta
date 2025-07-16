@@ -234,7 +234,7 @@ BRST_Stream_CurveTo2(
 
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_CurveTo3(
-    BRST_Page page,
+    BRST_Stream stream,
     BRST_REAL x1,
     BRST_REAL y1,
     BRST_REAL x3,

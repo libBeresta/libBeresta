@@ -868,17 +868,18 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Page_Clip(BRST_Page page)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_Clip\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "W\012") != BRST_OK)
+    if (BRST_Stream_Clip(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gmode = BRST_GMODE_CLIPPING_PATH;
 
@@ -890,17 +891,18 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Page_Eoclip(BRST_Page page)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_Eoclip\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "W*\012") != BRST_OK)
+    if (BRST_Stream_Eoclip(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gmode = BRST_GMODE_CLIPPING_PATH;
 
@@ -912,17 +914,18 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Page_Stroke(BRST_Page page)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT | BRST_GMODE_CLIPPING_PATH);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_Stroke\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "S\012") != BRST_OK)
+    if (BRST_Stream_Stroke(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gmode   = BRST_GMODE_PAGE_DESCRIPTION;
     attr->cur_pos = INIT_POS;
@@ -935,17 +938,18 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Page_ClosePathStroke(BRST_Page page)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT | BRST_GMODE_CLIPPING_PATH);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_ClosePathStroke\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "s\012") != BRST_OK)
+    if (BRST_Stream_ClosePathStroke(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gmode   = BRST_GMODE_PAGE_DESCRIPTION;
     attr->cur_pos = INIT_POS;
@@ -958,17 +962,18 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Page_Fill(BRST_Page page)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT | BRST_GMODE_CLIPPING_PATH);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_Fill\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "f\012") != BRST_OK)
+    if (BRST_Stream_Fill(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gmode   = BRST_GMODE_PAGE_DESCRIPTION;
     attr->cur_pos = INIT_POS;
@@ -981,17 +986,18 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Page_Eofill(BRST_Page page)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT | BRST_GMODE_CLIPPING_PATH);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_Eofill\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "f*\012") != BRST_OK)
+    if (BRST_Stream_Eofill(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gmode   = BRST_GMODE_PAGE_DESCRIPTION;
     attr->cur_pos = INIT_POS;
@@ -1004,17 +1010,18 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Page_FillStroke(BRST_Page page)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT | BRST_GMODE_CLIPPING_PATH);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_FillStroke\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "B\012") != BRST_OK)
+    if (BRST_Stream_FillStroke(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gmode   = BRST_GMODE_PAGE_DESCRIPTION;
     attr->cur_pos = INIT_POS;
@@ -1027,18 +1034,18 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Page_EofillStroke(BRST_Page page)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT | BRST_GMODE_CLIPPING_PATH);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_EofillStroke\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "B*\012") != BRST_OK)
+    if (BRST_Stream_EofillStroke(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
-
+    }
     attr->gmode = BRST_GMODE_PAGE_DESCRIPTION;
 
     return ret;
@@ -1049,17 +1056,18 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Page_ClosePathFillStroke(BRST_Page page)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT | BRST_GMODE_CLIPPING_PATH);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_ClosePathFillStroke\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "b\012") != BRST_OK)
+    if (BRST_Stream_ClosePathFillStroke(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gmode   = BRST_GMODE_PAGE_DESCRIPTION;
     attr->cur_pos = INIT_POS;
@@ -1072,17 +1080,18 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Page_ClosePathEofillStroke(BRST_Page page)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT | BRST_GMODE_CLIPPING_PATH);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_ClosePathEofillStroke\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "b*\012") != BRST_OK)
+    if (BRST_Stream_ClosePathEofillStroke(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gmode   = BRST_GMODE_PAGE_DESCRIPTION;
     attr->cur_pos = INIT_POS;
@@ -1095,17 +1104,18 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Page_EndPath(BRST_Page page)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT | BRST_GMODE_CLIPPING_PATH);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_PageEndPath\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "n\012") != BRST_OK)
+    if (BRST_Stream_EndPath(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gmode   = BRST_GMODE_PAGE_DESCRIPTION;
     attr->cur_pos = INIT_POS;
@@ -1120,27 +1130,18 @@ BRST_Page_MoveTo(BRST_Page page,
     BRST_REAL y)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_PATH_OBJECT);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_MoveTo\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-
-    pbuf    = BRST_FToA(pbuf, x, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y, eptr);
-    BRST_StrCpy(pbuf, " m\012", eptr);
-
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
+    if (BRST_Stream_MoveTo(attr->stream, x, y) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->cur_pos.x = x;
     attr->cur_pos.y = y;
@@ -1157,27 +1158,18 @@ BRST_Page_LineTo(BRST_Page page,
     BRST_REAL y)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_LineTo\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-
-    pbuf    = BRST_FToA(pbuf, x, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y, eptr);
-    BRST_StrCpy(pbuf, " l\012", eptr);
-
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
+    if (BRST_Stream_LineTo(attr->stream, x, y) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->cur_pos.x = x;
     attr->cur_pos.y = y;
@@ -1196,35 +1188,18 @@ BRST_Page_CurveTo(BRST_Page page,
     BRST_REAL y3)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_CurveTo\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-
-    pbuf    = BRST_FToA(pbuf, x1, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y1, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, x2, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y2, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, x3, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y3, eptr);
-    BRST_StrCpy(pbuf, " c\012", eptr);
-
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
+    if (BRST_Stream_CurveTo(attr->stream, x1, y1, x2, y2, x3, y3) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->cur_pos.x = x3;
     attr->cur_pos.y = y3;
@@ -1241,31 +1216,18 @@ BRST_Page_CurveTo2(BRST_Page page,
     BRST_REAL y3)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_CurveTo2\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-
-    pbuf    = BRST_FToA(pbuf, x2, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y2, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, x3, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y3, eptr);
-    BRST_StrCpy(pbuf, " v\012", eptr);
-
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
+    if (BRST_Stream_CurveTo2(attr->stream, x2, y2, x3, y3) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->cur_pos.x = x3;
     attr->cur_pos.y = y3;
@@ -1282,31 +1244,18 @@ BRST_Page_CurveTo3(BRST_Page page,
     BRST_REAL y3)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_CurveTo3\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-
-    pbuf    = BRST_FToA(pbuf, x1, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y1, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, x3, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y3, eptr);
-    BRST_StrCpy(pbuf, " y\012", eptr);
-
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
+    if (BRST_Stream_CurveTo3(attr->stream, x1, y1, x3, y3) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->cur_pos.x = x3;
     attr->cur_pos.y = y3;
@@ -1319,17 +1268,18 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Page_ClosePath(BRST_Page page)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PATH_OBJECT);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_ClosePath\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "h\012") != BRST_OK)
+    if (BRST_Stream_ClosePath(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->cur_pos = attr->str_pos;
 
@@ -1345,31 +1295,18 @@ BRST_Page_Rectangle(BRST_Page page,
     BRST_REAL height)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_PATH_OBJECT);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_Rectangle\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-
-    pbuf    = BRST_FToA(pbuf, x, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, width, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, height, eptr);
-    BRST_StrCpy(pbuf, " re\012", eptr);
-
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
+    if (BRST_Stream_Rectangle(attr->stream, x, y, width, height) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->cur_pos.x = x;
     attr->cur_pos.y = y;
@@ -1385,23 +1322,18 @@ BRST_Page_SetLineWidth(BRST_Page page,
     BRST_REAL line_width)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_SetLineWidth\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (line_width < 0)
-        return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE, 0);
-
-    if (BRST_Stream_WriteReal(attr->stream, line_width) != BRST_OK)
+    if (BRST_Stream_SetLineWidth(attr->stream, line_width) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
-
-    if (BRST_Stream_WriteStr(attr->stream, " w\012") != BRST_OK)
-        return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->line_width = line_width;
 
@@ -1414,28 +1346,18 @@ BRST_Page_SetLineCap(BRST_Page page,
     BRST_LineCap line_cap)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_SetLineCap\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    if (line_cap >= BRST_LINECAP_EOF)
-        return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE,
-            (BRST_STATUS)line_cap);
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    attr = (BRST_PageAttr)page->attr;
-
-    if ((ret = BRST_Stream_WriteInt(attr->stream,
-             (BRST_UINT)line_cap))
-        != BRST_OK)
-        return ret;
-
-    if ((ret = BRST_Stream_WriteStr(attr->stream,
-             " J\012"))
-        != BRST_OK)
+    if (BRST_Stream_SetLineCap(attr->stream, line_cap) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->line_cap = line_cap;
 
@@ -1448,24 +1370,18 @@ BRST_Page_SetLineJoin(BRST_Page page,
     BRST_LineJoin line_join)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_SetLineJoin\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    if (line_join >= BRST_LINEJOIN_EOF)
-        return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE,
-            (BRST_STATUS)line_join);
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    attr = (BRST_PageAttr)page->attr;
-
-    if (BRST_Stream_WriteInt(attr->stream, (BRST_UINT)line_join) != BRST_OK)
+    if (BRST_Stream_SetLineJoin(attr->stream, line_join) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
-
-    if (BRST_Stream_WriteStr(attr->stream, " j\012") != BRST_OK)
-        return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->line_join = line_join;
 
@@ -1478,23 +1394,18 @@ BRST_Page_SetMiterLimit(BRST_Page page,
     BRST_REAL miter_limit)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
-    BRST_PageAttr attr;
 
     BRST_PTRACE((" BRST_Page_SetMitterLimit\n"));
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (miter_limit < 1)
-        return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE, 0);
-
-    if (BRST_Stream_WriteReal(attr->stream, miter_limit) != BRST_OK)
+    if (BRST_Stream_SetMiterLimit(attr->stream, miter_limit) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
-
-    if (BRST_Stream_WriteStr(attr->stream, " M\012") != BRST_OK)
-        return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->miter_limit = miter_limit;
 
@@ -1509,11 +1420,7 @@ BRST_Page_SetDash(BRST_Page page,
     BRST_REAL phase)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf                 = buf;
-    char* eptr                 = buf + BRST_TMP_BUF_SIZE - 1;
-    const BRST_REAL* pdash_ptn = dash_ptn;
-    BRST_PageAttr attr;
+
     BRST_UINT i;
 
     BRST_PTRACE((" BRST_Page_SetDash\n"));
@@ -1521,40 +1428,18 @@ BRST_Page_SetDash(BRST_Page page,
     if (ret != BRST_OK)
         return ret;
 
-    if (num_param == 0 && phase > 0)
-        return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE, 0);
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (!dash_ptn && num_param > 0)
-        return BRST_Error_Raise(page->error, BRST_INVALID_PARAMETER, 0);
-
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-    *pbuf++ = '[';
-
-    for (i = 0; i < num_param; i++) {
-        if (*pdash_ptn == 0 || *pdash_ptn > BRST_MAX_DASH_PATTERN)
-            return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE, 0);
-
-        pbuf    = BRST_FToA(pbuf, *pdash_ptn, eptr);
-        *pbuf++ = ' ';
-        pdash_ptn++;
-    }
-
-    *pbuf++ = ']';
-    *pbuf++ = ' ';
-
-    pbuf = BRST_FToA(pbuf, phase, eptr);
-    BRST_StrCpy(pbuf, " d\012", eptr);
-
-    attr = (BRST_PageAttr)page->attr;
-
-    if ((ret = BRST_Stream_WriteStr(attr->stream, buf)) != BRST_OK)
+    if (BRST_Stream_SetDash(attr->stream, dash_ptn, num_param, phase) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->dash_mode         = INIT_MODE;
     attr->gstate->dash_mode.num_ptn = num_param;
     attr->gstate->dash_mode.phase   = phase;
 
-    pdash_ptn = dash_ptn;
+    const BRST_REAL* pdash_ptn = dash_ptn;
     for (i = 0; i < num_param; i++) {
         attr->gstate->dash_mode.ptn[i] = *pdash_ptn;
         pdash_ptn++;
@@ -1568,7 +1453,6 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Page_SetFlat(BRST_Page page,
     BRST_REAL flatness)
 {
-    BRST_PageAttr attr;
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
 
     BRST_PTRACE((" BRST_Page_SetFlat\n"));
@@ -1576,16 +1460,12 @@ BRST_Page_SetFlat(BRST_Page page,
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (flatness > 100 || flatness < 0)
-        return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE, 0);
-
-    if (BRST_Stream_WriteReal(attr->stream, flatness) != BRST_OK)
+    if (BRST_Stream_SetFlat(attr->stream, flatness) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
-
-    if (BRST_Stream_WriteStr(attr->stream, " i\012") != BRST_OK)
-        return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->flatness = flatness;
 
