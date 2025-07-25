@@ -12,6 +12,7 @@ set(
         brst_doc_encoding_jp.c
         brst_doc_encoding_kr.c
         brst_doc_encoding_utf.c
+        brst_doc_ext_gstate.c
         brst_doc_font.c
         brst_doc_font_ttf.c
         brst_doc_font_type1.c

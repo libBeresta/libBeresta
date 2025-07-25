@@ -22,5 +22,9 @@
 #include "brst_doc_image_tiff.h"
 #include "brst_page_image.h"
 #include "brst_doc_compression.h"
+#include "brst_doc_ext_gstate.h"
+#include "brst_encoder.h"
+#include "brst_doc_encoder.h"
+#include "brst_doc_encoding_utf.h"
 
 #endif /* BRST_H */
