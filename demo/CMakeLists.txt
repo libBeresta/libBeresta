@@ -10,6 +10,7 @@ set(
   demos_with_grid_NAMES
     arc_demo
     grid_demo
+    utf8
 )
 
 # we need to add some definitions for win 32

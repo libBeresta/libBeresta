@@ -21,4 +21,6 @@ void print_grid(BRST_Doc pdf,
 // Цвет линий черной миллиметровой бумаги
 #define BRST_BLACK_LINE 0x181513
 
+#define BRST_ROSE_LINE 0xFD88DA
+
 #endif /* __GRID_SHEET_H */
