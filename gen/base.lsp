@@ -1,7 +1,7 @@
 (:файл "base"
  :функции
        ;; === NewEx
-       ((:название "NewEx"
+       ((:название "Doc_New_Ex"
 	 :группа "doc"
 	 :ru "Создает и настраивает экземпляр документа"
 	 :en "Create an instance of a document object and initialize it"
@@ -50,11 +50,11 @@ If this parameter set to non-zero value, memory management will be done as follo
   remaining memory, a new memory block is allocated.
 - Unused memory is not released immediately. It is released
   all together when BRST_Free() is invoked.
-  \\endparblock"
+  \\endparblock")
 			   (:тип "RAW_POINTER"
 			    :имя "user_data"
 			    :ru "Указатель на пользовательские данные, используемый в обработчике ошибок."
-			    :en "User-defined void pointer. This pointer is used by error handling."))))
+			    :en "User-defined void pointer. This pointer is used by error handling.")))
 
 	;; === Version
 	(:название "Version"
@@ -67,7 +67,7 @@ If this parameter set to non-zero value, memory management will be done as follo
 	 :параметры ())
 
 	;; === New
-	(:название "New"
+	(:название "Doc_New"
 	 :группа "doc"
 	 :ru "Создает объект документа и настраивает его"
 	 :en "Create document and set it up"
