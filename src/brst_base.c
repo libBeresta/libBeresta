@@ -280,6 +280,14 @@ BRST_Doc_New(BRST_Error_Handler user_error_fn,
     return BRST_Doc_New_Ex(user_error_fn, NULL, NULL, 0, user_data);
 }
 
+BRST_EXPORT(BRST_Doc)
+BRST_Doc_New_Empty()
+{
+    BRST_PTRACE((" BRST_Doc_New_Empty\n"));
+
+    return BRST_Doc_New_Ex(NULL, NULL, NULL, 0, NULL);
+}
+
 BRST_EXPORT(BRST_STATUS)
 BRST_Doc_Contents(BRST_Doc pdf,
     BRST_BYTE* buf,
