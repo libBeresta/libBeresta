@@ -66,7 +66,7 @@ If this parameter set to non-zero value, memory management will be done as follo
 		     :en "Library version")
 	 :параметры ())
 
-	;; === New
+	;; === Doc_New
 	(:название "Doc_New"
 	 :группа "doc"
 	 :ru "Создает объект документа и настраивает его"
@@ -82,8 +82,22 @@ If this parameter set to non-zero value, memory management will be done as follo
 	 :результат (:тип "Doc"
 		     :ru "Дескриптор объекта документа при успехе и \\c NULL при неудаче."
 		     :en "A handle of document object on success and \\c NULL on failure.")
-	 :см ("New()"
-	      "Free()"))
+	 :см ("Doc_New_Ex()"
+  	      "Doc_New_Empty()"
+	      "Doc_Free()"))
+
+	;; === Doc_New_Empty
+	(:название "Doc_New_Empty"
+	 :группа "doc"
+	 :ru "Создает объект документа и настраивает его (без дополнительных опций)"
+	 :en "Create document and set it up (with no additional options)"
+	 :параметры ()
+	 :результат (:тип "Doc"
+		     :ru "Дескриптор объекта документа при успехе и \\c NULL при неудаче."
+		     :en "A handle of document object on success and \\c NULL on failure.")
+	 :см ("Doc_New()"
+ 	      "Doc_New_Ex()"
+	      "Doc_Free()"))
 
 	;; === Doc_Init
 	(:название "BRST_Doc_Initialize"
