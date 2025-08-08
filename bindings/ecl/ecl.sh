@@ -29,6 +29,7 @@ pushd $RENDER_DIR > /dev/null
 ./render.sh $PREFIX/ecl.dj geometry_defines.lsp ru $PREFIX/src/geometry_defines.lisp
 ./render.sh $PREFIX/ecl.dj structs.lsp ru $PREFIX/src/structs.lisp
 ./render.sh $PREFIX/ecl.dj ext_gstate.lsp ru $PREFIX/src/ext_gstate.lisp
+./render.sh $PREFIX/ecl.dj text_defines.lsp ru $PREFIX/src/text_defines.lisp
 
 ./render.sh $PREFIX/exp-ecl-page-sizes.dj page_sizes.lsp ru $PREFIX/src/exp-page_sizes.lisp
 ./render.sh $PREFIX/exp-ecl-types.dj types.lsp ru $PREFIX/src/exp-types.lisp
@@ -48,6 +49,7 @@ pushd $RENDER_DIR > /dev/null
 ./render.sh $PREFIX/exp-ecl.dj geometry_defines.lsp ru $PREFIX/src/exp-geometry_defines.lisp
 ./render.sh $PREFIX/exp-ecl.dj structs.lsp ru $PREFIX/src/exp-structs.lisp
 ./render.sh $PREFIX/exp-ecl.dj ext_gstate.lsp ru $PREFIX/src/exp-ext_gstate.lisp
+./render.sh $PREFIX/exp-ecl.dj text_defines.lsp ru $PREFIX/src/exp-text_defines.lisp
 
 cat $PREFIX/ЛИЦЕНЗИЯ.txt    > $PREFIX/src/package.lisp
 cat $PREFIX/package.head   >> $PREFIX/src/package.lisp

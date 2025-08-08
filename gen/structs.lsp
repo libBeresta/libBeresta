@@ -8,10 +8,11 @@
               :поля ((:поле "left"   :тип "REAL" :en "" :ru "")
                      (:поле "bottom" :тип "REAL" :en "" :ru "")
                      (:поле "right"  :тип "REAL" :en "" :ru "")
-                     (:поле "top"    :тип "REAL" :en "" :ru ""))))
-    BRST_REAL left;
-    BRST_REAL bottom;
-    BRST_REAL right;
-    BRST_REAL top;
+                     (:поле "top"    :тип "REAL" :en "" :ru "")))
 
-)
+             (:имя "TextWidth"
+              :en "" :ru ""
+              :поля ((:поле "numchars"   :тип "UINT" :en "" :ru "")
+                     (:поле "numwords" :тип "UINT" :en "" :ru "")
+                     (:поле "width"  :тип "UINT" :en "" :ru "")
+                     (:поле "numspace"    :тип "UINT" :en "" :ru "")))))
