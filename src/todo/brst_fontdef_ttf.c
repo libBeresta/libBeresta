@@ -39,7 +39,7 @@ BRST_GetTTFontDefFromFile(BRST_Doc pdf,
     BRST_Stream font_data;
     BRST_FontDef def;
 
-    BRST_PTRACE((" BRST_GetTTFontDefFromFile\n"));
+    BRST_PTRACE(" BRST_GetTTFontDefFromFile\n");
 
     /* create file stream */
     font_data = BRST_FileReader_New(pdf->mmgr, file_name);
