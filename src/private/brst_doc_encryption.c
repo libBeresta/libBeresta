@@ -26,7 +26,7 @@
 BRST_STATUS
 BRST_Doc_SetEncryptOff(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_SetEncryptOff\n"));
+    BRST_PTRACE(" BRST_Doc_SetEncryptOff\n");
 
     if (!pdf->encrypt_on)
         return BRST_OK;
@@ -105,7 +105,7 @@ BRST_Doc_PrepareEncryption(BRST_Doc pdf)
 BRST_STATUS
 BRST_Doc_SetEncryptOn(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_SetEncryptOn\n"));
+    BRST_PTRACE(" BRST_Doc_SetEncryptOn\n");
 
     if (pdf->encrypt_on)
         return BRST_OK;

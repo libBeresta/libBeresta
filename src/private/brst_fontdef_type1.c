@@ -43,7 +43,7 @@ FreeWidth(BRST_FontDef fontdef)
 {
     BRST_Type1FontDefAttr attr = (BRST_Type1FontDefAttr)fontdef->attr;
 
-    BRST_PTRACE((" FreeWidth\n"));
+    BRST_PTRACE(" FreeWidth\n");
 
     BRST_FreeMem(fontdef->mmgr, attr->widths);
     attr->widths = NULL;
@@ -57,7 +57,7 @@ BRST_Type1FontDef_New(BRST_MMgr mmgr)
     BRST_FontDef fontdef;
     BRST_Type1FontDefAttr fontdef_attr;
 
-    BRST_PTRACE((" BRST_Type1FontDef_New\n"));
+    BRST_PTRACE(" BRST_Type1FontDef_New\n");
 
     if (!mmgr)
         return NULL;
@@ -93,7 +93,7 @@ GetKeyword(const char* src,
 {
     BRST_UINT src_len = BRST_StrLen(src, -1);
 
-    BRST_PTRACE((" GetKeyword\n"));
+    BRST_PTRACE(" GetKeyword\n");
 
     if (!keyword || src_len == 0 || len == 0)
         return NULL;
@@ -129,7 +129,7 @@ LoadAfm(BRST_FontDef fontdef,
     char keyword[BRST_LIMIT_MAX_NAME_LEN + 1];
     BRST_UINT i;
 
-    BRST_PTRACE((" LoadAfm\n"));
+    BRST_PTRACE(" LoadAfm\n");
 
     len = BRST_TMP_BUF_SIZE;
 
@@ -289,7 +289,7 @@ LoadFontData(BRST_FontDef fontdef,
     BRST_STATUS ret;
     BRST_BOOL end_flg = BRST_FALSE;
 
-    BRST_PTRACE((" LoadFontData\n"));
+    BRST_PTRACE(" LoadFontData\n");
 
     attr->font_data = BRST_MemStream_New(fontdef->mmgr, BRST_STREAM_BUF_SIZE);
 
@@ -362,7 +362,7 @@ BRST_Type1FontDef_Load(BRST_MMgr mmgr,
     BRST_FontDef fontdef;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Type1FontDef_Load\n"));
+    BRST_PTRACE(" BRST_Type1FontDef_Load\n");
 
     if (!afm)
         return NULL;
@@ -396,7 +396,7 @@ BRST_Type1FontDef_Duplicate(BRST_MMgr mmgr,
 {
     BRST_FontDef fontdef = BRST_Type1FontDef_New(mmgr);
 
-    BRST_PTRACE((" BRST_Type1FontDef_Duplicate\n"));
+    BRST_PTRACE(" BRST_Type1FontDef_Duplicate\n");
 
     fontdef->type  = src->type;
     fontdef->valid = src->valid;
@@ -415,7 +415,7 @@ BRST_Type1FontDef_SetWidths(BRST_FontDef fontdef,
     BRST_CharData* dst;
     BRST_UINT i = 0;
 
-    BRST_PTRACE((" BRST_Type1FontDef_SetWidths\n"));
+    BRST_PTRACE(" BRST_Type1FontDef_SetWidths\n");
 
     FreeWidth(fontdef);
 
@@ -455,7 +455,7 @@ BRST_Type1FontDef_WidthByName(BRST_FontDef fontdef,
 {
     BRST_UNICODE unicode = BRST_GlyphNameToUnicode(glyph_name);
 
-    BRST_PTRACE((" BRST_Type1FontDef_WidthByName\n"));
+    BRST_PTRACE(" BRST_Type1FontDef_WidthByName\n");
 
     return BRST_Type1FontDef_Width(fontdef, unicode);
 }
@@ -468,7 +468,7 @@ BRST_Type1FontDef_Width(BRST_FontDef fontdef,
     BRST_CharData* cdata       = attr->widths;
     BRST_UINT i;
 
-    BRST_PTRACE((" BRST_Type1FontDef_Width\n"));
+    BRST_PTRACE(" BRST_Type1FontDef_Width\n");
 
     for (i = 0; i < attr->widths_count; i++) {
         if (cdata->unicode == unicode)
@@ -484,7 +484,7 @@ FreeFunc(BRST_FontDef fontdef)
 {
     BRST_Type1FontDefAttr attr = (BRST_Type1FontDefAttr)fontdef->attr;
 
-    BRST_PTRACE((" FreeFunc\n"));
+    BRST_PTRACE(" FreeFunc\n");
 
     if (attr->char_set)
         BRST_FreeMem(fontdef->mmgr, attr->char_set);

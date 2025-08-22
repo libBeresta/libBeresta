@@ -1,7 +1,7 @@
 (:файл "base"
  :функции
        ;; === NewEx
-       ((:название "NewEx"
+       ((:название "Doc_New_Ex"
 	 :группа "doc"
 	 :ru "Создает и настраивает экземпляр документа"
 	 :en "Create an instance of a document object and initialize it"
@@ -20,11 +20,11 @@
 		      :en "User-defined memory allocation function. If \\c NULL is specified, `malloc()` is used.")
 		     (:тип "Free_Func"
 		      :имя "user_free_fn"
-		      :ru "Пользовательская функция высвобождения памяти. Елси указано \\c NULL, используется функция `free()`."
+		      :ru "Пользовательская функция высвобождения памяти. Если указано \\c NULL, используется функция `free()`."
 		      :en "User-defined memory freeing function. If \\c NULL is specified, `free()` is used.")
 		     (:тип "UINT"
 		      :имя "mem_pool_buf_size"
-		      :ru "\\parblock \\c libBeresto по умолчанию не использует пул памяти.
+		      :ru "\\parblock \\c libBeresta по умолчанию не использует пул памяти.
 
 Функция выделения памяти по требованию вызывается из приложения.
 
@@ -50,11 +50,11 @@ If this parameter set to non-zero value, memory management will be done as follo
   remaining memory, a new memory block is allocated.
 - Unused memory is not released immediately. It is released
   all together when BRST_Free() is invoked.
-  \\endparblock"
+  \\endparblock")
 			   (:тип "RAW_POINTER"
 			    :имя "user_data"
 			    :ru "Указатель на пользовательские данные, используемый в обработчике ошибок."
-			    :en "User-defined void pointer. This pointer is used by error handling."))))
+			    :en "User-defined void pointer. This pointer is used by error handling.")))
 
 	;; === Version
 	(:название "Version"
@@ -66,8 +66,8 @@ If this parameter set to non-zero value, memory management will be done as follo
 		     :en "Library version")
 	 :параметры ())
 
-	;; === New
-	(:название "New"
+	;; === Doc_New
+	(:название "Doc_New"
 	 :группа "doc"
 	 :ru "Создает объект документа и настраивает его"
 	 :en "Create document and set it up"
@@ -82,11 +82,25 @@ If this parameter set to non-zero value, memory management will be done as follo
 	 :результат (:тип "Doc"
 		     :ru "Дескриптор объекта документа при успехе и \\c NULL при неудаче."
 		     :en "A handle of document object on success and \\c NULL on failure.")
-	 :см ("New()"
-	      "Free()"))
+	 :см ("Doc_New_Ex()"
+  	      "Doc_New_Empty()"
+	      "Doc_Free()"))
+
+	;; === Doc_New_Empty
+	(:название "Doc_New_Empty"
+	 :группа "doc"
+	 :ru "Создает объект документа и настраивает его (без дополнительных опций)"
+	 :en "Create document and set it up (with no additional options)"
+	 :параметры ()
+	 :результат (:тип "Doc"
+		     :ru "Дескриптор объекта документа при успехе и \\c NULL при неудаче."
+		     :en "A handle of document object on success and \\c NULL on failure.")
+	 :см ("Doc_New()"
+ 	      "Doc_New_Ex()"
+	      "Doc_Free()"))
 
 	;; === Doc_Init
-	(:название "BRST_Doc_Initialize"
+	(:название "Doc_Initialize"
 	 :группа "doc"
 	 :ru "Настраивает документ. Если документ \\c doc уже настроен, он предварительно очищается"
 	 :en "Create a new document. If \\c doc object already has a document, the current document is revoked."
@@ -149,26 +163,26 @@ If this parameter set to non-zero value, memory management will be done as follo
 	      "Doc_Destroy()"))
 
 	;; === Doc_Contents
-	(:название "Doc_Contents"
-	 :группа "doc"
-	 :ru "Копирует содержимое документа в предоставленный буфер"
-	 :en "Copy document data to given buffer"
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
-		      :ru ":param_pdf"
-		      :en ":param_pdf")
-		     (:тип "BYTE*"
-		      :имя "buf"
-		      :ru "Указатель на подготовленный буфер"
-		      :en "Output buffer pointer")
-		     (:тип "UINT32*"
-		      :имя "size"
-		      :ru "Размер данных в выходном буфере"
-		      :en "Output buffer size"))
-	 :результат (:тип "STATUS"
-		     :ru "\\ref BRST_OK если удалось записать содержимое документа в буфер, иначе возвращает код ошибки."
-		     :en "\\ref BRST_OK on success copying. Otherwise returns error code.")
-	 :ошибки ("INVALID_DOCUMENT"))
+;;	(:название "Doc_Contents"
+;;	 :группа "doc"
+;;	 :ru "Копирует содержимое документа в предоставленный буфер"
+;;	 :en "Copy document data to given buffer"
+;;	 :параметры ((:тип "Doc"
+;;		      :имя "pdf"
+;;		      :ru ":param_pdf"
+;;		      :en ":param_pdf")
+;;		     (:тип "BYTE*"
+;;		      :имя "buf"
+;;		      :ru "Указатель на подготовленный буфер"
+;;		      :en "Output buffer pointer")
+;;		     (:тип "UINT32*"
+;;		      :имя "size"
+;;		      :ru "Размер данных в выходном буфере"
+;;		      :en "Output buffer size"))
+;;	 :результат (:тип "STATUS"
+;;		     :ru "\\ref BRST_OK если удалось записать содержимое документа в буфер, иначе возвращает код ошибки."
+;;		     :en "\\ref BRST_OK on success copying. Otherwise returns error code.")
+;;	 :ошибки ("INVALID_DOCUMENT"))
 	
 	;; === Doc_MMgr
 	(:название "Doc_MMgr"
@@ -183,4 +197,18 @@ If this parameter set to non-zero value, memory management will be done as follo
 	 :результат (:тип "MMgr"
 		     :ru "Менеджер памяти документа, если он установлен."
 		     :en "Document's memory manager"))
+
+	;; === Doc_Free
+	(:название "Doc_Free"
+	 :группа "doc"
+	 :ru "Высвобождает данные документа"
+	 :en "Frees document data"
+	 :параметры ((:тип "Doc"
+		      :имя "pdf"
+		      :ru ":param_pdf"
+		      :en ":param_pdf")
+		     )
+	 :результат (:тип "void"
+		     :ru "Нет"
+		     :en "No"))
 	))

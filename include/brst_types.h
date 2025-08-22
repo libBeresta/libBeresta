@@ -50,6 +50,8 @@ typedef unsigned long      BRST_STATUS;
 typedef BRST_UINT16        BRST_CID;
 typedef BRST_UINT16        BRST_UNICODE;
 
+typedef const BRST_REAL*   BRST_DASH_PATTERN;
+
 /*  BRST_Point struct */
 typedef struct _BRST_Point {
     BRST_REAL x;

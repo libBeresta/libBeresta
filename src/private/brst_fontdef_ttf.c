@@ -147,7 +147,7 @@ FreeFunc(BRST_FontDef fontdef)
 {
     BRST_TTFontDefAttr attr = (BRST_TTFontDefAttr)fontdef->attr;
 
-    BRST_PTRACE((" BRST_TTFontDef_FreeFunc\n"));
+    BRST_PTRACE(" BRST_TTFontDef_FreeFunc\n");
 
     if (attr) {
         InitAttr(fontdef);
@@ -215,7 +215,7 @@ BRST_TTFontDef_New(BRST_MMgr mmgr)
     BRST_FontDef fontdef;
     BRST_TTFontDefAttr fontdef_attr;
 
-    BRST_PTRACE((" BRST_TTFontDef_New\n"));
+    BRST_PTRACE(" BRST_TTFontDef_New\n");
 
     if (!mmgr)
         return NULL;
@@ -253,7 +253,7 @@ BRST_TTFontDef_Load(BRST_MMgr mmgr,
     BRST_STATUS ret;
     BRST_FontDef fontdef;
 
-    BRST_PTRACE((" BRST_TTFontDef_Load\n"));
+    BRST_PTRACE(" BRST_TTFontDef_Load\n");
 
     fontdef = BRST_TTFontDef_New(mmgr);
 
@@ -280,7 +280,7 @@ BRST_TTFontDef_Load2(BRST_MMgr mmgr,
     BRST_STATUS ret;
     BRST_FontDef fontdef;
 
-    BRST_PTRACE((" BRST_TTFontDef_Load\n"));
+    BRST_PTRACE(" BRST_TTFontDef_Load\n");
 
     fontdef = BRST_TTFontDef_New(mmgr);
 
@@ -311,14 +311,14 @@ DumpTable(BRST_FontDef fontdef)
         BRST_TTF_Table* tbl = FindTable(fontdef, REQUIRED_TAGS[i]);
 
         if (!tbl) {
-            BRST_PTRACE((" ERR: cannot seek %s\n", fname));
+            BRST_PTRACE(" ERR: cannot seek %s\n", fname);
             return;
         }
 
         BRST_MemSet(fname, 0, 9);
         BRST_MemCpy(fname, REQUIRED_TAGS[i], 4);
         BRST_MemCpy(fname + 4, ".dat", 4);
-        BRST_PTRACE((" %s open\n", fname));
+        BRST_PTRACE(" %s open\n", fname);
 
         if (BRST_MemCmp(fname, "OS/2", 4) == 0)
             fname[2] = '_';
@@ -326,14 +326,14 @@ DumpTable(BRST_FontDef fontdef)
         stream = BRST_FileWriter_New(fontdef->mmgr, fname);
 
         if (!stream) {
-            BRST_PTRACE((" ERR: cannot open %s\n", fname));
+            BRST_PTRACE(" ERR: cannot open %s\n", fname);
         } else {
             BRST_STATUS ret;
             BRST_UINT tbl_len = tbl->length;
 
             ret = BRST_Stream_Seek(attr->stream, tbl->offset, BRST_SEEK_SET);
             if (ret != BRST_OK) {
-                BRST_PTRACE((" ERR: cannot seek \n"));
+                BRST_PTRACE(" ERR: cannot seek \n");
                 BRST_Stream_Free(stream);
                 return;
             }
@@ -351,7 +351,7 @@ DumpTable(BRST_FontDef fontdef)
 
                 ret = BRST_Stream_Write(stream, buf, len);
                 if (ret != BRST_OK) {
-                    BRST_PTRACE((" ERR: cannot write\n"));
+                    BRST_PTRACE(" ERR: cannot write\n");
                     break;
                 }
 
@@ -376,7 +376,7 @@ LoadFontData(BRST_FontDef fontdef,
     BRST_STATUS ret;
     BRST_TTF_Table* tbl;
 
-    BRST_PTRACE((" BRST_TTFontDef_LoadFontData\n"));
+    BRST_PTRACE(" BRST_TTFontDef_LoadFontData\n");
 
     attr->stream    = stream;
     attr->embedding = embedding;
@@ -424,9 +424,9 @@ LoadFontData(BRST_FontDef fontdef,
     fontdef->x_height           = (BRST_UINT16)BRST_TTFontDef_CharBBox(fontdef, (BRST_UINT16)'x').top;
     fontdef->missing_width      = (BRST_INT16)((BRST_UINT32)attr->h_metric[0].advance_width * 1000 / attr->header.units_per_em);
 
-    BRST_PTRACE((" fontdef->cap_height=%d\n", fontdef->cap_height));
-    BRST_PTRACE((" fontdef->x_height=%d\n", fontdef->x_height));
-    BRST_PTRACE((" fontdef->missing_width=%d\n", fontdef->missing_width));
+    BRST_PTRACE(" fontdef->cap_height=%d\n", fontdef->cap_height);
+    BRST_PTRACE(" fontdef->x_height=%d\n", fontdef->x_height);
+    BRST_PTRACE(" fontdef->missing_width=%d\n", fontdef->missing_width);
 
     if (!embedding) {
         BRST_Stream_Free(attr->stream);
@@ -449,7 +449,7 @@ LoadFontData2(BRST_FontDef fontdef,
     BRST_UINT32 offset;
     BRST_UINT size;
 
-    BRST_PTRACE((" BRST_TTFontDef_LoadFontData2\n"));
+    BRST_PTRACE(" BRST_TTFontDef_LoadFontData2\n");
 
     attr->stream    = stream;
     attr->embedding = embedding;
@@ -471,8 +471,8 @@ LoadFontData2(BRST_FontDef fontdef,
     if ((ret = GetUINT32(stream, &num_fonts)) != BRST_OK)
         return ret;
 
-    BRST_PTRACE((" BRST_TTFontDef_LoadFontData2 num_fonts=%u\n",
-        (BRST_UINT)num_fonts));
+    BRST_PTRACE(" BRST_TTFontDef_LoadFontData2 num_fonts=%u\n",
+        (BRST_UINT)num_fonts);
 
     if (index >= num_fonts)
         return BRST_Error_Set(fontdef->error, BRST_INVALID_TTC_INDEX, 0);
@@ -501,7 +501,7 @@ BRST_TTFontDef_CharBBox(BRST_FontDef fontdef,
     BRST_INT m;
 
     if (gid == 0) {
-        BRST_PTRACE((" GetCharHeight cannot get gid char=0x%04x\n", unicode));
+        BRST_PTRACE(" GetCharHeight cannot get gid char=0x%04x\n", unicode);
         return bbox;
     }
 
@@ -530,10 +530,10 @@ BRST_TTFontDef_CharBBox(BRST_FontDef fontdef,
     if (ret != BRST_OK)
         return BRST_ToBox(0, 0, 0, 0);
 
-    BRST_PTRACE((" BRST_TTFontDef_CharBBox char=0x%04X, "
-                 "box=[%f,%f,%f,%f]\n",
-        unicode, bbox.left, bbox.bottom, bbox.right,
-        bbox.top));
+//    BRST_PTRACE(" BRST_TTFontDef_CharBBox char=0x%04X, "
+//                 "box=[%f,%f,%f,%f]\n",
+//        unicode, bbox.left, bbox.bottom, bbox.right,
+//        bbox.top));
 
     return bbox;
 }
@@ -648,7 +648,7 @@ LoadTTFTable(BRST_FontDef fontdef)
     BRST_INT i;
     BRST_TTF_Table* tbl;
 
-    BRST_PTRACE((" BRST_TTFontDef_LoadTTFTable\n"));
+    BRST_PTRACE(" BRST_TTFontDef_LoadTTFTable\n");
 
     ret += GetUINT32(attr->stream, &attr->offset_tbl.sfnt_version);
     ret += GetUINT16(attr->stream, &attr->offset_tbl.num_tables);
@@ -676,10 +676,10 @@ LoadTTFTable(BRST_FontDef fontdef)
         ret += GetUINT32(attr->stream, &tbl->offset);
         ret += GetUINT32(attr->stream, &tbl->length);
 
-        BRST_PTRACE((" [%d] tag=[%c%c%c%c] check_sum=%u offset=%u length=%u\n",
+        BRST_PTRACE(" [%d] tag=[%c%c%c%c] check_sum=%u offset=%u length=%u\n",
             i, tbl->tag[0], tbl->tag[1], tbl->tag[2], tbl->tag[3],
             (BRST_UINT)tbl->check_sum, (BRST_UINT)tbl->offset,
-            (BRST_UINT)tbl->length));
+            (BRST_UINT)tbl->length);
 
         if (ret != BRST_OK)
             return BRST_Error_Code(fontdef->error);
@@ -699,7 +699,7 @@ ParseHead(BRST_FontDef fontdef)
     BRST_STATUS ret;
     BRST_UINT size;
 
-    BRST_PTRACE((" BRST_TTFontDef_ParseHead\n"));
+    BRST_PTRACE(" BRST_TTFontDef_ParseHead\n");
 
     if (!tbl)
         return BRST_Error_Set(fontdef->error, BRST_TTF_MISSING_TABLE, 5);
@@ -750,7 +750,7 @@ ParseMaxp(BRST_FontDef fontdef)
     BRST_TTF_Table* tbl     = FindTable(fontdef, "maxp");
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_TTFontDef_ParseMaxp\n"));
+    BRST_PTRACE(" BRST_TTFontDef_ParseMaxp\n");
 
     if (!tbl)
         return BRST_Error_Set(fontdef->error, BRST_TTF_MISSING_TABLE, 9);
@@ -761,8 +761,8 @@ ParseMaxp(BRST_FontDef fontdef)
 
     ret = GetUINT16(attr->stream, &attr->num_glyphs);
 
-    BRST_PTRACE((" BRST_TTFontDef_ParseMaxp num_glyphs=%u\n",
-        attr->num_glyphs));
+    BRST_PTRACE(" BRST_TTFontDef_ParseMaxp num_glyphs=%u\n",
+        attr->num_glyphs);
 
     return ret;
 }
@@ -774,7 +774,7 @@ ParseHhea(BRST_FontDef fontdef)
     BRST_TTF_Table* tbl     = FindTable(fontdef, "hhea");
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_TTFontDef_ParseHhea\n"));
+    BRST_PTRACE(" BRST_TTFontDef_ParseHhea\n");
 
     if (!tbl)
         return BRST_Error_Set(fontdef->error, BRST_TTF_MISSING_TABLE, 6);
@@ -799,8 +799,8 @@ ParseHhea(BRST_FontDef fontdef)
     if (ret != BRST_OK)
         return BRST_Error_Code(fontdef->error);
 
-    BRST_PTRACE((" BRST_TTFontDef_ParseHhea num_h_metric=%u\n",
-        attr->num_h_metric));
+    BRST_PTRACE(" BRST_TTFontDef_ParseHhea num_h_metric=%u\n",
+        attr->num_h_metric);
 
     return ret;
 }
@@ -817,7 +817,7 @@ ParseCMap(BRST_FontDef fontdef)
     BRST_UINT32 ms_unicode_encoding_offset = 0;
     BRST_UINT32 byte_encoding_offset       = 0;
 
-    BRST_PTRACE((" BRST_TTFontDef_ParseCMap\n"));
+    BRST_PTRACE(" BRST_TTFontDef_ParseCMap\n");
 
     if (!tbl)
         return BRST_Error_Set(fontdef->error, BRST_TTF_MISSING_TABLE, 1);
@@ -863,10 +863,10 @@ ParseCMap(BRST_FontDef fontdef)
         if (ret != BRST_OK)
             return ret;
 
-        BRST_PTRACE((" BRST_TTFontDef_ParseCMap tables[%d] platformID=%u "
+        BRST_PTRACE(" BRST_TTFontDef_ParseCMap tables[%d] platformID=%u "
                      "encodingID=%u format=%u offset=%u\n",
             i, platformID,
-            encodingID, format, (BRST_UINT)offset));
+            encodingID, format, (BRST_UINT)offset);
 
         /* MS-Unicode-CMAP is used for priority */
         if (platformID == 3 && encodingID == 1 && format == 4) {
@@ -901,13 +901,13 @@ ParseCMap(BRST_FontDef fontdef)
     }
 
     if (ms_unicode_encoding_offset != 0) {
-        BRST_PTRACE((" found microsoft unicode cmap.\n"));
+        BRST_PTRACE(" found microsoft unicode cmap.\n");
         ret = ParseCMAP_format4(fontdef, ms_unicode_encoding_offset + tbl->offset);
     } else if (byte_encoding_offset != 0) {
-        BRST_PTRACE((" found byte encoding cmap.\n"));
+        BRST_PTRACE(" found byte encoding cmap.\n");
         ret = ParseCMAP_format0(fontdef, byte_encoding_offset + tbl->offset);
     } else {
-        BRST_PTRACE((" cannot found target cmap.\n"));
+        BRST_PTRACE(" cannot found target cmap.\n");
         return BRST_Error_Set(fontdef->error, BRST_TTF_INVALID_FORMAT, 0);
     }
 
@@ -925,7 +925,7 @@ ParseCMAP_format0(BRST_FontDef fontdef,
     BRST_UINT16* parray;
     BRST_UINT i;
 
-    BRST_PTRACE((" ParseCMAP_format0\n"));
+    BRST_PTRACE(" ParseCMAP_format0\n");
 
     ret = BRST_Stream_Seek(attr->stream, offset, BRST_SEEK_SET);
     if (ret != BRST_OK)
@@ -955,8 +955,8 @@ ParseCMAP_format0(BRST_FontDef fontdef,
     parray = attr->cmap.glyph_id_array;
     for (i = 0; i < 256; i++) {
         *parray = attr->cmap.glyph_id_array[i];
-        BRST_PTRACE((" ParseCMAP_format0 glyph_id_array[%d]=%u\n",
-            i, *parray));
+        BRST_PTRACE(" ParseCMAP_format0 glyph_id_array[%d]=%u\n",
+            i, *parray);
         parray++;
     }
 
@@ -977,7 +977,7 @@ ParseCMAP_format4(BRST_FontDef fontdef,
     BRST_UINT16* pglyph_id_array;
     BRST_INT32 num_read;
 
-    BRST_PTRACE((" ParseCMAP_format4\n"));
+    BRST_PTRACE(" ParseCMAP_format4\n");
 
     if ((ret = BRST_Stream_Seek(attr->stream, offset, BRST_SEEK_SET)) != BRST_OK)
         return ret;
@@ -1070,11 +1070,11 @@ ParseCMAP_format4(BRST_FontDef fontdef,
 #ifdef LIBBRST_DEBUG
     /* print all elements of cmap table */
     for (i = 0; i < (BRST_UINT)attr->cmap.seg_count_x2 / 2; i++) {
-        BRST_PTRACE((" ParseCMAP_format4[%d] start_count=0x%04X, "
+        BRST_PTRACE(" ParseCMAP_format4[%d] start_count=0x%04X, "
                      "end_count=0x%04X, id_delta=%d, id_range_offset=%u\n",
             i,
             attr->cmap.start_count[i], attr->cmap.end_count[i],
-            attr->cmap.id_delta[i], attr->cmap.id_range_offset[i]));
+            attr->cmap.id_delta[i], attr->cmap.id_range_offset[i]);
     }
 #endif
 
@@ -1090,7 +1090,7 @@ BRST_TTFontDef_Glyphid(BRST_FontDef fontdef,
     BRST_UINT seg_count     = attr->cmap.seg_count_x2 / 2;
     BRST_UINT i;
 
-    BRST_PTRACE((" BRST_TTFontDef_Glyphid\n"));
+    BRST_PTRACE(" BRST_TTFontDef_Glyphid\n");
 
     /* format 0 */
     if (attr->cmap.format == 0) {
@@ -1111,30 +1111,30 @@ BRST_TTFontDef_Glyphid(BRST_FontDef fontdef,
     }
 
     if (attr->cmap.start_count[i] > unicode) {
-        BRST_PTRACE((" BRST_TTFontDef_Glyphid undefined char(0x%04X)\n",
-            unicode));
+        BRST_PTRACE(" BRST_TTFontDef_Glyphid undefined char(0x%04X)\n",
+            unicode);
         return 0;
     }
 
     if (attr->cmap.id_range_offset[i] == 0) {
-        BRST_PTRACE((" BRST_TTFontDef_Glyphid idx=%u code=%u "
+        BRST_PTRACE(" BRST_TTFontDef_Glyphid idx=%u code=%u "
                      " ret=%u\n",
             i, unicode,
-            unicode + attr->cmap.id_delta[i]));
+            unicode + attr->cmap.id_delta[i]);
 
         return (BRST_UINT16)(unicode + attr->cmap.id_delta[i]);
     } else {
         BRST_UINT idx = attr->cmap.id_range_offset[i] / 2 + (unicode - attr->cmap.start_count[i]) - (seg_count - i);
 
         if (idx > attr->cmap.glyph_id_array_count) {
-            BRST_PTRACE((" BRST_TTFontDef_Glyphid[%u] %u > %u\n",
-                i, idx, (BRST_UINT)attr->cmap.glyph_id_array_count));
+            BRST_PTRACE(" BRST_TTFontDef_Glyphid[%u] %u > %u\n",
+                i, idx, (BRST_UINT)attr->cmap.glyph_id_array_count);
             return 0;
         } else {
             BRST_UINT16 gid = (BRST_UINT16)(attr->cmap.glyph_id_array[idx] + attr->cmap.id_delta[i]);
-            BRST_PTRACE((" BRST_TTFontDef_Glyphid idx=%u unicode=0x%04X "
+            BRST_PTRACE(" BRST_TTFontDef_Glyphid idx=%u unicode=0x%04X "
                          "id=%u\n",
-                idx, unicode, gid));
+                idx, unicode, gid);
             return gid;
         }
     }
@@ -1149,12 +1149,12 @@ BRST_TTFontDef_CharWidth(BRST_FontDef fontdef,
     BRST_TTFontDefAttr attr = (BRST_TTFontDefAttr)fontdef->attr;
     BRST_UINT16 gid         = BRST_TTFontDef_Glyphid(fontdef, unicode);
 
-    BRST_PTRACE((" BRST_TTFontDef_CharWidth\n"));
+    BRST_PTRACE(" BRST_TTFontDef_CharWidth\n");
 
     if (gid >= attr->num_glyphs) {
-        BRST_PTRACE((" BRST_TTFontDef_CharWidth WARNING gid > "
+        BRST_PTRACE(" BRST_TTFontDef_CharWidth WARNING gid > "
                      "num_glyphs %u > %u\n",
-            gid, attr->num_glyphs));
+            gid, attr->num_glyphs);
         return fontdef->missing_width;
     }
 
@@ -1181,7 +1181,7 @@ CheckCompositeGlyph(BRST_FontDef fontdef,
     /* BRST_UINT len = attr->glyph_tbl.offsets[gid + 1] - offset; */
     BRST_STATUS ret;
 
-    BRST_PTRACE((" CheckCompositeGlyph\n"));
+    BRST_PTRACE(" CheckCompositeGlyph\n");
 
     if (attr->header.index_to_loc_format == 0)
         offset *= 2;
@@ -1207,7 +1207,7 @@ CheckCompositeGlyph(BRST_FontDef fontdef,
         if (num_of_contours != -1)
             return BRST_OK;
 
-        BRST_PTRACE((" CheckCompositeGlyph composite font gid=%u\n", gid));
+        BRST_PTRACE(" CheckCompositeGlyph composite font gid=%u\n", gid);
 
         if ((ret = BRST_Stream_Seek(attr->stream, 8, BRST_SEEK_CUR))
             != BRST_OK)
@@ -1253,10 +1253,10 @@ CheckCompositeGlyph(BRST_FontDef fontdef,
                 BRST_Stream_Seek(attr->stream, next_glyph, BRST_SEEK_SET);
             }
 
-            BRST_PTRACE((" gid=%d, num_of_contours=%d, flags=%d, "
+            BRST_PTRACE(" gid=%d, num_of_contours=%d, flags=%d, "
                          "glyph_index=%d\n",
                 gid, num_of_contours, flags,
-                glyph_index));
+                glyph_index);
 
         } while (flags & MORE_COMPONENTS);
     }
@@ -1272,12 +1272,12 @@ BRST_TTFontDef_GidWidth(BRST_FontDef fontdef,
     BRST_TTF_LongHorMetric hmetrics;
     BRST_TTFontDefAttr attr = (BRST_TTFontDefAttr)fontdef->attr;
 
-    BRST_PTRACE((" BRST_TTFontDef_GidWidth\n"));
+    BRST_PTRACE(" BRST_TTFontDef_GidWidth\n");
 
     if (gid >= attr->num_glyphs) {
-        BRST_PTRACE((" BRST_TTFontDef_GidWidth WARNING gid > "
+        BRST_PTRACE(" BRST_TTFontDef_GidWidth WARNING gid > "
                      "num_glyphs %u > %u\n",
-            gid, attr->num_glyphs));
+            gid, attr->num_glyphs);
         return fontdef->missing_width;
     }
 
@@ -1285,8 +1285,8 @@ BRST_TTFontDef_GidWidth(BRST_FontDef fontdef,
 
     advance_width = (BRST_UINT16)((BRST_UINT)hmetrics.advance_width * 1000 / attr->header.units_per_em);
 
-    BRST_PTRACE((" BRST_TTFontDef_GidWidth gid=%u, width=%u\n",
-        gid, advance_width));
+    BRST_PTRACE(" BRST_TTFontDef_GidWidth gid=%u, width=%u\n",
+        gid, advance_width);
 
     return (BRST_INT16)advance_width;
 }
@@ -1301,7 +1301,7 @@ ParseHmtx(BRST_FontDef fontdef)
     BRST_UINT16 save_aw = 0;
     BRST_TTF_LongHorMetric* pmetric;
 
-    BRST_PTRACE((" BRST_TTFontDef_ParseHtmx\n"));
+    BRST_PTRACE(" BRST_TTFontDef_ParseHtmx\n");
 
     if (!tbl)
         return BRST_Error_Set(fontdef->error, BRST_TTF_MISSING_TABLE, 7);
@@ -1327,8 +1327,8 @@ ParseHmtx(BRST_FontDef fontdef)
         if ((ret = GetINT16(attr->stream, &pmetric->lsb)) != BRST_OK)
             return ret;
 
-        BRST_PTRACE((" ParseHmtx metric[%u] aw=%u lsb=%d\n", i,
-            pmetric->advance_width, pmetric->lsb));
+        BRST_PTRACE(" ParseHmtx metric[%u] aw=%u lsb=%d\n", i,
+            pmetric->advance_width, pmetric->lsb);
 
         save_aw = pmetric->advance_width;
         pmetric++;
@@ -1357,7 +1357,7 @@ ParseLoca(BRST_FontDef fontdef)
     BRST_UINT i;
     BRST_UINT32* poffset;
 
-    BRST_PTRACE((" BRST_TTFontDef_ParseLoca\n"));
+    BRST_PTRACE(" BRST_TTFontDef_ParseLoca\n");
 
     if (!tbl)
         return BRST_Error_Set(fontdef->error, BRST_TTF_MISSING_TABLE, 8);
@@ -1414,7 +1414,7 @@ ParseLoca(BRST_FontDef fontdef)
 #ifdef LIBBRST_DEBUG
     poffset = attr->glyph_tbl.offsets;
     for (i = 0; i <= attr->num_glyphs; i++) {
-        BRST_PTRACE((" ParseLOCA offset[%u]=%u\n", i, (BRST_UINT)*poffset));
+        BRST_PTRACE(" ParseLOCA offset[%u]=%u\n", i, (BRST_UINT)*poffset));
         poffset++;
     }
 #endif
@@ -1470,7 +1470,7 @@ ParseName(BRST_FontDef fontdef)
     BRST_UINT len_id2u    = 0;
     char tmp[BRST_LIMIT_MAX_NAME_LEN + 1];
 
-    BRST_PTRACE((" BRST_TTFontDef_ParseMaxp\n"));
+    BRST_PTRACE(" BRST_TTFontDef_ParseMaxp\n");
 
     if (!tbl)
         return BRST_Error_Set(fontdef->error, BRST_TTF_MISSING_TABLE, 10);
@@ -1485,9 +1485,9 @@ ParseName(BRST_FontDef fontdef)
     if (ret != BRST_OK)
         return BRST_Error_Code(fontdef->error);
 
-    BRST_PTRACE((" ParseName() format=%u, count=%u, string_offset=%u\n",
+    BRST_PTRACE(" ParseName() format=%u, count=%u, string_offset=%u\n",
         attr->name_tbl.format, attr->name_tbl.count,
-        attr->name_tbl.string_offset));
+        attr->name_tbl.string_offset);
 
     attr->name_tbl.name_records = BRST_GetMem(fontdef->mmgr,
         sizeof(BRST_TTF_NameRecord) * attr->name_tbl.count);
@@ -1508,9 +1508,9 @@ ParseName(BRST_FontDef fontdef)
         if (ret != BRST_OK)
             return BRST_Error_Code(fontdef->error);
 
-        BRST_PTRACE((" ParseName() platformID=%u, encodingID=%d, nameID=%d\n",
+        BRST_PTRACE(" ParseName() platformID=%u, encodingID=%d, nameID=%d\n",
             name_rec->platform_id, name_rec->encoding_id,
-            name_rec->name_id));
+            name_rec->name_id);
 
         if (name_rec->platform_id == 1 && name_rec->encoding_id == 0 && name_rec->name_id == 6) {
             offset_id1 = tbl->offset + name_rec->offset + attr->name_tbl.string_offset;
@@ -1613,7 +1613,7 @@ ParseName(BRST_FontDef fontdef)
 
     BRST_MemCpy((BRST_BYTE*)fontdef->base_font, (BRST_BYTE*)attr->base_font, BRST_LIMIT_MAX_NAME_LEN + 1);
 
-    BRST_PTRACE(("  ParseName() base_font=%s\n", attr->base_font));
+    BRST_PTRACE("  ParseName() base_font=%s\n", attr->base_font);
 
     return BRST_OK;
 }
@@ -1627,7 +1627,7 @@ ParseOS2(BRST_FontDef fontdef)
     BRST_UINT16 version;
     BRST_UINT len;
 
-    BRST_PTRACE((" ParseOS2\n"));
+    BRST_PTRACE(" ParseOS2\n");
 
     if (!tbl)
         return BRST_Error_Set(fontdef->error, BRST_TTF_MISSING_TABLE, 0);
@@ -1665,12 +1665,12 @@ ParseOS2(BRST_FontDef fontdef)
     if ((ret = BRST_Stream_Read(attr->stream, attr->panose, &len)) != BRST_OK)
         return ret;
 
-    BRST_PTRACE((" ParseOS2 sFamilyClass=%d-%d "
+    BRST_PTRACE(" ParseOS2 sFamilyClass=%d-%d "
                  "Panose=%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X\n",
         attr->sfamilyclass[0], attr->sfamilyclass[1],
         attr->panose[0], attr->panose[1], attr->panose[2], attr->panose[3],
         attr->panose[4], attr->panose[5], attr->panose[6], attr->panose[7],
-        attr->panose[8], attr->panose[9]));
+        attr->panose[8], attr->panose[9]);
 
     /* Class ID = 1   Oldstyle Serifs
        Class ID = 2   Transitional Serifs
@@ -1706,9 +1706,9 @@ ParseOS2(BRST_FontDef fontdef)
             return ret;
     }
 
-    BRST_PTRACE(("  ParseOS2 CodePageRange1=%08X CodePageRange2=%08X\n",
+    BRST_PTRACE("  ParseOS2 CodePageRange1=%08X CodePageRange2=%08X\n",
         (BRST_UINT)attr->code_page_range1,
-        (BRST_UINT)attr->code_page_range2));
+        (BRST_UINT)attr->code_page_range2);
 
     return BRST_OK;
 }
@@ -1724,7 +1724,7 @@ RecreateGLYF(BRST_FontDef fontdef,
     BRST_STATUS ret;
     BRST_INT i;
 
-    BRST_PTRACE((" RecreateGLYF\n"));
+    BRST_PTRACE(" RecreateGLYF\n");
 
     for (i = 0; i < attr->num_glyphs; i++) {
         BRST_BYTE buf[BRST_STREAM_BUF_SIZE];
@@ -1739,9 +1739,9 @@ RecreateGLYF(BRST_FontDef fontdef,
                 len *= 2;
             }
 
-            BRST_PTRACE((" RecreateGLYF[%u] move from [%u] to [%u]\n", i,
+            BRST_PTRACE(" RecreateGLYF[%u] move from [%u] to [%u]\n", i,
                 (BRST_UINT)attr->glyph_tbl.base_offset + offset,
-                (BRST_UINT)new_offsets[i]));
+                (BRST_UINT)new_offsets[i]);
 
             if (attr->header.index_to_loc_format == 0)
                 offset *= 2;
@@ -1779,7 +1779,7 @@ RecreateGLYF(BRST_FontDef fontdef,
 
 #ifdef DEBUG
     for (i = 0; i <= attr->num_glyphs; i++) {
-        BRST_PTRACE((" RecreateGLYF[%u] offset=%u\n", i, new_offsets[i]));
+        BRST_PTRACE(" RecreateGLYF[%u] offset=%u\n", i, new_offsets[i]));
     }
 #endif
 
@@ -1798,7 +1798,7 @@ RecreateName(BRST_FontDef fontdef,
     BRST_Stream tmp_stream = BRST_MemStream_New(fontdef->mmgr,
         BRST_STREAM_BUF_SIZE);
 
-    BRST_PTRACE((" RecreateName\n"));
+    BRST_PTRACE(" RecreateName\n");
 
     if (!tmp_stream)
         return BRST_Error_Code(fontdef->error);
@@ -1863,12 +1863,12 @@ RecreateName(BRST_FontDef fontdef,
             tmp_len -= len;
         }
 
-        BRST_PTRACE((" RecreateNAME name_rec[%u] platform_id=%u "
+        BRST_PTRACE(" RecreateNAME name_rec[%u] platform_id=%u "
                      "encoding_id=%u language_id=%u name_rec->name_id=%u "
                      "length=%u offset=%u\n",
             i, name_rec->platform_id,
             name_rec->encoding_id, name_rec->language_id,
-            name_rec->name_id, name_len, rec_offset));
+            name_rec->name_id, name_len, rec_offset);
 
         name_rec++;
     }
@@ -1889,7 +1889,7 @@ WriteHeader(BRST_FontDef fontdef,
     BRST_TTFontDefAttr attr = (BRST_TTFontDefAttr)fontdef->attr;
     BRST_STATUS ret         = BRST_OK;
 
-    BRST_PTRACE((" WriteHeader\n"));
+    BRST_PTRACE(" WriteHeader\n");
 
     ret += BRST_Stream_Write(stream, attr->header.version_number, 4);
     ret += WriteUINT32(stream, attr->header.font_revision);
@@ -1939,7 +1939,7 @@ BRST_TTFontDef_SaveFontData(BRST_FontDef fontdef,
     emptyTable.length = 0;
     emptyTable.offset = 0;
 
-    BRST_PTRACE((" SaveFontData\n"));
+    BRST_PTRACE(" SaveFontData\n");
 
     ret = WriteUINT32(stream, attr->offset_tbl.sfnt_version);
     ret += WriteUINT16(stream, BRST_REQUIRED_TAGS_COUNT);
@@ -2088,8 +2088,8 @@ BRST_TTFontDef_SaveFontData(BRST_FontDef fontdef,
         BRST_UINT32 buf;
         BRST_UINT length = tbl.length;
 
-        BRST_PTRACE((" SaveFontData() tag[%s] length=%u\n",
-            REQUIRED_TAGS[i], length));
+        BRST_PTRACE(" SaveFontData() tag[%s] length=%u\n",
+            REQUIRED_TAGS[i], length);
 
         if ((ret = BRST_Stream_Seek(tmp_stream, tbl.offset, BRST_SEEK_SET))
             != BRST_OK)
@@ -2111,9 +2111,9 @@ BRST_TTFontDef_SaveFontData(BRST_FontDef fontdef,
         if (ret != BRST_OK)
             break;
 
-        BRST_PTRACE((" SaveFontData tag[%s] check-sum=%u offset=%u\n",
+        BRST_PTRACE(" SaveFontData tag[%s] check-sum=%u offset=%u\n",
             REQUIRED_TAGS[i], (BRST_UINT)tbl.check_sum,
-            (BRST_UINT)tbl.offset));
+            (BRST_UINT)tbl.offset);
 
         ret += BRST_Stream_Write(stream, (BRST_BYTE*)REQUIRED_TAGS[i], 4);
         ret += WriteUINT32(stream, tbl.check_sum);
@@ -2151,8 +2151,8 @@ BRST_TTFontDef_SaveFontData(BRST_FontDef fontdef,
     if (ret != BRST_OK)
         goto Exit;
 
-    BRST_PTRACE((" SaveFontData new checkSumAdjustment=%u\n",
-        (BRST_UINT)tmp_check_sum));
+    BRST_PTRACE(" SaveFontData new checkSumAdjustment=%u\n",
+        (BRST_UINT)tmp_check_sum);
 
     UINT32Swap(&tmp_check_sum);
 
@@ -2183,7 +2183,7 @@ void BRST_TTFontDef_SetTagName(BRST_FontDef fontdef,
     char buf[BRST_LIMIT_MAX_NAME_LEN + 1];
     BRST_UINT i;
 
-    BRST_PTRACE((" BRST_TTFontDef_SetTagName\n"));
+    BRST_PTRACE(" BRST_TTFontDef_SetTagName\n");
 
     if (BRST_StrLen(tag, BRST_LIMIT_MAX_NAME_LEN) != BRST_TTF_FONT_TAG_LEN)
         return;
@@ -2221,8 +2221,8 @@ FindTable(BRST_FontDef fontdef,
 
     for (i = 0; i < attr->offset_tbl.num_tables; i++, tbl++) {
         if (BRST_MemCmp((BRST_BYTE*)tbl->tag, (BRST_BYTE*)tag, 4) == 0) {
-            BRST_PTRACE((" FindTable find table[%c%c%c%c]\n",
-                tbl->tag[0], tbl->tag[1], tbl->tag[2], tbl->tag[3]));
+            BRST_PTRACE(" FindTable find table[%c%c%c%c]\n",
+                tbl->tag[0], tbl->tag[1], tbl->tag[2], tbl->tag[3]);
             return tbl;
         }
     }

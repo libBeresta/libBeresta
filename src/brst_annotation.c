@@ -78,7 +78,7 @@ AddAnnotation(BRST_Page page,
     BRST_Array array;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" AddAnnotation\n"));
+    BRST_PTRACE(" AddAnnotation\n");
 
     /* find "Annots" entry */
     array = BRST_Dict_Item(page, "Annots", BRST_OCLASS_ARRAY);
@@ -108,7 +108,7 @@ CheckSubType(BRST_Annotation annot,
 {
     BRST_Name subtype;
 
-    BRST_PTRACE((" BRST_CheckSubType\n"));
+    BRST_PTRACE(" BRST_CheckSubType\n");
 
     if (!BRST_Annotation_Validate(annot))
         return BRST_FALSE;
@@ -138,7 +138,7 @@ BRST_Annotation_SetBorderStyle(BRST_Annotation annot,
     BRST_Array dash;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Annotation_SetBoderStyle\n"));
+    BRST_PTRACE(" BRST_Annotation_SetBoderStyle\n");
 
     bs = BRST_Dict_New(annot->mmgr);
     if (!bs)
@@ -198,7 +198,7 @@ BRST_LinkAnnot_SetJavaScript(BRST_Annotation annot, BRST_JavaScript javascript)
     BRST_Dict action;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_LinkAnnot_SetJavaScript\n"));
+    BRST_PTRACE(" BRST_LinkAnnot_SetJavaScript\n");
 
     if (!CheckSubType(annot, BRST_ANNOT_LINK))
         return BRST_INVALID_ANNOTATION;
@@ -230,7 +230,7 @@ BRST_LinkAnnot_SetBorderStyle(BRST_Annotation annot,
     BRST_Array array;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_LinkAnnot_SetBorderStyle\n"));
+    BRST_PTRACE(" BRST_LinkAnnot_SetBorderStyle\n");
 
     if (!CheckSubType(annot, BRST_ANNOT_LINK))
         return BRST_INVALID_ANNOTATION;
@@ -276,7 +276,7 @@ BRST_LinkAnnot_SetHighlightMode(BRST_Annotation annot,
 {
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_LinkAnnot_SetHighlightMode\n"));
+    BRST_PTRACE(" BRST_LinkAnnot_SetHighlightMode\n");
 
     if (!CheckSubType(annot, BRST_ANNOT_LINK))
         return BRST_INVALID_ANNOTATION;
@@ -309,7 +309,7 @@ BRST_Annot_SetRGBColor(BRST_Annotation annot, BRST_RGBColor color)
     BRST_Array cArray;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_Annot_SetRGBColor\n"));
+    BRST_PTRACE(" BRST_Annot_SetRGBColor\n");
 
     cArray = BRST_Array_New(annot->mmgr);
     if (!cArray)
@@ -332,7 +332,7 @@ BRST_Annot_SetCMYKColor(BRST_Annotation annot, BRST_CMYKColor color)
     BRST_Array cArray;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_Annot_SetCMYKColor\n"));
+    BRST_PTRACE(" BRST_Annot_SetCMYKColor\n");
 
     cArray = BRST_Array_New(annot->mmgr);
     if (!cArray)
@@ -357,7 +357,7 @@ BRST_Annot_SetGrayColor(BRST_Annotation annot, BRST_REAL color)
     BRST_Array cArray;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_Annot_SetGrayColor\n"));
+    BRST_PTRACE(" BRST_Annot_SetGrayColor\n");
 
     cArray = BRST_Array_New(annot->mmgr);
     if (!cArray)
@@ -378,7 +378,7 @@ BRST_Annot_SetNoColor(BRST_Annotation annot)
     BRST_Array cArray;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_Annot_SetNoColor\n"));
+    BRST_PTRACE(" BRST_Annot_SetNoColor\n");
 
     cArray = BRST_Array_New(annot->mmgr);
     if (!cArray)
@@ -393,7 +393,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_TextAnnot_SetIcon(BRST_Annotation annot,
     BRST_AnnotIcon icon)
 {
-    BRST_PTRACE((" BRST_TextAnnot_SetIcon\n"));
+    BRST_PTRACE(" BRST_TextAnnot_SetIcon\n");
 
     if (!CheckSubType(annot, BRST_ANNOT_TEXT_NOTES))
         return BRST_INVALID_ANNOTATION;
@@ -416,7 +416,7 @@ BRST_TextAnnot_SetOpened(BRST_Annotation annot,
 {
     BRST_Boolean b;
 
-    BRST_PTRACE((" BRST_TextAnnot_SetOpened\n"));
+    BRST_PTRACE(" BRST_TextAnnot_SetOpened\n");
 
     if (!CheckSubType(annot, BRST_ANNOT_TEXT_NOTES))
         return BRST_INVALID_ANNOTATION;
@@ -434,7 +434,7 @@ BRST_PopupAnnot_SetOpened(BRST_Annotation annot,
 {
     BRST_Boolean b;
 
-    BRST_PTRACE((" BRST_TextAnnot_SetOpened\n"));
+    BRST_PTRACE(" BRST_TextAnnot_SetOpened\n");
 
     if (!CheckSubType(annot, BRST_ANNOT_POPUP))
         return BRST_INVALID_ANNOTATION;
@@ -449,7 +449,7 @@ BRST_PopupAnnot_SetOpened(BRST_Annotation annot,
 BRST_EXPORT(BRST_STATUS)
 BRST_MarkupAnnot_SetTitle(BRST_Annotation annot, const char* name)
 {
-    BRST_PTRACE((" BRST_MarkupAnnot_SetTitle\n"));
+    BRST_PTRACE(" BRST_MarkupAnnot_SetTitle\n");
 
     return BRST_Dict_Add(annot, "T", BRST_String_New(annot->mmgr, name, NULL));
 }
@@ -457,7 +457,7 @@ BRST_MarkupAnnot_SetTitle(BRST_Annotation annot, const char* name)
 BRST_EXPORT(BRST_STATUS)
 BRST_MarkupAnnot_SetSubject(BRST_Annotation annot, const char* name)
 {
-    BRST_PTRACE((" BRST_MarkupAnnot_SetSubject\n"));
+    BRST_PTRACE(" BRST_MarkupAnnot_SetSubject\n");
 
     return BRST_Dict_Add(annot, "Subj", BRST_String_New(annot->mmgr, name, NULL));
 }
@@ -465,7 +465,7 @@ BRST_MarkupAnnot_SetSubject(BRST_Annotation annot, const char* name)
 BRST_EXPORT(BRST_STATUS)
 BRST_MarkupAnnot_SetCreationDate(BRST_Annotation annot, BRST_Date value)
 {
-    BRST_PTRACE((" BRST_MarkupAnnot_SetCreationDate\n"));
+    BRST_PTRACE(" BRST_MarkupAnnot_SetCreationDate\n");
 
     return BRST_Info_SetInfoDateAttr(annot, BRST_INFO_CREATION_DATE, value);
 }
@@ -473,7 +473,7 @@ BRST_MarkupAnnot_SetCreationDate(BRST_Annotation annot, BRST_Date value)
 BRST_EXPORT(BRST_STATUS)
 BRST_MarkupAnnot_SetTransparency(BRST_Annotation annot, BRST_REAL value)
 {
-    BRST_PTRACE((" BRST_MarkupAnnot_SetTransparency\n"));
+    BRST_PTRACE(" BRST_MarkupAnnot_SetTransparency\n");
 
     return BRST_Dict_AddReal(annot, "CA", value);
 }
@@ -482,7 +482,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_MarkupAnnot_SetIntent(BRST_Annotation annot,
     BRST_AnnotIntent intent)
 {
-    BRST_PTRACE((" BRST_MarkupAnnot_SetIntent\n"));
+    BRST_PTRACE(" BRST_MarkupAnnot_SetIntent\n");
 
     if (BRST_Dict_AddName(annot, "IT",
             BRST_ANNOT_INTENT_NAMES[(BRST_INT)intent])
@@ -496,7 +496,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_MarkupAnnot_SetPopup(BRST_Annotation annot,
     BRST_Annotation popup)
 {
-    BRST_PTRACE((" BRST_MarkupAnnot_SetPopup\n"));
+    BRST_PTRACE(" BRST_MarkupAnnot_SetPopup\n");
 
     return BRST_Dict_Add(annot, "Popup", popup);
 }
@@ -507,7 +507,7 @@ BRST_MarkupAnnot_SetInteriorRGBColor(BRST_Annotation annot, BRST_RGBColor color)
     BRST_Array cArray;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_MarkupAnnot_SetInteriorRGBColor\n"));
+    BRST_PTRACE(" BRST_MarkupAnnot_SetInteriorRGBColor\n");
 
     cArray = BRST_Array_New(annot->mmgr);
     if (!cArray)
@@ -530,7 +530,7 @@ BRST_MarkupAnnot_SetInteriorCMYKColor(BRST_Annotation annot, BRST_CMYKColor colo
     BRST_Array cArray;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_MarkupAnnot_SetInteriorCMYKColor\n"));
+    BRST_PTRACE(" BRST_MarkupAnnot_SetInteriorCMYKColor\n");
 
     cArray = BRST_Array_New(annot->mmgr);
     if (!cArray)
@@ -554,7 +554,7 @@ BRST_MarkupAnnot_SetInteriorGrayColor(BRST_Annotation annot, BRST_REAL color) /*
     BRST_Array cArray;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_MarkupAnnot_SetInteriorGrayColor\n"));
+    BRST_PTRACE(" BRST_MarkupAnnot_SetInteriorGrayColor\n");
 
     cArray = BRST_Array_New(annot->mmgr);
     if (!cArray)
@@ -575,7 +575,7 @@ BRST_MarkupAnnot_SetInteriorTransparent(BRST_Annotation annot) /* IC with No Col
     BRST_Array cArray;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_MarkupAnnot_SetInteriorTransparent\n"));
+    BRST_PTRACE(" BRST_MarkupAnnot_SetInteriorTransparent\n");
 
     cArray = BRST_Array_New(annot->mmgr);
     if (!cArray)
@@ -613,7 +613,7 @@ BRST_TextMarkupAnnot_SetQuadPoints(BRST_Annotation annot, BRST_Point lb, BRST_Po
     BRST_Array quadPoints;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_TextMarkupAnnot_SetQuadPoints\n"));
+    BRST_PTRACE(" BRST_TextMarkupAnnot_SetQuadPoints\n");
 
     quadPoints = BRST_Array_New(annot->mmgr);
     if (!quadPoints)
@@ -643,7 +643,7 @@ BRST_FreeTextAnnot_SetLineEndingStyle(BRST_Annotation annot, BRST_LineAnnotEndin
     BRST_Array lineEndStyles;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_FreeTextAnnot_SetLineEndingStyle\n"));
+    BRST_PTRACE(" BRST_FreeTextAnnot_SetLineEndingStyle\n");
 
     lineEndStyles = BRST_Array_New(annot->mmgr);
     if (!lineEndStyles)
@@ -668,7 +668,7 @@ BRST_MarkupAnnot_SetRectDiff(BRST_Annotation annot, BRST_Rect rect) /* RD entry 
     BRST_STATUS ret = BRST_OK;
     BRST_REAL tmp;
 
-    BRST_PTRACE((" BRST_MarkupAnnot_SetRectDiff\n"));
+    BRST_PTRACE(" BRST_MarkupAnnot_SetRectDiff\n");
 
     array = BRST_Array_New(annot->mmgr);
     if (!array)
@@ -701,7 +701,7 @@ BRST_FreeTextAnnot_SetDefaultStyle(BRST_Annotation annot,
     BRST_String s;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_FreeTextAnnot_SetDefaultStyle\n"));
+    BRST_PTRACE(" BRST_FreeTextAnnot_SetDefaultStyle\n");
 
     s = BRST_String_New(annot->mmgr, style, NULL);
     if (!s)
@@ -718,7 +718,7 @@ BRST_FreeTextAnnot_Set3PointCalloutLine(BRST_Annotation annot, BRST_Point startP
     BRST_Array clPoints;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_FreeTextAnnot_Set3PointCalloutLine\n"));
+    BRST_PTRACE(" BRST_FreeTextAnnot_Set3PointCalloutLine\n");
 
     clPoints = BRST_Array_New(annot->mmgr);
     if (!clPoints)
@@ -746,7 +746,7 @@ BRST_FreeTextAnnot_Set2PointCalloutLine(BRST_Annotation annot, BRST_Point startP
     BRST_Array clPoints;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_FreeTextAnnot_Set3PointCalloutLine\n"));
+    BRST_PTRACE(" BRST_FreeTextAnnot_Set3PointCalloutLine\n");
 
     clPoints = BRST_Array_New(annot->mmgr);
     if (!clPoints)
@@ -772,7 +772,7 @@ BRST_MarkupAnnot_SetCloudEffect(BRST_Annotation annot, BRST_INT cloudIntensity) 
     BRST_Dict borderEffect;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_MarkupAnnot_SetCloudEffect\n"));
+    BRST_PTRACE(" BRST_MarkupAnnot_SetCloudEffect\n");
 
     borderEffect = BRST_Dict_New(annot->mmgr);
     if (!borderEffect)
@@ -797,7 +797,7 @@ BRST_LineAnnot_SetPosition(BRST_Annotation annot,
     BRST_Array lineEndStyles;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_LineAnnot_SetPosition\n"));
+    BRST_PTRACE(" BRST_LineAnnot_SetPosition\n");
 
     lineEndPoints = BRST_Array_New(annot->mmgr);
     if (!lineEndPoints)
@@ -835,7 +835,7 @@ BRST_LineAnnot_SetLeader(BRST_Annotation annot, BRST_INT leaderLen, BRST_INT lea
 {
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_LineAnnot_SetLeader\n"));
+    BRST_PTRACE(" BRST_LineAnnot_SetLeader\n");
 
     ret += BRST_Dict_AddNumber(annot, "LL", leaderLen);
     ret += BRST_Dict_AddNumber(annot, "LLE", leaderExtLen);
@@ -852,7 +852,7 @@ BRST_LineAnnot_SetCaption(BRST_Annotation annot, BRST_BOOL showCaption, BRST_Lin
 {
     BRST_STATUS ret = BRST_OK;
     BRST_Array capOffset;
-    BRST_PTRACE((" BRST_LineAnnot_SetCaption\n"));
+    BRST_PTRACE(" BRST_LineAnnot_SetCaption\n");
 
     ret += BRST_Dict_AddBoolean(annot, "Cap", showCaption);
     ret += BRST_Dict_AddName(annot, "CP", BRST_LINE_ANNOT_CAP_POSITION_NAMES[(BRST_INT)position]);
@@ -897,7 +897,7 @@ BRST_Page_Create3DAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_Page_Create3DAnnot\n"));
+    BRST_PTRACE(" BRST_Page_Create3DAnnot\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -927,7 +927,7 @@ BRST_Page_CreateTextAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_Page_CreateTextAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateTextAnnot\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -960,7 +960,7 @@ BRST_Page_CreateFreeTextAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_Page_CreateFreeTextAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateFreeTextAnnot\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -993,7 +993,7 @@ BRST_Page_CreateLineAnnot(BRST_Page page,
     BRST_Annotation annot;
     BRST_Rect rect = { 0, 0, 0, 0 };
 
-    BRST_PTRACE((" BRST_Page_CreateLineAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateLineAnnot\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1024,7 +1024,7 @@ BRST_Page_CreateWidgetAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_Page_CreateWidgetAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateWidgetAnnot\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1052,7 +1052,7 @@ BRST_Page_CreateLinkAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_Page_CreateLinkAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateLinkAnnot\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1086,7 +1086,7 @@ BRST_Page_CreateURILinkAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_Page_CreateURILinkAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateURILinkAnnot\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1119,7 +1119,7 @@ BRST_Page_CreateCircleAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_Page_CreateCircleAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateCircleAnnot\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1152,7 +1152,7 @@ BRST_Page_CreateSquareAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_Page_CreateCircleAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateCircleAnnot\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1186,7 +1186,7 @@ BRST_Page_CreateTextMarkupAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_Page_CreateTextMarkupAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateTextMarkupAnnot\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1216,7 +1216,7 @@ BRST_Page_CreateHighlightAnnot(BRST_Page page,
     const char* text,
     BRST_Encoder encoder)
 {
-    BRST_PTRACE((" BRST_Page_CreateHighlightAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateHighlightAnnot\n");
 
     return BRST_Page_CreateTextMarkupAnnot(page, rect, text, encoder, BRST_ANNOT_HIGHLIGHT);
 }
@@ -1227,7 +1227,7 @@ BRST_Page_CreateSquigglyAnnot(BRST_Page page,
     const char* text,
     BRST_Encoder encoder)
 {
-    BRST_PTRACE((" BRST_Page_CreateSquigglyAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateSquigglyAnnot\n");
 
     return BRST_Page_CreateTextMarkupAnnot(page, rect, text, encoder, BRST_ANNOT_SQUIGGLY);
 }
@@ -1238,7 +1238,7 @@ BRST_Page_CreateUnderlineAnnot(BRST_Page page,
     const char* text,
     BRST_Encoder encoder)
 {
-    BRST_PTRACE((" BRST_Page_CreateUnderlineAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateUnderlineAnnot\n");
 
     return BRST_Page_CreateTextMarkupAnnot(page, rect, text, encoder, BRST_ANNOT_UNDERLINE);
 }
@@ -1249,7 +1249,7 @@ BRST_Page_CreateStrikeOutAnnot(BRST_Page page,
     const char* text,
     BRST_Encoder encoder)
 {
-    BRST_PTRACE((" BRST_Page_CreateStrikeOutAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateStrikeOutAnnot\n");
 
     return BRST_Page_CreateTextMarkupAnnot(page, rect, text, encoder, BRST_ANNOT_STRIKE_OUT);
 }
@@ -1262,7 +1262,7 @@ BRST_Page_CreatePopupAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_Page_CreatePopupAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreatePopupAnnot\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1291,7 +1291,7 @@ BRST_Page_CreateStampAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_Page_CreateStampAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateStampAnnot\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1319,7 +1319,7 @@ BRST_Page_CreateProjectionAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_Page_CreateProjectionAnnot\n"));
+    BRST_PTRACE(" BRST_Page_CreateProjectionAnnot\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;

@@ -1235,10 +1235,10 @@ BRST_Page_SetMiterLimit(
 */
 BRST_EXPORT(BRST_STATUS)
 BRST_Page_SetDash(
-    BRST_Page        page,
-    const BRST_REAL* dash_pattern,
-    BRST_UINT        num_elem,
-    BRST_REAL        phase
+    BRST_Page         page,
+    BRST_DASH_PATTERN dash_pattern,
+    BRST_UINT         num_elem,
+    BRST_REAL         phase
 );
 
 
@@ -1364,7 +1364,7 @@ BRST_Page_GrayStroke(
 
 */
 BRST_EXPORT(BRST_ColorSpace)
-BRST_Page_StrokingColorSpace(
+BRST_Page_StrokeColorSpace(
     BRST_Page page
 );
 
@@ -1379,7 +1379,7 @@ BRST_Page_StrokingColorSpace(
 
 */
 BRST_EXPORT(BRST_ColorSpace)
-BRST_Page_FillingColorSpace(
+BRST_Page_FillColorSpace(
     BRST_Page page
 );
 

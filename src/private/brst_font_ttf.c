@@ -66,7 +66,7 @@ BRST_TTFont_New(BRST_MMgr mmgr,
     BRST_BasicEncoderAttr encoder_attr;
     BRST_STATUS ret = 0;
 
-    BRST_PTRACE((" BRST_TTFont_New\n"));
+    BRST_PTRACE(" BRST_TTFont_New\n");
 
     font = BRST_Dict_New(mmgr);
     if (!font)
@@ -162,7 +162,7 @@ CreateDescriptor(BRST_Font font)
     BRST_FontDef def            = font_attr->fontdef;
     BRST_TTFontDefAttr def_attr = (BRST_TTFontDefAttr)def->attr;
 
-    BRST_PTRACE((" BRST_TTFont_CreateDescriptor\n"));
+    BRST_PTRACE(" BRST_TTFont_CreateDescriptor\n");
 
     if (!font_attr->fontdef->descriptor) {
         BRST_Dict descriptor = BRST_Dict_New(font->mmgr);
@@ -253,7 +253,7 @@ TextWidth(BRST_Font font,
     BRST_UINT i;
     BRST_BYTE b = 0;
 
-    BRST_PTRACE((" BRST_TTFont_TextWidth\n"));
+    BRST_PTRACE(" BRST_TTFont_TextWidth\n");
 
     if (attr->widths) {
         for (i = 0; i < len; i++) {
@@ -293,7 +293,7 @@ MeasureText(BRST_Font font,
     BRST_UINT tmp_len = 0;
     BRST_UINT i;
 
-    BRST_PTRACE((" BRST_TTFont_MeasureText\n"));
+    BRST_PTRACE(" BRST_TTFont_MeasureText\n");
 
     for (i = 0; i < len; i++) {
         BRST_BYTE b = text[i];
@@ -340,7 +340,7 @@ OnWrite(BRST_Dict obj,
     char* pbuf = buf;
     char* eptr = buf + 127;
 
-    BRST_PTRACE((" BRST_Font_OnWrite\n"));
+    BRST_PTRACE(" BRST_Font_OnWrite\n");
 
     /* Widths entry */
     if ((ret = BRST_Stream_WriteEscapeName(stream, "Widths")) != BRST_OK)
@@ -373,7 +373,7 @@ OnWrite(BRST_Dict obj,
 static BRST_STATUS
 BeforeWrite(BRST_Dict obj)
 {
-    BRST_PTRACE((" BRST_TTFont_BeforeWrite\n"));
+    BRST_PTRACE(" BRST_TTFont_BeforeWrite\n");
 
     return CreateDescriptor(obj);
 }
@@ -383,7 +383,7 @@ OnFree(BRST_Dict obj)
 {
     BRST_FontAttr attr = (BRST_FontAttr)obj->attr;
 
-    BRST_PTRACE((" BRST_TTFont_OnFree\n"));
+    BRST_PTRACE(" BRST_TTFont_OnFree\n");
 
     if (attr) {
         if (attr->widths) {

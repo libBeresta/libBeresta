@@ -2,6 +2,7 @@
 #define PRIVATE_BRST_UTILS_H
 
 #include "brst_config.h"
+#include "brst_c.h"
 #include "brst_types.h"
 #include "brst_page_sizes.h"
 
@@ -153,9 +154,9 @@ BRST_PageSizeName(
 #endif /* LIBBRST_DEBUG_TRACE */
 
 #ifdef BRST_PTRACE_ON
-#define BRST_PTRACE(ARGS)  BRST_PRINTF ARGS
+#define BRST_PTRACE(...)  BRST_PRINTF(__VA_ARGS__)
 #else
-#define BRST_PTRACE(ARGS)  /* do nothing */
+#define BRST_PTRACE(...)  /* do nothing */
 #endif /* BRST_PTRACE */
 
 #ifdef LIBBRST_DEBUG

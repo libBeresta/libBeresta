@@ -72,7 +72,7 @@
 #define BRST_DEF_WORDSPACE          0
 #define BRST_DEF_CHARSPACE          0
 
-#define BRST_DEF_RAISE              0
+#define BRST_DEF_RISE               0
 
 #define BRST_DEF_HSCALING           100
 

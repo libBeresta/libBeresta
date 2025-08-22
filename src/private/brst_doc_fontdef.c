@@ -33,7 +33,7 @@ BRST_Doc_FindFontDef(BRST_Doc pdf,
     BRST_List list = pdf->fontdef_list;
     BRST_UINT i;
 
-    BRST_PTRACE((" BRST_Doc_FindFontDef\n"));
+    BRST_PTRACE(" BRST_Doc_FindFontDef\n");
 
     for (i = 0; i < BRST_List_Count(list); i++) {
         BRST_FontDef def = (BRST_FontDef)BRST_List_ItemAt(list, i);
@@ -57,7 +57,7 @@ BRST_Doc_RegisterFontDef(BRST_Doc pdf,
 {
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Doc_RegisterFontDef\n"));
+    BRST_PTRACE(" BRST_Doc_RegisterFontDef\n");
 
     if (!fontdef)
         return BRST_Error_Set(pdf->error, BRST_INVALID_OBJECT, 0);
@@ -82,7 +82,7 @@ BRST_Doc_FontDef(BRST_Doc pdf,
     BRST_STATUS ret;
     BRST_FontDef def;
 
-    BRST_PTRACE((" BRST_Doc_FontDef\n"));
+    BRST_PTRACE(" BRST_Doc_FontDef\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -110,7 +110,7 @@ void FreeFontDefList(BRST_Doc pdf)
     BRST_List list = pdf->fontdef_list;
     BRST_UINT i;
 
-    BRST_PTRACE((" BRST_Doc_FreeFontDefList\n"));
+    BRST_PTRACE(" BRST_Doc_FreeFontDefList\n");
 
     for (i = 0; i < BRST_List_Count(list); i++) {
         BRST_FontDef def = (BRST_FontDef)BRST_List_ItemAt(list, i);
@@ -128,7 +128,7 @@ void CleanupFontDefList(BRST_Doc pdf)
     BRST_List list = pdf->fontdef_list;
     BRST_UINT i;
 
-    BRST_PTRACE((" CleanupFontDefList\n"));
+    BRST_PTRACE(" CleanupFontDefList\n");
 
     for (i = 0; i < BRST_List_Count(list); i++) {
         BRST_FontDef def = (BRST_FontDef)BRST_List_ItemAt(list, i);

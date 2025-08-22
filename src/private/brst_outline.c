@@ -34,7 +34,7 @@ BRST_OutlineRoot_New(BRST_MMgr mmgr,
     BRST_STATUS ret = BRST_OK;
     BRST_Number open_flg;
 
-    BRST_PTRACE((" BRST_OutlineRoot_New\n"));
+    BRST_PTRACE(" BRST_OutlineRoot_New\n");
 
     outline = BRST_Dict_New(mmgr);
     if (!outline)
@@ -74,7 +74,7 @@ BRST_Outline_New(BRST_MMgr mmgr,
     BRST_STATUS ret = BRST_OK;
     BRST_Number open_flg;
 
-    BRST_PTRACE((" BRST_Outline_New\n"));
+    BRST_PTRACE(" BRST_Outline_New\n");
 
     if (!mmgr || !parent || !xref)
         return NULL;
@@ -122,7 +122,7 @@ AddChild(BRST_Outline parent,
          BRST_OCLASS_DICT);
     BRST_STATUS ret    = 0;
 
-    BRST_PTRACE((" AddChild\n"));
+    BRST_PTRACE(" AddChild\n");
 
     if (!first)
         ret += BRST_Dict_Add(parent, "First", item);
@@ -147,7 +147,7 @@ BRST_Outline_Opened(BRST_Outline outline)
     BRST_Number n = (BRST_Number)BRST_Dict_Item(outline, "_OPENED",
         BRST_OCLASS_NUMBER);
 
-    BRST_PTRACE((" BRST_Outline_Opened\n"));
+    BRST_PTRACE(" BRST_Outline_Opened\n");
 
     if (!n)
         return BRST_FALSE;
@@ -158,7 +158,7 @@ BRST_Outline_Opened(BRST_Outline outline)
 BRST_Outline
 BRST_Outline_First(BRST_Outline outline)
 {
-    BRST_PTRACE((" BRST_Outline_First\n"));
+    BRST_PTRACE(" BRST_Outline_First\n");
 
     return (BRST_Outline)BRST_Dict_Item(outline, "First",
         BRST_OCLASS_DICT);
@@ -167,7 +167,7 @@ BRST_Outline_First(BRST_Outline outline)
 BRST_Outline
 BRST_Outline_Last(BRST_Outline outline)
 {
-    BRST_PTRACE((" BRST_Outline_Last\n"));
+    BRST_PTRACE(" BRST_Outline_Last\n");
 
     return (BRST_Outline)BRST_Dict_Item(outline, "Last", BRST_OCLASS_DICT);
 }
@@ -175,7 +175,7 @@ BRST_Outline_Last(BRST_Outline outline)
 BRST_Outline
 BRST_Outline_Prev(BRST_Outline outline)
 {
-    BRST_PTRACE((" BRST_Outline_Prev\n"));
+    BRST_PTRACE(" BRST_Outline_Prev\n");
 
     return (BRST_Outline)BRST_Dict_Item(outline, "Prev", BRST_OCLASS_DICT);
 }
@@ -183,7 +183,7 @@ BRST_Outline_Prev(BRST_Outline outline)
 BRST_Outline
 BRST_Outline_Next(BRST_Outline outline)
 {
-    BRST_PTRACE((" BRST_Outline_Next\n"));
+    BRST_PTRACE(" BRST_Outline_Next\n");
 
     return (BRST_Outline)BRST_Dict_Item(outline, "Next", BRST_OCLASS_DICT);
 }
@@ -191,7 +191,7 @@ BRST_Outline_Next(BRST_Outline outline)
 BRST_Outline
 BRST_Outline_Parent(BRST_Outline outline)
 {
-    BRST_PTRACE((" BRST_Outline_Parent\n"));
+    BRST_PTRACE(" BRST_Outline_Parent\n");
 
     return (BRST_Outline)BRST_Dict_Item(outline, "Parent",
         BRST_OCLASS_DICT);
@@ -204,7 +204,7 @@ BeforeWrite(BRST_Dict obj)
           BRST_OCLASS_NUMBER);
     BRST_UINT count = CountChild((BRST_Outline)obj);
 
-    BRST_PTRACE((" BeforeWrite\n"));
+    BRST_PTRACE(" BeforeWrite\n");
 
     if (count == 0 && n)
         return BRST_Dict_RemoveElement(obj, "Count");
@@ -226,7 +226,7 @@ CountChild(BRST_Outline outline)
     BRST_Outline child = BRST_Outline_First(outline);
     BRST_UINT count    = 0;
 
-    BRST_PTRACE((" CountChild\n"));
+    BRST_PTRACE(" CountChild\n");
 
     while (child) {
         count++;
@@ -246,7 +246,7 @@ BRST_Outline_Validate(BRST_Outline outline)
     if (!outline)
         return BRST_FALSE;
 
-    BRST_PTRACE((" BRST_Outline_Validate\n"));
+    BRST_PTRACE(" BRST_Outline_Validate\n");
 
     if (outline->header.obj_class != (BRST_OSUBCLASS_OUTLINE | BRST_OCLASS_DICT))
         return BRST_FALSE;

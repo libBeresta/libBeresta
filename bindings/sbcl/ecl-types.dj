@@ -1,0 +1,4 @@
+{% include "ЛИЦЕНЗИЯ.txt" %}
+(in-package #:cl-beresta)
+{% if типы %}{% for тип in типы %}
+(defctype {{ тип.внутренний }} :{{ тип.внешний }}){% endfor %}{% endif %}

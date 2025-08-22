@@ -21,8 +21,8 @@
 BRST_EXPORT(BRST_STATUS)
 BRST_Error_Check(BRST_Error error)
 {
-    BRST_PTRACE((" BRST_Error_Check: error_no=0x%04X detail_no=0x%04X\n",
-        (BRST_UINT)error->error_no, (BRST_UINT)error->detail_no));
+    BRST_PTRACE(" BRST_Error_Check: error_no=0x%04X detail_no=0x%04X\n",
+        (BRST_UINT)BRST_Error_Code(error), (BRST_UINT)BRST_Error_DetailCode(error));
 
     if (BRST_Error_Code(error) != BRST_OK && BRST_Error_ErrorFn(error))
         BRST_Error_ErrorFn(error)(BRST_Error_Code(error), BRST_Error_DetailCode(error), BRST_Error_UserData(error));

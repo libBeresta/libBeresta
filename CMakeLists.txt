@@ -30,7 +30,7 @@ option(LIBBRST_ANNOTATIONS_SUPPORT "PDF: Включить поддержку а�
 
 option(LIBBRST_MEM_DEBUG "Отладка выделения памяти" OFF)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic -fPIC")
 
 set(BRST_INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/include" CACHE INTERNAL "")
 include_directories(${PROJECT_SOURCE_DIR}/include)

@@ -74,6 +74,10 @@ BRST_Doc_New(
     void*              user_data
 );
 
+BRST_EXPORT(BRST_Doc)
+BRST_Doc_New_Empty();
+
+
 /**
 
   \ingroup doc

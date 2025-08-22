@@ -24,7 +24,7 @@ BRST_Doc_SetPassword(BRST_Doc pdf,
     const char* owner_passwd,
     const char* user_passwd)
 {
-    BRST_PTRACE((" BRST_Doc_SetPassword\n"));
+    BRST_PTRACE(" BRST_Doc_SetPassword\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_DOC_INVALID_OBJECT;
@@ -51,7 +51,7 @@ BRST_Doc_SetEncryptionMode(BRST_Doc pdf,
 {
     BRST_Encrypt e;
 
-    BRST_PTRACE((" BRST_Doc_SetEncryptionMode\n"));
+    BRST_PTRACE(" BRST_Doc_SetEncryptionMode\n");
 
     if (!BRST_Doc_Validate(pdf))
         return BRST_DOC_INVALID_OBJECT;
@@ -91,7 +91,7 @@ BRST_Doc_SetPermission(BRST_Doc pdf,
 {
     BRST_Encrypt e;
 
-    BRST_PTRACE((" BRST_Doc_SetPermission\n"));
+    BRST_PTRACE(" BRST_Doc_SetPermission\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_DOC_INVALID_OBJECT;

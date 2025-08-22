@@ -20,7 +20,7 @@
 void print_grid(BRST_Doc pdf, BRST_Page page, BRST_UINT32 page_lines_color)
 {
     // Рисуем миллиметровую сетку для листа формата A4 портретной ориентации.
-    BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_PORTRAIT);
+    BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_ORIENTATION_PORTRAIT);
 
     BRST_REAL l01mm = 0.04 * BRST_MM;
     BRST_REAL l05mm = 0.10 * BRST_MM;

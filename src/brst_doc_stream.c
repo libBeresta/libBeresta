@@ -23,7 +23,7 @@
 BRST_UINT32
 BRST_Doc_Stream_Size(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_Stream_Size\n"));
+    BRST_PTRACE(" BRST_Doc_Stream_Size\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_INVALID_DOCUMENT;
@@ -39,7 +39,7 @@ BRST_Doc_Stream_Read(BRST_Doc pdf,
     BRST_BYTE* buf,
     BRST_UINT32* size)
 {
-    BRST_PTRACE((" BRST_Doc_Stream_Read\n"));
+    BRST_PTRACE(" BRST_Doc_Stream_Read\n");
 
     BRST_UINT isize = *size;
     BRST_STATUS ret;
@@ -66,7 +66,7 @@ BRST_Doc_Stream_Read(BRST_Doc pdf,
 BRST_STATUS
 BRST_Doc_Stream_Reset(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_Stream_Reset\n"));
+    BRST_PTRACE(" BRST_Doc_Stream_Reset\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_INVALID_DOCUMENT;

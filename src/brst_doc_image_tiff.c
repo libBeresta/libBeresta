@@ -43,7 +43,7 @@ BRST_Doc_Image_Raw1Bit_LoadFromMem(BRST_Doc pdf,
 {
     BRST_Image image;
 
-    BRST_PTRACE((" BRST_Image_Load1BitImageFromMem\n"));
+    BRST_PTRACE(" BRST_Image_Load1BitImageFromMem\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -83,7 +83,7 @@ BRST_Doc_Image_Raw_LoadFromFile(BRST_Doc pdf,
     BRST_Stream imagedata;
     BRST_Image image;
 
-    BRST_PTRACE((" BRST_Doc_Image_Raw_LoadFromFile\n"));
+    BRST_PTRACE(" BRST_Doc_Image_Raw_LoadFromFile\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -119,7 +119,7 @@ BRST_Doc_Image_Raw_LoadFromMem(BRST_Doc pdf,
 {
     BRST_Image image;
 
-    BRST_PTRACE((" BRST_Doc_Image_Raw_LoadFromMem\n"));
+    BRST_PTRACE(" BRST_Doc_Image_Raw_LoadFromMem\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;

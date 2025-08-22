@@ -29,34 +29,34 @@ BRST_PageLabel_New(BRST_Doc pdf,
 {
     BRST_Dict obj = BRST_Dict_New(pdf->mmgr);
 
-    BRST_PTRACE((" BRST_PageLabel_New\n"));
+    BRST_PTRACE(" BRST_PageLabel_New\n");
 
     if (!obj)
         return NULL;
 
     switch (style) {
-    case BRST_PAGE_NUM_STYLE_DECIMAL:
+    case BRST_PAGE_NUM_DECIMAL:
         if (BRST_Dict_AddName(obj, "S", "D") != BRST_OK)
             goto Fail;
         break;
-    case BRST_PAGE_NUM_STYLE_UPPER_ROMAN:
+    case BRST_PAGE_NUM_UPPER_ROMAN:
         if (BRST_Dict_AddName(obj, "S", "R") != BRST_OK)
             goto Fail;
         break;
-    case BRST_PAGE_NUM_STYLE_LOWER_ROMAN:
+    case BRST_PAGE_NUM_LOWER_ROMAN:
         if (BRST_Dict_AddName(obj, "S", "r") != BRST_OK)
             goto Fail;
         break;
-    case BRST_PAGE_NUM_STYLE_UPPER_LETTERS:
+    case BRST_PAGE_NUM_UPPER_LETTERS:
         if (BRST_Dict_AddName(obj, "S", "A") != BRST_OK)
             goto Fail;
         break;
-    case BRST_PAGE_NUM_STYLE_LOWER_LETTERS:
+    case BRST_PAGE_NUM_LOWER_LETTERS:
         if (BRST_Dict_AddName(obj, "S", "a") != BRST_OK)
             goto Fail;
         break;
     default:
-        BRST_Error_Set(pdf->error, BRST_PAGE_NUM_STYLE_OUT_OF_RANGE,
+        BRST_Error_Set(pdf->error, BRST_PAGE_NUM_OUT_OF_RANGE,
             (BRST_STATUS)style);
         goto Fail;
     }

@@ -25,7 +25,7 @@ BRST_Destination_SetXYZ(BRST_Destination dst,
     BRST_STATUS ret = BRST_OK;
     BRST_Page target;
 
-    BRST_PTRACE((" BRST_Destination_SetXYZ\n"));
+    BRST_PTRACE(" BRST_Destination_SetXYZ\n");
 
     if (!BRST_Destination_Validate(dst))
         return BRST_INVALID_DESTINATION;
@@ -58,7 +58,7 @@ BRST_Destination_SetFit(BRST_Destination dst)
     BRST_STATUS ret = BRST_OK;
     BRST_Page target;
 
-    BRST_PTRACE((" BRST_Destination_SetFit\n"));
+    BRST_PTRACE(" BRST_Destination_SetFit\n");
 
     if (!BRST_Destination_Validate(dst))
         return BRST_INVALID_DESTINATION;
@@ -86,7 +86,7 @@ BRST_Destination_SetFitH(BRST_Destination dst,
     BRST_STATUS ret = BRST_OK;
     BRST_Page target;
 
-    BRST_PTRACE((" BRST_Destination_SetFitH\n"));
+    BRST_PTRACE(" BRST_Destination_SetFitH\n");
 
     if (!BRST_Destination_Validate(dst))
         return BRST_INVALID_DESTINATION;
@@ -115,7 +115,7 @@ BRST_Destination_SetFitV(BRST_Destination dst,
     BRST_STATUS ret = BRST_OK;
     BRST_Page target;
 
-    BRST_PTRACE((" BRST_Destination_SetFitV\n"));
+    BRST_PTRACE(" BRST_Destination_SetFitV\n");
 
     if (!BRST_Destination_Validate(dst))
         return BRST_INVALID_DESTINATION;
@@ -147,7 +147,7 @@ BRST_Destination_SetFitR(BRST_Destination dst,
     BRST_STATUS ret = BRST_OK;
     BRST_Page target;
 
-    BRST_PTRACE((" BRST_Destination_SetFitR\n"));
+    BRST_PTRACE(" BRST_Destination_SetFitR\n");
 
     if (!BRST_Destination_Validate(dst))
         return BRST_INVALID_DESTINATION;
@@ -178,7 +178,7 @@ BRST_Destination_SetFitB(BRST_Destination dst)
     BRST_STATUS ret = BRST_OK;
     BRST_Page target;
 
-    BRST_PTRACE((" BRST_Destination_SetFitB\n"));
+    BRST_PTRACE(" BRST_Destination_SetFitB\n");
 
     if (!BRST_Destination_Validate(dst))
         return BRST_INVALID_DESTINATION;
@@ -206,7 +206,7 @@ BRST_Destination_SetFitBH(BRST_Destination dst,
     BRST_STATUS ret = BRST_OK;
     BRST_Page target;
 
-    BRST_PTRACE((" BRST_Destination_SetFitBH\n"));
+    BRST_PTRACE(" BRST_Destination_SetFitBH\n");
 
     if (!BRST_Destination_Validate(dst))
         return BRST_INVALID_DESTINATION;
@@ -235,7 +235,7 @@ BRST_Destination_SetFitBV(BRST_Destination dst,
     BRST_STATUS ret = BRST_OK;
     BRST_Page target;
 
-    BRST_PTRACE((" BRST_Destination_SetFitBV\n"));
+    BRST_PTRACE(" BRST_Destination_SetFitBV\n");
 
     if (!BRST_Destination_Validate(dst))
         return BRST_INVALID_DESTINATION;

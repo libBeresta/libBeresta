@@ -46,7 +46,7 @@ BRST_Doc_Font(BRST_Doc pdf,
     BRST_Encoder encoder = NULL;
     BRST_Font font;
 
-    BRST_PTRACE((" BRST_Doc_Font\n"));
+    BRST_PTRACE(" BRST_Doc_Font\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;

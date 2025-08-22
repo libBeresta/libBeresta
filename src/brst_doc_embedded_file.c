@@ -33,7 +33,7 @@ BRST_Doc_AttachFile(BRST_Doc pdf,
     BRST_Array af;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_AttachFile\n"));
+    BRST_PTRACE(" BRST_AttachFile\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;

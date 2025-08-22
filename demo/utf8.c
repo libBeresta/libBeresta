@@ -59,7 +59,7 @@ main (int argc, char **argv)
     page = BRST_Doc_Page_Add(pdf);
 
     // Настройка размера и ориентации страницы
-    BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_LANDSCAPE);
+    BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_ORIENTATION_LANDSCAPE);
 
     // Подготовка миллиметровой бумаги
     print_grid(pdf, page, BRST_ROSE_LINE);

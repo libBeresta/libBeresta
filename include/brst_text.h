@@ -178,39 +178,6 @@ BRST_Page_SetTextRise(
     BRST_REAL value
 );
 
-/**
-
-  \deprecated Use BRST_Page_SetTextRise() instead.
-
-  \ingroup graphics
-  \brief Move text position in vertical direction by the amount of \c value.
-
-  Useful for making subscripts or superscripts.
-
-  \copydoc dox_param_page
-  \param value Text rise, in user space units.
-
-  \copydoc dox_graphics_mode
-
-  \arg Before \ref BRST_GMODE_PAGE_DESCRIPTION or \ref BRST_GMODE_TEXT_OBJECT
-  \arg After \ref BRST_GMODE_PAGE_DESCRIPTION or \ref BRST_GMODE_TEXT_OBJECT
-
-  \copydoc dox_return_ok
-
-  \todo Add picture for \ref BRST_CLIPPING
-
-  \see BRST_Page_SetTextRise()
-
-  \copydoc dox_pdf_cmd
-  \c Ts
-
-*/
-BRST_EXPORT(BRST_STATUS)
-BRST_Page_SetTextRaise(
-    BRST_Page page,
-    BRST_REAL value
-);
-
 /*--- Text positioning ---------------------------------------------------*/
 
 /**
@@ -569,7 +536,7 @@ BRST_Page_TextRenderingMode(
 
 */
 BRST_EXPORT(BRST_REAL)
-BRST_Page_TextRise(
+BRST_Page_TextRaise(
     BRST_Page page
 );
 

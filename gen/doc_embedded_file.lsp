@@ -1,11 +1,11 @@
 (:файл "doc_embedded_file"
  :функции
-       ((:название "AttachFile"
+       ((:название "Doc_AttachFile"
 	 :группа "doc"
 	 :ошибки ("FAILED_TO_ALLOC_MEM")
 	 :результат (:тип "EmbeddedFile"
 		     :ru "Описатель объекта вложенного файла при успехе или \\c NULL при возникновении ошибки."
-		     :en "Embedded file object desctiptor on success or \\c NULL on failure.")
+		     :en "Embedded file object descriptor on success or \\c NULL on failure.")
 	 :ru "Функция позволяет вложить файл в PDF-документ."
 	 :en "Function attaches file to a PDF document."
 	 :параметры ((:тип "Doc"

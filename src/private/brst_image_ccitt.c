@@ -705,7 +705,7 @@ BRST_Image_Raw1Bit_LoadFromMem(BRST_MMgr mmgr,
     BRST_STATUS ret = BRST_OK;
     /* BRST_UINT size; */
 
-    BRST_PTRACE((" BRST_Image_Raw1Bit_LoadFromMem\n"));
+    BRST_PTRACE(" BRST_Image_Raw1Bit_LoadFromMem\n");
 
     image = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!image)

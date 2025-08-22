@@ -62,7 +62,7 @@ BRST_Type1Font_New(BRST_MMgr mmgr,
     BRST_STATUS ret = 0;
     BRST_UINT i;
 
-    BRST_PTRACE((" BRST_Type1Font_New\n"));
+    BRST_PTRACE(" BRST_Type1Font_New\n");
 
     /* check whether the fontdef object and the encoder object is valid. */
     if (encoder->type != BRST_ENCODER_TYPE_SINGLE_BYTE) {
@@ -155,7 +155,7 @@ Type1Font_CreateDescriptor(BRST_MMgr mmgr,
     BRST_FontDef def               = font_attr->fontdef;
     BRST_Type1FontDefAttr def_attr = (BRST_Type1FontDefAttr)def->attr;
 
-    BRST_PTRACE((" BRST_Type1Font_CreateDescriptor\n"));
+    BRST_PTRACE(" BRST_Type1Font_CreateDescriptor\n");
 
     if (!font_attr->fontdef->descriptor) {
         BRST_Dict descriptor = BRST_Dict_New(mmgr);
@@ -230,7 +230,7 @@ Type1Font_TextWidth(BRST_Font font,
     BRST_UINT i;
     BRST_BYTE b = 0;
 
-    BRST_PTRACE((" BRST_Type1Font_TextWidth\n"));
+    BRST_PTRACE(" BRST_Type1Font_TextWidth\n");
 
     if (attr->widths) {
         for (i = 0; i < len; i++) {
@@ -271,7 +271,7 @@ Type1Font_MeasureText(BRST_Font font,
     BRST_UINT i;
     BRST_FontAttr attr = (BRST_FontAttr)font->attr;
 
-    BRST_PTRACE((" BRST_Type1Font_MeasureText\n"));
+    BRST_PTRACE(" BRST_Type1Font_MeasureText\n");
 
     for (i = 0; i < len; i++) {
         BRST_BYTE b = text[i];
@@ -319,7 +319,7 @@ Type1Font_OnWrite(BRST_Dict obj,
     char buf[BRST_TMP_BUF_SIZE];
     char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
 
-    BRST_PTRACE((" BRST_Font_Type1Font_OnWrite\n"));
+    BRST_PTRACE(" BRST_Font_Type1Font_OnWrite\n");
 
     /* if font is base14-font these entries is not required */
     if (!fontdef_attr->is_base14font || encoder_attr->has_differences) {
@@ -372,7 +372,7 @@ Type1Font_OnFree(BRST_Dict obj)
 {
     BRST_FontAttr attr = (BRST_FontAttr)obj->attr;
 
-    BRST_PTRACE((" BRST_Type1Font_OnFree\n"));
+    BRST_PTRACE(" BRST_Type1Font_OnFree\n");
 
     if (attr) {
         if (attr->widths) {

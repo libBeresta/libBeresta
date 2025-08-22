@@ -37,7 +37,7 @@ BRST_Destination_New(BRST_MMgr mmgr,
 {
     BRST_Destination dst;
 
-    BRST_PTRACE((" BRST_Destination_New\n"));
+    BRST_PTRACE(" BRST_Destination_New\n");
 
     if (!BRST_Page_Validate(target)) {
         BRST_Error_Set(BRST_MMgr_Error(mmgr), BRST_INVALID_PAGE, 0);

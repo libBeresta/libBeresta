@@ -26,7 +26,7 @@ BRST_Image_Raw_Load(BRST_MMgr mmgr,
     BRST_STATUS ret = BRST_OK;
     BRST_UINT size;
 
-    BRST_PTRACE((" BRST_Image_Raw_Load\n"));
+    BRST_PTRACE(" BRST_Image_Raw_Load\n");
 
     if (color_space != BRST_CS_DEVICE_GRAY && color_space != BRST_CS_DEVICE_RGB && color_space != BRST_CS_DEVICE_CMYK) {
         BRST_Error_Set(BRST_MMgr_Error(mmgr), BRST_INVALID_COLOR_SPACE, 0);
@@ -90,7 +90,7 @@ BRST_Image_Raw_LoadFromMem(BRST_MMgr mmgr,
     BRST_STATUS ret = BRST_OK;
     BRST_UINT size  = 0;
 
-    BRST_PTRACE((" BRST_Image_LoadRawImageFromMem\n"));
+    BRST_PTRACE(" BRST_Image_LoadRawImageFromMem\n");
 
     if (color_space != BRST_CS_DEVICE_GRAY && color_space != BRST_CS_DEVICE_RGB && color_space != BRST_CS_DEVICE_CMYK) {
         BRST_Error_Set(BRST_MMgr_Error(mmgr), BRST_INVALID_COLOR_SPACE, 0);

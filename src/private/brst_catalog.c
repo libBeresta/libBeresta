@@ -184,7 +184,7 @@ BRST_Catalog_AddPageLabel(BRST_Catalog catalog,
     BRST_Dict labels = BRST_Dict_Item(catalog, "PageLabels",
         BRST_OCLASS_DICT);
 
-    BRST_PTRACE((" BRST_Catalog_AddPageLabel\n"));
+    BRST_PTRACE(" BRST_Catalog_AddPageLabel\n");
 
     if (!labels) {
         labels = BRST_Dict_New(catalog->mmgr);
@@ -221,7 +221,7 @@ BRST_Catalog_SetViewerPreference(BRST_Catalog catalog,
     BRST_STATUS ret;
     BRST_Dict preferences;
 
-    BRST_PTRACE((" BRST_Catalog_SetViewerPreference\n"));
+    BRST_PTRACE(" BRST_Catalog_SetViewerPreference\n");
 
     if (!value) {
         ret = BRST_Dict_RemoveElement(catalog, "ViewerPreferences");
@@ -318,7 +318,7 @@ BRST_Catalog_ViewerPreference(BRST_Catalog catalog)
     BRST_UINT value = 0;
     BRST_Boolean obj;
 
-    BRST_PTRACE((" BRST_Catalog_ViewerPreference\n"));
+    BRST_PTRACE(" BRST_Catalog_ViewerPreference\n");
 
     preferences = (BRST_Dict)BRST_Dict_Item(catalog, "ViewerPreferences",
         BRST_OCLASS_DICT);

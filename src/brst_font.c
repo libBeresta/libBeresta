@@ -32,7 +32,7 @@ BRST_Font_TextWidth(BRST_Font font,
     BRST_TextWidth tw = { 0, 0, 0, 0 };
     BRST_FontAttr attr;
 
-    BRST_PTRACE((" BRST_Font_TextWidth\n"));
+    BRST_PTRACE(" BRST_Font_TextWidth\n");
 
     if (!BRST_Font_Validate(font))
         return tw;
@@ -67,7 +67,7 @@ BRST_Font_MeasureText(BRST_Font font,
 {
     BRST_FontAttr attr;
 
-    BRST_PTRACE((" BRST_Font_MeasureText\n"));
+    BRST_PTRACE(" BRST_Font_MeasureText\n");
 
     if (!BRST_Font_Validate(font))
         return 0;
@@ -93,7 +93,7 @@ BRST_Font_FontName(BRST_Font font)
 {
     BRST_FontAttr attr;
 
-    BRST_PTRACE((" BRST_Font_FontName\n"));
+    BRST_PTRACE(" BRST_Font_FontName\n");
 
     if (!BRST_Font_Validate(font))
         return NULL;
@@ -108,7 +108,7 @@ BRST_Font_EncodingName(BRST_Font font)
 {
     BRST_FontAttr attr;
 
-    BRST_PTRACE((" BRST_Font_EncodingName\n"));
+    BRST_PTRACE(" BRST_Font_EncodingName\n");
 
     if (!BRST_Font_Validate(font))
         return NULL;
@@ -125,7 +125,7 @@ BRST_Font_UnicodeWidth(BRST_Font font,
     BRST_FontAttr attr;
     BRST_FontDef fontdef;
 
-    BRST_PTRACE((" BRST_Font_UnicodeWidth\n"));
+    BRST_PTRACE(" BRST_Font_UnicodeWidth\n");
 
     if (!BRST_Font_Validate(font))
         return 0;
@@ -152,7 +152,7 @@ BRST_Font_UnicodeWidth(BRST_Font font,
         }
     }
 
-    BRST_PTRACE((" BRST_Font_GetUnicodeWidth not found (0x%04X)\n", code));
+    BRST_PTRACE(" BRST_Font_GetUnicodeWidth not found (0x%04X)\n", code);
 
     return 0;
 }
@@ -162,7 +162,7 @@ BRST_Font_BBox(BRST_Font font)
 {
     BRST_Box bbox = { 0, 0, 0, 0 };
 
-    BRST_PTRACE((" BRST_Font_BBox\n"));
+    BRST_PTRACE(" BRST_Font_BBox\n");
     if (BRST_Font_Validate(font))
         return ((BRST_FontAttr)font->attr)->fontdef->font_bbox;
 
@@ -172,7 +172,7 @@ BRST_Font_BBox(BRST_Font font)
 BRST_EXPORT(BRST_INT)
 BRST_Font_Ascent(BRST_Font font)
 {
-    BRST_PTRACE((" BRST_Font_Ascent\n"));
+    BRST_PTRACE(" BRST_Font_Ascent\n");
 
     if (BRST_Font_Validate(font))
         return ((BRST_FontAttr)font->attr)->fontdef->ascent;
@@ -183,7 +183,7 @@ BRST_Font_Ascent(BRST_Font font)
 BRST_EXPORT(BRST_INT)
 BRST_Font_Descent(BRST_Font font)
 {
-    BRST_PTRACE((" BRST_Font_Descent\n"));
+    BRST_PTRACE(" BRST_Font_Descent\n");
 
     if (BRST_Font_Validate(font))
         return ((BRST_FontAttr)font->attr)->fontdef->descent;
@@ -194,7 +194,7 @@ BRST_Font_Descent(BRST_Font font)
 BRST_EXPORT(BRST_UINT)
 BRST_Font_XHeight(BRST_Font font)
 {
-    BRST_PTRACE((" BRST_Font_XHeight\n"));
+    BRST_PTRACE(" BRST_Font_XHeight\n");
 
     if (BRST_Font_Validate(font))
         return ((BRST_FontAttr)font->attr)->fontdef->x_height;
@@ -205,7 +205,7 @@ BRST_Font_XHeight(BRST_Font font)
 BRST_EXPORT(BRST_UINT)
 BRST_Font_CapHeight(BRST_Font font)
 {
-    BRST_PTRACE((" BRST_Font_CapHeight\n"));
+    BRST_PTRACE(" BRST_Font_CapHeight\n");
 
     if (BRST_Font_Validate(font))
         return ((BRST_FontAttr)font->attr)->fontdef->cap_height;

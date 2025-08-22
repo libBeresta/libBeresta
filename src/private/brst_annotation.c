@@ -70,7 +70,7 @@ BRST_Annotation_New(BRST_MMgr mmgr,
     BRST_STATUS ret = BRST_OK;
     BRST_REAL tmp;
 
-    BRST_PTRACE((" BRST_Annotation_New\n"));
+    BRST_PTRACE(" BRST_Annotation_New\n");
 
     annot = BRST_Dict_New(mmgr);
     if (!annot)
@@ -116,7 +116,7 @@ BRST_WidgetAnnot_New(BRST_MMgr mmgr,
 {
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_WidgetAnnot_New\n"));
+    BRST_PTRACE(" BRST_WidgetAnnot_New\n");
 
     annot = BRST_Annotation_New(mmgr, xref, BRST_ANNOT_WIDGET, rect);
     if (!annot)
@@ -133,7 +133,7 @@ BRST_LinkAnnot_New(BRST_MMgr mmgr,
 {
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_LinkAnnot_New\n"));
+    BRST_PTRACE(" BRST_LinkAnnot_New\n");
 
     annot = BRST_Annotation_New(mmgr, xref, BRST_ANNOT_LINK, rect);
     if (!annot)
@@ -157,7 +157,7 @@ BRST_URILinkAnnot_New(BRST_MMgr mmgr,
     BRST_Dict action;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_URILinkAnnot_New\n"));
+    BRST_PTRACE(" BRST_URILinkAnnot_New\n");
 
     annot = BRST_Annotation_New(mmgr, xref, BRST_ANNOT_LINK, rect);
     if (!annot)
@@ -193,7 +193,7 @@ BRST_MarkupAnnot_New(BRST_MMgr mmgr,
     BRST_Annotation annot;
     BRST_String s;
 
-    BRST_PTRACE((" BRST_MarkupAnnot_New\n"));
+    BRST_PTRACE(" BRST_MarkupAnnot_New\n");
 
     annot = BRST_Annotation_New(mmgr, xref, subtype, rect);
     if (!annot)
@@ -217,7 +217,7 @@ BRST_PopupAnnot_New(BRST_MMgr mmgr,
 {
     BRST_Annotation annot;
 
-    BRST_PTRACE((" BRST_PopupAnnot_New\n"));
+    BRST_PTRACE(" BRST_PopupAnnot_New\n");
 
     annot = BRST_Annotation_New(mmgr, xref, BRST_ANNOT_POPUP, rect);
     if (!annot)
@@ -239,7 +239,7 @@ BRST_StampAnnot_New(BRST_MMgr mmgr,
 {
     BRST_Annotation annot;
     BRST_String s;
-    BRST_PTRACE((" BRST_StampAnnot_New\n"));
+    BRST_PTRACE(" BRST_StampAnnot_New\n");
 
     annot = BRST_Annotation_New(mmgr, xref, BRST_ANNOT_STAMP, rect);
     if (!annot)
@@ -267,7 +267,7 @@ BRST_ProjectionAnnot_New(BRST_MMgr mmgr,
 {
     BRST_Annotation annot;
     BRST_String s;
-    BRST_PTRACE((" BRST_StampAnnot_New\n"));
+    BRST_PTRACE(" BRST_StampAnnot_New\n");
     annot = BRST_Annotation_New(mmgr, xref, BRST_ANNOT_PROJECTION, rect);
 
     if (!annot)
@@ -286,7 +286,7 @@ BRST_ProjectionAnnot_New(BRST_MMgr mmgr,
 BRST_BOOL
 BRST_Annotation_Validate(BRST_Annotation annot)
 {
-    BRST_PTRACE((" BRST_Annotation_Validate\n"));
+    BRST_PTRACE(" BRST_Annotation_Validate\n");
 
     if (!annot)
         return BRST_FALSE;
@@ -312,7 +312,7 @@ BRST_3DAnnot_New(BRST_MMgr mmgr,
     BRST_Dict action, appearance, stream;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_3DAnnot_New\n"));
+    BRST_PTRACE(" BRST_3DAnnot_New\n");
 
     annot = BRST_Annotation_New(mmgr, xref, BRST_ANNOT_3D, rect);
     if (!annot) {

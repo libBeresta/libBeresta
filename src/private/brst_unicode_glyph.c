@@ -13,7 +13,7 @@ BRST_UnicodeToGlyphName(BRST_UNICODE unicode)
 {
     const BRST_UnicodeGlyphPair* map = BRST_UNICODE_GLYPH_NAME_MAP;
 
-    BRST_PTRACE((" BRST_UnicodeToGlyphName\n"));
+    BRST_PTRACE(" BRST_UnicodeToGlyphName\n");
 
     while (map->unicode <= unicode) {
         if (map->unicode == unicode)
@@ -29,7 +29,7 @@ BRST_GlyphNameToUnicode(const char* glyph_name)
 {
     const BRST_UnicodeGlyphPair* map = BRST_UNICODE_GLYPH_NAME_MAP;
 
-    BRST_PTRACE((" BRST_GlyphNameToUnicode\n"));
+    BRST_PTRACE(" BRST_GlyphNameToUnicode\n");
 
     while (map->unicode != 0xFFFF) {
         if (BRST_StrCmp(glyph_name, map->glyph_name) == 0)

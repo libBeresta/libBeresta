@@ -42,7 +42,7 @@ WriteHeader(BRST_Doc pdf,
 {
     BRST_UINT idx = (BRST_INT)pdf->pdf_version;
 
-    BRST_PTRACE((" WriteHeader\n"));
+    BRST_PTRACE(" WriteHeader\n");
 
     if (BRST_Stream_WriteStr(stream, BRST_VERSION_STR[idx]) != BRST_OK)
         return BRST_Error_Code(pdf->error);
@@ -53,7 +53,7 @@ WriteHeader(BRST_Doc pdf,
 static BRST_STATUS
 PrepareTrailer(BRST_Doc pdf)
 {
-    BRST_PTRACE((" PrepareTrailer\n"));
+    BRST_PTRACE(" PrepareTrailer\n");
 
     if (BRST_Dict_Add(pdf->trailer, "Root", pdf->catalog) != BRST_OK)
         return BRST_Error_Code(pdf->error);
@@ -101,7 +101,7 @@ InternalSaveToStream(BRST_Doc pdf,
 BRST_BOOL
 BRST_Doc_Validate(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_Validate\n"));
+    BRST_PTRACE(" BRST_Doc_Validate\n");
 
     if (!pdf || pdf->sig_bytes != BRST_SIG_BYTES)
         return BRST_FALSE;
@@ -113,7 +113,7 @@ BRST_STATUS
 BRST_Doc_SetCurrentPage(BRST_Doc pdf,
     BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Doc_SetCurrentPage\n"));
+    BRST_PTRACE(" BRST_Doc_SetCurrentPage\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_INVALID_DOCUMENT;

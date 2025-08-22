@@ -7,20 +7,28 @@ set(
 )
 
 set(
+  demos_NO_HANDLER
+    minimal_empty
+)
+
+set(
   demos_with_grid_NAMES
     arc_demo
     grid_demo
     utf8
 )
 
-# we need to add some definitions for win 32
+# TODO Так ли это?
+# =======================================================================
+# Для Win32 нужны дополнительные флаги
+# =======================================================================
 set(DEMO_C_FLAGS)
 if(WIN32 AND NOT CYGWIN)
   set(DEMO_C_FLAGS "-D__WIN32__")
 endif(WIN32 AND NOT CYGWIN)
 
 # =======================================================================
-# create demos
+# Создаем примеры с обработчиком
 # =======================================================================
 foreach(demo ${demos_NAMES})
   add_executable(${demo} ${demo}.c handler.c)
@@ -33,8 +41,23 @@ foreach(demo ${demos_NAMES})
   endif(DEMO_C_FLAGS)
 endforeach()
 
+# =======================================================================
+# Создаем примеры без обработчика
+# =======================================================================
+foreach(demo ${demos_NO_HANDLER})
+  add_executable(${demo} ${demo}.c)
+  target_link_libraries(${demo} PUBLIC brst)
+  if(UNIX AND NOT APPLE)
+    target_link_libraries(${demo} PUBLIC m)
+  endif()
+  if(DEMO_C_FLAGS)
+    set_target_properties(${demo} PROPERTIES COMPILE_FLAGS ${DEMO_C_FLAGS})
+  endif(DEMO_C_FLAGS)
+endforeach()
 
-# some demos need grid_sheet.c compiled in
+# =======================================================================
+# Создаем примеры с миллиметровкой
+# =======================================================================
 foreach(demo ${demos_with_grid_NAMES})
   add_executable(${demo} ${demo}.c grid_sheet.c handler.c)
   target_link_libraries(${demo} PUBLIC brst)

@@ -28,7 +28,7 @@ BRST_Doc_SetInfoAttr(BRST_Doc pdf,
     BRST_STATUS ret;
     BRST_Dict info = GetInfo(pdf);
 
-    BRST_PTRACE((" BRST_Doc_SetInfoAttr\n"));
+    BRST_PTRACE(" BRST_Doc_SetInfoAttr\n");
 
     if (!info)
         return BRST_Error_Check(pdf->error);
@@ -47,7 +47,7 @@ BRST_Doc_InfoAttr(BRST_Doc pdf,
     const char* ret = NULL;
     BRST_Dict info  = GetInfo(pdf);
 
-    BRST_PTRACE((" BRST_Doc_InfoAttr\n"));
+    BRST_PTRACE(" BRST_Doc_InfoAttr\n");
 
     if (info)
         ret = BRST_Info_InfoAttr(info, type);
@@ -65,7 +65,7 @@ BRST_Doc_SetInfoDateAttr(BRST_Doc pdf,
     BRST_STATUS ret;
     BRST_Dict info = GetInfo(pdf);
 
-    BRST_PTRACE((" BRST_Doc_SetInfoDateAttr\n"));
+    BRST_PTRACE(" BRST_Doc_SetInfoDateAttr\n");
 
     if (!info)
         return BRST_Error_Check(pdf->error);

@@ -28,7 +28,7 @@ BRST_Page_XObject_Execute(BRST_Page page,
     BRST_PageAttr attr;
     const char* local_name;
 
-    BRST_PTRACE((" BRST_Page_XObject_Execute\n"));
+    BRST_PTRACE(" BRST_Page_XObject_Execute\n");
 
     if (ret != BRST_OK)
         return ret;

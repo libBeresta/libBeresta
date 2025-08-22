@@ -19,7 +19,7 @@ void BRST_Obj_Free(BRST_MMgr mmgr,
 {
     BRST_Obj_Header* header;
 
-    BRST_PTRACE((" BRST_Obj_Free\n"));
+    BRST_PTRACE(" BRST_Obj_Free\n");
 
     if (!obj)
         return;
@@ -35,17 +35,17 @@ void BRST_Obj_ForceFree(BRST_MMgr mmgr,
 {
     BRST_Obj_Header* header;
 
-    BRST_PTRACE((" BRST_Obj_ForceFree\n"));
+    BRST_PTRACE(" BRST_Obj_ForceFree\n");
 
     if (!obj)
         return;
 
     header = (BRST_Obj_Header*)obj;
 
-    BRST_PTRACE((" BRST_Obj_ForceFree obj=0x%08X obj_id=0x%08X "
+    BRST_PTRACE(" BRST_Obj_ForceFree obj=0x%p obj_id=0x%08X "
                  "obj_class=0x%08X\n",
-        (BRST_UINT)obj, (BRST_UINT)(header->obj_id),
-        (BRST_UINT)(header->obj_class)));
+        (void*)obj, (BRST_UINT)(header->obj_id),
+        (BRST_UINT)(header->obj_class));
 
     switch (header->obj_class & BRST_OCLASS_ANY) {
     case BRST_OCLASS_STRING:
@@ -73,7 +73,7 @@ BRST_Obj_ID(void* obj)
 {
     BRST_Obj_Header* header;
 
-    BRST_PTRACE((" BRST_Obj_ID\n"));
+    BRST_PTRACE(" BRST_Obj_ID\n");
 
     if (!obj)
         return BRST_OTYPE_NONE;
@@ -87,7 +87,7 @@ void BRST_Obj_SetID(void* obj, BRST_UINT32 id)
 {
     BRST_Obj_Header* header;
 
-    BRST_PTRACE((" BRST_Obj_SetID\n"));
+    BRST_PTRACE(" BRST_Obj_SetID\n");
 
     header = (BRST_Obj_Header*)obj;
 
@@ -100,7 +100,7 @@ BRST_Obj_Class(void* obj)
 {
     BRST_Obj_Header* header;
 
-    BRST_PTRACE((" BRST_Obj_Class\n"));
+    BRST_PTRACE(" BRST_Obj_Class\n");
 
     if (!obj)
         return BRST_OCLASS_UNKNOWN;
@@ -114,7 +114,7 @@ void BRST_Obj_SetClass(void* obj, BRST_UINT16 cls)
 {
     BRST_Obj_Header* header;
 
-    BRST_PTRACE((" BRST_Obj_SetClass\n"));
+    BRST_PTRACE(" BRST_Obj_SetClass\n");
 
     header = (BRST_Obj_Header*)obj;
 

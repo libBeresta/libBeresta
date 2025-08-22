@@ -79,7 +79,7 @@ BRST_GState_New(BRST_MMgr mmgr,
         gstate->h_scaling      = BRST_DEF_HSCALING;
         gstate->text_leading   = BRST_DEF_LEADING;
         gstate->rendering_mode = BRST_DEF_RENDERING_MODE;
-        gstate->text_rise      = BRST_DEF_RAISE;
+        gstate->text_rise      = BRST_DEF_RISE;
 
         gstate->cs_stroke   = BRST_CS_DEVICE_GRAY;
         gstate->cs_fill     = BRST_CS_DEVICE_GRAY;

@@ -35,7 +35,7 @@ LoadJpegHeader(BRST_Image image,
     BRST_STATUS ret;
     BRST_Array array;
 
-    BRST_PTRACE((" BRST_Image_LoadJpegHeader\n"));
+    BRST_PTRACE(" BRST_Image_LoadJpegHeader\n");
 
     len = 2;
     if (BRST_Stream_Read(stream, (BRST_BYTE*)&tag, &len) != BRST_OK)
@@ -61,7 +61,7 @@ LoadJpegHeader(BRST_Image image,
 
         BRST_UInt16Swap(&size);
 
-        BRST_PTRACE(("tag=%04X size=%u\n", tag, size));
+        BRST_PTRACE("tag=%04X size=%u\n", tag, size);
 
         if (tag == 0xFFC0 || tag == 0xFFC1 || tag == 0xFFC2 || tag == 0xFFC9) {
 
@@ -164,7 +164,7 @@ BRST_Image_Jpeg_Load(BRST_MMgr mmgr,
     BRST_Dict image;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_Image_Jpeg_Load\n"));
+    BRST_PTRACE(" BRST_Image_Jpeg_Load\n");
 
     image = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!image)
@@ -219,7 +219,7 @@ BRST_Image_Jpeg_LoadFromMem(BRST_MMgr mmgr,
     BRST_Stream jpeg_data;
     BRST_Image image;
 
-    BRST_PTRACE((" BRST_Image_Jpeg_LoadFromMem\n"));
+    BRST_PTRACE(" BRST_Image_Jpeg_LoadFromMem\n");
 
     jpeg_data = BRST_MemStream_New(mmgr, size);
     if (!BRST_Stream_Validate(jpeg_data)) {

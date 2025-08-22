@@ -43,7 +43,7 @@ main (int argc, char **argv)
     // Добавление страницы
     page = BRST_Doc_Page_Add(pdf);
 
-    BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_PORTRAIT);
+    BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_ORIENTATION_PORTRAIT);
 
     BRST_Page_BeginText(page);
     BRST_Page_SetFontAndSize(page, font, 20);

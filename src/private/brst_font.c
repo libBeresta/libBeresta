@@ -13,7 +13,7 @@
 BRST_BOOL
 BRST_Font_Validate(BRST_Font font)
 {
-    BRST_PTRACE((" BRST_Font_Validate\n"));
+    BRST_PTRACE(" BRST_Font_Validate\n");
 
     if (!font || !font->attr || font->header.obj_class != (BRST_OSUBCLASS_FONT | BRST_OCLASS_DICT))
         return BRST_FALSE;

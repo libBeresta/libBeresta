@@ -35,7 +35,7 @@ BRST_Image_Png_LoadFromStream(BRST_MMgr mmgr,
     BRST_Image image;
     BRST_Dict smask;
 
-    BRST_PTRACE((" BRST_Image_LoadPngImage\n"));
+    BRST_PTRACE(" BRST_Image_LoadPngImage\n");
 
     image = BRST_Image_Png_Load(mmgr, imagedata, xref,
         delayed_loading);
@@ -416,7 +416,7 @@ BRST_Image_Png_Load(BRST_MMgr mmgr,
     png_byte header[BRST_PNG_BYTES_TO_CHECK];
     BRST_UINT len = BRST_PNG_BYTES_TO_CHECK;
 
-    BRST_PTRACE((" BRST_Image_Png_Load\n"));
+    BRST_PTRACE(" BRST_Image_Png_Load\n");
 
     BRST_MemSet(header, 0x00, BRST_PNG_BYTES_TO_CHECK);
     ret = BRST_Stream_Read(png_data, header, &len);
@@ -454,7 +454,7 @@ LoadPngData(BRST_Dict image,
     png_structp png_ptr = NULL;
     png_infop info_ptr  = NULL;
 
-    BRST_PTRACE((" BRST_Image_LoadPngImage\n"));
+    BRST_PTRACE(" BRST_Image_LoadPngImage\n");
 
     /* create read_struct. */
     png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING,
@@ -691,7 +691,7 @@ PngBeforeWrite(BRST_Dict obj)
     BRST_Stream png_data;
     BRST_String s;
 
-    BRST_PTRACE((" PngBeforeWrite\n"));
+    BRST_PTRACE(" PngBeforeWrite\n");
 
     BRST_MemStream_FreeData(obj->stream);
 
@@ -723,7 +723,7 @@ PngBeforeWrite(BRST_Dict obj)
 static BRST_STATUS
 PngAfterWrite(BRST_Dict obj)
 {
-    BRST_PTRACE((" PngAfterWrite\n"));
+    BRST_PTRACE(" PngAfterWrite\n");
 
     BRST_MemStream_FreeData(obj->stream);
 

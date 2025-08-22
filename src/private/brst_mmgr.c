@@ -41,14 +41,14 @@ BRST_MMgr_New(BRST_Error error,
 {
     BRST_MMgr mmgr;
 
-    BRST_PTRACE((" BRST_MMgr_New\n"));
+    BRST_PTRACE(" BRST_MMgr_New\n");
 
     if (alloc_fn)
         mmgr = (BRST_MMgr)alloc_fn(sizeof(BRST_MMgr_Rec));
     else
         mmgr = (BRST_MMgr)InternalGetMem(sizeof(BRST_MMgr_Rec));
 
-    BRST_PTRACE(("+%p mmgr-new\n", mmgr));
+    BRST_PTRACE("+%p mmgr-new\n", (void*)mmgr);
 
     if (mmgr != NULL) {
         /* initialize mmgr object */
@@ -76,14 +76,14 @@ BRST_MMgr_New(BRST_Error error,
          *  to be using memory-pool.
          *
          */
-        if (!buf_size)
+        if (!buf_size) {
             mmgr->mpool = NULL;
-        else {
+        } else {
             BRST_MPool_Node node;
 
             node = (BRST_MPool_Node)mmgr->alloc_fn(sizeof(BRST_MPool_Node_Rec) + buf_size);
 
-            BRST_PTRACE(("+%p mmgr-node-new\n", node));
+            BRST_PTRACE("+%p mmgr-node-new\n", (void*)node);
 
             if (node == NULL) {
                 BRST_Error_Set(error, BRST_FAILED_TO_ALLOC_MEM, BRST_NOERROR);
@@ -108,8 +108,9 @@ BRST_MMgr_New(BRST_Error error,
         if (mmgr) {
             mmgr->buf_size = buf_size;
         }
-    } else
+    } else {
         BRST_Error_Set(error, BRST_FAILED_TO_ALLOC_MEM, BRST_NOERROR);
+    }
 
     return mmgr;
 }
@@ -118,7 +119,7 @@ void BRST_MMgr_Free(BRST_MMgr mmgr)
 {
     BRST_MPool_Node node;
 
-    BRST_PTRACE((" BRST_MMgr_Free\n"));
+    BRST_PTRACE(" BRST_MMgr_Free\n");
 
     if (mmgr == NULL)
         return;
@@ -130,7 +131,7 @@ void BRST_MMgr_Free(BRST_MMgr mmgr)
         BRST_MPool_Node tmp = node;
         node                = tmp->next_node;
 
-        BRST_PTRACE(("-%p mmgr-node-free\n", tmp));
+        BRST_PTRACE("-%p mmgr-node-free\n", (void*)tmp) ;
         mmgr->free_fn(tmp);
 
 #ifdef LIBBRST_MEM_DEBUG
@@ -146,7 +147,7 @@ void BRST_MMgr_Free(BRST_MMgr mmgr)
         BRST_PRINTF("# ERROR #\n");
 #endif /* LIBBRST_MEM_DEBUG */
 
-    BRST_PTRACE(("-%p mmgr-free\n", mmgr));
+    BRST_PTRACE("-%p mmgr-free\n", (void*)mmgr);
     mmgr->free_fn(mmgr);
 }
 
@@ -181,7 +182,7 @@ void* BRST_GetMem(BRST_MMgr mmgr,
 
             node = (BRST_MPool_Node)mmgr->alloc_fn(sizeof(BRST_MPool_Node_Rec)
                 + tmp_buf_size);
-            BRST_PTRACE(("+%p mmgr-new-node\n", node));
+            BRST_PTRACE("+%p mmgr-new-node\n", (void*)node);
 
             if (!node) {
                 BRST_Error_Set(mmgr->error, BRST_FAILED_TO_ALLOC_MEM,
@@ -199,7 +200,7 @@ void* BRST_GetMem(BRST_MMgr mmgr,
         ptr             = node->buf;
     } else {
         ptr = mmgr->alloc_fn(size);
-        BRST_PTRACE(("+%p mmgr-alloc_fn size=%u\n", ptr, size));
+        BRST_PTRACE("+%p mmgr-alloc_fn size=%u\n", ptr, size);
 
         if (ptr == NULL)
             BRST_Error_Set(mmgr->error, BRST_FAILED_TO_ALLOC_MEM, BRST_NOERROR);
@@ -220,7 +221,7 @@ void BRST_FreeMem(BRST_MMgr mmgr,
         return;
 
     if (!mmgr->mpool) {
-        BRST_PTRACE(("-%p mmgr-free-mem\n", aptr));
+        BRST_PTRACE("-%p mmgr-free-mem\n", (void*)aptr);
         mmgr->free_fn(aptr);
 
 #ifdef LIBBRST_MEM_DEBUG

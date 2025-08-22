@@ -13,19 +13,26 @@ typedef {{ оп.оригинал | pre }} {{ оп.имя | pre }};
  {{ пер | docf }}
  */
 typedef enum _{{пер.имя | pre}} { {% for эл in пер.элементы %}
-
     /// {{ эл | docf }}
     {{эл.элемент | pre}}{% if эл.значение%} = {{эл.значение}}{% endif %},{% endfor %}
     {{пер.имя | pre | upper}}_LAST
 } {{пер.имя | pre}};
+{% endfor %}{% endif %}{% if структуры %}{% for ст in структуры %}
+/**
+  {{ ст | docf }}
+*/
+typedef struct _{{ ст.имя | pre }} {
+{% if ст.поля %}{% for пл in ст.поля %}  /// {{ пл | docf }}
+  {{ пл.тип | pre }} {{ пл.поле }}{% if пл.размер %}[{{ пл.размер }}]{% endif %};
+{% endfor %}{% endif %}} {{ ст.имя | pre }};
 {% endfor %}{% endif %}{% if функции %}{% for фн in функции %}
 /**
   \ingroup {{ фн.группа }}
-  \brief {{ фн | docf }}
+  \brief {{ фн | docf | safe | escape }}
 {%if фн.параметры %}{% for парам in фн.параметры %}
-  \param {{парам.имя}} {{ парам | docf }}{% endfor %}
+  \param {{парам.имя}} {{ парам | docf | safe | escape }}{% endfor %}
 {%endif%}
-  \return {{ фн.результат | docf }}
+  \return {{ фн.результат | docf | safe | escape }}
 {% if фн.см %}
   \see {% for см in фн.см %}
     {{см | pre}}{% endfor %}

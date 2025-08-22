@@ -26,5 +26,7 @@
 #include "brst_encoder.h"
 #include "brst_doc_encoder.h"
 #include "brst_doc_encoding_utf.h"
+#include "brst_destination.h"
+#include "brst_text.h"
 
 #endif /* BRST_H */

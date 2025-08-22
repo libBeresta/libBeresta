@@ -26,7 +26,7 @@ BRST_Doc_FindEncoder(BRST_Doc pdf,
     BRST_List list = pdf->encoder_list;
     BRST_UINT i;
 
-    BRST_PTRACE((" BRST_Doc_FindEncoder\n"));
+    BRST_PTRACE(" BRST_Doc_FindEncoder\n");
 
     for (i = 0; i < BRST_List_Count(list); i++) {
         BRST_Encoder encoder = (BRST_Encoder)BRST_List_ItemAt(list, i);
@@ -73,7 +73,7 @@ void FreeEncoderList(BRST_Doc pdf)
     BRST_List list = pdf->encoder_list;
     BRST_UINT i;
 
-    BRST_PTRACE((" FreeEncoderList\n"));
+    BRST_PTRACE(" FreeEncoderList\n");
 
     for (i = 0; i < BRST_List_Count(list); i++) {
         BRST_Encoder encoder = (BRST_Encoder)BRST_List_ItemAt(list, i);

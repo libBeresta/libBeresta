@@ -31,10 +31,10 @@ BRST_Obj_Write(void* obj,
 {
     BRST_Obj_Header* header = (BRST_Obj_Header*)obj;
 
-    BRST_PTRACE((" BRST_Obj_Write\n"));
+    BRST_PTRACE(" BRST_Obj_Write\n");
 
     if (header->obj_id & BRST_OTYPE_HIDDEN) {
-        BRST_PTRACE(("#BRST_Obj_Write obj=0x%08X skipped\n", (BRST_UINT)obj));
+        BRST_PTRACE("#BRST_Obj_Write obj=0x%p skipped\n", (void*)obj);
         return BRST_OK;
     }
 
@@ -65,12 +65,12 @@ BRST_Obj_WriteValue(void* obj,
     BRST_Obj_Header* header;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Obj_WriteValue\n"));
+    BRST_PTRACE(" BRST_Obj_WriteValue\n");
 
     header = (BRST_Obj_Header*)obj;
 
-    BRST_PTRACE((" BRST_Obj_WriteValue obj=0x%08X obj_class=0x%04X\n",
-        (BRST_UINT)obj, (BRST_UINT)header->obj_class));
+    BRST_PTRACE(" BRST_Obj_WriteValue obj=0x%p obj_class=0x%04X\n",
+        (void*)obj, (BRST_UINT)header->obj_class);
 
     switch (header->obj_class & BRST_OCLASS_ANY) {
     case BRST_OCLASS_NAME:

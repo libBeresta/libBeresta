@@ -1,0 +1,19 @@
+{% include "ЛИЦЕНЗИЯ.txt" %}
+(in-package #:cl-beresta)
+{% if определения %}{% for оп in определения %}
+(defctype {{ оп.имя | under }} {{ оп.оригинал | under }})
+{% endfor %}{% endif %}{% if указатели %}{% for ук in указатели %}
+(defctype {{ ук.имя | under }} :pointer)
+{% endfor %}{% endif %}{% if перечисления %}{% for пер in перечисления %}
+(defcenum {{пер.имя | under }} {% for эл in пер.элементы %}
+  {% if эл.значение%} (:{{ эл.элемент | under }} {{эл.значение | hex0 }}){% else %}:{{ эл.элемент | under }}{% endif %}{% endfor %}
+)
+{% endfor %}{% endif %}{% if структуры %}{% for ст in структуры %}
+(defcstruct {{ ст.имя }}
+  "{{ ст | docf }}"{%if ст.поля %}{% for пл in ст.поля %}
+  ({{ пл.поле }} {{пл.тип}}{% if пл.размер %} :count {{пл.размер}}{% endif %}){% endfor %}{% endif %}
+)
+{% endfor %}{% endif %}{% if функции %}{% for фн in функции %}
+(defcfun ("{{фн.название | pre}}" {{фн.название | under}}) {{ фн.результат.тип | under }}{%if фн.параметры %}{% for парам in фн.параметры %}
+  ({{парам.имя | under}} {{парам.тип | under}}){% endfor %}{% endif %})
+{% endfor %}{% endif %}

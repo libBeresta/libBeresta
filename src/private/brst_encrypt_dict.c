@@ -24,7 +24,7 @@ BRST_EncryptDict_New(BRST_MMgr mmgr,
     BRST_Encrypt attr;
     BRST_EncryptDict dict;
 
-    BRST_PTRACE((" BRST_EncryptDict_New\n"));
+    BRST_PTRACE(" BRST_EncryptDict_New\n");
 
     dict = BRST_Dict_New(mmgr);
     if (!dict)
@@ -122,7 +122,7 @@ BRST_EncryptDict_Prepare(BRST_EncryptDict dict,
     BRST_Binary user_key;
     BRST_Binary owner_key;
 
-    BRST_PTRACE((" BRST_EncryptDict_Prepare\n"));
+    BRST_PTRACE(" BRST_EncryptDict_Prepare\n");
 
     BRST_EncryptDict_CreateID(dict, info, xref);
     BRST_Encrypt_CreateOwnerKey(attr);
@@ -166,7 +166,7 @@ void BRST_EncryptDict_OnFree(BRST_Dict obj)
 {
     BRST_Encrypt attr = (BRST_Encrypt)obj->attr;
 
-    BRST_PTRACE((" BRST_EncryptDict_OnFree\n"));
+    BRST_PTRACE(" BRST_EncryptDict_OnFree\n");
 
     if (attr)
         BRST_FreeMem(obj->mmgr, attr);
@@ -177,7 +177,7 @@ void BRST_PadOrTruncatePasswd(const char* pwd,
 {
     BRST_UINT len = BRST_StrLen(pwd, BRST_PASSWD_LEN + 1);
 
-    BRST_PTRACE((" BRST_PadOrTruncatePasswd\n"));
+    BRST_PTRACE(" BRST_PadOrTruncatePasswd\n");
 
     BRST_MemSet(new_pwd, 0x00, BRST_PASSWD_LEN);
 
@@ -198,7 +198,7 @@ BRST_EncryptDict_SetPassword(BRST_EncryptDict dict,
 {
     BRST_Encrypt attr = (BRST_Encrypt)dict->attr;
 
-    BRST_PTRACE((" BRST_EncryptDict_SetPassword\n"));
+    BRST_PTRACE(" BRST_EncryptDict_SetPassword\n");
 
     if (BRST_StrLen(owner_passwd, 2) == 0)
         return BRST_Error_Set(dict->error, BRST_ENCRYPT_INVALID_PASSWORD, 0);
@@ -217,7 +217,7 @@ BRST_EncryptDict_Validate(BRST_EncryptDict dict)
 {
     BRST_Obj_Header* header = (BRST_Obj_Header*)dict;
 
-    BRST_PTRACE((" BRST_EncryptDict_Validate\n"));
+    BRST_PTRACE(" BRST_EncryptDict_Validate\n");
 
     if (!dict || !dict->attr)
         return BRST_FALSE;
@@ -233,7 +233,7 @@ BRST_EncryptDict_Attr(BRST_EncryptDict dict)
 {
     BRST_Obj_Header* header = (BRST_Obj_Header*)dict;
 
-    BRST_PTRACE((" BRST_EncryptDict_Attr\n"));
+    BRST_PTRACE(" BRST_EncryptDict_Attr\n");
 
     if (dict && dict->attr && (header->obj_class == (BRST_OCLASS_DICT | BRST_OSUBCLASS_ENCRYPT)))
         return (BRST_Encrypt)dict->attr;

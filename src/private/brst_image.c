@@ -23,7 +23,7 @@ BRST_Image_Validate(BRST_Image image)
 {
     BRST_Name subtype;
 
-    BRST_PTRACE((" BRST_Image_Validate\n"));
+    BRST_PTRACE(" BRST_Image_Validate\n");
 
     if (!image)
         return BRST_FALSE;

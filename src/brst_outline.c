@@ -22,7 +22,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Outline_SetDestination(BRST_Outline outline,
     BRST_Destination dst)
 {
-    BRST_PTRACE((" BRST_Outline_SetDestination\n"));
+    BRST_PTRACE(" BRST_Outline_SetDestination\n");
 
     if (!BRST_Outline_Validate(outline))
         return BRST_INVALID_OUTLINE;
@@ -51,7 +51,7 @@ BRST_Outline_SetOpened(BRST_Outline outline,
     n = (BRST_Number)BRST_Dict_Item(outline, "_OPENED",
         BRST_OCLASS_NUMBER);
 
-    BRST_PTRACE((" BRST_Outline_SetOpened\n"));
+    BRST_PTRACE(" BRST_Outline_SetOpened\n");
 
     if (!n) {
         n = BRST_Number_New(outline->mmgr, (BRST_INT)opened);

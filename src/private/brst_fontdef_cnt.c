@@ -21,7 +21,7 @@ MingLiU_Init(BRST_FontDef fontdef)
 {
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_FontDef_MingLiU_Init\n"));
+    BRST_PTRACE(" BRST_FontDef_MingLiU_Init\n");
 
     fontdef->ascent       = 800;
     fontdef->descent      = -199;

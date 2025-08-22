@@ -206,11 +206,11 @@ BRST_Doc_Page_Insert(
   \param page_num First page applies labeling range
   \param style \parblock One of the following numbering styles:
 
-  - \ref BRST_PAGE_NUM_STYLE_DECIMAL Arabic numerals (1 2 3 4)
-  - \ref BRST_PAGE_NUM_STYLE_UPPER_ROMAN Uppercase roman numerals (I II III IV)
-  - \ref BRST_PAGE_NUM_STYLE_LOWER_ROMAN Lowercase roman numerals (i ii iii iv)
-  - \ref BRST_PAGE_NUM_STYLE_UPPER_LETTERS Uppercase letters (A B C D)
-  - \ref BRST_PAGE_NUM_STYLE_LOWER_LETTERS Lowercase letters (a b c d)
+  - \ref BRST_PAGE_NUM_DECIMAL Arabic numerals (1 2 3 4)
+  - \ref BRST_PAGE_NUM_UPPER_ROMAN Uppercase roman numerals (I II III IV)
+  - \ref BRST_PAGE_NUM_LOWER_ROMAN Lowercase roman numerals (i ii iii iv)
+  - \ref BRST_PAGE_NUM_UPPER_LETTERS Uppercase letters (A B C D)
+  - \ref BRST_PAGE_NUM_LOWER_LETTERS Lowercase letters (a b c d)
   \endparblock
   \param first_page First page number to use
   \param prefix Prefix for the page label (\c NULL is allowed.)
@@ -221,13 +221,13 @@ BRST_Doc_Page_Insert(
 
   - \ref BRST_INVALID_DOCUMENT
   - \ref BRST_FAILED_TO_ALLOC_MEM Memory allocation failed.
-  - \ref BRST_PAGE_NUM_STYLE_OUT_OF_RANGE An invalid page numbering style is specified.
+  - \ref BRST_PAGE_NUM_OUT_OF_RANGE An invalid page numbering style is specified.
 
   \par Sample
   \code{.c}
-  BRST_AddPageLabel(pdf, 0, BRST_PAGE_NUM_STYLE_LOWER_ROMAN, 1, "");
-  BRST_AddPageLabel(pdf, 4, BRST_PAGE_NUM_STYLE_DECIMAL, 1, "");
-  BRST_AddPageLabel(pdf, 7, BRST_PAGE_NUM_STYLE_DECIMAL, 8, "A-");
+  BRST_AddPageLabel(pdf, 0, BRST_PAGE_NUM_LOWER_ROMAN, 1, "");
+  BRST_AddPageLabel(pdf, 4, BRST_PAGE_NUM_DECIMAL, 1, "");
+  BRST_AddPageLabel(pdf, 7, BRST_PAGE_NUM_DECIMAL, 8, "A-");
   \endcode
 
   \par Output

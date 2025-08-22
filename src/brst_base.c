@@ -32,7 +32,7 @@ BRST_Version(void)
 BRST_EXPORT(BRST_BOOL)
 BRST_Doc_Initialized(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_Initialized\n"));
+    BRST_PTRACE(" BRST_Doc_Initialized\n");
 
     if (!pdf || pdf->sig_bytes != BRST_SIG_BYTES)
         return BRST_FALSE;
@@ -40,14 +40,15 @@ BRST_Doc_Initialized(BRST_Doc pdf)
     if (!pdf->catalog || BRST_Error_Code(pdf->error) != BRST_NOERROR) {
         BRST_Error_Raise(pdf->error, BRST_INVALID_DOCUMENT, 0);
         return BRST_FALSE;
-    } else
+    } else {
         return BRST_TRUE;
+    }
 }
 
 BRST_EXPORT(BRST_MMgr)
 BRST_Doc_MMgr(BRST_Doc doc)
 {
-    BRST_PTRACE((" BRST_Doc_MMgr\n"));
+    BRST_PTRACE(" BRST_Doc_MMgr\n");
 
     return doc->mmgr;
 }
@@ -55,7 +56,7 @@ BRST_Doc_MMgr(BRST_Doc doc)
 BRST_EXPORT(void)
 BRST_Doc_Destroy(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_Destroy\n"));
+    BRST_PTRACE(" BRST_Doc_Destroy\n");
 
     if (BRST_Doc_Validate(pdf)) {
         if (pdf->xref) {
@@ -112,7 +113,7 @@ BRST_Doc_Destroy(BRST_Doc pdf)
 BRST_EXPORT(void)
 BRST_Doc_Destroy_All(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_Destroy_All\n"));
+    BRST_PTRACE(" BRST_Doc_Destroy_All\n");
 
     if (BRST_Doc_Validate(pdf)) {
         BRST_Doc_Destroy(pdf);
@@ -134,7 +135,7 @@ BRST_Doc_Destroy_All(BRST_Doc pdf)
 BRST_EXPORT(void)
 BRST_Doc_Free(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_Free\n"));
+    BRST_PTRACE(" BRST_Doc_Free\n");
 
     if (pdf) {
         BRST_MMgr mmgr = pdf->mmgr;
@@ -156,7 +157,7 @@ BRST_Doc_Initialize(BRST_Doc pdf)
     char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
     const char* version;
 
-    BRST_PTRACE((" BRST_Doc_Initialize\n"));
+    BRST_PTRACE(" BRST_Doc_Initialize\n");
 
     if (!BRST_Doc_Validate(pdf))
         return BRST_DOC_INVALID_OBJECT;
@@ -225,7 +226,7 @@ BRST_Doc_New_Ex(BRST_Error_Handler user_error_fn,
     BRST_MMgr mmgr;
     BRST_Error tmp_error = BRST_Error_New();
 
-    BRST_PTRACE((" BRST_New_Doc_Ex\n"));
+    BRST_PTRACE(" BRST_New_Doc_Ex\n");
 
     /* initialize temporary-error object */
     BRST_Error_Init(tmp_error, user_data);
@@ -233,24 +234,34 @@ BRST_Doc_New_Ex(BRST_Error_Handler user_error_fn,
     /* create memory-manager object */
     mmgr = BRST_MMgr_New(tmp_error, mem_pool_buf_size, user_alloc_fn,
         user_free_fn);
+
     if (!mmgr) {
         BRST_Error_Check(tmp_error);
         return NULL;
     }
 
+    BRST_PTRACE(" BRST_New_Doc_Ex 1\n");
+
+    BRST_PTRACE("%p mmbr\n", (void*)mmgr);
+
     /* now create pdf_doc object */
     pdf = BRST_GetMem(mmgr, sizeof(BRST_Doc_Rec));
+    BRST_PTRACE(" BRST_New_Doc_Ex4 pdf=%p, sizeof=%lu\n", (void*) pdf, sizeof(BRST_Doc_Rec));
     if (!pdf) {
         BRST_MMgr_Free(mmgr);
         BRST_Error_Check(tmp_error);
         return NULL;
     }
 
+    BRST_PTRACE(" BRST_New_Doc_Ex2\n");
+
     BRST_MemSet(pdf, 0, sizeof(BRST_Doc_Rec));
     pdf->sig_bytes        = BRST_SIG_BYTES;
     pdf->mmgr             = mmgr;
     pdf->pdf_version      = BRST_VER_13;
     pdf->compression_mode = BRST_COMP_NONE;
+
+    BRST_PTRACE(" BRST_New_Doc_Ex3\n");
 
     /* copy the data of temporary-error object to the one which is
        included in pdf_doc object */
@@ -260,13 +271,19 @@ BRST_Doc_New_Ex(BRST_Error_Handler user_error_fn,
     //    /* switch the error-object of memory-manager */
     //    mmgr->error = pdf->error;
 
+    BRST_PTRACE(" BRST_New_Doc_Ex4\n");
+
     if (BRST_Doc_Initialize(pdf) != BRST_OK) {
         BRST_Doc_Free(pdf);
         BRST_Error_Check(tmp_error);
         return NULL;
     }
 
+    BRST_PTRACE(" BRST_New_Doc_Ex5\n");
+
     BRST_Error_SetHandler(pdf->error, user_error_fn);
+
+    BRST_PTRACE(" BRST_New_Doc_Ex OK\n");
 
     return pdf;
 }
@@ -275,9 +292,19 @@ BRST_EXPORT(BRST_Doc)
 BRST_Doc_New(BRST_Error_Handler user_error_fn,
     void* user_data)
 {
-    BRST_PTRACE((" BRST_Doc_New\n"));
+    BRST_PTRACE(" BRST_Doc_New\n");
 
     return BRST_Doc_New_Ex(user_error_fn, NULL, NULL, 0, user_data);
+}
+
+BRST_EXPORT(BRST_Doc)
+BRST_Doc_New_Empty()
+{
+    BRST_PTRACE(" BRST_Doc_New_Empty\n");
+
+    BRST_Doc pdf = BRST_Doc_New_Ex(NULL, NULL, NULL, 0, NULL);
+    BRST_Doc_Initialized(pdf);
+    return pdf;
 }
 
 BRST_EXPORT(BRST_STATUS)
@@ -289,7 +316,7 @@ BRST_Doc_Contents(BRST_Doc pdf,
     BRST_UINT isize = *size;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Doc_Contents\n"));
+    BRST_PTRACE(" BRST_Doc_Contents\n");
 
     if (!BRST_Doc_Initialized(pdf)) {
         return BRST_INVALID_DOCUMENT;

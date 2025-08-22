@@ -47,7 +47,7 @@ BRST_Doc_Page_XObject_CreateFromImage(BRST_Doc pdf,
     BRST_Array array1;
     BRST_Array array2;
 
-    BRST_PTRACE((" BRST_Doc_Page_XObject_CreateFromImage\n"));
+    BRST_PTRACE(" BRST_Doc_Page_XObject_CreateFromImage\n");
 
     fromxobject = BRST_Dict_New_Stream_Init(pdf->mmgr, pdf->xref);
     if (!fromxobject)
@@ -176,7 +176,7 @@ BRST_Doc_Page_XObject_CreateAsWhiteRect(BRST_Doc pdf,
     BRST_Array array1;
     BRST_Array array2;
 
-    BRST_PTRACE((" BRST_Doc_Page_XObject_CreateAsWhiteRect\n"));
+    BRST_PTRACE(" BRST_Doc_Page_XObject_CreateAsWhiteRect\n");
 
     fromxobject = BRST_Dict_New_Stream_Init(pdf->mmgr, pdf->xref);
     if (!fromxobject)

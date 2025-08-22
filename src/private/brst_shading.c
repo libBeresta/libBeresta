@@ -92,7 +92,7 @@ BRST_Shading_New(
     BRST_STATUS ret = BRST_OK;
     int i;
 
-    BRST_PTRACE((" BRST_Shading_New\n"));
+    BRST_PTRACE(" BRST_Shading_New\n");
 
     /* Validate shading type: */
     switch (type) {
@@ -175,7 +175,7 @@ BRST_Shading_AddVertexRGB(BRST_Shading shading,
     RGBVertex vert;
     float bbox[4];
 
-    BRST_PTRACE((" BRST_Shading_AddVertexRGB\n"));
+    BRST_PTRACE(" BRST_Shading_AddVertexRGB\n");
 
     if (!shading) {
         return BRST_INVALID_OBJECT;

@@ -51,7 +51,7 @@ BRST_Page_InsertBefore(BRST_Page page,
     BRST_STATUS ret;
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_InsertBefore\n"));
+    BRST_PTRACE(" BRST_Page_InsertBefore\n");
 
     if (!target)
         return BRST_INVALID_PARAMETER;
@@ -85,11 +85,11 @@ Page_BeforeWrite(BRST_Dict obj)
     BRST_Page page     = (BRST_Page)obj;
     BRST_PageAttr attr = (BRST_PageAttr)obj->attr;
 
-    BRST_PTRACE((" BRST_Page_BeforeWrite\n"));
+    BRST_PTRACE(" BRST_Page_BeforeWrite\n");
 
     if (attr->gmode == BRST_GMODE_PATH_OBJECT) {
-        BRST_PTRACE((" BRST_Page_BeforeWrite warning path object is not"
-                     " end\n"));
+        BRST_PTRACE(" BRST_Page_BeforeWrite warning path object is not"
+                     " end\n");
 
         if ((ret = BRST_Page_EndPath(page)) != BRST_OK)
             return ret;
@@ -100,7 +100,7 @@ Page_BeforeWrite(BRST_Dict obj)
        TODO Убирать его в другое место не планируется.
        TODO Временно отключен для сборки
     if (attr->gmode == BRST_GMODE_TEXT_OBJECT) {
-        BRST_PTRACE((" BRST_Page_BeforeWrite warning text block is not end\n"));
+        BRST_PTRACE(" BRST_Page_BeforeWrite warning text block is not end\n");
 
         if ((ret = BRST_Page_EndText (page)) != BRST_OK)
             return ret;
@@ -124,7 +124,7 @@ BRST_Page_New(BRST_MMgr mmgr,
     BRST_PageAttr attr;
     BRST_Page page;
 
-    BRST_PTRACE((" BRST_Page_New\n"));
+    BRST_PTRACE(" BRST_Page_New\n");
 
     page = BRST_Dict_New(mmgr);
     if (!page)
@@ -177,7 +177,7 @@ Page_OnFree(BRST_Dict obj)
 {
     BRST_PageAttr attr = (BRST_PageAttr)obj->attr;
 
-    BRST_PTRACE((" BRST_Page_OnFree\n"));
+    BRST_PTRACE(" BRST_Page_OnFree\n");
 
     if (attr) {
         if (attr->gstate)
@@ -211,7 +211,7 @@ void* BRST_Page_InheritableItem(BRST_Page page,
     BRST_INT i    = 0;
     void* obj;
 
-    BRST_PTRACE((" BRST_Page_InheritableItem\n"));
+    BRST_PTRACE(" BRST_Page_InheritableItem\n");
 
     /* check whether the specified key is valid */
     while (BRST_INHERITABLE_ENTRIES[i]) {
@@ -255,7 +255,7 @@ BRST_Page_AddResource(BRST_Page page)
     BRST_Dict resource;
     BRST_Array procset;
 
-    BRST_PTRACE((" BRST_Page_AddResource\n"));
+    BRST_PTRACE(" BRST_Page_AddResource\n");
 
     resource = BRST_Dict_New(page->mmgr);
     if (!resource)
@@ -291,7 +291,7 @@ BRST_Page_MediaBox(BRST_Page page)
 {
     BRST_Box media_box = { 0, 0, 0, 0 };
 
-    BRST_PTRACE((" BRST_Page_MediaBox\n"));
+    BRST_PTRACE(" BRST_Page_MediaBox\n");
 
     if (BRST_Page_Validate(page)) {
         BRST_Array array = BRST_Page_InheritableItem(page, "MediaBox",
@@ -331,7 +331,7 @@ BRST_Page_XObjectName(BRST_Page page,
     BRST_PageAttr attr = (BRST_PageAttr)page->attr;
     const char* key;
 
-    BRST_PTRACE((" BRST_Page_XObjectName\n"));
+    BRST_PTRACE(" BRST_Page_XObjectName\n");
 
     if (!attr->xobjects) {
         BRST_Dict resources;
@@ -381,7 +381,7 @@ BRST_Page_ExtGStateName(BRST_Page page,
     BRST_PageAttr attr = (BRST_PageAttr)page->attr;
     const char* key;
 
-    BRST_PTRACE((" BRST_Page_ExtGStateName\n"));
+    BRST_PTRACE(" BRST_Page_ExtGStateName\n");
 
     if (!attr->ext_gstates) {
         BRST_Dict resources;
@@ -431,7 +431,7 @@ BRST_Page_ShadingName(BRST_Page page,
     BRST_PageAttr attr = (BRST_PageAttr)page->attr;
     const char* key;
 
-    BRST_PTRACE((" BRST_Page_ShadingName\n"));
+    BRST_PTRACE(" BRST_Page_ShadingName\n");
 
     if (!attr->shadings) {
         BRST_Dict resources;
@@ -483,7 +483,7 @@ BRST_Page_SetBoxValue(BRST_Page page,
     BRST_Real r;
     BRST_Array array;
 
-    BRST_PTRACE((" BRST_Page_SetBoxValue\n"));
+    BRST_PTRACE(" BRST_Page_SetBoxValue\n");
 
     if (!BRST_Page_Validate(page))
         return BRST_INVALID_PAGE;
@@ -506,7 +506,7 @@ BRST_Page_Validate(BRST_Page page)
 {
     BRST_Obj_Header* header = (BRST_Obj_Header*)page;
 
-    BRST_PTRACE((" BRST_Page_Validate\n"));
+    BRST_PTRACE(" BRST_Page_Validate\n");
 
     if (!page || !page->attr)
         return BRST_FALSE;
@@ -522,7 +522,7 @@ void BRST_Page_SetFilter(BRST_Page page,
 {
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_SetFilter\n"));
+    BRST_PTRACE(" BRST_Page_SetFilter\n");
 
     attr                   = (BRST_PageAttr)page->attr;
     attr->contents->filter = filter;

@@ -33,7 +33,7 @@ BRST_NameDict_New(BRST_MMgr mmgr,
 {
     BRST_NameDict ndict;
 
-    BRST_PTRACE((" BRST_NameDict_New\n"));
+    BRST_PTRACE(" BRST_NameDict_New\n");
 
     ndict = BRST_Dict_New(mmgr);
     if (!ndict)

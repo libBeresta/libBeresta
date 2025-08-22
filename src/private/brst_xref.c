@@ -34,7 +34,7 @@ BRST_Xref_New(BRST_MMgr mmgr,
     BRST_Xref xref;
     BRST_XrefEntry new_entry;
 
-    BRST_PTRACE((" BRST_Xref_New\n"));
+    BRST_PTRACE(" BRST_Xref_New\n");
 
     xref = (BRST_Xref)BRST_GetMem(mmgr, sizeof(BRST_Xref_Rec));
     if (!xref)
@@ -78,7 +78,7 @@ BRST_Xref_New(BRST_MMgr mmgr,
     return xref;
 
 Fail:
-    BRST_PTRACE((" BRST_Xref_New failed\n"));
+    BRST_PTRACE(" BRST_Xref_New failed\n");
     BRST_Xref_Free(xref);
     return NULL;
 }
@@ -89,7 +89,7 @@ void BRST_Xref_Free(BRST_Xref xref)
     BRST_XrefEntry entry;
     BRST_Xref tmp_xref;
 
-    BRST_PTRACE((" BRST_Xref_Free\n"));
+    BRST_PTRACE(" BRST_Xref_Free\n");
 
     /* delete xref entries. where prev element is not NULL,
      * delete all xref entries recursively.
@@ -124,7 +124,7 @@ BRST_Xref_Add(BRST_Xref xref,
     BRST_XrefEntry entry;
     BRST_Obj_Header* header;
 
-    BRST_PTRACE((" BRST_Xref_Add\n"));
+    BRST_PTRACE(" BRST_Xref_Add\n");
 
     if (!obj) {
         if (BRST_Error_Code(xref->error) == BRST_OK)
@@ -176,7 +176,7 @@ BRST_XrefEntry
 BRST_Xref_GetEntry(BRST_Xref xref,
     BRST_UINT index)
 {
-    BRST_PTRACE((" BRST_Xref_GetEntry\n"));
+    BRST_PTRACE(" BRST_Xref_GetEntry\n");
 
     return (BRST_XrefEntry)BRST_List_ItemAt(xref->entries, index);
 }
@@ -187,7 +187,7 @@ BRST_Xref_GetEntryByObjectId(BRST_Xref xref,
 {
     BRST_Xref tmp_xref = xref;
 
-    BRST_PTRACE((" BRST_Xref_GetEntryByObjectId\n"));
+    BRST_PTRACE(" BRST_Xref_GetEntryByObjectId\n");
 
     while (tmp_xref) {
         BRST_UINT i;
@@ -228,7 +228,7 @@ BRST_Xref_WriteToStream(BRST_Xref xref,
 
     /* write each objects of xref to the specified stream */
 
-    BRST_PTRACE((" BRST_Xref_WriteToStream\n"));
+    BRST_PTRACE(" BRST_Xref_WriteToStream\n");
 
     while (tmp_xref) {
         if (tmp_xref->start_offset == 0)
@@ -319,7 +319,7 @@ WriteTrailer(BRST_Xref xref,
 
     max_obj_id = BRST_List_Count(xref->entries) + xref->start_offset;
 
-    BRST_PTRACE((" WriteTrailer\n"));
+    BRST_PTRACE(" WriteTrailer\n");
 
     if ((ret = BRST_Dict_AddNumber(xref->trailer, "Size", max_obj_id))
         != BRST_OK)

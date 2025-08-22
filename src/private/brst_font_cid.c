@@ -84,7 +84,7 @@ BRST_Type0Font_New(BRST_MMgr mmgr,
     BRST_STATUS ret = 0;
     BRST_Array descendant_fonts;
 
-    BRST_PTRACE((" BRST_Type0Font_New\n"));
+    BRST_PTRACE(" BRST_Type0Font_New\n");
 
     font = BRST_Dict_New(mmgr);
     if (!font)
@@ -193,7 +193,7 @@ OnFree_Func(BRST_Dict obj)
 {
     BRST_FontAttr attr = (BRST_FontAttr)obj->attr;
 
-    BRST_PTRACE((" BRST_Type0Font_OnFree\n"));
+    BRST_PTRACE(" BRST_Type0Font_OnFree\n");
 
     if (attr)
         BRST_FreeMem(obj->mmgr, attr);
@@ -218,7 +218,7 @@ CIDFontType0_New(BRST_Font parent, BRST_Xref xref)
     BRST_Dict descriptor;
     BRST_Dict cid_system_info;
 
-    BRST_PTRACE((" BRST_CIDFontType0_New\n"));
+    BRST_PTRACE(" BRST_CIDFontType0_New\n");
 
     font = BRST_Dict_New(parent->mmgr);
     if (!font)
@@ -351,7 +351,7 @@ CIDFontType2_New(BRST_Font parent, BRST_Xref xref)
 
     BRST_UINT16 max = 0;
 
-    BRST_PTRACE((" BRST_CIDFontType2_New\n"));
+    BRST_PTRACE(" BRST_CIDFontType2_New\n");
 
     font = BRST_Dict_New(parent->mmgr);
     if (!font)
@@ -502,7 +502,7 @@ CIDFontType2_BeforeWrite_Func(BRST_Dict obj)
     BRST_TTFontDefAttr def_attr = (BRST_TTFontDefAttr)def->attr;
     BRST_STATUS ret             = 0;
 
-    BRST_PTRACE((" CIDFontType2_BeforeWrite_Func\n"));
+    BRST_PTRACE(" CIDFontType2_BeforeWrite_Func\n");
 
     if (font_attr->map_stream)
         font_attr->map_stream->filter = obj->filter;
@@ -590,7 +590,7 @@ TextWidth(BRST_Font font,
     BRST_INT dw2;
     BRST_BYTE b = 0;
 
-    BRST_PTRACE((" BRST_Type0Font_TextWidth\n"));
+    BRST_PTRACE(" BRST_Type0Font_TextWidth\n");
 
     if (attr->fontdef->type == BRST_FONTDEF_TYPE_CID) {
         BRST_CIDFontDefAttr cid_fontdef_attr = (BRST_CIDFontDefAttr)attr->fontdef->attr;
@@ -673,7 +673,7 @@ MeasureText(BRST_Font font,
     BRST_ParseText_Rec parse_state;
     BRST_INT dw2;
 
-    BRST_PTRACE((" BRST_Type0Font_MeasureText\n"));
+    BRST_PTRACE(" BRST_Type0Font_MeasureText\n");
 
     if (attr->fontdef->type == BRST_FONTDEF_TYPE_CID) {
         BRST_CIDFontDefAttr cid_fontdef_attr = (BRST_CIDFontDefAttr)attr->fontdef->attr;

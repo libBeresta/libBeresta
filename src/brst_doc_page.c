@@ -35,7 +35,7 @@ BRST_Doc_Page_Insert(BRST_Doc pdf,
     BRST_Page page;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Doc_Page_Insert\n"));
+    BRST_PTRACE(" BRST_Doc_Page_Insert\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -79,7 +79,8 @@ BRST_Doc_Page_Add(BRST_Doc pdf)
     BRST_Page page;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Doc_Page_Add\n"));
+    BRST_PTRACE(" BRST_Doc_Page_Add\n");
+    BRST_PTRACE(" BRST_Doc_Page_Add pdf = %p\n", (void*)pdf);
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -122,7 +123,7 @@ BRST_Doc_Page_Add(BRST_Doc pdf)
 BRST_EXPORT(BRST_Page)
 BRST_Doc_Page_Current(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_Page_Current\n"));
+    BRST_PTRACE(" BRST_Doc_Page_Current\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -136,7 +137,7 @@ BRST_Doc_Page_SetLayout(BRST_Doc pdf,
 {
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Doc_Page_SetLayout\n"));
+    BRST_PTRACE(" BRST_Doc_Page_SetLayout\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_INVALID_DOCUMENT;
@@ -158,7 +159,7 @@ BRST_Doc_Page_SetLayout(BRST_Doc pdf,
 BRST_EXPORT(BRST_PageMode)
 BRST_Doc_Page_Mode(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_Page_Mode\n"));
+    BRST_PTRACE(" BRST_Doc_Page_Mode\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_PAGE_MODE_USE_NONE;
@@ -172,7 +173,7 @@ BRST_Doc_Page_SetMode(BRST_Doc pdf,
 {
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Doc_Page_SetMode\n"));
+    BRST_PTRACE(" BRST_Doc_Page_SetMode\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_INVALID_DOCUMENT;
@@ -191,7 +192,7 @@ BRST_Doc_Page_SetMode(BRST_Doc pdf,
 BRST_EXPORT(BRST_PageLayout)
 BRST_Doc_Page_Layout(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_Page_Layout\n"));
+    BRST_PTRACE(" BRST_Doc_Page_Layout\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_PAGE_LAYOUT_SINGLE;
@@ -205,7 +206,7 @@ BRST_Doc_Page_ByIndex(BRST_Doc pdf,
 {
     BRST_Page ret;
 
-    BRST_PTRACE((" BRST_Doc_Page_ByIndex\n"));
+    BRST_PTRACE(" BRST_Doc_Page_ByIndex\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -229,7 +230,7 @@ BRST_Doc_Page_AddLabel(BRST_Doc pdf,
     BRST_Dict page_label;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Doc_Page_AddLabel\n"));
+    BRST_PTRACE(" BRST_Doc_Page_AddLabel\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_INVALID_DOCUMENT;
@@ -239,8 +240,8 @@ BRST_Doc_Page_AddLabel(BRST_Doc pdf,
     if (!page_label)
         return BRST_Error_Check(pdf->error);
 
-    if (style < 0 || style >= BRST_PAGE_NUM_STYLE_EOF)
-        return BRST_Error_Raise(pdf->error, BRST_PAGE_NUM_STYLE_OUT_OF_RANGE,
+    if (style < 0 || style >= BRST_PAGE_NUM_EOF)
+        return BRST_Error_Raise(pdf->error, BRST_PAGE_NUM_OUT_OF_RANGE,
             (BRST_STATUS)style);
 
     ret = BRST_Catalog_AddPageLabel(pdf->catalog, page_num, page_label);
@@ -254,7 +255,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Doc_Pages_SetConfiguration(BRST_Doc pdf,
     BRST_UINT page_per_pages)
 {
-    BRST_PTRACE((" BRST_Doc_Pages_SetConfiguration\n"));
+    BRST_PTRACE(" BRST_Doc_Pages_SetConfiguration\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_INVALID_DOCUMENT;

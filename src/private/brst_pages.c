@@ -30,7 +30,7 @@ BRST_Pages_New(BRST_MMgr mmgr,
     BRST_STATUS ret = BRST_OK;
     BRST_Pages pages;
 
-    BRST_PTRACE((" BRST_Pages_New\n"));
+    BRST_PTRACE(" BRST_Pages_New\n");
 
     pages = BRST_Dict_New(mmgr);
     if (!pages)
@@ -63,7 +63,7 @@ BRST_Pages_AddKids(BRST_Pages parent,
     BRST_Array kids;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Pages_AddKids\n"));
+    BRST_PTRACE(" BRST_Pages_AddKids\n");
 
     if (BRST_Dict_Item(kid, "Parent", BRST_OCLASS_DICT))
         return BRST_Error_Set(parent->error, BRST_PAGE_CANNOT_SET_PARENT, 0);
@@ -92,7 +92,7 @@ BRST_Pages_PageCount(BRST_Pages pages)
     BRST_Array kids = (BRST_Array)BRST_Dict_Item(pages, "Kids",
         BRST_OCLASS_ARRAY);
 
-    BRST_PTRACE((" BRST_Pages_PageCount\n"));
+    BRST_PTRACE(" BRST_Pages_PageCount\n");
 
     if (!kids)
         return 0;
@@ -119,7 +119,7 @@ BRST_Pages_BeforeWrite(BRST_Pages obj)
         BRST_OCLASS_NUMBER);
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Pages_BeforeWrite\n"));
+    BRST_PTRACE(" BRST_Pages_BeforeWrite\n");
 
     if (!kids)
         return BRST_Error_Set(obj->error, BRST_PAGES_MISSING_KIDS_ENTRY, 0);
@@ -145,7 +145,7 @@ BRST_Pages_Validate(BRST_Pages pages)
 {
     BRST_Obj_Header* header = (BRST_Obj_Header*)pages;
 
-    BRST_PTRACE((" BRST_Pages_Validate\n"));
+    BRST_PTRACE(" BRST_Pages_Validate\n");
 
     if (!pages || header->obj_class != (BRST_OCLASS_DICT | BRST_OSUBCLASS_PAGES))
         return BRST_FALSE;

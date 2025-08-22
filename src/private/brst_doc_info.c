@@ -49,7 +49,7 @@ BRST_Info_SetInfoAttr(BRST_Dict info,
 {
     const char* name = InfoTypeToName(type);
 
-    BRST_PTRACE((" BRST_Info_SetInfoAttr\n"));
+    BRST_PTRACE(" BRST_Info_SetInfoAttr\n");
 
     if (type <= BRST_INFO_MOD_DATE)
         return BRST_Error_Set(info->error, BRST_INVALID_PARAMETER, 0);
@@ -67,7 +67,7 @@ BRST_Info_InfoAttr(BRST_Dict info,
     const char* name = InfoTypeToName(type);
     BRST_String s;
 
-    BRST_PTRACE((" BRST_Info_InfoAttr\n"));
+    BRST_PTRACE(" BRST_Info_InfoAttr\n");
 
     if (!info)
         return NULL;
@@ -89,7 +89,7 @@ BRST_Info_SetInfoDateAttr(BRST_Dict info,
     char* ptmp;
     const char* name = InfoTypeToName(type);
 
-    BRST_PTRACE((" BRST_Info_SetInfoDateAttr\n"));
+    BRST_PTRACE(" BRST_Info_SetInfoDateAttr\n");
 
     if (type > BRST_INFO_MOD_DATE)
         return BRST_Error_Set(info->error, BRST_INVALID_PARAMETER, 0);

@@ -167,8 +167,8 @@ BRST_Dict_Write(BRST_Dict dict,
             return BRST_Error_Set(dict->error, BRST_INVALID_OBJECT, 0);
 
         if (header->obj_id & BRST_OTYPE_HIDDEN) {
-            BRST_PTRACE((" BRST_Dict_Write obj=%p skipped obj_id=0x%08X\n",
-                element->value, (BRST_UINT)header->obj_id));
+            BRST_PTRACE(" BRST_Dict_Write obj=%p skipped obj_id=0x%08X\n",
+                element->value, (BRST_UINT)header->obj_id);
         } else {
             ret = BRST_Stream_WriteEscapeName(stream, element->key);
             if (ret != BRST_OK)
@@ -268,8 +268,8 @@ BRST_Dict_Add(BRST_Dict dict,
     }
 
     if (BRST_List_Count(dict->list) >= BRST_LIMIT_MAX_DICT_ELEMENT) {
-        BRST_PTRACE((" BRST_Dict_Add exceed limitation of dict count(%d)\n",
-            BRST_LIMIT_MAX_DICT_ELEMENT));
+        BRST_PTRACE(" BRST_Dict_Add exceed limitation of dict count(%d)\n",
+            BRST_LIMIT_MAX_DICT_ELEMENT);
 
         BRST_Obj_Free(dict->mmgr, obj);
         return BRST_Error_Set(dict->error, BRST_DICT_COUNT_ERR, 0);
@@ -394,8 +394,8 @@ void* BRST_Dict_Item(BRST_Dict dict,
             obj = element->value;
 
         if ((header->obj_class & BRST_OCLASS_ANY) != obj_class) {
-            BRST_PTRACE((" BRST_Dict_Item dict=%p key=%s obj_class=0x%08X\n",
-                dict, key, (BRST_UINT)header->obj_class));
+            BRST_PTRACE(" BRST_Dict_Item dict=%p key=%s obj_class=0x%08X\n",
+                (void*)dict, key, (BRST_UINT)header->obj_class);
             BRST_Error_Set(dict->error, BRST_DICT_ITEM_UNEXPECTED_TYPE, 0);
 
             return NULL;

@@ -78,8 +78,8 @@ UTF8_Encoder_ByteType_Func(BRST_Encoder encoder,
 
     if (state->index == 0) {
         // First byte, initialize.
-        BRST_PTRACE((" UTF8_Encoder_ByteType_Func - Initialize: (%u) %s\n",
-            state->len, state->text));
+        BRST_PTRACE(" UTF8_Encoder_ByteType_Func - Initialize: (%u) %s\n",
+            state->len, state->text);
 
         utf8_attr->current_byte = 0;
     }
@@ -87,7 +87,7 @@ UTF8_Encoder_ByteType_Func(BRST_Encoder encoder,
     byte = state->text[state->index];
     state->index++;
 
-    BRST_PTRACE((" UTF8_Encoder_ByteType_Func - Byte: %hx\n", byte));
+    BRST_PTRACE(" UTF8_Encoder_ByteType_Func - Byte: %hx\n", byte);
 
     if (utf8_attr->current_byte == 0) {
         utf8_attr->utf8_bytes[0] = byte;

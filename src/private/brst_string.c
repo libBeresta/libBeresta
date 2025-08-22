@@ -41,7 +41,7 @@ BRST_String_New(BRST_MMgr mmgr,
 {
     BRST_String obj;
 
-    BRST_PTRACE((" BRST_String_New\n"));
+    BRST_PTRACE(" BRST_String_New\n");
 
     obj = (BRST_String)BRST_GetMem(mmgr, sizeof(BRST_String_Rec));
     if (obj) {
@@ -70,7 +70,7 @@ BRST_String_SetValue(BRST_String obj,
     BRST_UINT len;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_String_SetValue\n"));
+    BRST_PTRACE(" BRST_String_SetValue\n");
 
     if (obj->value) {
         BRST_FreeMem(obj->mmgr, obj->value);
@@ -97,7 +97,7 @@ void BRST_String_Free(BRST_String obj)
     if (!obj)
         return;
 
-    BRST_PTRACE((" BRST_String_Free\n"));
+    BRST_PTRACE(" BRST_String_Free\n");
 
     BRST_FreeMem(obj->mmgr, obj->value);
     BRST_FreeMem(obj->mmgr, obj);
@@ -138,7 +138,7 @@ BRST_String_Write(BRST_String obj,
      *  and it outputs by BRST_write_binary method.
      */
 
-    BRST_PTRACE((" BRST_String_Write\n"));
+    BRST_PTRACE(" BRST_String_Write\n");
 
     if (e)
         BRST_Encrypt_Reset(e);

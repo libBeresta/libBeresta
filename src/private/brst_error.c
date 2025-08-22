@@ -74,9 +74,9 @@ BRST_Error_Set(BRST_Error error,
     BRST_STATUS error_no,
     BRST_STATUS detail_no)
 {
-    BRST_PTRACE((" BRST_Error_Set: error_no=0x%04X "
+    BRST_PTRACE(" BRST_Error_Set: error_no=0x%04X "
                  "detail_no=0x%04X\n",
-        (BRST_UINT)error_no, (BRST_UINT)detail_no));
+        (BRST_UINT)error_no, (BRST_UINT)detail_no);
 
     error->error_no  = error_no;
     error->detail_no = detail_no;

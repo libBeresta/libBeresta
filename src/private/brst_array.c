@@ -23,7 +23,7 @@ BRST_Array_New(BRST_MMgr mmgr)
 {
     BRST_Array obj;
 
-    BRST_PTRACE((" BRST_Array_New\n"));
+    BRST_PTRACE(" BRST_Array_New\n");
 
     obj = BRST_GetMem(mmgr, sizeof(BRST_Array_Rec));
     if (obj) {
@@ -48,7 +48,7 @@ BRST_Box_Array_New(BRST_MMgr mmgr,
     BRST_Array obj;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_Box_Array_New\n"));
+    BRST_PTRACE(" BRST_Box_Array_New\n");
 
     obj = BRST_Array_New(mmgr);
     if (!obj)
@@ -72,7 +72,7 @@ void BRST_Array_Free(BRST_Array array)
     if (!array)
         return;
 
-    BRST_PTRACE((" BRST_Array_Free\n"));
+    BRST_PTRACE(" BRST_Array_Free\n");
 
     BRST_Array_Clear(array);
 
@@ -91,7 +91,7 @@ BRST_Array_Write(BRST_Array array,
     BRST_UINT i;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Array_Write\n"));
+    BRST_PTRACE(" BRST_Array_Write\n");
 
     ret = BRST_Stream_WriteStr(stream, "[ ");
     if (ret != BRST_OK)
@@ -120,7 +120,7 @@ BRST_Array_AddNumber(BRST_Array array,
 {
     BRST_Number n = BRST_Number_New(array->mmgr, value);
 
-    BRST_PTRACE((" BRST_Array_AddNumber\n"));
+    BRST_PTRACE(" BRST_Array_AddNumber\n");
 
     if (!n)
         return BRST_Error_Code(array->error);
@@ -134,7 +134,7 @@ BRST_Array_AddReal(BRST_Array array,
 {
     BRST_Real r = BRST_Real_New(array->mmgr, value);
 
-    BRST_PTRACE((" BRST_Array_AddReal\n"));
+    BRST_PTRACE(" BRST_Array_AddReal\n");
 
     if (!r)
         return BRST_Error_Code(array->error);
@@ -147,7 +147,7 @@ BRST_Array_AddNull(BRST_Array array)
 {
     BRST_Null n = BRST_Null_New(array->mmgr);
 
-    BRST_PTRACE((" BRST_Array_AddNull\n"));
+    BRST_PTRACE(" BRST_Array_AddNull\n");
 
     if (!n)
         return BRST_Error_Code(array->error);
@@ -161,7 +161,7 @@ BRST_Array_AddName(BRST_Array array,
 {
     BRST_Name n = BRST_Name_New(array->mmgr, value);
 
-    BRST_PTRACE((" BRST_Array_AddName\n"));
+    BRST_PTRACE(" BRST_Array_AddName\n");
 
     if (!n)
         return BRST_Error_Code(array->error);
@@ -176,7 +176,7 @@ BRST_Array_Add(BRST_Array array,
     BRST_Obj_Header* header;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Array_Add\n"));
+    BRST_PTRACE(" BRST_Array_Add\n");
 
     if (!obj) {
         if (BRST_Error_Code(array->error) == BRST_OK)
@@ -191,8 +191,8 @@ BRST_Array_Add(BRST_Array array,
         return BRST_Error_Set(array->error, BRST_INVALID_OBJECT, 0);
 
     if (BRST_List_Count(array->list) >= BRST_LIMIT_MAX_ARRAY) {
-        BRST_PTRACE((" BRST_Array_Add exceed limitatin of array count(%d)\n",
-            BRST_LIMIT_MAX_ARRAY));
+        BRST_PTRACE(" BRST_Array_Add exceed limitatin of array count(%d)\n",
+            BRST_LIMIT_MAX_ARRAY);
 
         BRST_Obj_Free(array->mmgr, obj);
         return BRST_Error_Set(array->error, BRST_ARRAY_COUNT_ERR, 0);
@@ -233,7 +233,7 @@ BRST_Array_Insert(BRST_Array array,
     BRST_STATUS ret;
     BRST_UINT i;
 
-    BRST_PTRACE((" BRST_Array_Insert\n"));
+    BRST_PTRACE(" BRST_Array_Insert\n");
 
     if (!obj) {
         if (BRST_Error_Code(array->error) == BRST_OK)
@@ -245,16 +245,15 @@ BRST_Array_Insert(BRST_Array array,
     header = (BRST_Obj_Header*)obj;
 
     if (header->obj_id & BRST_OTYPE_DIRECT) {
-        BRST_PTRACE((" BRST_Array_Add this object cannot owned by array "
-                     "obj=0x%08X\n",
-            (BRST_UINT)array));
+        BRST_PTRACE(" BRST_Array_Add this object cannot be owned by array "
+                     "obj=0x%p\n", (void*)array);
 
         return BRST_Error_Set(array->error, BRST_INVALID_OBJECT, 0);
     }
 
     if (BRST_List_Count(array->list) >= BRST_LIMIT_MAX_ARRAY) {
-        BRST_PTRACE((" BRST_Array_Add exceed limitatin of array count(%d)\n",
-            BRST_LIMIT_MAX_ARRAY));
+        BRST_PTRACE(" BRST_Array_Add exceed limitatin of array count(%d)\n",
+            BRST_LIMIT_MAX_ARRAY);
 
         BRST_Obj_Free(array->mmgr, obj);
 
@@ -308,7 +307,7 @@ void* BRST_Array_Item(BRST_Array array,
     void* obj;
     BRST_Obj_Header* header;
 
-    BRST_PTRACE((" BRST_Array_Item\n"));
+    BRST_PTRACE(" BRST_Array_Item\n");
 
     obj = BRST_List_ItemAt(array->list, index);
 
@@ -337,7 +336,7 @@ void BRST_Array_Clear(BRST_Array array)
 {
     BRST_UINT i;
 
-    BRST_PTRACE((" BRST_Array_Clear\n"));
+    BRST_PTRACE(" BRST_Array_Clear\n");
 
     if (!array)
         return;

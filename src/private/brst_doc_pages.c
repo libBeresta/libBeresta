@@ -23,7 +23,7 @@
 BRST_Pages
 BRST_Doc_Pages_Current(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_Pages_Current\n"));
+    BRST_PTRACE(" BRST_Doc_Pages_Current\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -35,7 +35,7 @@ BRST_STATUS
 BRST_Doc_Pages_SetCurrent(BRST_Doc pdf,
     BRST_Pages pages)
 {
-    BRST_PTRACE((" BRST_Doc_SetCurrentPages\n"));
+    BRST_PTRACE(" BRST_Doc_SetCurrentPages\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_INVALID_DOCUMENT;
@@ -58,7 +58,7 @@ BRST_Doc_Pages_AddTo(BRST_Doc pdf,
 {
     BRST_Pages pages;
 
-    BRST_PTRACE((" BRST_Doc_Pages_AddTo\n"));
+    BRST_PTRACE(" BRST_Doc_Pages_AddTo\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;

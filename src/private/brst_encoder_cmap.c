@@ -27,7 +27,7 @@ BRST_CMapEncoder_New(BRST_MMgr mmgr,
 {
     BRST_Encoder encoder;
 
-    BRST_PTRACE((" BRST_CMapEncoder_New\n"));
+    BRST_PTRACE(" BRST_CMapEncoder_New\n");
 
     if (mmgr == NULL)
         return NULL;
@@ -59,7 +59,7 @@ BRST_CMapEncoder_InitAttr(BRST_Encoder encoder)
     BRST_UINT i;
     BRST_UINT j;
 
-    BRST_PTRACE((" BRST_CMapEncoder_InitAttr\n"));
+    BRST_PTRACE(" BRST_CMapEncoder_InitAttr\n");
 
     if (encoder->attr)
         return BRST_INVALID_ENCODER;
@@ -146,7 +146,7 @@ void BRST_CMapEncoder_Free(BRST_Encoder encoder)
     BRST_UINT i;
     BRST_CidRange_Rec* data;
 
-    BRST_PTRACE((" BRST_CMapEncoder_Free\n"));
+    BRST_PTRACE(" BRST_CMapEncoder_Free\n");
 
     attr = (BRST_CMapEncoderAttr)encoder->attr;
 
@@ -201,7 +201,7 @@ BRST_CMapEncoder_AddCMap(BRST_Encoder encoder,
 {
     BRST_CMapEncoderAttr attr = (BRST_CMapEncoderAttr)encoder->attr;
 
-    BRST_PTRACE((" BRST_CMapEncoder_AddCMap\n"));
+    BRST_PTRACE(" BRST_CMapEncoder_AddCMap\n");
 
     /* Copy specified pdf_cid_range array to fRangeArray. */
     while (range->from != 0xffff || range->to != 0xffff) {
@@ -254,7 +254,7 @@ BRST_CMapEncoder_AddNotDefRange(BRST_Encoder encoder,
 {
     BRST_CMapEncoderAttr attr = (BRST_CMapEncoderAttr)encoder->attr;
 
-    BRST_PTRACE((" BRST_CMapEncoder_AddNotDefRange\n"));
+    BRST_PTRACE(" BRST_CMapEncoder_AddNotDefRange\n");
 
     return AddCidRange(encoder->mmgr, range, attr->notdef_range);
 }
@@ -265,7 +265,7 @@ BRST_CMapEncoder_AddCodeSpaceRange(BRST_Encoder encoder,
 {
     BRST_CMapEncoderAttr attr = (BRST_CMapEncoderAttr)encoder->attr;
 
-    BRST_PTRACE((" BRST_CMapEncoder_AddNotDefRange\n"));
+    BRST_PTRACE(" BRST_CMapEncoder_AddNotDefRange\n");
 
     return AddCidRange(encoder->mmgr, range, attr->code_space_range);
 }
@@ -275,7 +275,7 @@ void BRST_CMapEncoder_SetUnicodeArray(BRST_Encoder encoder,
 {
     BRST_CMapEncoderAttr attr = (BRST_CMapEncoderAttr)encoder->attr;
 
-    BRST_PTRACE((" BRST_CMapEncoder_SetUnicodeArray\n"));
+    BRST_PTRACE(" BRST_CMapEncoder_SetUnicodeArray\n");
 
     if (array != NULL)
         while (array->unicode != 0xffff) {
@@ -293,7 +293,7 @@ BRST_CMapEncoder_AddJWWLineHead(BRST_Encoder encoder,
     BRST_CMapEncoderAttr attr = (BRST_CMapEncoderAttr)encoder->attr;
     BRST_UINT i, j;
 
-    BRST_PTRACE((" BRST_CMapEncoder_AddJWWLineHead\n"));
+    BRST_PTRACE(" BRST_CMapEncoder_AddJWWLineHead\n");
 
     for (i = 0; i < BRST_MAX_JWW_NUM; i++) {
         if (*code == 0)
@@ -325,7 +325,7 @@ BRST_CMapEncoder_ByteType(BRST_Encoder encoder,
 {
     BRST_CMapEncoderAttr attr = (BRST_CMapEncoderAttr)encoder->attr;
 
-    BRST_PTRACE((" BRST_CMapEncoder_ByteType\n"));
+    BRST_PTRACE(" BRST_CMapEncoder_ByteType\n");
 
     if (state->index >= state->len)
         return BRST_BYTE_TYPE_UNKNOWN;
@@ -383,7 +383,7 @@ BRST_Encoder_CheckJWWLineHead(BRST_Encoder encoder,
     BRST_CMapEncoderAttr attr;
     BRST_UINT j;
 
-    BRST_PTRACE((" BRST_Encoder_CheckJWWLineHead\n"));
+    BRST_PTRACE(" BRST_Encoder_CheckJWWLineHead\n");
 
     if (!BRST_Encoder_Validate(encoder))
         return BRST_FALSE;

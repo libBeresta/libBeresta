@@ -48,7 +48,7 @@
 #include "brst_page_annotation.h"
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateWidgetAnnot_WhiteOnlyWhilePrint(BRST_Doc pdf,
+BRST_Doc_Page_CreateWidgetAnnot_WhiteOnlyWhilePrint(BRST_Doc pdf,
     BRST_Page page,
     BRST_Rect rect)
 {
@@ -59,7 +59,7 @@ BRST_Page_CreateWidgetAnnot_WhiteOnlyWhilePrint(BRST_Doc pdf,
     BRST_STATUS ret = BRST_OK;
     BRST_Array array_bg;
 
-    BRST_PTRACE((" BRST_Page_CreateWidgetAnnot_WhiteOnlyWhilePrint\n"));
+    BRST_PTRACE(" BRST_Doc_Page_CreateWidgetAnnot_WhiteOnlyWhilePrint\n");
 
     annot = BRST_Page_CreateWidgetAnnot(page, rect);
 

@@ -14,11 +14,11 @@
 		    (:элемент "ANNOT_SQUARE"          :версия "1.3" :en "Square annotation"             :ru "Пометка квадратом")
 		    (:элемент "ANNOT_CIRCLE"          :версия "1.3" :en "Circle annotation"             :ru "Пометка окружностью")
 		    (:элемент "ANNOT_POLYGON"         :версия "1.5" :en "Polygon annotation"            :ru "Пометка полигоном")
-		    (:элемент "ANNOT_POLYLINE"        :версия "1.5" :en "Polyline annotation"           :ru "Пометка полилинией")
+		    (:элемент "ANNOT_POLYLINE"        :версия "1.5" :en "Polyline annotation"           :ru "Пометка ломаной линией")
 		    (:элемент "ANNOT_HIGHLIGHT"       :версия "1.3" :en "Highlight annotation"          :ru "Пометка выделением")
 		    (:элемент "ANNOT_UNDERLINE"       :версия "1.3" :en "Underline annotation"          :ru "Пометка подчеркиванием")
 		    (:элемент "ANNOT_SQUIGGLY"        :версия "1.4" :en "Squiggly-underline annotation" :ru "Пометка волнистой линией")
-		    (:элемент "ANNOT_STRIKEOUT"       :версия "1.3" :en "Strikeout annotation"          :ru "Пометка зачеркиванием")
+		    (:элемент "ANNOT_STRIKEOUT"       :версия "1.3" :en "Strikeout annotation"          :ru "Пометка перечеркиванием")
 		    (:элемент "ANNOT_STAMP"           :версия "1.3" :en "Rubber stamp annotation"       :ru "Пометка штампом")
 		    (:элемент "ANNOT_CARET"           :версия "1.5" :en "Caret annotation"              :ru "Пометка символом абзаца")
 		    (:элемент "ANNOT_INK"             :версия "1.3" :en "Ink annotation"                :ru "Пометка кистью")
@@ -120,8 +120,8 @@
 		     :en "A short line at the endpoint approximately 30 degrees clockwise from perpendicular to the line itself")))
 
 	(:имя "AnnotLineCapPosition"
-	 :en "Types of line annotation cap position (12.5.6.7 Line Annotations, tab. 175)."
-	 :ru "Типы расположений заголовка линий пометок (12.5.6.7 Line Annotations, таб. 175)."
+	 :en "Types of line annotation cap position (12.5.6.7 Line Annotations, table 175)."
+	 :ru "Типы расположений заголовка линий пометок (12.5.6.7 Line Annotations, таблица 175)."
 	 :версия "1.7"
 	 :элементы ((:элемент "ANNOT_LINE_CAP_INLINE"
 		     :ru "Заголовок будет центрирован внутри линии"

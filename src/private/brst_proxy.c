@@ -9,7 +9,7 @@ BRST_Proxy_New(BRST_MMgr mmgr,
 {
     BRST_Proxy p = BRST_GetMem(mmgr, sizeof(BRST_Proxy_Rec));
 
-    BRST_PTRACE((" BRST_Proxy_New\n"));
+    BRST_PTRACE(" BRST_Proxy_New\n");
 
     if (p) {
         BRST_MemSet(&p->header, 0, sizeof(BRST_Obj_Header));

@@ -19,7 +19,7 @@ BRST_Page_Create3DView    (BRST_Page        page,
     BRST_PageAttr attr;
     BRST_Dict view;
 
-    BRST_PTRACE((" BRST_Page_Create3DView\n"));
+    BRST_PTRACE(" BRST_Page_Create3DView\n");
     BRST_UNUSED(annot3d);
 
     if (!BRST_Page_Validate (page))

@@ -26,7 +26,7 @@ BRST_Doc_SetOpenAction(BRST_Doc pdf,
 {
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Doc_SetOpenAction\n"));
+    BRST_PTRACE(" BRST_Doc_SetOpenAction\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_INVALID_DOCUMENT;
@@ -44,7 +44,7 @@ BRST_Doc_SetOpenAction(BRST_Doc pdf,
 BRST_EXPORT(BRST_UINT)
 BRST_Doc_ViewerPreference(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_ViewerPreference\n"));
+    BRST_PTRACE(" BRST_Doc_ViewerPreference\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return 0;
@@ -58,7 +58,7 @@ BRST_Doc_SetViewerPreference(BRST_Doc pdf,
 {
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Doc_SetViewerPreference\n"));
+    BRST_PTRACE(" BRST_Doc_SetViewerPreference\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_INVALID_DOCUMENT;

@@ -23,7 +23,7 @@ BRST_Image_Size(BRST_Image image)
     BRST_Number height;
     BRST_Point ret = { 0, 0 };
 
-    BRST_PTRACE((" BRST_Image_GetSize\n"));
+    BRST_PTRACE(" BRST_Image_GetSize\n");
 
     if (!BRST_Image_Validate(image))
         return ret;
@@ -47,7 +47,7 @@ BRST_Image_Size2(BRST_Image image, BRST_Point* size)
     size->x = 0;
     size->y = 0;
 
-    BRST_PTRACE((" BRST_Image_GetSize\n"));
+    BRST_PTRACE(" BRST_Image_GetSize\n");
 
     if (!BRST_Image_Validate(image))
         return BRST_INVALID_IMAGE;
@@ -68,7 +68,7 @@ BRST_Image_BitsPerComponent(BRST_Image image)
 {
     BRST_Number n;
 
-    BRST_PTRACE((" BRST_Image_GetBitsPerComponent\n"));
+    BRST_PTRACE(" BRST_Image_GetBitsPerComponent\n");
 
     if (!BRST_Image_Validate(image))
         return 0;
@@ -86,7 +86,7 @@ BRST_Image_ColorSpace(BRST_Image image)
 {
     BRST_Name n;
 
-    BRST_PTRACE((" BRST_Image_GetColorSpace\n"));
+    BRST_PTRACE(" BRST_Image_GetColorSpace\n");
 
     n = BRST_Dict_Item(image, "ColorSpace", BRST_OCLASS_NAME);
 

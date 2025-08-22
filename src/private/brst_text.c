@@ -56,7 +56,7 @@ InternalShowTextNextLine(BRST_Page page,
     BRST_REAL tw;
     BRST_FontAttr font_attr;
 
-    BRST_PTRACE((" ShowTextNextLine\n"));
+    BRST_PTRACE(" ShowTextNextLine\n");
 
     attr      = (BRST_PageAttr)page->attr;
     font_attr = (BRST_FontAttr)attr->gstate->font->attr;
@@ -122,7 +122,7 @@ InternalWriteText(BRST_PageAttr attr,
     BRST_FontAttr font_attr = (BRST_FontAttr)attr->gstate->font->attr;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" InternalWriteText\n"));
+    BRST_PTRACE(" InternalWriteText\n");
 
     if (font_attr->type == BRST_FONT_TYPE0_TT || font_attr->type == BRST_FONT_TYPE0_CID) {
         BRST_Encoder encoder;
@@ -167,7 +167,7 @@ BRST_Page_LocalFontName(BRST_Page page,
     BRST_PageAttr attr = (BRST_PageAttr)page->attr;
     const char* key;
 
-    BRST_PTRACE((" BRST_Page_LocalFontName\n"));
+    BRST_PTRACE(" BRST_Page_LocalFontName\n");
 
     /* whether check font-resource exists.  when it does not exists,
      * create font-resource

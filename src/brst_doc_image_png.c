@@ -37,7 +37,7 @@ BRST_Doc_Png_LoadFromMem(BRST_Doc pdf,
     BRST_Stream imagedata;
     BRST_Image image;
 
-    BRST_PTRACE((" BRST_Doc_Png_LoadFromMem\n"));
+    BRST_PTRACE(" BRST_Doc_Png_LoadFromMem\n");
 
     if (!BRST_Doc_Initialized(pdf)) {
         return NULL;
@@ -75,7 +75,7 @@ BRST_Doc_Png_LoadFromFile(BRST_Doc pdf,
     BRST_Stream imagedata;
     BRST_Image image;
 
-    BRST_PTRACE((" BRST_Doc_Png_LoadFromFile\n"));
+    BRST_PTRACE(" BRST_Doc_Png_LoadFromFile\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -107,7 +107,7 @@ BRST_Doc_Png_LoadFromFile2(BRST_Doc pdf,
     BRST_Image image;
     BRST_String fname;
 
-    BRST_PTRACE((" BRST_Doc_Png_LoadFromFile2\n"));
+    BRST_PTRACE(" BRST_Doc_Png_LoadFromFile2\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;

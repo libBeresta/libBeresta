@@ -17,7 +17,7 @@ BRST_Encoder_ToUnicode(BRST_Encoder encoder,
 
 void BRST_Encoder_Free(BRST_Encoder encoder)
 {
-    BRST_PTRACE((" BRST_Encoder_Free\n"));
+    BRST_PTRACE(" BRST_Encoder_Free\n");
 
     if (!encoder)
         return;
@@ -30,7 +30,7 @@ void BRST_Encoder_Free(BRST_Encoder encoder)
 BRST_STATUS
 BRST_Encoder_Validate(BRST_Encoder encoder)
 {
-    BRST_PTRACE((" BRST_Encoder_Validate\n"));
+    BRST_PTRACE(" BRST_Encoder_Validate\n");
 
     if (!encoder || encoder->sig_bytes != BRST_ENCODER_SIG_BYTES)
         return BRST_FALSE;
@@ -43,7 +43,7 @@ void BRST_Encoder_SetParseText(BRST_Encoder encoder,
     const BRST_BYTE* text,
     BRST_UINT len)
 {
-    BRST_PTRACE((" BRST_CMapEncoder_SetParseText\n"));
+    BRST_PTRACE(" BRST_CMapEncoder_SetParseText\n");
     BRST_UNUSED(encoder);
 
     state->text      = text;
@@ -56,7 +56,7 @@ BRST_ByteType
 BRST_Encoder_ByteType_Internal(BRST_Encoder encoder,
     BRST_ParseText_Rec* state)
 {
-    BRST_PTRACE((" BRST_Encoder_ByteType\n"));
+    BRST_PTRACE(" BRST_Encoder_ByteType\n");
 
     if (encoder->byte_type_fn)
         return encoder->byte_type_fn(encoder, state);

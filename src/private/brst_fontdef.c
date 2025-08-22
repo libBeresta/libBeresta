@@ -17,7 +17,7 @@ void BRST_FontDef_Cleanup(BRST_FontDef fontdef)
     if (!fontdef)
         return;
 
-    BRST_PTRACE((" BRST_FontDef_Cleanup\n"));
+    BRST_PTRACE(" BRST_FontDef_Cleanup\n");
 
     if (fontdef->clean_fn)
         fontdef->clean_fn(fontdef);
@@ -30,7 +30,7 @@ void BRST_FontDef_Free(BRST_FontDef fontdef)
     if (!fontdef)
         return;
 
-    BRST_PTRACE((" BRST_FontDef_Free\n"));
+    BRST_PTRACE(" BRST_FontDef_Free\n");
 
     if (fontdef->free_fn)
         fontdef->free_fn(fontdef);
@@ -40,7 +40,7 @@ void BRST_FontDef_Free(BRST_FontDef fontdef)
 BRST_BOOL
 BRST_FontDef_Validate(BRST_FontDef fontdef)
 {
-    BRST_PTRACE((" BRST_FontDef_Validate\n"));
+    BRST_PTRACE(" BRST_FontDef_Validate\n");
 
     if (!fontdef || fontdef->sig_bytes != BRST_FONTDEF_SIG_BYTES)
         return BRST_FALSE;

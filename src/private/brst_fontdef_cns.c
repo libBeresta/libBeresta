@@ -21,7 +21,7 @@ SimSun_Init(BRST_FontDef fontdef)
 {
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_FontDef_SimSun_Init\n"));
+    BRST_PTRACE(" BRST_FontDef_SimSun_Init\n");
 
     fontdef->ascent       = 859;
     fontdef->descent      = -140;
@@ -78,7 +78,7 @@ SimHei_Init(BRST_FontDef fontdef)
 {
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_FontDef_SimHei_Init\n"));
+    BRST_PTRACE(" BRST_FontDef_SimHei_Init\n");
 
     fontdef->ascent       = 859;
     fontdef->descent      = -140;

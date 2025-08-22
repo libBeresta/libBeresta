@@ -119,7 +119,7 @@ BRST_Stream_ReadLn(BRST_Stream stream,
     BRST_UINT r_size    = *size;
     BRST_UINT read_size = BRST_STREAM_BUF_SIZE;
 
-    BRST_PTRACE((" BRST_Stream_ReadLn\n"));
+    BRST_PTRACE(" BRST_Stream_ReadLn\n");
 
     if (!stream)
         return BRST_INVALID_PARAMETER;
@@ -201,7 +201,7 @@ BRST_Stream_Write(BRST_Stream stream,
 {
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Stream_Write\n"));
+    BRST_PTRACE(" BRST_Stream_Write\n");
 
     if (!(stream->write_fn))
         return BRST_Error_Set(stream->error, BRST_INVALID_OPERATION, 0);
@@ -291,7 +291,7 @@ BRST_Stream_Seek(BRST_Stream stream,
     BRST_INT pos,
     BRST_WhenceMode mode)
 {
-    BRST_PTRACE((" BRST_Stream_Seek\n"));
+    BRST_PTRACE(" BRST_Stream_Seek\n");
 
     if (!(stream->seek_fn))
         return BRST_Error_Set(stream->error, BRST_INVALID_OPERATION, 0);
@@ -305,7 +305,7 @@ BRST_Stream_Seek(BRST_Stream stream,
 BRST_INT32
 BRST_Stream_Tell(BRST_Stream stream)
 {
-    BRST_PTRACE((" BRST_Stream_Tell\n"));
+    BRST_PTRACE(" BRST_Stream_Tell\n");
 
     if (!(stream->tell_fn))
         return BRST_Error_Set(stream->error, BRST_INVALID_OPERATION, 0);
@@ -319,7 +319,7 @@ BRST_Stream_Tell(BRST_Stream stream)
 BRST_UINT32
 BRST_Stream_Size(BRST_Stream stream)
 {
-    BRST_PTRACE((" BRST_Stream_Tell\n"));
+    BRST_PTRACE(" BRST_Stream_Tell\n");
 
     if (stream->write_fn)
         return stream->size;
@@ -345,7 +345,7 @@ BRST_Stream_WriteEscapeName(BRST_Stream stream,
     const BRST_BYTE* pos1;
     char* pos2;
 
-    BRST_PTRACE((" BRST_Stream_WriteEscapeName\n"));
+    BRST_PTRACE(" BRST_Stream_WriteEscapeName\n");
 
     len  = BRST_StrLen(value, BRST_LIMIT_MAX_NAME_LEN);
     pos1 = (BRST_BYTE*)value;
@@ -388,7 +388,7 @@ BRST_Stream_WriteEscapeText2(BRST_Stream stream,
     const char* p = text;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Stream_WriteEscapeText2\n"));
+    BRST_PTRACE(" BRST_Stream_WriteEscapeText2\n");
 
     /* The following block is commented out because it violates "PDF Spec 7.3.4.2 Literal Strings".
      * It states that the two matching parentheses must still be present to represent an empty
@@ -438,7 +438,7 @@ BRST_Stream_WriteEscapeText(BRST_Stream stream,
 {
     BRST_UINT len;
 
-    BRST_PTRACE((" BRST_Stream_WriteEscapeText\n"));
+    BRST_PTRACE(" BRST_Stream_WriteEscapeText\n");
 
     len = (text == NULL) ? 0 : BRST_StrLen(text, BRST_LIMIT_MAX_STRING_LEN);
 
@@ -452,7 +452,7 @@ BRST_FileReader_New(BRST_MMgr mmgr,
     BRST_Stream stream;
     BRST_FILEP fp = BRST_FOPEN(fname, "rb");
 
-    BRST_PTRACE((" BRST_FileReader_New\n"));
+    BRST_PTRACE(" BRST_FileReader_New\n");
 
     if (!fp) {
 #ifdef UNDER_CE
@@ -497,7 +497,7 @@ BRST_FileReader_ReadFunc(BRST_Stream stream,
     BRST_FILEP fp = (BRST_FILEP)stream->attr;
     BRST_UINT rsize;
 
-    BRST_PTRACE((" BRST_FileReader_ReadFunc\n"));
+    BRST_PTRACE(" BRST_FileReader_ReadFunc\n");
 
     BRST_MemSet(ptr, 0, *size);
     rsize = (BRST_UINT)BRST_FREAD(ptr, 1, *size, fp);
@@ -542,7 +542,7 @@ BRST_FileReader_SeekFunc(BRST_Stream stream,
     BRST_FILEP fp = (BRST_FILEP)stream->attr;
     BRST_INT whence;
 
-    BRST_PTRACE((" BRST_FileReader_SeekFunc\n"));
+    BRST_PTRACE(" BRST_FileReader_SeekFunc\n");
 
     switch (mode) {
     case BRST_SEEK_CUR:
@@ -568,7 +568,7 @@ BRST_FileStream_TellFunc(BRST_Stream stream)
     BRST_INT32 ret;
     BRST_FILEP fp = (BRST_FILEP)stream->attr;
 
-    BRST_PTRACE((" BRST_FileReader_TellFunc\n"));
+    BRST_PTRACE(" BRST_FileReader_TellFunc\n");
 
     if ((ret = BRST_FTELL(fp)) < 0) {
         return BRST_Error_Set(stream->error, BRST_FILE_IO_ERROR,
@@ -585,7 +585,7 @@ BRST_FileStream_SizeFunc(BRST_Stream stream)
     BRST_INT ptr;
     BRST_FILEP fp = (BRST_FILEP)stream->attr;
 
-    BRST_PTRACE((" BRST_FileReader_SizeFunc\n"));
+    BRST_PTRACE(" BRST_FileReader_SizeFunc\n");
 
     /* save current file-pointer */
     if ((ptr = BRST_FTELL(fp)) < 0) {
@@ -625,7 +625,7 @@ BRST_FileWriter_New(BRST_MMgr mmgr,
     BRST_Stream stream;
     BRST_FILEP fp = BRST_FOPEN(fname, "wb");
 
-    BRST_PTRACE((" BRST_FileWriter_New\n"));
+    BRST_PTRACE(" BRST_FileWriter_New\n");
 
     if (!fp) {
 #ifdef UNDER_CE
@@ -661,7 +661,7 @@ BRST_FileWriter_WriteFunc(BRST_Stream stream,
     BRST_FILEP fp;
     BRST_UINT ret;
 
-    BRST_PTRACE((" BRST_FileWriter_WriteFunc\n"));
+    BRST_PTRACE(" BRST_FileWriter_WriteFunc\n");
 
     fp  = (BRST_FILEP)stream->attr;
     ret = (BRST_UINT)BRST_FWRITE(ptr, 1, size, fp);
@@ -677,7 +677,7 @@ void BRST_FileStream_FreeFunc(BRST_Stream stream)
 {
     BRST_FILEP fp;
 
-    BRST_PTRACE((" BRST_FileStream_FreeFunc\n"));
+    BRST_PTRACE(" BRST_FileStream_FreeFunc\n");
 
     fp = (BRST_FILEP)stream->attr;
 
@@ -695,7 +695,7 @@ BRST_MemStream_InWrite(BRST_Stream stream,
     BRST_MemStreamAttr attr = (BRST_MemStreamAttr)stream->attr;
     BRST_UINT rsize         = attr->buf_size - attr->w_pos;
 
-    BRST_PTRACE((" BRST_MemStream_InWrite\n"));
+    BRST_PTRACE(" BRST_MemStream_InWrite\n");
 
     if (*count <= 0)
         return BRST_OK;
@@ -734,7 +734,7 @@ BRST_MemStream_WriteFunc(BRST_Stream stream,
 {
     BRST_UINT wsize = size;
 
-    BRST_PTRACE((" BRST_MemStream_WriteFunc\n"));
+    BRST_PTRACE(" BRST_MemStream_WriteFunc\n");
 
     if (BRST_Error_Code(stream->error) != 0)
         return BRST_THIS_FUNC_WAS_SKIPPED;
@@ -754,7 +754,7 @@ BRST_MemStream_TellFunc(BRST_Stream stream)
     BRST_INT32 ret;
     BRST_MemStreamAttr attr = (BRST_MemStreamAttr)stream->attr;
 
-    BRST_PTRACE((" BRST_MemStream_TellFunc\n"));
+    BRST_PTRACE(" BRST_MemStream_TellFunc\n");
 
     ret = attr->r_ptr_idx * attr->buf_size;
     ret += attr->r_pos;
@@ -765,7 +765,7 @@ BRST_MemStream_TellFunc(BRST_Stream stream)
 BRST_UINT32
 BRST_MemStream_SizeFunc(BRST_Stream stream)
 {
-    BRST_PTRACE((" BRST_MemStream_SizeFunc\n"));
+    BRST_PTRACE(" BRST_MemStream_SizeFunc\n");
 
     return stream->size;
 }
@@ -777,7 +777,7 @@ BRST_MemStream_SeekFunc(BRST_Stream stream,
 {
     BRST_MemStreamAttr attr = (BRST_MemStreamAttr)stream->attr;
 
-    BRST_PTRACE((" BRST_MemStream_SeekFunc\n"));
+    BRST_PTRACE(" BRST_MemStream_SeekFunc\n");
 
     if (mode == BRST_SEEK_CUR) {
         pos += (attr->r_ptr_idx * attr->buf_size);
@@ -810,7 +810,7 @@ BRST_MemStream_GetBufPtr(BRST_Stream stream,
     BRST_BYTE* ret;
     BRST_MemStreamAttr attr;
 
-    BRST_PTRACE((" BRST_MemStream_GetBufPtr\n"));
+    BRST_PTRACE(" BRST_MemStream_GetBufPtr\n");
 
     if (stream->type != BRST_STREAM_MEMORY) {
         BRST_Error_Set(stream->error, BRST_INVALID_OBJECT, 0);
@@ -835,7 +835,7 @@ void BRST_MemStream_FreeData(BRST_Stream stream)
     BRST_MemStreamAttr attr;
     BRST_UINT i;
 
-    BRST_PTRACE((" BRST_MemStream_FreeData\n"));
+    BRST_PTRACE(" BRST_MemStream_FreeData\n");
 
     if (!stream || stream->type != BRST_STREAM_MEMORY)
         return;
@@ -858,7 +858,7 @@ void BRST_MemStream_FreeFunc(BRST_Stream stream)
 {
     BRST_MemStreamAttr attr;
 
-    BRST_PTRACE((" BRST_MemStream_FreeFunc\n"));
+    BRST_PTRACE(" BRST_MemStream_FreeFunc\n");
 
     attr = (BRST_MemStreamAttr)stream->attr;
     BRST_MemStream_FreeData(stream);
@@ -873,7 +873,7 @@ BRST_MemStream_New(BRST_MMgr mmgr,
 {
     BRST_Stream stream;
 
-    BRST_PTRACE((" BRST_MemStream_New\n"));
+    BRST_PTRACE(" BRST_MemStream_New\n");
 
     /* Create new BRST_Stream object. */
     stream = (BRST_Stream)BRST_GetMem(mmgr, sizeof(BRST_Stream_Rec));
@@ -922,7 +922,7 @@ BRST_MemStream_GetBufSize(BRST_Stream stream)
 {
     BRST_MemStreamAttr attr;
 
-    BRST_PTRACE((" BRST_MemStream_GetBufSize\n"));
+    BRST_PTRACE(" BRST_MemStream_GetBufSize\n");
 
     if (!stream || stream->type != BRST_STREAM_MEMORY)
         return 0;
@@ -936,7 +936,7 @@ BRST_MemStream_GetBufCount(BRST_Stream stream)
 {
     BRST_MemStreamAttr attr;
 
-    BRST_PTRACE((" BRST_MemStream_GetBufCount\n"));
+    BRST_PTRACE(" BRST_MemStream_GetBufCount\n");
 
     if (!stream || stream->type != BRST_STREAM_MEMORY)
         return 0;
@@ -954,7 +954,7 @@ BRST_MemStream_ReadFunc(BRST_Stream stream,
     BRST_UINT buf_size;
     BRST_UINT rlen = *size;
 
-    BRST_PTRACE((" BRST_MemStream_ReadFunc\n"));
+    BRST_PTRACE(" BRST_MemStream_ReadFunc\n");
 
     *size = 0;
 
@@ -1011,7 +1011,7 @@ BRST_MemStream_Rewrite(BRST_Stream stream,
     BRST_UINT buf_size;
     BRST_UINT rlen = size;
 
-    BRST_PTRACE((" BRST_MemStream_Rewrite\n"));
+    BRST_PTRACE(" BRST_MemStream_Rewrite\n");
 
     while (rlen > 0) {
         BRST_UINT tmp_len;
@@ -1073,7 +1073,7 @@ BRST_CallbackReader_New(BRST_MMgr mmgr,
 {
     BRST_Stream stream;
 
-    BRST_PTRACE((" BRST_CallbackReader_New\n"));
+    BRST_PTRACE(" BRST_CallbackReader_New\n");
 
     stream = (BRST_Stream)BRST_GetMem(mmgr, sizeof(BRST_Stream_Rec));
 
@@ -1114,7 +1114,7 @@ BRST_CallbackWriter_New(BRST_MMgr mmgr,
 {
     BRST_Stream stream;
 
-    BRST_PTRACE((" BRST_CallbackWriter_New\n"));
+    BRST_PTRACE(" BRST_CallbackWriter_New\n");
 
     stream = (BRST_Stream)BRST_GetMem(mmgr, sizeof(BRST_Stream_Rec));
 
@@ -1155,7 +1155,7 @@ BRST_Stream_WriteBinary(BRST_Stream stream,
     const BRST_BYTE* p;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_Stream_WriteBinary\n"));
+    BRST_PTRACE(" BRST_Stream_WriteBinary\n");
 
     if (e) {
         if (len <= BRST_TEXT_DEFAULT_LEN)
@@ -1224,7 +1224,7 @@ BRST_Stream_WriteToStreamWithDeflate(BRST_Stream src,
     Bytef otbuf[DEFLATE_BUF_SIZE];
     BRST_BYTE ebuf[DEFLATE_BUF_SIZE];
 
-    BRST_PTRACE((" BRST_Stream_WriteToStreamWithDeflate\n"));
+    BRST_PTRACE(" BRST_Stream_WriteToStreamWithDeflate\n");
 
     /* initialize input stream */
     ret = BRST_Stream_Seek(src, 0, BRST_SEEK_SET);
@@ -1345,7 +1345,7 @@ BRST_Stream_WriteToStream(BRST_Stream src,
     BRST_BYTE ebuf[BRST_STREAM_BUF_SIZE];
     BRST_BOOL flg;
 
-    BRST_PTRACE((" BRST_Stream_WriteToStream\n"));
+    BRST_PTRACE(" BRST_Stream_WriteToStream\n");
     BRST_UNUSED(filter);
 
     if (!dst || !(dst->write_fn)) {

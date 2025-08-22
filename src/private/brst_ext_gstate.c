@@ -39,7 +39,7 @@ BRST_ExtGState_New(BRST_MMgr mmgr,
 {
     BRST_Dict obj = BRST_Dict_New(mmgr);
 
-    BRST_PTRACE((" BRST_ExtGState_New\n"));
+    BRST_PTRACE(" BRST_ExtGState_New\n");
 
     if (!obj)
         return NULL;

@@ -21,7 +21,7 @@ BRST_NameTree_New(BRST_MMgr mmgr,
     BRST_NameTree ntree;
     BRST_Array items;
 
-    BRST_PTRACE((" BRST_NameTree_New\n"));
+    BRST_PTRACE(" BRST_NameTree_New\n");
 
     ntree = BRST_Dict_New(mmgr);
     if (!ntree)

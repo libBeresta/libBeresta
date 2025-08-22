@@ -31,7 +31,7 @@ BRST_Doc_Type1Font_LoadFromFile(BRST_Doc pdf,
     BRST_Stream pfm = NULL;
     const char* ret;
 
-    BRST_PTRACE((" BRST_Doc_Type1Font_LoadFromFile\n"));
+    BRST_PTRACE(" BRST_Doc_Type1Font_LoadFromFile\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;

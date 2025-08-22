@@ -118,10 +118,10 @@
 #define BRST_INVALID_URI                          0x1068
 #define BRST_PAGE_LAYOUT_OUT_OF_RANGE             0x1069
 #define BRST_PAGE_MODE_OUT_OF_RANGE               0x1070
-#define BRST_PAGE_NUM_STYLE_OUT_OF_RANGE          0x1071
+#define BRST_PAGE_NUM_OUT_OF_RANGE                0x1071
 #define BRST_ANNOT_INVALID_ICON                   0x1072
 #define BRST_ANNOT_INVALID_BORDER_STYLE           0x1073
-#define BRST_PAGE_INVALID_DIRECTION               0x1074
+#define BRST_PAGE_INVALID_ORIENTATION             0x1074
 #define BRST_PAGE_INSUFFICIENT_SPACE              0x1076
 #define BRST_PAGE_INVALID_DISPLAY_TIME            0x1077
 #define BRST_PAGE_INVALID_TRANSITION_TIME         0x1078

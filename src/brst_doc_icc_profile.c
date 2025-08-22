@@ -42,7 +42,7 @@ BRST_OutputIntent_New(BRST_Doc pdf,
     BRST_OutputIntent intent;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE((" BRST_OutputIntent_New\n"));
+    BRST_PTRACE(" BRST_OutputIntent_New\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -113,7 +113,7 @@ BRST_Doc_IccProfile_LoadFromMem(BRST_Doc pdf,
     BRST_OutputIntent icc;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Doc_IccProfile_LoadFromMem\n"));
+    BRST_PTRACE(" BRST_Doc_IccProfile_LoadFromMem\n");
 
     icc = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!icc)
@@ -203,7 +203,7 @@ BRST_Doc_IccProfile_LoadFromFile(BRST_Doc pdf,
     BRST_Stream iccdata;
     BRST_OutputIntent iccentry;
 
-    BRST_PTRACE((" BRST_Doc_IccProfile_LoadFromFile\n"));
+    BRST_PTRACE(" BRST_Doc_IccProfile_LoadFromFile\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;

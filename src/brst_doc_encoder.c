@@ -36,7 +36,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Doc_Encoder_SetCurrent(BRST_Doc pdf,
     const char* encoding_name)
 {
-    BRST_PTRACE((" BRST_Doc_Encoder_SetCurrent\n"));
+    BRST_PTRACE(" BRST_Doc_Encoder_SetCurrent\n");
 
     BRST_Encoder encoder;
 
@@ -60,7 +60,7 @@ BRST_Doc_Encoder_Prepare(BRST_Doc pdf,
     BRST_Encoder encoder;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_Doc_Encoder_Prepare\n"));
+    BRST_PTRACE(" BRST_Doc_Encoder_Prepare\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;

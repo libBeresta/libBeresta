@@ -38,7 +38,7 @@ BRST_List_New(BRST_MMgr mmgr,
 {
     BRST_List list;
 
-    BRST_PTRACE((" BRST_List_New\n"));
+    BRST_PTRACE(" BRST_List_New\n");
 
     if (mmgr == NULL)
         return NULL;
@@ -72,7 +72,7 @@ BRST_STATUS
 BRST_List_Add(BRST_List list,
     void* item)
 {
-    BRST_PTRACE((" BRST_List_Add\n"));
+    BRST_PTRACE(" BRST_List_Add\n");
 
     if (list->count >= list->block_size) {
         BRST_STATUS ret = Resize(list,
@@ -113,7 +113,7 @@ BRST_List_Insert(BRST_List list,
     void* last_item     = list->obj[list->count - 1];
     BRST_INT i;
 
-    BRST_PTRACE((" BRST_List_Insert\n"));
+    BRST_PTRACE(" BRST_List_Insert\n");
 
     if (target_idx < 0)
         return BRST_ITEM_NOT_FOUND;
@@ -149,7 +149,7 @@ BRST_List_Remove(BRST_List list,
     BRST_UINT i;
     void** obj = list->obj;
 
-    BRST_PTRACE((" BRST_List_Remove\n"));
+    BRST_PTRACE(" BRST_List_Remove\n");
 
     for (i = 0; i < list->count; i++) {
         if (*obj == item) {
@@ -181,7 +181,7 @@ void* BRST_List_RemoveByIndex(BRST_List list,
 {
     void* tmp;
 
-    BRST_PTRACE((" BRST_List_RemoveByIndex\n"));
+    BRST_PTRACE(" BRST_List_RemoveByIndex\n");
 
     if (list->count <= index)
         return NULL;
@@ -212,7 +212,7 @@ void* BRST_List_RemoveByIndex(BRST_List list,
 void* BRST_List_ItemAt(BRST_List list,
     BRST_UINT index)
 {
-    BRST_PTRACE((" BRST_List_ItemAt\n"));
+    BRST_PTRACE(" BRST_List_ItemAt\n");
 
     return (list->count <= index) ? NULL : list->obj[index];
 }
@@ -226,7 +226,7 @@ void* BRST_List_ItemAt(BRST_List list,
 
 void BRST_List_Free(BRST_List list)
 {
-    BRST_PTRACE((" BRST_List_Free\n"));
+    BRST_PTRACE(" BRST_List_Free\n");
 
     if (!list)
         return;
@@ -244,7 +244,7 @@ void BRST_List_Free(BRST_List list)
 
 void BRST_List_Clear(BRST_List list)
 {
-    BRST_PTRACE((" BRST_List_Clear\n"));
+    BRST_PTRACE(" BRST_List_Clear\n");
 
     if (list->obj)
         BRST_FreeMem(list->mmgr, list->obj);
@@ -271,7 +271,7 @@ Resize(BRST_List list,
 {
     void** new_obj;
 
-    BRST_PTRACE((" BRST_List_Resize\n"));
+    BRST_PTRACE(" BRST_List_Resize\n");
 
     if (list->count >= count) {
         if (list->count == count)
@@ -314,7 +314,7 @@ BRST_List_Find(BRST_List list,
 {
     BRST_UINT i;
 
-    BRST_PTRACE((" BRST_List_Find\n"));
+    BRST_PTRACE(" BRST_List_Find\n");
 
     for (i = 0; i < list->count; i++) {
         if (list->obj[i] == item)
@@ -328,7 +328,7 @@ BRST_INT32
 BRST_List_Count(BRST_List list)
 {
 
-    BRST_PTRACE((" BRST_List_Count\n"));
+    BRST_PTRACE(" BRST_List_Count\n");
 
     if (!list)
         return -1;

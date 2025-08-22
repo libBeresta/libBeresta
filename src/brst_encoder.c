@@ -15,7 +15,7 @@ BRST_EXPORT(BRST_UNICODE)
 BRST_Encoder_Unicode(BRST_Encoder encoder,
     BRST_UINT16 code)
 {
-    BRST_PTRACE((" BRST_Encoder_Unicode\n"));
+    BRST_PTRACE(" BRST_Encoder_Unicode\n");
 
     if (!BRST_Encoder_Validate(encoder))
         return 0;
@@ -31,7 +31,7 @@ BRST_Encoder_ByteType(BRST_Encoder encoder,
     BRST_ParseText_Rec parse_state;
     BRST_ByteType btype;
 
-    BRST_PTRACE((" BRST_Encoder_ByteType\n"));
+    BRST_PTRACE(" BRST_Encoder_ByteType\n");
 
     if (!BRST_Encoder_Validate(encoder))
         return BRST_BYTE_TYPE_UNKNOWN;
@@ -59,7 +59,7 @@ BRST_Encoder_ByteType(BRST_Encoder encoder,
 BRST_EXPORT(BRST_EncoderType)
 BRST_Encoder_Type(BRST_Encoder encoder)
 {
-    BRST_PTRACE((" BRST_Encoder_Type\n"));
+    BRST_PTRACE(" BRST_Encoder_Type\n");
 
     if (!BRST_Encoder_Validate(encoder))
         return BRST_ENCODER_UNKNOWN;
@@ -70,7 +70,7 @@ BRST_Encoder_Type(BRST_Encoder encoder)
 BRST_EXPORT(BRST_WritingMode)
 BRST_Encoder_WritingMode(BRST_Encoder encoder)
 {
-    BRST_PTRACE((" BRST_Encoder_WritingMode\n"));
+    BRST_PTRACE(" BRST_Encoder_WritingMode\n");
 
     if (!BRST_Encoder_Validate(encoder))
         return BRST_WMODE_HORIZONTAL;

@@ -25,7 +25,7 @@ void BRST_CIDFontDef_FreeWidth(BRST_FontDef fontdef)
     BRST_CIDFontDefAttr attr = (BRST_CIDFontDefAttr)fontdef->attr;
     BRST_UINT i;
 
-    BRST_PTRACE((" BRST_FontDef_Validate\n"));
+    BRST_PTRACE(" BRST_FontDef_Validate\n");
 
     for (i = 0; i < BRST_List_Count(attr->widths); i++) {
         BRST_CID_Width* w = (BRST_CID_Width*)BRST_List_ItemAt(attr->widths, i);
@@ -47,7 +47,7 @@ BRST_CIDFontDef_New(BRST_MMgr mmgr,
     BRST_FontDef fontdef;
     BRST_CIDFontDefAttr fontdef_attr;
 
-    BRST_PTRACE((" BRST_CIDFontDef_New\n"));
+    BRST_PTRACE(" BRST_CIDFontDef_New\n");
 
     if (!mmgr)
         return NULL;
@@ -97,7 +97,7 @@ BRST_CIDFontDef_CIDWidth(BRST_FontDef fontdef,
     BRST_CIDFontDefAttr attr = (BRST_CIDFontDefAttr)fontdef->attr;
     BRST_UINT i;
 
-    BRST_PTRACE((" BRST_CIDFontDef_CIDWidth\n"));
+    BRST_PTRACE(" BRST_CIDFontDef_CIDWidth\n");
 
     for (i = 0; i < BRST_List_Count(attr->widths); i++) {
         BRST_CID_Width* w = (BRST_CID_Width*)BRST_List_ItemAt(attr->widths,
@@ -115,7 +115,7 @@ void BRST_CIDFontDef_FreeFunc(BRST_FontDef fontdef)
 {
     BRST_CIDFontDefAttr attr = (BRST_CIDFontDefAttr)fontdef->attr;
 
-    BRST_PTRACE((" BRST_CIDFontDef_FreeFunc\n"));
+    BRST_PTRACE(" BRST_CIDFontDef_FreeFunc\n");
 
     BRST_CIDFontDef_FreeWidth(fontdef);
     BRST_FreeMem(fontdef->mmgr, attr);
@@ -127,7 +127,7 @@ BRST_CIDFontDef_AddWidth(BRST_FontDef fontdef,
 {
     BRST_CIDFontDefAttr attr = (BRST_CIDFontDefAttr)fontdef->attr;
 
-    BRST_PTRACE((" BRST_CIDFontDef_AddWidth\n"));
+    BRST_PTRACE(" BRST_CIDFontDef_AddWidth\n");
 
     while (widths->cid != 0xFFFF) {
         BRST_CID_Width* w = BRST_GetMem(fontdef->mmgr,
@@ -157,7 +157,7 @@ BRST_CIDFontDef_ChangeStyle(BRST_FontDef fontdef,
     BRST_BOOL bold,
     BRST_BOOL italic)
 {
-    BRST_PTRACE((" BRST_CIDFontDef_ChangeStyle\n"));
+    BRST_PTRACE(" BRST_CIDFontDef_ChangeStyle\n");
 
     if (!fontdef || !fontdef->attr)
         return BRST_INVALID_FONTDEF_DATA;

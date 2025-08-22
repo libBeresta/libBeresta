@@ -35,7 +35,7 @@ BRST_BasicEncoder_New(BRST_MMgr mmgr,
     const BRST_BuiltinEncodingData* data;
     char* eptr;
 
-    BRST_PTRACE((" BRST_BasicEncoder_New\n"));
+    BRST_PTRACE(" BRST_BasicEncoder_New\n");
 
     if (mmgr == NULL)
         return NULL;
@@ -122,7 +122,7 @@ BRST_BasicEncoder_ToUnicode(BRST_Encoder encoder,
 
 void BRST_BasicEncoder_Free(BRST_Encoder encoder)
 {
-    BRST_PTRACE((" BRST_BasicEncoder_Free\n"));
+    BRST_PTRACE(" BRST_BasicEncoder_Free\n");
 
     BRST_FreeMem(encoder->mmgr, encoder->attr);
     encoder->attr = NULL;
@@ -135,7 +135,7 @@ BRST_BasicEncoder_Write(BRST_Encoder encoder,
     BRST_STATUS ret;
     BRST_BasicEncoderAttr attr = (BRST_BasicEncoderAttr)encoder->attr;
 
-    BRST_PTRACE((" BRST_BasicEncoder_Write\n"));
+    BRST_PTRACE(" BRST_BasicEncoder_Write\n");
 
     /*  if BRST_ENCODING_FONT_SPECIFIC is selected, no Encoding object will be "
      *  written.
@@ -204,7 +204,7 @@ BRST_BasicEncoder_FindBuiltinData(const char* encoding_name)
 {
     BRST_UINT i = 0;
 
-    BRST_PTRACE((" BRST_BasicEncoder_FindBuiltinData\n"));
+    BRST_PTRACE(" BRST_BasicEncoder_FindBuiltinData\n");
 
     while (BRST_BUILTIN_ENCODINGS[i].encoding_name) {
         if (BRST_StrCmp(BRST_BUILTIN_ENCODINGS[i].encoding_name,
@@ -224,7 +224,7 @@ void BRST_BasicEncoder_CopyMap(BRST_Encoder encoder,
     BRST_UINT i;
     BRST_UNICODE* dst = ((BRST_BasicEncoderAttr)encoder->attr)->unicode_map + BRST_BASIC_ENCODER_FIRST_CHAR;
 
-    BRST_PTRACE((" BRST_BasicEncoder_CopyMap\n"));
+    BRST_PTRACE(" BRST_BasicEncoder_CopyMap\n");
 
     for (i = 0; i <= BRST_BASIC_ENCODER_LAST_CHAR - BRST_BASIC_ENCODER_FIRST_CHAR; i++)
         *dst++ = *map++;
@@ -239,7 +239,7 @@ BRST_BasicEncoder_OverrideMap(BRST_Encoder encoder,
     BRST_UNICODE* dst;
     BRST_BYTE* flgs;
 
-    BRST_PTRACE((" BRST_BasicEncoder_OverrideMap\n"));
+    BRST_PTRACE(" BRST_BasicEncoder_OverrideMap\n");
 
     if (data->has_differences)
         return BRST_Error_Set(encoder->error, BRST_INVALID_OPERATION, 0);

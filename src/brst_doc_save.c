@@ -21,7 +21,7 @@
 BRST_EXPORT(BRST_STATUS)
 BRST_Doc_SaveToStream(BRST_Doc pdf)
 {
-    BRST_PTRACE((" BRST_Doc_SaveToStream\n"));
+    BRST_PTRACE(" BRST_Doc_SaveToStream\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_INVALID_DOCUMENT;
@@ -46,7 +46,7 @@ BRST_Doc_SaveToFile(BRST_Doc pdf,
 {
     BRST_Stream stream;
 
-    BRST_PTRACE((" BRST_SaveToFile\n"));
+    BRST_PTRACE(" BRST_SaveToFile\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return BRST_INVALID_DOCUMENT;

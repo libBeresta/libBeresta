@@ -35,7 +35,7 @@ LoadTTFontFromStream(BRST_Doc pdf,
 {
     BRST_FontDef def;
 
-    BRST_PTRACE((" LoadTTFontFromStream\n"));
+    BRST_PTRACE(" LoadTTFontFromStream\n");
     BRST_UNUSED(file_name);
 
     def = BRST_TTFontDef_Load(pdf->mmgr, font_data, embedding);
@@ -83,7 +83,7 @@ LoadTTFontFromStream2(BRST_Doc pdf,
 {
     BRST_FontDef def;
 
-    BRST_PTRACE((" LoadTTFontFromStream2\n"));
+    BRST_PTRACE(" LoadTTFontFromStream2\n");
     BRST_UNUSED(file_name);
 
     def = BRST_TTFontDef_Load2(pdf->mmgr, font_data, index, embedding);
@@ -129,7 +129,7 @@ LoadType1FontFromStream(BRST_Doc pdf,
 {
     BRST_FontDef def;
 
-    BRST_PTRACE((" BRST_LoadType1FontFromStream\n"));
+    BRST_PTRACE(" BRST_LoadType1FontFromStream\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -160,7 +160,7 @@ BRST_Doc_FindFont(BRST_Doc pdf,
     BRST_UINT i;
     BRST_Font font;
 
-    BRST_PTRACE((" BRST_Doc_FindFont\n"));
+    BRST_PTRACE(" BRST_Doc_FindFont\n");
 
     for (i = 0; i < BRST_List_Count(pdf->font_mgr); i++) {
         BRST_FontAttr attr;

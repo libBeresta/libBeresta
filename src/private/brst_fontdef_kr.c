@@ -21,7 +21,7 @@ DotumChe_Init(BRST_FontDef fontdef)
 {
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_FontDef_DotumChe_Init\n"));
+    BRST_PTRACE(" BRST_FontDef_DotumChe_Init\n");
 
     fontdef->ascent       = 858;
     fontdef->descent      = -141;
@@ -78,7 +78,7 @@ Dotum_Init(BRST_FontDef fontdef)
 {
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_FontDef_Dotum_Init\n"));
+    BRST_PTRACE(" BRST_FontDef_Dotum_Init\n");
 
     fontdef->ascent       = 858;
     fontdef->descent      = -141;
@@ -135,7 +135,7 @@ BatangChe_Init(BRST_FontDef fontdef)
 {
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_FontDef_BatangChe_Init\n"));
+    BRST_PTRACE(" BRST_FontDef_BatangChe_Init\n");
 
     fontdef->ascent       = 858;
     fontdef->descent      = -141;
@@ -192,7 +192,7 @@ Batang_Init(BRST_FontDef fontdef)
 {
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_FontDef_Batang_Init\n"));
+    BRST_PTRACE(" BRST_FontDef_Batang_Init\n");
 
     fontdef->ascent       = 858;
     fontdef->descent      = -141;

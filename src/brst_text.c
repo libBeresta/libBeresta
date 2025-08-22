@@ -33,7 +33,7 @@ BRST_Page_BeginText(BRST_Page page)
     BRST_PageAttr attr;
     const BRST_TransMatrix INIT_MATRIX = { 1, 0, 0, 1, 0, 0 };
 
-    BRST_PTRACE((" BRST_Page_BeginText\n"));
+    BRST_PTRACE(" BRST_Page_BeginText\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -57,7 +57,7 @@ BRST_Page_EndText(BRST_Page page)
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_TEXT_OBJECT);
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_EndText\n"));
+    BRST_PTRACE(" BRST_Page_EndText\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -81,7 +81,7 @@ BRST_Page_SetTextLeading(BRST_Page page,
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_SetTextLeading\n"));
+    BRST_PTRACE(" BRST_Page_SetTextLeading\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -112,7 +112,7 @@ BRST_Page_SetFontAndSize(BRST_Page page,
     const char* local_name;
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_SetFontAndSize\n"));
+    BRST_PTRACE(" BRST_Page_SetFontAndSize\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -158,7 +158,7 @@ BRST_Page_SetTextRenderingMode(BRST_Page page,
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_SetTextRenderingMode\n"));
+    BRST_PTRACE(" BRST_Page_SetTextRenderingMode\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -182,13 +182,13 @@ BRST_Page_SetTextRenderingMode(BRST_Page page,
 
 /* Ts */
 BRST_EXPORT(BRST_STATUS)
-BRST_Page_SetTextRaise(BRST_Page page,
+BRST_Page_SetTextRise(BRST_Page page,
     BRST_REAL value)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_SetTextRaise\n"));
+    BRST_PTRACE(" BRST_Page_SetTextRise\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -218,7 +218,7 @@ BRST_Page_MoveTextPos(BRST_Page page,
     char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_MoveTextPos\n"));
+    BRST_PTRACE(" BRST_Page_MoveTextPos\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -255,7 +255,7 @@ BRST_Page_MoveTextPos2(BRST_Page page,
     char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_MoveTextPos2\n"));
+    BRST_PTRACE(" BRST_Page_MoveTextPos2\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -297,7 +297,7 @@ BRST_Page_SetTextMatrix(BRST_Page page,
     char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_SetTextMatrix\n"));
+    BRST_PTRACE(" BRST_Page_SetTextMatrix\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -344,7 +344,7 @@ BRST_Page_MoveToNextLine(BRST_Page page)
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_TEXT_OBJECT);
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_MoveToNextLine\n"));
+    BRST_PTRACE(" BRST_Page_MoveToNextLine\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -373,7 +373,7 @@ BRST_Page_ShowText(BRST_Page page,
     BRST_PageAttr attr;
     BRST_REAL tw;
 
-    BRST_PTRACE((" BRST_Page_ShowText\n"));
+    BRST_PTRACE(" BRST_Page_ShowText\n");
 
     if (ret != BRST_OK || text == NULL || text[0] == 0)
         return ret;
@@ -416,7 +416,7 @@ BRST_Page_ShowTextNextLine(BRST_Page page,
     BRST_PageAttr attr;
     BRST_REAL tw;
 
-    BRST_PTRACE((" BRST_Page_ShowTextNextLine\n"));
+    BRST_PTRACE(" BRST_Page_ShowTextNextLine\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -470,7 +470,7 @@ BRST_Page_ShowTextNextLineEx(BRST_Page page,
     char* pbuf = buf;
     char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
 
-    BRST_PTRACE((" BRST_Page_ShowTextNextLineEX\n"));
+    BRST_PTRACE(" BRST_Page_ShowTextNextLineEX\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -539,7 +539,7 @@ BRST_Page_TextOut(BRST_Page page,
     BRST_REAL y;
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_TextOut\n"));
+    BRST_PTRACE(" BRST_Page_TextOut\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -572,7 +572,7 @@ BRST_Page_TextRect(BRST_Page page,
     BRST_Box bbox;
     BRST_BOOL char_space_changed = BRST_FALSE;
 
-    BRST_PTRACE((" BRST_Page_TextRect\n"));
+    BRST_PTRACE(" BRST_Page_TextRect\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -737,7 +737,7 @@ BRST_Page_SetCharSpace(BRST_Page page,
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_SetCharSpace\n"));
+    BRST_PTRACE(" BRST_Page_SetCharSpace\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -766,7 +766,7 @@ BRST_Page_SetWordSpace(BRST_Page page,
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_SetWordSpace\n"));
+    BRST_PTRACE(" BRST_Page_SetWordSpace\n");
 
     if (ret != BRST_OK)
         return ret;
@@ -792,7 +792,7 @@ BRST_Page_TextMatrix(BRST_Page page)
 {
     BRST_TransMatrix DEF_MATRIX = { 1, 0, 0, 1, 0, 0 };
 
-    BRST_PTRACE((" BRST_Page_TextMatrix\n"));
+    BRST_PTRACE(" BRST_Page_TextMatrix\n");
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
@@ -804,7 +804,7 @@ BRST_Page_TextMatrix(BRST_Page page)
 BRST_EXPORT(BRST_REAL)
 BRST_Page_TextLeading(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_TextLeading\n"));
+    BRST_PTRACE(" BRST_Page_TextLeading\n");
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -817,7 +817,7 @@ BRST_Page_TextLeading(BRST_Page page)
 BRST_EXPORT(BRST_TextRenderingMode)
 BRST_Page_TextRenderingMode(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_TextRenderingMode\n"));
+    BRST_PTRACE(" BRST_Page_TextRenderingMode\n");
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -828,22 +828,22 @@ BRST_Page_TextRenderingMode(BRST_Page page)
 }
 
 BRST_EXPORT(BRST_REAL)
-BRST_Page_TextRaise(BRST_Page page)
+BRST_Page_TextRise(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_TextRaise\n"));
+    BRST_PTRACE(" BRST_Page_TextRise\n");
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
         return attr->gstate->text_rise;
     } else
-        return BRST_DEF_RAISE;
+        return BRST_DEF_RISE;
 }
 
 BRST_EXPORT(BRST_REAL)
 BRST_Page_CharSpace(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_CharSpace\n"));
+    BRST_PTRACE(" BRST_Page_CharSpace\n");
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -856,7 +856,7 @@ BRST_Page_CharSpace(BRST_Page page)
 BRST_EXPORT(BRST_REAL)
 BRST_Page_WordSpace(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_WordSpace\n"));
+    BRST_PTRACE(" BRST_Page_WordSpace\n");
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -871,7 +871,7 @@ BRST_Page_CurrentTextPos(BRST_Page page)
 {
     BRST_Point pos = { 0, 0 };
 
-    BRST_PTRACE((" BRST_Page_CurrentTextPos\n"));
+    BRST_PTRACE(" BRST_Page_CurrentTextPos\n");
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -889,7 +889,7 @@ BRST_Page_CurrentTextPos2(BRST_Page page,
 {
     BRST_PageAttr attr;
 
-    BRST_PTRACE((" BRST_Page_CurrentTextPos2\n"));
+    BRST_PTRACE(" BRST_Page_CurrentTextPos2\n");
 
     pos->x = 0;
     pos->y = 0;
@@ -907,7 +907,7 @@ BRST_Page_CurrentTextPos2(BRST_Page page,
 BRST_EXPORT(BRST_Font)
 BRST_Page_CurrentFont(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_CurrentFont\n"));
+    BRST_PTRACE(" BRST_Page_CurrentFont\n");
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -920,7 +920,7 @@ BRST_Page_CurrentFont(BRST_Page page)
 BRST_EXPORT(BRST_REAL)
 BRST_Page_CurrentFontSize(BRST_Page page)
 {
-    BRST_PTRACE((" BRST_Page_CurrentFontSize\n"));
+    BRST_PTRACE(" BRST_Page_CurrentFontSize\n");
 
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
@@ -939,7 +939,7 @@ BRST_Page_TextWidth(BRST_Page page,
     BRST_REAL ret = 0;
     BRST_UINT len = BRST_StrLen(text, BRST_LIMIT_MAX_STRING_LEN + 1);
 
-    BRST_PTRACE((" BRST_Page_TextWidth\n"));
+    BRST_PTRACE(" BRST_Page_TextWidth\n");
 
     if (!BRST_Page_Validate(page) || len == 0)
         return 0;
@@ -979,7 +979,7 @@ BRST_Page_MeasureText(BRST_Page page,
 
     attr = (BRST_PageAttr)page->attr;
 
-    BRST_PTRACE((" BRST_Page_MeasureText\n"));
+    BRST_PTRACE(" BRST_Page_MeasureText\n");
 
     /* no font exists */
     if (!attr->gstate->font) {

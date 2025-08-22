@@ -31,7 +31,7 @@ BRST_Doc_TTFont_LoadFromFile(BRST_Doc pdf,
     BRST_Stream font_data;
     const char* ret;
 
-    BRST_PTRACE((" BRST_Doc_TTFont_LoadFromFile\n"));
+    BRST_PTRACE(" BRST_Doc_TTFont_LoadFromFile\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -66,7 +66,7 @@ BRST_Doc_TTFont_LoadFromFile2(BRST_Doc pdf,
     BRST_Stream font_data;
     const char* ret;
 
-    BRST_PTRACE((" BRST_Doc_TTFont_LoadFromFile2\n"));
+    BRST_PTRACE(" BRST_Doc_TTFont_LoadFromFile2\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -94,7 +94,7 @@ BRST_LoadTTFontFromMemory(BRST_Doc pdf,
     BRST_Stream font_data;
     const char* ret;
 
-    BRST_PTRACE((" BRST_LoadTTFontFromMemory\n"));
+    BRST_PTRACE(" BRST_LoadTTFontFromMemory\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;

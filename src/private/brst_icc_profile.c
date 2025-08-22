@@ -11,7 +11,7 @@ BRST_ICC_LoadIccFromMem(BRST_Doc pdf,
     BRST_OutputIntent icc;
     BRST_STATUS ret;
 
-    BRST_PTRACE((" BRST_ICC_LoadIccFromMem\n"));
+    BRST_PTRACE(" BRST_ICC_LoadIccFromMem\n");
 
     icc = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!icc)
@@ -101,7 +101,7 @@ BRST_LoadIccProfileFromFile(BRST_Doc pdf,
     BRST_Stream iccdata;
     BRST_OutputIntent iccentry;
 
-    BRST_PTRACE((" BRST_LoadIccProfileFromFile\n"));
+    BRST_PTRACE(" BRST_LoadIccProfileFromFile\n");
 
     if (!BRST_HasDoc(pdf))
         return NULL;
