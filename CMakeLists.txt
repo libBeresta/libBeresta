@@ -78,6 +78,7 @@ set(
     include/brst_conf.h
     include/brst_consts.h
     include/brst_consts_.h
+    include/brst_date.h
     include/brst_defines.h
     include/brst_destination.h
     include/brst_doc.h
@@ -134,6 +135,7 @@ set(
         include/private/brst_binary.h
         include/private/brst_boolean.h
         include/private/brst_catalog.h
+        include/private/brst_date.h
         include/private/brst_destination.h
         include/private/brst_dict.h
         include/private/brst_direct.h

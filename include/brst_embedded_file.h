@@ -1,6 +1,8 @@
 #ifndef BRST_EMBEDDED_FILE_H
 #define BRST_EMBEDDED_FILE_H
 
+#include "brst_date.h"
+
 typedef enum _BRST_AFRelationship {
     BRST_AFRELATIONSHIP_SOURCE = 0,
     BRST_AFRELATIONSHIP_DATA,

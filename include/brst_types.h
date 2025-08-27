@@ -74,35 +74,6 @@ typedef struct _BRST_Point3D {
 
 typedef struct _BRST_Rect BRST_Box;
 
-/**
-  \brief Date structure
-
-  Represents date values in \c info dictionary of PDF file.
-
-  \see \ref _BRST_Date
-
- */
-typedef struct _BRST_Date {
-    /// Year of the date. Does not imply restrictions.
-    BRST_INT year;
-    /// Month of the date. Value from range 1 to 12 is accepted.
-    BRST_INT month;
-    /// Day of the date. Values from range 1 to 28, 29, 30, or 31 is accepted (depends on the month)
-    BRST_INT day;
-    /// Hour of date. Value from range 0 to 23 is accepted.
-    BRST_INT hour;
-    /// Minutes of date. Value from range 0 to 59 is accepted.
-    BRST_INT minutes;
-    /// Seconds of date. Value from range 0 to 59 is accepted.
-    BRST_INT seconds;
-    /// Relationship between local time and Universal time (' ', '+', '−', or 'Z')
-    char     ind;
-    /// If \c ind is not ' ' (space), value from range 0 to 23 is accepted, otherwise ignored.
-    BRST_INT off_hour;
-    /// If \c ind is not ' ' (space), value from range 0 to 59 is accepted, otherwise ignored.
-    BRST_INT off_minutes;
-} BRST_Date;
-
 typedef void*
 (BRST_STDCALL *BRST_Alloc_Func) (
     BRST_UINT size

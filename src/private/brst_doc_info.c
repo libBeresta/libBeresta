@@ -13,6 +13,7 @@
 #include "private/brst_utils.h"
 #include "brst_error.h"
 #include "private/brst_defines.h"
+#include "brst_consts.h"
 
 static const char* const BRST_INFO_ATTR_NAMES[] = {
     "CreationDate",
@@ -95,52 +96,25 @@ BRST_Info_SetInfoDateAttr(BRST_Dict info,
         return BRST_Error_Set(info->error, BRST_INVALID_PARAMETER, 0);
 
     BRST_MemSet(tmp, 0, BRST_DATE_TIME_STR_LEN + 1);
-    if (value.month < 1 || 12 < value.month || value.day < 1 || 23 < value.hour || 59 < value.minutes || 59 < value.seconds || (value.ind != '+' && value.ind != '-' && value.ind != 'Z' && value.ind != ' ') || 23 < value.off_hour || 59 < value.off_minutes) {
-        return BRST_Error_Set(info->error, BRST_INVALID_DATE_TIME, 0);
-    }
 
-    switch (value.month) {
-    case 1:
-    case 3:
-    case 5:
-    case 7:
-    case 8:
-    case 10:
-    case 12:
-        if (value.day > 31)
-            return BRST_Error_Set(info->error, BRST_INVALID_DATE_TIME, 0);
-
-        break;
-    case 4:
-    case 6:
-    case 9:
-    case 11:
-        if (value.day > 30)
-            return BRST_Error_Set(info->error, BRST_INVALID_DATE_TIME, 0);
-
-        break;
-    case 2:
-        if (value.day > 29 || (value.day == 29 && (value.year % 4 != 0 || (value.year % 100 == 0 && value.year % 400 != 0))))
-            return BRST_Error_Set(info->error, BRST_INVALID_DATE_TIME, 0);
-
-        break;
-    default:
+    if (BRST_Date_Validate(value) != BRST_OK) {
         return BRST_Error_Set(info->error, BRST_INVALID_DATE_TIME, 0);
     }
 
     ptmp = (char*)BRST_MemCpy((BRST_BYTE*)tmp, (BRST_BYTE*)"D:", 2);
-    ptmp = BRST_IToA2(ptmp, value.year, 5);
-    ptmp = BRST_IToA2(ptmp, value.month, 3);
-    ptmp = BRST_IToA2(ptmp, value.day, 3);
-    ptmp = BRST_IToA2(ptmp, value.hour, 3);
-    ptmp = BRST_IToA2(ptmp, value.minutes, 3);
-    ptmp = BRST_IToA2(ptmp, value.seconds, 3);
-    if (value.ind != ' ') {
-        *ptmp++ = value.ind;
-        ptmp    = BRST_IToA2(ptmp, value.off_hour, 3);
+    ptmp = BRST_IToA2(ptmp, BRST_Date_Part(value, BRST_DATE_PART_YEAR), 5);
+    ptmp = BRST_IToA2(ptmp, BRST_Date_Part(value, BRST_DATE_PART_MONTH), 3);
+    ptmp = BRST_IToA2(ptmp, BRST_Date_Part(value, BRST_DATE_PART_DAY), 3);
+    ptmp = BRST_IToA2(ptmp, BRST_Date_Part(value, BRST_DATE_PART_HOUR), 3);
+    ptmp = BRST_IToA2(ptmp, BRST_Date_Part(value, BRST_DATE_PART_MINUTE), 3);
+    ptmp = BRST_IToA2(ptmp, BRST_Date_Part(value, BRST_DATE_PART_SECOND), 3);
+    BRST_UT_Relationship ind = (BRST_UT_Relationship)BRST_Date_Part(value, BRST_DATE_PART_UT_RELATIONSHIP);
+    if (ind != BRST_UT_RELATIONSHIP_NONE) {
+        char indChar = (ind == BRST_UT_RELATIONSHIP_ZERO) ? 'Z' : ((ind == BRST_UT_RELATIONSHIP_PLUS) ? '+' : '-');
+        *ptmp++ = indChar;
+        ptmp    = BRST_IToA2(ptmp, BRST_Date_Part(value, BRST_DATE_PART_HOUR_OFFSET), 3);
         *ptmp++ = '\'';
-        ptmp    = BRST_IToA2(ptmp, value.off_minutes, 3);
-        *ptmp++ = '\'';
+        ptmp    = BRST_IToA2(ptmp, BRST_Date_Part(value, BRST_DATE_PART_MINUTE_OFFSET), 3);
     }
     *ptmp = 0;
 

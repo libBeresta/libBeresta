@@ -28,5 +28,7 @@
 #include "brst_doc_encoding_utf.h"
 #include "brst_destination.h"
 #include "brst_text.h"
+#include "brst_date.h"
+#include "brst_doc_info.h"
 
 #endif /* BRST_H */

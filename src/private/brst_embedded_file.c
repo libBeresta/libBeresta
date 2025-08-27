@@ -9,6 +9,7 @@
 #include "private/brst_xref.h"
 #include "brst_embedded_file.h"
 #include "private/brst_embedded_file.h"
+#include "brst_date.h"
 
 #include "brst_consts.h"
 

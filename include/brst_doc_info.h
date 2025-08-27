@@ -2,6 +2,7 @@
 #define BRST_DOC_INFO_H
 
 #include "brst_doc.h"
+#include "brst_date.h"
 
 typedef enum _BRST_InfoType {
     /* date-time type parameters */

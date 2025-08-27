@@ -2,6 +2,7 @@ set(
     LIBBRST_SRCS
         brst_annotation.c
         brst_base.c
+        brst_date.c
         brst_destination.c
         brst_doc_annotation.c
         brst_doc_compression.c
