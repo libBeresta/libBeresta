@@ -4,6 +4,8 @@ set(
     line_demo
     attach
     raw_image_demo
+    dates
+    properties
 )
 
 set(
