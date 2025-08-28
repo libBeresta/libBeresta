@@ -32,6 +32,10 @@ pushd $RENDER_DIR > /dev/null
 ./render.sh $PREFIX/ecl.dj structs.lsp ru $PREFIX/src/structs.lisp
 ./render.sh $PREFIX/ecl.dj ext_gstate.lsp ru $PREFIX/src/ext_gstate.lisp
 ./render.sh $PREFIX/ecl.dj text_defines.lsp ru $PREFIX/src/text_defines.lisp
+./render.sh $PREFIX/ecl.dj doc_info.lsp ru $PREFIX/src/doc_info.lisp
+./render.sh $PREFIX/ecl.dj date.lsp ru $PREFIX/src/date.lisp
+./render.sh $PREFIX/ecl.dj doc_encoding_utf.lsp ru $PREFIX/src/doc_encoding_utf.lisp
+./render.sh $PREFIX/ecl.dj doc_encoder.lsp ru $PREFIX/src/doc_encoder.lisp
 
 ./render.sh $PREFIX/exp-ecl-page-sizes.dj page_sizes.lsp ru $PREFIX/src/exp-page_sizes.lisp
 ./render.sh $PREFIX/exp-ecl-types.dj types.lsp ru $PREFIX/src/exp-types.lisp
@@ -54,6 +58,10 @@ pushd $RENDER_DIR > /dev/null
 ./render.sh $PREFIX/exp-ecl.dj structs.lsp ru $PREFIX/src/exp-structs.lisp
 ./render.sh $PREFIX/exp-ecl.dj ext_gstate.lsp ru $PREFIX/src/exp-ext_gstate.lisp
 ./render.sh $PREFIX/exp-ecl.dj text_defines.lsp ru $PREFIX/src/exp-text_defines.lisp
+./render.sh $PREFIX/exp-ecl.dj doc_info.lsp ru $PREFIX/src/exp-doc_info.lisp
+./render.sh $PREFIX/exp-ecl.dj date.lsp ru $PREFIX/src/exp-date.lisp
+./render.sh $PREFIX/exp-ecl.dj doc_encoding_utf.lsp ru $PREFIX/src/exp-doc_encoding_utf.lisp
+./render.sh $PREFIX/exp-ecl.dj doc_encoder.lsp ru $PREFIX/src/exp-doc_encoder.lisp
 
 cp $PREFIX/macro.lisp  $PREFIX/src/
 
