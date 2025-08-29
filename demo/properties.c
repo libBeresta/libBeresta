@@ -82,7 +82,7 @@ int main(int argc, char** argv)
     BRST_Doc_SetInfoAttr(pdf, BRST_INFO_PRODUCER, "Продюсер / Producer / Productor");
     BRST_Doc_SetInfoAttr(pdf, BRST_INFO_TITLE, "Заголовок / Title / Título");
     BRST_Doc_SetInfoAttr(pdf, BRST_INFO_SUBJECT, "Тема / Subject / Asunto");
-    BRST_Doc_SetInfoAttr(pdf, BRST_INFO_KEYWORDS, "Ключевые слова, Keywords, Palabra clave");
+    BRST_Doc_SetInfoAttr(pdf, BRST_INFO_KEYWORDS, "Ключевые слова, Keywords, Palabras clave");
 
     // Сохранение документа в файл
     BRST_Doc_SaveToFile(pdf, fname);
