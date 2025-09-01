@@ -69,7 +69,10 @@ int main(int argc, char** argv)
     BRST_Stream_LineTo(stream, 100, 100);
     BRST_Stream_Stroke(stream);
 
-    //BRST_Page_MoveTo(page, 50, 50);
+    BRST_Page_Translate(page, 50, 50);
+    BRST_Page_XObject_Execute(page, xobj);
+
+    BRST_Page_Translate(page, 200, 110);
     BRST_Page_XObject_Execute(page, xobj);
 
 
