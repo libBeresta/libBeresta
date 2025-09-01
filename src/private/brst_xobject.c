@@ -1,3 +1,17 @@
+#include "brst_stream.h"
+#include "brst_xref.h"
+#include "brst_mmgr.h"
+#include "brst_dict.h"
+#include "brst_array.h"
+#include "brst_encrypt.h"
+#include "private/brst_array.h"
+#include "private/brst_dict.h"
+#include "private/brst_name.h"
+#include "brst_xobject.h"
+#include "brst_types.h"
+#include "private/brst_utils.h"
+#include "private/brst_geometry.h"
+#include "brst_consts.h"
 
 BRST_XObject
 BRST_XObject_New(
@@ -31,15 +45,14 @@ BRST_XObject_New(
     if (!resource)
         return NULL;
 
-    ret += BRST_Dict_Add(page, "Resources", resource);
+    ret += BRST_Dict_Add(xobj, "Resources", resource);
 
-    procset = BRST_Array_New(mmgr);
+    BRST_Array procset = BRST_Array_New(mmgr);
     if (!procset)
         return NULL;
 
     ret += BRST_Dict_Add(resource, "ProcSet", procset);
-    ret += BRST_Array_Add(procset, BRST_Name_New(page->mmgr, "PDF"));
-
+    ret += BRST_Array_Add(procset, BRST_Name_New(mmgr, "PDF"));
 
     if (ret != BRST_OK)
         return NULL;
@@ -49,7 +62,7 @@ BRST_XObject_New(
 
 BRST_Stream
 BRST_XObject_Stream(
-    XObject obj
+    BRST_XObject obj
 ) {
     return BRST_Dict_Stream(obj);
 }
