@@ -6,6 +6,7 @@ set(
     raw_image_demo
     dates
     properties
+    xobject
 )
 
 set(

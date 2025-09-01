@@ -15,7 +15,7 @@ BRST_XObject_New(
 
 BRST_Stream
 BRST_XObject_Stream(
-    XObject obj
+    BRST_XObject obj
 );
 
 #endif /* PRIVATE_BRST_XOBJECT_H */

@@ -15,6 +15,8 @@
 #include "private/brst_catalog.h"
 #include "private/brst_encrypt_dict.h"
 #include "private/brst_page.h"
+#include "brst_xobject.h"
+#include "private/brst_xobject.h"
 #include "brst_base.h"
 #include "private/brst_gstate.h"
 #include "private/brst_page_attr.h"
@@ -53,3 +55,4 @@ BRST_Page_XObject_Execute(BRST_Page page,
 
     return ret;
 }
+

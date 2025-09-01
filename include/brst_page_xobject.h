@@ -1,6 +1,8 @@
 #ifndef BRST_PAGE_XOBJECT_H
 #define BRST_PAGE_XOBJECT_H
 
+#include "brst_stream.h"
+
 /**
 
   \ingroup graphics
