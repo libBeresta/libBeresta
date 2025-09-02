@@ -1,7 +1,7 @@
 /*
  * `libBeresta`
  *
- * minimal.c - Минимально возможный пример
+ * xobject.c - Создание и отображение XObject Form
  * =========
  *
  * Copyright (c) 2025 Dmitry Solomennikov
@@ -10,23 +10,18 @@
  */
 
 /** en
-  \par Minimal BRST program demo
+  \par XObject Form creation and usage
 
-  This is bare minimum program, creating PDF document.
-  It creates \ref BRST_Doc object, adds \ref BRST_Page object into it,
-  sets added page size and orientation and saves document to a file.
-
-  Last action is to clean up everything.
+  XObject Form object created, filled with drawing commands
+  and then object is shown multiple times.
 */
 
 /** ru
-  \par Минимальная демонстрационная программа библиотеки libBeresta.
+  \par Создание и отображение XObject Form
 
-  Минимально возможная программа для создания PDF-документа.
-  Создается \ref BRST_Doc, в него добавляется объект \ref BRST_Page,
-  устанавливаются размер и ориентация страницы и документ сохраняется.
-
-  Последним действием все очищается.
+  Создается объект XObject, наполняется командами рисования,
+  после чего объект многократно отображается, в том числе
+  на разных страницах.
 */
 
 #include "brst.h"
@@ -61,20 +56,23 @@ int main(int argc, char** argv)
 
     // Настройка размера и ориентации страницы
     BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_ORIENTATION_LANDSCAPE);
-
+    // Создание XObject Form
     BRST_XObject xobj = BRST_Doc_Page_XObject_Create(pdf, page, 100, 100, 1, 1);
 
+    // Получение и наполнение потока XObject
     BRST_Stream stream = BRST_Doc_Page_XObject_Stream(xobj);
     BRST_Stream_MoveTo(stream, 0, 0);
     BRST_Stream_LineTo(stream, 100, 100);
     BRST_Stream_Stroke(stream);
 
+    // Позиционирование и отображение XObject
     BRST_Page_Translate(page, 50, 50);
     BRST_Page_XObject_Execute(page, xobj);
 
+    // Позиционирование и отображение XObject на новой странице
+    page = BRST_Doc_Page_Add(pdf);
     BRST_Page_Translate(page, 200, 110);
     BRST_Page_XObject_Execute(page, xobj);
-
 
     // Сохранение документа в файл
     BRST_Doc_SaveToFile(pdf, fname);
