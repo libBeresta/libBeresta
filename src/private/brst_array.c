@@ -67,6 +67,35 @@ BRST_Box_Array_New(BRST_MMgr mmgr,
     return obj;
 }
 
+BRST_Array
+BRST_Matrix_Array_New(BRST_MMgr mmgr,
+    BRST_TransMatrix matrix)
+{
+    BRST_Array obj;
+    BRST_STATUS ret = BRST_OK;
+
+    BRST_PTRACE(" BRST_Matrix_Array_New\n");
+
+    obj = BRST_Array_New(mmgr);
+    if (!obj)
+        return NULL;
+
+    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix.a));
+    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix.b));
+    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix.c));
+    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix.d));
+    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix.x));
+    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix.y));
+
+    if (ret != BRST_OK) {
+        BRST_Array_Free(obj);
+        return NULL;
+    }
+
+    return obj;
+}
+
+
 void BRST_Array_Free(BRST_Array array)
 {
     if (!array)

@@ -46,7 +46,7 @@ BRST_Matrix_Skew(
     BRST_REAL        b
 );
 
-static char*
+char*
 QuarterCircleA(
     char*     pbuf,
     char*     eptr,
@@ -55,7 +55,7 @@ QuarterCircleA(
     BRST_REAL ray
 );
 
-static char*
+char*
 QuarterCircleB(
     char*     pbuf,
     char*     eptr,
@@ -64,7 +64,7 @@ QuarterCircleB(
     BRST_REAL ray
 );
 
-static char*
+char*
 QuarterCircleC(
     char*     pbuf,
     char*     eptr,
@@ -73,7 +73,7 @@ QuarterCircleC(
     BRST_REAL ray
 );
 
-static char*
+char*
 QuarterCircleD(
     char*     pbuf,
     char*     eptr,

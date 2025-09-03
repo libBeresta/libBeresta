@@ -124,6 +124,7 @@ set(
         private/brst_text.c
         private/brst_unicode_glyph.c
         private/brst_utils.c
+        private/brst_xobject.c
         private/brst_xref.c
     )
 

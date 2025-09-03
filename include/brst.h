@@ -16,6 +16,7 @@
 #include "brst_text.h"
 #include "brst_doc_font.h"
 #include "brst_geometry.h"
+#include "brst_stream_geometry.h"
 #include "brst_embedded_file.h"
 #include "brst_doc_embedded_file.h"
 #include "brst_image.h"
@@ -30,5 +31,9 @@
 #include "brst_text.h"
 #include "brst_date.h"
 #include "brst_doc_info.h"
+
+#include "brst_doc_page_xobject.h"
+#include "brst_page_xobject.h"
+#include "brst_xobject.h"
 
 #endif /* BRST_H */

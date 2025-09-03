@@ -364,6 +364,25 @@ BRST_Stream_SetRGBFill(BRST_Stream stream,
     return ret;
 }
 
+BRST_EXPORT(BRST_STATUS)
+BRST_Stream_SetRGBFillUint(BRST_Stream stream,
+    BRST_UINT8 r,
+    BRST_UINT8 g,
+    BRST_UINT8 b)
+{
+    BRST_REAL rr = (BRST_REAL)r / 255.0;
+    BRST_REAL rg = (BRST_REAL)g / 255.0;
+    BRST_REAL rb = (BRST_REAL)b / 255.0;
+
+    return BRST_Stream_SetRGBFill(stream, rr, rg, rb);
+}
+
+BRST_EXPORT(BRST_STATUS)
+BRST_Stream_SetRGBFillHex(BRST_Stream stream, BRST_UINT32 rgb)
+{
+    return BRST_Stream_SetRGBFillUint(stream, (rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF);
+}
+
 /* RG */
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_SetRGBStroke(BRST_Stream stream,
@@ -401,7 +420,7 @@ BRST_Stream_SetRGBStroke(BRST_Stream stream,
 }
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Stream_SetRGBStrokeHex(BRST_Stream stream,
+BRST_Stream_SetRGBStrokeUint(BRST_Stream stream,
     BRST_UINT8 r,
     BRST_UINT8 g,
     BRST_UINT8 b)
@@ -411,6 +430,12 @@ BRST_Stream_SetRGBStrokeHex(BRST_Stream stream,
     BRST_REAL rb = (BRST_REAL)b / 255.0;
 
     return BRST_Stream_SetRGBStroke(stream, rr, rg, rb);
+}
+
+BRST_EXPORT(BRST_STATUS)
+BRST_Stream_SetRGBStrokeHex(BRST_Stream stream, BRST_UINT32 rgb)
+{
+    return BRST_Stream_SetRGBStrokeUint(stream, (rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF);
 }
 
 /* k */

@@ -1,8 +1,9 @@
 #ifndef BRST_PAGE_H
 #define BRST_PAGE_H
 
+#include "brst_xobject.h"
+
 typedef BRST_Dict BRST_Page;
-typedef BRST_Dict BRST_XObject;
 
 typedef enum _BRST_PageLayout {
     BRST_PAGE_LAYOUT_SINGLE = 0,

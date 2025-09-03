@@ -30,6 +30,8 @@
 #include "private/brst_array.h"
 #include "private/brst_name.h"
 #include "brst_doc_page_xobject.h"
+#include "brst_xobject.h"
+#include "private/brst_xobject.h"
 
 BRST_EXPORT(BRST_XObject)
 BRST_Doc_Page_XObject_CreateFromImage(BRST_Doc pdf,
@@ -278,4 +280,21 @@ BRST_Doc_Page_XObject_CreateAsWhiteRect(BRST_Doc pdf,
         return NULL;
 
     return fromxobject;
+}
+
+
+BRST_EXPORT(BRST_XObject)
+BRST_Doc_Page_XObject_Create(BRST_Doc pdf,
+    BRST_Page page,
+    BRST_REAL width,
+    BRST_REAL height,
+    BRST_REAL scalex,
+    BRST_REAL scaley
+) {
+    return BRST_XObject_New(page->mmgr, pdf->xref, width, height, scalex, scaley);
+}
+
+BRST_EXPORT(BRST_Stream)
+BRST_Doc_Page_XObject_Stream(BRST_XObject xobj) {
+    return BRST_XObject_Stream(xobj);
 }
