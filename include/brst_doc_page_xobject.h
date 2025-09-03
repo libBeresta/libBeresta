@@ -29,8 +29,4 @@ BRST_Doc_Page_XObject_Create(
     BRST_REAL scaley
 );
 
-BRST_EXPORT(BRST_Stream)
-BRST_Doc_Page_XObject_Stream(BRST_XObject xobj);
-
-
 #endif /* BRST_PAGE_XOBJECT_H */
