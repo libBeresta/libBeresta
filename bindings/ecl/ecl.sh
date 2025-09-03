@@ -40,6 +40,9 @@ pushd $RENDER_DIR > /dev/null
 ./render.sh $PREFIX/ecl.dj doc_page_xobject.lsp ru $PREFIX/src/doc_page_xobject.lisp
 ./render.sh $PREFIX/ecl.dj page_xobject.lsp     ru $PREFIX/src/page_xobject.lisp
 ./render.sh $PREFIX/ecl.dj xobject.lsp          ru $PREFIX/src/xobject.lisp
+./render.sh $PREFIX/ecl.dj stream_geometry.lsp  ru $PREFIX/src/stream_geometry.lisp
+./render.sh $PREFIX/ecl.dj stream.lsp           ru $PREFIX/src/stream.lisp
+
 
 ./render.sh $PREFIX/exp-ecl-page-sizes.dj page_sizes.lsp ru $PREFIX/src/exp-page_sizes.lisp
 
@@ -70,6 +73,8 @@ pushd $RENDER_DIR > /dev/null
 ./render.sh $PREFIX/exp-ecl.dj doc_page_xobject.lsp ru $PREFIX/src/exp-doc_page_xobject.lisp
 ./render.sh $PREFIX/exp-ecl.dj page_xobject.lsp     ru $PREFIX/src/exp-page_xobject.lisp
 ./render.sh $PREFIX/exp-ecl.dj xobject.lsp          ru $PREFIX/src/exp-xobject.lisp
+./render.sh $PREFIX/exp-ecl.dj stream_geometry.lsp  ru $PREFIX/src/exp-stream_geometry.lisp
+./render.sh $PREFIX/exp-ecl.dj stream.lsp           ru $PREFIX/src/exp-stream.lisp
 
 cp $PREFIX/macro.lisp  $PREFIX/src/
 

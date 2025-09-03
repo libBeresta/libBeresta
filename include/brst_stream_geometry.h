@@ -110,6 +110,20 @@ BRST_Stream_SetRGBFill(
     BRST_REAL b);
 
 BRST_EXPORT(BRST_STATUS)
+BRST_Stream_SetRGBFillUint(
+    BRST_Stream stream,
+    BRST_UINT8  r,
+    BRST_UINT8  g,
+    BRST_UINT8  b
+);
+
+BRST_EXPORT(BRST_STATUS)
+BRST_Stream_SetRGBFillHex(
+    BRST_Stream stream,
+    BRST_UINT32  rgb
+);
+
+BRST_EXPORT(BRST_STATUS)
 BRST_Stream_SetRGBStroke(
     BRST_Stream stream,
     BRST_REAL   r,
@@ -118,11 +132,17 @@ BRST_Stream_SetRGBStroke(
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Stream_SetRGBStrokeHex(
+BRST_Stream_SetRGBStrokeUint(
     BRST_Stream stream,
     BRST_UINT8  r,
     BRST_UINT8  g,
     BRST_UINT8  b
+);
+
+BRST_EXPORT(BRST_STATUS)
+BRST_Stream_SetRGBStrokeHex(
+    BRST_Stream stream,
+    BRST_UINT32  rgb
 );
 
 BRST_EXPORT(BRST_STATUS)
@@ -293,86 +313,4 @@ BRST_Stream_SetFlat(
     BRST_REAL flatness
 );
 
-BRST_EXPORT(BRST_RGBColor)
-BRST_Stream_RGBFill(
-    BRST_Stream stream
-);
-
-BRST_EXPORT(BRST_RGBColor)
-BRST_Stream_RGBStroke(
-    BRST_Stream stream
-);
-
-BRST_EXPORT(BRST_CMYKColor)
-BRST_Stream_CMYKFill(
-    BRST_Stream stream
-);
-
-BRST_EXPORT(BRST_CMYKColor)
-BRST_Stream_CMYKStroke(
-    BRST_Stream stream
-);
-
-BRST_EXPORT(BRST_REAL)
-BRST_Stream_GrayFill(
-    BRST_Stream stream
-);
-
-BRST_EXPORT(BRST_REAL)
-BRST_Stream_GrayStroke(
-    BRST_Stream stream
-);
-
-BRST_EXPORT(BRST_ColorSpace)
-BRST_Stream_StrokingColorSpace(
-    BRST_Stream stream
-);
-
-BRST_EXPORT(BRST_ColorSpace)
-BRST_Stream_FillingColorSpace(
-    BRST_Stream stream
-);
-
-BRST_EXPORT(BRST_REAL)
-BRST_Stream_LineWidth(
-    BRST_Stream stream
-);
-
-BRST_EXPORT(BRST_LineCap)
-BRST_Stream_LineCap(
-    BRST_Stream stream
-);
-
-BRST_EXPORT(BRST_LineJoin)
-BRST_Stream_LineJoin(
-    BRST_Stream stream
-);
-
-BRST_EXPORT(BRST_REAL)
-BRST_Stream_MiterLimit(
-    BRST_Stream stream
-);
-
-BRST_EXPORT(BRST_DashMode)
-BRST_Stream_Dash(
-    BRST_Stream stream
-);
-
-BRST_EXPORT(BRST_REAL)
-BRST_Stream_Flat(
-    BRST_Stream stream
-);
-
-BRST_EXPORT(BRST_TransMatrix)
-BRST_Stream_TransMatrix(
-    BRST_Stream stream
-);
-
-/*
-BRST_EXPORT(BRST_STATUS)
-BRST_Stream_SetShading(
-    BRST_Stream stream,
-    BRST_Shading shading
-);
-*/
 #endif /* BRST_STREAM_GEOMETRY_H */

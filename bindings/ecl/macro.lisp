@@ -7,6 +7,8 @@
     (         MMGR .  :pointer-void)     
     (         PAGE .  :pointer-void)     
     (         DICT .  :pointer-void)
+    (      XObject .  :pointer-void)
+    (       Stream .  :pointer-void)
     (         Date .  :pointer-void)
     (  Destination .  :pointer-void)
     (    ExtGState .  :pointer-void)
