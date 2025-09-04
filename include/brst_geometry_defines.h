@@ -101,19 +101,6 @@ typedef struct _BRST_DashMode {
     BRST_REAL phase;
 } BRST_DashMode;
 
-/*---------------------------------------------------------------------------*/
-/*----- BRST_TransMatrix struct ---------------------------------------------*/
-
-typedef struct _BRST_TransMatrix {
-    BRST_REAL a;
-    BRST_REAL b;
-    BRST_REAL c;
-    BRST_REAL d;
-    BRST_REAL x;
-    BRST_REAL y;
-} BRST_TransMatrix;
-
-static const BRST_TransMatrix IDENTITY_MATRIX = {1, 0, 0, 1, 0, 0};
 static const BRST_RGBColor DEF_RGB_COLOR = {0, 0, 0};
 static const BRST_CMYKColor DEF_CMYK_COLOR = {0, 0, 0, 0};
 static const BRST_DashMode DEF_DASH_MODE = {{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f}, 0, 0.0f};

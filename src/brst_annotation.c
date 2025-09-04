@@ -32,6 +32,7 @@
 #include "private/brst_destination.h"
 #include "brst_exdata.h"
 #include "brst_javascript.h"
+#include "brst_transmatrix.h"
 
 static const char* const BRST_ANNOT_ICON_NAMES_NAMES[] = {
     "Comment",

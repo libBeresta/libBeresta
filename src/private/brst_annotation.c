@@ -16,6 +16,7 @@
 #include "brst_error.h"
 #include "private/brst_utils.h"
 #include "brst_destination.h"
+#include "brst_transmatrix.h"
 
 const char* const BRST_STAMP_ANNOT_NAME_NAMES[] = {
     "Approved",
