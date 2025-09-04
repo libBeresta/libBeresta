@@ -14,8 +14,11 @@
 #include "brst_shading.h"
 #include "brst_page.h"
 #include "private/brst_page.h"
+#include "brst_page_routines.h"
 #include "brst_geometry_defines.h"
 #include "private/brst_pages.h"
+#include "brst_transmatrix.h"
+#include "private/brst_transmatrix.h"
 #include "private/brst_gstate.h"
 #include "private/brst_page_attr.h"
 #include "private/brst_encrypt_dict.h"
@@ -377,7 +380,6 @@ BRST_Page_Concat(BRST_Page page,
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION);
 
     BRST_PageAttr attr;
-    BRST_TransMatrix tm;
 
     BRST_PTRACE(" BRST_Page_Concat\n");
 
@@ -391,18 +393,10 @@ BRST_Page_Concat(BRST_Page page,
         return BRST_Error_Check(page->error);
     }
 
-    tm = attr->gstate->trans_matrix;
-    /*
-    | ta tb 0 |   | a b |   | ta*a+tb*c   ta*b+tb*d   |
-    | tc td 0 | x | c d | = | tc*a+td*c   tc*b+td*d   |
-    | tx ty 1 |   | x y |   | tx*a+ty*c+x tx*b+ty*d+y |
-    */
-    attr->gstate->trans_matrix.a = tm.a * a + tm.b * c;
-    attr->gstate->trans_matrix.b = tm.a * b + tm.b * d;
-    attr->gstate->trans_matrix.c = tm.c * a + tm.d * c;
-    attr->gstate->trans_matrix.d = tm.c * b + tm.d * d;
-    attr->gstate->trans_matrix.x = tm.x * a + tm.y * c + x;
-    attr->gstate->trans_matrix.y = tm.x * b + tm.y * d + y;
+    BRST_TransMatrix tm = attr->gstate->trans_matrix;
+    BRST_TransMatrix m = BRST_TransMatrix_New(BRST_Page_MMgr(page), a, b, c, d, x, y);
+    attr->gstate->trans_matrix = BRST_TransMatrix_Multiply(BRST_Page_MMgr(page), tm, m);
+    BRST_TransMatrix_Free(tm);
 
     return ret;
 }
@@ -1602,15 +1596,13 @@ BRST_Page_Flat(BRST_Page page)
 BRST_EXPORT(BRST_TransMatrix)
 BRST_Page_TransMatrix(BRST_Page page)
 {
-    BRST_TransMatrix DEF_MATRIX = { 1, 0, 0, 1, 0, 0 };
-
     BRST_PTRACE(" BRST_Page_GetTransMatrix\n");
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
         return attr->gstate->trans_matrix;
     } else
-        return DEF_MATRIX;
+        return NULL;
 }
 
 /* sh */

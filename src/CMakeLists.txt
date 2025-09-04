@@ -127,6 +127,7 @@ set(
         private/brst_utils.c
         private/brst_xobject.c
         private/brst_xref.c
+        private/brst_transmatrix.c
     )
 
 add_library(brst ${LIB_TYPE} ${LIBBRST_PRIVATE_SRCS} ${LIBBRST_SRCS})

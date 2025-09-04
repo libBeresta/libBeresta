@@ -11,6 +11,8 @@
 #include "brst_font.h"
 #include "private/brst_font.h"
 #include "brst_geometry_defines.h"
+#include "brst_transmatrix.h"
+#include "private/brst_transmatrix.h"
 #include "private/brst_gstate.h"
 #include "private/brst_pages.h"
 #include "brst_doc.h"
@@ -36,12 +38,12 @@ void TextPos_AbsToRel(BRST_TransMatrix text_matrix,
     BRST_REAL* xRel,
     BRST_REAL* yRel)
 {
-    if (text_matrix.a == 0) {
-        *xRel = (yAbs - text_matrix.y - (xAbs - text_matrix.x) * text_matrix.d / text_matrix.c) / text_matrix.b;
-        *yRel = (xAbs - text_matrix.x) / text_matrix.c;
+    if (text_matrix->a == 0) {
+        *xRel = (yAbs - text_matrix->y - (xAbs - text_matrix->x) * text_matrix->d / text_matrix->c) / text_matrix->b;
+        *yRel = (xAbs - text_matrix->x) / text_matrix->c;
     } else {
-        BRST_REAL y = (yAbs - text_matrix.y - (xAbs - text_matrix.x) * text_matrix.b / text_matrix.a) / (text_matrix.d - text_matrix.c * text_matrix.b / text_matrix.a);
-        *xRel       = (xAbs - text_matrix.x - y * text_matrix.c) / text_matrix.a;
+        BRST_REAL y = (yAbs - text_matrix->y - (xAbs - text_matrix->x) * text_matrix->b / text_matrix->a) / (text_matrix->d - text_matrix->c * text_matrix->b / text_matrix->a);
+        *xRel       = (xAbs - text_matrix->x - y * text_matrix->c) / text_matrix->a;
         *yRel       = y;
     }
 }
@@ -98,18 +100,18 @@ InternalShowTextNextLine(BRST_Page page,
     tw = BRST_Page_TextWidth(page, text);
 
     /* calculate the reference point of text */
-    attr->text_matrix.x -= attr->gstate->text_leading * attr->text_matrix.c;
-    attr->text_matrix.y -= attr->gstate->text_leading * attr->text_matrix.d;
+    attr->text_matrix->x -= attr->gstate->text_leading * attr->text_matrix->c;
+    attr->text_matrix->y -= attr->gstate->text_leading * attr->text_matrix->d;
 
-    attr->text_pos.x = attr->text_matrix.x;
-    attr->text_pos.y = attr->text_matrix.y;
+    attr->text_pos.x = attr->text_matrix->x;
+    attr->text_pos.y = attr->text_matrix->y;
 
     if (attr->gstate->writing_mode == BRST_WMODE_HORIZONTAL) {
-        attr->text_pos.x += tw * attr->text_matrix.a;
-        attr->text_pos.y += tw * attr->text_matrix.b;
+        attr->text_pos.x += tw * attr->text_matrix->a;
+        attr->text_pos.y += tw * attr->text_matrix->b;
     } else {
-        attr->text_pos.x -= tw * attr->text_matrix.b;
-        attr->text_pos.y -= tw * attr->text_matrix.a;
+        attr->text_pos.x -= tw * attr->text_matrix->b;
+        attr->text_pos.y -= tw * attr->text_matrix->a;
     }
 
     return ret;

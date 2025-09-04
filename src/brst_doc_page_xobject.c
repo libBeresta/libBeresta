@@ -25,6 +25,7 @@
 #include "private/brst_page.h"
 #include "brst_base.h"
 #include "brst_image.h"
+#include "brst_transmatrix.h"
 #include "private/brst_gstate.h"
 #include "private/brst_page_attr.h"
 #include "private/brst_array.h"

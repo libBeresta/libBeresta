@@ -12,6 +12,7 @@
 #include "brst_consts.h"
 #include "private/brst_utils.h"
 #include "brst_base.h"
+#include "brst_transmatrix.h"
 #include "brst_array.h"
 #include "private/brst_array.h"
 #include "private/brst_defines.h"

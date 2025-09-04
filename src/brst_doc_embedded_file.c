@@ -9,6 +9,7 @@
 #include "brst_error.h"
 #include "brst_consts.h"
 #include "brst_page.h"
+#include "brst_transmatrix.h"
 #include "brst_array.h"
 #include "brst_embedded_file.h"
 #include "private/brst_embedded_file.h"

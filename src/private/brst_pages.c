@@ -5,6 +5,7 @@
 #include "brst_stream.h"
 #include "brst_mmgr.h"
 #include "brst_dict.h"
+#include "brst_transmatrix.h"
 #include "brst_array.h"
 #include "private/brst_array.h"
 #include "private/brst_number.h"

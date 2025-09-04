@@ -5,6 +5,7 @@
 #include "brst_xref.h"
 #include "brst_dict.h"
 #include "private/brst_dict.h"
+#include "brst_transmatrix.h"
 #include "brst_array.h"
 #include "private/brst_array.h"
 #include "private/brst_xref.h"

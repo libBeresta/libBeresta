@@ -13,11 +13,15 @@
 #include "brst_ext_gstate.h"
 #include "brst_font.h"
 #include "brst_shading.h"
+#include "brst_base.h"
 #include "brst_page.h"
+#include "brst_page_routines.h"
 #include "private/brst_page.h"
 #include "brst_font.h"
 #include "private/brst_font.h"
 #include "private/brst_pages.h"
+#include "brst_transmatrix.h"
+#include "private/brst_transmatrix.h"
 #include "private/brst_gstate.h"
 #include "private/brst_page_attr.h"
 #include "brst_text.h"
@@ -31,7 +35,6 @@ BRST_Page_BeginText(BRST_Page page)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION);
     BRST_PageAttr attr;
-    const BRST_TransMatrix INIT_MATRIX = { 1, 0, 0, 1, 0, 0 };
 
     BRST_PTRACE(" BRST_Page_BeginText\n");
 
@@ -45,7 +48,7 @@ BRST_Page_BeginText(BRST_Page page)
 
     attr->gmode       = BRST_GMODE_TEXT_OBJECT;
     attr->text_pos    = INIT_POS;
-    attr->text_matrix = INIT_MATRIX;
+    attr->text_matrix = BRST_TransMatrix_Identity(BRST_Page_MMgr(page));
 
     return ret;
 }
@@ -235,10 +238,10 @@ BRST_Page_MoveTextPos(BRST_Page page,
     if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
         return BRST_Error_Check(page->error);
 
-    attr->text_matrix.x += x * attr->text_matrix.a + y * attr->text_matrix.c;
-    attr->text_matrix.y += y * attr->text_matrix.d + x * attr->text_matrix.b;
-    attr->text_pos.x = attr->text_matrix.x;
-    attr->text_pos.y = attr->text_matrix.y;
+    attr->text_matrix->x += x * attr->text_matrix->a + y * attr->text_matrix->c;
+    attr->text_matrix->y += y * attr->text_matrix->d + x * attr->text_matrix->b;
+    attr->text_pos.x = attr->text_matrix->x;
+    attr->text_pos.y = attr->text_matrix->y;
 
     return ret;
 }
@@ -272,10 +275,10 @@ BRST_Page_MoveTextPos2(BRST_Page page,
     if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
         return BRST_Error_Check(page->error);
 
-    attr->text_matrix.x += x * attr->text_matrix.a + y * attr->text_matrix.c;
-    attr->text_matrix.y += y * attr->text_matrix.d + x * attr->text_matrix.b;
-    attr->text_pos.x           = attr->text_matrix.x;
-    attr->text_pos.y           = attr->text_matrix.y;
+    attr->text_matrix->x += x * attr->text_matrix->a + y * attr->text_matrix->c;
+    attr->text_matrix->y += y * attr->text_matrix->d + x * attr->text_matrix->b;
+    attr->text_pos.x           = attr->text_matrix->x;
+    attr->text_pos.y           = attr->text_matrix->y;
     attr->gstate->text_leading = -y;
 
     return ret;
@@ -325,14 +328,9 @@ BRST_Page_SetTextMatrix(BRST_Page page,
     if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
         return BRST_Error_Check(page->error);
 
-    attr->text_matrix.a = a;
-    attr->text_matrix.b = b;
-    attr->text_matrix.c = c;
-    attr->text_matrix.d = d;
-    attr->text_matrix.x = x;
-    attr->text_matrix.y = y;
-    attr->text_pos.x    = attr->text_matrix.x;
-    attr->text_pos.y    = attr->text_matrix.y;
+    attr->text_matrix = BRST_TransMatrix_New(BRST_Page_MMgr(page), a, b, c, d, x, y);
+    attr->text_pos.x    = attr->text_matrix->x;
+    attr->text_pos.y    = attr->text_matrix->y;
 
     return ret;
 }
@@ -355,11 +353,11 @@ BRST_Page_MoveToNextLine(BRST_Page page)
         return BRST_Error_Check(page->error);
 
     /* calculate the reference point of text */
-    attr->text_matrix.x -= attr->gstate->text_leading * attr->text_matrix.c;
-    attr->text_matrix.y -= attr->gstate->text_leading * attr->text_matrix.d;
+    attr->text_matrix->x -= attr->gstate->text_leading * attr->text_matrix->c;
+    attr->text_matrix->y -= attr->gstate->text_leading * attr->text_matrix->d;
 
-    attr->text_pos.x = attr->text_matrix.x;
-    attr->text_pos.y = attr->text_matrix.y;
+    attr->text_pos.x = attr->text_matrix->x;
+    attr->text_pos.y = attr->text_matrix->y;
 
     return ret;
 }
@@ -396,11 +394,11 @@ BRST_Page_ShowText(BRST_Page page,
 
     /* calculate the reference point of text */
     if (attr->gstate->writing_mode == BRST_WMODE_HORIZONTAL) {
-        attr->text_pos.x += tw * attr->text_matrix.a;
-        attr->text_pos.y += tw * attr->text_matrix.b;
+        attr->text_pos.x += tw * attr->text_matrix->a;
+        attr->text_pos.y += tw * attr->text_matrix->b;
     } else {
-        attr->text_pos.x -= tw * attr->text_matrix.b;
-        attr->text_pos.y -= tw * attr->text_matrix.a;
+        attr->text_pos.x -= tw * attr->text_matrix->b;
+        attr->text_pos.y -= tw * attr->text_matrix->a;
     }
 
     return ret;
@@ -439,18 +437,18 @@ BRST_Page_ShowTextNextLine(BRST_Page page,
     tw = BRST_Page_TextWidth(page, text);
 
     /* calculate the reference point of text */
-    attr->text_matrix.x -= attr->gstate->text_leading * attr->text_matrix.c;
-    attr->text_matrix.y -= attr->gstate->text_leading * attr->text_matrix.d;
+    attr->text_matrix->x -= attr->gstate->text_leading * attr->text_matrix->c;
+    attr->text_matrix->y -= attr->gstate->text_leading * attr->text_matrix->d;
 
-    attr->text_pos.x = attr->text_matrix.x;
-    attr->text_pos.y = attr->text_matrix.y;
+    attr->text_pos.x = attr->text_matrix->x;
+    attr->text_pos.y = attr->text_matrix->y;
 
     if (attr->gstate->writing_mode == BRST_WMODE_HORIZONTAL) {
-        attr->text_pos.x += tw * attr->text_matrix.a;
-        attr->text_pos.y += tw * attr->text_matrix.b;
+        attr->text_pos.x += tw * attr->text_matrix->a;
+        attr->text_pos.y += tw * attr->text_matrix->b;
     } else {
-        attr->text_pos.x -= tw * attr->text_matrix.b;
-        attr->text_pos.y -= tw * attr->text_matrix.a;
+        attr->text_pos.x -= tw * attr->text_matrix->b;
+        attr->text_pos.y -= tw * attr->text_matrix->a;
     }
 
     return ret;
@@ -511,18 +509,18 @@ BRST_Page_ShowTextNextLineEx(BRST_Page page,
     tw = BRST_Page_TextWidth(page, text);
 
     /* calculate the reference point of text */
-    attr->text_matrix.x += attr->gstate->text_leading * attr->text_matrix.b;
-    attr->text_matrix.y -= attr->gstate->text_leading * attr->text_matrix.a;
+    attr->text_matrix->x += attr->gstate->text_leading * attr->text_matrix->b;
+    attr->text_matrix->y -= attr->gstate->text_leading * attr->text_matrix->a;
 
-    attr->text_pos.x = attr->text_matrix.x;
-    attr->text_pos.y = attr->text_matrix.y;
+    attr->text_pos.x = attr->text_matrix->x;
+    attr->text_pos.y = attr->text_matrix->y;
 
     if (attr->gstate->writing_mode == BRST_WMODE_HORIZONTAL) {
-        attr->text_pos.x += tw * attr->text_matrix.a;
-        attr->text_pos.y += tw * attr->text_matrix.b;
+        attr->text_pos.x += tw * attr->text_matrix->a;
+        attr->text_pos.y += tw * attr->text_matrix->b;
     } else {
-        attr->text_pos.x -= tw * attr->text_matrix.b;
-        attr->text_pos.y -= tw * attr->text_matrix.a;
+        attr->text_pos.x -= tw * attr->text_matrix->b;
+        attr->text_pos.y -= tw * attr->text_matrix->a;
     }
 
     return ret;
@@ -790,15 +788,13 @@ BRST_Page_SetWordSpace(BRST_Page page,
 BRST_EXPORT(BRST_TransMatrix)
 BRST_Page_TextMatrix(BRST_Page page)
 {
-    BRST_TransMatrix DEF_MATRIX = { 1, 0, 0, 1, 0, 0 };
-
     BRST_PTRACE(" BRST_Page_TextMatrix\n");
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
         return attr->text_matrix;
     } else
-        return DEF_MATRIX;
+        return NULL;
 }
 
 BRST_EXPORT(BRST_REAL)

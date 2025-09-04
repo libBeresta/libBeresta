@@ -1,6 +1,7 @@
 #include "brst_types.h"
 #include "brst_encrypt.h"
 #include "brst_consts.h"
+#include "brst_transmatrix.h"
 #include "brst_array.h"
 #include "brst_error.h"
 #include "brst_mmgr.h"
