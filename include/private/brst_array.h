@@ -8,6 +8,8 @@
 #include "brst_stream.h"
 #include "brst_error.h"
 #include "brst_list.h"
+#include "brst_transmatrix.h"
+#include "private/brst_transmatrix.h"
 
 #include "brst_geometry_defines.h"
 

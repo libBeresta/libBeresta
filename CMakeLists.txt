@@ -70,7 +70,7 @@ if(LIBBRST_EXAMPLES)
 endif(LIBBRST_EXAMPLES)
 
 set(
-  haru_HDRS
+  brst_HDRS
     include/brst_annotation.h
     include/brst_array.h
     include/brst_asian.h
@@ -125,11 +125,12 @@ set(
     include/brst_stream_geometry.h
     include/brst_u3d.h
     include/brst_version.h
+    include/brst_transmatrix.h
     ${PROJECT_BINARY_DIR}/include/brst_config.h
 )
 
 set(
-    haru_PRIVATE_HDRS
+    brst_PRIVATE_HDRS
         include/private/brst_annotation.h
         include/private/brst_array.h
         include/private/brst_binary.h
@@ -180,4 +181,5 @@ set(
         include/private/brst_string.h
         include/private/brst_utils.h
         include/private/brst_xref.h
+        include/private/brst_transmatrix.h
     )
