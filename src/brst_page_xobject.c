@@ -18,7 +18,7 @@
 #include "brst_xobject.h"
 #include "private/brst_xobject.h"
 #include "brst_base.h"
-#include "brst_transmatrix.h"
+#include "brst_matrix.h"
 #include "private/brst_gstate.h"
 #include "private/brst_page_attr.h"
 

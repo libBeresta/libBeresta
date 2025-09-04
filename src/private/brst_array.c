@@ -5,7 +5,7 @@
 #include "brst_encrypt.h"
 #include "private/brst_encrypt.h"
 #include "brst_stream.h"
-#include "brst_transmatrix.h"
+#include "brst_matrix.h"
 #include "brst_array.h"
 #include "private/brst_array.h"
 #include "private/brst_object_write.h"

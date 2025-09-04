@@ -10,7 +10,7 @@
 #include "brst_page.h"
 #include "brst_destination.h"
 #include "private/brst_destination.h"
-#include "brst_transmatrix.h"
+#include "brst_matrix.h"
 #include "private/brst_array.h"
 #include "private/brst_utils.h"
 

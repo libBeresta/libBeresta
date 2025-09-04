@@ -4,7 +4,7 @@
 #include "brst_stream.h"
 #include "brst_mmgr.h"
 #include "brst_dict.h"
-#include "brst_transmatrix.h"
+#include "brst_matrix.h"
 #include "brst_array.h"
 #include "private/brst_utils.h"
 #include "brst_ext_gstate.h"

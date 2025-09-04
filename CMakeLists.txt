@@ -125,7 +125,7 @@ set(
     include/brst_stream_geometry.h
     include/brst_u3d.h
     include/brst_version.h
-    include/brst_transmatrix.h
+    include/brst_matrix.h
     ${PROJECT_BINARY_DIR}/include/brst_config.h
 )
 
@@ -181,5 +181,5 @@ set(
         include/private/brst_string.h
         include/private/brst_utils.h
         include/private/brst_xref.h
-        include/private/brst_transmatrix.h
+        include/private/brst_matrix.h
     )

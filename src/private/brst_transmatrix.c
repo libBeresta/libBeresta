@@ -1,9 +1,9 @@
 #include "brst_types.h"
 #include "brst_consts.h"
 #include "brst_mmgr.h"
-#include "brst_transmatrix.h"
+#include "brst_matrix.h"
 #include "private/brst_c.h"
-#include "private/brst_transmatrix.h"
+#include "private/brst_matrix.h"
 #include "private/brst_utils.h"
 
 BRST_Matrix

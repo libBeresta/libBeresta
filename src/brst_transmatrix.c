@@ -2,8 +2,8 @@
 #include "brst_mmgr.h"
 #include "brst_doc.h"
 #include "brst_base.h"
-#include "brst_transmatrix.h"
-#include "private/brst_transmatrix.h"
+#include "brst_matrix.h"
+#include "private/brst_matrix.h"
 
 BRST_Matrix
 BRST_Doc_Matrix_Identity(BRST_Doc pdf) {

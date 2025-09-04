@@ -13,7 +13,7 @@
 #include "brst_destination.h"
 #include "brst_base.h"
 #include "private/brst_pages.h"
-#include "brst_transmatrix.h"
+#include "brst_matrix.h"
 #include "private/brst_gstate.h"
 #include "private/brst_destination.h"
 #include "brst_image.h"

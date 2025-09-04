@@ -18,7 +18,7 @@
 #include "private/brst_page.h"
 #include "brst_base.h"
 #include "private/brst_pages.h"
-#include "brst_transmatrix.h"
+#include "brst_matrix.h"
 #include "private/brst_array.h"
 #include "private/brst_number.h"
 #include "private/brst_gstate.h"

@@ -14,7 +14,7 @@
 #include "brst_font.h"
 #include "brst_shading.h"
 #include "brst_geometry_defines.h"
-#include "brst_transmatrix.h"
+#include "brst_matrix.h"
 #include "private/brst_gstate.h"
 #include "private/brst_c.h"
 #include "private/brst_defines.h"

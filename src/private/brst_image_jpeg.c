@@ -4,7 +4,7 @@
 #include "brst_mmgr.h"
 #include "private/brst_name.h"
 #include "private/brst_number.h"
-#include "brst_transmatrix.h"
+#include "brst_matrix.h"
 #include "brst_array.h"
 #include "private/brst_array.h"
 #include "brst_image.h"

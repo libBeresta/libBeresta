@@ -2,7 +2,7 @@
 #include "brst_encrypt.h"
 #include "brst_stream.h"
 #include "brst_mmgr.h"
-#include "brst_transmatrix.h"
+#include "brst_matrix.h"
 #include "brst_array.h"
 #include "brst_image.h"
 #include "private/brst_image.h"

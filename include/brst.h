@@ -6,7 +6,7 @@
 #include "brst_consts.h"
 #include "brst_types.h"
 #include "brst_base.h"
-#include "brst_transmatrix.h"
+#include "brst_matrix.h"
 #include "brst_doc.h"
 #include "brst_page.h"
 #include "brst_doc_page.h"

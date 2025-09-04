@@ -2,7 +2,7 @@
 #define PRIVATE_BRST_MATRIX_H
 
 #include "brst_mmgr.h"
-#include "brst_transmatrix.h"
+#include "brst_matrix.h"
 
 typedef struct _BRST_Matrix_Rec {
     BRST_MMgr mmgr;
