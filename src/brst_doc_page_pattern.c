@@ -25,28 +25,30 @@
 #include "private/brst_page.h"
 #include "brst_base.h"
 #include "brst_image.h"
+#include "brst_matrix.h"
 #include "private/brst_gstate.h"
 #include "private/brst_page_attr.h"
 #include "private/brst_array.h"
 #include "private/brst_name.h"
 #include "brst_doc_page_xobject.h"
-#include "brst_xobject.h"
-#include "private/brst_xobject.h"
+#include "brst_pattern.h"
+#include "private/brst_pattern.h"
 
 
 BRST_EXPORT(BRST_Pattern)
 BRST_Doc_Page_Pattern_Tiling_Create(
     BRST_Doc pdf,
     BRST_Page page,
-    BRST_REAL width,
-    BRST_REAL height,
-    BRST_REAL scalex,
-    BRST_REAL scaley
+    BRST_REAL left,
+    BRST_REAL bottom,
+    BRST_REAL right,
+    BRST_REAL top,
+    BRST_Matrix matrix
 ) {
-    return BRST_Pattern_Tiling_New(page->mmgr, pdf->xref, width, height, scalex, scaley);
+    return BRST_Pattern_Tiling_New(page->mmgr, pdf->xref, left, bottom, right, top, matrix);
 }
 
 BRST_EXPORT(BRST_Stream)
-BRST_XObject_Stream(BRST_Pattern pat) {
+BRST_Doc_Page_Pattern_Stream(BRST_Pattern pat) {
     return BRST_Pattern_Stream(pat);
 }

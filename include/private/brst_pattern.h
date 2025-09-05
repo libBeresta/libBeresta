@@ -5,12 +5,13 @@
 
 BRST_Pattern
 BRST_Pattern_Tiling_New(
-    BRST_MMgr mmgr,
-    BRST_Xref xref,
-    BRST_REAL width,
-    BRST_REAL height,
-    BRST_REAL scalex,
-    BRST_REAL scaley
+    BRST_MMgr   mmgr,
+    BRST_Xref   xref,
+    BRST_REAL   left,
+    BRST_REAL   bottom,
+    BRST_REAL   right,
+    BRST_REAL   top,
+    BRST_Matrix matrix
 );
 
 BRST_Stream

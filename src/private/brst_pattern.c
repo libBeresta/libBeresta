@@ -2,6 +2,7 @@
 #include "brst_xref.h"
 #include "brst_mmgr.h"
 #include "brst_dict.h"
+#include "brst_matrix.h"
 #include "brst_array.h"
 #include "brst_encrypt.h"
 #include "private/brst_array.h"
@@ -18,52 +19,44 @@ BRST_Pattern
 BRST_Pattern_Tiling_New(
     BRST_MMgr mmgr,
     BRST_Xref xref,
-    BRST_REAL width,
-    BRST_REAL height,
-    BRST_REAL scalex,
-    BRST_REAL scaley
+    BRST_REAL left,
+    BRST_REAL bottom,
+    BRST_REAL right,
+    BRST_REAL top,
+    BRST_REAL xstep,
+    BRST_REAL ystep,
+    BRST_Matrix matrix
 ) {
-    BRST_Dict xobj;
+    BRST_Dict pat;
     BRST_STATUS ret = BRST_OK;
 
-    xobj = BRST_Dict_New_Stream_Init(mmgr, xref);
-    if (!xobj)
+    pat = BRST_Dict_New_Stream_Init(mmgr, xref);
+    if (!pat)
         return NULL;
 
-    xobj->header.obj_class |= BRST_OSUBCLASS_XOBJECT;
-    ret += BRST_Dict_AddName(xobj, "Type", "XObject");
-    ret += BRST_Dict_AddName(xobj, "Subtype", "Form");
-    ret += BRST_Dict_Add(xobj, "BBox", BRST_Box_Array_New(mmgr, BRST_ToRect(0, 0, width, height)));
+    pat->header.obj_class |= BRST_OSUBCLASS_PATTERN;
+    ret += BRST_Dict_AddName(pat, "Type", "Pattern");
 
-    BRST_Matrix sm = BRST_Matrix_Scale(IDENTITY_MATRIX, scalex, scaley);
-    ret += BRST_Dict_Add(xobj, "Matrix", BRST_Matrix_Array_New(mmgr, sm));
+    ret += BRST_Dict_AddNumber(pat, "PatternType", 1);
+    ret += BRST_Dict_AddNumber(pat, "PaintType", 2);
+    ret += BRST_Dict_AddNumber(pat, "TilingType", 1);
 
-    /* В стандарте написано, что элемент Resources не является обязательным,
-       но очень рекомендуется его иметь и настроить.
-     */
+    // TODO Проверить xstep/ystep на 0
+    ret += BRST_Dict_AddNumber(pat, "XStep", xstep);
+    ret += BRST_Dict_AddNumber(pat, "YStep", ystep);
 
-    BRST_Dict resource = BRST_Dict_New(mmgr);
-    if (!resource)
-        return NULL;
-
-    ret += BRST_Dict_Add(xobj, "Resources", resource);
-
-    BRST_Array procset = BRST_Array_New(mmgr);
-    if (!procset)
-        return NULL;
-
-    ret += BRST_Dict_Add(resource, "ProcSet", procset);
-    ret += BRST_Array_Add(procset, BRST_Name_New(mmgr, "PDF"));
+    ret += BRST_Dict_Add(pat, "BBox", BRST_Box_Array_New(mmgr, BRST_ToRect(left, bottom, right, top)));
+    ret += BRST_Dict_Add(pat, "Matrix", BRST_Matrix_Array_New(mmgr, matrix));
 
     if (ret != BRST_OK)
         return NULL;
 
-    return xobj;
+    return pat;
 }
 
 BRST_Stream
-BRST_XObject_Stream(
-    BRST_XObject obj
+BRST_Pattern_Stream(
+    BRST_Pattern pat
 ) {
-    return BRST_Dict_Stream(obj);
+    return BRST_Dict_Stream(pat);
 }
