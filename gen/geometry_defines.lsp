@@ -12,15 +12,6 @@
                      (:поле "y" :тип "REAL" :en "" :ru "Желтая компонента цвета")
                      (:поле "k" :тип "REAL" :en "" :ru "Черная компонента цвета")))
 
-             (:имя "TransMatrix"
-              :en "Transformation matrix storage structure" :ru "Структура для хранения матрицы преобразований"
-              :поля ((:поле "a" :тип "REAL" :en "" :ru "")
-                     (:поле "b" :тип "REAL" :en "" :ru "")
-                     (:поле "c" :тип "REAL" :en "" :ru "")
-                     (:поле "d" :тип "REAL" :en "" :ru "")
-                     (:поле "x" :тип "REAL" :en "" :ru "")
-                     (:поле "y" :тип "REAL" :en "" :ru "")))
-
              (:имя "DashMode"
               :en "Dash pattern structure" :ru "Структура описания пунктира"
               :поля ((:поле "ptn"     :тип "REAL" :en "" :ru "" :размер "8")

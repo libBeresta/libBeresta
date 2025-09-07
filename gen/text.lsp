@@ -464,19 +464,19 @@
          :режимы-графики '("Before" . "BRST_GMODE_PAGE_DESCRIPTION") ("After" . "BRST_GMODE_PAGE_DESCRIPTION"))
 
 
-;;        ;; BRST_Page_TextMatrix
-;;        (:название "Page_TextMatrix"
-;;         :группа "page"
-;;         :ошибки ()
-;;         :результат (:тип "TransMatrix"
-;;                     :ru "Матрица трансформации текста \\ref BRST_TransMatrix при успешном выполнении, иначе возвращается `BRST_TransMatrix{1, 0, 0, 1, 0, 0}`."
-;;                     :en "Page current \\ref BRST_TransMatrix on success, otherwise it returns `BRST_TransMatrix{1, 0, 0, 1, 0, 0}`.")
-;;         :ru "Получение текущей матрицы преобразования текста страницы."
-;;         :en "Get page's current text transformation matrix."
-;;         :параметры ((:тип "Page"
-;;                      :имя "page"
-;;                      :ru ":param_page"
-;;                      :en ":param_page")))
+        ;; BRST_Page_TextMatrix
+        (:название "Page_TextMatrix"
+         :группа "page"
+         :ошибки ()
+         :результат (:тип "Matrix"
+                     :ru "Матрица трансформации текста \\ref BRST_Matrix при успешном выполнении, иначе возвращается `BRST_Matrix{1, 0, 0, 1, 0, 0}`."
+                     :en "Page current \\ref BRST_Matrix on success, otherwise it returns `BRST_Matrix{1, 0, 0, 1, 0, 0}`.")
+         :ru "Получение текущей матрицы преобразования текста страницы."
+         :en "Get page's current text transformation matrix."
+         :параметры ((:тип "Page"
+                      :имя "page"
+                      :ru ":param_page"
+                      :en ":param_page")))
 
         ;; BRST_Page_TextLeading
         (:название "Page_TextLeading"

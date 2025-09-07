@@ -12,6 +12,8 @@
     (         Date .  :pointer-void)
     (  Destination .  :pointer-void)
     (    ExtGState .  :pointer-void)
+    (      Pattern .  :pointer-void)
+    (       Matrix .  :pointer-void)
     (   PageLayout .       :int32-t)
     (     PageMode .       :int32-t)
     (      PageNum .       :int32-t)
