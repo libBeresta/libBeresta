@@ -9,6 +9,7 @@
 #include "brst_shading.h"
 #include "brst_font.h"
 #include "brst_page.h"
+#include "brst_pattern.h"
 #include "private/brst_page.h"
 #include "brst_destination.h"
 #include "brst_outline.h"

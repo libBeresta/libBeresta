@@ -10,6 +10,7 @@
 #include "brst_error.h"
 #include "brst_consts.h"
 #include "private/brst_utils.h"
+#include "brst_matrix.h"
 #include "brst_array.h"
 #include "brst_image.h"
 #include "private/brst_image.h"

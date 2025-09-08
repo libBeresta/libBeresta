@@ -24,5 +24,6 @@
 #define BRST_TIME                   time
 #define BRST_SIN                    sin
 #define BRST_COS                    cos
+#define BRST_TAN                    tan
 
 #endif /* PRIVATE_BRST_C_H */

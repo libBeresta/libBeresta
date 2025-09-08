@@ -6,6 +6,8 @@ set(
     raw_image_demo
     dates
     properties
+    pattern
+    pattern2
     xobject
 )
 

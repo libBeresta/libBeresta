@@ -6,6 +6,7 @@
 #include "brst_page.h"
 #include "brst_xref.h"
 #include "private/brst_xref.h"
+#include "brst_matrix.h"
 #include "brst_array.h"
 #include "private/brst_array.h"
 #include "brst_destination.h"
@@ -16,6 +17,7 @@
 #include "brst_shading.h"
 #include "brst_font.h"
 #include "brst_ext_gstate.h"
+#include "brst_pattern.h"
 #include "private/brst_page.h"
 
 const char* const BRST_DESTINATION_TYPE_NAMES[] = {

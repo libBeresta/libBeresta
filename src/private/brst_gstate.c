@@ -1,13 +1,14 @@
 #include "brst_types.h"
 #include "brst_encrypt.h"
 #include "brst_consts.h"
+#include "brst_mmgr.h"
+#include "brst_matrix.h"
+#include "private/brst_matrix.h"
 #include "brst_array.h"
 #include "brst_error.h"
 #include "private/brst_error.h"
-#include "brst_mmgr.h"
 #include "private/brst_mmgr.h"
 #include "brst_dict.h"
-#include "brst_encrypt.h"
 #include "brst_encoder.h"
 #include "brst_stream.h"
 #include "brst_xref.h"
@@ -65,8 +66,10 @@ BRST_GState_New(BRST_MMgr mmgr,
 
         gstate->prev  = current;
         gstate->depth = current->depth + 1;
+
+        gstate->pattern  = current->pattern;
     } else {
-        gstate->trans_matrix = IDENTITY_MATRIX;
+        gstate->trans_matrix = BRST_Matrix_Identity(mmgr);
         gstate->line_width   = BRST_DEF_LINEWIDTH;
         gstate->line_cap     = BRST_DEF_LINECAP;
         gstate->line_join    = BRST_DEF_LINEJOIN;
@@ -96,6 +99,8 @@ BRST_GState_New(BRST_MMgr mmgr,
 
         gstate->prev  = NULL;
         gstate->depth = 1;
+
+        gstate->pattern  = NULL;
     }
 
     return gstate;

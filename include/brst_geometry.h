@@ -404,6 +404,31 @@ BRST_Page_SetGrayStroke(
     BRST_REAL value
 );
 
+BRST_EXPORT(BRST_STATUS)
+BRST_Page_SetRGBPatternFill(
+    BRST_Page page,
+    BRST_REAL r,
+    BRST_REAL g,
+    BRST_REAL b,
+    BRST_Pattern pattern
+);
+
+BRST_EXPORT(BRST_STATUS)
+BRST_Page_SetRGBPatternFillUint(
+    BRST_Page page,
+    BRST_UINT8 r,
+    BRST_UINT8 g,
+    BRST_UINT8 b,
+    BRST_Pattern pattern
+);
+
+BRST_EXPORT(BRST_STATUS)
+BRST_Page_SetRGBPatternFillHex(
+    BRST_Page page,
+    BRST_UINT32 rgb,
+    BRST_Pattern pattern
+);
+
 /**
 
   \ingroup graphics
@@ -1481,13 +1506,13 @@ BRST_Page_Flat(
 
   \copydoc dox_param_page
 
-  \return Page current transformation matrix \ref BRST_TransMatrix on success, otherwise it returns default transformation matrix `BRST_TransMatrix{1, 0, 0, 1, 0, 0}`.
+  \return Page current transformation matrix \ref BRST_Matrix on success, otherwise it returns default transformation matrix `{1, 0, 0, 1, 0, 0}`.
 
   \see BRST_Page_Concat()
 
 */
-BRST_EXPORT(BRST_TransMatrix)
-BRST_Page_TransMatrix(
+BRST_EXPORT(BRST_Matrix)
+BRST_Page_Matrix(
     BRST_Page page
 );
 

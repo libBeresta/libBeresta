@@ -132,6 +132,7 @@
 #define BRST_INVALID_ICC_COMPONENT_NUM            0x1085
 #define BRST_PAGE_INVALID_BOUNDARY                0x1086
 #define BRST_INVALID_SHADING_TYPE                 0x1088
+#define BRST_PAGE_INVALID_PATTERN                 0x1089
 
 /*---------------------------------------------------------------------------*/
 /*----- BRST_Error ----------------------------------------------------------*/

@@ -4,6 +4,7 @@
 #include "brst_stream.h"
 #include "brst_mmgr.h"
 #include "brst_dict.h"
+#include "brst_matrix.h"
 #include "brst_array.h"
 #include "private/brst_utils.h"
 #include "brst_ext_gstate.h"
@@ -16,14 +17,17 @@
 #include "private/brst_defines.h"
 #include "brst_page.h"
 #include "brst_font.h"
+#include "brst_pattern.h"
 #include "brst_geometry.h"
 #include "private/brst_gstate.h"
 #include "brst_page_routines.h"
+#include "brst_pattern.h"
 #include "private/brst_page.h"
 #include "brst_consts.h"
 #include "brst_error.h"
 #include "private/brst_utils.h"
 #include "private/brst_page_attr.h"
+#include "brst_pattern.h"
 
 static BRST_STATUS
 Page_BeforeWrite(BRST_Dict obj);
@@ -324,7 +328,7 @@ BRST_Page_MediaBox(BRST_Page page)
     return media_box;
 }
 
-const char*
+BRST_CSTR
 BRST_Page_XObjectName(BRST_Page page,
     BRST_XObject xobj)
 {
@@ -374,7 +378,57 @@ BRST_Page_XObjectName(BRST_Page page,
     return key;
 }
 
-const char*
+BRST_CSTR
+BRST_Page_PatternName(BRST_Page page,
+    BRST_Pattern pat)
+{
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
+    const char* key;
+
+    BRST_PTRACE(" BRST_Page_PatternName\n");
+
+    if (!attr->patterns) {
+        BRST_Dict resources;
+        BRST_Dict patterns;
+
+        resources = BRST_Page_InheritableItem(page, "Resources",
+            BRST_OCLASS_DICT);
+        if (!resources)
+            return NULL;
+
+        patterns = BRST_Dict_New(page->mmgr);
+        if (!patterns)
+            return NULL;
+
+        if (BRST_Dict_Add(resources, "Pattern", patterns) != BRST_OK)
+            return NULL;
+
+        attr->patterns = patterns;
+    }
+
+    /* search pattern-object from pattern-resource */
+    key = BRST_Dict_KeyByObj(attr->patterns, pat);
+    if (!key) {
+        /* if the pattern is not registered in pattern-resource, register
+         * pattern to pattern-resource.
+         */
+        char pattern_name[BRST_LIMIT_MAX_NAME_LEN + 1];
+        char* ptr;
+        char* end_ptr = pattern_name + BRST_LIMIT_MAX_NAME_LEN;
+
+        ptr = (char*)BRST_StrCpy(pattern_name, "P", end_ptr);
+        BRST_IToA(ptr, BRST_List_Count(attr->patterns->list) + 1, end_ptr);
+
+        if (BRST_Dict_Add(attr->patterns, pattern_name, pat) != BRST_OK)
+            return NULL;
+
+        key = BRST_Dict_KeyByObj(attr->patterns, pat);
+    }
+
+    return key;
+}
+
+BRST_CSTR
 BRST_Page_ExtGStateName(BRST_Page page,
     BRST_ExtGState state)
 {

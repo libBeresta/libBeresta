@@ -14,10 +14,12 @@
 #include "brst_destination.h"
 #include "private/brst_catalog.h"
 #include "private/brst_encrypt_dict.h"
+#include "brst_pattern.h"
 #include "private/brst_page.h"
 #include "brst_xobject.h"
 #include "private/brst_xobject.h"
 #include "brst_base.h"
+#include "brst_matrix.h"
 #include "private/brst_gstate.h"
 #include "private/brst_page_attr.h"
 

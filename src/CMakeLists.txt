@@ -29,6 +29,7 @@ set(
         brst_doc_outline.c
         brst_doc_page.c
         brst_doc_page_xobject.c
+        brst_doc_page_pattern.c
         brst_doc_pdfa.c
         brst_doc_save.c
         brst_doc_security.c
@@ -48,6 +49,7 @@ set(
         brst_page_xobject.c
         brst_stream_geometry.c
         brst_text.c
+        brst_matrix.c
 #[[
 #]]
     )
@@ -125,7 +127,9 @@ set(
         private/brst_unicode_glyph.c
         private/brst_utils.c
         private/brst_xobject.c
+        private/brst_pattern.c
         private/brst_xref.c
+        private/brst_matrix.c
     )
 
 add_library(brst ${LIB_TYPE} ${LIBBRST_PRIVATE_SRCS} ${LIBBRST_SRCS})

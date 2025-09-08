@@ -17,7 +17,7 @@ InternalShowTextNextLine  (BRST_Page    page,
  */
 void
 TextPos_AbsToRel (
-    BRST_TransMatrix text_matrix,
+    BRST_Matrix text_matrix,
     BRST_REAL xAbs,
     BRST_REAL yAbs,
     BRST_REAL *xRel,

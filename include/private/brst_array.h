@@ -8,6 +8,8 @@
 #include "brst_stream.h"
 #include "brst_error.h"
 #include "brst_list.h"
+#include "brst_matrix.h"
+#include "private/brst_matrix.h"
 
 #include "brst_geometry_defines.h"
 
@@ -33,8 +35,8 @@ BRST_Box_Array_New(
 
 BRST_Array
 BRST_Matrix_Array_New(
-    BRST_MMgr        mmgr,
-    BRST_TransMatrix matrix
+    BRST_MMgr   mmgr,
+    BRST_Matrix matrix
 );
 
 void

@@ -13,9 +13,13 @@
 #include "brst_font.h"
 #include "brst_shading.h"
 #include "brst_page.h"
+#include "brst_pattern.h"
 #include "private/brst_page.h"
+#include "brst_page_routines.h"
 #include "brst_geometry_defines.h"
 #include "private/brst_pages.h"
+#include "brst_matrix.h"
+#include "private/brst_matrix.h"
 #include "private/brst_gstate.h"
 #include "private/brst_page_attr.h"
 #include "private/brst_encrypt_dict.h"
@@ -23,6 +27,7 @@
 #include "private/brst_catalog.h"
 #include "private/brst_c.h"
 #include "brst_stream_geometry.h"
+#include "brst_pattern.h"
 
 static BRST_STATUS
 InternalArc(BRST_Page page,
@@ -308,70 +313,6 @@ InternalArc(BRST_Page page,
     return ret;
 }
 
-BRST_TransMatrix
-BRST_Matrix_Multiply(BRST_TransMatrix m, BRST_TransMatrix n)
-{
-    BRST_TransMatrix r;
-
-    /*
-
-    | a' b' 0 |   | a" b" 0 |   | a'a" b'c" 0'x"  a'b" b'd" 0'y"  a'0" b'0" 0'1" |
-    | c' d' 0 | x | c" d" 0 | = | c'a" d'c" 0'x"  c'b" d'd" 0'y"  c'0" d'0" 0'1" |
-    | x' y' 1 |   | x" y" 1 |   | x'a" y'c" 1'x"  x'b" y'd" 1'y"  x'0" y'0" 1'1" |
-
-    | m.a m.b 0 |   | n.a n.b 0 |   | m.a*n.a+m.b*n.c      m.a*n.b+m.b*n.d      0 |
-    | m.c m.d 0 | x | n.c n.d 0 | = | m.c*n.a+m.d*n.c      m.c*n.b+m.d*n.d      0 |
-    | m.x m.y 1 |   | n.x n.y 1 |   | m.x*n.a+m.y*n.c+n.x  m.x*n.b+m.y*n.d+*n.y 1 |
-
-    */
-
-    r.a = m.a * n.a + m.b * n.c;
-    r.b = m.a * n.b + m.b * n.d;
-    r.c = m.c * n.a + m.d * n.c;
-    r.d = m.c * n.b + m.d * n.d;
-    r.x = m.x * n.a + m.y * n.c + n.x;
-    r.y = m.x * n.b + m.y * n.d + n.y;
-
-    return r;
-}
-
-BRST_TransMatrix
-BRST_Matrix_Translate(BRST_TransMatrix m, BRST_REAL dx, BRST_REAL dy)
-{
-    BRST_TransMatrix translate = { 1, 0, 0, 1, dx, dy };
-    return BRST_Matrix_Multiply(m, translate);
-}
-
-BRST_TransMatrix
-BRST_Matrix_Scale(BRST_TransMatrix m, BRST_REAL sx, BRST_REAL sy)
-{
-    BRST_TransMatrix scale = { sx, 0, 0, sy, 0, 0 };
-    return BRST_Matrix_Multiply(m, scale);
-}
-
-BRST_TransMatrix
-BRST_Matrix_Rotate(BRST_TransMatrix m, BRST_REAL angle)
-{
-    BRST_TransMatrix rotate = { cos(angle), sin(angle), -sin(angle), cos(angle), 0, 0 };
-    return BRST_Matrix_Multiply(rotate, m);
-}
-
-BRST_TransMatrix
-BRST_Matrix_RotateDeg(BRST_TransMatrix m, BRST_REAL degrees)
-{
-    BRST_REAL angle = degrees * BRST_PI / 180.0;
-
-    BRST_TransMatrix rotate = { cos(angle), sin(angle), -sin(angle), cos(angle), 0, 0 };
-    return BRST_Matrix_Multiply(m, rotate);
-}
-
-BRST_TransMatrix
-BRST_Matrix_Skew(BRST_TransMatrix m, BRST_REAL a, BRST_REAL b)
-{
-    BRST_TransMatrix skew = { 1, tan(a), tan(b), 1, 0, 0 };
-    return BRST_Matrix_Multiply(m, skew);
-}
-
 /* q */
 BRST_EXPORT(BRST_STATUS)
 BRST_Page_GSave(BRST_Page page)
@@ -441,7 +382,6 @@ BRST_Page_Concat(BRST_Page page,
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION);
 
     BRST_PageAttr attr;
-    BRST_TransMatrix tm;
 
     BRST_PTRACE(" BRST_Page_Concat\n");
 
@@ -455,18 +395,10 @@ BRST_Page_Concat(BRST_Page page,
         return BRST_Error_Check(page->error);
     }
 
-    tm = attr->gstate->trans_matrix;
-    /*
-    | ta tb 0 |   | a b |   | ta*a+tb*c   ta*b+tb*d   |
-    | tc td 0 | x | c d | = | tc*a+td*c   tc*b+td*d   |
-    | tx ty 1 |   | x y |   | tx*a+ty*c+x tx*b+ty*d+y |
-    */
-    attr->gstate->trans_matrix.a = tm.a * a + tm.b * c;
-    attr->gstate->trans_matrix.b = tm.a * b + tm.b * d;
-    attr->gstate->trans_matrix.c = tm.c * a + tm.d * c;
-    attr->gstate->trans_matrix.d = tm.c * b + tm.d * d;
-    attr->gstate->trans_matrix.x = tm.x * a + tm.y * c + x;
-    attr->gstate->trans_matrix.y = tm.x * b + tm.y * d + y;
+    BRST_Matrix tm = attr->gstate->trans_matrix;
+    BRST_Matrix m = BRST_Matrix_New(BRST_Page_MMgr(page), a, b, c, d, x, y);
+    attr->gstate->trans_matrix = BRST_Matrix_Multiply(BRST_Page_MMgr(page), tm, m);
+    BRST_Matrix_Free(tm);
 
     return ret;
 }
@@ -705,6 +637,63 @@ BRST_Page_SetGrayStroke(BRST_Page page,
     return ret;
 }
 
+/* scn */
+BRST_EXPORT(BRST_STATUS)
+BRST_Page_SetRGBPatternFill(BRST_Page page,
+    BRST_REAL r,
+    BRST_REAL g,
+    BRST_REAL b,
+    BRST_Pattern pattern)
+{
+    BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_TEXT_OBJECT | BRST_GMODE_PAGE_DESCRIPTION);
+
+    BRST_PTRACE(" BRST_Page_SetRGBPatternFill\n");
+
+    if (ret != BRST_OK)
+        return ret;
+
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
+
+    const char* pattern_name = BRST_Page_PatternName(page, pattern);
+
+    if (!pattern_name)
+        return BRST_Error_Raise(page->error, BRST_PAGE_INVALID_PATTERN, 0);
+
+    if (BRST_Stream_SetRGBPatternFill(attr->stream, r, g, b, pattern_name) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
+        return BRST_Error_Check(page->error);
+    }
+
+    attr->gstate->rgb_fill.r = r;
+    attr->gstate->rgb_fill.g = g;
+    attr->gstate->rgb_fill.b = b;
+    attr->gstate->cs_fill    = BRST_CS_DEVICE_RGB;
+    attr->gstate->pattern    = pattern;
+
+    return ret;
+}
+
+BRST_EXPORT(BRST_STATUS)
+BRST_Page_SetRGBPatternFillUint(BRST_Page page,
+    BRST_UINT8 r,
+    BRST_UINT8 g,
+    BRST_UINT8 b,
+    BRST_Pattern pattern)
+{
+    BRST_REAL rr = (BRST_REAL)r / 255.0;
+    BRST_REAL rg = (BRST_REAL)g / 255.0;
+    BRST_REAL rb = (BRST_REAL)b / 255.0;
+
+    return BRST_Page_SetRGBPatternFill(page, rr, rg, rb, pattern);
+}
+
+BRST_EXPORT(BRST_STATUS)
+BRST_Page_SetRGBPatternFillHex(BRST_Page page, BRST_UINT32 rgb, BRST_Pattern pattern)
+{
+    return BRST_Page_SetRGBPatternFillUint(page, (rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF, pattern);
+}
+
+
 /* rg */
 BRST_EXPORT(BRST_STATUS)
 BRST_Page_SetRGBFill(BRST_Page page,
@@ -730,6 +719,7 @@ BRST_Page_SetRGBFill(BRST_Page page,
     attr->gstate->rgb_fill.g = g;
     attr->gstate->rgb_fill.b = b;
     attr->gstate->cs_fill    = BRST_CS_DEVICE_RGB;
+    attr->gstate->pattern     = NULL;
 
     return ret;
 }
@@ -828,6 +818,7 @@ BRST_Page_SetCMYKFill(BRST_Page page,
     attr->gstate->cmyk_fill.y = y;
     attr->gstate->cmyk_fill.k = k;
     attr->gstate->cs_fill     = BRST_CS_DEVICE_CMYK;
+    attr->gstate->pattern     = NULL;
 
     return ret;
 }
@@ -1663,18 +1654,16 @@ BRST_Page_Flat(BRST_Page page)
         return BRST_DEF_FLATNESS;
 }
 
-BRST_EXPORT(BRST_TransMatrix)
-BRST_Page_TransMatrix(BRST_Page page)
+BRST_EXPORT(BRST_Matrix)
+BRST_Page_Matrix(BRST_Page page)
 {
-    BRST_TransMatrix DEF_MATRIX = { 1, 0, 0, 1, 0, 0 };
-
-    BRST_PTRACE(" BRST_Page_GetTransMatrix\n");
+    BRST_PTRACE(" BRST_Page_Matrix\n");
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
         return attr->gstate->trans_matrix;
     } else
-        return DEF_MATRIX;
+        return BRST_Matrix_Identity(BRST_Page_MMgr(page));
 }
 
 /* sh */

@@ -487,10 +487,10 @@ BRST_Page_SetWordSpace(
 
   \copydoc dox_param_page
 
-  \return Page current \ref BRST_TransMatrix on success, otherwise it returns `BRST_TransMatrix{1, 0, 0, 1, 0, 0}`.
+  \return Page current \ref BRST_Matrix on success, otherwise it returns `{1, 0, 0, 1, 0, 0}`.
 
 */
-BRST_EXPORT(BRST_TransMatrix)
+BRST_EXPORT(BRST_Matrix)
 BRST_Page_TextMatrix(
     BRST_Page page
 );

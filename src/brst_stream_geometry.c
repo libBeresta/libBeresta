@@ -14,6 +14,7 @@
 #include "brst_font.h"
 #include "brst_shading.h"
 #include "brst_geometry_defines.h"
+#include "brst_matrix.h"
 #include "private/brst_gstate.h"
 #include "private/brst_c.h"
 #include "private/brst_defines.h"
@@ -363,6 +364,40 @@ BRST_Stream_SetRGBFill(BRST_Stream stream,
 
     return ret;
 }
+
+/* scn */
+BRST_EXPORT(BRST_STATUS)
+BRST_Stream_SetRGBPatternFill(BRST_Stream stream,
+    BRST_REAL r,
+    BRST_REAL g,
+    BRST_REAL b,
+    BRST_CSTR pattern_name)
+{
+    BRST_STATUS ret = BRST_Stream_Validate(stream) ? BRST_OK : BRST_INVALID_STREAM;
+
+    BRST_PTRACE((" BRST_Stream_SetRGBPatternFill\n"));
+
+    if (ret != BRST_OK)
+        return ret;
+
+    if (r < 0 || r > 1 || g < 0 || g > 1 || b < 0 || b > 1)
+        return BRST_Error_Raise(stream->error, BRST_PAGE_OUT_OF_RANGE, 0);
+
+    ret += BRST_Stream_WriteReal(stream, r);
+    ret += BRST_Stream_WriteStr(stream, " ");
+    ret += BRST_Stream_WriteReal(stream, g);
+    ret += BRST_Stream_WriteStr(stream, " ");
+    ret += BRST_Stream_WriteReal(stream, b);
+    ret += BRST_Stream_WriteStr(stream, " ");
+    ret += BRST_Stream_WriteEscapeName(stream, pattern_name);
+    ret += BRST_Stream_WriteStr(stream, " scn\012");
+
+    if (ret != BRST_OK)
+        return BRST_Error_Check(stream->error);
+
+    return ret;
+}
+
 
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_SetRGBFillUint(BRST_Stream stream,

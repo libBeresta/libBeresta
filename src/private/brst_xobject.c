@@ -1,7 +1,9 @@
+#include "brst_types.h"
 #include "brst_stream.h"
 #include "brst_xref.h"
 #include "brst_mmgr.h"
 #include "brst_dict.h"
+#include "brst_matrix.h"
 #include "brst_array.h"
 #include "brst_encrypt.h"
 #include "private/brst_array.h"
@@ -34,7 +36,7 @@ BRST_XObject_New(
     ret += BRST_Dict_AddName(xobj, "Subtype", "Form");
     ret += BRST_Dict_Add(xobj, "BBox", BRST_Box_Array_New(mmgr, BRST_ToRect(0, 0, width, height)));
 
-    BRST_TransMatrix sm = BRST_Matrix_Scale(IDENTITY_MATRIX, scalex, scaley);
+    BRST_Matrix sm = BRST_Matrix_Scale(mmgr, BRST_Matrix_Identity(mmgr), scalex, scaley);
     ret += BRST_Dict_Add(xobj, "Matrix", BRST_Matrix_Array_New(mmgr, sm));
 
     /* В стандарте написано, что элемент Resources не является обязательным,

@@ -110,6 +110,15 @@ BRST_Stream_SetRGBFill(
     BRST_REAL b);
 
 BRST_EXPORT(BRST_STATUS)
+BRST_Stream_SetRGBPatternFill(
+    BRST_Stream stream,
+    BRST_REAL r,
+    BRST_REAL g,
+    BRST_REAL b,
+    BRST_CSTR pattern_name
+);
+
+BRST_EXPORT(BRST_STATUS)
 BRST_Stream_SetRGBFillUint(
     BRST_Stream stream,
     BRST_UINT8  r,

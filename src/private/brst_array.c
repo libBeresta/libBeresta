@@ -5,6 +5,7 @@
 #include "brst_encrypt.h"
 #include "private/brst_encrypt.h"
 #include "brst_stream.h"
+#include "brst_matrix.h"
 #include "brst_array.h"
 #include "private/brst_array.h"
 #include "private/brst_object_write.h"
@@ -69,7 +70,7 @@ BRST_Box_Array_New(BRST_MMgr mmgr,
 
 BRST_Array
 BRST_Matrix_Array_New(BRST_MMgr mmgr,
-    BRST_TransMatrix matrix)
+    BRST_Matrix matrix)
 {
     BRST_Array obj;
     BRST_STATUS ret = BRST_OK;
@@ -80,12 +81,12 @@ BRST_Matrix_Array_New(BRST_MMgr mmgr,
     if (!obj)
         return NULL;
 
-    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix.a));
-    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix.b));
-    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix.c));
-    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix.d));
-    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix.x));
-    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix.y));
+    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix->a));
+    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix->b));
+    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix->c));
+    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix->d));
+    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix->x));
+    ret += BRST_Array_Add(obj, BRST_Real_New(mmgr, matrix->y));
 
     if (ret != BRST_OK) {
         BRST_Array_Free(obj);

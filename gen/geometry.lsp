@@ -1520,18 +1520,18 @@ and \\c height in user space."
                      :ru ":param_page"
                      :en ":param_page")))
 
-;;;       ;; BRST_Page_TransMatrix
-;;;       (:название "Page_TransMatrix"
-;;;        :группа "page"
-;;;        :ошибки ()
-;;;        :результат (:тип "TransMatrix"
-;;;                    :ru "Матрица преобразований \\ref BRST_TransMatrix при успешном выполнении, в противном случае возвращается `BRST_TransMatrix{1, 0, 0, 1, 0, 0}` (тождественная матрица преобразований)."
-;;;                    :en "Page current transformation matrix \\ref BRST_TransMatrix on success, otherwise it returns `BRST_TransMatrix{1, 0, 0, 1, 0, 0}` (identity transformation matrix).")
-;;;        :ru "Текущая матрица преобразований."
-;;;        :en "Get page current transformation matrix."
-;;;        :параметры ((:тип "Page"
-;;;                     :имя "page"
-;;;                     :ru ":param_page"
-;;;                     :en ":param_page"))
+       ;; BRST_Page_Matrix
+       (:название "Page_Matrix"
+        :группа "page"
+        :ошибки ()
+        :результат (:тип "Matrix"
+                    :ru "Матрица преобразований \\ref BRST_Matrix при успешном выполнении, в противном случае возвращается `BRST_Matrix{1, 0, 0, 1, 0, 0}` (тождественная матрица преобразований)."
+                    :en "Page current transformation matrix \\ref BRST_Matrix on success, otherwise it returns `BRST_Matrix{1, 0, 0, 1, 0, 0}` (identity transformation matrix).")
+        :ru "Текущая матрица преобразований."
+        :en "Get page current transformation matrix."
+        :параметры ((:тип "Page"
+                     :имя "page"
+                     :ru ":param_page"
+                     :en ":param_page")))
 ))
 

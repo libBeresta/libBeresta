@@ -36,6 +36,12 @@ BRST_Page_XObjectName(
     BRST_XObject xobj
 );
 
+BRST_CSTR
+BRST_Page_PatternName(
+    BRST_Page page,
+    BRST_Pattern pat
+);
+
 const char*
 BRST_Page_LocalFontName(
     BRST_Page page,
