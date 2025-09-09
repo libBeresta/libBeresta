@@ -9,6 +9,7 @@ set(
     pattern
     pattern2
     xobject
+    xobject_pattern
 )
 
 set(
