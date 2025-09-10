@@ -1,8 +1,8 @@
 /*
  * `libBeresta`
  *
- * xobject.c - Создание и отображение XObject Form
- * =========
+ * xobject_pattern.c - Создание и отображение узора внутри XObject Form
+ * =================
  *
  * Copyright (c) 2025 Dmitry Solomennikov
  *
@@ -10,16 +10,17 @@
  */
 
 /** en
-  \par XObject Form creation and usage
+  \par XObject Form with pattern creation and usage
 
-  XObject Form object created, filled with drawing commands
-  and then object is shown multiple times.
+  XObject Form object created, filled with drawing commands,
+  including pattern fill and then object is shown multiple times.
 */
 
 /** ru
-  \par Создание и отображение XObject Form
+  \par Создание и отображение узора внутри XObject Form
 
   Создается объект XObject, наполняется командами рисования,
+  включающие в себя формирование узора.
   после чего объект многократно отображается, в том числе
   на разных страницах.
 */
@@ -56,30 +57,28 @@ int main(int argc, char** argv)
 
     // Настройка размера и ориентации страницы
     BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_ORIENTATION_LANDSCAPE);
+
     // Создание XObject Form
     BRST_XObject xobj = BRST_Doc_Page_XObject_Create(pdf, page, 100, 100, 1, 1);
 
+    // Матрица преобразований для узора
     BRST_Matrix matrix = BRST_Doc_Matrix_Scale(pdf, BRST_Doc_Matrix_Identity(pdf), 0.5, 0.5);
 
     // Создание узора
     BRST_Pattern pattern = BRST_Doc_Page_Pattern_Tiling_Create(pdf, xobj, 0, 0, 10, 10, 10, 10, matrix);
 
-    BRST_Stream pstream = BRST_Doc_Page_Pattern_Stream(pattern);
+    // Поток узора (нужен для записи графических команд
+    BRST_Stream pattern_stream = BRST_Doc_Page_Pattern_Stream(pattern);
 
-    //BRST_Doc_Page_Pattern_EnsureColorSpace(xobj, BRST_CS_DEVICE_RGB);
-
-    BRST_Stream_SetLineWidth(pstream, 0.49814);
-    BRST_Stream_MoveTo(pstream, -1,  4);
-    BRST_Stream_LineTo(pstream,  6, 11);
-    BRST_Stream_MoveTo(pstream,  4, -1);
-    BRST_Stream_LineTo(pstream, 11,  6);
-    BRST_Stream_Stroke(pstream);
+    // Графические команды узора
+    BRST_Stream_SetLineWidth(pattern_stream, 0.49814);
+    BRST_Stream_MoveTo(pattern_stream, -1,  4);
+    BRST_Stream_LineTo(pattern_stream,  6, 11);
+    BRST_Stream_MoveTo(pattern_stream,  4, -1);
+    BRST_Stream_LineTo(pattern_stream, 11,  6);
+    BRST_Stream_Stroke(pattern_stream);
 
     // Выбор узора для заливки.
-    // Команда выбора узора составная, 
-    // в ней указывается color space, цвет (для non-coloured patterns)
-    // и имя узора. Функция BRST_Doc_Page_RGBPatternFill_Select() как
-    // раз и выполняет всю указанную работу.
 
     // Отрисовка прямоугольника
 //    BRST_Page_Rectangle (xobj, margin, margin, width - margin*2, height - margin*2);
@@ -92,15 +91,16 @@ int main(int argc, char** argv)
     // Получение и наполнение потока XObject
     BRST_Stream stream = BRST_XObject_Stream(xobj);
 
+    // Команда выбора узора составная,
+    // в ней указывается color space, цвет (для non-coloured patterns)
+    // и имя узора. Функция BRST_Doc_Dict_RGBPatternFill_Select() как
+    // раз и выполняет всю указанную работу.
     BRST_Doc_Dict_RGBPatternFill_Select(pdf, xobj, 1, 0, 0, pattern);
 
+    // Отрисовка прямоугольника внутри XObject
     BRST_Stream_Rectangle(stream, 20, 20, 80, 80);
     BRST_Stream_Fill(stream);
     
-//    BRST_Stream_MoveTo(stream, 0, 0);
-//    BRST_Stream_LineTo(stream, 100, 100);
-//    BRST_Stream_Stroke(stream);
-
     // Позиционирование и отображение XObject
     BRST_Page_Translate(page, 50, 50);
     BRST_Page_XObject_Execute(page, xobj);
