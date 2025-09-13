@@ -14,6 +14,7 @@
     (    ExtGState .  :pointer-void)
     (      Pattern .  :pointer-void)
     (       Matrix .  :pointer-void)
+    ( Dash-Pattern .  :pointer-void)
     (   PageLayout .       :int32-t)
     (     PageMode .       :int32-t)
     (      PageNum .       :int32-t)
@@ -136,6 +137,9 @@
   #+ecl
   `(ffi:def-foreign-type ,name :pointer-void))
 
+(defmacro constant (name value)
+  `(defconstant ,name ,value))
+
 (defmacro with-pdf-document ((pdf-var filename) &body body)
   `(let ((,pdf-var (doc-new-empty)))
      (unwind-protect
@@ -148,8 +152,17 @@
   #+ecl
   `(ffi:clines "#include \"brst.h\""))
 
-(defun string-to-cstring (str)
+(defun string-to-cstring (str)  
   #+ecl
   (ext:octets-to-string
    (ext:string-to-octets str :external-format :utf-8)
    :external-format :latin-1))
+
+(defmacro page-set-dash-pattern (page pattern num phase)
+  #+ecl
+  `(let* ((pattern1 ,pattern))
+     (ffi:with-foreign-object (c-pattern '(:array :float ,num))
+       (dotimes (i ,num)
+	 (setf (ffi:deref-array c-pattern '(:array :float) i)
+	       (aref pattern1 i)))
+       (page-setdash ,page c-pattern ,num ,phase))))

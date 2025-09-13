@@ -53,7 +53,7 @@
                          :ru ""
                          :en "")))
 
-           (:название "Doc_Page_RGBPatternFill_Select"
+           (:название "Doc_Dict_RGBPatternFill_Select"
             :ru ""
             :en ""
             :результат (:тип "STATUS"
@@ -63,10 +63,10 @@
                          :имя "pdf"
                          :ru ":param_pdf"
                          :en ":param_pdf")
-                        (:тип "Page"
-                         :имя "page"
-                         :ru ":param_page"
-                         :en ":param_page")
+                        (:тип "Dict"
+                         :имя "dict"
+                         :ru ":param_dict"
+                         :en ":param_dict")
                         (:тип "REAL"
                          :имя "r"
                          :ru ""
@@ -84,7 +84,7 @@
                          :ru ":param_pattern"
                          :en ":param_pattern")))
 
-           (:название "Doc_Page_RGBPatternFillUint_Select"
+           (:название "Doc_Dict_RGBPatternFillUint_Select"
             :ru ""
             :en ""
             :результат (:тип "STATUS"
@@ -94,10 +94,10 @@
                          :имя "pdf"
                          :ru ":param_pdf"
                          :en ":param_pdf")
-                        (:тип "Page"
-                         :имя "page"
-                         :ru ":param_page"
-                         :en ":param_page")
+                        (:тип "Dict"
+                         :имя "dict"
+                         :ru ":param_dict"
+                         :en ":param_dict")
                         (:тип "UINT8"
                          :имя "r"
                          :ru ""
@@ -115,7 +115,7 @@
                          :ru ":param_pattern"
                          :en ":param_pattern")))
 
-           (:название "Doc_Page_RGBPatternFillHex_Select"
+           (:название "Doc_Dict_RGBPatternFillHex_Select"
             :ru ""
             :en ""
             :результат (:тип "STATUS"
@@ -125,10 +125,10 @@
                          :имя "pdf"
                          :ru ":param_pdf"
                          :en ":param_pdf")
-                        (:тип "Page"
-                         :имя "page"
-                         :ru ":param_page"
-                         :en ":param_page")
+                        (:тип "Dict"
+                         :имя "dict"
+                         :ru ":param_dict"
+                         :en ":param_dict")
                         (:тип "UINT8"
                          :имя "rgb"
                          :ru ""

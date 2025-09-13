@@ -87,20 +87,20 @@ int main(int argc, char** argv)
 
     // Отрисовка отдельных прямоугольников с заливкой узорами
     BRST_Page_GSave(page);
-    BRST_Doc_Page_RGBPatternFill_Select(pdf, page, 1, 0, 0, p1);
-    BRST_Page_Rectangle (page, margin, margin, rectWidth, margin + rectHeight);
+    BRST_Doc_Dict_RGBPatternFill_Select(pdf, page, 1, 0, 0, p1);
+    BRST_Page_Rectangle (page, margin, margin, rectWidth, rectHeight);
     BRST_Page_Fill(page);
     BRST_Page_GRestore(page);
 
     BRST_Page_GSave(page);
-    BRST_Doc_Page_RGBPatternFill_Select(pdf, page, 0, 1, 0, p2);
-    BRST_Page_Rectangle (page, margin + rectWidth, margin, rectWidth, margin + rectHeight);
+    BRST_Doc_Dict_RGBPatternFill_Select(pdf, page, 0, 1, 0, p2);
+    BRST_Page_Rectangle (page, margin + rectWidth, margin, rectWidth, rectHeight);
     BRST_Page_Fill(page);
     BRST_Page_GRestore(page);
 
     BRST_Page_GSave(page);
-    BRST_Doc_Page_RGBPatternFill_Select(pdf, page, 0, 0, 1, p3);
-    BRST_Page_Rectangle (page, margin + rectWidth * 2, margin, rectWidth, margin + rectHeight);
+    BRST_Doc_Dict_RGBPatternFill_Select(pdf, page, 0, 0, 1, p3);
+    BRST_Page_Rectangle (page, margin + rectWidth * 2, margin, rectWidth, rectHeight);
     BRST_Page_Fill(page);
     BRST_Page_GRestore(page);
 

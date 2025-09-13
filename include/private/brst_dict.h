@@ -53,6 +53,11 @@ BRST_Dict_New(
     BRST_MMgr mmgr
 );
 
+BRST_MMgr
+BRST_Dict_MMgr(
+    BRST_Dict dict
+);
+
 void
 BRST_Dict_Free(
     BRST_Dict dict

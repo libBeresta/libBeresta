@@ -120,6 +120,15 @@ Page_BeforeWrite(BRST_Dict obj)
     return BRST_OK;
 }
 
+BRST_BOOL
+BRST_Dict_IsPage(BRST_Dict dict) {
+    if (dict) {
+        return (dict->header.obj_class & BRST_OSUBCLASS_PAGE) != BRST_OSUBCLASS_PAGE;
+    }
+
+    return BRST_FALSE;
+}
+
 BRST_Page
 BRST_Page_New(BRST_MMgr mmgr,
     BRST_Xref xref)
@@ -382,32 +391,31 @@ BRST_CSTR
 BRST_Page_PatternName(BRST_Page page,
     BRST_Pattern pat)
 {
-    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
     const char* key;
-
+    
     BRST_PTRACE(" BRST_Page_PatternName\n");
 
-    if (!attr->patterns) {
-        BRST_Dict resources;
-        BRST_Dict patterns;
+    BRST_Dict resources;
+    BRST_Dict patterns;
 
-        resources = BRST_Page_InheritableItem(page, "Resources",
-            BRST_OCLASS_DICT);
-        if (!resources)
-            return NULL;
+    resources = BRST_Page_InheritableItem(page, "Resources",
+        BRST_OCLASS_DICT);
 
-        patterns = BRST_Dict_New(page->mmgr);
-        if (!patterns)
-            return NULL;
+    if (!resources)
+        return NULL;
+
+    patterns = (BRST_Dict)BRST_Dict_Item(resources, "Pattern", BRST_OCLASS_DICT);
+
+    if (!patterns) {
+        patterns = BRST_Dict_New(BRST_Page_MMgr(page));
 
         if (BRST_Dict_Add(resources, "Pattern", patterns) != BRST_OK)
             return NULL;
-
-        attr->patterns = patterns;
     }
 
+
     /* search pattern-object from pattern-resource */
-    key = BRST_Dict_KeyByObj(attr->patterns, pat);
+    key = BRST_Dict_KeyByObj(patterns, pat);
     if (!key) {
         /* if the pattern is not registered in pattern-resource, register
          * pattern to pattern-resource.
@@ -417,12 +425,12 @@ BRST_Page_PatternName(BRST_Page page,
         char* end_ptr = pattern_name + BRST_LIMIT_MAX_NAME_LEN;
 
         ptr = (char*)BRST_StrCpy(pattern_name, "P", end_ptr);
-        BRST_IToA(ptr, BRST_List_Count(attr->patterns->list) + 1, end_ptr);
+        BRST_IToA(ptr, BRST_List_Count(patterns->list) + 1, end_ptr);
 
-        if (BRST_Dict_Add(attr->patterns, pattern_name, pat) != BRST_OK)
+        if (BRST_Dict_Add(patterns, pattern_name, pat) != BRST_OK)
             return NULL;
 
-        key = BRST_Dict_KeyByObj(attr->patterns, pat);
+        key = BRST_Dict_KeyByObj(patterns, pat);
     }
 
     return key;

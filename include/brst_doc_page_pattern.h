@@ -18,13 +18,19 @@ BRST_EXPORT(BRST_Stream)
 BRST_Doc_Page_Pattern_Stream(BRST_Pattern pat);
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Doc_Page_RGBPatternFill_Select(
+BRST_Doc_Dict_RGBPatternFill_Select(
     BRST_Doc  pdf,
-    BRST_Page page,
+    BRST_Dict dict,
     BRST_REAL r,
     BRST_REAL g,
     BRST_REAL b,
     BRST_Pattern pattern
+);
+
+BRST_STATUS
+BRST_Doc_Page_Pattern_EnsureColorSpace(
+    BRST_Dict       dict,
+    BRST_ColorSpace cs
 );
 
 #endif /* BRST_DOC_PAGE_PATTERN_H */

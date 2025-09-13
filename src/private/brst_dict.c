@@ -54,6 +54,15 @@ BRST_Dict_New(BRST_MMgr mmgr)
     return obj;
 }
 
+BRST_MMgr
+BRST_Dict_MMgr(BRST_Dict dict) {
+    if (dict) {
+        return dict->mmgr;
+    } else {
+        return NULL;
+    }
+}
+
 void BRST_Dict_Free(BRST_Dict dict)
 {
     BRST_UINT i;

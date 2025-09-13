@@ -2,7 +2,9 @@
 (in-package #:cl-beresta)
 
 (include-header)
-{% if определения %}{% for оп in определения %}
+{% if константы %}{% for кон in константы %}
+(constant {{ кон.имя | under }} {{ кон.значение | under }})
+{% endfor %}{% endif %}{% if определения %}{% for оп in определения %}
 (synonym {{ оп.имя | under }} {{ оп.оригинал | under }})
 {% endfor %}{% endif %}{% if указатели %}{% for ук in указатели %}
 (pointer {{ ук.имя | under }})

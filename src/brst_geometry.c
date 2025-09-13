@@ -639,58 +639,67 @@ BRST_Page_SetGrayStroke(BRST_Page page,
 
 /* scn */
 BRST_EXPORT(BRST_STATUS)
-BRST_Page_SetRGBPatternFill(BRST_Page page,
+BRST_Dict_SetRGBPatternFill(BRST_Dict dict,
     BRST_REAL r,
     BRST_REAL g,
     BRST_REAL b,
     BRST_Pattern pattern)
 {
-    BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_TEXT_OBJECT | BRST_GMODE_PAGE_DESCRIPTION);
+    BRST_STATUS ret = BRST_OK;
+    BRST_BOOL isPage = BRST_Dict_IsPage(dict);
+
+    if (isPage) {
+        ret += BRST_Page_CheckState(dict, BRST_GMODE_TEXT_OBJECT | BRST_GMODE_PAGE_DESCRIPTION);
+    }
 
     BRST_PTRACE(" BRST_Page_SetRGBPatternFill\n");
 
     if (ret != BRST_OK)
         return ret;
 
-    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)dict->attr;
 
-    const char* pattern_name = BRST_Page_PatternName(page, pattern);
+    BRST_Stream stream = attr ? attr->stream : dict->stream;
+
+    const char* pattern_name = BRST_Page_PatternName(dict, pattern);
 
     if (!pattern_name)
-        return BRST_Error_Raise(page->error, BRST_PAGE_INVALID_PATTERN, 0);
+        return BRST_Error_Raise(dict->error, BRST_PAGE_INVALID_PATTERN, 0);
 
-    if (BRST_Stream_SetRGBPatternFill(attr->stream, r, g, b, pattern_name) != BRST_OK) {
-        BRST_Error_Copy(page->error, attr->stream->error);
-        return BRST_Error_Check(page->error);
+    if (BRST_Stream_SetRGBPatternFill(stream, r, g, b, pattern_name) != BRST_OK) {
+        BRST_Error_Copy(dict->error, stream->error);
+        return BRST_Error_Check(dict->error);
     }
 
-    attr->gstate->rgb_fill.r = r;
-    attr->gstate->rgb_fill.g = g;
-    attr->gstate->rgb_fill.b = b;
-    attr->gstate->cs_fill    = BRST_CS_DEVICE_RGB;
-    attr->gstate->pattern    = pattern;
+    if (isPage) {
+        attr->gstate->rgb_fill.r = r;
+        attr->gstate->rgb_fill.g = g;
+        attr->gstate->rgb_fill.b = b;
+        attr->gstate->cs_fill    = BRST_CS_DEVICE_RGB;
+        attr->gstate->pattern    = pattern;
+    }
 
     return ret;
 }
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Page_SetRGBPatternFillUint(BRST_Page page,
+BRST_Dict_SetRGBPatternFillUint(BRST_Dict dict,
     BRST_UINT8 r,
     BRST_UINT8 g,
     BRST_UINT8 b,
     BRST_Pattern pattern)
 {
     BRST_REAL rr = (BRST_REAL)r / 255.0;
-    BRST_REAL rg = (BRST_REAL)g / 255.0;
-    BRST_REAL rb = (BRST_REAL)b / 255.0;
+    BRST_REAL gg = (BRST_REAL)g / 255.0;
+    BRST_REAL bb = (BRST_REAL)b / 255.0;
 
-    return BRST_Page_SetRGBPatternFill(page, rr, rg, rb, pattern);
+    return BRST_Dict_SetRGBPatternFill(dict, rr, gg, bb, pattern);
 }
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Page_SetRGBPatternFillHex(BRST_Page page, BRST_UINT32 rgb, BRST_Pattern pattern)
+BRST_Dict_SetRGBPatternFillHex(BRST_Dict dict, BRST_UINT32 rgb, BRST_Pattern pattern)
 {
-    return BRST_Page_SetRGBPatternFillUint(page, (rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF, pattern);
+    return BRST_Dict_SetRGBPatternFillUint(dict, (rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF, pattern);
 }
 
 

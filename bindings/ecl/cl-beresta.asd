@@ -17,6 +17,7 @@
     :components
             ((:file "package")
              (:file "macro" :depends-on ("package"))
+             (:file "consts" :depends-on ("package"))
              (:file "types" :depends-on ("package" "macro"))
              (:file "doc" :depends-on ("package" "types" "macro"))
              (:file "mmgr" :depends-on ("package" "types" "macro"))

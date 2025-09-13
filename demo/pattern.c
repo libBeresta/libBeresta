@@ -84,7 +84,7 @@ int main(int argc, char** argv)
     // в ней указывается color space, цвет (для non-coloured patterns)
     // и имя узора. Функция BRST_Doc_Page_RGBPatternFill_Select() как
     // раз и выполняет всю указанную работу.
-    BRST_Doc_Page_RGBPatternFill_Select(pdf, page, 1, 0, 0, pattern);
+    BRST_Doc_Dict_RGBPatternFill_Select(pdf, page, 1, 0, 0, pattern);
 
     // Расчет заливаемого прямоугольника
     BRST_REAL width = BRST_Page_Width(page);

@@ -17,6 +17,11 @@ BRST_Page_Validate(
     BRST_Page page
 );
 
+BRST_BOOL
+BRST_Dict_IsPage(
+    BRST_Dict dict
+);
+
 BRST_Page
 BRST_Page_New(
     BRST_MMgr mmgr,

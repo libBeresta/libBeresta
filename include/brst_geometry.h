@@ -405,8 +405,8 @@ BRST_Page_SetGrayStroke(
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Page_SetRGBPatternFill(
-    BRST_Page page,
+BRST_Dict_SetRGBPatternFill(
+    BRST_Dict dict,
     BRST_REAL r,
     BRST_REAL g,
     BRST_REAL b,
@@ -414,8 +414,8 @@ BRST_Page_SetRGBPatternFill(
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Page_SetRGBPatternFillUint(
-    BRST_Page page,
+BRST_Dict_SetRGBPatternFillUint(
+    BRST_Dict dict,
     BRST_UINT8 r,
     BRST_UINT8 g,
     BRST_UINT8 b,
@@ -423,8 +423,8 @@ BRST_Page_SetRGBPatternFillUint(
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Page_SetRGBPatternFillHex(
-    BRST_Page page,
+BRST_Dict_SetRGBPatternFillHex(
+    BRST_Dict dict,
     BRST_UINT32 rgb,
     BRST_Pattern pattern
 );
