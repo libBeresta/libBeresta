@@ -58,6 +58,10 @@ int main(int argc, char** argv)
     // Настройка размера и ориентации страницы
     BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_ORIENTATION_LANDSCAPE);
 
+    // Подготовка положения объекта
+    BRST_REAL width = BRST_Page_Width(page);
+    BRST_REAL height = BRST_Page_Height(page);
+
     // Создание XObject Form
     BRST_XObject xobj = BRST_Doc_Page_XObject_Create(pdf, page, 100, 100, 1, 1);
 
@@ -92,13 +96,15 @@ int main(int argc, char** argv)
     BRST_Stream_Fill(stream);
     
     // Позиционирование и отображение XObject
-    BRST_Page_Translate(page, 50, 50);
+    BRST_Page_Translate(page, width / 2 - 50, height / 2 - 50);
     BRST_Page_XObject_Execute(page, xobj);
 
     // Позиционирование и отображение XObject на новой странице
     page = BRST_Doc_Page_Add(pdf);
     BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_ORIENTATION_LANDSCAPE);
-    BRST_Page_Translate(page, 200, 110);
+    BRST_Page_Translate(page, width / 2, height / 2);
+    BRST_Page_RotateDeg(page, -45);
+    BRST_Page_Translate(page, -50, -50);
     BRST_Page_XObject_Execute(page, xobj);
 
     // Сохранение документа в файл
