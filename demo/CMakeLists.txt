@@ -22,6 +22,8 @@ set(
     arc_demo
     grid_demo
     utf8
+    eofill
+    clip
 )
 
 # TODO Так ли это?

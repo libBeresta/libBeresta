@@ -398,7 +398,6 @@ BRST_Page_Concat(BRST_Page page,
     BRST_Matrix tm = attr->gstate->trans_matrix;
     BRST_Matrix m = BRST_Matrix_New(BRST_Page_MMgr(page), a, b, c, d, x, y);
     attr->gstate->trans_matrix = BRST_Matrix_Multiply(BRST_Page_MMgr(page), tm, m);
-    BRST_Matrix_Free(tm);
 
     return ret;
 }
