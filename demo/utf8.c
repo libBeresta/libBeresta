@@ -69,7 +69,7 @@ main (int argc, char **argv)
 
     BRST_Doc_UseUTFEncodings(pdf);
     BRST_Doc_Encoder_SetCurrent(pdf, "UTF-8");
-    font_name = BRST_Doc_TTFont_LoadFromFile(pdf, "ttfont/NotoSansSC-Regular.ttf", BRST_TRUE);
+    font_name = BRST_Doc_TTFont_LoadFromFile(pdf, "../../data/fonts/PT/PT/PT-Astra-Serif/pt-astra-serif_regular.ttf", BRST_TRUE);
     font = BRST_Doc_Font(pdf, font_name, "UTF-8");
     BRST_Page_SetFontAndSize(page, font, 36);
 
@@ -86,8 +86,18 @@ main (int argc, char **argv)
     BRST_Page_ShowText(page, "Привет, мир!");
     BRST_Page_MoveTextPos(page, 0, -100);
     BRST_Page_ShowText(page, "Peña, ¿cómo va, mundo?");
-    BRST_Page_MoveTextPos(page, 0, -100);
-    BRST_Page_ShowText(page, "你好，世界！");
+
+    // Ниже текст на китайском языке в кодировке UTF-8
+    // Для его отображения необходимо использовать шрифт,
+    // включающий соответствующие символы.
+    // Например, Noto Sans.
+    // Самостоятельно скачайте файл TTF шрифта со страницы
+    // https://fonts.google.com/noto/specimen/Noto+Sans,
+    // затем измените путь до TTF-файла в вызове функции
+    // BRST_Doc_TTFont_LoadFromFile() выше в этом файле.
+
+    // BRST_Page_MoveTextPos(page, 0, -100);
+    // BRST_Page_ShowText(page, "你好，世界！");
 
     BRST_Page_EndText(page);
     BRST_Page_GRestore (page);
