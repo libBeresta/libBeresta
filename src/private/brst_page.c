@@ -337,6 +337,7 @@ BRST_Page_MediaBox(BRST_Page page)
     return media_box;
 }
 
+// TODO fontname, patternname, xobjectname можно объединить, вероятнее всего.
 BRST_CSTR
 BRST_Page_XObjectName(BRST_Page page,
     BRST_XObject xobj)
@@ -435,6 +436,55 @@ BRST_Page_PatternName(BRST_Page page,
 
     return key;
 }
+
+BRST_CSTR
+BRST_Page_LocalFontName(BRST_Page page,
+    BRST_Font font)
+{
+    const char* key;
+
+    BRST_PTRACE(" BRST_Page_LocalFontName\n");
+
+    BRST_Dict resources;
+    BRST_Dict fonts;
+
+    resources = BRST_Page_InheritableItem(page, "Resources",
+        BRST_OCLASS_DICT);
+
+    if (!resources)
+        return NULL;
+
+    fonts = (BRST_Dict)BRST_Dict_Item(resources, "Font", BRST_OCLASS_DICT);
+
+    if (!fonts) {
+        fonts = BRST_Dict_New(page->mmgr);
+
+        if (BRST_Dict_Add(resources, "Font", fonts) != BRST_OK)
+            return NULL;
+    }
+
+    /* search font-object from font-resource */
+    key = BRST_Dict_KeyByObj(fonts, font);
+    if (!key) {
+        /* if the font is not registered in font-resource, register font to
+         * font-resource.
+         */
+        char fontName[BRST_LIMIT_MAX_NAME_LEN + 1];
+        char* ptr;
+        char* end_ptr = fontName + BRST_LIMIT_MAX_NAME_LEN;
+
+        ptr = (char*)BRST_StrCpy(fontName, "F", end_ptr);
+        BRST_IToA(ptr, BRST_List_Count(fonts->list) + 1, end_ptr);
+
+        if (BRST_Dict_Add(fonts, fontName, font) != BRST_OK)
+            return NULL;
+
+        key = BRST_Dict_KeyByObj(fonts, font);
+    }
+
+    return key;
+}
+
 
 BRST_CSTR
 BRST_Page_ExtGStateName(BRST_Page page,
