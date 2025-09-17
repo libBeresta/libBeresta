@@ -68,10 +68,10 @@ int main(int argc, char **argv)
 
     // Загрузка RGB изображений из файлов
     #ifndef __WIN32__
-    image = BRST_Doc_Image_Raw_LoadFromFile(pdf, "rawimage/32_32_rgb.dat",
+    image = BRST_Doc_Image_Raw_LoadFromFile(pdf, "../../data/images/rawimage/32_32_rgb.dat",
             32, 32, BRST_CS_DEVICE_RGB);
     #else
-    image = BRST_Doc_Image_Raw_LoadFromFile(pdf, "rawimage\\32_32_rgb.dat",
+    image = BRST_Doc_Image_Raw_LoadFromFile(pdf, "..\\..\\data\\images\\rawimage\\32_32_rgb.dat",
             32, 32, BRST_CS_DEVICE_RGB);
     #endif
 
@@ -83,10 +83,10 @@ int main(int argc, char **argv)
 
     // Загрузка полутонового изображения из файла
     #ifndef __WIN32__
-    image = BRST_Doc_Image_Raw_LoadFromFile(pdf, "rawimage/32_32_gray.dat",
+    image = BRST_Doc_Image_Raw_LoadFromFile(pdf, "../../data/images/rawimage/32_32_gray.dat",
             32, 32, BRST_CS_DEVICE_GRAY);
     #else
-    image = BRST_Doc_Image_Raw_LoadFromFile(pdf, "rawimage\\32_32_gray.dat",
+    image = BRST_Doc_Image_Raw_LoadFromFile(pdf, "..\\..\\data\\images\\rawimage\\32_32_gray.dat",
             32, 32, BRST_CS_DEVICE_GRAY);
     #endif
 

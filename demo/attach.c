@@ -55,7 +55,7 @@ main (int argc, char **argv)
     BRST_Page_EndText(page);
 
     /* Вложение файла в документ */
-    BRST_Doc_AttachFile(pdf, "pngsuite/basn3p08.png");
+    BRST_Doc_AttachFile(pdf, "../../data/images/pngsuite/basn3p08.png");
 
     // Сохранение документа в файл
     BRST_Doc_SaveToFile(pdf, fname);
