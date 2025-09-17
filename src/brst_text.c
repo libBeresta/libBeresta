@@ -29,6 +29,7 @@
 #include "private/brst_text.h"
 #include "private/brst_utils.h"
 #include "private/brst_defines.h"
+#include "brst_stream_text.h"
 
 /* BT */
 BRST_EXPORT(BRST_STATUS)
@@ -44,8 +45,10 @@ BRST_Page_BeginText(BRST_Page page)
 
     attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "BT\012") != BRST_OK)
+    if (BRST_Stream_BeginText(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gmode       = BRST_GMODE_TEXT_OBJECT;
     attr->text_pos    = INIT_POS;
@@ -68,8 +71,10 @@ BRST_Page_EndText(BRST_Page page)
 
     attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "ET\012") != BRST_OK)
+    if (BRST_Stream_EndText(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->text_pos = INIT_POS;
     attr->gmode    = BRST_GMODE_PAGE_DESCRIPTION;
@@ -92,11 +97,12 @@ BRST_Page_SetTextLeading(BRST_Page page,
 
     attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteReal(attr->stream, value) != BRST_OK)
-        return BRST_Error_Check(page->error);
+    printf("HIA: value0 = %f\n", value);
 
-    if (BRST_Stream_WriteStr(attr->stream, " TL\012") != BRST_OK)
+    if (BRST_Stream_SetTextLeading(attr->stream, value) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->text_leading = value;
 
@@ -105,47 +111,49 @@ BRST_Page_SetTextLeading(BRST_Page page,
 
 /* Tf */
 BRST_EXPORT(BRST_STATUS)
-BRST_Page_SetFontAndSize(BRST_Page page,
+BRST_Dict_SetFontAndSize(BRST_Dict dict,
     BRST_Font font,
     BRST_REAL size)
 {
-    BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
-    const char* local_name;
-    BRST_PageAttr attr;
 
-    BRST_PTRACE(" BRST_Page_SetFontAndSize\n");
+    BRST_STATUS ret = BRST_OK;
+
+    BRST_BOOL isPage = BRST_Dict_IsPage(dict);
+
+    if (isPage) {
+        ret += BRST_Page_CheckState(dict, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
+    }
 
     if (ret != BRST_OK)
         return ret;
 
+    BRST_PTRACE(" BRST_Page_SetFontAndSize\n");
+
     if (!BRST_Font_Validate(font))
-        return BRST_Error_Raise(page->error, BRST_PAGE_INVALID_FONT, 0);
+        return BRST_Error_Raise(dict->error, BRST_PAGE_INVALID_FONT, 0);
 
     if (size <= 0 || size > BRST_MAX_FONTSIZE)
-        return BRST_Error_Raise(page->error, BRST_PAGE_INVALID_FONT_SIZE, 0);
+        return BRST_Error_Raise(dict->error, BRST_PAGE_INVALID_FONT_SIZE, 0);
 
-    if (page->mmgr != font->mmgr)
-        return BRST_Error_Raise(page->error, BRST_PAGE_INVALID_FONT, 0);
+    if (BRST_Dict_MMgr(dict) != BRST_Dict_MMgr(font))
+        return BRST_Error_Raise(dict->error, BRST_PAGE_INVALID_FONT, 0);
 
-    attr       = (BRST_PageAttr)page->attr;
-    local_name = BRST_Page_LocalFontName(page, font);
+    BRST_PageAttr attr  = (BRST_PageAttr)dict->attr;
+    BRST_CSTR localName = BRST_Page_LocalFontName(dict, font);
 
-    if (!local_name)
-        return BRST_Error_Raise(page->error, BRST_PAGE_INVALID_FONT, 0);
+    BRST_Stream stream = attr ? attr->stream : dict->stream;
 
-    if (BRST_Stream_WriteEscapeName(attr->stream, local_name) != BRST_OK)
-        return BRST_Error_Check(page->error);
+    if (!localName)
+        return BRST_Error_Raise(dict->error, BRST_PAGE_INVALID_FONT, 0);
 
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, size, eptr);
-    BRST_StrCpy(pbuf, " Tf\012", eptr);
+    ret += BRST_Stream_WriteEscapeName(stream, localName);
+    ret += BRST_Stream_WriteStr(stream, " ");
+    ret += BRST_Stream_WriteReal(stream, size);
+    ret += BRST_Stream_WriteStr(stream, " Tf\012");
 
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
-        return BRST_Error_Check(page->error);
+    if (ret != BRST_OK) {
+        return BRST_Error_Check(dict->error);
+    }
 
     attr->gstate->font         = font;
     attr->gstate->font_size    = size;
@@ -153,6 +161,15 @@ BRST_Page_SetFontAndSize(BRST_Page page,
 
     return ret;
 }
+
+BRST_EXPORT(BRST_STATUS)
+BRST_Page_SetFontAndSize(BRST_Page page,
+    BRST_Font font,
+    BRST_REAL size
+) {
+    return BRST_Dict_SetFontAndSize(page, font, size);
+}
+
 
 /* Tr */
 BRST_EXPORT(BRST_STATUS)

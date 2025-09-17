@@ -111,6 +111,8 @@ BRST_Doc_Page_Pattern_EnsureColorSpace(
     return BRST_OK;
 }
 
+// TODO Вероятно, надо добавить функции BRST_Doc_Page_*
+// для сохранения единообразия с сотальными функциями Doc_Page_*
 /* scn */
 BRST_EXPORT(BRST_STATUS)
 BRST_Doc_Dict_RGBPatternFill_Select(

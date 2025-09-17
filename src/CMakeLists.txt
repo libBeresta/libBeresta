@@ -48,6 +48,7 @@ set(
         brst_page_image.c
         brst_page_xobject.c
         brst_stream_geometry.c
+        brst_stream_text.c
         brst_text.c
         brst_matrix.c
 #[[
