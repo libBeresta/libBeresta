@@ -5,9 +5,9 @@
 
 BRST_EmbeddedFile
 BRST_EmbeddedFile_New(
-    BRST_MMgr   mmgr,
-    BRST_Xref   xref,
-    const char* file
+    BRST_MMgr mmgr,
+    BRST_Xref xref,
+    BRST_CSTR file
 );
 
 BRST_BOOL

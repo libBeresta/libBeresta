@@ -17,7 +17,7 @@ BRST_EmbeddedFile
 BRST_EmbeddedFile_New(
     BRST_MMgr mmgr,
     BRST_Xref xref,
-    const char* file)
+    BRST_CSTR file)
 {
     BRST_STATUS ret = BRST_OK;
     BRST_Dict ef; /* the dictionary for the embedded file: /Type /EF */
@@ -57,6 +57,8 @@ BRST_EmbeddedFile_New(
     if (!ufname)
         return NULL;
 
+    // TODO Разнести имя файла и то, что отображается в документе
+    // (по всей видимости, нужно по-разному сформировать /F и /UF)
     ret += BRST_Dict_AddName(ef, "Type", "Filespec");
     ret += BRST_Dict_Add(ef, "F", name);
     ret += BRST_Dict_Add(ef, "UF", ufname);
