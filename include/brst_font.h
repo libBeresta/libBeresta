@@ -199,4 +199,12 @@ BRST_Font_MeasureText(
     BRST_REAL*       real_width
 );
 
+BRST_EXPORT(BRST_REAL)
+BRST_Font_TextWidth2(BRST_Font font,
+    BRST_REAL font_size,
+    BRST_REAL word_space,
+    BRST_REAL char_space,
+    BRST_CSTR text
+);
+
 #endif /* BRST_FONT_H */

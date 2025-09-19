@@ -2,8 +2,11 @@
 #define PRIVATE_BRST_TEXT_H
 
 BRST_STATUS
-InternalWriteText  (BRST_PageAttr    attr,
-                    const char      *text);
+InternalWriteText(
+    BRST_Stream stream,
+    BRST_Font   font,
+    BRST_CSTR   text
+);
 
 BRST_STATUS
 InternalShowTextNextLine  (BRST_Page    page,

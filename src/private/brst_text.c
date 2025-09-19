@@ -119,10 +119,11 @@ InternalShowTextNextLine(BRST_Page page,
 }
 
 BRST_STATUS
-InternalWriteText(BRST_PageAttr attr,
-    const char* text)
+InternalWriteText(BRST_Stream stream,
+    BRST_Font font,
+    BRST_CSTR text)
 {
-    BRST_FontAttr font_attr = (BRST_FontAttr)attr->gstate->font->attr;
+    BRST_FontAttr font_attr = (BRST_FontAttr)font->attr;
     BRST_STATUS ret;
 
     BRST_PTRACE(" InternalWriteText\n");
@@ -131,14 +132,14 @@ InternalWriteText(BRST_PageAttr attr,
         BRST_Encoder encoder;
         BRST_UINT len;
 
-        if ((ret = BRST_Stream_WriteStr(attr->stream, "<")) != BRST_OK)
+        if ((ret = BRST_Stream_WriteStr(stream, "<")) != BRST_OK)
             return ret;
 
         encoder = font_attr->encoder;
         len     = BRST_StrLen(text, BRST_LIMIT_MAX_STRING_LEN);
 
         if (encoder->encode_text_fn == NULL) {
-            if ((ret = BRST_Stream_WriteBinary(attr->stream, (BRST_BYTE*)text,
+            if ((ret = BRST_Stream_WriteBinary(stream, (BRST_BYTE*)text,
                      len, NULL))
                 != BRST_OK)
                 return ret;
@@ -148,7 +149,7 @@ InternalWriteText(BRST_PageAttr attr,
 
             encoded = (encoder->encode_text_fn)(encoder, text, len, &length);
 
-            ret = BRST_Stream_WriteBinary(attr->stream, (BRST_BYTE*)encoded,
+            ret = BRST_Stream_WriteBinary(stream, (BRST_BYTE*)encoded,
                 length, NULL);
 
             free(encoded);
@@ -157,8 +158,8 @@ InternalWriteText(BRST_PageAttr attr,
                 return ret;
         }
 
-        return BRST_Stream_WriteStr(attr->stream, ">");
+        return BRST_Stream_WriteStr(stream, ">");
     }
 
-    return BRST_Stream_WriteEscapeText(attr->stream, text);
+    return BRST_Stream_WriteEscapeText(stream, text);
 }

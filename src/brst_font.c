@@ -54,6 +54,34 @@ BRST_Font_TextWidth(BRST_Font font,
     return tw;
 }
 
+
+// То же, что и BRST_Font_TextWidth(), но без косвенного возврата.
+// Если со шрифтом проблемы, возвращает отрицательное значение.
+BRST_EXPORT(BRST_REAL)
+BRST_Font_TextWidth2(BRST_Font font,
+    BRST_REAL font_size,
+    BRST_REAL word_space,
+    BRST_REAL char_space,
+    BRST_CSTR text
+) {
+
+    if (!BRST_Font_Validate(font) || font_size <= 0 || text == NULL) {
+        return -1;
+    }
+
+    BRST_REAL ret = 0;
+
+    BRST_UINT len = BRST_StrLen(text, BRST_LIMIT_MAX_STRING_LEN + 1);
+    BRST_TextWidth tw = BRST_Font_TextWidth(font, (BRST_BYTE*)text, len);
+
+    ret += word_space * tw.numspace;
+    ret += tw.width   * font_size / 1000;
+    ret += char_space * tw.numchars;
+
+    return ret;
+}
+
+
 BRST_EXPORT(BRST_UINT)
 BRST_Font_MeasureText(BRST_Font font,
     const BRST_BYTE* text,

@@ -168,14 +168,12 @@ BRST_Page_SetFontAndSize(BRST_Page page,
     return BRST_Dict_SetFontAndSize(page, font, size);
 }
 
-
 /* Tr */
 BRST_EXPORT(BRST_STATUS)
 BRST_Page_SetTextRenderingMode(BRST_Page page,
     BRST_TextRenderingMode mode)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
-    BRST_PageAttr attr;
 
     BRST_PTRACE(" BRST_Page_SetTextRenderingMode\n");
 
@@ -186,13 +184,12 @@ BRST_Page_SetTextRenderingMode(BRST_Page page,
         return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE,
             (BRST_STATUS)mode);
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteInt(attr->stream, (BRST_INT)mode) != BRST_OK)
+    if (BRST_Stream_SetTextRenderingMode(attr->stream, mode) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
-
-    if (BRST_Stream_WriteStr(attr->stream, " Tr\012") != BRST_OK)
-        return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->rendering_mode = mode;
 
@@ -205,20 +202,18 @@ BRST_Page_SetTextRise(BRST_Page page,
     BRST_REAL value)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_PAGE_DESCRIPTION | BRST_GMODE_TEXT_OBJECT);
-    BRST_PageAttr attr;
 
     BRST_PTRACE(" BRST_Page_SetTextRise\n");
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteReal(attr->stream, value) != BRST_OK)
+    if (BRST_Stream_SetTextRise(attr->stream, value) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
-
-    if (BRST_Stream_WriteStr(attr->stream, " Ts\012") != BRST_OK)
-        return BRST_Error_Check(page->error);
+    }
 
     attr->gstate->text_rise = value;
 
@@ -232,27 +227,18 @@ BRST_Page_MoveTextPos(BRST_Page page,
     BRST_REAL y)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_TEXT_OBJECT);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
-    BRST_PageAttr attr;
 
     BRST_PTRACE(" BRST_Page_MoveTextPos\n");
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-
-    pbuf    = BRST_FToA(pbuf, x, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y, eptr);
-    BRST_StrCpy(pbuf, " Td\012", eptr);
-
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
+    if (BRST_Stream_MoveTextPos(attr->stream, x, y) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->text_matrix->x += x * attr->text_matrix->a + y * attr->text_matrix->c;
     attr->text_matrix->y += y * attr->text_matrix->d + x * attr->text_matrix->b;
@@ -269,27 +255,18 @@ BRST_Page_MoveTextPos2(BRST_Page page,
     BRST_REAL y)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_TEXT_OBJECT);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
-    BRST_PageAttr attr;
 
     BRST_PTRACE(" BRST_Page_MoveTextPos2\n");
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-
-    pbuf    = BRST_FToA(pbuf, x, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y, eptr);
-    BRST_StrCpy(pbuf, " TD\012", eptr);
-
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
+    if (BRST_Stream_MoveTextPos2(attr->stream, x, y) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->text_matrix->x += x * attr->text_matrix->a + y * attr->text_matrix->c;
     attr->text_matrix->y += y * attr->text_matrix->d + x * attr->text_matrix->b;
@@ -311,38 +288,22 @@ BRST_Page_SetTextMatrix(BRST_Page page,
     BRST_REAL y)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_TEXT_OBJECT);
-    char buf[BRST_TMP_BUF_SIZE];
-    char* pbuf = buf;
-    char* eptr = buf + BRST_TMP_BUF_SIZE - 1;
-    BRST_PageAttr attr;
+
 
     BRST_PTRACE(" BRST_Page_SetTextMatrix\n");
 
     if (ret != BRST_OK)
         return ret;
 
-    attr = (BRST_PageAttr)page->attr;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
     if ((a == 0 || d == 0) && (b == 0 || c == 0))
         return BRST_Error_Raise(page->error, BRST_INVALID_PARAMETER, 0);
 
-    BRST_MemSet(buf, 0, BRST_TMP_BUF_SIZE);
-
-    pbuf    = BRST_FToA(pbuf, a, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, b, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, c, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, d, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, x, eptr);
-    *pbuf++ = ' ';
-    pbuf    = BRST_FToA(pbuf, y, eptr);
-    BRST_StrCpy(pbuf, " Tm\012", eptr);
-
-    if (BRST_Stream_WriteStr(attr->stream, buf) != BRST_OK)
+    if (BRST_Stream_SetTextMatrix(attr->stream, a, b, c, d, x, y) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     attr->text_matrix = BRST_Matrix_New(BRST_Page_MMgr(page), a, b, c, d, x, y);
     attr->text_pos.x    = attr->text_matrix->x;
@@ -365,8 +326,10 @@ BRST_Page_MoveToNextLine(BRST_Page page)
 
     attr = (BRST_PageAttr)page->attr;
 
-    if (BRST_Stream_WriteStr(attr->stream, "T*\012") != BRST_OK)
+    if (BRST_Stream_MoveToNextLine(attr->stream) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
+    }
 
     /* calculate the reference point of text */
     attr->text_matrix->x -= attr->gstate->text_leading * attr->text_matrix->c;
@@ -381,7 +344,7 @@ BRST_Page_MoveToNextLine(BRST_Page page)
 /* Tj */
 BRST_EXPORT(BRST_STATUS)
 BRST_Page_ShowText(BRST_Page page,
-    const char* text)
+    BRST_CSTR text)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_TEXT_OBJECT);
     BRST_PageAttr attr;
@@ -402,11 +365,10 @@ BRST_Page_ShowText(BRST_Page page,
     if (!tw)
         return ret;
 
-    if (InternalWriteText(attr, text) != BRST_OK)
+    if (BRST_Stream_ShowText(attr->stream, attr->gstate->font, text) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
         return BRST_Error_Check(page->error);
-
-    if (BRST_Stream_WriteStr(attr->stream, " Tj\012") != BRST_OK)
-        return BRST_Error_Check(page->error);
+    }
 
     /* calculate the reference point of text */
     if (attr->gstate->writing_mode == BRST_WMODE_HORIZONTAL) {
@@ -444,7 +406,7 @@ BRST_Page_ShowTextNextLine(BRST_Page page,
     if (text == NULL || text[0] == 0)
         return BRST_Page_MoveToNextLine(page);
 
-    if (InternalWriteText(attr, text) != BRST_OK)
+    if (InternalWriteText(attr->stream, attr->gstate->font, text) != BRST_OK)
         return BRST_Error_Check(page->error);
 
     if (BRST_Stream_WriteStr(attr->stream, " \'\012") != BRST_OK)
@@ -510,10 +472,10 @@ BRST_Page_ShowTextNextLineEx(BRST_Page page,
     pbuf    = BRST_FToA(pbuf, char_space, eptr);
     *pbuf   = ' ';
 
-    if (InternalWriteText(attr, buf) != BRST_OK)
+    if (InternalWriteText(attr->stream, attr->gstate->font, buf) != BRST_OK)
         return BRST_Error_Check(page->error);
 
-    if (InternalWriteText(attr, text) != BRST_OK)
+    if (InternalWriteText(attr->stream, attr->gstate->font, text) != BRST_OK)
         return BRST_Error_Check(page->error);
 
     if (BRST_Stream_WriteStr(attr->stream, " \"\012") != BRST_OK)
@@ -546,7 +508,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_Page_TextOut(BRST_Page page,
     BRST_REAL xpos,
     BRST_REAL ypos,
-    const char* text)
+    BRST_CSTR text)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_TEXT_OBJECT);
     BRST_REAL x;
@@ -572,13 +534,13 @@ BRST_Page_TextRect(BRST_Page page,
     BRST_REAL top,
     BRST_REAL right,
     BRST_REAL bottom,
-    const char* text,
+    BRST_CSTR text,
     BRST_TextAlignment align,
     BRST_UINT* len)
 {
     BRST_STATUS ret = BRST_Page_CheckState(page, BRST_GMODE_TEXT_OBJECT);
     BRST_PageAttr attr;
-    const char* ptr                 = text;
+    BRST_CSTR ptr                   = text;
     BRST_BOOL pos_initialized       = BRST_FALSE;
     BRST_REAL save_char_space       = 0;
     BRST_BOOL is_insufficient_space = BRST_FALSE;
@@ -974,6 +936,7 @@ BRST_Page_TextWidth(BRST_Page page,
 
     return ret;
 }
+
 
 BRST_EXPORT(BRST_UINT)
 BRST_Page_MeasureText(BRST_Page page,
