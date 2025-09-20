@@ -125,7 +125,7 @@ BRST_Dict_SetFontAndSize(BRST_Dict dict,
     if (ret != BRST_OK)
         return ret;
 
-    BRST_PTRACE(" BRST_Page_SetFontAndSize\n");
+    BRST_PTRACE(" BRST_Dict_SetFontAndSize\n");
 
     if (!BRST_Font_Validate(font))
         return BRST_Error_Raise(dict->error, BRST_PAGE_INVALID_FONT, 0);
@@ -153,10 +153,11 @@ BRST_Dict_SetFontAndSize(BRST_Dict dict,
         return BRST_Error_Check(dict->error);
     }
 
-    attr->gstate->font         = font;
-    attr->gstate->font_size    = size;
-    attr->gstate->writing_mode = ((BRST_FontAttr)font->attr)->writing_mode;
-
+    if (isPage) {
+        attr->gstate->font         = font;
+        attr->gstate->font_size    = size;
+        attr->gstate->writing_mode = ((BRST_FontAttr)font->attr)->writing_mode;
+    }
     return ret;
 }
 
