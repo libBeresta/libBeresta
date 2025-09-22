@@ -59,7 +59,7 @@ int main(int argc, char** argv)
     BRST_Font font = BRST_Doc_Font(pdf, font_name, "UTF-8");
 #else
     BRST_Font font = BRST_Doc_Font(pdf, "Helvetica", NULL);
-#end
+#endif
 
     // Вход в текстовый режим
     BRST_Page_BeginText(page);

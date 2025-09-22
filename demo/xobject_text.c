@@ -49,7 +49,7 @@ int main(int argc, char** argv)
 #if 1
     BRST_Doc_UseUTFEncodings(pdf);
     BRST_Doc_Encoder_SetCurrent(pdf, "UTF-8");
-    BRST_CSTR font_name = BRST_Doc_TTFont_LoadFromFile(pdf, "../../data/fonts/PT/PT/PT-Astra-Serif/pt-astra-serif_regular.ttf", BRST_FALSE);
+    BRST_CSTR font_name = BRST_Doc_TTFont_LoadFromFile(pdf, "../../data/fonts/PT/PT/PT-Astra-Serif/pt-astra-serif_regular.ttf", BRST_TRUE);
     BRST_Font font = BRST_Doc_Font(pdf, font_name, "UTF-8");
 #else
     BRST_Font font = BRST_Doc_Font(pdf, "Helvetica", NULL);

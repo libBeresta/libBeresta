@@ -14,6 +14,7 @@
 #include "brst_matrix.h"
 #include "brst_text.h"
 #include "private/brst_text.h"
+#include "private/brst_defines.h"
 
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_BeginText(BRST_Stream stream)
@@ -229,6 +230,17 @@ BRST_Stream_ShowText(BRST_Stream stream,
 
     if (ret != BRST_OK)
         return ret;
+
+    BRST_UINT len = BRST_StrLen(text, BRST_LIMIT_MAX_STRING_LEN + 1);
+    // !!! Чрезвычайно важное место !!!
+    // Следующая строчка напрямую не участвует в отображении
+    // текста, однако, побочным эффектом вызова этой функции
+    // является расчет ширины глифов, подготовка внутренних структур
+    // в рамках определения шрифта (fontdef).
+    // Без этого встроенный шрифт не может быть использован, поскольку
+    // для символов текста просто нет обнаруживаются глифы.
+    BRST_TextWidth tw = BRST_Font_TextWidth(font, (BRST_BYTE*)text, len);
+    BRST_UNUSED(tw);
 
     ret += InternalWriteText(stream, font, text);
     ret += BRST_Stream_WriteStr(stream, " Tj\012");
