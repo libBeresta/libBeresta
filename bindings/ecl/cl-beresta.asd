@@ -41,6 +41,7 @@
              (:file "geometry_defines" :depends-on ("package" "types" "page"))
              (:file "geometry" :depends-on ("package" "types" "geometry_defines" "page"))
              (:file "stream_geometry" :depends-on ("package" "types" "geometry_defines" "stream"))
+             (:file "stream_text" :depends-on ("package" "types" "geometry_defines" "stream"))
              (:file "page" :depends-on ("package" "types" "dict"))
              (:file "stream" :depends-on ("package" "types" "dict"))
              (:file "dict" :depends-on ("package" "types"))
