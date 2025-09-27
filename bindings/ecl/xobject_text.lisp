@@ -8,7 +8,7 @@
 
     (Doc-UseUTFEncodings pdf)
     (Doc-Encoder-SetCurrent pdf "UTF-8")
-    
+
     (let* ((xobj (doc-page-xobject-create pdf
 					  page
 					  100 100
@@ -20,8 +20,8 @@
 		       pdf
 		       (string-to-cstring
 			"../../data/fonts/PT/PT/PT-Astra-Serif/pt-astra-serif_regular.ttf")
-		  1))) ;; BRST_TRUE
-     
+		       1))) ;; BRST_TRUE
+
       (setf font
 	    (doc-font pdf
 		      (ffi:convert-from-foreign-string font-name)
