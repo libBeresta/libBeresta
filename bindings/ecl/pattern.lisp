@@ -18,7 +18,7 @@
 	   (stream (doc-page-pattern-stream pattern))
 	   (width (page-width page))
 	   (height (page-height page))
-	   (margin (* 15 2.834646)))
+	   (margin (* 15 MM)))
       (stream-setlinewidth stream 0.49814)
       (stream-moveto stream -1  4)
       (stream-lineto stream  6 11)
