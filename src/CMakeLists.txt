@@ -28,7 +28,7 @@ set(
         brst_doc_info.c
         brst_doc_outline.c
         brst_doc_page.c
-        brst_doc_page_xobject.c
+        brst_doc_xobject.c
         brst_doc_page_pattern.c
         brst_doc_pdfa.c
         brst_doc_save.c

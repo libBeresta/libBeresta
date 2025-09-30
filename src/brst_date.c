@@ -6,6 +6,7 @@
 //    #include <sys/timeb.h>
 #endif
 
+#include "brst_config.h"
 #include "brst_external.h"
 #include "brst_types.h"
 #include "brst_mmgr.h"

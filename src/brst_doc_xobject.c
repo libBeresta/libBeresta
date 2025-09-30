@@ -28,16 +28,15 @@
 #include "brst_image.h"
 #include "brst_matrix.h"
 #include "private/brst_gstate.h"
-#include "private/brst_page_attr.h"
 #include "private/brst_array.h"
 #include "private/brst_name.h"
-#include "brst_doc_page_xobject.h"
+#include "brst_doc_xobject.h"
 #include "brst_xobject.h"
 #include "private/brst_xobject.h"
 
 BRST_EXPORT(BRST_XObject)
-BRST_Doc_Page_XObject_CreateFromImage(BRST_Doc pdf,
-    BRST_Page page,
+BRST_Doc_XObject_CreateFromImage(
+    BRST_Doc pdf,
     BRST_Rect rect,
     BRST_Image image,
     BRST_BOOL zoom)
@@ -62,7 +61,7 @@ BRST_Doc_Page_XObject_CreateFromImage(BRST_Doc pdf,
     /* add required elements */
     fromxobject->filter = BRST_STREAM_FILTER_FLATE_DECODE;
 
-    resource = BRST_Dict_New(page->mmgr);
+    resource = BRST_Dict_New(pdf->mmgr);
     if (!resource)
         return NULL;
 
@@ -72,18 +71,18 @@ BRST_Doc_Page_XObject_CreateFromImage(BRST_Doc pdf,
 
     ret = BRST_Dict_Add(fromxobject, "Resources", resource);
 
-    procset = BRST_Array_New(page->mmgr);
+    procset = BRST_Array_New(pdf->mmgr);
     if (!procset)
         return NULL;
 
     ret += BRST_Dict_Add(resource, "ProcSet", procset);
-    ret += BRST_Array_Add(procset, BRST_Name_New(page->mmgr, "PDF"));
-    ret += BRST_Array_Add(procset, BRST_Name_New(page->mmgr, "ImageC"));
+    ret += BRST_Array_Add(procset, BRST_Name_New(pdf->mmgr, "PDF"));
+    ret += BRST_Array_Add(procset, BRST_Name_New(pdf->mmgr, "ImageC"));
 
     if (ret != BRST_OK)
         return NULL;
 
-    xobject = BRST_Dict_New(page->mmgr);
+    xobject = BRST_Dict_New(pdf->mmgr);
     if (!xobject)
         return NULL;
 
@@ -93,7 +92,7 @@ BRST_Doc_Page_XObject_CreateFromImage(BRST_Doc pdf,
     if (BRST_Dict_Add(xobject, "Im1", image) != BRST_OK)
         return NULL;
 
-    array1 = BRST_Array_New(page->mmgr);
+    array1 = BRST_Array_New(pdf->mmgr);
     if (!array1)
         return NULL;
 
@@ -111,7 +110,7 @@ BRST_Doc_Page_XObject_CreateFromImage(BRST_Doc pdf,
     ret += BRST_Array_AddReal(array1, rect.right);
     ret += BRST_Array_AddReal(array1, rect.top);
 
-    array2 = BRST_Array_New(page->mmgr);
+    array2 = BRST_Array_New(pdf->mmgr);
     if (!array2)
         return NULL;
 
@@ -166,8 +165,8 @@ BRST_Doc_Page_XObject_CreateFromImage(BRST_Doc pdf,
 }
 
 BRST_EXPORT(BRST_XObject)
-BRST_Doc_Page_XObject_CreateAsWhiteRect(BRST_Doc pdf,
-    BRST_Page page,
+BRST_Doc_XObject_CreateAsWhiteRect(
+    BRST_Doc pdf,
     BRST_Rect rect)
 {
 
@@ -191,7 +190,7 @@ BRST_Doc_Page_XObject_CreateAsWhiteRect(BRST_Doc pdf,
     /* add required elements */
     fromxobject->filter = BRST_STREAM_FILTER_FLATE_DECODE;
 
-    resource = BRST_Dict_New(page->mmgr);
+    resource = BRST_Dict_New(pdf->mmgr);
     if (!resource)
         return NULL;
 
@@ -201,25 +200,25 @@ BRST_Doc_Page_XObject_CreateAsWhiteRect(BRST_Doc pdf,
 
     ret = BRST_Dict_Add(fromxobject, "Resources", resource);
 
-    procset = BRST_Array_New(page->mmgr);
+    procset = BRST_Array_New(pdf->mmgr);
     if (!procset)
         return NULL;
 
     ret += BRST_Dict_Add(resource, "ProcSet", procset);
-    ret += BRST_Array_Add(procset, BRST_Name_New(page->mmgr, "PDF"));
-    ret += BRST_Array_Add(procset, BRST_Name_New(page->mmgr, "ImageC"));
+    ret += BRST_Array_Add(procset, BRST_Name_New(pdf->mmgr, "PDF"));
+    ret += BRST_Array_Add(procset, BRST_Name_New(pdf->mmgr, "ImageC"));
 
     if (ret != BRST_OK)
         return NULL;
 
-    xobject = BRST_Dict_New(page->mmgr);
+    xobject = BRST_Dict_New(pdf->mmgr);
     if (!xobject)
         return NULL;
 
     if (BRST_Dict_Add(resource, "XObject", xobject) != BRST_OK)
         return NULL;
 
-    array1 = BRST_Array_New(page->mmgr);
+    array1 = BRST_Array_New(pdf->mmgr);
     if (!array1)
         return NULL;
 
@@ -237,7 +236,7 @@ BRST_Doc_Page_XObject_CreateAsWhiteRect(BRST_Doc pdf,
     ret += BRST_Array_AddReal(array1, rect.right - rect.left);
     ret += BRST_Array_AddReal(array1, rect.top - rect.bottom);
 
-    array2 = BRST_Array_New(page->mmgr);
+    array2 = BRST_Array_New(pdf->mmgr);
     if (!array2)
         return NULL;
 
@@ -284,16 +283,15 @@ BRST_Doc_Page_XObject_CreateAsWhiteRect(BRST_Doc pdf,
     return fromxobject;
 }
 
-
 BRST_EXPORT(BRST_XObject)
-BRST_Doc_Page_XObject_Create(BRST_Doc pdf,
-    BRST_Page page,
+BRST_Doc_XObject_Create(
+    BRST_Doc pdf,
     BRST_REAL width,
     BRST_REAL height,
     BRST_REAL scalex,
     BRST_REAL scaley
 ) {
-    return BRST_XObject_New(page->mmgr, pdf->xref, width, height, scalex, scaley);
+    return BRST_XObject_New(pdf->mmgr, pdf->xref, width, height, scalex, scaley);
 }
 
 BRST_EXPORT(BRST_Stream)

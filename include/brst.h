@@ -35,7 +35,7 @@
 #include "brst_date.h"
 #include "brst_doc_info.h"
 #include "brst_doc_matrix.h"
-#include "brst_doc_page_xobject.h"
+#include "brst_doc_xobject.h"
 #include "brst_page_xobject.h"
 #include "brst_xobject.h"
 #include "brst_doc_page_pattern.h"

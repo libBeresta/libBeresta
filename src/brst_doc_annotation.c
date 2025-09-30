@@ -45,7 +45,7 @@
 #include "private/brst_destination.h"
 #include "brst_exdata.h"
 #include "brst_javascript.h"
-#include "brst_doc_page_xobject.h"
+#include "brst_doc_xobject.h"
 #include "brst_doc_annotation.h"
 #include "brst_page_annotation.h"
 
@@ -65,7 +65,7 @@ BRST_Doc_Page_CreateWidgetAnnot_WhiteOnlyWhilePrint(BRST_Doc pdf,
 
     annot = BRST_Page_CreateWidgetAnnot(page, rect);
 
-    fxobj = BRST_Doc_Page_XObject_CreateAsWhiteRect(pdf, page, rect);
+    fxobj = BRST_Doc_XObject_CreateAsWhiteRect(pdf, rect);
     if (!fxobj)
         return NULL;
 

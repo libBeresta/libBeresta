@@ -32,7 +32,7 @@
 #include "private/brst_page_attr.h"
 #include "private/brst_array.h"
 #include "private/brst_name.h"
-#include "brst_doc_page_xobject.h"
+#include "brst_doc_xobject.h"
 #include "private/brst_pattern.h"
 #include "brst_geometry.h"
 

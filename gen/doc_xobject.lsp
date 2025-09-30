@@ -1,6 +1,6 @@
-(:файл "doc_page_xobject"
+(:файл "doc_xobject"
  :группа "page"
- :функции ((:название "Doc_Page_XObject_Create"
+ :функции ((:название "Doc_XObject_Create"
             :группа "page"
             :ru "Создание объекта XObject Form"
             :en "XObject Form object creation"
@@ -17,10 +17,6 @@
                          :имя "pdf"
                          :ru ":param_pdf"
                          :en ":param_pdf")
-                        (:тип "Page"
-                         :имя "page"
-                         :ru ":param_page"
-                         :en ":param_page")
                         (:тип "REAL"
                          :имя "width"
                          :ru "Ширина XObject в логических единицах"

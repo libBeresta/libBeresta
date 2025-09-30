@@ -1,3 +1,4 @@
+#include "brst_config.h"
 #include "brst_external.h"
 #include "brst_ext_gstate.h"
 #include "brst_base.h"
