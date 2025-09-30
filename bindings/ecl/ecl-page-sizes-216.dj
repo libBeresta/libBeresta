@@ -1,0 +1,8 @@
+{% include "ЛИЦЕНЗИЯ.txt" %}
+(in-package #:cl-beresta)
+{% if размеры %}
+(enum PageSizes  (
+  {% for размер in размеры %}{%ifequal размер.откуда "ISO 216"%}
+  ;; Размер страницы "{{ размер.откуда}} {{размер.название}}" ({{размер.ширина}}мм x {{размер.высота}}мм)
+  {{ размер.ид | under }} {% endifequal %}{% endfor %})
+:prefix "PAGE-SIZE"){% endif %}
