@@ -340,3 +340,31 @@ BRST_Doc_Contents(BRST_Doc pdf,
 
     return ret;
 }
+
+BRST_EXPORT(BRST_REAL)
+BRST_PageSize_Width(BRST_PageSizes size, BRST_PageOrientation orientation) {
+    if ((size >= 0 && size < BRST_PAGE_SIZE_EOF) &&
+       (orientation == BRST_PAGE_ORIENTATION_LANDSCAPE || orientation == BRST_PAGE_ORIENTATION_PORTRAIT)) {
+        if (orientation == BRST_PAGE_ORIENTATION_PORTRAIT) {
+            return BRST_PREDEFINED_PAGE_SIZES[size].x;
+        } else {
+            return BRST_PREDEFINED_PAGE_SIZES[size].y;
+        }
+    } else {
+        return 0.0;
+    }
+}
+
+BRST_EXPORT(BRST_REAL)
+BRST_PageSize_Height(BRST_PageSizes size, BRST_PageOrientation orientation) {
+    if ((size >= 0 && size < BRST_PAGE_SIZE_EOF) &&
+       (orientation == BRST_PAGE_ORIENTATION_LANDSCAPE || orientation == BRST_PAGE_ORIENTATION_PORTRAIT)) {
+        if (orientation == BRST_PAGE_ORIENTATION_PORTRAIT) {
+            return BRST_PREDEFINED_PAGE_SIZES[size].y;
+        } else {
+            return BRST_PREDEFINED_PAGE_SIZES[size].x;
+        }
+    } else {
+        return 0.0;
+    }
+}

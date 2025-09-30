@@ -211,4 +211,35 @@ If this parameter set to non-zero value, memory management will be done as follo
 	 :результат (:тип "void"
 		     :ru "Нет"
 		     :en "No"))
-	))
+
+	(:название "PageSize_Width"
+	 :группа "doc"
+	 :ru ""
+	 :en ""
+	 :параметры ((:тип "PageSizes"
+                  :имя "size"
+                  :ru ""
+                  :en "")
+                 (:тип "PageOrientation"
+                  :имя "orientation"
+                  :ru ""
+                  :en ""))
+	 :результат (:тип "REAL"
+		     :ru ""
+		     :en ""))
+
+	(:название "PageSize_Height"
+	 :группа "doc"
+	 :ru ""
+	 :en ""
+	 :параметры ((:тип "PageSizes"
+                  :имя "size"
+                  :ru ""
+                  :en "")
+                 (:тип "PageOrientation"
+                  :имя "orientation"
+                  :ru ""
+                  :en ""))
+	 :результат (:тип "REAL"
+		     :ru ""
+		     :en ""))))

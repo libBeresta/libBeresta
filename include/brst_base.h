@@ -7,6 +7,14 @@
 #include "brst_error_handler.h"
 #include "brst_mmgr.h"
 #include "brst_dict.h"
+#include "brst_page.h"
+
+#ifdef LIBBRST_ISO_216_ONLY
+#include "brst_page_sizes_iso_216.h"
+#else
+#include "brst_page_sizes.h"
+#endif
+
 
 BRST_EXPORT(const char *)
 BRST_Version(
@@ -189,4 +197,17 @@ BRST_EXPORT(BRST_MMgr)
 BRST_Doc_MMgr(
     BRST_Doc doc
 );
+
+BRST_EXPORT(BRST_REAL)
+BRST_PageSize_Width(
+    BRST_PageSizes size,
+    BRST_PageOrientation orientation
+);
+
+BRST_EXPORT(BRST_REAL)
+BRST_PageSize_Height(
+    BRST_PageSizes size,
+    BRST_PageOrientation orientation
+);
+
 #endif /* BRST_BASE_H */
