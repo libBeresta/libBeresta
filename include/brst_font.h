@@ -86,7 +86,8 @@ BRST_Font_BBox(
 */
 BRST_EXPORT(BRST_INT)
 BRST_Font_Ascent(
-    BRST_Font font
+    BRST_Font font,
+    BRST_REAL font_size
 );
 
 /**
@@ -101,7 +102,8 @@ BRST_Font_Ascent(
 */
 BRST_EXPORT(BRST_INT)
 BRST_Font_Descent(
-    BRST_Font font
+    BRST_Font font,
+    BRST_REAL font_size
 );
 
 /**
@@ -116,7 +118,8 @@ BRST_Font_Descent(
 */
 BRST_EXPORT(BRST_UINT)
 BRST_Font_XHeight(
-    BRST_Font font
+    BRST_Font font,
+    BRST_REAL font_size
 );
 
 /**
@@ -131,7 +134,9 @@ BRST_Font_XHeight(
 */
 BRST_EXPORT(BRST_UINT)
 BRST_Font_CapHeight(
-    BRST_Font font
+    BRST_Font font,
+    BRST_REAL font_size
+
 );
 
 /**
@@ -200,7 +205,8 @@ BRST_Font_MeasureText(
 );
 
 BRST_EXPORT(BRST_REAL)
-BRST_Font_TextWidth2(BRST_Font font,
+BRST_Font_TextWidth2(
+    BRST_Font font,
     BRST_REAL font_size,
     BRST_REAL word_space,
     BRST_REAL char_space,
