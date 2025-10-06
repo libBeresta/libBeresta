@@ -46,7 +46,7 @@
                      :ру "Кодировщик текста"
                      :en "Handle of encoder used to encode text. If NULL, uses PDFDocEncoding.")))
 
-       2. BRST_Page_CreateFreeTextAnnot
+       ;; BRST_Page_CreateFreeTextAnnot
 
        (:название "Page_CreateFreeTextAnnot"
 	:группа "link"
@@ -75,7 +75,7 @@
                      :ру "Обработчик кодировки текста"
                      :en "Handle of encoder used to encode text. If NULL, uses PDFDocEncoding.")))
 
-       3. BRST_Page_CreateLineAnnot
+       ;; BRST_Page_CreateLineAnnot
 
        (:название "Page_CreateLineAnnot"
 	:группа "link"
@@ -100,7 +100,7 @@
                      :ру "Обработчик кодировки текста"
                      :en "Handle of encoder used to encode text. If NULL, uses PDFDocEncoding.")))
 
-       4. BRST_Page_CreateWidgetAnnot
+       ;; BRST_Page_CreateWidgetAnnot
 
        (:название "Page_CreateWidgetAnnot"
 	:группа "link"
@@ -138,14 +138,14 @@
                      :en ":param_page")
                     (:тип "Rect"
                      :имя "rect"
-                     :ру "Кликовая зона аннотации"
+                     :ру "Зона нажатия аннотации"
                      :en "Clickable rectangle area.")
                     (:тип "Destination"
                      :имя "dst"
                      :ру "Цель перехода"
                      :en "Handle of destination object to jump to.")))
 
-       6. BRST_Page_CreateURILinkAnnot
+       ;; BRST_Page_CreateURILinkAnnot
 
        (:название "Page_CreateURILinkAnnot"
 	:группа "link"
@@ -162,14 +162,14 @@
                      :en ":param_page")
                     (:тип "Rect"
                      :имя "rect"
-                     :ру "Кликовая зона аннотации"
+                     :ру "Зона нажатия аннотации"
                      :en "Clickable rectangle area.")
                     (:тип "CSTR"
                      :имя "uri"
                      :ру "Адрес ресурса"
                      :en "URI address to navigate to.")))
 
-       7. BRST_Page_CreateHighlightAnnot
+       ;; BRST_Page_CreateHighlightAnnot
 
        (:название "Page_CreateHighlightAnnot"
 	:группа "link"
@@ -198,10 +198,7 @@
                      :ру "Обработчик кодировки текста"
                      :en "Handle of encoder used to encode text. If NULL, uses PDFDocEncoding.")))
 
-       Остальные функции следуют аналогичной структуре:
-
-       Продолжаю далее по такому же принципу.
-       8. BRST_Page_CreateUnderlineAnnot
+       ;; BRST_Page_CreateUnderlineAnnot
 
        (:название "Page_CreateUnderlineAnnot"
 	:группа "link"
@@ -259,7 +256,7 @@
                      :ру "Обработчик кодировки текста"
                      :en "Handle of encoder used to encode text. If NULL, uses PDFDocEncoding.")))
 
-       10. BRST_Page_CreateStrikeOutAnnot
+       ;; BRST_Page_CreateStrikeOutAnnot
 
        (:название "Page_CreateStrikeOutAnnot"
 	:группа "link"
@@ -288,7 +285,7 @@
                      :ру "Обработчик кодировки текста"
                      :en "Handle of encoder used to encode text. If NULL, uses PDFDocEncoding.")))
 
-       11. BRST_Page_CreatePopupAnnot
+       ;; BRST_Page_CreatePopupAnnot
 
        (:название "Page_CreatePopupAnnot"
 	:группа "link"
@@ -312,7 +309,7 @@
                      :ру "Родительская аннотация"
                      :en "Parent annotation handle.")))
 
-       12. BRST_Page_CreateStampAnnot
+       ;; BRST_Page_CreateStampAnnot
 
        (:название "Page_CreateStampAnnot"
 	:группа "link"
@@ -345,7 +342,7 @@
                      :ру "Обработчик кодировки текста"
                      :en "Handle of encoder used to encode text. If NULL, uses PDFDocEncoding.")))
 
-       13. BRST_Page_CreateProjectionAnnot
+       ;; BRST_Page_CreateProjectionAnnot
 
        (:название "Page_CreateProjectionAnnot"
 	:группа "link"
@@ -374,7 +371,7 @@
                      :ру "Обработчик кодировки текста"
                      :en "Handle of encoder used to encode text. If NULL, uses PDFDocEncoding.")))
 
-       14. BRST_Page_CreateSquareAnnot
+       ;; BRST_Page_CreateSquareAnnot
 
        (:название "Page_CreateSquareAnnot"
 	:группа "link"
@@ -403,7 +400,7 @@
                      :ру "Обработчик кодировки текста"
                      :en "Handle of encoder used to encode text. If NULL, uses PDFDocEncoding.")))
 
-       15. BRST_Page_CreateCircleAnnot
+       ;; BRST_Page_CreateCircleAnnot
 
        (:название "Page_CreateCircleAnnot"
 	:группа "link"
@@ -432,7 +429,7 @@
                      :ру "Обработчик кодировки текста"
                      :en "Handle of encoder used to encode text. If NULL, uses PDFDocEncoding.")))
 
-       16. BRST_LinkAnnot_SetHighlightMode
+       ;; BRST_LinkAnnot_SetHighlightMode
 
        (:название "LinkAnnot_SetHighlightMode"
 	:группа "link"
@@ -441,7 +438,7 @@
 	:результат (:тип "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
-	:ru "Установка стиля подсветки для аннота
+	:ru "Установка стиля подсветки для 
 
 
-             )
+             ))

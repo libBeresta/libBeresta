@@ -1,7 +1,7 @@
 (:файл "doc_info"
  :перечисления
        ((:имя "InfoType"
-         :ru "Аттрибуты метаданных документа (Таблица 317)"
+         :ru "Атрибуты метаданных документа (Таблица 317)"
          :en "Document metadata attributes (Table 317)"
          :элементы (
                     (:элемент "INFO_CREATION_DATE"               :ru "Дата создания документа"  :en "Document creation date")
@@ -55,7 +55,7 @@
     \\endparblock")
                         (:тип "CSTR"
                          :имя "value"
-                         :ru "Устанавливааемое значение "
+                         :ru "Устанавливаемое значение"
                          :en "Attribute text to be set"))
             :результат (:тип "STATUS"
                         :ru ":return_ok"
@@ -85,7 +85,7 @@
     \\endparblock")
                         (:тип "Date"
                          :имя "value"
-                         :ru "Устанавливааемое значение"
+                         :ru "Устанавливаемое значение"
                          :en "Attribute text to be set"))
             :результат (:тип "STATUS"
                         :ru ":return_ok"

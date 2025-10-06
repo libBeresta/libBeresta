@@ -2,6 +2,7 @@
 DecodeParms = "DecodeParms"
 ParseLoca = "ParseLoca"
 shsInfo = "shsInfo"
+Autor = "Autor"
 
 [default.extend-words]
 FLATE = "FLATE"
