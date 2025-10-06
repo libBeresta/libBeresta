@@ -27,6 +27,7 @@ pushd $RENDER_DIR > /dev/null
 ./render.sh $PREFIX/ecl.dj text.lsp             ru $PREFIX/src/text.lisp
 ./render.sh $PREFIX/ecl.dj geometry.lsp         ru $PREFIX/src/geometry.lisp
 ./render.sh $PREFIX/ecl.dj doc.lsp              ru $PREFIX/src/doc.lisp
+./render.sh $PREFIX/ecl.dj doc_ext_gstate.lsp   ru $PREFIX/src/doc_ext_gstate.lisp
 ./render.sh $PREFIX/ecl.dj doc_page.lsp         ru $PREFIX/src/doc_page.lisp
 ./render.sh $PREFIX/ecl.dj doc_save.lsp         ru $PREFIX/src/doc_save.lisp
 ./render.sh $PREFIX/ecl.dj mmgr.lsp             ru $PREFIX/src/mmgr.lisp
@@ -67,6 +68,7 @@ pushd $RENDER_DIR > /dev/null
 ./render.sh $PREFIX/exp-ecl.dj text.lsp             ru $PREFIX/src/exp-text.lisp
 ./render.sh $PREFIX/exp-ecl.dj geometry.lsp         ru $PREFIX/src/exp-geometry.lisp
 ./render.sh $PREFIX/exp-ecl.dj doc.lsp              ru $PREFIX/src/exp-doc.lisp
+./render.sh $PREFIX/exp-ecl.dj doc_ext_gstate.lsp   ru $PREFIX/src/exp-doc_ext_gstate.lisp
 ./render.sh $PREFIX/exp-ecl.dj doc_page.lsp         ru $PREFIX/src/exp-doc_page.lisp
 ./render.sh $PREFIX/exp-ecl.dj doc_save.lsp         ru $PREFIX/src/exp-doc_save.lisp
 ./render.sh $PREFIX/exp-ecl.dj mmgr.lsp             ru $PREFIX/src/exp-mmgr.lisp
@@ -78,7 +80,7 @@ pushd $RENDER_DIR > /dev/null
 ./render.sh $PREFIX/exp-ecl.dj date.lsp             ru $PREFIX/src/exp-date.lisp
 ./render.sh $PREFIX/exp-ecl.dj doc_encoding_utf.lsp ru $PREFIX/src/exp-doc_encoding_utf.lisp
 ./render.sh $PREFIX/exp-ecl.dj doc_encoder.lsp      ru $PREFIX/src/exp-doc_encoder.lisp
-./render.sh $PREFIX/exp-ecl.dj doc_page_xobject.lsp ru $PREFIX/src/exp-doc_page_xobject.lisp
+./render.sh $PREFIX/exp-ecl.dj doc_xobject.lsp      ru $PREFIX/src/exp-doc_xobject.lisp
 ./render.sh $PREFIX/exp-ecl.dj page_xobject.lsp     ru $PREFIX/src/exp-page_xobject.lisp
 ./render.sh $PREFIX/exp-ecl.dj xobject.lsp          ru $PREFIX/src/exp-xobject.lisp
 ./render.sh $PREFIX/exp-ecl.dj stream_geometry.lsp  ru $PREFIX/src/exp-stream_geometry.lisp
