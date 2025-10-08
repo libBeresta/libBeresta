@@ -153,6 +153,7 @@
 			    (embeddable 'TRUE)
 			    (encoding "UTF-8"))
 			 &body body)
+  #+ecl
   (when (probe-file `,filename)
     (let ((f-name0 (gensym))
 	  (f-name (gensym))
@@ -188,3 +189,23 @@
 	       (aref pattern1 i)))
        (page-setdash ,page c-pattern ,num ,phase))))
 
+(defmacro stream-set-dash-pattern (stream pattern num phase)
+  #+ecl
+  `(let* ((pattern1 ,pattern))
+     (ffi:with-foreign-object (c-pattern '(:array :float ,num))
+       (dotimes (i ,num)
+	 (setf (ffi:deref-array c-pattern '(:array :float) i)
+	       (aref pattern1 i)))
+       (stream-setdash ,stream c-pattern ,num ,phase))))
+
+(defmacro with-page-gsave ((page-var) &body body)
+  `(progn
+     (page-gsave ,page-var)
+     ,@body
+     (page-grestore ,page-var)))
+
+(defmacro with-stream-gsave ((stream-var) &body body)
+  `(progn
+     (stream-gsave ,stream-var)
+     ,@body
+     (stream-grestore ,stream-var)))
