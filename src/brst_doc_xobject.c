@@ -291,7 +291,11 @@ BRST_Doc_XObject_Create(
     BRST_REAL scalex,
     BRST_REAL scaley
 ) {
-    return BRST_XObject_New(pdf->mmgr, pdf->xref, width, height, scalex, scaley);
+    BRST_Dict ret = BRST_XObject_New(pdf->mmgr, pdf->xref, width, height, scalex, scaley);
+    if (ret && (pdf->compression_mode & BRST_COMP_TEXT)) {
+        ret->filter = BRST_STREAM_FILTER_FLATE_DECODE;
+    }
+    return ret;
 }
 
 BRST_EXPORT(BRST_Stream)
