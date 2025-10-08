@@ -21,13 +21,34 @@
                  "Page_GSave()"
                  "Page_GRestore()"
                  "Page_Concat()")
-            :результат (:тип "Stream"
-                        :ru ":param_stream"
-                        :en ":param_stream")
+            :результат (:тип "STATUS"
+                        :ru ":return_ok"
+                        :en ":return_ok")
             :параметры ((:тип "Page"
                          :имя "page"
                          :ru ":param_page"
                          :en ":param_page")
+                        (:тип "XObject"
+                         :имя "xobj"
+                         :ru ":param_xobject"
+                         :en ":param_xobject")))
+
+	   (:название "Page_XObject_Execute"
+            :группа "page"
+            :ru ""
+            :en ""
+            :см ("Doc_Page_XObject_Create()"
+                 "Page_DrawImage()"
+                 "Page_GSave()"
+                 "Page_GRestore()"
+                 "Page_Concat()")
+            :результат (:тип "STATUS"
+                        :ru ":return_ok"
+                        :en ":return_ok")
+            :параметры ((:тип "Dict"
+                         :имя "dict"
+                         :ru ":param_dict"
+                         :en ":param_dict")
                         (:тип "XObject"
                          :имя "xobj"
                          :ru ":param_xobject"
