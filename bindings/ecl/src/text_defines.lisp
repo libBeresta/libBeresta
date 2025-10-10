@@ -1,0 +1,34 @@
+;; 
+;; libBeresta
+;; 
+;; Заголовочные файлы для Embeddable Common Lisp (ecl)
+;; Дмитрий Соломенников, (с) 2025
+;;
+;; Текст лицензии см. в файле ЛИЦЕНЗИЯ в корне проекта
+;;
+(in-package #:cl-beresta)
+
+(include-header)
+
+(enum TextRenderingMode (
+  
+  TEXT-RENDERING-MODE-FILL
+  TEXT-RENDERING-MODE-STROKE
+  TEXT-RENDERING-MODE-FILL-THEN-STROKE
+  TEXT-RENDERING-MODE-INVISIBLE
+  TEXT-RENDERING-MODE-FILL-CLIPPING
+  TEXT-RENDERING-MODE-STROKE-CLIPPING
+  TEXT-RENDERING-MODE-FILL-STROKE-CLIPPING
+  TEXT-RENDERING-MODE-CLIPPING))
+
+(enum TextAlignment (
+  
+  TEXT-ALIGN-LEFT
+  TEXT-ALIGN-RIGHT
+  TEXT-ALIGN-CENTER
+  TEXT-ALIGN-JUSTIFY))
+
+(enum WritingMode (
+  
+  WRITING-MODE-HORIZONTAL
+  WRITING-MODE-VERTICAL))
