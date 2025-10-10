@@ -31,8 +31,11 @@ if [ "x$3" != "x" ]; then
   LNG=":lang :$3"
 fi
 
+P1=`realpath $1`
+P2=`realpath $2`
+
 $ECL --eval "(asdf:load-system 'djula)"     \
      --eval "(load \"render.lsp\")"         \
-     --eval "(do-render #p\"$1\" #p\"$2\" $OUT $LNG)" \
+     --eval "(do-render #p\"$P1\" #p\"$P2\" $OUT $LNG)" \
      --eval "(si:exit)"                     \
      -q
