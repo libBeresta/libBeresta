@@ -55,5 +55,6 @@
 */
 #define BRST_IN                             72.00000
 
+#define KAPPA                     0.552284749830793F
 
 #endif /* BRST_CONSTS_H */

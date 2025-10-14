@@ -61,7 +61,6 @@ BRST_Stream_Skew(
     BRST_REAL   b
 );
 
-/*
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_Circle(
     BRST_Stream stream,
@@ -70,6 +69,7 @@ BRST_Stream_Circle(
     BRST_REAL   radius
 );
 
+/*
 BRST_EXPORT(BRST_STATUS)
 BRST_Stream_Ellipse(
     BRST_Stream stream,

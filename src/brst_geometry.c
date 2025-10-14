@@ -57,8 +57,6 @@ InternalArc(BRST_Page page,
 /* BX --not implemented yet */
 /* EX --not implemented yet */
 
-static const BRST_REAL KAPPA = 0.552284749830793F;
-
 static char*
 QuarterEllipseA(char* pbuf,
     char* eptr,
@@ -1597,26 +1595,16 @@ BRST_Page_Circle(BRST_Page page,
     if (ret != BRST_OK)
         return ret;
 
-    BRST_REAL a = KAPPA * radius;
+    BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-    BRST_REAL xpr = x + radius;
-    BRST_REAL ypr = y + radius;
-    BRST_REAL xmr = x - radius;
-    BRST_REAL ymr = y - radius;
+    if (BRST_Stream_Circle(attr->stream, x, y, radius) != BRST_OK) {
+        BRST_Error_Copy(page->error, attr->stream->error);
+        return BRST_Error_Check(page->error);
+    }
 
-    BRST_REAL xpa = x + a;
-    BRST_REAL ypa = y + a;
-    BRST_REAL xma = x - a;
-    BRST_REAL yma = y - a;
-
-    ret += BRST_Page_MoveTo(page,  xpr, y);
-    ret += BRST_Page_CurveTo(page, xpr, ypa, xpa, ypr, x, ypr);
-    ret += BRST_Page_CurveTo(page, xma, ypr, xmr, ypa, xmr, y);
-    ret += BRST_Page_CurveTo(page, xmr, yma, xma, ymr, x, ymr);
-    ret += BRST_Page_CurveTo(page, xpa, ymr, xpr, yma, xpr, y);
-    ret += BRST_Page_ClosePath(page);
-
-    ret += BRST_Page_MoveTo(page, x, y);
+    attr->cur_pos.x = x;
+    attr->cur_pos.y = y;
+    attr->gmode     = BRST_GMODE_PATH_OBJECT;
 
     return ret;
 }

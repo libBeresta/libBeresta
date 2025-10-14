@@ -1,7 +1,6 @@
 set(
   demos_NAMES
     minimal
-    circle
     line_demo
     attach
     raw_image_demo
@@ -18,6 +17,8 @@ set(
 
 set(
   demos_NO_HANDLER
+    circle
+    xobject_circle
     minimal_empty
     minimal_text
 )

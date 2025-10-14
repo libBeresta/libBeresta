@@ -1,0 +1,8 @@
+$ t004_circle -n
+t004: Create circle
+$ t004_circle
+$ ls t004_circle.pdf
+t004_circle.pdf
+$ qpdf --show-npages t004_circle.pdf
+1
+$ qpdf --show-object=5 --raw-stream-data t004_circle.pdf #=> --file t004_circle.data

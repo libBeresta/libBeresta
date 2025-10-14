@@ -11,3 +11,5 @@ page 1: 4 0 R
     5 0 R
 $ qpdf --show-object=4 t002_minimal_empty.pdf | cut -c30-54
 [ 0 0 841.89001 595.276 ]
+$ qpdf --show-object=3 ./t002_minimal_empty.pdf | cut -c15-44
+Beresta Free PDF Library 1.0.0

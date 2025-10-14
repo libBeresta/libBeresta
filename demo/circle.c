@@ -19,8 +19,6 @@
 */
 
 #include "brst.h"
-#include "handler.h"
-#include <setjmp.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -55,14 +53,9 @@ int main(int argc, char** argv)
     strcat(fname, ".pdf");
 
     // Создание объекта документа
-    pdf = BRST_Doc_New(demo_error_handler, NULL);
+    pdf = BRST_Doc_New_Empty();
     if (!pdf) {
         printf("Error: cannot create Doc object\n");
-        return 1;
-    }
-
-    if (setjmp(env)) {
-        BRST_Doc_Free(pdf);
         return 1;
     }
 
@@ -79,10 +72,11 @@ int main(int argc, char** argv)
     circle(page, width/2, height/2, height/6);
     BRST_Page_Stroke(page);
 
-    BRST_Page_SetRGBStrokeHex(page, 0xFFFF00);
+    BRST_Page_SetRGBStrokeHex(page, 0xFF00FF);
     // Отрисовка отружности с помощью готовой функции
     // (внутри там тот же самый расчет, но это уже часть библиотеки)
     BRST_Page_Circle(page, width/2, height/2, height/3);
+    BRST_Page_LineTo(page, 300, 500);
     BRST_Page_Stroke(page);
 
     // Сохранение документа в файл
