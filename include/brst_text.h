@@ -174,8 +174,6 @@ BRST_Page_SetTextRenderingMode(
 
   \todo Add picture for \ref BRST_CLIPPING
 
-  \see BRST_Page_SetTextRaise()
-
   \copydoc dox_pdf_cmd
   \c Ts
 
@@ -544,7 +542,7 @@ BRST_Page_TextRenderingMode(
 
 */
 BRST_EXPORT(BRST_REAL)
-BRST_Page_TextRaise(
+BRST_Page_TextRise(
     BRST_Page page
 );
 

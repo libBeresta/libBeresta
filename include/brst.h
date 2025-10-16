@@ -5,6 +5,7 @@
 #include "brst_external.h"
 #include "brst_version.h"
 #include "brst_consts.h"
+#include "brst_error.h"
 #include "brst_types.h"
 #include "brst_base.h"
 #include "brst_matrix.h"
