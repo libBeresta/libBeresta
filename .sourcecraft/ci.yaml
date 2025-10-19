@@ -49,4 +49,5 @@ tasks:
         needs: ["build-project"]
         script:
           - cd build/tests
+          - which clitest
           - ctest -R test_beresta --verbose
