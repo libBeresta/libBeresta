@@ -5,7 +5,7 @@
 ;; Дмитрий Соломенников, (с) 2025
 ;;
 ;; Текст лицензии см. в файле ЛИЦЕНЗИЯ в корне проекта
-;;(in-package #:cl-user)
+(in-package #:cl-user)
 
 (defpackage #:cl-beresta
   (:use #:cl)
@@ -965,6 +965,7 @@
   #:Stream-RotateDeg
   #:Stream-Rotate
   #:Stream-Skew
+  #:Stream-Circle
   #:Stream-SetGrayFill
   #:Stream-SetGrayStroke
   #:Stream-SetRGBFill

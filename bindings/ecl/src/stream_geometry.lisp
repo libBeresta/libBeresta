@@ -64,6 +64,14 @@
    (a REAL)
    (b REAL)))
 
+(func Stream-Circle 
+     "BRST_Stream_Circle" 
+      STATUS 
+  ((page Stream)
+   (x REAL)
+   (y REAL)
+   (radius REAL)))
+
 (func Stream-SetGrayFill 
      "BRST_Stream_SetGrayFill" 
       STATUS 
