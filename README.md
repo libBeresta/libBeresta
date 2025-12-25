@@ -52,9 +52,9 @@ For international introduction see [`README_en.md`](README_en.md).
 
 ## О разработке отдельно
 
-[`ПЛАНЫ.md`](doc/%D0%9F%D0%9B%D0%90%D0%9D%D0%AB.md)
+[`ПЛАНЫ.md`](doc/ПЛАНЫ.md)
 
-[`РАЗРАБОТКА.md`](doc/%D0%A0%D0%90%D0%97%D0%A0%D0%90%D0%91%D0%9E%D0%A2%D0%9A%D0%90.md)
+[`РАЗРАБОТКА.md`](doc/РАЗРАБОТКА.md)
 
 ## Предыдущие наработки
 
