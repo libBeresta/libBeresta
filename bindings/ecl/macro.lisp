@@ -146,7 +146,7 @@
      (unwind-protect
 	  (progn
 	    ,@body
-	    (doc-savetofile ,pdf-var ,filename))
+	    (doc-savetofile ,pdf-var (string-to-cstring ,filename)))
        (doc-free ,pdf-var))))
 
 (defmacro with-ttf-font ((font-var pdf-var filename

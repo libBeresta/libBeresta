@@ -146,7 +146,7 @@
      (unwind-protect
 	  (progn
 	    ,@body
-	    (doc-savetofile ,pdf-var ,filename))
+	    (doc-savetofile ,pdf-var (string-to-cstring ,filename)))
        (doc-free ,pdf-var))))
 
 (defmacro with-ttf-font ((font-var pdf-var filename
@@ -192,12 +192,14 @@
 
 (defmacro stream-set-dash-pattern (stream pattern num phase)
   #+ecl
-  `(let* ((pattern1 ,pattern))
-     (ffi:with-foreign-object (c-pattern '(:array :float ,num))
+  (let ((n `,num))
+  `(let* ((pattern1 ,pattern)
+          (n1 ,n))
+     (ffi:with-foreign-object (c-pattern (list :array :float n1))
        (dotimes (i ,num)
 	 (setf (ffi:deref-array c-pattern '(:array :float) i)
 	       (aref pattern1 i)))
-       (stream-setdash ,stream c-pattern ,num ,phase))))
+       (stream-setdash ,stream c-pattern ,num ,phase)))))
 
 (defmacro with-page-gsave ((page-var) &body body)
   `(progn
