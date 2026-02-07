@@ -150,7 +150,7 @@ int main(int argc, char** argv)
     draw_line2(page, 60, 505, "PDF_ROUND_END");
 
     BRST_Page_SetLineCap(page, BRST_PROJECTING_SQUARE_END);
-    draw_line2(page, 60, 440, "PDF_PROJECTING_SCUARE_END");
+    draw_line2(page, 60, 440, "PDF_PROJECTING_SQUARE_END");
 
     // Стиль соединения линий
     BRST_Page_SetLineWidth(page, 30);
