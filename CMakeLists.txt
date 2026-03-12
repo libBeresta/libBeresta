@@ -10,7 +10,7 @@ string(REGEX MATCH "[0-9]+" BRST_BUGFIX_VERSION ${BRST_BUGFIX_VERSION})
 
 set(BRST_VERSION ${BRST_MAJOR_VERSION}.${BRST_MINOR_VERSION}.${BRST_BUGFIX_VERSION})
 
-project(libharu
+project(libbrst
     VERSION ${BRST_VERSION}
         DESCRIPTION "libBeresta -- свободная, кросс-платформенная библиотека для создания PDF-файлов с открытым исходным кодом."
     LANGUAGES

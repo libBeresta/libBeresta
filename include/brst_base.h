@@ -29,7 +29,7 @@ BRST_Version(
   \param user_error_fn User-defined error handler which is invoked when an error occurred.
   \param user_alloc_fn User-defined memory allocation function. If \c NULL is specified, `malloc()` is used.
   \param user_free_fn  User-defined memory freeing function. If \c NULL is specified, `free()` is used.
-  \param mem_pool_buf_size \parblock \c libHaru does not use memory pool by default.
+  \param mem_pool_buf_size \parblock \c libBeresta does not use memory pool by default.
 
   A memory allocation function is called on demand from an application.
 
