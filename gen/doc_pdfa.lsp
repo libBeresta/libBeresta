@@ -1,53 +1,53 @@
-(:файл "doc_pdfa"
- :функции (
+(:file "doc_pdfa"
+ :functions (
            ;; BRST_Doc_PDFA_SetConformance
-           (:название "Doc_PDFA_SetConformance" 
+           (:caption "Doc_PDFA_SetConformance" 
             :ru "Установить уровень соответствия PDF/A"
             :en "Set PDF/A conformance level"
-            :параметры ((:тип "Doc"
-                         :имя "pdf"
+            :params ((:type "Doc"
+                         :name "pdf"
                          :ru ":param_pdf"
                          :en ":param_pdf")
-                        (:тип "PDFAType"
-                         :имя "pdfa_type"
+                        (:type "PDFAType"
+                         :name "pdfa_type"
                          :ru "Тип стандарта PDF/A"
                          :en "PDFA standard type"))
-            :результат (:тип "STATUS"
+            :result (:type "STATUS"
                         :ru ":return_ok"
                         :en ":return_ok"))
 
            ;; BRST_Doc_PDFA_AddXmpExtension
-           (:название "Doc_PDFA_AddXmpExtension" 
+           (:caption "Doc_PDFA_AddXmpExtension" 
             :ru "Добавление расширения метаданных XMP"
             :en "Add XMP metadata extension"
-            :параметры ((:тип "Doc"
-                         :имя "pdf"
+            :params ((:type "Doc"
+                         :name "pdf"
                          :ru ":param_pdf"
                          :en ":param_pdf")
-                        (:тип "CSTR"
-                         :имя "xmp_description"
+                        (:type "CSTR"
+                         :name "xmp_description"
                          :ru "Описание метаданных XMP"
                          :en "XMP metadata description"))
-            :результат (:тип "STATUS"
+            :result (:type "STATUS"
                         :ru ":return_ok"
                         :en ":return_ok"))
 
            ;; BRST_Doc_PDFA_AppendOutputIntents
-           (:название "Doc_PDFA_AppendOutputIntents" 
+           (:caption "Doc_PDFA_AppendOutputIntents" 
             :ru "Добавить профиль вывода ICC"
             :en "Append output intent profile"
-            :параметры ((:тип "Doc"
-                         :имя "pdf"
+            :params ((:type "Doc"
+                         :name "pdf"
                          :ru ":param_pdf"
                          :en ":param_pdf")
-                        (:тип "CSTR"
-                         :имя "iccname"
+                        (:type "CSTR"
+                         :name "iccname"
                          :ru "Имя профиля ICC"
                          :en "ICC profile name")
-                        (:тип "Dict"
-                         :имя "iccdict"
+                        (:type "Dict"
+                         :name "iccdict"
                          :ru "Параметры профиля ICC"
                          :en "ICC profile parameters dictionary"))
-            :результат (:тип "STATUS"
+            :result (:type "STATUS"
                         :ru ":return_ok"
                         :en ":return_ok"))))

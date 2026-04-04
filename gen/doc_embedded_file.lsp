@@ -1,20 +1,20 @@
-(:файл "doc_embedded_file"
- :функции
-       ((:название "Doc_AttachFile"
-	 :группа "doc"
+(:file "doc_embedded_file"
+ :functions
+       ((:caption "Doc_AttachFile"
+	 :group "doc"
      :ru "Вкладывает указанный файл в документ."
      :en "Attaches file given to document."
-	 :ошибки ("FAILED_TO_ALLOC_MEM")
-	 :результат (:тип "EmbeddedFile"
+	 :errors ("FAILED_TO_ALLOC_MEM")
+	 :result (:type "EmbeddedFile"
 		     :ru "Описатель объекта вложенного файла при успехе или \\c NULL при возникновении ошибки."
 		     :en "Embedded file object descriptor on success or \\c NULL on failure.")
 	 :ru "Функция позволяет вложить файл в PDF-документ."
 	 :en "Function attaches file to a PDF document."
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf")
-		     (:тип "CSTR"
-		      :имя "file"
+		     (:type "CSTR"
+		      :name "file"
 		      :ru "Имя файла, вкладываемого в PDF."
 		      :en "Attached file name.")))))

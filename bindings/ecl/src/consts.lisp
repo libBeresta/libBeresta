@@ -4,8 +4,7 @@
 ;; Заголовочные файлы для Embeddable Common Lisp (ecl)
 ;; Дмитрий Соломенников, (с) 2025
 ;;
-;; Текст лицензии см. в файле ЛИЦЕНЗИЯ в корне проекта
-;;
+
 (in-package #:cl-beresta)
 
 (include-header)
@@ -29,3 +28,21 @@
   (COMP-MODE-IMAGE #x02) 
   (COMP-MODE-METADATA #x04) 
   (COMP-MODE-ALL #x0F)))
+
+(enum Permission (
+   
+  (ENABLE-READ 0) 
+  (ENABLE-PRINT 4) 
+  (ENABLE-EDIT-ALL 8) 
+  (ENABLE-COPY 16) 
+  (ENABLE-EDIT 32)))
+
+(enum ViewerPreference (
+   
+  (HIDE-TOOLBAR 1) 
+  (HIDE-MENUBAR 2) 
+  (HIDE-WINDOW-UI 4) 
+  (FIT-WINDOW 8) 
+  (CENTER-WINDOW 16) 
+  (PRINT-SCALING-NONE 32) 
+  (DISPLAY-DOC-TITLE 64)))

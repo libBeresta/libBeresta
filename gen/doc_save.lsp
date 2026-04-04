@@ -1,36 +1,36 @@
-(:файл "doc_save"
- :функции
+(:file "doc_save"
+ :functions
        (
 
 ;; Функция BRST_Doc_SaveToStream
-(:название "Doc_SaveToStream"
-   :группа "doc"
-   :ошибки ()
-   :результат (:тип "STATUS"
+(:caption "Doc_SaveToStream"
+   :group "doc"
+   :errors ()
+   :result (:type "STATUS"
   	           :ru ":return_ok"
                :en ":return_ok")
    :ru ""
    :en ""
-   :параметры ((:тип "Doc"
-            :имя "pdf"
+   :params ((:type "Doc"
+            :name "pdf"
             :ru ":param_pdf"
             :en ":param_pdf")))
 
 ;; Функция BRST_Doc_SaveToFile
-(:название "Doc_SaveToFile"
-   :группа "doc"
-   :ошибки ()
-   :результат (:тип "STATUS"
+(:caption "Doc_SaveToFile"
+   :group "doc"
+   :errors ()
+   :result (:type "STATUS"
   	           :ru ":return_ok"
                :en ":return_ok")
    :ru "Сохраняет документ в файл."
    :en "Save document to file."
-   :параметры ((:тип "Doc"
-            :имя "pdf"
+   :params ((:type "Doc"
+            :name "pdf"
             :ru ":param_pdf"
             :en ":param_pdf")
-            (:тип "CSTR"
-            :имя "filename"
+            (:type "CSTR"
+            :name "filename"
             :ru "Имя сохраняемого файла."
             :en "Saved file name.")
             ))))

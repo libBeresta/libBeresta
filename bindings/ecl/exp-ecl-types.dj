@@ -1,3 +1,3 @@
 
-{% if типы %}  ;; типы{% for тип in типы %}
-  #:{{ тип.внутренний }}{% endfor %}{% endif %}
+{% if types %}  ;; types{% for type in types %}
+  #:{{ type.inner }}{% endfor %}{% endif %}

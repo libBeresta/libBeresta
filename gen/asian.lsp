@@ -1,9 +1,9 @@
-(:файл "asian"
- :функции
+(:file "asian"
+ :functions
        (
 	;; === UseJPFonts
-	(:название "UseJPFonts"
-	 :группа "font"
+	(:caption "UseJPFonts"
+	 :group "font"
 	 :en "Enable Japanese fonts. Application can use following Japanese fonts after call:
 
   | Font name             |
@@ -46,20 +46,20 @@
   | MS-PGothic,Italic     |
   | MS-PGothic,BoldItalic |"
 
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf"))
-	 :результат (:тип "STATUS"
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
-	 :ошибки ("INVALID_DOCUMENT"
+	 :errors ("INVALID_DOCUMENT"
 		  "FAILED_TO_ALLOC_MEM"
 		  "DUPLICATE_REGISTRATION"))
 
 	;; === UseKRFonts
-	(:название "UseKRFonts"
-	 :группа "font"
+	(:caption "UseKRFonts"
+	 :group "font"
 	 :en "Enable Korean fonts. Application can use following fonts after call:
 
   | Font name            |
@@ -102,20 +102,20 @@
   | Batang,Italic        |
   | Batang,BoldItalic    |"
 		   
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf"))
-	 :результат (:тип "STATUS"
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
-	 :ошибки ("INVALID_DOCUMENT"
+	 :errors ("INVALID_DOCUMENT"
 		  "FAILED_TO_ALLOC_MEM"
 		  "DUPLICATE_REGISTRATION"))
 
 	;; === UseCNSFonts
-	(:название "UseCNSFonts"
-	 :группа "font"
+	(:caption "UseCNSFonts"
+	 :group "font"
 	 :en "Enable Chinese Simplified fonts. Application can use following fonts after call:
 
   | Font name         |
@@ -142,20 +142,20 @@
   | SimHei,Italic     |
   | SimHei,BoldItalic |"
 		   
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf"))
-	 :результат (:тип "STATUS"
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
-	 :ошибки ("INVALID_DOCUMENT"
+	 :errors ("INVALID_DOCUMENT"
 		  "FAILED_TO_ALLOC_MEM"
 		  "DUPLICATE_REGISTRATION"))
 
 	;; === UseCNTFonts
-	(:название "UseCNTFonts"
-	 :группа "font"
+	(:caption "UseCNTFonts"
+	 :group "font"
 	 :en "Enable Chinese Traditional fonts. Application can use following fonts after call:
 
   | Font name          |
@@ -174,20 +174,20 @@
   | MingLiU,Italic     |
   | MingLiU,BoldItalic |"
 		   
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf"))
-	 :результат (:тип "STATUS"
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
-	 :ошибки ("INVALID_DOCUMENT"
+	 :errors ("INVALID_DOCUMENT"
 		  "FAILED_TO_ALLOC_MEM"
 		  "DUPLICATE_REGISTRATION"))
 
 	;; === UseJPEncodings
-	(:название "UseJPEncodings"
-	 :группа "encode"
+	(:caption "UseJPEncodings"
+	 :group "encode"
 	 :en "Enable Japanese encodings. Application can use following encodings after call:
 
   | Encoding     |
@@ -208,20 +208,20 @@
   | EUC-H        |
   | EUC-V        |"
 		   
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf"))
-	 :результат (:тип "STATUS"
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
-	 :ошибки ("INVALID_DOCUMENT"
+	 :errors ("INVALID_DOCUMENT"
 		  "FAILED_TO_ALLOC_MEM"
 		  "DUPLICATE_REGISTRATION"))
 
 	;; === UseKREncodings
-	(:название "UseKREncodings"
-	 :группа "encode"
+	(:caption "UseKREncodings"
+	 :group "encode"
 	 :en "Enable Korean encodings. Application can use following encodings after call:
 
   | Encoding       |
@@ -242,20 +242,20 @@
   | KSCms-UHC-HW-H |
   | KSCms-UHC-HW-V |"
 		   
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf"))
-	 :результат (:тип "STATUS"
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
-	 :ошибки ("INVALID_DOCUMENT"
+	 :errors ("INVALID_DOCUMENT"
 		  "FAILED_TO_ALLOC_MEM"
 		  "DUPLICATE_REGISTRATION"))
 
 	;; === UseCNSEncodings
-	(:название "UseCNSEncodings"
-	 :группа "encode"
+	(:caption "UseCNSEncodings"
+	 :group "encode"
 	 :en "Enable Chinese Simplified encodings. Application can use following encodings after call:
 
   | Encoding  |
@@ -274,20 +274,20 @@
   | GBK-EUC-H |
   | GBK-EUC-V |"
 		   
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf"))
-	 :результат (:тип "STATUS"
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
-	 :ошибки ("INVALID_DOCUMENT"
+	 :errors ("INVALID_DOCUMENT"
 		  "FAILED_TO_ALLOC_MEM"
 		  "DUPLICATE_REGISTRATION"))
 
 	;; === UseCNTEncodings
-	(:название "UseCNTEncodings"
-	 :группа "encode"
+	(:caption "UseCNTEncodings"
+	 :group "encode"
 	 :en "Enable Chinese Traditional encodings. Application can use following encodings after call:
 
   | Encoding  |
@@ -302,13 +302,13 @@
   | ETen-B5-H |
   | ETen-B5-V |"
 		   
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf"))
-	 :результат (:тип "STATUS"
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
-	 :ошибки ("INVALID_DOCUMENT"
+	 :errors ("INVALID_DOCUMENT"
 		  "FAILED_TO_ALLOC_MEM"
 		  "DUPLICATE_REGISTRATION"))))

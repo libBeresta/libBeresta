@@ -1,16 +1,16 @@
-(:файл "doc"
- :перечисления
-       ((:имя "PdfVer"
+(:file "doc"
+ :enums
+       ((:name "PdfVer"
 	 :ru "Версия стандарта PDF документа"
 	 :en "PDF standard version in document"
-	 :элементы ((:элемент "VER_10" :ru "Стартовая версия PDF" :en "Start PDF version")
-		    (:элемент "VER_11" :ru "Версия 1.1" :en "Version 1.1")
-		    (:элемент "VER_12" :ru "Версия 1.2" :en "Version 1.2")
-		    (:элемент "VER_13" :ru "Версия 1.3" :en "Version 1.3")
-		    (:элемент "VER_14" :ru "Версия 1.4" :en "Version 1.4")
-		    (:элемент "VER_15" :ru "Версия 1.5" :en "Version 1.5")
-		    (:элемент "VER_16" :ru "Версия 1.6" :en "Version 1.6")
-		    (:элемент "VER_17" :ru "Версия 1.7" :en "Version 1.7")
-		    (:элемент "VER_20" :ru "Версия 2.0" :en "Version 2.0"))))
- :указатели
-       ((:имя "Doc")))
+	 :elements ((:element "VER_10" :ru "Стартовая версия PDF" :en "Start PDF version")
+		    (:element "VER_11" :ru "Версия 1.1" :en "Version 1.1")
+		    (:element "VER_12" :ru "Версия 1.2" :en "Version 1.2")
+		    (:element "VER_13" :ru "Версия 1.3" :en "Version 1.3")
+		    (:element "VER_14" :ru "Версия 1.4" :en "Version 1.4")
+		    (:element "VER_15" :ru "Версия 1.5" :en "Version 1.5")
+		    (:element "VER_16" :ru "Версия 1.6" :en "Version 1.6")
+		    (:element "VER_17" :ru "Версия 1.7" :en "Version 1.7")
+		    (:element "VER_20" :ru "Версия 2.0" :en "Version 2.0"))))
+ :pointers
+       ((:name "Doc")))

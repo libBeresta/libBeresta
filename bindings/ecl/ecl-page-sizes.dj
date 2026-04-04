@@ -1,8 +1,8 @@
 {% include "ЛИЦЕНЗИЯ.txt" %}
 (in-package #:cl-beresta)
-{% if размеры %}
+{% if sizes %}
 (enum PageSizes  (
-  {% for размер in размеры %}
-  ;; Размер страницы "{{ размер.откуда}} {{размер.название}}" ({{размер.ширина}}мм x {{размер.высота}}мм)
-  ({{ размер.ид | under }} {{ forloop.counter0 }}){% endfor %})
+  {% for size in sizes %}
+  ;; Размер страницы "{{ size.origin}} {{size.caption}}" ({{size.width}}мм x {{size.height}}мм)
+  ({{ size.id | under }} {{ forloop.counter0 }}){% endfor %})
 :prefix "PAGE-SIZE"){% endif %}

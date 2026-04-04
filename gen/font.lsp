@@ -1,55 +1,55 @@
-(:файл "font"
- :определения
-      ((:имя "Font"
-        :оригинал "Dict"))
+(:file "font"
+ :definitions
+      ((:name "Font"
+        :original "Dict"))
 
- :функции (
-       (:название "Font_Descent"
-        :группа "font"
-        :ошибки ()
-        :результат (:тип "REAL"
+ :functions (
+       (:caption "Font_Descent"
+        :group "font"
+        :errors ()
+        :result (:type "REAL"
                     :ru ""
                     :en "")
         :ru ""
         :en ""
-        :параметры (
-        (:тип "Font"
-                     :имя "font"
+        :params (
+        (:type "Font"
+                     :name "font"
                      :ru ":param_font"
                      :en ":param_font")
-        (:тип "REAL"
-                     :имя "font_size"
+        (:type "REAL"
+                     :name "font_size"
                      :ru ""
                      :en "")
                      ))
 
-       (:название "Font_TextWidth2"
-        :группа "font"
-        :ошибки ()
-        :результат (:тип "REAL"
+       (:caption "Font_TextWidth2"
+        :group "font"
+        :errors ()
+        :result (:type "REAL"
                     :ru ""
                     :en "")
         :ru ""
         :en ""
-        :параметры (
-        (:тип "Font"
-                     :имя "font"
+        :params (
+        (:type "Font"
+                     :name "font"
                      :ru ":param_font"
                      :en ":param_font")
-        (:тип "REAL"
-                     :имя "font_size"
+        (:type "REAL"
+                     :name "font_size"
                      :ru ""
                      :en "")
-        (:тип "REAL"
-                     :имя "word_space"
+        (:type "REAL"
+                     :name "word_space"
                      :ru ""
                      :en "")
-        (:тип "REAL"
-                     :имя "char_space"
+        (:type "REAL"
+                     :name "char_space"
                      :ru ""
                      :en "")
-        (:тип "CSTR"
-                     :имя "text"
+        (:type "CSTR"
+                     :name "text"
                      :ru ""
                      :en "")
                      ))))

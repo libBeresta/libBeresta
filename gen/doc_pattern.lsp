@@ -1,53 +1,53 @@
-(:файл "doc_pattern"
- :функции (
+(:file "doc_pattern"
+ :functions (
            ;; BRST_Doc_Pattern_Tiling_Create
-           (:название "Doc_Pattern_Tiling_Create" 
+           (:caption "Doc_Pattern_Tiling_Create" 
             :ru "Создание узора-плитки"
             :en "Create tiled pattern"
-            :параметры ((:тип "Doc"
-                         :имя "pdf"
+            :params ((:type "Doc"
+                         :name "pdf"
                          :ru ":param_pdf"
                          :en ":param_pdf")
-                        (:тип "REAL"
-                         :имя "left"
+                        (:type "REAL"
+                         :name "left"
                          :ru "Координата левой границы"
                          :en "Left boundary coordinate")
-                        (:тип "REAL"
-                         :имя "bottom"
+                        (:type "REAL"
+                         :name "bottom"
                          :ru "Координата нижней границы"
                          :en "Bottom boundary coordinate")
-                        (:тип "REAL"
-                         :имя "right"
+                        (:type "REAL"
+                         :name "right"
                          :ru "Координата правой границы"
                          :en "Right boundary coordinate")
-                        (:тип "REAL"
-                         :имя "top"
+                        (:type "REAL"
+                         :name "top"
                          :ru "Координата верхней границы"
                          :en "Top boundary coordinate")
-                        (:тип "REAL"
-                         :имя "xstep"
+                        (:type "REAL"
+                         :name "xstep"
                          :ru "Шаг повторения по горизонтали"
                          :en "Horizontal repetition step")
-                        (:тип "REAL"
-                         :имя "ystep"
+                        (:type "REAL"
+                         :name "ystep"
                          :ru "Шаг повторения по вертикали"
                          :en "Vertical repetition step")
-                        (:тип "Matrix"
-                         :имя "matrix"
+                        (:type "Matrix"
+                         :name "matrix"
                          :ru "Матрица преобразований"
                          :en "Transformation matrix"))
-            :результат (:тип "Pattern"
+            :result (:type "Pattern"
                         :ru ":param_pattern"
                         :en ":param_pattern"))
 
            ;; BRST_Doc_Pattern_Stream
-           (:название "Doc_Pattern_Stream" 
+           (:caption "Doc_Pattern_Stream" 
             :ru "Получение потока узора"
             :en "Get stream associated with a pattern"
-            :параметры ((:тип "Pattern"
-                         :имя "pat"
+            :params ((:type "Pattern"
+                         :name "pat"
                          :ru "Объект узора"
                          :en "Pattern object"))
-            :результат (:тип "Stream"
+            :result (:type "Stream"
                         :ru ":param_stream"
                         :en ":param_stream"))))

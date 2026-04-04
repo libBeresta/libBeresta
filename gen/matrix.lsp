@@ -1,2 +1,2 @@
-(:файл "matrix"
- :указатели ((:имя "Matrix")))
+(:file "matrix"
+ :pointers ((:name "Matrix")))

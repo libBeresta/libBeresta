@@ -1,2 +1,2 @@
-(:файл "mmgr"
- :указатели ((:имя "MMgr")))
+(:file "mmgr"
+ :pointers ((:name "MMgr")))

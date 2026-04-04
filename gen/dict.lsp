@@ -1,2 +1,2 @@
-(:файл "dict"
- :указатели ((:имя "Dict")))
+(:file "dict"
+ :pointers ((:name "Dict")))

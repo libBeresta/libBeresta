@@ -1,2 +1,2 @@
-(:файл "fontdef"
- :указатели ((:имя "FontDef")))
+(:file "fontdef"
+ :pointers ((:name "FontDef")))

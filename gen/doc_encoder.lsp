@@ -1,41 +1,41 @@
-(:файл "doc_encoder"
- :функции ((:название "Doc_Encoder_SetCurrent"
+(:file "doc_encoder"
+ :functions ((:caption "Doc_Encoder_SetCurrent"
             :ru "Установка кодировщика документа"
             :en "Set current encoder for document"
-            :параметры ((:тип "Doc"
-                         :имя "pdf"
+            :params ((:type "Doc"
+                         :name "pdf"
                          :ru ":param_pdf"
                          :en ":param_pdf")
-                        (:тип "CSTR"
-                         :имя "encoding_name"
+                        (:type "CSTR"
+                         :name "encoding_name"
                          :ru "Название кодировки" 
                          :en "Valid encoding name"))
-            :результат (:тип "STATUS"
+            :result (:type "STATUS"
                         :ru ":return_ok"
                         :en ":return_ok"))
 
-           (:название "Doc_Encoder_Prepare"
+           (:caption "Doc_Encoder_Prepare"
             :ru "Получение объекта кодировщика по имени кодировки"
             :en "Get encoder object handle by specified encoding name"
-            :параметры ((:тип "Doc"
-                         :имя "pdf"
+            :params ((:type "Doc"
+                         :name "pdf"
                          :ru ":param_pdf"
                          :en ":param_pdf")
-                        (:тип "CSTR"
-                         :имя "encoding_name"
+                        (:type "CSTR"
+                         :name "encoding_name"
                          :ru "Название кодировки"
                          :en "Valid encoding name"))
-            :результат (:тип "Encoder"
+            :result (:type "Encoder"
                         :ru ":param_encoder"
                         :en ":param_encoder"))
 
-           (:название "Doc_Encoder_Current"
+           (:caption "Doc_Encoder_Current"
             :ru "Получение текущего кодировщика документа"
             :en "Get current encoder handle of document object"
-            :параметры ((:тип "Doc"
-                         :имя "pdf"
+            :params ((:type "Doc"
+                         :name "pdf"
                          :ru ":param_pdf"
                          :en ":param_pdf"))
-            :результат (:тип "Encoder"
+            :result (:type "Encoder"
                         :ru ":param_encoder"
                         :en ":param_encoder"))))

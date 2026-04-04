@@ -1,2 +1,2 @@
-(:файл "array"
- :указатели ((:имя "Array")))
+(:file "array"
+ :pointers ((:name "Array")))

@@ -2,26 +2,26 @@
 (in-package #:cl-beresta)
 
 (include-header)
-{% if константы %}{% for кон in константы %}
-(constant {{ кон.имя | under }} {{ кон.значение | under }})
-{% endfor %}{% endif %}{% if определения %}{% for оп in определения %}
-(synonym {{ оп.имя | under }} {{ оп.оригинал | under }})
-{% endfor %}{% endif %}{% if указатели %}{% for ук in указатели %}
-(pointer {{ ук.имя | under }})
-{% endfor %}{% endif %}{% if перечисления %}{% for пер in перечисления %}
-(enum {{пер.имя | under }} (
-  {% for эл in пер.элементы %}{% if эл.значение%} 
-  ({{ эл.элемент | under }} {{эл.значение | hex0 }}){% else %}
-  {{ эл.элемент | under }}{% endif %}{% endfor %}))
-{% endfor %}{% endif %}{% if структуры %}{% for ст in структуры %}
-(struct {{ ст.имя }}
-  "{{ ст | docf }}"{%if ст.поля %}{% for пл in ст.поля %}
-  ({{ пл.поле }} {{пл.тип}}{% if пл.размер %} :count {{пл.размер}}{% endif %}){% endfor %}{% endif %}
+{% if consts %}{% for con in consts %}
+(constant {{ con.name | under }} {{ con.value | under }})
+{% endfor %}{% endif %}{% if definitions %}{% for def in definitions %}
+(synonym {{ def.name | under }} {{ def.original | under }})
+{% endfor %}{% endif %}{% if pointers %}{% for pt in pointers %}
+(pointer {{ pt.name | under }})
+{% endfor %}{% endif %}{% if enums %}{% for enum in enums %}
+(enum {{enum.name | under }} (
+  {% for el in enum.elements %}{% if el.value%} 
+  ({{ el.element | under }} {{el.value | hex0 }}){% else %}
+  {{ el.element | under }}{% endif %}{% endfor %}))
+{% endfor %}{% endif %}{% if structs %}{% for st in structs %}
+(struct {{ st.name }}
+  "{{ st | docf }}"{%if st.fields %}{% for fl in st.fields %}
+  ({{ fl.field }} {{fl.type}}{% if fl.size %} :count {{fl.size}}{% endif %}){% endfor %}{% endif %}
 )
-{% endfor %}{% endif %}{% if функции %}{% for фн in функции %}
-(func {{фн.название | under}} 
-     "{{фн.название | pre}}" 
-      {{ фн.результат.тип | under }} 
-  {%if фн.параметры %}({% for парам in фн.параметры %}{% if not forloop.first %}
-   {% endif %}({{парам.имя | under}} {{парам.тип | under }}){% endfor %}){% else %}(){% endif %})
+{% endfor %}{% endif %}{% if functions %}{% for fn in functions %}
+(func {{fn.caption | under}} 
+     "{{fn.caption | pre}}" 
+      {{ fn.result.type | under }} 
+  {%if fn.params %}({% for param in fn.params %}{% if not forloop.first %}
+   {% endif %}({{param.name | under}} {{param.type | under }}){% endfor %}){% else %}(){% endif %})
 {% endfor %}{% endif %}

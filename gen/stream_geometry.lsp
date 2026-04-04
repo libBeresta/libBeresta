@@ -1,11 +1,11 @@
-(:файл "stream_geometry"
- :функции
+(:file "stream_geometry"
+ :functions
        (
         ;; BRST_Stream_GSave
-        (:название "Stream_GSave"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_GSave"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Сохранение в стек текущего графического состояния страницы.
@@ -57,32 +57,32 @@
     - Text Rise
     - Transformation Matrix
     - Word Spacing"
-         :команда "q"
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :command "q"
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")))
 
         ;; BRST_Stream_GRestore
-        (:название "Stream_GRestore"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_GRestore"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Восстановление графического состояния страницы, ранее сохраненного функцией BRST_Stream_GSave()."
          :en "Restore graphics state which is saved by BRST_Stream_GSave()."
-         :команда "Q"
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :command "Q"
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")))
 
         ;; BRST_Stream_Concat
-        (:название "Stream_Concat"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_Concat"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Конкатенация указанной матрицы и матрицы преобразования страницы.
@@ -159,41 +159,41 @@
 
   Application can call BRST_Stream_GSave() when graphics mode is \\ref BRST_GMODE_PAGE_DESCRIPTION."
 
-		   :команда "cm"
-		   :параметры ((:тип "Stream"
-				:имя "page"
+		   :command "cm"
+		   :params ((:type "Stream"
+				:name "page"
 				:ru ":param_stream"
 				:en ":param_stream")
-			       (:тип "REAL"
-				:имя "a"
+			       (:type "REAL"
+				:name "a"
 				:ru "Параметр \\c a матрицы преобразования."
 				:en "\\c a parameter of transformation matrix.")
-			       (:тип "REAL"
-				:имя "b"
+			       (:type "REAL"
+				:name "b"
 				:ru "Параметр \\c b матрицы преобразования."
 				:en "\\c b parameter of transformation matrix.")
-			       (:тип "REAL"
-				:имя "c"
+			       (:type "REAL"
+				:name "c"
 				:ru "Параметр \\c c матрицы преобразования."
 				:en "\\c c parameter of transformation matrix.")
-			       (:тип "REAL"
-				:имя "d"
+			       (:type "REAL"
+				:name "d"
 				:ru "Параметр \\c d матрицы преобразования."
 				:en "\\c d parameter of transformation matrix.")
-			       (:тип "REAL"
-				:имя "x"
+			       (:type "REAL"
+				:name "x"
 				:ru "Параметр \\c x матрицы преобразования."
 				:en "\\c x parameter of transformation matrix.")
-			       (:тип "REAL"
-				:имя "y"
+			       (:type "REAL"
+				:name "y"
 				:ru "Параметр \\c y матрицы преобразования."
 				:en "\\c y parameter of transformation matrix.")))
 
         ;; BRST_Stream_Translate
-        (:название "Stream_Translate"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_Translate"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Конкатенация матрицы переноса и матрицы преобразования страницы.
@@ -203,25 +203,25 @@
          :en "Concatenate the page's transformation matrix with translation matrix.
 
   Coordinate system is translated by \\c dx and \\c dy coordinate units."
-         :команда "cm"
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :command "cm"
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "REAL"
-                      :имя "dx"
+                     (:type "REAL"
+                      :name "dx"
                       :ru "Расстояние переноса координатной системы по горизонтали."
                       :en "Coordinate system horizontal translate distance.")
-                     (:тип "REAL"
-                      :имя "dy"
+                     (:type "REAL"
+                      :name "dy"
                       :ru "Расстояние переноса координатной системы по вертикали."
                       :en "Coordinate system vertical translate distance.")))
 
         ;; BRST_Stream_Scale
-        (:название "Stream_Scale"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_Scale"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Конкатенация матрицы масштабирования и матрицы преобразования страницы.
@@ -233,26 +233,26 @@
   The coordinate system is scaled such that 1 unit horizontally equals \\с sx units
   and 1 unit vertically equals \\с sy units in the new coordinate system."
 
-         :команда "cm"
-         :см ("Stream_Concat()")
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :command "cm"
+         :see ("Stream_Concat()")
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "REAL"
-                      :имя "sx"
+                     (:type "REAL"
+                      :name "sx"
                       :ru "Значение масштаба по горизонтали."
                       :en "Horizontal scale value.")
-                     (:тип "REAL"
-                      :имя "sy"
+                     (:type "REAL"
+                      :name "sy"
                       :ru "Значение масштаба по вертикали."
                       :en "Vertical scale value.")))
 
         ;; BRST_Stream_RotateDeg
-        (:название "Stream_RotateDeg"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_RotateDeg"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Конкатенация матрицы поворота и матрицы преобразования страницы.
@@ -261,23 +261,23 @@
          :en "Concatenate the page's transformation matrix with rotate matrix.
 
   The coordinate system axes are rotated counterclockwise by angle \\с degrees (in degrees)."
-         :команда "cm"
-         :см ("Stream_Concat()"
+         :command "cm"
+         :see ("Stream_Concat()"
               "Stream_Rotate()")
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "REAL"
-                      :имя "degrees"
+                     (:type "REAL"
+                      :name "degrees"
                       :ru "Угол поворота системы координат (градусы)."
                       :en "Coordinate system rotate angle (degrees).")))
 
         ;; BRST_Stream_Rotate
-        (:название "Stream_Rotate"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_Rotate"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Конкатенация матрицы поворота и матрицы преобразования страницы.
@@ -286,23 +286,23 @@
          :en "Concatenate the page's transformation matrix with rotate matrix.
 
   The coordinate system axes are rotated counterclockwise by angle \\с degrees (in radians)."
-         :команда "cm"
-         :см ("Stream_Concat()"
+         :command "cm"
+         :see ("Stream_Concat()"
               "Stream_RotateDeg()")
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "REAL"
-                      :имя "radians"
+                     (:type "REAL"
+                      :name "radians"
                       :ru "Угол поворота системы координат (радианы)."
                       :en "Coordinate system rotate angle (radians).")))
 
         ;; BRST_Stream_Skew
-        (:название "Stream_Skew"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_Skew"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Конкатенация матрицы наклона и матрицы преобразования страницы.
@@ -311,82 +311,82 @@
          :en "Concatenate the page's transformation matrix with skew matrix.
 
   Coordinate system is skewed by an angle \\c a at \\a x axis and by angle \\c b at \\a y axis."
-         :команда "cm"
-         :см ("Stream_Concat()")
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :command "cm"
+         :see ("Stream_Concat()")
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "REAL"
-                      :имя "a"
+                     (:type "REAL"
+                      :name "a"
                       :ru "Угол наклона по оси \\c x."
                       :en "\\c x axis skew value.")
-                     (:тип "REAL"
-                      :имя "b"
+                     (:type "REAL"
+                      :name "b"
                       :ru "Угол наклона по оси \\c у."
                       :en "\\c y axis skew value.")))
 
         ;; BRST_Stream_Circle
-        (:название "Stream_Circle"
-         :группа "graphics"
-         :ошибки ()
-         :результат (:тип "STATUS"
+        (:caption "Stream_Circle"
+         :group "graphics"
+         :errors ()
+         :result (:type "STATUS"
                      :ru ":return_ok"
                      :en ":return_ok")
          :ru "Добавление окружности к пути."
          :en "Append circle to current path."
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "REAL"
-                      :имя "x"
+                     (:type "REAL"
+                      :name "x"
                       :ru "Координата \\c x центра окружности."
                       :en "Circle center \\c x coordinate.")
-                     (:тип "REAL"
-                      :имя "y"
+                     (:type "REAL"
+                      :name "y"
                       :ru "Координата \\c y центра окружности."
                       :en "Circle center \\c y coordinate.")
-                     (:тип "REAL"
-                      :имя "radius"
+                     (:type "REAL"
+                      :name "radius"
                       :ru "Радиус окружности."
                       :en "Circle radius.")))
 
 ;;;        ;; BRST_Stream_Ellipse
-;;;        (:название "Stream_Ellipse"
-;;;         :группа "graphics"
-;;;         :ошибки ()
-;;;	 :результат (:тип "STATUS"
+;;;        (:caption "Stream_Ellipse"
+;;;         :group "graphics"
+;;;         :errors ()
+;;;	 :result (:type "STATUS"
 ;;;		     :ru ":return_ok"
 ;;;		     :en ":return_ok")
 ;;;         :ru "Добавление эллипса к пути."
 ;;;         :en "Append ellipse to current path."
-;;;         :параметры ((:тип "Stream"
-;;;                      :имя "page"
+;;;         :params ((:type "Stream"
+;;;                      :name "page"
 ;;;                      :ru ":param_stream"
 ;;;                      :en ":param_stream")
-;;;                     (:тип "REAL"
-;;;                      :имя "x"
+;;;                     (:type "REAL"
+;;;                      :name "x"
 ;;;                      :ru "Координата \\c x центра эллипса."
 ;;;                      :en "Ellipse center \\c y coordinate.")
-;;;                     (:тип "REAL"
-;;;                      :имя "y"
+;;;                     (:type "REAL"
+;;;                      :name "y"
 ;;;                      :ru "Координата \\c y центра эллипса."
 ;;;                      :en "Ellipse center \\c y coordinate.")
-;;;                     (:тип "REAL"
-;;;                      :имя "a"
+;;;                     (:type "REAL"
+;;;                      :name "a"
 ;;;                      :ru "Горизонтальная полуось эллипса."
 ;;;                      :en "The horizontal semi-axis of the ellipse.")
-;;;                     (:тип "REAL"
-;;;                      :имя "b"
+;;;                     (:type "REAL"
+;;;                      :name "b"
 ;;;                      :ru "Вертикальная полуось эллипса."
 ;;;                      :en "The vertical semi-axis of the ellipse.")))
 
 ;;;        ;; BRST_Stream_Arc
-;;;        (:название "Stream_Arc"
-;;;         :группа "graphics"
-;;;         :ошибки ()
-;;;         :результат (:тип "STATUS"
+;;;        (:caption "Stream_Arc"
+;;;         :group "graphics"
+;;;         :errors ()
+;;;         :result (:type "STATUS"
 ;;;                     :ru ":return_ok"
 ;;;                     :en ":return_ok")
 ;;;         :ru "Функция добавляет дугу окружности к текущему графическому пути на указанной странице. 
@@ -395,139 +395,139 @@
 ;;;         :en "Append circle arc to current path.
 ;;;
 ;;;  Angles are measured in degrees, with 0 degree corresponding to the vertical direction pointing upwards from the reference point `(x, y)`."
-;;;         :параметры ((:тип "Stream"
-;;;                      :имя "page"
+;;;         :params ((:type "Stream"
+;;;                      :name "page"
 ;;;                      :ru ":param_stream"
 ;;;                      :en ":param_stream")
-;;;                     (:тип "REAL"
-;;;                      :имя "x"
+;;;                     (:type "REAL"
+;;;                      :name "x"
 ;;;                      :ru "Координата \\c x центра окружности дуги."
 ;;;                      :en "Arc circle center \\c x coordinate.")
-;;;                     (:тип "REAL"
-;;;                      :имя "y"
+;;;                     (:type "REAL"
+;;;                      :name "y"
 ;;;                      :ru "Координата \\c у центра окружности дуги."
 ;;;                      :en "Arc circle center \\c y coordinate.")
-;;;                     (:тип "REAL"
-;;;                      :имя "radius"
+;;;                     (:type "REAL"
+;;;                      :name "radius"
 ;;;                      :ru "Радиус окружности дуги."
 ;;;                      :en "Arc circle radius.")
-;;;                     (:тип "REAL"
-;;;                      :имя "angle1"
+;;;                     (:type "REAL"
+;;;                      :name "angle1"
 ;;;                      :ru "Начальный угол дуги (градусы)."
 ;;;                      :en "Initial angle of the arc (degrees).")
-;;;                     (:тип "REAL"
-;;;                      :имя "angle2"
+;;;                     (:type "REAL"
+;;;                      :name "angle2"
 ;;;                      :ru "Конечный угол дуги (градусы). Должен быть больше начального угла."
 ;;;                      :en "Final angle of the arc (degrees). Must exceed the initial angle.")))
 
         ;; BRST_Stream_SetGrayFill
-        (:название "Stream_SetGrayFill"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_SetGrayFill"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Установка цвета заливки (тона серого)."
          :en "Set fill color (gray)."
-         :команда "g"
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :command "g"
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "REAL"
-                      :имя "value"
+                     (:type "REAL"
+                      :name "value"
                       :ru "Уровень серого цвета от \\c 0.0 до \\c 1.0."
                       :en "Gray level between \\c 0.0 and \\c 1.0.")))
 
         ;; BRST_Stream_SetGrayStroke
-        (:название "Stream_SetGrayStroke"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_SetGrayStroke"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Установка цвета линии (тона серого)."
          :en "Set stroke color (gray)."
-         :команда "G"
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :command "G"
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "REAL"
-                      :имя "value"
+                     (:type "REAL"
+                      :name "value"
                       :ru "Уровень серого цвета от \\c 0.0 до \\c 1.0."
                       :en "Gray level between \\c 0.0 and \\c 1.0.")))
 
         ;; BRST_Stream_SetRGBFill
-        (:название "Stream_SetRGBFill"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_SetRGBFill"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Установка цвета заливки (RGB)."
          :en "Set fill color (RGB)."
-         :команда "rg"
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :command "rg"
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "REAL"
-                      :имя "r"
+                     (:type "REAL"
+                      :name "r"
                       :ru "Уровень красного цвета от \\c 0.0 до \\c 1.0."
                       :en "Red level between \\c 0.0 and \\c 1.0.")
-                     (:тип "REAL"
-                      :имя "g"
+                     (:type "REAL"
+                      :name "g"
                       :ru "Уровень зеленого цвета от \\c 0.0 до \\c 1.0."
                       :en "Green level between \\c 0.0 and \\c 1.0.")
-                     (:тип "REAL"
-                      :имя "b"
+                     (:type "REAL"
+                      :name "b"
                       :ru "Уровень синего цвета от \\c 0.0 до \\c 1.0."
                       :en "Blue level between \\c 0.0 and \\c 1.0.")))
 
         ;; BRST_Stream_SetRGBFillUint
-        (:название "Stream_SetRGBFillUint"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_SetRGBFillUint"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Установка цвета заливки (RGB) с использованием значений типа \\ref BRST_UINT8."
          :en "Set fill color (RGB) using \\ref BRST_UINT8 values."
-         :команда "rg"
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :command "rg"
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "UINT8"
-                      :имя "r"
+                     (:type "UINT8"
+                      :name "r"
                       :ru "Уровень красного цвета от \\c 0 до \\c 255."
                       :en "Red level between \\c 0 and \\c 255.")
-                     (:тип "UINT8"
-                      :имя "g"
+                     (:type "UINT8"
+                      :name "g"
                       :ru "Уровень зеленого цвета от \\c 0 до \\c 255."
                       :en "Green level between \\c 0 and \\c 255.")
-                     (:тип "UINT8"
-                      :имя "b"
+                     (:type "UINT8"
+                      :name "b"
                       :ru "Уровень синего цвета от \\c 0 до \\c 255."
                       :en "Blue level between \\c 0 and \\c 255.")))
 
         ;; BRST_Stream_SetRGBFillHex
-        (:название "Stream_SetRGBFillHex"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_SetRGBFillHex"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Установка цвета заливки (RGB) с использованием значения типа \\ref BRST_UINT32."
          :en "Set fill color (RGB) using \\ref BRST_UINT32 value."
-         :команда "rg"
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :command "rg"
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "UINT32"
-                      :имя "rgb"
+                     (:type "UINT32"
+                      :name "rgb"
                       :ru "Значения цветов RGB задаются в трех байтах 32-битного беззнакового числа.
   Синий задается битами 0-7, зеленый битами 8-15, красный битами 16-23.
   Это соответствует битовым маскам \\c 0xFF, \\c 0xFF00 и \\c 0xFF0000 соответственно."
@@ -536,75 +536,75 @@
   This corresponds to bit masks 0xFF, 0xFF00, and 0xFF0000, respectively.")))
 
         ;; BRST_Stream_SetRGBStroke
-        (:название "Stream_SetRGBStroke"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_SetRGBStroke"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Установка цвета линии (RGB)."
          :en "Set stroke color (RGB)."
-         :команда "RG"
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :command "RG"
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "REAL"
-                      :имя "r"
+                     (:type "REAL"
+                      :name "r"
                       :ru "Уровень красного цвета от \\c 0.0 до \\c 1.0."
                       :en "Red level between \\c 0.0 and \\c 1.0.")
-                     (:тип "REAL"
-                      :имя "g"
+                     (:type "REAL"
+                      :name "g"
                       :ru "Уровень зеленого цвета от \\c 0.0 до \\c 1.0."
                       :en "Green level between \\c 0.0 and \\c 1.0.")
-                     (:тип "REAL"
-                      :имя "b"
+                     (:type "REAL"
+                      :name "b"
                       :ru "Уровень синего цвета от \\c 0.0 до \\c 1.0."
                       :en "Blue level between \\c 0.0 and \\c 1.0.")))
 
         ;; BRST_Stream_SetRGBStrokeUint
-        (:название "Stream_SetRGBStrokeUint"
-         :группа "graphics"
-         :ошибки ()
-	 :результат (:тип "STATUS"
+        (:caption "Stream_SetRGBStrokeUint"
+         :group "graphics"
+         :errors ()
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
          :ru "Установка цвета линии (RGB) с использованием значений типа \\ref BRST_UINT8."
          :en "Set stroke color (RGB) using \\ref BRST_UINT8 values."
-         :команда "RG"
-         :параметры ((:тип "Stream"
-                      :имя "page"
+         :command "RG"
+         :params ((:type "Stream"
+                      :name "page"
                       :ru ":param_stream"
                       :en ":param_stream")
-                   (:тип "UINT8"
-                    :имя "r"
+                   (:type "UINT8"
+                    :name "r"
                      :ru "Уровень красного цвета от \\c 0 до \\c 255."
                      :en "Red level between \\c 0 and \\c 255.")
-                   (:тип "UINT8"
-                    :имя "g"
+                   (:type "UINT8"
+                    :name "g"
                     :ru "Уровень зеленого цвета от \\c 0 до \\c 255."
                     :en "Green level between \\c 0 and \\c 255.")
-                   (:тип "UINT8"
-                    :имя "b"
+                   (:type "UINT8"
+                    :name "b"
                     :ru "Уровень синего цвета от \\c 0 до \\c 255."
                     :en "Blue level between \\c 0 and \\c 255.")))
 
        ;; BRST_Stream_SetRGBStrokeHex
-       (:название "Stream_SetRGBStrokeHex"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_SetRGBStrokeHex"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Установка цвета линии (RGB) с использованием значения типа \\ref BRST_UINT32."
         :en "Set stroke color (RGB) using \\ref BRST_UINT32 value."
-        :команда "rg"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "rg"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "UINT32"
-                     :имя "rgb"
+                    (:type "UINT32"
+                     :name "rgb"
                      :ru "Значения цветов RGB задаются в трех байтах 32-битного беззнакового числа.
   Синий задается битами 0-7, зеленый битами 8-15, красный битами 16-23.
   Это соответствует битовым маскам \\c 0xFF, \\c 0xFF00 и \\c 0xFF0000 соответственно."
@@ -613,72 +613,72 @@
   This corresponds to bit masks 0xFF, 0xFF00, and 0xFF0000, respectively.")))
 
        ;; BRST_Stream_SetCMYKFill
-       (:название "Stream_SetCMYKFill"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_SetCMYKFill"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Установка цвета заливки (CMYK)."
         :en "Set fill color (CMYK)."
-        :команда "k"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "k"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "REAL"
-                     :имя "c"
+                    (:type "REAL"
+                     :name "c"
                      :ru "Уровень синего (cyan) цвета от \\c 0.0 до \\c 1.0."
                      :en "Cyan level between \\c 0.0 and \\c 1.0.")
-                    (:тип "REAL"
-                     :имя "m"
+                    (:type "REAL"
+                     :name "m"
                      :ru "Уровень пурпурного (magenta) цвета от \\c 0.0 до \\c 1.0."
                      :en "Magenta level between \\c 0.0 and \\c 1.0.")
-                    (:тип "REAL"
-                     :имя "y"
+                    (:type "REAL"
+                     :name "y"
                      :ru "Уровень желтого (yellow) цвета от \\c 0.0 до \\c 1.0."
                      :en "Yellow level between \\c 0.0 and \\c 1.0.")
-                    (:тип "REAL"
-                     :имя "k"
+                    (:type "REAL"
+                     :name "k"
                      :ru "Уровень черного (blacK) цвета от \\c 0.0 до \\c 1.0."
                      :en "BlacK level between \\c 0.0 and \\c 1.0.")))
 
        ;; BRST_Stream_SetCMYKStroke
-       (:название "Stream_SetCMYKStroke"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_SetCMYKStroke"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Установка цвета линии (CMYK)."
         :en "Set stroke color (CMYK)."
-        :команда "K"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "K"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "REAL"
-                     :имя "c"
+                    (:type "REAL"
+                     :name "c"
                      :ru "Уровень синего (cyan) цвета от \\c 0.0 до \\c 1.0."
                      :en "Cyan level between \\c 0.0 and \\c 1.0.")
-                    (:тип "REAL"
-                     :имя "m"
+                    (:type "REAL"
+                     :name "m"
                      :ru "Уровень пурпурного (magenta) цвета от \\c 0.0 до \\c 1.0."
                      :en "Magenta level between \\c 0.0 and \\c 1.0.")
-                    (:тип "REAL"
-                     :имя "y"
+                    (:type "REAL"
+                     :name "y"
                      :ru "Уровень желтого (yellow) цвета от \\c 0.0 до \\c 1.0."
                      :en "Yellow level between \\c 0.0 and \\c 1.0.")
-                    (:тип "REAL"
-                     :имя "k"
+                    (:type "REAL"
+                     :name "k"
                      :ru "Уровень черного (blacK) цвета от \\c 0.0 до \\c 1.0."
                      :en "BlacK level between \\c 0.0 and \\c 1.0.")))
 
        ;; BRST_Stream_Clip
-       (:название "Stream_Clip"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_Clip"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Изменение текущей область отсечения, пересечение её с текущим путём, что определяет внутренние регионы
@@ -702,23 +702,23 @@
   Initially, the clipping path includes the entire page. There is no way to enlarge the current clipping path
   or to replace the clipping path with a new one. The functions BRST_Stream_GSave() and BRST_Stream_GRestore()
   may be used to save and restore the current graphics state, including the clipping path."
-        :команда "W"
-        :см (
+        :command "W"
+        :see (
              "Stream_EndPath()"
              "Stream_GSave()"
              "Stream_GRestore()"
              "Stream_Eoclip()"
              )
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")))
 
        ;; BRST_Stream_Eoclip
-       (:название "Stream_Eoclip"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_Eoclip"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Изменение текущей область отсечения, пересечение её с текущим путём, что определяет внутренние регионы
@@ -741,205 +741,205 @@
   Initially, the clipping path includes the entire page. There is no way to enlarge the current clipping path
   or to replace the clipping path with a new one. The functions BRST_Stream_GSave() and BRST_Stream_GRestore()
   may be used to save and restore the current graphics state, including the clipping path."
-        :команда "W*"
-        :см (
+        :command "W*"
+        :see (
              "Stream_EndPath()"
              "Stream_GSave()"
              "Stream_GRestore()"
              "Stream_Clip()"
              )
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")))
 
        ;; BRST_Stream_Stroke
-       (:название "Stream_Stroke"
-        :группа "graphics"
-        :ошибки ()
-        :результат (:тип "STATUS"
+       (:caption "Stream_Stroke"
+        :group "graphics"
+        :errors ()
+        :result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Отображение текущего пути."
         :en "Paint current path."
-        :команда "S"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "S"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")))
 
        ;; BRST_Stream_ClosePathStroke
-       (:название "Stream_ClosePathStroke"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_ClosePathStroke"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Закрытие и отображение текущего пути."
         :en "Close and paint current path."
-        :команда "s"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "s"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")))
 
        ;; BRST_Stream_Fill
-       (:название "Stream_Fill"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_Fill"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Заполнение текущего пути с применением правила ненулевого счёта обхода."
         :en "Fill current path using nonzero winding number rule."
-        :команда "f"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "f"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")))
 
        ;; BRST_Stream_Eofill
-       (:название "Stream_Eofill"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_Eofill"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Заполнение текущего пути с применением правила чётный-нечётный."
         :en "Fill current path using even-odd rule."
-        :команда "f*"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "f*"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")))
 
        ;; BRST_Stream_FillStroke
-       (:название "Stream_FillStroke"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_FillStroke"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Заполнение текущего пути с применением правила ненулевого счёта обхода с последующим отображением пути."
         :en "Fill current path using the nonzero winding number rule and then paint the path."
-        :команда "B"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "B"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")))
 
        ;; BRST_Stream_EofillStroke
-       (:название "Stream_EofillStroke"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_EofillStroke"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Заполнение текущего пути с применением правила чётный-нечётный с последующим отображением пути."
         :en "Fill current path using the even-odd rule and then paint the path."
-        :команда "B*"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "B*"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")))
 
        ;; BRST_Stream_ClosePathFillStroke
-       (:название "Stream_ClosePathFillStroke"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_ClosePathFillStroke"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Закрытие пути, заполнение текущего пути с применением правила ненулевого счёта обхода с последующим отображением пути."
         :en "Close current path, fill current path using the nonzero winding number rule, then paint path."
-        :команда "b"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "b"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")))
 
        ;; BRST_Stream_ClosePathEofillStroke
-       (:название "Stream_ClosePathEofillStroke"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_ClosePathEofillStroke"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Закрытие пути, заполнение текущего пути с применением правила чётный-нечётный с последующим отображением пути."
         :en "Close current path, fill current path using the even-odd rule and then paint the path."
-        :команда "b*"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "b*"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")))
 
        ;; BRST_Stream_EndPath
-       (:название "Stream_EndPath"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_EndPath"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Окончание пути без заполнения и отображения."
         :en "Finish path object without fill or painting."
-        :команда "n"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "n"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")))
 
        ;; BRST_Stream_MoveTo
-       (:название "Stream_MoveTo"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_MoveTo"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Начало нового подпути с переносом текущей точки отображения путей."
         :en "Start new subpath and move current point for drawing path."
-        :команда "m"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "m"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "REAL"
-                     :имя "x"
+                    (:type "REAL"
+                     :name "x"
                      :ru "Координата \\c x начальной точки отображения пути."
                      :en "Starting point \\c x coordinate for drawing path.")
-                    (:тип "REAL"
-                     :имя "y"
+                    (:type "REAL"
+                     :name "y"
                      :ru "Координата \\c y начальной точки отображения пути."
                      :en "Starting point \\c y coordinate for drawing path.")))
 
        ;; BRST_Stream_LineTo
-       (:название "Stream_LineTo"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_LineTo"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Добавление отрезка прямой из текущей точки в точку с координатами `(x, y)` как подпуть текущего пути.
         Точка `(x, y)` становится текущей для отображения путей."
         :en "Append a straight line segment from the current point to the point `(x, y)`. The new current point shall be `(x, y)`."
-        :команда "l"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "l"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "REAL"
-                     :имя "x"
+                    (:type "REAL"
+                     :name "x"
                      :ru "Координата \\c x целевой (конечной) точки добавляемого отрезка."
                      :en "End point \\c x coordinate for line segment.")
-                    (:тип "REAL"
-                     :имя "y"
+                    (:type "REAL"
+                     :name "y"
                      :ru "Координата \\c y целевой (конечной) точки добавляемого отрезка."
                      :en "End point \\c y coordinate for line segment.")))
 
        ;; BRST_Stream_CurveTo
-       (:название "Stream_CurveTo"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_CurveTo"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Добавление кубической кривой Безье с использованием контрольных точек (x<sub>1</sub>, y<sub>1</sub>), (x<sub>2</sub>, y<sub>2</sub>)
@@ -953,41 +953,41 @@
   to (x<sub>3</sub>, y<sub>3</sub>).
 
   \\image html img/curveto.png."
-        :команда "c"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "c"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "REAL"
-                     :имя "x1"
+                    (:type "REAL"
+                     :name "x1"
                      :ru "Координата \\c x первой контрольной точки кубической кривой Безье."
                      :en "First cubic Bézier curve control point \\c x coordinate.")
-                    (:тип "REAL"
-                     :имя "y1"
+                    (:type "REAL"
+                     :name "y1"
                      :ru "Координата \\c y первой контрольной точки кубической кривой Безье."
                      :en "First cubic Bézier curve control point \\c y coordinate.")
-                    (:тип "REAL"
-                     :имя "x2"
+                    (:type "REAL"
+                     :name "x2"
                      :ru "Координата \\c x второй контрольной точки кубической кривой Безье."
                      :en "Second cubic Bézier curve control point \\c x coordinate.")
-                    (:тип "REAL"
-                     :имя "y2"
+                    (:type "REAL"
+                     :name "y2"
                      :ru "Координата \\c y второй контрольной точки кубической кривой Безье."
                      :en "Second cubic Bézier curve control point \\c y coordinate.")
-                    (:тип "REAL"
-                     :имя "x3"
+                    (:type "REAL"
+                     :name "x3"
                      :ru "Координата \\c x третьей контрольной точки кубической кривой Безье."
                      :en "Third cubic Bézier curve control point \\c x coordinate.")
-                    (:тип "REAL"
-                     :имя "y3"
+                    (:type "REAL"
+                     :name "y3"
                      :ru "Координата \\c y третьей контрольной точки кубической кривой Безье."
                      :en "Third cubic Bézier curve control point \\c y coordinate.")))
 
        ;; BRST_Stream_CurveTo2
-       (:название "Stream_CurveTo2"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_CurveTo2"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Добавление кубической кривой Безье с использованием контрольных точек (x<sub>2</sub>, y<sub>2</sub>)
@@ -998,33 +998,33 @@
   and (x<sub>3</sub>, y<sub>3</sub>) as control points. Then current point is set to (x<sub>3</sub>, y<sub>3</sub>).
 
   \\image html img/curveto2.png"
-        :команда "v"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "v"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "REAL"
-                     :имя "x2"
+                    (:type "REAL"
+                     :name "x2"
                      :ru "Координата \\c x второй контрольной точки кубической кривой Безье."
                      :en "Second cubic Bézier curve control point \\c x coordinate.")
-                    (:тип "REAL"
-                     :имя "y2"
+                    (:type "REAL"
+                     :name "y2"
                      :ru "Координата \\c y второй контрольной точки кубической кривой Безье."
                      :en "Second cubic Bézier curve control point \\c y coordinate.")
-                    (:тип "REAL"
-                     :имя "x3"
+                    (:type "REAL"
+                     :name "x3"
                      :ru "Координата \\c x третьей контрольной точки кубической кривой Безье."
                      :en "Third cubic Bézier curve control point \\c x coordinate.")
-                    (:тип "REAL"
-                     :имя "y3"
+                    (:type "REAL"
+                     :name "y3"
                      :ru "Координата \\c y третьей контрольной точки кубической кривой Безье."
                      :en "Third cubic Bézier curve control point \\c y coordinate.")))
 
        ;; BRST_Stream_CurveTo3
-       (:название "Stream_CurveTo3"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_CurveTo3"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Добавление кубической кривой Безье с использованием контрольных точек (x<sub>1</sub>, y<sub>1</sub>)
@@ -1037,48 +1037,48 @@
   to (x<sub>3</sub>, y<sub>3</sub>).
 
   \\image html img/curveto3.png."
-        :команда "y"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "y"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "REAL"
-                     :имя "x1"
+                    (:type "REAL"
+                     :name "x1"
                      :ru "Координата \\c x первой контрольной точки кубической кривой Безье."
                      :en "First cubic Bézier curve control point \\c x coordinate.")
-                    (:тип "REAL"
-                     :имя "y1"
+                    (:type "REAL"
+                     :name "y1"
                      :ru "Координата \\c y первой контрольной точки кубической кривой Безье."
                      :en "First cubic Bézier curve control point \\c y coordinate.")
-                    (:тип "REAL"
-                     :имя "x3"
+                    (:type "REAL"
+                     :name "x3"
                      :ru "Координата \\c x третьей контрольной точки кубической кривой Безье."
                      :en "Third cubic Bézier curve control point \\c x coordinate.")
-                    (:тип "REAL"
-                     :имя "y3"
+                    (:type "REAL"
+                     :name "y3"
                      :ru "Координата \\c y третьей контрольной точки кубической кривой Безье."
                      :en "Third cubic Bézier curve control point \\c y coordinate.")))
 
        ;; BRST_Stream_ClosePath
-       (:название "Stream_ClosePath"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_ClosePath"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Закрытие текущего подпути добавлением отрезка из текущей точки в начальную точку подпути."
         :en "Close the current subpath by appending a straight line segment from the current point to the starting point of the subpath."
-        :команда "h"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "h"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")))
 
        ;; BRST_Stream_Rectangle
-       (:название "Stream_Rectangle"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_Rectangle"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Добавление прямоугольника к текущему пути в качестве самостоятельного подпути.
@@ -1087,64 +1087,64 @@
         :en "Append a rectangle to the current path as a complete
 subpath, with lower-left corner `(x, y)` and dimensions \\c width
 and \\c height in user space."
-        :команда "re"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "re"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "REAL"
-                     :имя "x"
+                    (:type "REAL"
+                     :name "x"
                      :ru "Координата \\c x левого нижнего угла прямоугольника."
                      :en "Rectangle low-left corner \\c x coordinate.")
-                    (:тип "REAL"
-                     :имя "y"
+                    (:type "REAL"
+                     :name "y"
                      :ru "Координата \\c y левого нижнего угла прямоугольника."
                      :en "Rectangle low-left corner \\c y coordinate.")
-                    (:тип "REAL"
-                     :имя "width"
+                    (:type "REAL"
+                     :name "width"
                      :ru "Ширина прямоугольника."
                      :en "Rectangle width")
-                    (:тип "REAL"
-                     :имя "height"
+                    (:type "REAL"
+                     :name "height"
                      :ru "Высота прямоугольника."
                      :en "Rectangle height")))
 
        ;; BRST_Stream_SetLineWidth
-       (:название "Stream_SetLineWidth"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_SetLineWidth"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Установка толщины линии для отображения путей."
         :en "Set width of the line used to stroke paths."
-        :команда "w"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "w"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "REAL"
-                     :имя "line_width"
+                    (:type "REAL"
+                     :name "line_width"
                      :ru "Толщина линии для отображения путей. По умолчанию равна \\c 1.0."
                      :en "Line width. Default \\c line_width is \\c 1.0")))
 
 
        ;; BRST_Stream_SetLineCap
-       (:название "Stream_SetLineCap"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_SetLineCap"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Установка стиля окончания линии."
         :en "Set lines endpoints shape style."
-        :команда "J"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "J"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "LineCap"
-                     :имя "line_cap"
+                    (:type "LineCap"
+                     :name "line_cap"
                      :ru "Стиль окончания линии (одно из значений):
 
   | Значение                         | Изображение               | Описание                                                                  |
@@ -1166,21 +1166,21 @@ and \\c height in user space."
 ")))
 
        ;; BRST_Stream_SetLineJoin
-       (:название "Stream_SetLineJoin"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_SetLineJoin"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Установка стиля стыка линий."
         :en "Set line join shape style."
-        :команда "j"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "j"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "LineJoin"
-                     :имя "line_join"
+                    (:type "LineJoin"
+                     :name "line_join"
                      :ru "Стиль стыка линий (одно из значений).
 
   | Значение              | Изображение                | Описание                                                                                             |
@@ -1201,10 +1201,10 @@ and \\c height in user space."
   Default \\c line_join is \\ref BRST_MITER_JOIN.")))
 
        ;; Stream_SetMiterLimit
-       (:название "Stream_SetMiterLimit"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_SetMiterLimit"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Установка предельного значения острого угла линии для пересечений.
@@ -1216,21 +1216,21 @@ and \\c height in user space."
   A miter limit of 1.414 converts miters to bevels for \\c angle less than \\c 90 degrees,
   a limit of \\c 2.0 converts them for \\c angle less than 60 degrees, and a limit of 10.0
   converts them for angle less than approximately 11.5 degrees."
-        :команда "M"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "M"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "REAL"
-                     :имя "miter_limit"
+                    (:type "REAL"
+                     :name "miter_limit"
                      :ru "Предельное значение острого угла линии."
                      :en "Miter limit value.")))
 
        ;; BRST_Stream_SetDash
-       (:название "Stream_SetDash"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_SetDash"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru "Устанавливает шаблон пунктира линий.
@@ -1272,40 +1272,40 @@ and \\c height in user space."
   `dash_ptn = [8,]`, `num_elem = 4`, `phase = 0`
 
   \\image html setdash4.png"
-        :команда "d"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "d"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "DASH_PATTERN"
-                     :имя "dash_pattern"
+                    (:type "DASH_PATTERN"
+                     :name "dash_pattern"
                      :ru ""
                      :en "Pattern of dashes and gaps used to stroke paths.")
-                    (:тип "UINT"
-                     :имя "num_elem"
+                    (:type "UINT"
+                     :name "num_elem"
                      :ru ""
                      :en "Number of elements in dash_pattern, `0 <= num_param <= 8`.")
-                    (:тип "REAL"
-                     :имя "phase"
+                    (:type "REAL"
+                     :name "phase"
                      :ru ""
                      :en "Phase in which pattern begins (default is \\c 0)")))
 
        ;; BRST_Stream_SetFlat
-       (:название "Stream_SetFlat"
-        :группа "graphics"
-        :ошибки ()
-	:результат (:тип "STATUS"
+       (:caption "Stream_SetFlat"
+        :group "graphics"
+        :errors ()
+	:result (:type "STATUS"
 		    :ru ":return_ok"
 		    :en ":return_ok")
         :ru ""
         :en "Set flatness tolerance for curves rendering."
-        :команда "i"
-        :параметры ((:тип "Stream"
-                     :имя "page"
+        :command "i"
+        :params ((:type "Stream"
+                     :name "page"
                      :ru ":param_stream"
                      :en ":param_stream")
-                    (:тип "REAL"
-                     :имя "flatness"
+                    (:type "REAL"
+                     :name "flatness"
                      :ru ""
                      :en "")))))
 

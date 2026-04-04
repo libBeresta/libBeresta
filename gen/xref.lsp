@@ -1,2 +1,2 @@
-(:файл "xref"
- :указатели ((:имя "Xref")))
+(:file "xref"
+ :pointers ((:name "Xref")))

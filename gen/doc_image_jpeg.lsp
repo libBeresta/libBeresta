@@ -1,37 +1,37 @@
-(:файл "doc_image_jpeg"
- :функции (
+(:file "doc_image_jpeg"
+ :functions (
            ;; BRST_Doc_Image_Jpeg_LoadFromFile
-           (:название "Doc_Image_Jpeg_LoadFromFile"
+           (:caption "Doc_Image_Jpeg_LoadFromFile"
             :ru "Загружает файл формата JPEG"
             :en "Load external JPEG image file"
-            :параметры ((:тип "Doc"
-                         :имя "pdf"
+            :params ((:type "Doc"
+                         :name "pdf"
                          :ru ":param_pdf"
                          :en ":param_pdf")
-                        (:тип "CSTR"
-                         :имя "filename"
+                        (:type "CSTR"
+                         :name "filename"
                          :ru "Путь к файлу формата JPEG"
                          :en "Path to JPEG image file"))
-            :результат (:тип "Image"
+            :result (:type "Image"
                         :ru ":param_image"
                         :en ":param_image"))
            ;; BRST_Doc_Image_Jpeg_LoadFromMem
-           (:название "Doc_Image_Jpeg_LoadFromMem"
+           (:caption "Doc_Image_Jpeg_LoadFromMem"
             :ru "Загружает изображение формата JPEG из буфера памяти."
             :en "Load JPEG image from buffer"
-            :параметры ((:тип "Doc"
-                         :имя "pdf"
+            :params ((:type "Doc"
+                         :name "pdf"
                          :ru ":param_pdf"
                          :en ":param_pdf")
-                        (:тип "BYTE*"
-                         :имя "buf"
+                        (:type "BYTE*"
+                         :name "buf"
                          :ru "Указатель на данные изображения"
                          :en "Pointer to the image data")
-                        (:тип "UINT"
-                         :имя "size"
+                        (:type "UINT"
+                         :name "size"
                          :ru "Размер данных в буфере"
                          :en "Size of the data in buffer"))
-            :результат (:тип "Image"
+            :result (:type "Image"
                         :ru ":param_image"
                         :en ":param_image")) 
            ))

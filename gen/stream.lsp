@@ -1,2 +1,2 @@
-(:файл "stream"
- :указатели ((:имя "Stream")))
+(:file "stream"
+ :pointers ((:name "Stream")))

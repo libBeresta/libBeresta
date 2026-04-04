@@ -1,29 +1,29 @@
-(:файл "base"
- :функции
+(:file "base"
+ :functions
        ;; === NewEx
-       ((:название "Doc_New_Ex"
-	 :группа "doc"
+       ((:caption "Doc_New_Ex"
+	 :group "doc"
 	 :ru "Создает и настраивает экземпляр документа"
 	 :en "Create an instance of a document object and initialize it"
-	 :см ("New()"
+	 :see ("New()"
 	      "Free()")
-	 :результат (:тип "Doc"
+	 :result (:type "Doc"
 		     :ru "Дескриптор объекта документа при успехе и \\c NULL при неудаче."
 		     :en "A handle of document object on success and \\c NULL on failure.")
-	 :параметры ((:тип "Error_Handler"
-		      :имя "user_error_fn"
+	 :params ((:type "Error_Handler"
+		      :name "user_error_fn"
 		      :ru "Пользовательский обработчик ошибок, вызываемые при возникновении ошибок."
 		      :en "User-defined error handler which is invoked when an error occurred.")
-		     (:тип "Alloc_Func"
-		      :имя "user_alloc_fn"
+		     (:type "Alloc_Func"
+		      :name "user_alloc_fn"
 		      :ru "Пользовательская функция распределения памяти. Если указано \\c NULL, используется функция `malloc()`."
 		      :en "User-defined memory allocation function. If \\c NULL is specified, `malloc()` is used.")
-		     (:тип "Free_Func"
-		      :имя "user_free_fn"
+		     (:type "Free_Func"
+		      :name "user_free_fn"
 		      :ru "Пользовательская функция высвобождения памяти. Если указано \\c NULL, используется функция `free()`."
 		      :en "User-defined memory freeing function. If \\c NULL is specified, `free()` is used.")
-		     (:тип "UINT"
-		      :имя "mem_pool_buf_size"
+		     (:type "UINT"
+		      :name "mem_pool_buf_size"
 		      :ru "\\parblock \\c libBeresta по умолчанию не использует пул памяти.
 
 Функция выделения памяти по требованию вызывается из приложения.
@@ -51,195 +51,195 @@ If this parameter set to non-zero value, memory management will be done as follo
 - Unused memory is not released immediately. It is released
   all together when BRST_Free() is invoked.
   \\endparblock")
-			   (:тип "RAW_POINTER"
-			    :имя "user_data"
+			   (:type "RAW_POINTER"
+			    :name "user_data"
 			    :ru "Указатель на пользовательские данные, используемый в обработчике ошибок."
 			    :en "User-defined void pointer. This pointer is used by error handling.")))
 
 	;; === Version
-	(:название "Version"
-	 :группа "doc"
+	(:caption "Version"
+	 :group "doc"
 	 :ru "Возвращает версию библиотеки"
 	 :en "Returns library version"
-	 :результат (:тип "CSTR"
+	 :result (:type "CSTR"
 		     :ru "Версия библиотеки"
 		     :en "Library version")
-	 :параметры ())
+	 :params ())
 
 	;; === Doc_New
-	(:название "Doc_New"
-	 :группа "doc"
+	(:caption "Doc_New"
+	 :group "doc"
 	 :ru "Создает объект документа и настраивает его"
 	 :en "Create document and set it up"
-	 :параметры ((:тип "Error_Handler"
-		      :имя "user_error_fn"
+	 :params ((:type "Error_Handler"
+		      :name "user_error_fn"
 		      :ru "Пользовательская функция обработки, вызываемая при возникновении ошибки."
 		      :en "User-defined error handler which is invoked when an error occurred.")
-		     (:тип "RAW_POINTER"
-		      :имя "user_data"
+		     (:type "RAW_POINTER"
+		      :name "user_data"
 		      :ru "Указатель на пользовательские данные, передаваемые в обработчик ошибок."
 		      :en "User-defined void pointer. This pointer is used by error handling."))
-	 :результат (:тип "Doc"
+	 :result (:type "Doc"
 		     :ru "Дескриптор объекта документа при успехе и \\c NULL при неудаче."
 		     :en "A handle of document object on success and \\c NULL on failure.")
-	 :см ("Doc_New_Ex()"
+	 :see ("Doc_New_Ex()"
   	      "Doc_New_Empty()"
 	      "Doc_Free()"))
 
 	;; === Doc_New_Empty
-	(:название "Doc_New_Empty"
-	 :группа "doc"
+	(:caption "Doc_New_Empty"
+	 :group "doc"
 	 :ru "Создает объект документа и настраивает его (без дополнительных опций)"
 	 :en "Create document and set it up (with no additional options)"
-	 :параметры ()
-	 :результат (:тип "Doc"
+	 :params ()
+	 :result (:type "Doc"
 		     :ru "Дескриптор объекта документа при успехе и \\c NULL при неудаче."
 		     :en "A handle of document object on success and \\c NULL on failure.")
-	 :см ("Doc_New()"
+	 :see ("Doc_New()"
  	      "Doc_New_Ex()"
 	      "Doc_Free()"))
 
 	;; === Doc_Init
-	(:название "Doc_Initialize"
-	 :группа "doc"
+	(:caption "Doc_Initialize"
+	 :group "doc"
 	 :ru "Настраивает документ. Если документ \\c doc уже настроен, он предварительно очищается"
 	 :en "Create a new document. If \\c doc object already has a document, the current document is revoked."
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf"))
-	 :результат (:тип "STATUS"
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
-	 :см ("Doc_Destroy()")
-	 :ошибки ("INVALID_DOCUMENT"
+	 :see ("Doc_Destroy()")
+	 :errors ("INVALID_DOCUMENT"
 		  "FAILED_TO_ALLOC_MEM"))
 
 	;; === Doc_Destroy
-	(:название "Doc_Destroy"
-	 :группа "doc"
+	(:caption "Doc_Destroy"
+	 :group "doc"
 	 :ru "Очищает внутренние структуры документа."
 	 :en "Releases inner document structures."
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf"))
-	 :результат (:тип "void"
+	 :result (:type "void"
 		     :ru "Нет"
 		     :en "No")
-	 :см ("Doc_Initialize()"
+	 :see ("Doc_Initialize()"
 	      "Doc_Destroy_All()"))
 
 	;; === Doc_Initialized
-	(:название "Doc_Initialized"
-	 :группа "doc"
+	(:caption "Doc_Initialized"
+	 :group "doc"
 	 :ru "Проверяет, что описатель объекта документа корректен."
 	 :en "Checks if document handle is valid."
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf"))
-	 :результат (:тип "BOOL"
+	 :result (:type "BOOL"
 		     :ru "\\ref BRST_TRUE если описатель документа корректен, иначе возвращает \\ref BRST_FALSE, устанавливает код ошибки и вызывает обработчик ошибок."
 		     :en "\\ref BRST_TRUE if the specified document handle is valid. Otherwise return \\ref BRST_FALSE, set error code and call error handler.")
-	 :ошибки ("INVALID_DOCUMENT")
-	 :см ("Doc_Initialize()"))
+	 :errors ("INVALID_DOCUMENT")
+	 :see ("Doc_Initialize()"))
 
 	;; === Doc_Destroy_All
-	(:название "Doc_Destroy_All"
-	 :группа "doc"
+	(:caption "Doc_Destroy_All"
+	 :group "doc"
 	 :ru "Очищает внутренние структуры документа.
 
 Функция высвобождает загруженные ресурсы (вроде шрифтов и кодировок)."
 	 :en "Releases inner document structures and frees loaded resources (such as fonts and encodings)"
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf"))
-	 :результат (:тип "void"
+	 :result (:type "void"
 		     :ru "Нет"
 		     :en "No")
-	 :см ("Doc_Initialize()"
+	 :see ("Doc_Initialize()"
 	      "Doc_Destroy()"))
 
 	;; === Doc_Contents
-;;	(:название "Doc_Contents"
-;;	 :группа "doc"
+;;	(:caption "Doc_Contents"
+;;	 :group "doc"
 ;;	 :ru "Копирует содержимое документа в предоставленный буфер"
 ;;	 :en "Copy document data to given buffer"
-;;	 :параметры ((:тип "Doc"
-;;		      :имя "pdf"
+;;	 :params ((:type "Doc"
+;;		      :name "pdf"
 ;;		      :ru ":param_pdf"
 ;;		      :en ":param_pdf")
-;;		     (:тип "BYTE*"
-;;		      :имя "buf"
+;;		     (:type "BYTE*"
+;;		      :name "buf"
 ;;		      :ru "Указатель на подготовленный буфер"
 ;;		      :en "Output buffer pointer")
-;;		     (:тип "UINT32*"
-;;		      :имя "size"
+;;		     (:type "UINT32*"
+;;		      :name "size"
 ;;		      :ru "Размер данных в выходном буфере"
 ;;		      :en "Output buffer size"))
-;;	 :результат (:тип "STATUS"
+;;	 :result (:type "STATUS"
 ;;		     :ru "\\ref BRST_OK если удалось записать содержимое документа в буфер, иначе возвращает код ошибки."
 ;;		     :en "\\ref BRST_OK on success copying. Otherwise returns error code.")
-;;	 :ошибки ("INVALID_DOCUMENT"))
+;;	 :errors ("INVALID_DOCUMENT"))
 	
 	;; === Doc_MMgr
-	(:название "Doc_MMgr"
-	 :группа "doc"
+	(:caption "Doc_MMgr"
+	 :group "doc"
 	 :ru "Возвращает менеджер памяти документа"
 	 :en "Returns document's memory manager"
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf")
 		     )
-	 :результат (:тип "MMgr"
+	 :result (:type "MMgr"
 		     :ru "Менеджер памяти документа, если он установлен."
 		     :en "Document's memory manager"))
 
 	;; === Doc_Free
-	(:название "Doc_Free"
-	 :группа "doc"
+	(:caption "Doc_Free"
+	 :group "doc"
 	 :ru "Высвобождает данные документа"
 	 :en "Frees document data"
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf"))
-	 :результат (:тип "void"
+	 :result (:type "void"
 		     :ru "Нет"
 		     :en "No"))
 
-	(:название "PageSize_Width"
-	 :группа "doc"
+	(:caption "PageSize_Width"
+	 :group "doc"
 	 :ru "Ширина страницы для предопределенного размера. Может использоваться без документа и страницы."
 	 :en "Predefined page size width. May be used without document and page."
-	 :параметры ((:тип "PageSizes"
-                  :имя "size"
+	 :params ((:type "PageSizes"
+                  :name "size"
                   :ru "Предопределённый размер страницы"
                   :en "Predefined page size")
-                 (:тип "PageOrientation"
-                  :имя "orientation"
+                 (:type "PageOrientation"
+                  :name "orientation"
                   :ru "Ориентация страницы"
                   :en "Page orientation"))
-	 :результат (:тип "REAL"
+	 :result (:type "REAL"
 		     :ru "Ширина страницы в точках"
 		     :en "Page size in points"))
 
-	(:название "PageSize_Height"
-	 :группа "doc"
+	(:caption "PageSize_Height"
+	 :group "doc"
 	 :ru "Высота страницы для предопределенного размера. Может использоваться без документа и страницы."
 	 :en "Predefined page size height. May be used without document and page."
-	 :параметры ((:тип "PageSizes"
-                  :имя "size"
-                  :имя "size"
+	 :params ((:type "PageSizes"
+                  :name "size"
+                  :name "size"
                   :ru "Предопределённый размер страницы"
                   :en "Predefined page size")
-                 (:тип "PageOrientation"
-                  :имя "orientation"
+                 (:type "PageOrientation"
+                  :name "orientation"
                   :ru "Ориентация страницы"
                   :en "Page orientation"))
-	 :результат (:тип "REAL"
+	 :result (:type "REAL"
 		     :ru "Ширина страницы в точках"
 		     :en "Page size in points"))))

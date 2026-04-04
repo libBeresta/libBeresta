@@ -1,5 +1,5 @@
-(:файл "javascript"
- :определения
-      ((:имя "JavaScript"
-        :оригинал "Dict"))
+(:file "javascript"
+ :definitions
+      ((:name "JavaScript"
+        :original "Dict"))
 )

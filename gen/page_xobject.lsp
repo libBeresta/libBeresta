@@ -1,7 +1,7 @@
-(:файл "page_xobject"
- :группа "page"
- :функции ((:название "Page_XObject_Execute"
-            :группа "page"
+(:file "page_xobject"
+ :group "page"
+ :functions ((:caption "Page_XObject_Execute"
+            :group "page"
             :ru "Отображает объект XObject в текущем графическом контексте.
 
   XObject можно создать с помощью функции \\ref BRST_Doc_Page_XObject_Create(), он может включать в себя
@@ -16,40 +16,40 @@
   This is also used by \\ref BRST_Page_DrawImage() to draw the \\ref BRST_Image by first calling
   \\ref BRST_Page_GSave() and \\ref BRST_Page_Concat() and then calling \\ref BRST_Page_GRestore()
   after BRST_Page_XObject_Execute(). It could be used manually to rotate an image."
-            :см ("Doc_Page_XObject_Create()"
+            :see ("Doc_Page_XObject_Create()"
                  "Page_DrawImage()"
                  "Page_GSave()"
                  "Page_GRestore()"
                  "Page_Concat()")
-            :результат (:тип "STATUS"
+            :result (:type "STATUS"
                         :ru ":return_ok"
                         :en ":return_ok")
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")
-                        (:тип "XObject"
-                         :имя "xobj"
+                        (:type "XObject"
+                         :name "xobj"
                          :ru ":param_xobject"
                          :en ":param_xobject")))
 
-	   (:название "Dict_XObject_Execute"
-            :группа "page"
+	   (:caption "Dict_XObject_Execute"
+            :group "page"
             :ru ""
             :en ""
-            :см ("Doc_Page_XObject_Create()"
+            :see ("Doc_Page_XObject_Create()"
                  "Page_DrawImage()"
                  "Page_GSave()"
                  "Page_GRestore()"
                  "Page_Concat()")
-            :результат (:тип "STATUS"
+            :result (:type "STATUS"
                         :ru ":return_ok"
                         :en ":return_ok")
-            :параметры ((:тип "Dict"
-                         :имя "dict"
+            :params ((:type "Dict"
+                         :name "dict"
                          :ru ":param_dict"
                          :en ":param_dict")
-                        (:тип "XObject"
-                         :имя "xobj"
+                        (:type "XObject"
+                         :name "xobj"
                          :ru ":param_xobject"
                          :en ":param_xobject")))))

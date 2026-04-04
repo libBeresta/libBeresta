@@ -1,71 +1,71 @@
-(:файл "stream_text"
- :функции
+(:file "stream_text"
+ :functions
        (
         ;; BRST_Stream_BeginText
-        (:название "Stream_BeginText"
-         :группа "graphics"
-         :ошибки ()
-         :результат (:тип "STATUS"
+        (:caption "Stream_BeginText"
+         :group "graphics"
+         :errors ()
+         :result (:type "STATUS"
                      :ru ":return_ok"
                      :en ":return_ok")
          :ru "Начинает текстовый объект и устанавливает начальную позицию текста в точке `(0, 0)`."
          :en "Begins a text object and sets the initial text position to `(0, 0)`."
-         :команда "BT"
-         :параметры ((:тип "Stream"
-                      :имя "stream"
+         :command "BT"
+         :params ((:type "Stream"
+                      :name "stream"
                       :ru ":param_stream"
                       :en ":param_stream")))
 
         ;; BRST_Stream_EndText
-        (:название "Stream_EndText"
-         :группа "graphics"
-         :ошибки ()
-         :результат (:тип "STATUS"
+        (:caption "Stream_EndText"
+         :group "graphics"
+         :errors ()
+         :result (:type "STATUS"
                      :ru ":return_ok"
                      :en ":return_ok")
          :ru "Заканчивает текстовый объект на странице."
          :en "Finish text object."
-         :команда "ET"
-         :параметры ((:тип "Stream"
-                      :имя "stream"
+         :command "ET"
+         :params ((:type "Stream"
+                      :name "stream"
                       :ru ":param_stream"
                       :en ":param_stream")))
 
         ;; BRST_Stream_SetTextLeading
-        (:название "Stream_SetTextLeading"
-         :группа "graphics"
-         :ошибки ()
-         :результат (:тип "STATUS"
+        (:caption "Stream_SetTextLeading"
+         :group "graphics"
+         :errors ()
+         :result (:type "STATUS"
                      :ru ":return_ok"
                      :en ":return_ok")
          :ru "Устанавливает интерлиньяж (расстояния между базовыми линиями соседних строк)."
          :en "Set text leading (line spacing)."
-         :команда "TL"
-         :параметры ((:тип "Stream"
-                      :имя "stream"
+         :command "TL"
+         :params ((:type "Stream"
+                      :name "stream"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "REAL"
-                      :имя "value"
+                     (:type "REAL"
+                      :name "value"
                       :ru "Значение интерлиньяжа (начальное значение = \\c 0)."
                       :en "Value of text leading (initially \\c 0).")))
 
         ;; BRST_Stream_SetTextRenderingMode
-        (:название "Stream_SetTextRenderingMode"
-         :группа "graphics"
-         :ошибки ()
-         :результат (:тип "STATUS"
+        (:caption "Stream_SetTextRenderingMode"
+         :group "graphics"
+         :errors ()
+         :result (:type "STATUS"
                      :ru ":return_ok"
                      :en ":return_ok")
          :ru "Устанавливает режим рендеринга текста (заполнение, контур, обрезка и др.)."
          :en "Set text rendering mode."
-         :команда "Tr"
-         :параметры ((:тип "Stream"
-                      :имя "stream"
+         :command "Tr"
+         :params ((:type "Stream"
+                      :name "stream"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "TextRenderingMode"
-                      :имя "mode"
+                     (:type "TextRenderingMode"
+                      :name "mode"
                       :ru "\\parblock Режим рендеринга текста (одно из значений):
 
   | Значение                       | Изображение              | Описание                                                 |
@@ -98,10 +98,10 @@
 ")))
 
         ;; BRST_Stream_MoveTextPos
-        (:название "Stream_MoveTextPos"
-         :группа "graphics"
-         :ошибки ()
-         :результат (:тип "STATUS"
+        (:caption "Stream_MoveTextPos"
+         :group "graphics"
+         :errors ()
+         :result (:type "STATUS"
                      :ru ":return_ok"
                      :en ":return_ok")
          :ru "Перемещает текущую позицию текста на указанное смещение.
@@ -110,25 +110,25 @@
          :en "Change current text position using specified offsets.
 
   If the current text position is (x<sub>1</sub>, y<sub>1</sub>), the new text position will be (x<sub>1</sub> + x, y<sub>1</sub> + y)."
-         :команда "Td"
-         :параметры ((:тип "Stream"
-                      :имя "stream"
+         :command "Td"
+         :params ((:type "Stream"
+                      :name "stream"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "REAL"
-                      :имя "x"
+                     (:type "REAL"
+                      :name "x"
                       :ru "Горизонтальное смещение."
                       :en "Offset to new text position along \\с x axis.")
-                     (:тип "REAL"
-                      :имя "y"
+                     (:type "REAL"
+                      :name "y"
                       :ru "Вертикальное смещение."
                       :en "Offset to new text position along \\c y axis.")))
 
         ;; BRST_Stream_MoveTextPos2
-        (:название "Stream_MoveTextPos2"
-         :группа "graphics"
-         :ошибки ()
-         :результат (:тип "STATUS"
+        (:caption "Stream_MoveTextPos2"
+         :group "graphics"
+         :errors ()
+         :result (:type "STATUS"
                      :ru ":return_ok"
                      :en ":return_ok")
          :ru "Перемещает текущую позицию текста на указанное смещение.
@@ -137,117 +137,117 @@
          :en "Change current text position using specified offsets.
 
   If the current text position is (x<sub>1</sub>, y<sub>1</sub>), the new text position will be (x<sub>1</sub> + x, y<sub>1</sub> + y)."
-         :команда "Td"
-         :параметры ((:тип "Stream"
-                      :имя "stream"
+         :command "Td"
+         :params ((:type "Stream"
+                      :name "stream"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "REAL"
-                      :имя "x"
+                     (:type "REAL"
+                      :name "x"
                       :ru "Горизонтальное смещение."
                       :en "Offset to new text position along \\с x axis.")
-                     (:тип "REAL"
-                      :имя "y"
+                     (:type "REAL"
+                      :name "y"
                       :ru "Вертикальное смещение."
                       :en "Offset to new text position along \\c y axis.")))
 
         ;; BRST_Stream_SetTextMatrix
-        (:название "Stream_SetTextMatrix"
-         :группа "graphics"
-         :ошибки ()
-         :результат (:тип "STATUS"
+        (:caption "Stream_SetTextMatrix"
+         :group "graphics"
+         :errors ()
+         :result (:type "STATUS"
                      :ru ":return_ok"
                      :en ":return_ok")
          :ru "Задает матрицу преобразования текста."
          :en "Set text transformation matrix."
-         :команда "Tm"
-         :параметры ((:тип "Stream"
-                      :имя "stream"
+         :command "Tm"
+         :params ((:type "Stream"
+                      :name "stream"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "REAL"
-                      :имя "a"
+                     (:type "REAL"
+                      :name "a"
                       :ru "Элемент матрицы"
                       :en "First element of transformation matrix.")
-                     (:тип "REAL"
-                      :имя "b"
+                     (:type "REAL"
+                      :name "b"
                       :ru "Элемент матрицы"
                       :en "Second element of transformation matrix.")
-                     (:тип "REAL"
-                      :имя "c"
+                     (:type "REAL"
+                      :name "c"
                       :ru "Элемент матрицы"
                       :en "Third element of transformation matrix.")
-                     (:тип "REAL"
-                      :имя "d"
+                     (:type "REAL"
+                      :name "d"
                       :ru "Элемент матрицы"
                       :en "Fourth element of transformation matrix.")
-                     (:тип "REAL"
-                      :имя "x"
+                     (:type "REAL"
+                      :name "x"
                       :ru "Смещение по оси \\c x."
                       :en "Translation component along X-axis.")
-                     (:тип "REAL"
-                      :имя "y"
+                     (:type "REAL"
+                      :name "y"
                       :ru "Смещение по оси \\c y."
                       :en "Translation component along Y-axis.")))
 
         ;; BRST_Stream_ShowText
-        (:название "Stream_ShowText"
-         :группа "graphics"
-         :ошибки ()
-         :результат (:тип "STATUS"
+        (:caption "Stream_ShowText"
+         :group "graphics"
+         :errors ()
+         :result (:type "STATUS"
                      :ru ":return_ok"
                      :en ":return_ok")
          :ru "Отображает текст в текущей позиции."
          :en "Put text at the current text position on the page."
-         :команда "Tj"
-         :параметры ((:тип "Stream"
-                      :имя "stream"
+         :command "Tj"
+         :params ((:type "Stream"
+                      :name "stream"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "Font"
-                      :имя "font"
+                     (:type "Font"
+                      :name "font"
                       :ru ":param_font"
                       :en ":param_font")
-                     (:тип "CSTR"
-                      :имя "text"
+                     (:type "CSTR"
+                      :name "text"
                       :ru "Строка текста."
                       :en "Text to display.")))
 
         ;; BRST_Stream_TextOut
-        (:название "Stream_TextOut"
-         :группа "graphics"
-         :ошибки ()
-         :результат (:тип "STATUS"
+        (:caption "Stream_TextOut"
+         :group "graphics"
+         :errors ()
+         :result (:type "STATUS"
                      :ru ":return_ok"
                      :en ":return_ok")
          :ru "Помещает текст в указанную позицию на странице."
          :en "Put text to the specified position."
-         :параметры ((:тип "Stream"
-                      :имя "stream"
+         :params ((:type "Stream"
+                      :name "stream"
                       :ru ":param_stream"
                       :en ":param_stream")
-                     (:тип "Font"
-                      :имя "font"
+                     (:type "Font"
+                      :name "font"
                       :ru ":param_font"
                       :en ":param_font")
-                     (:тип "REAL"
-                      :имя "xpos"
+                     (:type "REAL"
+                      :name "xpos"
                       :ru "Позиция по горизонтали"
                       :en "Horizontal position.")
-                     (:тип "REAL"
-                      :имя "ypos"
+                     (:type "REAL"
+                      :name "ypos"
                       :ru "Позиция по вертикали"
                       :en "Vertical position.")
-                     (:тип "CSTR"
-                      :имя "text"
+                     (:type "CSTR"
+                      :name "text"
                       :ru "Строка текста"
                       :en "Text to display.")))
 
         ;; BRST_Stream_MoveToNextLine
-        (:название "Stream_MoveToNextLine"
-         :группа "graphics"
-         :ошибки ()
-         :результат (:тип "STATUS"
+        (:caption "Stream_MoveToNextLine"
+         :group "graphics"
+         :errors ()
+         :result (:type "STATUS"
                      :ru ":return_ok"
                      :en ":return_ok")
          :ru "Переходит к следующей строке с учётом настроек интерлиньяжа.
@@ -256,8 +256,8 @@
          :en "Move current position for text showing to the beginning of the next line.
 
   New position is calculated with current text transition matrix."
-         :команда "T*"
-         :параметры ((:тип "Stream"
-                      :имя "stream"
+         :command "T*"
+         :params ((:type "Stream"
+                      :name "stream"
                       :ru ":param_stream"
                       :en ":param_stream")))))

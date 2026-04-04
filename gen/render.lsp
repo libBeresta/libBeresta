@@ -1,12 +1,12 @@
 (ql:quickload 'djula :silent t)
 
-(defvar *префикс* "BRST")
-(defvar *язык* :ru)
+(defvar *prefix* "BRST")
+(defvar *language* :ru)
 
-(defparameter +типы-без-префикса+
+(defparameter +no-prefix-types+
   (list "void*" "const char*" "void"))
 
-(defparameter +подстановки+
+(defparameter +substitutes+
   '(((":param_pdf"     . :en) . "Document object handle.")
     ((":param_page"    . :en) . "Page object handle.")
     ((":param_font"    . :en) . "Font object handle.")
@@ -45,7 +45,7 @@
     ((":return_ok"     . :ru) . "\\ref BRST_OK при успешном выполнении, иначе возвращает код ошибки и вызывает обработчик ошибок.")
     ((":error-codes"   . :ru) . "\\par Коды ошибок")))
 
-(defparameter +ecl-типы+
+(defparameter +ecl-types+
   '((       "string" .       ":cstring")
     (         "int8" .          ":byte")
     (        "uint8" . ":unsigned-byte")
@@ -65,7 +65,8 @@
     (          "DOC" .  ":pointer-void")     
     (         "MMGR" .  ":pointer-void")     
     (         "PAGE" .  ":pointer-void")     
-    (         "DICT" .  ":pointer-void")     
+    (         "DICT" .  ":pointer-void")
+    (      "ENCODER" .  ":pointer-void")
     (         "CSTR" .       ":cstring")
     (          "INT" .       ":int32-t")
     (         "UINT" .      ":uint32-t")
@@ -95,24 +96,24 @@
     (   "Alloc-Func" .  ":pointer-void")    
     ("Free-Func"     .  ":pointer-void")))
 
-(defparameter +заданные-подстановки+
+(defparameter +given-substitutes+
   '(error-codes)
   "Набор переменных, используемых в шаблонах.
 Этим переменным должны соответствовать значения в +подстановки+")
 
-(defvar *ecl-типы*
+(defvar *ecl-types*
   (let* ((hash (make-hash-table :test #'equal)))
-    (mapcar #'(lambda (x) (setf (gethash (string-upcase (car x)) hash) (string-upcase (cdr x)))) +ecl-типы+)
+    (mapcar #'(lambda (x) (setf (gethash (string-upcase (car x)) hash) (string-upcase (cdr x)))) +ecl-types+)
     hash))
 
-(defvar *типы-без-префикса*
+(defvar *no-prefix-types*
    (let* ((hash (make-hash-table :test #'equal)))
-    (mapcar #'(lambda (x) (setf (gethash x hash) t)) +типы-без-префикса+)
+    (mapcar #'(lambda (x) (setf (gethash x hash) t)) +no-prefix-types+)
      hash))
 
-(defvar *подстановки*
+(defvar *substitutes*
   (let ((hash (make-hash-table :test #'equal)))
-    (mapcar #'(lambda (x) (setf (gethash (car x) hash) (cdr x))) +подстановки+)
+    (mapcar #'(lambda (x) (setf (gethash (car x) hash) (cdr x))) +substitutes+)
     hash))
 
 ;; На вход получаем p-список, в котором должен быть задан текст с ключом
@@ -120,47 +121,47 @@
 ;; На выходе получаем либо строку, заданную указанным ключом, либо строку
 ;; "Текст для языка :ru не задан" // :ru, :en и так далее
 (djula:def-filter :docf (arg)
-  (let* ((текст (getf arg *язык*))
-	 (проверено (or текст (format nil
-				      "Текст :~A не задан"
-				      (string-downcase (string *язык*)))))
-	 (подстановка (gethash (cons проверено *язык*) *подстановки*)))
-    (or подстановка проверено)))
+  (let* ((text (getf arg *language*))
+	 (checked (or text (format nil
+				      ":~A is not set"
+				      (string-downcase (string *language*)))))
+	 (substitute (gethash (cons checked *language*) *substitutes*)))
+    (or substitute checked)))
 
 (djula:def-filter :pre (arg)
-  (if (gethash arg *типы-без-префикса*)
+  (if (gethash arg *no-prefix-types*)
       arg
-      (concatenate 'string *префикс* "_" arg)))
+      (concatenate 'string *prefix* "_" arg)))
 
 (djula:def-filter :err (arg fn)
-  (format nil "Поле ~A '~A' не задано" arg fn))
+  (format nil "Field ~A '~A' is not given" arg fn))
 
 (djula:def-filter :ecltype (arg)
-  (let ((tp (gethash (string-upcase arg) *ecl-типы*)))
+  (let ((tp (gethash (string-upcase arg) *ecl-types*)))
     (or tp arg)))
 
 (djula:def-filter :under (arg)
   (map 'string #'(lambda (c) (if (char= c #\_) #\- c)) arg))
 
 (djula:def-filter :hex0 (arg)
-   (if (string= (subseq arg 0 2) "0x")
-	       (concatenate 'string "#" (subseq arg 1))
-	       arg))
+   (if (string= (subseq arg 0 (min (length arg) 2)) "0x")
+	   (concatenate 'string "#" (subseq arg 1))
+	   arg))
 
 (defun do-render (template-file
 		  data-file
 		  &optional &key
-			      (lang *язык*)
-			      (output :нет))
+			      (lang *language*)
+			      (output :no))
   (mapcar #'(lambda (x)
-	      (let* ((стр (string x))
-		     (клч (intern стр :keyword))
-		     (знч (string-downcase (concatenate 'string ":" стр)))
-		     (подстановка (gethash (cons знч *язык*) *подстановки*)))
-		(setf (getf djula:*default-template-arguments* клч) подстановка)))
-	  +заданные-подстановки+)
+	      (let* ((str (string x))
+		     (key (intern str :keyword))
+		     (val (string-downcase (concatenate 'string ":" str)))
+		     (substitute (gethash (cons val *language*) *substitutes*)))
+		(setf (getf djula:*default-template-arguments* key) substitute)))
+	  +given-substitutes+)
 
-  (let* ((*язык* lang)
+  (let* ((*language* lang)
 	 (template (djula:compile-template* template-file))
 	 (data (with-open-file (s data-file) (read s))))
     (let ((res (apply #'djula:render-template*
@@ -169,7 +170,7 @@
 				  data)))))
 
       ;;(princ djula:*default-template-arguments*)
-      (if (eq output :нет)
+      (if (eq output :no)
 	  (princ res)
 	  (alexandria:write-string-into-file
 	   res

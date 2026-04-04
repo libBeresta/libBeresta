@@ -10,8 +10,7 @@
     (doc-encoder-setcurrent pdf "UTF-8")
 
     (with-ttf-font (font pdf "../../data/fonts/PT/PT/PT-Astra-Serif/pt-astra-serif_regular.ttf")
-      (let* ((xobj (doc-page-xobject-create pdf
-                                            page
+      (let* ((xobj (doc-xobject-create pdf
                                             100 100
                                             1 1))
              (stream (xobject-stream xobj))

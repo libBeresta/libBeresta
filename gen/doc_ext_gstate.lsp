@@ -1,13 +1,13 @@
-(:файл "doc_ext_gstate"
- :функции
-       ((:название "Doc_Create_ExtGState"
+(:file "doc_ext_gstate"
+ :functions
+       ((:caption "Doc_Create_ExtGState"
      :ru "Добавляет в документ словарь расширенного графического состояния ExtGState. (Таблица 58)."
      :en "Create extended graphical state object descriptor ExtGState. (Table 58)."
-	 :группа "doc"
-	 :параметры ((:тип "Doc"
-		      :имя "pdf"
+	 :group "doc"
+	 :params ((:type "Doc"
+		      :name "pdf"
 		      :ru ":param_pdf"
 		      :en ":param_pdf"))
-	 :результат (:тип "ExtGState"
+	 :result (:type "ExtGState"
 		     :ru "Описатель расширенного графического состояния при успехе или \\c NULL при возникновении ошибки."
 		     :en "Extended graphical state object descriptor on success or \\c NULL on failure."))))

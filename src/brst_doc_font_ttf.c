@@ -86,7 +86,7 @@ BRST_Doc_TTFont_LoadFromFile2(BRST_Doc pdf,
 }
 
 BRST_EXPORT(const char*)
-BRST_LoadTTFontFromMemory(BRST_Doc pdf,
+BRST_Doc_TTFont_LoadFromMemory(BRST_Doc pdf,
     const BRST_BYTE* buffer,
     BRST_UINT size,
     BRST_BOOL embedding)

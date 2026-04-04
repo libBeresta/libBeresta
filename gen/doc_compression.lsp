@@ -1,21 +1,21 @@
-(:файл "doc_compression"
- :функции
-       ((:название "Doc_SetCompressionMode"
+(:file "doc_compression"
+ :functions
+       ((:caption "Doc_SetCompressionMode"
          :ru "Устанавливает режим сжатия документа."
          :en "Set document compression mode."
-     :группа "doc"
-     :параметры ((:тип "Doc"
-                  :имя "pdf"
+     :group "doc"
+     :params ((:type "Doc"
+                  :name "pdf"
                   :ru ":param_pdf"
                   :en ":param_pdf")
-                 (:тип "CompressionMode"
-                   :имя "mode"
+                 (:type "CompressionMode"
+                   :name "mode"
                    :ru "Режим сжатия документа. \\parblock Одно или несколько значение, объединенных битовым \\c OR:
   | Режим                   | Описание                                                   |
   | -----                   | --------                                                   |
   | \\ref BRST_COMP_NONE     | Без сжатия                                                 |
   | \\ref BRST_COMP_TEXT     | Сжатие содержимого потока страницы.                        |
-  | \\ref BRST_COMP_IMAGE    | Сжатие потоков объектов изображений.     .                 |
+  | \\ref BRST_COMP_IMAGE    | Сжатие потоков объектов изображений.                       |
   | \\ref BRST_COMP_METADATA | Сжатие потоков других данных (шрифты, cmaps и т.д.)        |
   | \\ref BRST_COMP_ALL      | Сжатие всех потоков <br/>(комбинация  \\ref BRST_COMP_TEXT, \\ref BRST_COMP_IMAGE и \\ref BRST_COMP_METADATA). |"
                    :en "Document compression mode. \\parblock One or more of the following values, combined together using binary \\c OR:
@@ -26,6 +26,6 @@
   | \\ref BRST_COMP_IMAGE    | Compress the streams of the image objects.                  |
   | \\ref BRST_COMP_METADATA | Other stream data (fonts, cmaps and so on) compressed.      |
   | \\ref BRST_COMP_ALL      | All stream data compressed <br/>(combination of \\ref BRST_COMP_TEXT, \\ref BRST_COMP_IMAGE and \\ref BRST_COMP_METADATA). |"))
-	 :результат (:тип "STATUS"
+	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok"))))

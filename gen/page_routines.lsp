@@ -1,383 +1,383 @@
-(:файл "page_routines"
- :функции ((:название "Page_SetWidth"
-            :группа "page"
-            :ошибки ("INVALID_PAGE"
+(:file "page_routines"
+ :functions ((:caption "Page_SetWidth"
+            :group "page"
+            :errors ("INVALID_PAGE"
                      "PAGE_INVALID_SIZE"
                      "FAILED_TO_ALLOC_MEM")
-            :результат (:тип "STATUS"
+            :result (:type "STATUS"
   	           :ru ":return_ok"
                :en ":return_ok")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")
-                        (:тип "REAL"
-                         :имя "value"
+                        (:type "REAL"
+                         :name "value"
                          :ru ""
                          :en "")))
 
-           (:название "Page_SetHeight"
-            :группа "page"
-            :ошибки ("INVALID_PAGE"
+           (:caption "Page_SetHeight"
+            :group "page"
+            :errors ("INVALID_PAGE"
                      "PAGE_INVALID_SIZE"
                      "FAILED_TO_ALLOC_MEM")
-            :результат (:тип "STATUS"
+            :result (:type "STATUS"
   	           :ru ":return_ok"
                :en ":return_ok")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")
-                        (:тип "REAL"
-                         :имя "value"
+                        (:type "REAL"
+                         :name "value"
                          :ru ""
                          :en "")))
 
-           (:название "Page_SetBoundary"
-            :группа "page"
-            :ошибки ()
-            :результат (:тип "STATUS"
+           (:caption "Page_SetBoundary"
+            :group "page"
+            :errors ()
+            :result (:type "STATUS"
   	           :ru ":return_ok"
                :en ":return_ok")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")
-                        (:тип "PageBoundary"
-                         :имя "boundary"
+                        (:type "PageBoundary"
+                         :name "boundary"
                          :ru ""
                          :en "")
-                        (:тип "REAL"
-                         :имя "left"
+                        (:type "REAL"
+                         :name "left"
                          :ru ""
                          :en "")
-                        (:тип "REAL"
-                         :имя "bottom"
+                        (:type "REAL"
+                         :name "bottom"
                          :ru ""
                          :en "")
-                        (:тип "REAL"
-                         :имя "right"
+                        (:type "REAL"
+                         :name "right"
                          :ru ""
                          :en "")
-                        (:тип "REAL"
-                         :имя "top"
+                        (:type "REAL"
+                         :name "top"
                          :ru ""
                          :en "")))
 
-           (:название "Page_SetSize"
-            :группа "page"
-            :ошибки ("INVALID_PAGE"
+           (:caption "Page_SetSize"
+            :group "page"
+            :errors ("INVALID_PAGE"
                      "PAGE_INVALID_SIZE"
                      "PAGE_INVALID_ORIENTATION"
                      "FAILED_TO_ALLOC_MEM")
-            :результат (:тип "STATUS"
+            :result (:type "STATUS"
   	           :ru ":return_ok"
                :en ":return_ok")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")
-                        (:тип "PageSizes"
-                         :имя "size"
+                        (:type "PageSizes"
+                         :name "size"
                          :ru ""
                          :en "")
-                        (:тип "PageOrientation"
-                         :имя "orientation"
+                        (:type "PageOrientation"
+                         :name "orientation"
                          :ru ""
                          :en "")))
 
-           (:название "Page_SetRotate"
-            :группа "page"
-            :ошибки ("INVALID_PAGE"
+           (:caption "Page_SetRotate"
+            :group "page"
+            :errors ("INVALID_PAGE"
                      "PAGE_INVALID_ROTATE_VALUE")
-            :результат (:тип "STATUS"
+            :result (:type "STATUS"
   	           :ru ":return_ok"
                :en ":return_ok")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")
-                        (:тип "UINT16"
-                         :имя "angle"
+                        (:type "UINT16"
+                         :name "angle"
                          :ru ""
                          :en "")))
 
-           (:название "Page_SetSlideShow"
-            :группа "page"
-            :ошибки ()
-            :результат (:тип "STATUS"
+           (:caption "Page_SetSlideShow"
+            :group "page"
+            :errors ()
+            :result (:type "STATUS"
   	           :ru ":return_ok"
                :en ":return_ok")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")
-                        (:тип "PageTransition"
-                         :имя "type"
+                        (:type "PageTransition"
+                         :name "type"
                          :ru ""
                          :en "")
-                        (:тип "REAL"
-                         :имя "disp_time"
+                        (:type "REAL"
+                         :name "disp_time"
                          :ru ""
                          :en "")
-                        (:тип "REAL"
-                         :имя "trans_time"
+                        (:type "REAL"
+                         :name "trans_time"
                          :ru ""
                          :en "")))
 
-           (:название "Page_SetHorizontalScaling"
-            :группа "graphics"
-            :ошибки ()
-            :результат (:тип "STATUS"
+           (:caption "Page_SetHorizontalScaling"
+            :group "graphics"
+            :errors ()
+            :result (:type "STATUS"
   	           :ru ":return_ok"
                :en ":return_ok")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")
-                        (:тип "REAL"
-                         :имя "value"
+                        (:type "REAL"
+                         :name "value"
                          :ru ""
                          :en "")))
 
-           (:название "Page_GStateDepth"
-            :группа "page"
-            :ошибки ()
-            :результат (:тип "UINT"
+           (:caption "Page_GStateDepth"
+            :group "page"
+            :errors ()
+            :result (:type "UINT"
                         :ru ""
                         :en "")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")))
 
-           (:название "Page_HorizontalScaling"
-            :группа "page"
-            :ошибки ()
-            :результат (:тип "REAL"
+           (:caption "Page_HorizontalScaling"
+            :group "page"
+            :errors ()
+            :result (:type "REAL"
                         :ru ""
                         :en "")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")))
 
-           (:название "Page_SetZoom"
-            :группа "page"
-            :ошибки ()
-            :результат (:тип "STATUS"
+           (:caption "Page_SetZoom"
+            :group "page"
+            :errors ()
+            :result (:type "STATUS"
   	           :ru ":return_ok"
                :en ":return_ok")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")
-                        (:тип "REAL"
-                         :имя "zoom"
+                        (:type "REAL"
+                         :name "zoom"
                          :ru ""
                          :en "")))
 
-           (:название "Page_Width"
-            :группа "page"
-            :ошибки ()
-            :результат (:тип "REAL"
+           (:caption "Page_Width"
+            :group "page"
+            :errors ()
+            :result (:type "REAL"
                         :ru ""
                         :en "")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")))
 
-           (:название "Page_Height"
-            :группа "page"
-            :ошибки ()
-            :результат (:тип "REAL"
+           (:caption "Page_Height"
+            :group "page"
+            :errors ()
+            :result (:type "REAL"
                         :ru ""
                         :en "")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")))
 
-           (:название "Page_GMode"
-            :группа "page"
-            :ошибки ()
-            :результат (:тип "UINT16"
+           (:caption "Page_GMode"
+            :group "page"
+            :errors ()
+            :result (:type "UINT16"
                         :ru ""
                         :en "")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")))
 
-;;           (:название "Page_CurrentPos"
-;;            :группа "page"
-;;            :ошибки ("INVALID_PAGE")
-;;            :результат (:тип "Point"
+;;           (:caption "Page_CurrentPos"
+;;            :group "page"
+;;            :errors ("INVALID_PAGE")
+;;            :result (:type "Point"
 ;;                        :ru ""
 ;;                        :en "")
 ;;            :ru ""
 ;;            :en ""
-;;            :команда ""
-;;            :параметры ((:тип "Page"
-;;                         :имя "page"
+;;            :command ""
+;;            :params ((:type "Page"
+;;                         :name "page"
 ;;                         :ru ":param_page"
 ;;                         :en ":param_page")))
 
-;;           (:название "Page_CurrentPos2"
-;;            :группа "page"
-;;            :ошибки ()
-;;            :результат (:тип "STATUS"
+;;           (:caption "Page_CurrentPos2"
+;;            :group "page"
+;;            :errors ()
+;;            :result (:type "STATUS"
 ;;                        :ru ""
 ;;                        :en "")
 ;;            :ru ""
 ;;            :en ""
-;;            :команда ""
-;;            :параметры ((:тип "Page"
-;;                         :имя "page"
+;;            :command ""
+;;            :params ((:type "Page"
+;;                         :name "page"
 ;;                         :ru ":param_page"
 ;;                         :en ":param_page")
-;;                        (:тип "Point*"
-;;                         :имя "pos"
+;;                        (:type "Point*"
+;;                         :name "pos"
 ;;                         :ru ""
 ;;                         :en "")))
 
-           (:название "Page_MMgr"
-            :группа "page"
-            :ошибки ()
-            :результат (:тип "MMgr"
+           (:caption "Page_MMgr"
+            :group "page"
+            :errors ()
+            :result (:type "MMgr"
                         :ru ""
                         :en "")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")))
 
-;;           (:название "Page_New_Content_Stream"
-;;            :группа "page"
-;;            :ошибки ()
-;;            :результат (:тип "STATUS"
+;;           (:caption "Page_New_Content_Stream"
+;;            :group "page"
+;;            :errors ()
+;;            :result (:type "STATUS"
 ;;                        :ru ""
 ;;                        :en "")
 ;;            :ru ""
 ;;            :en ""
-;;            :команда ""
-;;            :параметры ((:тип "Page"
-;;                         :имя "page"
+;;            :command ""
+;;            :params ((:type "Page"
+;;                         :name "page"
 ;;                         :ru ":param_page"
 ;;                         :en ":param_page")
-;;                        (:тип "Dict*"
-;;                         :имя "new_stream"
+;;                        (:type "Dict*"
+;;                         :name "new_stream"
 ;;                         :ru ""
 ;;                         :en "")))
 
-           (:название "Page_Insert_Shared_Content_Stream"
-            :группа "page"
-            :ошибки ()
-            :результат (:тип "STATUS"
+           (:caption "Page_Insert_Shared_Content_Stream"
+            :group "page"
+            :errors ()
+            :result (:type "STATUS"
   	           :ru ":return_ok"
                :en ":return_ok")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")
-                        (:тип "Dict"
-                         :имя "shared_stream"
+                        (:type "Dict"
+                         :name "shared_stream"
                          :ru ""
                          :en "")))
 
-           (:название "Page_RawWrite"
-            :группа "page"
-            :ошибки ("INVALID_PAGE")
-            :результат (:тип "STATUS"
+           (:caption "Page_RawWrite"
+            :group "page"
+            :errors ("INVALID_PAGE")
+            :result (:type "STATUS"
   	           :ru ":return_ok"
                :en ":return_ok")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")
-                        (:тип "CSTR"
-                         :имя "data"
+                        (:type "CSTR"
+                         :name "data"
                          :ru ""
                          :en "")))
 
-           (:название "Page_SetExtGState"
-            :группа "graphics"
-            :ошибки ()
-            :результат (:тип "STATUS"
+           (:caption "Page_SetExtGState"
+            :group "graphics"
+            :errors ()
+            :result (:type "STATUS"
   	           :ru ":return_ok"
                :en ":return_ok")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")
-                        (:тип "ExtGState"
-                         :имя "ext_gstate"
+                        (:type "ExtGState"
+                         :name "ext_gstate"
                          :ru ""
                          :en "")))
 
-           (:название "Page_CreateDestination"
-            :группа "link"
-            :ошибки ("INVALID_DOCUMENT"
+           (:caption "Page_CreateDestination"
+            :group "link"
+            :errors ("INVALID_DOCUMENT"
                      "FAILED_TO_ALLOC_MEM")
-            :результат (:тип "Destination"
+            :result (:type "Destination"
                         :ru ""
                         :en "")
             :ru ""
             :en ""
-            :команда ""
-            :параметры ((:тип "Page"
-                         :имя "page"
+            :command ""
+            :params ((:type "Page"
+                         :name "page"
                          :ru ":param_page"
                          :en ":param_page")))))

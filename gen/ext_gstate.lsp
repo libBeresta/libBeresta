@@ -1,49 +1,49 @@
-(:файл "ext_gstate"
- :определения
-      ((:имя "ExtGState"
-        :оригинал "Dict"))
+(:file "ext_gstate"
+ :definitions
+      ((:name "ExtGState"
+        :original "Dict"))
         
- :функции ((:название "ExtGState_SetAlphaStroke"
- :ошибки ()
- :команда "CA"
- :результат (:тип "STATUS"
+ :functions ((:caption "ExtGState_SetAlphaStroke"
+ :errors ()
+ :command "CA"
+ :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
- :параметры ((:тип "ExtGState"
-              :имя "ext_gstate"
+ :params ((:type "ExtGState"
+              :name "ext_gstate"
               :ru ":param_ext_gstate"
               :en ":param_ext_gstate")
-             (:тип "REAL"
-              :имя "value"
+             (:type "REAL"
+              :name "value"
               :ru "Значение прозрачности штриха."
               :en "Alpha stroke value.")))
 
-(:название "ExtGState_SetAlphaFill"
- :ошибки ()
- :команда "ca"
- :результат (:тип "STATUS"
+(:caption "ExtGState_SetAlphaFill"
+ :errors ()
+ :command "ca"
+ :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
- :параметры ((:тип "ExtGState"
-              :имя "ext_gstate"
+ :params ((:type "ExtGState"
+              :name "ext_gstate"
               :ru ":param_ext_gstate"
               :en ":param_ext_gstate")
-             (:тип "REAL"
-              :имя "value"
+             (:type "REAL"
+              :name "value"
               :ru "Значение прозрачности заливки."
               :en "Alpha fill value.")))
 
-(:название "ExtGState_SetBlendMode"
- :ошибки ()
- :команда "BM"
- :результат (:тип "STATUS"
+(:caption "ExtGState_SetBlendMode"
+ :errors ()
+ :command "BM"
+ :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
- :параметры ((:тип "ExtGState"
-              :имя "ext_gstate"
+ :params ((:type "ExtGState"
+              :name "ext_gstate"
               :ru ":param_ext_gstate"
               :en ":param_ext_gstate")
-             (:тип "BlendMode"
-              :имя "mode"
+             (:type "BlendMode"
+              :name "mode"
               :ru ""
               :en "")))))

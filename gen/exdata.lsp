@@ -1,5 +1,5 @@
-(:файл "exdata"
- :определения
-      ((:имя "ExData"
-        :оригинал "Dict"))
+(:file "exdata"
+ :definitions
+      ((:name "ExData"
+        :original "Dict"))
 )

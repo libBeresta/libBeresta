@@ -1,5 +1,5 @@
-(:файл "main"
- :импорты ("external"
+(:file "main"
+ :imports ("external"
 	   "types"
 	   "base"
 	   "doc"

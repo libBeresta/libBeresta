@@ -1,18 +1,18 @@
-(:файл "structs"
- :структуры ((:имя "Point"
+(:file "structs"
+ :structs ((:name "Point"
               :en "Point position on a page" :ru "Положение точки на странице"
-              :поля ((:поле "x" :тип "REAL" :en "" :ru "")
-                     (:поле "y" :тип "REAL" :en "" :ru "")))
-             (:имя "Rect"
+              :fields ((:field "x" :type "REAL" :en "" :ru "")
+                     (:field "y" :type "REAL" :en "" :ru "")))
+             (:name "Rect"
               :en "" :ru ""
-              :поля ((:поле "left"   :тип "REAL" :en "" :ru "")
-                     (:поле "bottom" :тип "REAL" :en "" :ru "")
-                     (:поле "right"  :тип "REAL" :en "" :ru "")
-                     (:поле "top"    :тип "REAL" :en "" :ru "")))
+              :fields ((:field "left"   :type "REAL" :en "" :ru "")
+                     (:field "bottom" :type "REAL" :en "" :ru "")
+                     (:field "right"  :type "REAL" :en "" :ru "")
+                     (:field "top"    :type "REAL" :en "" :ru "")))
 
-             (:имя "TextWidth"
+             (:name "TextWidth"
               :en "" :ru ""
-              :поля ((:поле "numchars"   :тип "UINT" :en "" :ru "")
-                     (:поле "numwords" :тип "UINT" :en "" :ru "")
-                     (:поле "width"  :тип "UINT" :en "" :ru "")
-                     (:поле "numspace"    :тип "UINT" :en "" :ru "")))))
+              :fields ((:field "numchars"   :type "UINT" :en "" :ru "")
+                     (:field "numwords" :type "UINT" :en "" :ru "")
+                     (:field "width"  :type "UINT" :en "" :ru "")
+                     (:field "numspace"    :type "UINT" :en "" :ru "")))))

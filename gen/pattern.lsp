@@ -1,4 +1,4 @@
-(:файл "pattern"
- :определения
-       ((:имя "Pattern"
-         :оригинал "Dict")))
+(:file "pattern"
+ :definitions
+       ((:name "Pattern"
+         :original "Dict")))

@@ -4,8 +4,7 @@
 ;; Заголовочные файлы для Embeddable Common Lisp (ecl)
 ;; Дмитрий Соломенников, (с) 2025
 ;;
-;; Текст лицензии см. в файле ЛИЦЕНЗИЯ в корне проекта
-;;
+
 (in-package #:cl-beresta)
 
 (include-header)
@@ -48,7 +47,7 @@
 
 (enum ColorSpace (
   
-  COLORSPACE-DEVICE-GRAY
+  COLORSPACE-DEVICEGRAY
   COLORSPACE-DEVICERGB
   COLORSPACE-DEVICECMYK
   COLORSPACE-CALGRAY
@@ -73,11 +72,4 @@
   (m REAL)
   (y REAL)
   (k REAL)
-)
-
-(struct DashMode
-  "Структура описания пунктира"
-  (ptn REAL :count 8)
-  (num_ptn UINT)
-  (phase REAL)
 )

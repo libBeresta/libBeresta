@@ -1,10 +1,10 @@
-{% if константы %}  ;; {{ файл }}: константы {% for кон in константы %}
-  #:{{ кон.имя | under }}{% endfor %}{% endif %}{% if определения %}  ;; {{ файл }}: определения{% for оп in определения %}
-  #:{{ оп.имя | under }}{% endfor %}{% endif %}{% if указатели %}  ;; {{ файл }}: указатели{% for ук in указатели %}
-  #:{{ ук.имя | under }}{% endfor %}{% endif %}
-{% if перечисления %}
-  ;;; {{ файл }}: перечисления{% for пер in перечисления %}
-  ;; {{ пер.имя }}{% for эл in пер.элементы %}
-  #:{{ эл.элемент | under }}{% endfor %}{% endfor %}{% endif %}{% if функции %}
-  ;; {{ файл }}: функции {% for фн in функции %}
-  #:{{фн.название | under}}{% endfor %}{% endif %}
+{% if consts %}  ;; {{ file }}: constants {% for con in consts %}
+  #:{{ con.name | under }}{% endfor %}{% endif %}{% if definitions %}  ;; {{ file }}: definitions{% for def in definitions %}
+  #:{{ def.name | under }}{% endfor %}{% endif %}{% if указатели %}  ;; {{ файл }}: pointers{% for pt in pointers %}
+  #:{{ pt.name | under }}{% endfor %}{% endif %}
+{% if enums %}
+  ;;; {{ file }}: enums{% for enum in enums %}
+  ;; {{ enum.name }}{% for el in enum.elements %}
+  #:{{ el.element | under }}{% endfor %}{% endfor %}{% endif %}{% if functions %}
+  ;; {{ file }}: functions {% for fn in functions %}
+  #:{{fn.caption | under}}{% endfor %}{% endif %}
