@@ -1,0 +1,48 @@
+{% include "license.txt" %}
+#ifndef {{ file | upper | pre }}_H
+#define {{ file | upper | pre }}_H
+{% if imports %}{% for import in imports %}
+#include "{{import|pre|lower}}.h"{% endfor %}
+{% endif %}{% if pointers %}{% for pt in pointers %}
+struct _{{ pt.name | pre }}_Rec;
+typedef struct _{{ pt.name | pre }}_Rec* {{ pt.name | pre }};
+{% endfor %}{% endif %}{% if definitions %}{% for def in definitions %}
+typedef {{ def.original | pre }} {{ def.name | pre }};
+{% endfor %}{% endif %}{% if enums %}{% for enum in enums %}
+/**
+ {{ enum | docf }}
+ */
+typedef enum _{{enum.name | pre}} { {% for el in enum.elements %}
+    /// {{ el | docf }}
+    {{el.element | pre}}{% if el.value %} = {{el.value}}{% endif %},{% endfor %}
+    {{enum.name | pre | upper}}_LAST
+} {{enum.name | pre}};
+{% endfor %}{% endif %}{% if structs %}{% for st in structs %}
+/**
+  {{ st | docf }}
+*/
+typedef struct _{{ st.name | pre }} {
+{% if st.fields %}{% for fl in st.fields %}  /// {{ fl | docf }}
+  {{ fl.type | pre }} {{ fl.field }}{% if fl.size %}[{{ fl.size }}]{% endif %};
+{% endfor %}{% endif %}} {{ st.name | pre }};
+{% endfor %}{% endif %}{% if functions %}{% for fn in functions %}
+/**
+  \ingroup {{ fn.group }}
+  \brief {{ fn | docf | safe | escape }}
+{%if fn.params %}{% for param in fn.params %}
+  \param {{param.name}} {{ param | docf | safe | escape }}{% endfor %}
+{%endif%}
+  \return {{ fn.result | docf | safe | escape }}
+{% if fn.see %}
+  \see {% for se in fn.see %}
+    {{se | pre}}{% endfor %}
+{% endif %}{% if fn.errors %}
+  {{error-codes}}{% for error in fn.errors %}
+    - \ref {{error | pre}}{% endfor %}
+{% endif %}*/
+{{"" | pre }}EXPORT({{fn.result.type | pre}})
+{{ fn.caption | pre}}{%if fn.params %}({% for param in fn.params %}
+   {{ param.type | pre }} {{ param.name }}{% if not forloop.last %},{% endif %}{% endfor %}
+);{% else %}();{% endif %}
+{% endfor %}{% endif %}
+#endif /* {{ file | upper | pre }}_H */
