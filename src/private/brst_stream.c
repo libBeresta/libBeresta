@@ -76,7 +76,7 @@ void BRST_FileStream_FreeFunc(BRST_Stream stream);
  *
  *  stream : Pointer to a BRST_Stream object.
  *  ptr : Pointer to a buffer to copy read data.
- *  size : Pointer to a variable which indecates buffer size.
+ *  size : Pointer to a variable which indicates buffer size.
  *
  *  BRST_Stream_read returns BRST_OK when success. On failure, it returns
  *  error-code returned by reading function of this stream.

@@ -561,7 +561,7 @@ BRST_Page_SetExtGState(BRST_Page page,
     if (BRST_Stream_WriteStr(attr->stream, " gs\012") != BRST_OK)
         return BRST_Error_Check(page->error);
 
-    /* change objct class to read only. */
+    /* change object class to read only. */
     ext_gstate->header.obj_class = (BRST_OSUBCLASS_EXT_GSTATE_R | BRST_OCLASS_DICT);
 
     return ret;

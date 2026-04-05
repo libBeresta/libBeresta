@@ -99,7 +99,7 @@ BRST_Doc_Png_LoadFromFile(BRST_Doc pdf,
     return image;
 }
 
-/* delaied loading version of BRST_LoadPngImageFromFile */
+/* delayed loading version of BRST_LoadPngImageFromFile */
 BRST_EXPORT(BRST_Image)
 BRST_Doc_Png_LoadFromFile2(BRST_Doc pdf,
     const char* filename)
