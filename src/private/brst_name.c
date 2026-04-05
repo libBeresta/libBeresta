@@ -52,7 +52,7 @@ BRST_Name_SetValue(BRST_Name obj,
     if (BRST_StrLen(value, BRST_LIMIT_MAX_NAME_LEN + 1) > BRST_LIMIT_MAX_NAME_LEN)
         return BRST_Error_Set(obj->error, BRST_NAME_OUT_OF_RANGE, 0);
 
-    BRST_StrCpy(obj->value, value, obj->value + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(obj->value, value, obj->value + BRST_LIMIT_MAX_NAME_LEN);
 
     return BRST_OK;
 }

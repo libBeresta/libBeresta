@@ -184,7 +184,7 @@ UTF8_Encoder_EncodeText_Func(BRST_Encoder encoder,
             tmp_unicode = BRST_Encoder_ToUnicode(encoder, 0);
 
             BRST_UInt16Swap(&tmp_unicode);
-            BRST_MemCpy((BRST_BYTE*)c, (const BRST_BYTE*)&tmp_unicode, 2);
+            BRST_MemCopy((BRST_BYTE*)c, (const BRST_BYTE*)&tmp_unicode, 2);
             c += 2;
         }
     }
@@ -226,8 +226,8 @@ UTF8_Init(BRST_Encoder encoder)
     attr->is_lead_byte_fn  = NULL;
     attr->is_trial_byte_fn = NULL;
 
-    BRST_StrCpy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
-    BRST_StrCpy(attr->ordering, "Identity-H", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->ordering, "Identity-H", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
     attr->supplement   = 0;
     attr->writing_mode = BRST_WMODE_HORIZONTAL;
 

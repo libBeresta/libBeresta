@@ -29,8 +29,8 @@ void BRST_Encrypt_Init(BRST_Encrypt attr)
     BRST_MemSet(attr, 0, sizeof(BRST_Encrypt_Rec));
     attr->mode    = BRST_ENCRYPT_R2;
     attr->key_len = 5;
-    BRST_MemCpy(attr->owner_passwd, BRST_PADDING_STRING, BRST_PASSWD_LEN);
-    BRST_MemCpy(attr->user_passwd, BRST_PADDING_STRING, BRST_PASSWD_LEN);
+    BRST_MemCopy(attr->owner_passwd, BRST_PADDING_STRING, BRST_PASSWD_LEN);
+    BRST_MemCopy(attr->user_passwd, BRST_PADDING_STRING, BRST_PASSWD_LEN);
     attr->permission = BRST_ENABLE_PRINT | BRST_ENABLE_EDIT_ALL | BRST_ENABLE_COPY | BRST_ENABLE_EDIT | BRST_PERMISSION_PAD;
 }
 
@@ -94,7 +94,7 @@ void BRST_Encrypt_CreateOwnerKey(BRST_Encrypt attr)
 
             BRST_PTRACE("@ Algorithm 3.3 step 7 loop %u\n", i);
 
-            BRST_MemCpy(tmppwd2, tmppwd, BRST_PASSWD_LEN);
+            BRST_MemCopy(tmppwd2, tmppwd, BRST_PASSWD_LEN);
             ARC4Init(&rc4_ctx, new_key, attr->key_len);
             ARC4CryptBuf(&rc4_ctx, tmppwd2, tmppwd, BRST_PASSWD_LEN);
         }
@@ -102,7 +102,7 @@ void BRST_Encrypt_CreateOwnerKey(BRST_Encrypt attr)
 
     /* Algorithm 3.3 step 8 */
     BRST_PTRACE("@ Algorithm 3.3 step 8\n");
-    BRST_MemCpy(attr->owner_key, tmppwd, BRST_PASSWD_LEN);
+    BRST_MemCopy(attr->owner_key, tmppwd, BRST_PASSWD_LEN);
 }
 
 void BRST_Encrypt_CreateEncryptionKey(BRST_Encrypt attr)
@@ -191,7 +191,7 @@ void BRST_Encrypt_CreateUserKey(BRST_Encrypt attr)
             for (j = 0; j < attr->key_len; j++)
                 new_key[j] = (BRST_BYTE)(attr->encryption_key[j] ^ i);
 
-            BRST_MemCpy(digest, digest2, BRST_MD5_KEY_LEN);
+            BRST_MemCopy(digest, digest2, BRST_MD5_KEY_LEN);
 
             ARC4Init(&ctx, new_key, attr->key_len);
             ARC4CryptBuf(&ctx, digest, digest2, BRST_MD5_KEY_LEN);
@@ -199,7 +199,7 @@ void BRST_Encrypt_CreateUserKey(BRST_Encrypt attr)
 
         /* use the result of Algorithm 3.4 as 'arbitrary padding' */
         BRST_MemSet(attr->user_key, 0, BRST_PASSWD_LEN);
-        BRST_MemCpy(attr->user_key, digest2, BRST_MD5_KEY_LEN);
+        BRST_MemCopy(attr->user_key, digest2, BRST_MD5_KEY_LEN);
     }
 }
 

@@ -48,7 +48,7 @@ BRST_Doc_Image_Jpeg_LoadFromFile(
 
 */
 BRST_EXPORT(BRST_Image)
-BRST_Doc_Image_Jpeg_LoadFromMem(
+BRST_Doc_Image_Jpeg_LoadFromMemory(
     BRST_Doc         pdf,
     const BRST_BYTE* buf,
     BRST_UINT        size

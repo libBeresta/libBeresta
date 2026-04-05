@@ -212,7 +212,7 @@ BRST_Image_Jpeg_Load(BRST_MMgr mmgr,
 }
 
 BRST_Image
-BRST_Image_Jpeg_LoadFromMem(BRST_MMgr mmgr,
+BRST_Image_Jpeg_LoadFromMemory(BRST_MMgr mmgr,
     const BRST_BYTE* buf,
     BRST_UINT size,
     BRST_Xref xref)
@@ -220,7 +220,7 @@ BRST_Image_Jpeg_LoadFromMem(BRST_MMgr mmgr,
     BRST_Stream jpeg_data;
     BRST_Image image;
 
-    BRST_PTRACE(" BRST_Image_Jpeg_LoadFromMem\n");
+    BRST_PTRACE(" BRST_Image_Jpeg_LoadFromMemory\n");
 
     jpeg_data = BRST_MemStream_New(mmgr, size);
     if (!BRST_Stream_Validate(jpeg_data)) {

@@ -286,7 +286,7 @@ Resize(BRST_List list,
         return BRST_Error_Code(list->error);
 
     if (list->obj)
-        BRST_MemCpy((BRST_BYTE*)new_obj, (BRST_BYTE*)list->obj,
+        BRST_MemCopy((BRST_BYTE*)new_obj, (BRST_BYTE*)list->obj,
             list->block_size * sizeof(void*));
 
     list->block_size = count;

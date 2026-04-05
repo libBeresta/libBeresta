@@ -316,8 +316,8 @@ DumpTable(BRST_FontDef fontdef)
         }
 
         BRST_MemSet(fname, 0, 9);
-        BRST_MemCpy(fname, REQUIRED_TAGS[i], 4);
-        BRST_MemCpy(fname + 4, ".dat", 4);
+        BRST_MemCopy(fname, REQUIRED_TAGS[i], 4);
+        BRST_MemCopy(fname + 4, ".dat", 4);
         BRST_PTRACE(" %s open\n", fname);
 
         if (BRST_MemCmp(fname, "OS/2", 4) == 0)
@@ -1611,7 +1611,7 @@ ParseName(BRST_FontDef fontdef)
             fontdef->flags |= BRST_FONT_ITALIC;
     }
 
-    BRST_MemCpy((BRST_BYTE*)fontdef->base_font, (BRST_BYTE*)attr->base_font, BRST_LIMIT_MAX_NAME_LEN + 1);
+    BRST_MemCopy((BRST_BYTE*)fontdef->base_font, (BRST_BYTE*)attr->base_font, BRST_LIMIT_MAX_NAME_LEN + 1);
 
     BRST_PTRACE("  ParseName() base_font=%s\n", attr->base_font);
 
@@ -1972,7 +1972,7 @@ BRST_TTFontDef_SaveFontData(BRST_FontDef fontdef,
 
         if (!tbl) {
             tbl = &emptyTable;
-            BRST_MemCpy((BRST_BYTE*)tbl->tag,
+            BRST_MemCopy((BRST_BYTE*)tbl->tag,
                 (const BRST_BYTE*)REQUIRED_TAGS[i], 4);
         }
 
@@ -2188,7 +2188,7 @@ void BRST_TTFontDef_SetTagName(BRST_FontDef fontdef,
     if (BRST_StrLen(tag, BRST_LIMIT_MAX_NAME_LEN) != BRST_TTF_FONT_TAG_LEN)
         return;
 
-    BRST_MemCpy((BRST_BYTE*)attr->tag_name, (BRST_BYTE*)tag, BRST_TTF_FONT_TAG_LEN);
+    BRST_MemCopy((BRST_BYTE*)attr->tag_name, (BRST_BYTE*)tag, BRST_TTF_FONT_TAG_LEN);
     attr->tag_name[BRST_TTF_FONT_TAG_LEN] = '+';
 
     for (i = 0; i < BRST_TTF_FONT_TAG_LEN + 1; i++) {
@@ -2197,10 +2197,10 @@ void BRST_TTFontDef_SetTagName(BRST_FontDef fontdef,
     }
 
     BRST_MemSet(buf, 0, BRST_LIMIT_MAX_NAME_LEN + 1);
-    BRST_MemCpy((BRST_BYTE*)buf, (BRST_BYTE*)attr->tag_name, BRST_TTF_FONT_TAG_LEN + 1);
-    BRST_MemCpy((BRST_BYTE*)buf + BRST_TTF_FONT_TAG_LEN + 1, (BRST_BYTE*)fontdef->base_font, BRST_LIMIT_MAX_NAME_LEN - BRST_TTF_FONT_TAG_LEN - 1);
+    BRST_MemCopy((BRST_BYTE*)buf, (BRST_BYTE*)attr->tag_name, BRST_TTF_FONT_TAG_LEN + 1);
+    BRST_MemCopy((BRST_BYTE*)buf + BRST_TTF_FONT_TAG_LEN + 1, (BRST_BYTE*)fontdef->base_font, BRST_LIMIT_MAX_NAME_LEN - BRST_TTF_FONT_TAG_LEN - 1);
 
-    BRST_MemCpy((BRST_BYTE*)attr->base_font, (BRST_BYTE*)buf, BRST_LIMIT_MAX_NAME_LEN + 1);
+    BRST_MemCopy((BRST_BYTE*)attr->base_font, (BRST_BYTE*)buf, BRST_LIMIT_MAX_NAME_LEN + 1);
 }
 
 /*
@@ -2235,7 +2235,7 @@ UINT32Swap(BRST_UINT32* value)
 {
     BRST_BYTE b[4];
 
-    BRST_MemCpy(b, (BRST_BYTE*)value, 4);
+    BRST_MemCopy(b, (BRST_BYTE*)value, 4);
     *value = (BRST_UINT32)((BRST_UINT32)b[0] << 24 | (BRST_UINT32)b[1] << 16 | (BRST_UINT32)b[2] << 8 | (BRST_UINT32)b[3]);
 }
 
@@ -2244,7 +2244,7 @@ UINT16Swap(BRST_UINT16* value)
 {
     BRST_BYTE b[2];
 
-    BRST_MemCpy(b, (BRST_BYTE*)value, 2);
+    BRST_MemCopy(b, (BRST_BYTE*)value, 2);
     *value = (BRST_UINT16)((BRST_UINT16)b[0] << 8 | (BRST_UINT16)b[1]);
 }
 
@@ -2253,6 +2253,6 @@ INT16Swap(BRST_INT16* value)
 {
     BRST_BYTE b[2];
 
-    BRST_MemCpy(b, (BRST_BYTE*)value, 2);
+    BRST_MemCopy(b, (BRST_BYTE*)value, 2);
     *value = (BRST_INT16)((BRST_INT16)b[0] << 8 | (BRST_INT16)b[1]);
 }

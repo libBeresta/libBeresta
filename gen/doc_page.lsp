@@ -122,7 +122,7 @@
 ;; Функция BRST_Doc_Page_Mode
 (:caption "Doc_Page_Mode"
    :group "page"
-   :ru "Возвращает способ демонстранции страниц документа."
+   :ru "Возвращает способ демонстрации страниц документа."
    :en "Return page display mode."
    :errors ()
    :result (:type "PageMode"
@@ -140,7 +140,7 @@
    :result (:type "STATUS"
   	           :ru ":return_ok"
                :en ":return_ok")
-   :ru "Задает способ демонстранции страниц документа."
+   :ru "Задает способ демонстрации страниц документа."
    :en "Set page display mode."
    :params ((:type "Doc"
             :name "pdf"

@@ -303,7 +303,7 @@ BRST_Dict_Add(BRST_Dict dict,
             return BRST_Error_Code(dict->error);
         }
 
-        BRST_StrCpy(element->key, key, element->key + BRST_LIMIT_MAX_NAME_LEN + 1);
+        BRST_StrCopy(element->key, key, element->key + BRST_LIMIT_MAX_NAME_LEN + 1);
         element->value = NULL;
 
         ret = BRST_List_Add(dict->list, element);

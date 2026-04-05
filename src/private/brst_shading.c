@@ -65,7 +65,7 @@ static void UINT32Swap(BRST_UINT32* value)
 {
     BRST_BYTE b[4];
 
-    BRST_MemCpy(b, (BRST_BYTE*)value, 4);
+    BRST_MemCopy(b, (BRST_BYTE*)value, 4);
     *value = (BRST_UINT32)((BRST_UINT32)b[0] << 24 | (BRST_UINT32)b[1] << 16 | (BRST_UINT32)b[2] << 8 | (BRST_UINT32)b[3]);
 }
 

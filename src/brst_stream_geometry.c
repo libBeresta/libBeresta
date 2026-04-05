@@ -87,7 +87,7 @@ BRST_Stream_Concat(BRST_Stream stream,
     pbuf    = BRST_FToA(pbuf, x, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, y, eptr);
-    BRST_StrCpy(pbuf, " cm\012", eptr);
+    BRST_StrCopy(pbuf, " cm\012", eptr);
 
     if (BRST_Stream_WriteStr(stream, buf) != BRST_OK) {
         return BRST_Error_Check(stream->error);
@@ -167,7 +167,7 @@ BRST_Stream_Ellipse(BRST_Page page,
     pbuf    = BRST_FToA(pbuf, x - xray, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, y, eptr);
-    pbuf    = (char*)BRST_StrCpy(pbuf, " m\012", eptr);
+    pbuf    = (char*)BRST_StrCopy(pbuf, " m\012", eptr);
 
     pbuf = QuarterEllipseA(pbuf, eptr, x, y, xray, yray);
     pbuf = QuarterEllipseB(pbuf, eptr, x, y, xray, yray);
@@ -315,7 +315,7 @@ BRST_Stream_SetRGBFill(BRST_Stream stream,
     pbuf    = BRST_FToA(pbuf, g, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, b, eptr);
-    BRST_StrCpy(pbuf, " rg\012", eptr);
+    BRST_StrCopy(pbuf, " rg\012", eptr);
 
     if (BRST_Stream_WriteStr(stream, buf) != BRST_OK)
         return BRST_Error_Check(stream->error);
@@ -404,7 +404,7 @@ BRST_Stream_SetRGBStroke(BRST_Stream stream,
     pbuf    = BRST_FToA(pbuf, g, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, b, eptr);
-    BRST_StrCpy(pbuf, " RG\012", eptr);
+    BRST_StrCopy(pbuf, " RG\012", eptr);
 
     if (BRST_Stream_WriteStr(stream, buf) != BRST_OK)
         return BRST_Error_Check(stream->error);
@@ -462,7 +462,7 @@ BRST_Stream_SetCMYKFill(BRST_Stream stream,
     pbuf    = BRST_FToA(pbuf, y, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, k, eptr);
-    BRST_StrCpy(pbuf, " k\012", eptr);
+    BRST_StrCopy(pbuf, " k\012", eptr);
 
     if (BRST_Stream_WriteStr(stream, buf) != BRST_OK)
         return BRST_Error_Check(stream->error);
@@ -501,7 +501,7 @@ BRST_Stream_SetCMYKStroke(BRST_Stream stream,
     pbuf    = BRST_FToA(pbuf, y, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, k, eptr);
-    BRST_StrCpy(pbuf, " K\012", eptr);
+    BRST_StrCopy(pbuf, " K\012", eptr);
 
     if (BRST_Stream_WriteStr(stream, buf) != BRST_OK)
         return BRST_Error_Check(stream->error);
@@ -718,7 +718,7 @@ BRST_Stream_MoveTo(BRST_Stream stream,
     pbuf    = BRST_FToA(pbuf, x, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, y, eptr);
-    BRST_StrCpy(pbuf, " m\012", eptr);
+    BRST_StrCopy(pbuf, " m\012", eptr);
 
     if (BRST_Stream_WriteStr(stream, buf) != BRST_OK)
         return BRST_Error_Check(stream->error);
@@ -748,7 +748,7 @@ BRST_Stream_LineTo(BRST_Stream stream,
     pbuf    = BRST_FToA(pbuf, x, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, y, eptr);
-    BRST_StrCpy(pbuf, " l\012", eptr);
+    BRST_StrCopy(pbuf, " l\012", eptr);
 
     if (BRST_Stream_WriteStr(stream, buf) != BRST_OK)
         return BRST_Error_Check(stream->error);
@@ -790,7 +790,7 @@ BRST_Stream_CurveTo(BRST_Stream stream,
     pbuf    = BRST_FToA(pbuf, x3, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, y3, eptr);
-    BRST_StrCpy(pbuf, " c\012", eptr);
+    BRST_StrCopy(pbuf, " c\012", eptr);
 
     if (BRST_Stream_WriteStr(stream, buf) != BRST_OK)
         return BRST_Error_Check(stream->error);
@@ -826,7 +826,7 @@ BRST_Stream_CurveTo2(BRST_Stream stream,
     pbuf    = BRST_FToA(pbuf, x3, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, y3, eptr);
-    BRST_StrCpy(pbuf, " v\012", eptr);
+    BRST_StrCopy(pbuf, " v\012", eptr);
 
     if (BRST_Stream_WriteStr(stream, buf) != BRST_OK)
         return BRST_Error_Check(stream->error);
@@ -862,7 +862,7 @@ BRST_Stream_CurveTo3(BRST_Stream stream,
     pbuf    = BRST_FToA(pbuf, x3, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, y3, eptr);
-    BRST_StrCpy(pbuf, " y\012", eptr);
+    BRST_StrCopy(pbuf, " y\012", eptr);
 
     if (BRST_Stream_WriteStr(stream, buf) != BRST_OK)
         return BRST_Error_Check(stream->error);
@@ -915,7 +915,7 @@ BRST_Stream_Rectangle(BRST_Stream stream,
     pbuf    = BRST_FToA(pbuf, width, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, height, eptr);
-    BRST_StrCpy(pbuf, " re\012", eptr);
+    BRST_StrCopy(pbuf, " re\012", eptr);
 
     if (BRST_Stream_WriteStr(stream, buf) != BRST_OK)
         return BRST_Error_Check(stream->error);
@@ -1068,7 +1068,7 @@ BRST_Stream_SetDash(BRST_Stream stream,
     *pbuf++ = ' ';
 
     pbuf = BRST_FToA(pbuf, phase, eptr);
-    BRST_StrCpy(pbuf, " d\012", eptr);
+    BRST_StrCopy(pbuf, " d\012", eptr);
 
     if ((ret = BRST_Stream_WriteStr(stream, buf)) != BRST_OK)
         return BRST_Error_Check(stream->error);

@@ -101,7 +101,7 @@ BRST_Info_SetInfoDateAttr(BRST_Dict info,
         return BRST_Error_Set(info->error, BRST_INVALID_DATE_TIME, 0);
     }
 
-    ptmp = (char*)BRST_MemCpy((BRST_BYTE*)tmp, (BRST_BYTE*)"D:", 2);
+    ptmp = (char*)BRST_MemCopy((BRST_BYTE*)tmp, (BRST_BYTE*)"D:", 2);
     ptmp = BRST_IToA2(ptmp, BRST_Date_Part(value, BRST_DATE_PART_YEAR), 5);
     ptmp = BRST_IToA2(ptmp, BRST_Date_Part(value, BRST_DATE_PART_MONTH), 3);
     ptmp = BRST_IToA2(ptmp, BRST_Date_Part(value, BRST_DATE_PART_DAY), 3);

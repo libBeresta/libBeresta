@@ -76,7 +76,7 @@ QuarterEllipseA(char* pbuf,
     pbuf    = BRST_FToA(pbuf, x, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, y + yray, eptr);
-    return (char*)BRST_StrCpy(pbuf, " c\012", eptr);
+    return (char*)BRST_StrCopy(pbuf, " c\012", eptr);
 }
 
 static char*
@@ -98,7 +98,7 @@ QuarterEllipseB(char* pbuf,
     pbuf    = BRST_FToA(pbuf, x + xray, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, y, eptr);
-    return (char*)BRST_StrCpy(pbuf, " c\012", eptr);
+    return (char*)BRST_StrCopy(pbuf, " c\012", eptr);
 }
 
 static char*
@@ -120,7 +120,7 @@ QuarterEllipseC(char* pbuf,
     pbuf    = BRST_FToA(pbuf, x, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, y - yray, eptr);
-    return (char*)BRST_StrCpy(pbuf, " c\012", eptr);
+    return (char*)BRST_StrCopy(pbuf, " c\012", eptr);
 }
 
 static char*
@@ -142,7 +142,7 @@ QuarterEllipseD(char* pbuf,
     pbuf    = BRST_FToA(pbuf, x - xray, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, y, eptr);
-    return (char*)BRST_StrCpy(pbuf, " c\012", eptr);
+    return (char*)BRST_StrCopy(pbuf, " c\012", eptr);
 }
 
 static BRST_STATUS
@@ -198,9 +198,9 @@ InternalArc(BRST_Page page,
         pbuf    = BRST_FToA(pbuf, (BRST_REAL)y0, eptr);
 
         if (attr->gmode == BRST_GMODE_PATH_OBJECT)
-            pbuf = (char*)BRST_StrCpy(pbuf, " l\012", eptr);
+            pbuf = (char*)BRST_StrCopy(pbuf, " l\012", eptr);
         else
-            pbuf = (char*)BRST_StrCpy(pbuf, " m\012", eptr);
+            pbuf = (char*)BRST_StrCopy(pbuf, " m\012", eptr);
     }
 
     pbuf    = BRST_FToA(pbuf, (BRST_REAL)x1, eptr);
@@ -214,7 +214,7 @@ InternalArc(BRST_Page page,
     pbuf    = BRST_FToA(pbuf, (BRST_REAL)x3, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, (BRST_REAL)y3, eptr);
-    BRST_StrCpy(pbuf, " c\012", eptr);
+    BRST_StrCopy(pbuf, " c\012", eptr);
 
     if ((ret = BRST_Stream_WriteStr(attr->stream, buf)) != BRST_OK)
         return BRST_Error_Check(attr->stream->error);
@@ -389,7 +389,7 @@ BRST_Page_Ellipse(BRST_Page page,
     pbuf    = BRST_FToA(pbuf, x - xray, eptr);
     *pbuf++ = ' ';
     pbuf    = BRST_FToA(pbuf, y, eptr);
-    pbuf    = (char*)BRST_StrCpy(pbuf, " m\012", eptr);
+    pbuf    = (char*)BRST_StrCopy(pbuf, " m\012", eptr);
 
     pbuf = QuarterEllipseA(pbuf, eptr, x, y, xray, yray);
     pbuf = QuarterEllipseB(pbuf, eptr, x, y, xray, yray);

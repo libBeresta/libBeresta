@@ -2,7 +2,7 @@
 #define BRST_DOC_IMAGE_TIFF_H
 
 BRST_EXPORT(BRST_Image)
-BRST_Doc_Image_Raw1Bit_LoadFromMem(
+BRST_Doc_Image_Raw1Bit_LoadFromMemory(
     BRST_Doc         pdf,
     const BRST_BYTE* buf,
     BRST_UINT        width,
@@ -73,7 +73,7 @@ BRST_Doc_Image_Raw_LoadFromFile(
 
 */
 BRST_EXPORT(BRST_Image)
-BRST_Doc_Image_Raw_LoadFromMem(
+BRST_Doc_Image_Raw_LoadFromMemory(
     BRST_Doc         pdf,
     const BRST_BYTE* buf,
     BRST_UINT        width,

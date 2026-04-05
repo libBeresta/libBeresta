@@ -48,7 +48,7 @@
                      :en "User can edit the contents of the document other than annotations and form fields."
                      :value "8")
                     (:element "ENABLE_COPY"
-                     :ru "Пользователь может компировать текст и изображения документа."
+                     :ru "Пользователь может копировать текст и изображения документа."
                      :en "User can copy the text and the graphics of the document."
                      :value "16")
                     (:element "ENABLE_EDIT"

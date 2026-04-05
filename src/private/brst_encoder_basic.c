@@ -53,7 +53,7 @@ BRST_BasicEncoder_New(BRST_MMgr mmgr,
     BRST_MemSet(encoder, 0, sizeof(BRST_Encoder_Rec));
 
     eptr = encoder->name + BRST_LIMIT_MAX_NAME_LEN;
-    BRST_StrCpy(encoder->name, data->encoding_name, eptr);
+    BRST_StrCopy(encoder->name, data->encoding_name, eptr);
 
     encoder->mmgr           = mmgr;
     encoder->error          = BRST_MMgr_Error(mmgr);
@@ -81,22 +81,22 @@ BRST_BasicEncoder_New(BRST_MMgr mmgr,
 
     switch (data->base_encoding) {
     case BRST_BASE_ENCODING_STANDARD:
-        BRST_StrCpy(encoder_attr->base_encoding,
+        BRST_StrCopy(encoder_attr->base_encoding,
             BRST_ENCODING_STANDARD, eptr);
         BRST_BasicEncoder_CopyMap(encoder, BRST_UNICODE_MAP_STANDARD);
         break;
     case BRST_BASE_ENCODING_WIN_ANSI:
-        BRST_StrCpy(encoder_attr->base_encoding,
+        BRST_StrCopy(encoder_attr->base_encoding,
             BRST_ENCODING_WIN_ANSI, eptr);
         BRST_BasicEncoder_CopyMap(encoder, BRST_UNICODE_MAP_WIN_ANSI);
         break;
     case BRST_BASE_ENCODING_MAC_ROMAN:
-        BRST_StrCpy(encoder_attr->base_encoding,
+        BRST_StrCopy(encoder_attr->base_encoding,
             BRST_ENCODING_MAC_ROMAN, eptr);
         BRST_BasicEncoder_CopyMap(encoder, BRST_UNICODE_MAP_MAC_ROMAN);
         break;
     default:
-        BRST_StrCpy(encoder_attr->base_encoding,
+        BRST_StrCopy(encoder_attr->base_encoding,
             BRST_ENCODING_FONT_SPECIFIC, eptr);
         BRST_BasicEncoder_CopyMap(encoder,
             BRST_UNICODE_MAP_FONT_SPECIFIC);
@@ -183,7 +183,7 @@ BRST_BasicEncoder_Write(BRST_Encoder encoder,
                 ptmp    = BRST_IToA(ptmp, i, tmp + BRST_TEXT_DEFAULT_LEN - 1);
                 *ptmp++ = ' ';
                 *ptmp++ = '/';
-                ptmp    = (char*)BRST_StrCpy(ptmp, char_name, tmp + BRST_TEXT_DEFAULT_LEN - 1);
+                ptmp    = (char*)BRST_StrCopy(ptmp, char_name, tmp + BRST_TEXT_DEFAULT_LEN - 1);
                 *ptmp++ = ' ';
                 *ptmp   = 0;
 

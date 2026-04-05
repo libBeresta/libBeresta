@@ -120,8 +120,8 @@ MS_RKSJ_H_Init(BRST_Encoder encoder)
 
     attr->is_lead_byte_fn  = RKSJ_IsLeadByte;
     attr->is_trial_byte_fn = RKSJ_IsTrialByte;
-    BRST_StrCpy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
-    BRST_StrCpy(attr->ordering, "Japan1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->ordering, "Japan1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
     attr->supplement = 2;
     attr->uid_offset = 950;
     attr->xuid[0]    = 1;
@@ -160,8 +160,8 @@ MSP_RKSJ_H_Init(BRST_Encoder encoder)
 
     attr->is_lead_byte_fn  = RKSJ_IsLeadByte;
     attr->is_trial_byte_fn = RKSJ_IsTrialByte;
-    BRST_StrCpy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
-    BRST_StrCpy(attr->ordering, "Japan1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->ordering, "Japan1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
     attr->supplement = 2;
     attr->uid_offset = 950;
     attr->xuid[0]    = 1;
@@ -203,8 +203,8 @@ MS_RKSJ_V_Init(BRST_Encoder encoder)
 
     attr->is_lead_byte_fn  = RKSJ_IsLeadByte;
     attr->is_trial_byte_fn = RKSJ_IsTrialByte;
-    BRST_StrCpy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
-    BRST_StrCpy(attr->ordering, "Japan1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->ordering, "Japan1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
     attr->supplement = 2;
     attr->uid_offset = 1020;
     attr->xuid[0]    = 1;
@@ -282,8 +282,8 @@ EUC_H_Init(BRST_Encoder encoder)
 
     attr->is_lead_byte_fn  = EUC_IsLeadByte;
     attr->is_trial_byte_fn = EUC_IsTrialByte;
-    BRST_StrCpy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
-    BRST_StrCpy(attr->ordering, "Japan1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->ordering, "Japan1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
     attr->supplement = 1;
     attr->uid_offset = 680;
     attr->xuid[0]    = 1;
@@ -324,8 +324,8 @@ EUC_V_Init(BRST_Encoder encoder)
 
     attr->is_lead_byte_fn  = EUC_IsLeadByte;
     attr->is_trial_byte_fn = EUC_IsTrialByte;
-    BRST_StrCpy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
-    BRST_StrCpy(attr->ordering, "Japan1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->ordering, "Japan1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
     attr->supplement   = 1;
     attr->writing_mode = BRST_WMODE_VERTICAL;
     attr->uid_offset   = 800;

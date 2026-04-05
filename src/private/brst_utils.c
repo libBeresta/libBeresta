@@ -231,7 +231,7 @@ char* BRST_FToA(char* s,
 }
 
 BRST_BYTE*
-BRST_MemCpy(BRST_BYTE* out,
+BRST_MemCopy(BRST_BYTE* out,
     const BRST_BYTE* in,
     BRST_UINT n)
 {
@@ -244,7 +244,7 @@ BRST_MemCpy(BRST_BYTE* out,
 }
 
 BRST_BYTE*
-BRST_StrCpy(char* out,
+BRST_StrCopy(char* out,
     const char* in,
     char* eptr)
 {
@@ -411,7 +411,7 @@ void BRST_UInt16Swap(BRST_UINT16* value)
 {
     BRST_BYTE u[2];
 
-    BRST_MemCpy(u, (BRST_BYTE*)value, 2);
+    BRST_MemCopy(u, (BRST_BYTE*)value, 2);
     *value = (BRST_UINT16)((BRST_UINT16)u[0] << 8 | (BRST_UINT16)u[1]);
 }
 

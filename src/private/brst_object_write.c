@@ -50,7 +50,7 @@ BRST_Obj_Write(void* obj,
         pbuf    = BRST_IToA(pbuf, header->obj_id & 0x00FFFFFF, eptr);
         *pbuf++ = ' ';
         pbuf    = BRST_IToA(pbuf, header->gen_no, eptr);
-        BRST_StrCpy(pbuf, " R", eptr);
+        BRST_StrCopy(pbuf, " R", eptr);
 
         return BRST_Stream_WriteStr(stream, buf);
     }

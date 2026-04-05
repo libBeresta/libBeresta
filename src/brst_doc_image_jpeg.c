@@ -55,19 +55,19 @@ BRST_Doc_Image_Jpeg_LoadFromFile(BRST_Doc pdf,
 }
 
 BRST_EXPORT(BRST_Image)
-BRST_Doc_Image_Jpeg_LoadFromMem(BRST_Doc pdf,
+BRST_Doc_Image_Jpeg_LoadFromMemory(BRST_Doc pdf,
     const BRST_BYTE* buffer,
     BRST_UINT size)
 {
     BRST_Image image;
 
-    BRST_PTRACE(" BRST_Doc_Image_Jpeg_LoadFromMem\n");
+    BRST_PTRACE(" BRST_Doc_Image_Jpeg_LoadFromMemory\n");
 
     if (!BRST_Doc_Initialized(pdf)) {
         return NULL;
     }
 
-    image = BRST_Image_Jpeg_LoadFromMem(pdf->mmgr, buffer, size, pdf->xref);
+    image = BRST_Image_Jpeg_LoadFromMemory(pdf->mmgr, buffer, size, pdf->xref);
 
     if (!image) {
         BRST_Error_Check(pdf->error);

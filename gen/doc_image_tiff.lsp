@@ -1,7 +1,7 @@
 (:file "doc_image_tiff"
  :functions (
 
-(:caption "Doc_Image_Raw1Bit_LoadFromMem"
+(:caption "Doc_Image_Raw1Bit_LoadFromMemory"
           :ru "Загрузка 1-битного RAW изображения из буфера памяти"
           :en "Load RAW 1-bit image from memory buffer"
           :params ((:type "Doc"
@@ -63,7 +63,7 @@
                      :ru ":param_image"
                      :en ":param_image"))
 
-(:caption "Doc_Image_Raw_LoadFromMem"
+(:caption "Doc_Image_Raw_LoadFromMemory"
           :ru "Загрузка изображения RAW из буфера памяти"
           :en "Load RAW format image from memory buffer"
           :params ((:type "Doc"

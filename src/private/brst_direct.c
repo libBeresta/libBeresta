@@ -59,7 +59,7 @@ BRST_Direct_SetValue(BRST_Direct obj,
     if (!obj->value)
         return BRST_Error_Code(obj->error);
 
-    BRST_MemCpy(obj->value, value, len);
+    BRST_MemCopy(obj->value, value, len);
     obj->len = len;
 
     return BRST_OK;

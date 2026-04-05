@@ -356,14 +356,14 @@ OnWrite(BRST_Dict obj,
         *pbuf++ = ' ';
 
         if ((i + 1) % 16 == 0) {
-            BRST_StrCpy(pbuf, "\012", eptr);
+            BRST_StrCopy(pbuf, "\012", eptr);
             if ((ret = BRST_Stream_WriteStr(stream, buf)) != BRST_OK)
                 return ret;
             pbuf = buf;
         }
     }
 
-    BRST_StrCpy(pbuf, "]\012", eptr);
+    BRST_StrCopy(pbuf, "]\012", eptr);
 
     if ((ret = BRST_Stream_WriteStr(stream, buf)) != BRST_OK)
         return ret;

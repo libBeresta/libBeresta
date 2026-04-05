@@ -20,7 +20,7 @@
 
 */
 BRST_EXPORT(BRST_Image)
-BRST_Doc_Image_Png_LoadFromMem(
+BRST_Doc_Image_Png_LoadFromMemory(
     BRST_Doc         pdf,
     const BRST_BYTE* buf,
     BRST_UINT        size

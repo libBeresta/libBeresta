@@ -68,12 +68,12 @@ int main(int argc, char** argv)
     BRST_REAL width = BRST_Page_Width(page);
     BRST_REAL height = BRST_Page_Height(page);
 
-    // Отрисовка отружности с помощью расчета
+    // Отрисовка окружности с помощью расчета
     circle(page, width/2, height/2, height/6);
     BRST_Page_Stroke(page);
 
     BRST_Page_SetRGBStrokeHex(page, 0xFF00FF);
-    // Отрисовка отружности с помощью готовой функции
+    // Отрисовка окружности с помощью готовой функции
     // (внутри там тот же самый расчет, но это уже часть библиотеки)
     BRST_Page_Circle(page, width/2, height/2, height/3);
     BRST_Page_LineTo(page, 300, 500);

@@ -86,7 +86,7 @@ BRST_String_SetValue(BRST_String obj,
     if (!obj->value)
         return BRST_Error_Code(obj->error);
 
-    BRST_StrCpy((char*)obj->value, value, (char*)obj->value + len);
+    BRST_StrCopy((char*)obj->value, value, (char*)obj->value + len);
     obj->len = len;
 
     return ret;
@@ -203,7 +203,7 @@ BRST_String_Write(BRST_String obj,
                 }
 
                 BRST_UInt16Swap(&tmp_unicode);
-                BRST_MemCpy(pbuf, (BRST_BYTE*)&tmp_unicode, 2);
+                BRST_MemCopy(pbuf, (BRST_BYTE*)&tmp_unicode, 2);
                 pbuf += 2;
                 tmp_len++;
             }

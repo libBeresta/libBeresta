@@ -97,7 +97,7 @@ int main(int argc, char **argv)
     BRST_Page_DrawImage(page, image, x, y, 32, 32);
 
     // Загрузка полутонового одно-битного изображения из памяти
-    image = BRST_Doc_Image_Raw_LoadFromMem(pdf, RAW_IMAGE_DATA, 32, 32,
+    image = BRST_Doc_Image_Raw_LoadFromMemory(pdf, RAW_IMAGE_DATA, 32, 32,
                 BRST_CS_DEVICE_GRAY, 1);
 
     x = 120;

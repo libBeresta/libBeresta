@@ -58,7 +58,7 @@ BRST_CIDFontDef_New(BRST_MMgr mmgr,
 
     BRST_MemSet(fontdef, 0, sizeof(BRST_FontDef_Rec));
     fontdef->sig_bytes = BRST_FONTDEF_SIG_BYTES;
-    BRST_StrCpy(fontdef->base_font, name, fontdef->base_font + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(fontdef->base_font, name, fontdef->base_font + BRST_LIMIT_MAX_NAME_LEN);
     fontdef->mmgr    = mmgr;
     fontdef->error   = BRST_MMgr_Error(mmgr);
     fontdef->type    = BRST_FONTDEF_TYPE_UNINITIALIZED;

@@ -247,7 +247,7 @@ BRST_Xref_WriteToStream(BRST_Xref xref,
             pbuf    = BRST_IToA(pbuf, obj_id, eptr);
             *pbuf++ = ' ';
             pbuf    = BRST_IToA(pbuf, gen_no, eptr);
-            BRST_StrCpy(pbuf, " obj\012", eptr);
+            BRST_StrCopy(pbuf, " obj\012", eptr);
 
             if ((ret = BRST_Stream_WriteStr(stream, buf)) != BRST_OK)
                 return ret;
@@ -274,11 +274,11 @@ BRST_Xref_WriteToStream(BRST_Xref xref,
         tmp_xref->addr = stream->size;
 
         pbuf    = buf;
-        pbuf    = (char*)BRST_StrCpy(pbuf, "xref\012", eptr);
+        pbuf    = (char*)BRST_StrCopy(pbuf, "xref\012", eptr);
         pbuf    = BRST_IToA(pbuf, tmp_xref->start_offset, eptr);
         *pbuf++ = ' ';
         pbuf    = BRST_IToA(pbuf, BRST_List_Count(tmp_xref->entries), eptr);
-        BRST_StrCpy(pbuf, "\012", eptr);
+        BRST_StrCopy(pbuf, "\012", eptr);
         ret = BRST_Stream_WriteStr(stream, buf);
         if (ret != BRST_OK)
             return ret;
@@ -292,7 +292,7 @@ BRST_Xref_WriteToStream(BRST_Xref xref,
             pbuf    = BRST_IToA2(pbuf, entry->gen_no, BRST_GEN_NO_LEN + 1);
             *pbuf++ = ' ';
             *pbuf++ = entry->entry_typ;
-            BRST_StrCpy(pbuf, "\015\012", eptr); /* Acrobat 8.15 requires both \r and \n here */
+            BRST_StrCopy(pbuf, "\015\012", eptr); /* Acrobat 8.15 requires both \r and \n here */
             ret = BRST_Stream_WriteStr(stream, buf);
             if (ret != BRST_OK)
                 return ret;

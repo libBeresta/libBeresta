@@ -701,13 +701,13 @@ BRST_MemStream_InWrite(BRST_Stream stream,
         return BRST_OK;
 
     if (rsize >= *count) {
-        BRST_MemCpy(attr->w_ptr, *ptr, *count);
+        BRST_MemCopy(attr->w_ptr, *ptr, *count);
         attr->w_ptr += *count;
         attr->w_pos += *count;
         *count = 0;
     } else {
         if (rsize > 0) {
-            BRST_MemCpy(attr->w_ptr, *ptr, rsize);
+            BRST_MemCopy(attr->w_ptr, *ptr, rsize);
             *ptr += rsize;
             *count -= rsize;
         }
@@ -976,13 +976,13 @@ BRST_MemStream_ReadFunc(BRST_Stream stream,
                 attr->r_ptr_idx);
 
         if (tmp_len >= rlen) {
-            BRST_MemCpy(buf, attr->r_ptr, rlen);
+            BRST_MemCopy(buf, attr->r_ptr, rlen);
             attr->r_pos += rlen;
             *size += rlen;
             attr->r_ptr += rlen;
             return BRST_OK;
         } else {
-            buf = BRST_MemCpy(buf, attr->r_ptr, tmp_len);
+            buf = BRST_MemCopy(buf, attr->r_ptr, tmp_len);
             rlen -= tmp_len;
             *size += tmp_len;
 
@@ -1028,12 +1028,12 @@ BRST_MemStream_Rewrite(BRST_Stream stream,
             tmp_len = attr->buf_size - attr->r_pos;
 
         if (tmp_len >= rlen) {
-            BRST_MemCpy(attr->r_ptr, buf, rlen);
+            BRST_MemCopy(attr->r_ptr, buf, rlen);
             attr->r_pos += rlen;
             attr->r_ptr += rlen;
             return BRST_OK;
         } else {
-            BRST_MemCpy(attr->r_ptr, buf, tmp_len);
+            BRST_MemCopy(attr->r_ptr, buf, tmp_len);
             buf += tmp_len;
             rlen -= tmp_len;
             attr->r_ptr_idx++;

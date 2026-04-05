@@ -15,8 +15,8 @@
             :result (:type "Image"
                         :ru ":param_image"
                         :en ":param_image"))
-           ;; BRST_Doc_Image_Jpeg_LoadFromMem
-           (:caption "Doc_Image_Jpeg_LoadFromMem"
+           ;; BRST_Doc_Image_Jpeg_LoadFromMemory
+           (:caption "Doc_Image_Jpeg_LoadFromMemory"
             :ru "Загружает изображение формата JPEG из буфера памяти."
             :en "Load JPEG image from buffer"
             :params ((:type "Doc"

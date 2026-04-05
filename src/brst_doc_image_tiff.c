@@ -34,7 +34,7 @@
  *      FALSE if image is oriented BOTTOM-TOP
  */
 BRST_EXPORT(BRST_Image)
-BRST_Doc_Image_Raw1Bit_LoadFromMem(BRST_Doc pdf,
+BRST_Doc_Image_Raw1Bit_LoadFromMemory(BRST_Doc pdf,
     const BRST_BYTE* buf,
     BRST_UINT width,
     BRST_UINT height,
@@ -49,7 +49,7 @@ BRST_Doc_Image_Raw1Bit_LoadFromMem(BRST_Doc pdf,
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
 
-    image = BRST_Image_Raw1Bit_LoadFromMem(pdf->mmgr, buf, pdf->xref, width,
+    image = BRST_Image_Raw1Bit_LoadFromMemory(pdf->mmgr, buf, pdf->xref, width,
         height, line_width, top_is_first);
 
     if (!image)
@@ -111,7 +111,7 @@ BRST_Doc_Image_Raw_LoadFromFile(BRST_Doc pdf,
 }
 
 BRST_EXPORT(BRST_Image)
-BRST_Doc_Image_Raw_LoadFromMem(BRST_Doc pdf,
+BRST_Doc_Image_Raw_LoadFromMemory(BRST_Doc pdf,
     const BRST_BYTE* buf,
     BRST_UINT width,
     BRST_UINT height,
@@ -120,17 +120,17 @@ BRST_Doc_Image_Raw_LoadFromMem(BRST_Doc pdf,
 {
     BRST_Image image;
 
-    BRST_PTRACE(" BRST_Doc_Image_Raw_LoadFromMem\n");
+    BRST_PTRACE(" BRST_Doc_Image_Raw_LoadFromMemory\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
 
     /* Use directly BRST_Image_LoadRaw1BitImageFromMem to save B/W images */
     if (color_space == BRST_CS_DEVICE_GRAY && bits_per_component == 1) {
-        return BRST_Doc_Image_Raw1Bit_LoadFromMem(pdf, buf, width, height, (width + 7) / 8, BRST_TRUE, BRST_TRUE);
+        return BRST_Doc_Image_Raw1Bit_LoadFromMemory(pdf, buf, width, height, (width + 7) / 8, BRST_TRUE, BRST_TRUE);
     }
 
-    image = BRST_Image_Raw_LoadFromMem(pdf->mmgr, buf, pdf->xref, width, height, color_space, bits_per_component);
+    image = BRST_Image_Raw_LoadFromMemory(pdf->mmgr, buf, pdf->xref, width, height, color_space, bits_per_component);
 
     if (!image)
         BRST_Error_Check(pdf->error);

@@ -154,7 +154,7 @@ LoadAfm(BRST_FontDef fontdef,
         s = GetKeyword(buf, keyword, BRST_LIMIT_MAX_NAME_LEN + 1);
 
         if (BRST_StrCmp(keyword, "FontName") == 0) {
-            BRST_StrCpy(fontdef->base_font, s,
+            BRST_StrCopy(fontdef->base_font, s,
                 fontdef->base_font + BRST_LIMIT_MAX_NAME_LEN);
         } else
 
@@ -182,7 +182,7 @@ LoadAfm(BRST_FontDef fontdef,
                 if (!attr->char_set)
                     return BRST_Error_Code(fontdef->error);
 
-                BRST_StrCpy(attr->char_set, s, attr->char_set + len1);
+                BRST_StrCopy(attr->char_set, s, attr->char_set + len1);
             }
         } else if (BRST_StrCmp(keyword, "FontBBox") == 0) {
             char buf1[BRST_INT_LEN + 1];
@@ -199,7 +199,7 @@ LoadAfm(BRST_FontDef fontdef,
             GetKeyword(s, buf1, BRST_INT_LEN + 1);
             fontdef->font_bbox.top = (BRST_REAL)BRST_AToI(buf1);
         } else if (BRST_StrCmp(keyword, "EncodingScheme") == 0) {
-            BRST_StrCpy(attr->encoding_scheme, s,
+            BRST_StrCopy(attr->encoding_scheme, s,
                 attr->encoding_scheme + BRST_LIMIT_MAX_NAME_LEN);
         } else if (BRST_StrCmp(keyword, "CapHeight") == 0) {
             fontdef->cap_height = (BRST_UINT16)BRST_AToI(s);
@@ -341,7 +341,7 @@ LoadFontData(BRST_FontDef fontdef,
         } else {
             if ((ret = BRST_Stream_Write(attr->font_data, (BRST_BYTE*)buf, len)) != BRST_OK)
                 return ret;
-            BRST_MemCpy((BRST_BYTE*)buf, (BRST_BYTE*)buf + len, 11);
+            BRST_MemCopy((BRST_BYTE*)buf, (BRST_BYTE*)buf + len, 11);
             pbuf = buf + 11;
         }
     }

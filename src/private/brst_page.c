@@ -371,7 +371,7 @@ BRST_Dict_ResourceLocalName(BRST_Dict dict,
         char* ptr;
         char* end_ptr = localName + BRST_LIMIT_MAX_NAME_LEN;
 
-        ptr = (char*)BRST_StrCpy(localName, prefix, end_ptr);
+        ptr = (char*)BRST_StrCopy(localName, prefix, end_ptr);
         BRST_IToA(ptr, BRST_List_Count(resourceDict->list) + 1, end_ptr);
 
         if (BRST_Dict_Add(resourceDict, localName, resource) != BRST_OK)
@@ -455,7 +455,7 @@ BRST_Page_ShadingName(BRST_Page page,
         char* ptr;
         char* end_ptr = shading_str + BRST_LIMIT_MAX_NAME_LEN;
 
-        ptr = (char*)BRST_StrCpy(shading_str, "Sh", end_ptr);
+        ptr = (char*)BRST_StrCopy(shading_str, "Sh", end_ptr);
         BRST_IToA(ptr, BRST_List_Count(attr->shadings->list), end_ptr);
 
         if (BRST_Dict_Add(attr->shadings, shading_str, shading) != BRST_OK)

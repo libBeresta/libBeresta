@@ -2,7 +2,7 @@
 #define PRIVATE_BRST_IMAGE_TIFF_H
 
 BRST_Image
-BRST_Image_Raw1Bit_LoadFromMem(
+BRST_Image_Raw1Bit_LoadFromMemory(
     BRST_MMgr        mmgr,
     const BRST_BYTE* buf,
     BRST_Xref        xref,
@@ -23,7 +23,7 @@ BRST_Image_Raw_Load(
 );
 
 BRST_Image
-BRST_Image_Raw_LoadFromMem(
+BRST_Image_Raw_LoadFromMemory(
     BRST_MMgr        mmgr,
     const BRST_BYTE* buf,
     BRST_Xref        xref,

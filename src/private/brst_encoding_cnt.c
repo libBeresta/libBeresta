@@ -97,8 +97,8 @@ ETen_B5_H_Init(BRST_Encoder encoder)
 
     attr->is_lead_byte_fn  = ETen_B5_IsLeadByte;
     attr->is_trial_byte_fn = ETen_B5_IsTrialByte;
-    BRST_StrCpy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
-    BRST_StrCpy(attr->ordering, "CNS1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->ordering, "CNS1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
     attr->supplement = 0;
     attr->uid_offset = 200;
     attr->xuid[0]    = 1;
@@ -138,8 +138,8 @@ ETen_B5_V_Init(BRST_Encoder encoder)
 
     attr->is_lead_byte_fn  = ETen_B5_IsLeadByte;
     attr->is_trial_byte_fn = ETen_B5_IsTrialByte;
-    BRST_StrCpy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
-    BRST_StrCpy(attr->ordering, "CNS1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(attr->ordering, "CNS1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
     attr->supplement = 0;
     attr->uid_offset = 920;
     attr->xuid[0]    = 1;

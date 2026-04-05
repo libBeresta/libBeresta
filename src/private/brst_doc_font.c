@@ -55,7 +55,7 @@ LoadTTFontFromStream(BRST_Doc pdf,
 
     if (embedding) {
         if (pdf->ttfont_tag[0] == 0) {
-            BRST_MemCpy(pdf->ttfont_tag, (BRST_BYTE*)"BRSTAA", 6);
+            BRST_MemCopy(pdf->ttfont_tag, (BRST_BYTE*)"BRSTAA", 6);
         } else {
             BRST_INT i;
 
@@ -103,7 +103,7 @@ LoadTTFontFromStream2(BRST_Doc pdf,
 
     if (embedding) {
         if (pdf->ttfont_tag[0] == 0) {
-            BRST_MemCpy(pdf->ttfont_tag, (BRST_BYTE*)"BRSTAA", 6);
+            BRST_MemCopy(pdf->ttfont_tag, (BRST_BYTE*)"BRSTAA", 6);
         } else {
             BRST_INT i;
 

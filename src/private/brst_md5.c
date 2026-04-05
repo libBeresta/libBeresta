@@ -69,10 +69,10 @@ void BRST_MD5Update(struct BRST_MD5Context* ctx,
 
         t = 64 - t;
         if (len < t) {
-            BRST_MemCpy(p, buf, len);
+            BRST_MemCopy(p, buf, len);
             return;
         }
-        BRST_MemCpy(p, buf, t);
+        BRST_MemCopy(p, buf, t);
         MD5ByteReverse(ctx->in, 16);
         MD5Transform(ctx->buf, (BRST_UINT32*)ctx->in);
         buf += t;
@@ -81,7 +81,7 @@ void BRST_MD5Update(struct BRST_MD5Context* ctx,
     /* Process data in 64-byte chunks */
 
     while (len >= 64) {
-        BRST_MemCpy(ctx->in, buf, 64);
+        BRST_MemCopy(ctx->in, buf, 64);
         MD5ByteReverse(ctx->in, 16);
         MD5Transform(ctx->buf, (BRST_UINT32*)ctx->in);
         buf += 64;
@@ -90,7 +90,7 @@ void BRST_MD5Update(struct BRST_MD5Context* ctx,
 
     /* Handle any remaining bytes of data. */
 
-    BRST_MemCpy(ctx->in, buf, len);
+    BRST_MemCopy(ctx->in, buf, len);
 }
 
 /*
@@ -135,7 +135,7 @@ void BRST_MD5Final(BRST_BYTE digest[16],
 
     MD5Transform(ctx->buf, (BRST_UINT32*)ctx->in);
     MD5ByteReverse((BRST_BYTE*)ctx->buf, 4);
-    BRST_MemCpy((BRST_BYTE*)digest, (BRST_BYTE*)ctx->buf, 16);
+    BRST_MemCopy((BRST_BYTE*)digest, (BRST_BYTE*)ctx->buf, 16);
     BRST_MemSet((BRST_BYTE*)ctx, 0, sizeof(ctx)); /* In case it's sensitive */
 }
 

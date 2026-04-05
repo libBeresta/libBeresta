@@ -213,13 +213,13 @@ BRST_Base14FontDef_New(BRST_MMgr mmgr,
     }
 
     eptr = fontdef->base_font + BRST_LIMIT_MAX_NAME_LEN;
-    BRST_StrCpy(fontdef->base_font, data->font_name, eptr);
+    BRST_StrCopy(fontdef->base_font, data->font_name, eptr);
 
     attr                = (BRST_Type1FontDefAttr)fontdef->attr;
     attr->is_base14font = BRST_TRUE;
 
     if (data->is_font_specific)
-        BRST_StrCpy(attr->encoding_scheme, BRST_ENCODING_FONT_SPECIFIC,
+        BRST_StrCopy(attr->encoding_scheme, BRST_ENCODING_FONT_SPECIFIC,
             attr->encoding_scheme + BRST_LIMIT_MAX_NAME_LEN);
 
     ret = BRST_Type1FontDef_SetWidths(fontdef, data->widths_table);

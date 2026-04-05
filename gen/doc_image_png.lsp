@@ -1,6 +1,6 @@
 (:file "doc_image_png"
  :functions (
-           (:caption "Doc_Image_Png_LoadFromMem"
+           (:caption "Doc_Image_Png_LoadFromMemory"
             :ru "Загрузить изображение формата PNG из буфера памяти"
             :en "Load PNG image from buffer"
             :params ((:type "Doc"
@@ -35,7 +35,7 @@
                         :en ":param_image"))
 
            (:caption "Doc_Image_Png_LoadFromFile2"
-            :ru "Асинхронная загрузка файла формта PNG"
+            :ru "Асинхронная загрузка файла формата PNG"
             :en "Asynchronous loading of external PNG image file"
             :params ((:type "Doc"
                          :name "pdf"

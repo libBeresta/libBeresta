@@ -182,12 +182,12 @@ void BRST_PadOrTruncatePasswd(const char* pwd,
     BRST_MemSet(new_pwd, 0x00, BRST_PASSWD_LEN);
 
     if (len >= BRST_PASSWD_LEN) {
-        BRST_MemCpy(new_pwd, (BRST_BYTE*)pwd, BRST_PASSWD_LEN);
+        BRST_MemCopy(new_pwd, (BRST_BYTE*)pwd, BRST_PASSWD_LEN);
     } else {
         if (len > 0) {
-            BRST_MemCpy(new_pwd, (BRST_BYTE*)pwd, len);
+            BRST_MemCopy(new_pwd, (BRST_BYTE*)pwd, len);
         }
-        BRST_MemCpy(new_pwd + len, BRST_PADDING_STRING, BRST_PASSWD_LEN - len);
+        BRST_MemCopy(new_pwd + len, BRST_PADDING_STRING, BRST_PASSWD_LEN - len);
     }
 }
 

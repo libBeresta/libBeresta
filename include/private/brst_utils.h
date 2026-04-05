@@ -45,14 +45,14 @@ BRST_FToA(
 );
 
 BRST_BYTE*
-BRST_MemCpy(
+BRST_MemCopy(
     BRST_BYTE*       out,
     const BRST_BYTE* in,
     BRST_UINT        n
 );
 
 BRST_BYTE*
-BRST_StrCpy(
+BRST_StrCopy(
     char*       out,
     const char* in,
     char*       eptr

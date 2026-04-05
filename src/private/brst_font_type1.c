@@ -326,15 +326,15 @@ Type1Font_OnWrite(BRST_Dict obj,
     if (!fontdef_attr->is_base14font || encoder_attr->has_differences) {
         char* pbuf;
 
-        pbuf = (char*)BRST_StrCpy(buf, "/FirstChar ", eptr);
+        pbuf = (char*)BRST_StrCopy(buf, "/FirstChar ", eptr);
         pbuf = BRST_IToA(pbuf, encoder_attr->first_char, eptr);
-        BRST_StrCpy(pbuf, "\012", eptr);
+        BRST_StrCopy(pbuf, "\012", eptr);
         if ((ret = BRST_Stream_WriteStr(stream, buf)) != BRST_OK)
             return ret;
 
-        pbuf = (char*)BRST_StrCpy(buf, "/LastChar ", eptr);
+        pbuf = (char*)BRST_StrCopy(buf, "/LastChar ", eptr);
         pbuf = BRST_IToA(pbuf, encoder_attr->last_char, eptr);
-        BRST_StrCpy(pbuf, "\012", eptr);
+        BRST_StrCopy(pbuf, "\012", eptr);
         if ((ret = BRST_Stream_WriteStr(stream, buf)) != BRST_OK)
             return ret;
 
@@ -352,14 +352,14 @@ Type1Font_OnWrite(BRST_Dict obj,
             *pbuf++ = ' ';
 
             if ((i + 1) % 16 == 0) {
-                BRST_StrCpy(pbuf, "\012", eptr);
+                BRST_StrCopy(pbuf, "\012", eptr);
                 if ((ret = BRST_Stream_WriteStr(stream, buf)) != BRST_OK)
                     return ret;
                 pbuf = buf;
             }
         }
 
-        BRST_StrCpy(pbuf, "]\012", eptr);
+        BRST_StrCopy(pbuf, "]\012", eptr);
 
         if ((ret = BRST_Stream_WriteStr(stream, buf)) != BRST_OK)
             return ret;

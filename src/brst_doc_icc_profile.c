@@ -105,7 +105,7 @@ BRST_AddIntent(BRST_Doc pdf,
 
 /* "Perceptual", "RelativeColorimetric", "Saturation", "AbsoluteColorimetric" */
 BRST_EXPORT(BRST_OutputIntent)
-BRST_Doc_IccProfile_LoadFromMem(BRST_Doc pdf,
+BRST_Doc_IccProfile_LoadFromMemory(BRST_Doc pdf,
     BRST_MMgr mmgr,
     BRST_Stream iccdata,
     BRST_Xref xref,
@@ -114,7 +114,7 @@ BRST_Doc_IccProfile_LoadFromMem(BRST_Doc pdf,
     BRST_OutputIntent icc;
     BRST_STATUS ret;
 
-    BRST_PTRACE(" BRST_Doc_IccProfile_LoadFromMem\n");
+    BRST_PTRACE(" BRST_Doc_IccProfile_LoadFromMemory\n");
 
     icc = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!icc)
@@ -213,7 +213,7 @@ BRST_Doc_IccProfile_LoadFromFile(BRST_Doc pdf,
     iccdata = BRST_FileReader_New(pdf->mmgr, icc_file_name);
 
     if (BRST_Stream_Validate(iccdata)) {
-        iccentry = BRST_Doc_IccProfile_LoadFromMem(pdf, pdf->mmgr, iccdata, pdf->xref, numcomponent);
+        iccentry = BRST_Doc_IccProfile_LoadFromMemory(pdf, pdf->mmgr, iccdata, pdf->xref, numcomponent);
     } else
         iccentry = NULL;
 

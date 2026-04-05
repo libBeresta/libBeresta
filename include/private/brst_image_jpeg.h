@@ -9,7 +9,7 @@ BRST_Image_Jpeg_Load(
 );
 
 BRST_Image
-BRST_Image_Jpeg_LoadFromMem(
+BRST_Image_Jpeg_LoadFromMemory(
     BRST_MMgr        mmgr,
     const BRST_BYTE* buf,
     BRST_UINT        size,

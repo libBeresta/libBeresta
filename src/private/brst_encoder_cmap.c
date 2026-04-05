@@ -38,7 +38,7 @@ BRST_CMapEncoder_New(BRST_MMgr mmgr,
 
     BRST_MemSet(encoder, 0, sizeof(BRST_Encoder_Rec));
 
-    BRST_StrCpy(encoder->name, name, encoder->name + BRST_LIMIT_MAX_NAME_LEN);
+    BRST_StrCopy(encoder->name, name, encoder->name + BRST_LIMIT_MAX_NAME_LEN);
     encoder->mmgr          = mmgr;
     encoder->error         = BRST_MMgr_Error(mmgr);
     encoder->type          = BRST_ENCODER_TYPE_UNINITIALIZED;

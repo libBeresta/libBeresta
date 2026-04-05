@@ -79,7 +79,7 @@ BRST_Image_Raw_Load(BRST_MMgr mmgr,
 }
 
 BRST_Image
-BRST_Image_Raw_LoadFromMem(BRST_MMgr mmgr,
+BRST_Image_Raw_LoadFromMemory(BRST_MMgr mmgr,
     const BRST_BYTE* buf,
     BRST_Xref xref,
     BRST_UINT width,

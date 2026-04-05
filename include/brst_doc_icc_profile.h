@@ -2,7 +2,7 @@
 #define BRST_DOC_ICC_PROFILE_H
 
 BRST_EXPORT(BRST_OutputIntent)
-BRST_Doc_IccProfile_LoadFromMem(
+BRST_Doc_IccProfile_LoadFromMemory(
     BRST_Doc    pdf,
     BRST_MMgr   mmgr,
     BRST_Stream iccdata,
