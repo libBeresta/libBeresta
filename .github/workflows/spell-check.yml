@@ -1,0 +1,25 @@
+name: Spell Check
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  spell-check:
+    name: Check spelling
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Install typos
+        run: cargo install typos-cli --locked
+
+      - name: Install hunspell and ripgrep
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y hunspell hunspell-en-us hunspell-ru ripgrep
+
+      - name: Run spell check script
+        run: bash ./data/spell/check-typos.sh
