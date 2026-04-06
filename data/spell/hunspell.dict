@@ -20,6 +20,7 @@ AnnotStampStyle
 AnnotType
 APDF
 arg
+args
 ARTBOX
 asian
 ASIS
@@ -54,6 +55,7 @@ CALRGB
 CARRE
 Carré
 Carta
+cddddr
 cdr
 CharBBox
 CharSpace
@@ -125,6 +127,7 @@ disp
 djula
 DL
 docf
+dolist
 Dotum
 DotumChe
 downcase
@@ -160,6 +163,7 @@ Eoclip
 EOF
 Eofill
 EofillStroke
+eql
 ErrorKind
 ETen
 EUC
@@ -289,6 +293,7 @@ PageTransition
 PaintType
 param
 parblock
+pathnames
 PatternType
 pdf
 PDFDocEncoding
