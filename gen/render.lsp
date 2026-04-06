@@ -153,6 +153,9 @@
 		  &optional &key
 			      (lang *language*)
 			      (output :no))
+  (when (not (eql output :no))
+    (princ (format nil "Processing ~A...~%" data-file)))
+
   (mapcar #'(lambda (x)
 	      (let* ((str (string x))
 		     (key (intern str :keyword))
@@ -177,3 +180,39 @@
 	   output
 	   :if-exists :overwrite
 	   :if-does-not-exist :create)))))
+
+(defun rem-args (org args)
+  (cond
+    ((null args) org)
+    ((string= (car args) "--") (cdr args))
+    (t (rem-args org (cdr args)))))
+
+(defun change-ext (file dir ext)
+  (declare (type pathname file))
+
+  (merge-pathnames (make-pathname
+		    :name (pathname-name file)
+		    :type ext)
+		   (concatenate 'string dir "/")))
+
+(defun do-render-many (args)
+  (let ((template (first args))
+	(lang (intern (second args) :keyword))
+	(ext (third args))
+	(dir (fourth args))
+	(files (cddddr args)))
+	(princ (format nil "Template: ~A~%" template))
+	(princ (format nil "Lang: ~A~%" lang))
+	(princ (format nil "Dir: ~A~%" dir))
+    (dolist (f files)
+      (let ((output (change-ext f dir ext)))
+	(princ (format nil "Output: ~A~%" output))
+	
+	(do-render template f :lang lang :output output)))))
+
+(let ((args (rem-args (ext:command-args) (ext:command-args))))
+  (when args
+    ;; Если файлы заданы через командную строку с помощью --,
+    ;; тогда список args будет не пустой и можно запускать обработку
+    (do-render-many args))
+  (si:exit 0))

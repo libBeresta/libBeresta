@@ -1,10 +1,10 @@
-{% if consts %}  ;; {{ file }}: constants {% for con in consts %}
+{% if consts %}  ;; {{ file }}: constants{% for con in consts %}
   #:{{ con.name | under }}{% endfor %}{% endif %}{% if definitions %}  ;; {{ file }}: definitions{% for def in definitions %}
-  #:{{ def.name | under }}{% endfor %}{% endif %}{% if указатели %}  ;; {{ файл }}: pointers{% for pt in pointers %}
+  #:{{ def.name | under }}{% endfor %}{% endif %}{% if pointers %}  ;; {{ file }}: pointers{% for pt in pointers %}
   #:{{ pt.name | under }}{% endfor %}{% endif %}
 {% if enums %}
   ;;; {{ file }}: enums{% for enum in enums %}
   ;; {{ enum.name }}{% for el in enum.elements %}
   #:{{ el.element | under }}{% endfor %}{% endfor %}{% endif %}{% if functions %}
-  ;; {{ file }}: functions {% for fn in functions %}
+  ;; {{ file }}: functions{% for fn in functions %}
   #:{{fn.caption | under}}{% endfor %}{% endif %}
