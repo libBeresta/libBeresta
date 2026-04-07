@@ -1,7 +1,0 @@
-  #:string-to-cstring
-  #:with-pdf-document
-  #:with-ttf-font
-  #:page-set-dash-pattern
-  #:stream-set-dash-pattern
-  #:with-page-gsave
-  #:with-stream-gsave

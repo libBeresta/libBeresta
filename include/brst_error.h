@@ -137,8 +137,8 @@
 
 /*---------------------------------------------------------------------------*/
 /*----- BRST_Error ----------------------------------------------------------*/
-struct BRST_Error_Rec;
-typedef struct BRST_Error_Rec* BRST_Error;
+struct _BRST_Error_Rec;
+typedef struct _BRST_Error_Rec* BRST_Error;
 
 /**
 

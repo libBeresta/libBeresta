@@ -14,6 +14,8 @@ BRST_Doc_Pattern_Tiling_Create(
 );
 
 BRST_EXPORT(BRST_Stream)
-BRST_Doc_Pattern_Stream(BRST_Pattern pat);
+BRST_Doc_Pattern_Stream(
+    BRST_Pattern pat
+);
 
 #endif /* BRST_DOC_PATTERN_H */

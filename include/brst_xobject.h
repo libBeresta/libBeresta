@@ -6,6 +6,8 @@
 typedef BRST_Dict BRST_XObject;
 
 BRST_EXPORT(BRST_Stream)
-BRST_XObject_Stream(BRST_XObject xobj);
+BRST_XObject_Stream(
+    BRST_XObject xobj
+);
 
 #endif /* BRST_XOBJECT_H */
