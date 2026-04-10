@@ -83,8 +83,8 @@ BRST_Doc_New(
 );
 
 BRST_EXPORT(BRST_Doc)
-BRST_Doc_New_Empty();
-
+BRST_Doc_New_Empty(
+);
 
 /**
 

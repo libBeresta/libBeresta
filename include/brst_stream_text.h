@@ -67,7 +67,8 @@ BRST_Stream_ShowText(
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Stream_TextOut(BRST_Stream stream,
+BRST_Stream_TextOut(
+    BRST_Stream stream,
     BRST_Font font,
     BRST_REAL x,
     BRST_REAL y,

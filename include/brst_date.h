@@ -48,15 +48,24 @@ BRST_Date_New(
 );
 
 BRST_EXPORT(BRST_Date)
-BRST_Date_Now(BRST_Doc pdf);
+BRST_Date_Now(
+    BRST_Doc pdf
+);
 
 BRST_EXPORT(BRST_INT)
-BRST_Date_Part(BRST_Date date, BRST_Date_Parts part);
+BRST_Date_Part(
+    BRST_Date date,
+    BRST_Date_Parts part
+);
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Date_Validate(BRST_Date date);
+BRST_Date_Validate(
+    BRST_Date date
+);
 
 BRST_EXPORT(void)
-BRST_Date_Free(BRST_Date date);
+BRST_Date_Free(
+    BRST_Date date
+);
 
 #endif /* BRST_DATE_H */
