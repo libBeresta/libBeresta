@@ -234,7 +234,7 @@
   and 1 unit vertically equals \\с sy units in the new coordinate system."
 
          :command "cm"
-         :see ("Page_Concat()")
+         :see ("Page_Concat")
          :params ((:type "Page"
                       :name "page"
                       :ru ":param_page"
@@ -262,8 +262,8 @@
 
   The coordinate system axes are rotated counterclockwise by angle \\с degrees (in degrees)."
          :command "cm"
-         :see ("Page_Concat()"
-              "Page_Rotate()")
+         :see ("Page_Concat"
+              "Page_Rotate")
          :params ((:type "Page"
                       :name "page"
                       :ru ":param_page"
@@ -287,8 +287,8 @@
 
   The coordinate system axes are rotated counterclockwise by angle \\с degrees (in radians)."
          :command "cm"
-         :see ("Page_Concat()"
-              "Page_RotateDeg()")
+         :see ("Page_Concat"
+              "Page_RotateDeg")
          :params ((:type "Page"
                       :name "page"
                       :ru ":param_page"
@@ -312,7 +312,7 @@
 
   Coordinate system is skewed by an angle \\c a at \\a x axis and by angle \\c b at \\a y axis."
          :command "cm"
-         :see ("Page_Concat()")
+         :see ("Page_Concat")
          :params ((:type "Page"
                       :name "page"
                       :ru ":param_page"
@@ -704,10 +704,10 @@
   may be used to save and restore the current graphics state, including the clipping path."
         :command "W"
         :see (
-             "Page_EndPath()"
-             "Page_GSave()"
-             "Page_GRestore()"
-             "Page_Eoclip()"
+             "Page_EndPath"
+             "Page_GSave"
+             "Page_GRestore"
+             "Page_Eoclip"
              )
         :params ((:type "Page"
                      :name "page"
@@ -743,10 +743,10 @@
   may be used to save and restore the current graphics state, including the clipping path."
         :command "W*"
         :see (
-             "Page_EndPath()"
-             "Page_GSave()"
-             "Page_GRestore()"
-             "Page_Clip()"
+             "Page_EndPath"
+             "Page_GSave"
+             "Page_GRestore"
+             "Page_Clip"
              )
         :params ((:type "Page"
                      :name "page"
