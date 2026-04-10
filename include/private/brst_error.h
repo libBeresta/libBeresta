@@ -5,8 +5,8 @@
 #include "brst_types.h"
 #include "brst_error_handler.h"
 
-struct BRST_Error_Rec;
-typedef struct BRST_Error_Rec* BRST_Error;
+struct _BRST_Error_Rec;
+typedef struct _BRST_Error_Rec* BRST_Error;
 
 BRST_Error
 BRST_Error_New();

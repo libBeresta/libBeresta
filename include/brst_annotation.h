@@ -99,12 +99,12 @@ typedef enum _BRST_LineAnnotEndingStyle {
     BRST_LINE_ANNOT_SLASH
 } BRST_LineAnnotEndingStyle;
 
-typedef enum _BRST_LineAnnotCapPosition{
+typedef enum _BRST_LineAnnotCapPosition {
     BRST_LINE_ANNOT_CAP_INLINE = 0,
     BRST_LINE_ANNOT_CAP_TOP
 } BRST_LineAnnotCapPosition;
 
-typedef enum _BRST_StampAnnotName{
+typedef enum _BRST_StampAnnotName {
     BRST_STAMP_ANNOT_APPROVED = 0,
     BRST_STAMP_ANNOT_EXPERIMENTAL,
     BRST_STAMP_ANNOT_NOTAPPROVED,
