@@ -46,12 +46,12 @@
             :group "doc"
             :ru "Создание объекта XObject Form"
             :en "XObject Form object creation"
-            :see ("Page_XObject_Execute()"
-                 "Page_DrawImage()"
-                 "Page_GSave()"
-                 "Page_GRestore()"
-                 "Page_Concat()"
-                 "XObject_Stream()")
+            :see ("Page_XObject_Execute"
+                 "Page_DrawImage"
+                 "Page_GSave"
+                 "Page_GRestore"
+                 "Page_Concat"
+                 "XObject_Stream")
             :result (:type "XObject"
                         :ru ":param_xobject"
                         :en ":param_xobject")

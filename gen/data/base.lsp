@@ -5,8 +5,8 @@
 	 :group "doc"
 	 :ru "Создает и настраивает экземпляр документа"
 	 :en "Create an instance of a document object and initialize it"
-	 :see ("New()"
-	      "Free()")
+	 :see ("New"
+	      "Free")
 	 :result (:type "Doc"
 		     :ru "Дескриптор объекта документа при успехе и \\c NULL при неудаче."
 		     :en "A handle of document object on success and \\c NULL on failure.")
@@ -82,9 +82,9 @@ If this parameter set to non-zero value, memory management will be done as follo
 	 :result (:type "Doc"
 		     :ru "Дескриптор объекта документа при успехе и \\c NULL при неудаче."
 		     :en "A handle of document object on success and \\c NULL on failure.")
-	 :see ("Doc_New_Ex()"
-  	      "Doc_New_Empty()"
-	      "Doc_Free()"))
+	 :see ("Doc_New_Ex"
+  	      "Doc_New_Empty"
+	      "Doc_Free"))
 
 	;; === Doc_New_Empty
 	(:caption "Doc_New_Empty"
@@ -95,9 +95,9 @@ If this parameter set to non-zero value, memory management will be done as follo
 	 :result (:type "Doc"
 		     :ru "Дескриптор объекта документа при успехе и \\c NULL при неудаче."
 		     :en "A handle of document object on success and \\c NULL on failure.")
-	 :see ("Doc_New()"
- 	      "Doc_New_Ex()"
-	      "Doc_Free()"))
+	 :see ("Doc_New"
+ 	      "Doc_New_Ex"
+	      "Doc_Free"))
 
 	;; === Doc_Init
 	(:caption "Doc_Initialize"
@@ -111,7 +111,7 @@ If this parameter set to non-zero value, memory management will be done as follo
 	 :result (:type "STATUS"
 		     :ru ":return_ok"
 		     :en ":return_ok")
-	 :see ("Doc_Destroy()")
+	 :see ("Doc_Destroy")
 	 :errors ("INVALID_DOCUMENT"
 		  "FAILED_TO_ALLOC_MEM"))
 
@@ -127,8 +127,8 @@ If this parameter set to non-zero value, memory management will be done as follo
 	 :result (:type "void"
 		     :ru "Нет"
 		     :en "No")
-	 :see ("Doc_Initialize()"
-	      "Doc_Destroy_All()"))
+	 :see ("Doc_Initialize"
+	      "Doc_Destroy_All"))
 
 	;; === Doc_Initialized
 	(:caption "Doc_Initialized"
@@ -143,7 +143,7 @@ If this parameter set to non-zero value, memory management will be done as follo
 		     :ru "\\ref BRST_TRUE если описатель документа корректен, иначе возвращает \\ref BRST_FALSE, устанавливает код ошибки и вызывает обработчик ошибок."
 		     :en "\\ref BRST_TRUE if the specified document handle is valid. Otherwise return \\ref BRST_FALSE, set error code and call error handler.")
 	 :errors ("INVALID_DOCUMENT")
-	 :see ("Doc_Initialize()"))
+	 :see ("Doc_Initialize"))
 
 	;; === Doc_Destroy_All
 	(:caption "Doc_Destroy_All"
@@ -159,8 +159,8 @@ If this parameter set to non-zero value, memory management will be done as follo
 	 :result (:type "void"
 		     :ru "Нет"
 		     :en "No")
-	 :see ("Doc_Initialize()"
-	      "Doc_Destroy()"))
+	 :see ("Doc_Initialize"
+	      "Doc_Destroy"))
 
 	;; === Doc_Contents
 ;;	(:caption "Doc_Contents"

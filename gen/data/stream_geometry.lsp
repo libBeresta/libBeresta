@@ -234,7 +234,7 @@
   and 1 unit vertically equals \\с sy units in the new coordinate system."
 
          :command "cm"
-         :see ("Stream_Concat()")
+         :see ("Stream_Concat")
          :params ((:type "Stream"
                       :name "page"
                       :ru ":param_stream"
@@ -262,8 +262,8 @@
 
   The coordinate system axes are rotated counterclockwise by angle \\с degrees (in degrees)."
          :command "cm"
-         :see ("Stream_Concat()"
-              "Stream_Rotate()")
+         :see ("Stream_Concat"
+              "Stream_Rotate")
          :params ((:type "Stream"
                       :name "page"
                       :ru ":param_stream"
@@ -287,8 +287,8 @@
 
   The coordinate system axes are rotated counterclockwise by angle \\с degrees (in radians)."
          :command "cm"
-         :see ("Stream_Concat()"
-              "Stream_RotateDeg()")
+         :see ("Stream_Concat"
+              "Stream_RotateDeg")
          :params ((:type "Stream"
                       :name "page"
                       :ru ":param_stream"
@@ -312,7 +312,7 @@
 
   Coordinate system is skewed by an angle \\c a at \\a x axis and by angle \\c b at \\a y axis."
          :command "cm"
-         :see ("Stream_Concat()")
+         :see ("Stream_Concat")
          :params ((:type "Stream"
                       :name "page"
                       :ru ":param_stream"
@@ -704,10 +704,10 @@
   may be used to save and restore the current graphics state, including the clipping path."
         :command "W"
         :see (
-             "Stream_EndPath()"
-             "Stream_GSave()"
-             "Stream_GRestore()"
-             "Stream_Eoclip()"
+             "Stream_EndPath"
+             "Stream_GSave"
+             "Stream_GRestore"
+             "Stream_Eoclip"
              )
         :params ((:type "Stream"
                      :name "page"
@@ -743,10 +743,10 @@
   may be used to save and restore the current graphics state, including the clipping path."
         :command "W*"
         :see (
-             "Stream_EndPath()"
-             "Stream_GSave()"
-             "Stream_GRestore()"
-             "Stream_Clip()"
+             "Stream_EndPath"
+             "Stream_GSave"
+             "Stream_GRestore"
+             "Stream_Clip"
              )
         :params ((:type "Stream"
                      :name "page"

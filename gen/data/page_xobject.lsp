@@ -16,11 +16,11 @@
   This is also used by \\ref BRST_Page_DrawImage() to draw the \\ref BRST_Image by first calling
   \\ref BRST_Page_GSave() and \\ref BRST_Page_Concat() and then calling \\ref BRST_Page_GRestore()
   after BRST_Page_XObject_Execute(). It could be used manually to rotate an image."
-            :see ("Doc_Page_XObject_Create()"
-                 "Page_DrawImage()"
-                 "Page_GSave()"
-                 "Page_GRestore()"
-                 "Page_Concat()")
+            :see ("Doc_Page_XObject_Create"
+                 "Page_DrawImage"
+                 "Page_GSave"
+                 "Page_GRestore"
+                 "Page_Concat")
             :result (:type "STATUS"
                         :ru ":return_ok"
                         :en ":return_ok")
@@ -37,11 +37,11 @@
             :group "page"
             :ru ""
             :en ""
-            :see ("Doc_Page_XObject_Create()"
-                 "Page_DrawImage()"
-                 "Page_GSave()"
-                 "Page_GRestore()"
-                 "Page_Concat()")
+            :see ("Doc_Page_XObject_Create"
+                 "Page_DrawImage"
+                 "Page_GSave"
+                 "Page_GRestore"
+                 "Page_Concat")
             :result (:type "STATUS"
                         :ru ":return_ok"
                         :en ":return_ok")
