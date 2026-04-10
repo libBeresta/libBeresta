@@ -329,8 +329,10 @@ BRST_Page_New_Content_Stream(
 
 */
 BRST_EXPORT(BRST_STATUS)
-BRST_Page_Insert_Shared_Content_Stream  (BRST_Page page,
-                                         BRST_Dict shared_stream);
+BRST_Page_Insert_Shared_Content_Stream(
+    BRST_Page page,
+    BRST_Dict shared_stream
+);
 
 /**
   \ingroup page

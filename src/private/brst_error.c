@@ -5,7 +5,7 @@
 #include "private/brst_utils.h"
 #include "private/brst_c.h"
 
-struct BRST_Error_Rec {
+struct _BRST_Error_Rec {
     BRST_STATUS error_no;
     BRST_STATUS detail_no;
     BRST_Error_Handler error_fn;

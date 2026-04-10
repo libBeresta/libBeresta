@@ -60,8 +60,7 @@ typedef enum _BRST_BaseEncodings {
     BRST_BASE_ENCODING_EOF
 } BRST_BaseEncodings;
 
-
-typedef enum  _BRST_EncoderType {
+typedef enum _BRST_EncoderType {
     /// Single-byte character encoder
     BRST_ENCODER_TYPE_SINGLE_BYTE,
     /// Multi-byte character encoder

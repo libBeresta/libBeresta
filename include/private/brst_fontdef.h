@@ -29,7 +29,7 @@
 #define BRST_CID_W_TYPE_FROM_ARRAY  1
 
 
-typedef enum  _BRST_FontDefType {
+typedef enum _BRST_FontDefType {
     BRST_FONTDEF_TYPE_TYPE1,
     BRST_FONTDEF_TYPE_TRUETYPE,
     BRST_FONTDEF_TYPE_CID,
