@@ -32,7 +32,7 @@
   In the default setting, a \\ref BRST_Doc object has one `Pages` object as root of pages.
   All `Page` objects are created as a child of `Pages` object. Since `Pages` object can
   own only 8191 child objects, the maximum number of pages are 8191 pages. Additionally,
-  the case when there are a lot of "Page" object under one "Pages" object is not good,
+  the case when there are a lot of \"Page\" object under one \"Pages\" object is not good,
   since it causes performance degradation of a viewer application.
 
   An application can change the setting of a pages tree by invoking BRST_SetPagesConfiguration().
