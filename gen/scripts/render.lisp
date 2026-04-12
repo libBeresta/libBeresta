@@ -23,7 +23,6 @@
                             (cons nil
                                   data)))))
 
-      ;;(princ djula:*default-template-arguments*)
       (if (eq output :no)
           (princ res)
           (alexandria:write-string-into-file

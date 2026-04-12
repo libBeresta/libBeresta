@@ -15,7 +15,8 @@
                       :name "page"
                       :ru ":param_page"
                       :en ":param_page"))
-         :режимы-графики '("Before" . "BRST_GMODE_PAGE_DESCRIPTION") ("After" . "BRST_GMODE_TEXT_OBJECT"))
+         :mbefore "BRST_GMODE_PAGE_DESCRIPTION"
+         :mafter  "BRST_GMODE_TEXT_OBJECT")
 
         ;; BRST_Page_EndText
         (:caption "Page_EndText"
@@ -31,7 +32,8 @@
                       :name "page"
                       :ru ":param_page"
                       :en ":param_page"))
-         :режимы-графики '("Before" . "BRST_GMODE_TEXT_OBJECT") ("After" . "BRST_GMODE_PAGE_DESCRIPTION"))
+         :mbefore "BRST_GMODE_TEXT_OBJECT"
+         :mafter  "BRST_GMODE_PAGE_DESCRIPTION")
 
         ;; BRST_Page_SetTextLeading
         (:caption "Page_SetTextLeading"
@@ -51,7 +53,8 @@
                       :name "value"
                       :ru "Значение интерлиньяжа (начальное значение = \\c 0)."
                       :en "Value of text leading (initially \\c 0)."))
-         :режимы-графики '("Before" . "BRST_GMODE_PAGE_DESCRIPTION") ("After" . "BRST_GMODE_PAGE_DESCRIPTION"))
+         :mbefore "BRST_GMODE_PAGE_DESCRIPTION"
+         :mafter  "BRST_GMODE_PAGE_DESCRIPTION")
 
         ;; BRST_Page_SetFontAndSize
         (:caption "Page_SetFontAndSize"
@@ -75,7 +78,8 @@
                       :name "size"
                       :ru "Размер шрифта."
                       :en "Font size."))
-         :режимы-графики '("Before" . "BRST_GMODE_PAGE_DESCRIPTION") ("After" . "BRST_GMODE_PAGE_DESCRIPTION"))
+         :mbefore "BRST_GMODE_PAGE_DESCRIPTION"
+         :mafter  "BRST_GMODE_PAGE_DESCRIPTION")
 
         ;; BRST_Dict_SetFontAndSize
         (:caption "Dict_SetFontAndSize"
@@ -146,7 +150,8 @@
 
   Default \\c mode is \\ref BRST_FILL. \\endparblock
 "))
-         :режимы-графики '("Before" . "BRST_GMODE_PAGE_DESCRIPTION") ("After" . "BRST_GMODE_PAGE_DESCRIPTION"))
+         :mbefore "BRST_GMODE_PAGE_DESCRIPTION"
+         :mafter  "BRST_GMODE_PAGE_DESCRIPTION")
 
         ;; BRST_Page_SetTextRise
         (:caption "Page_SetTextRise"
@@ -170,7 +175,8 @@
                       :name "value"
                       :ru "Значение смещения вверх или вниз."
                       :en "Text rise, in user space units."))
-         :режимы-графики '("Before" . "BRST_GMODE_PAGE_DESCRIPTION") ("After" . "BRST_GMODE_PAGE_DESCRIPTION"))
+         :mbefore "BRST_GMODE_PAGE_DESCRIPTION"
+         :mafter  "BRST_GMODE_PAGE_DESCRIPTION")
 
         ;; BRST_Page_MoveTextPos
         (:caption "Page_MoveTextPos"
@@ -198,7 +204,8 @@
                       :name "y"
                       :ru "Вертикальное смещение."
                       :en "Offset to new text position along \\c y axis."))
-         :режимы-графики '("Before" . "BRST_GMODE_TEXT_OBJECT") ("After" . "BRST_GMODE_TEXT_OBJECT"))
+         :mbefore "BRST_GMODE_TEXT_OBJECT"
+         :mafter  "BRST_GMODE_TEXT_OBJECT")
 
         ;; BRST_Page_MoveTextPos2
         (:caption "Page_MoveTextPos2"
@@ -226,7 +233,8 @@
                       :name "y"
                       :ru "Вертикальное смещение."
                       :en "Offset to new text position along Y axis."))
-         :режимы-графики '("Before" . "BRST_GMODE_TEXT_OBJECT") ("After" . "BRST_GMODE_TEXT_OBJECT"))
+         :mbefore "BRST_GMODE_TEXT_OBJECT"
+         :mafter  "BRST_GMODE_TEXT_OBJECT")
 
         ;; BRST_Page_SetTextMatrix
         (:caption "Page_SetTextMatrix"
@@ -266,7 +274,8 @@
                       :name "y"
                       :ru "Смещение по оси \\c y."
                       :en "Translation component along Y-axis."))
-         :режимы-графики '("Before" . "BRST_GMODE_TEXT_OBJECT") ("After" . "BRST_GMODE_TEXT_OBJECT"))
+         :mbefore "BRST_GMODE_TEXT_OBJECT"
+         :mafter  "BRST_GMODE_TEXT_OBJECT")
 
         ;; BRST_Page_MoveToNextLine
         (:caption "Page_MoveToNextLine"
@@ -305,7 +314,8 @@
                       :name "text"
                       :ru "Строка текста."
                       :en "Text to display."))
-         :режимы-графики '("Before" . "BRST_GMODE_TEXT_OBJECT") ("After" . "BRST_GMODE_TEXT_OBJECT"))
+         :mbefore "BRST_GMODE_TEXT_OBJECT"
+         :mafter  "BRST_GMODE_TEXT_OBJECT")
 
         ;; BRST_Page_ShowTextNextLine
         (:caption "Page_ShowTextNextLine"
@@ -325,7 +335,8 @@
                       :name "text"
                       :ru "Строка текста"
                       :en "Text to display."))
-         :режимы-графики '("Before" . "BRST_GMODE_TEXT_OBJECT") ("After" . "BRST_GMODE_TEXT_OBJECT"))
+         :mbefore "BRST_GMODE_TEXT_OBJECT"
+         :mafter  "BRST_GMODE_TEXT_OBJECT")
 
         ;; BRST_Page_ShowTextNextLineEx
 
@@ -354,7 +365,8 @@
                       :name "text"
                       :ru "Строка текста."
                       :en "Text to display."))
-         :режимы-графики '("Before" . "BRST_GMODE_TEXT_OBJECT") ("After" . "BRST_GMODE_TEXT_OBJECT"))
+         :mbefore "BRST_GMODE_TEXT_OBJECT"
+         :mafter  "BRST_GMODE_TEXT_OBJECT")
 
         ;; BRST_Page_TextOut
         (:caption "Page_TextOut"
@@ -381,7 +393,8 @@
                       :name "text"
                       :ru "Строка текста"
                       :en "Text to display."))
-         :режимы-графики '("Before" . "BRST_GMODE_TEXT_OBJECT") ("After" . "BRST_GMODE_TEXT_OBJECT"))
+         :mbefore "BRST_GMODE_TEXT_OBJECT"
+         :mafter  "BRST_GMODE_TEXT_OBJECT")
 
         ;; BRST_Page_TextRect
 
@@ -444,7 +457,8 @@
                       :ru "Адрес переменной, куда записывается количество выведенных символов. Если равно \\c NULL, значение не возвращается."
                       :en "If not \\c NULL, the number of characters printed in the area is returned.")
                      )
-         :режимы-графики '("Before" . "BRST_GMODE_TEXT_OBJECT") ("After" . "BRST_GMODE_TEXT_OBJECT"))
+         :mbefore "BRST_GMODE_TEXT_OBJECT"
+         :mafter  "BRST_GMODE_TEXT_OBJECT")
 
         ;; BRST_Page_SetCharSpace
         (:caption "Page_SetCharSpace"
@@ -464,7 +478,8 @@
                       :name "value"
                       :ru "Межбуквенный интервал (начальное значение = \\c 0)."
                       :en "Character spacing value (initial value is \\c 0)."))
-         :режимы-графики '("Before" . "BRST_GMODE_PAGE_DESCRIPTION") ("After" . "BRST_GMODE_PAGE_DESCRIPTION"))
+         :mbefore "BRST_GMODE_PAGE_DESCRIPTION"
+         :mafter  "BRST_GMODE_PAGE_DESCRIPTION")
 
         ;; BRST_Page_SetWordSpace
         (:caption "Page_SetWordSpace"
@@ -484,8 +499,8 @@
                       :name "value"
                       :ru "Межсловный интервал (начальное значение = \\c 0)."
                       :en "Word spacing value (initial value is \\c 0)."))
-         :режимы-графики '("Before" . "BRST_GMODE_PAGE_DESCRIPTION") ("After" . "BRST_GMODE_PAGE_DESCRIPTION"))
-
+         :mbefore "BRST_GMODE_PAGE_DESCRIPTION"
+         :mafter  "BRST_GMODE_PAGE_DESCRIPTION")
 
         ;; BRST_Page_TextMatrix
         (:caption "Page_TextMatrix"

@@ -21,6 +21,7 @@ include(GNUInstallDirs)
 
 option(LIBBRST_SHARED_LIB "Построить динамическую библиотеку (.dll/.so) вместо статической (.lib/.a)" ON)
 option(LIBBRST_EXAMPLES "Построить примеры" OFF)
+option(LIBBRST_JSON_YAML "Перестроить JSON и YAML файлы для привязок" OFF)
 option(LIBBRST_DEBUG "Включить отладку" OFF)
 option(LIBBRST_DEBUG_TRACE "Включить трассировку" OFF)
 
@@ -75,3 +76,9 @@ endif(LIBBRST_EXAMPLES)
 if(LIBBRST_TESTS)
     add_subdirectory(tests)
 endif(LIBBRST_TESTS)
+
+if(LIBBRST_JSON_YAML)
+    add_subdirectory(gen)
+endif(LIBBRST_JSON_YAML)
+
+
