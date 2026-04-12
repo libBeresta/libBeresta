@@ -26,6 +26,38 @@ consts:
     ru: Предопределенное значение для вычислений в дюймах (72 точки на дюйм)
     en: Predefined value for calculations in inches, equals to 72 points per inch
 enums:
+  - name: GMode
+    ru: Графический режим, используемый для контроля вызова графических функций.
+    en: Graphics mode, used to control graphical functions.
+    elements:
+      - element: GMODE_PAGE_DESCRIPTION
+        ru: Режим разметки страницы
+        en: Page description (markup) mode
+        value: "0x0001"
+      - element: GMODE_PATH_OBJECT
+        ru: Режим работы с путями
+        en: Path creation mode
+        value: "0x0002"
+      - element: GMODE_TEXT_OBJECT
+        ru: Режим работы с текстами
+        en: Text creation mode
+        value: "0x0004"
+      - element: GMODE_CLIPPING_PATH
+        ru: Режим работы с отсечением
+        en: Clipping path creation mode
+        value: "0x0008"
+      - element: GMODE_SHADING
+        ru: Режим работы с затенением
+        en: Shading creation mode
+        value: "0x0010"
+      - element: GMODE_INLINE_IMAGE
+        ru: Режим работы с изображениями
+        en: Image creation mode
+        value: "0x0020"
+      - element: GMODE_EXTERNAL_OBJECT
+        ru: Режим работы с внешними объектами (XObject)
+        en: XObject creation mode
+        value: "0x0040"
   - name: CompressionMode
     ru: Режим компрессии документа
     en: Document compression mode
