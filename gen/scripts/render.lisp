@@ -1,4 +1,15 @@
+;;; Copyright © 2025-2026 Dmitry Solomennikov
+;;;
+;;; Набор функций для генерации привязок
+;;;
+;;; Лицензия в файле LICENSE в корне проекта
+;;;
 
+;; Генерация языковой привязки из файла-шаблона
+;; template-file, файла данных data-file (*.lsp),
+;; с учетом языка lang.
+;; Параметр output указывает, что результат выводится
+;; на консоль (:no), либо в файл (путь указывается в output).
 (defun do-render (template-file
                   data-file
                   &optional &key
@@ -31,6 +42,8 @@
            :if-exists :overwrite
            :if-does-not-exist :create)))))
 
+;; Обработка списка файлов,
+;; передаваемых через командную строку
 (defun do-render-many (args)
   (let ((template (first args))
         (lang (intern (second args) :keyword))
@@ -39,9 +52,10 @@
         (files (cddddr args)))
     (dolist (f files)
       (let ((output (change-ext f dir ext)))
-        
         (do-render template f :lang lang :output output)))))
 
+;; Непосредственно генерация файлов
+;; Проверяется наличие "--" в командной строке.
 (multiple-value-bind (args found--)
     (rem-args (ext:command-args) (ext:command-args))
 

@@ -1,12 +1,27 @@
+;;; Copyright © 2025-2026 Dmitry Solomennikov
+;;;
+;;; Набор функций для генерации JSON и привязок
+;;;
+;;; Лицензия в файле LICENSE в корне проекта
+;;;
+
+
+;; Загрузка библиотек djula и rs-json,
+;; необходимых для генерации.
 (ql:quickload 'djula   :silent t)
 (ql:quickload 'rs-json :silent t)
 
-(defvar *prefix* "BRST")
-(defvar *language* :ru)
+(defvar *prefix* "BRST"
+  "Префикс сущностей библиотеки, подставляется при генерации")
+
+(defvar *language* :ru
+  "Язык локализации, используемый при генерации")
 
 (defparameter +no-prefix-types+
-  (list "void*" "const char*" "void"))
+  (list "void*" "const char*" "void")
+  "Список типов, для которых не подставляется префикс при генерации")
 
+;; Значения подстановок для исключения повторений
 (defparameter +substitutes+
   '(((":param_pdf"     . :en) . "Document object handle.")
     ((":param_page"    . :en) . "Page object handle.")
@@ -46,6 +61,7 @@
     ((":return_ok"     . :ru) . "\\ref BRST_OK при успешном выполнении, иначе возвращает код ошибки и вызывает обработчик ошибок.")
     ((":error-codes"   . :ru) . "\\par Коды ошибок")))
 
+;; Перечень соответствий типов библиотеки и ECL
 (defparameter +ecl-types+
   '((       "string" .       ":cstring")
     (         "int8" .          ":byte")
@@ -60,7 +76,6 @@
     (        "float" .         ":float")
     (       "double" .        ":double")
     (         "void" .          ":void")
-
 
     (          "PDF" .  ":pointer-void")     
     (          "DOC" .  ":pointer-void")     
@@ -102,19 +117,30 @@
   "Набор переменных, используемых в шаблонах.
 Этим переменным должны соответствовать значения в +подстановки+")
 
+;; Инициализация набора типов ECL
 (defvar *ecl-types*
   (let* ((hash (make-hash-table :test #'equal)))
-    (mapcar #'(lambda (x) (setf (gethash (string-upcase (car x)) hash) (string-upcase (cdr x)))) +ecl-types+)
+    (mapcar #'(lambda (x)
+		(setf (gethash (string-upcase (car x)) hash)
+		      (string-upcase (cdr x))))
+	    +ecl-types+)
     hash))
 
+;; Инициализация набора типов без префикса
 (defvar *no-prefix-types*
-   (let* ((hash (make-hash-table :test #'equal)))
-    (mapcar #'(lambda (x) (setf (gethash x hash) t)) +no-prefix-types+)
-     hash))
+  (let* ((hash (make-hash-table :test #'equal)))
+    (mapcar #'(lambda (x)
+		(setf (gethash x hash) t))
+	    +no-prefix-types+)
+    hash))
 
+;; Инициализация набора подстановок
 (defvar *substitutes*
   (let ((hash (make-hash-table :test #'equal)))
-    (mapcar #'(lambda (x) (setf (gethash (car x) hash) (cdr x))) +substitutes+)
+    (mapcar #'(lambda (x)
+		(setf (gethash (car x) hash)
+		      (cdr x)))
+	    +substitutes+)
     hash))
 
 ;; На вход получаем p-список, в котором должен быть задан текст с ключом
@@ -129,55 +155,83 @@
 	 (substitute (gethash (cons checked *language*) *substitutes*)))
     (or substitute checked)))
 
+;; Фильтр шаблонизатора, подставляющий префикс BRST_ к значению.
 (djula:def-filter :pre (arg)
   (if (gethash arg *no-prefix-types*)
       arg
       (concatenate 'string *prefix* "_" arg)))
 
+;; Фильтр шаблонизатора, подставляющий значение для пропущенного поля
 (djula:def-filter :err (arg fn)
   (format nil "Field ~A '~A' is not given" arg fn))
 
+;; Фильтр шаблонизатора, подставляющий тип ECL
 (djula:def-filter :ecltype (arg)
   (let ((tp (gethash (string-upcase arg) *ecl-types*)))
     (or tp arg)))
 
+;; Фильтр шаблонизатора, подменяющий подчеркивание на минус
+;; (используется в генераторе ECL)
 (djula:def-filter :under (arg)
   (map 'string #'(lambda (c) (if (char= c #\_) #\- c)) arg))
 
+;; Фильтр шаблонизатора, подменяющий шестнадцатеричные цифры
 (djula:def-filter :hex0 (arg)
-   (if (string= (subseq arg 0 (min (length arg) 2)) "0x")
-	   (concatenate 'string "#" (subseq arg 1))
-	   arg))
+  (if (string= (subseq arg 0 (min (length arg) 2)) "0x")
+      (concatenate 'string "#" (subseq arg 1))
+      arg))
 
-
+;; Функция получает перечень аргументов командной строки.
+;; ECL позволяет получить командную строку при вызове.
+;; Командная строка имеет вид (<путь-до-ecl> <путь-до-скрипта> <остальные-аргументы...>)
+;; Функция rem-args позволяет отделить аргументы, требуемые программе,
+;; от остальных аргументов. Для этого используется аргумент "--".
+;; Функция возвращает аргументы после --. Если этот аргумент не найден,
+;; возвращается оригинальный список аргументов.
 (defun rem-args (org args)
   (cond
     ((null args) org)
     ((string= (car args) "--") (values (cdr args) t))
     (t (rem-args org (cdr args)))))
 
+;; Функция возвращает новое имя файла для file,
+;; сформированное из заданного имени файла, целевой папки
+;; и нового расширения.
 (defun change-ext (file dir ext)
   (declare (type pathname file))
   (merge-pathnames (make-pathname
 		    :name (pathname-name file)
 		    :type ext)
+		   ;; TODO Вероятно, что для Windows
+		   ;; здесь потребуется использование
+		   ;; другого разделителя "\\" 
 		   (concatenate 'string dir "/")))
 
+;; Функция преобразует содержимое файлов-шаблонов
+;; из каталога data в формат, на основе которого
+;; библиотека rs-json формирует JSON файлы.
 (defun prepare-json (doc)
   (loop :for (key value) :on doc
 	:by #'cddr
 	:collect
-	(if (and (eql key :see) (not (null value)))
+	(if (and (eql key :see)
+		 (not (null value)))
 	    (cons key (make-array (length value)
-				:initial-contents value))
+				  :initial-contents value))
 	    (cons key
-		  (cond
-		    ((listp value) (if (listp (first value))
-				   (make-array (length value)
-					       :initial-contents (mapcar #'prepare-json value))
-				   (prepare-json value)))
-		    (t value))))))
+		  (cond ((listp value)
+			 (if (listp (first value))
+			     (make-array (length value)
+					 :initial-contents
+					 (mapcar #'prepare-json value))
+			     (prepare-json value)))
+			(t value))))))
 
+;; Функция преобразует заданный файл-шаблон
+;; в файл формата JSON.
+;; Файл new-file создается или перезаписывается.
+;; В файл дописывается уведомление о том,
+;; что файл сгенерирован.
 (defun process-to-json (file new-file)
   (let ((doc (with-open-file (s file)
 	       (read s))))
