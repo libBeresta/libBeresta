@@ -13,6 +13,6 @@ typedef enum _BRST_PdfVer {
 } BRST_PDFVer;
 
 struct _BRST_Doc_Rec;
-typedef struct _BRST_Doc_Rec *BRST_Doc;
+typedef struct _BRST_Doc_Rec* BRST_Doc;
 
 #endif /* BRST_DOC_H */

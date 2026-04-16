@@ -99,6 +99,8 @@ add_custom_target(json DEPENDS json_inplace)
 
 add_custom_target(yaml DEPENDS json)
 
+add_custom_target(stats)
+
 set(gen_data_names_fullpath)
 set(gen_data_names_fullpath_json)
 set(gen_data_names_fullpath_yaml)
@@ -138,3 +140,9 @@ foreach(js_yaml IN ZIP_LISTS gen_data_names_fullpath_json gen_data_names_fullpat
     ARGS . ${js_yaml_0} -o=yaml  > ${js_yaml_1}
   )
 endforeach()
+
+add_custom_command(
+  TARGET stats
+  COMMAND ecl 
+  ARGS --load ${CMAKE_SOURCE_DIR}/gen/scripts/utils.lisp --load ${CMAKE_SOURCE_DIR}/gen/scripts/stats.lisp -- ${CMAKE_SOURCE_DIR}/include/ ${CMAKE_SOURCE_DIR}/gen/data/ ${CMAKE_SOURCE_DIR}/doc/STATS.md
+)

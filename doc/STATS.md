@@ -51,8 +51,8 @@
 |PageTransition           |brst_page.h              |page.lsp                 |
 |PageSizes                |brst_page_sizes_iso_216.h|&ndash;                  |
 |PDFA_TYPE                |brst_pdfa.h              |&ndash;                  |
-|Shading_FreeFormTriangleMeshEdgeFlag|brst_shading.h           |&ndash;                  |
 |ShadingType              |brst_shading.h           |&ndash;                  |
+|Shading_FreeFormTriangleMeshEdgeFlag|brst_shading.h           |&ndash;                  |
 |TextAlignment            |brst_text_defines.h      |text_defines.lsp         |
 |TextRenderingMode        |brst_text_defines.h      |text_defines.lsp         |
 |WritingMode              |brst_text_defines.h      |text_defines.lsp         |
@@ -130,6 +130,7 @@
 |Doc_Matrix_Skew          |brst_doc_matrix.h        |doc_matrix.lsp           |
 |Doc_Matrix_Translate     |brst_doc_matrix.h        |doc_matrix.lsp           |
 |Doc_Outline_Create       |brst_doc_outline.h       |&ndash;                  |
+|Doc_Pages_SetConfiguration|brst_doc_page.h          |doc_page.lsp             |
 |Doc_Page_Add             |brst_doc_page.h          |doc_page.lsp             |
 |Doc_Page_AddLabel        |brst_doc_page.h          |doc_page.lsp             |
 |Doc_Page_ByIndex         |brst_doc_page.h          |doc_page.lsp             |
@@ -139,15 +140,14 @@
 |Doc_Page_Mode            |brst_doc_page.h          |doc_page.lsp             |
 |Doc_Page_SetLayout       |brst_doc_page.h          |doc_page.lsp             |
 |Doc_Page_SetMode         |brst_doc_page.h          |doc_page.lsp             |
-|Doc_Pages_SetConfiguration|brst_doc_page.h          |doc_page.lsp             |
-|Doc_Dict_RGBPatternFill_Select|brst_doc_page_pattern.h  |doc_page_pattern.lsp     |
 |Doc_Dict_RGBPatternFillHex_Select|brst_doc_page_pattern.h  |doc_page_pattern.lsp     |
 |Doc_Dict_RGBPatternFillUint_Select|brst_doc_page_pattern.h  |doc_page_pattern.lsp     |
-|Doc_Page_RGBPatternFill_Select|brst_doc_page_pattern.h  |doc_page_pattern.lsp     |
+|Doc_Dict_RGBPatternFill_Select|brst_doc_page_pattern.h  |doc_page_pattern.lsp     |
 |Doc_Page_RGBPatternFillHex_Select|brst_doc_page_pattern.h  |doc_page_pattern.lsp     |
 |Doc_Page_RGBPatternFillUint_Select|brst_doc_page_pattern.h  |doc_page_pattern.lsp     |
-|Doc_Pattern_Stream       |brst_doc_pattern.h       |doc_pattern.lsp          |
-|Doc_Pattern_Tiling_Create|brst_doc_pattern.h       |doc_pattern.lsp          |
+|Doc_Page_RGBPatternFill_Select|brst_doc_page_pattern.h  |doc_page_pattern.lsp     |
+|Doc_Pattern_Stream       |brst_doc_pattern.h       |doc_page_pattern.lsp     |
+|Doc_Pattern_Tiling_Create|brst_doc_pattern.h       |doc_page_pattern.lsp     |
 |Doc_PDFA_AddXmpExtension |brst_doc_pdfa.h          |doc_pdfa.lsp             |
 |Doc_PDFA_AppendOutputIntents|brst_doc_pdfa.h          |doc_pdfa.lsp             |
 |Doc_PDFA_SetConformance  |brst_doc_pdfa.h          |doc_pdfa.lsp             |
@@ -272,12 +272,12 @@
 |Outline_SetOpened        |brst_outline.h           |&ndash;                  |
 |AddIntent                |brst_output_intent.h     |&ndash;                  |
 |OutputIntent_New         |brst_output_intent.h     |&ndash;                  |
+|Annotation_SetBorderStyle|brst_page_annotation.h   |&ndash;                  |
 |Annot_Set3DView          |brst_page_annotation.h   |&ndash;                  |
 |Annot_SetCMYKColor       |brst_page_annotation.h   |&ndash;                  |
 |Annot_SetGrayColor       |brst_page_annotation.h   |&ndash;                  |
 |Annot_SetNoColor         |brst_page_annotation.h   |&ndash;                  |
 |Annot_SetRGBColor        |brst_page_annotation.h   |&ndash;                  |
-|Annotation_SetBorderStyle|brst_page_annotation.h   |&ndash;                  |
 |FreeTextAnnot_Set2PointCalloutLine|brst_page_annotation.h   |&ndash;                  |
 |FreeTextAnnot_Set3PointCalloutLine|brst_page_annotation.h   |&ndash;                  |
 |FreeTextAnnot_SetDefaultStyle|brst_page_annotation.h   |&ndash;                  |
@@ -331,7 +331,6 @@
 |Page_HorizontalScaling   |brst_page_routines.h     |page_routines.lsp        |
 |Page_Insert_Shared_Content_Stream|brst_page_routines.h     |page_routines.lsp        |
 |Page_MMgr                |brst_page_routines.h     |page_routines.lsp        |
-|Page_MMgr(BRST_Page page)|brst_page_routines.h     |&ndash;                  |
 |Page_New_Content_Stream  |brst_page_routines.h     |&ndash;                  |
 |Page_RawWrite            |brst_page_routines.h     |page_routines.lsp        |
 |Page_SetBoundary         |brst_page_routines.h     |page_routines.lsp        |
@@ -434,5 +433,6 @@
 |Page_TextWidth           |brst_text.h              |text.lsp                 |
 |Page_WordSpace           |brst_text.h              |text.lsp                 |
 |XObject_Stream           |brst_xobject.h           |xobject.lsp              |
-| Total | 254 of 373 | 68.10% |
-<small>Generated on: 16.04.2026 10:18</small>
+| Total | 254 of 372 | 68.28% |
+
+<small>Generated on: 16.04.2026 10:39</small>

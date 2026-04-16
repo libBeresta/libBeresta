@@ -15,7 +15,9 @@
 #include "brst_destination.h"
 
 BRST_EXPORT(BRST_MMgr)
-BRST_Page_MMgr(BRST_Page page);
+BRST_Page_MMgr(
+    BRST_Page page
+);
 
 /**
 
