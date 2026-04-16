@@ -37,3 +37,7 @@ The `yaml` target depends on the `json` target.
 
 For the mechanism to work correctly, it is necessary to install the utility [`yq`](https://github.com/mikefarah/yq) version
 4.52 or higher and make it available in the `$PATH` variable.
+
+# Coverage statistics
+
+See [stats.md](../doc/STATS.md).
