@@ -16,6 +16,7 @@
 |Stream                   |brst_stream.h            |stream.lsp               |
 |Xref                     |brst_xref.h              |xref.lsp                 |
 | Total | 10 of 11 | 90.91% |
+
 ## Enums
 
 | Enumeration | Header | Data file |
@@ -57,6 +58,7 @@
 |TextRenderingMode        |brst_text_defines.h      |text_defines.lsp         |
 |WritingMode              |brst_text_defines.h      |text_defines.lsp         |
 | Total | 22 of 36 | 61.11% |
+
 ## Functions
 
 | Function | Header | Data file |
@@ -435,4 +437,4 @@
 |XObject_Stream           |brst_xobject.h           |xobject.lsp              |
 | Total | 254 of 372 | 68.28% |
 
-<small>Generated on: 16.04.2026 10:39</small>
+<small>Generated on: 16.04.2026 10:44</small>

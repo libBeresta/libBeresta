@@ -425,6 +425,7 @@
 		  (* 100 (/ pointers-found (hash-table-count *pointers-h*))))
 
 	  (write-line "" s)
+	  (write-line "" s)
 	  (write-line "## Enums" s)
 	  (write-line "" s)
 	  (write-line "| Enumeration | Header | Data file |" s)
@@ -435,6 +436,7 @@
 		  (hash-table-count *enums-h*)
 		  (* 100 (/ enums-found (hash-table-count *enums-h*))))
 
+	  (write-line "" s)
 	  (write-line "" s)
 	  (write-line "## Functions" s)
 	  (write-line "" s)
