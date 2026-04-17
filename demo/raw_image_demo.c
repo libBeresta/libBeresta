@@ -29,13 +29,16 @@ int main(int argc, char **argv)
     BRST_Doc  pdf;
     BRST_Font font;
     BRST_Page page;
-    char fname[256];
+
+    char fname[FNAME_BUFFER_SIZE];
+    char* pbuf = fname;
+    char* eptr = fname + FNAME_BUFFER_SIZE - 1;
+
+    pbuf = BRST_StrCopy(pbuf, argv[0], eptr);
+    BRST_StrCopy(pbuf, ".pdf",  eptr);
+    
     BRST_Image image;
-
     BRST_REAL x, y;
-
-    strcpy(fname, argv[0]);
-    strcat(fname, ".pdf");
 
     // Создание объекта документа
     pdf = BRST_Doc_New(demo_error_handler, NULL);

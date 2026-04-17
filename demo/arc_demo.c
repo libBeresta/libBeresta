@@ -39,11 +39,13 @@ int main(int argc, char** argv)
 {
     BRST_Doc pdf;
     BRST_Page page;
-    char fname[256];
-    BRST_Point pos;
 
-    strcpy(fname, argv[0]);
-    strcat(fname, ".pdf");
+    char fname[FNAME_BUFFER_SIZE];
+    char* pbuf = fname;
+    char* eptr = fname + FNAME_BUFFER_SIZE - 1;
+
+    pbuf = BRST_StrCopy(pbuf, argv[0], eptr);
+    BRST_StrCopy(pbuf, ".pdf",  eptr);
 
     // Создание объекта документа
     pdf = BRST_Doc_New(demo_error_handler, NULL);
@@ -81,7 +83,7 @@ int main(int argc, char** argv)
     BRST_Page_MoveTo(page, cx, cy);
     BRST_Page_LineTo(page, cx, cx + r);
     BRST_Page_Arc(page, cx, cy, r, 0, 360 * 0.45);
-    pos = BRST_Page_CurrentPos(page);
+    BRST_Point pos = BRST_Page_CurrentPos(page);
     BRST_Page_LineTo(page, cx, cy);
     BRST_Page_Fill(page);
 
