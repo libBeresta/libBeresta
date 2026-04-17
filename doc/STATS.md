@@ -132,6 +132,8 @@
 |Doc_Matrix_Skew          |brst_doc_matrix.h        |doc_matrix.lsp           |
 |Doc_Matrix_Translate     |brst_doc_matrix.h        |doc_matrix.lsp           |
 |Doc_Outline_Create       |brst_doc_outline.h       |&ndash;                  |
+|Doc_OutputIntent_Add     |brst_doc_output_intent.h |doc_output_intent.lsp    |
+|Doc_OutputIntent_New     |brst_doc_output_intent.h |doc_output_intent.lsp    |
 |Doc_Pages_SetConfiguration|brst_doc_page.h          |doc_page.lsp             |
 |Doc_Page_Add             |brst_doc_page.h          |doc_page.lsp             |
 |Doc_Page_AddLabel        |brst_doc_page.h          |doc_page.lsp             |
@@ -272,8 +274,6 @@
 |Image_Width              |brst_image.h             |&ndash;                  |
 |Outline_SetDestination   |brst_outline.h           |&ndash;                  |
 |Outline_SetOpened        |brst_outline.h           |&ndash;                  |
-|AddIntent                |brst_output_intent.h     |&ndash;                  |
-|OutputIntent_New         |brst_output_intent.h     |&ndash;                  |
 |Annotation_SetBorderStyle|brst_page_annotation.h   |&ndash;                  |
 |Annot_Set3DView          |brst_page_annotation.h   |&ndash;                  |
 |Annot_SetCMYKColor       |brst_page_annotation.h   |&ndash;                  |
@@ -435,6 +435,6 @@
 |Page_TextWidth           |brst_text.h              |text.lsp                 |
 |Page_WordSpace           |brst_text.h              |text.lsp                 |
 |XObject_Stream           |brst_xobject.h           |xobject.lsp              |
-| Total | 254 of 372 | 68.28% |
+| Total | 256 of 372 | 68.82% |
 
-<small>Generated on: 16.04.2026 10:44</small>
+<small>Generated on: 16.04.2026 16:13</small>

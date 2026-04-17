@@ -20,7 +20,7 @@
 #include "private/brst_doc.h"
 #include "brst_doc_info.h"
 #include "private/brst_info.h"
-#include "brst_output_intent.h"
+#include "brst_doc_output_intent.h"
 #include "brst_base.h"
 #include "brst_error.h"
 #include "brst_fontdef.h"

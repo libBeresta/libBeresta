@@ -30,6 +30,7 @@ set(
         brst_doc_page.c
         brst_doc_xobject.c
         brst_doc_page_pattern.c
+        brst_doc_output_intent.c
         brst_doc_pattern.c
         brst_doc_pdfa.c
         brst_doc_save.c

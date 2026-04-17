@@ -11,10 +11,13 @@ functions:
       ru: :return_ok
       en: :return_ok
     ru: "Задать количество страниц, которыми может владеть объект `Pages`.\n\n   По умолчанию объект \\ref BRST_Doc содержит один корневой объект \n   `Pages`. Все страницы создаются как дочерние элементы \n   объекта `Pages`. Так как объект `Pages` может содержать не более 8191 \n   дочерних элементов, максимальное количество страниц равно 8191. \n   Включение большого количества страниц в один объект `Pages`\n   нежелательно, поскольку это снижает производительность приложения \n   просмотра. \n\n   Приложение может изменить размер дерева страниц с помощью функции \n   BRST_SetPagesConfiguration(). Если параметр `page_per_pages` больше \n   нуля, создаётся двухуровневое дерево страниц. Корневой \n   объект `Pages` может содержать 8191 дочерних объекта `Pages`, каждый из которых \n   может содержать c page_per_pages страниц. Таким образом, общее \n   максимальное количество страниц становится равным a 8191 × a page_per_pages страниц. \n   Приложению нельзя вызывать функцию  BRST_SetPageConfiguration() после \n   добавления страниц в документ."
-    en: "Specify number of pages `Pages` object can own.\n\n  In the default setting, a \\ref BRST_Doc object has one `Pages` object as root of pages.\n  All `Page` objects are created as a child of `Pages` object. Since `Pages` object can\n  own only 8191 child objects, the maximum number of pages are 8191 pages. Additionally,\n  the case when there are a lot of "
-    page: ' object under one '
-    pages: |2-
-       object is not good,
+    en: |-
+      Specify number of pages `Pages` object can own.
+
+        In the default setting, a \ref BRST_Doc object has one `Pages` object as root of pages.
+        All `Page` objects are created as a child of `Pages` object. Since `Pages` object can
+        own only 8191 child objects, the maximum number of pages are 8191 pages. Additionally,
+        the case when there are a lot of "Page" object under one "Pages" object is not good,
         since it causes performance degradation of a viewer application.
 
         An application can change the setting of a pages tree by invoking BRST_SetPagesConfiguration().
