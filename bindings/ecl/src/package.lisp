@@ -438,15 +438,9 @@
   #:Page-Matrix
 ;; Exports from macro.lisp
 
-  #:func
-  #:pointer
-  #:struct
-  #:synonym
-  #:constant 
+  #:string-to-cstring
   #:with-pdf-document
-  #:with-ttf-font 
-  #:include-header
-  #:string-to-cstring 
+  #:with-ttf-font
   #:page-set-dash-pattern
   #:stream-set-dash-pattern
   #:with-page-gsave
