@@ -39,7 +39,7 @@
           (alexandria:write-string-into-file
            res
            output
-           :if-exists :overwrite
+           :if-exists :supersede
            :if-does-not-exist :create)))))
 
 ;; Обработка списка файлов,

@@ -1,3 +1,5 @@
+;; Exports from macro.lisp
+
   #:string-to-cstring
   #:with-pdf-document
   #:with-ttf-font

@@ -13,4 +13,4 @@ if [ "x$ECL" == "x" ]; then
   ECL=ecl
 fi
 
-$ECL --load "render.lisp" -- $*
+$ECL --load "utils.lisp" --load "render.lisp" -- $*

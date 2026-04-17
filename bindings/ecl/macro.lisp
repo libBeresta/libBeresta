@@ -14,6 +14,7 @@
     (    ExtGState .  :pointer-void)
     (      Pattern .  :pointer-void)
     (       Matrix .  :pointer-void)
+    (      Encoder .  :pointer-void)
     ( Dash-Pattern .  :pointer-void)
     (   PageLayout .       :int32-t)
     (     PageMode .       :int32-t)
@@ -193,7 +194,7 @@
 (defmacro stream-set-dash-pattern (stream pattern num phase)
   #+ecl
   `(let* ((pattern1 ,pattern))
-     (ffi:with-foreign-object (c-pattern '(:array :float ,num))
+     (ffi:with-foreign-object (c-pattern '(:array :float 256))
        (dotimes (i ,num)
 	 (setf (ffi:deref-array c-pattern '(:array :float) i)
 	       (aref pattern1 i)))
