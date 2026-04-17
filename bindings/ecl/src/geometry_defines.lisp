@@ -2,7 +2,7 @@
 ;; libBeresta
 ;; 
 ;; Заголовочные файлы для Embeddable Common Lisp (ecl)
-;; Дмитрий Соломенников, (с) 2025
+;; Дмитрий Соломенников, (с) 2025-2026
 ;;
 
 (in-package #:cl-beresta)
@@ -60,14 +60,14 @@
   COLORSPACE-PATTERN))
 
 (struct RGBColor
-  "Структура для хранения информации о цвете (RGB)"
+  ":ru is not set"
   (r REAL)
   (g REAL)
   (b REAL)
 )
 
 (struct CMYKColor
-  "Структура для хранения информации о цвете (CMYK)"
+  ":ru is not set"
   (c REAL)
   (m REAL)
   (y REAL)

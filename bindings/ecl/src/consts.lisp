@@ -2,7 +2,7 @@
 ;; libBeresta
 ;; 
 ;; Заголовочные файлы для Embeddable Common Lisp (ecl)
-;; Дмитрий Соломенников, (с) 2025
+;; Дмитрий Соломенников, (с) 2025-2026
 ;;
 
 (in-package #:cl-beresta)
@@ -20,6 +20,16 @@
 (constant MM 2.834646)
 
 (constant IN 72.00000)
+
+(enum GMode (
+   
+  (GMODE-PAGE-DESCRIPTION #x0001) 
+  (GMODE-PATH-OBJECT #x0002) 
+  (GMODE-TEXT-OBJECT #x0004) 
+  (GMODE-CLIPPING-PATH #x0008) 
+  (GMODE-SHADING #x0010) 
+  (GMODE-INLINE-IMAGE #x0020) 
+  (GMODE-EXTERNAL-OBJECT #x0040)))
 
 (enum CompressionMode (
    
