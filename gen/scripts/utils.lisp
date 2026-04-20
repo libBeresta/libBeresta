@@ -174,8 +174,11 @@
 
 ;; Фильтр шаблонизатора, подменяющий подчеркивание на минус
 ;; (используется в генераторе ECL)
-(djula:def-filter :under (arg)
+(defun under (arg)
   (map 'string #'(lambda (c) (if (char= c #\_) #\- c)) arg))
+
+(djula:def-filter :under (arg)
+  (under arg))
 
 ;; Фильтр шаблонизатора, подменяющий шестнадцатеричные цифры
 (djula:def-filter :hex0 (arg)
@@ -254,6 +257,7 @@
 (defvar *enums-lsp*     (make-hash-table :test 'equalp))
 (defvar *functions-lsp* (make-hash-table :test 'equalp))
 (defvar *pointers-lsp*  (make-hash-table :test 'equalp))
+(defvar *sizes-lsp*     nil)
 
 ;; Функция извлекает из заголовочных файлов *.c перечисления, объявления указателей и названия функций.
 ;; В процессе работы заполняются таблицы *enums-h*, *functions-h* и *pointers-h*
@@ -326,28 +330,34 @@
   (when (probe-file data)
     (let* ((raw-data (with-open-file (s data)
 		       (read s)))
-	   (enums (getf raw-data :enums))
-	   (pointers (getf raw-data :pointers))
-	   (functions (getf raw-data :functions))
-	   (data-name (file-namestring data)) )
+	   (enums     (getf raw-data   :enums))
+	   (pointers  (getf raw-data   :pointers))
+	   (functions (getf raw-data   :functions))
+	   (sizes     (getf raw-data   :sizes))
+	   (data-name (file-namestring data)))
+      ;; В перечне файлов *.lsp есть page_sizes.lsp,
+      ;; в котором содержатся данных о размерах бумаги.
+      ;; Он в единственном экземпляре и его мы присваиваем один раз.
+      (when (and sizes (null *sizes-lsp*))
+	(setf *sizes-lsp* sizes))
 
       (dolist (p pointers)
 	(let ((pointer (getf p :name)))
-	  (setf (gethash pointer *pointers-lsp*) data-name)))
+	  (setf (gethash pointer *pointers-lsp*) (cons data-name p))))
 
       (dolist (e enums)
 	(let ((enum (getf e :name)))
-	  (setf (gethash enum *enums-lsp*) data-name)))
+	  (setf (gethash enum *enums-lsp*) (cons data-name e))))
 
       (dolist (f functions)
 	(let ((fn (getf f :caption)))
-	  (setf (gethash fn *functions-lsp*) data-name))))))
+	  (setf (gethash fn *functions-lsp*) (cons data-name f)))))))
 
 (defun fill-stats (headers lsps target)
   (flet ((sorter (a b)
 	   (cond
-	     ((string-lessp (cdr a) (cdr b)) t)
-	     ((string-equal (cdr a) (cdr b)) (string-lessp (car a) (car b)))
+	     ((string-lessp (cadr a) (cadr b)) t)
+	     ((string-equal (cadr a) (cadr b)) (string-lessp (car a) (car b)))
 	     (t nil))))
     (let ((*enums-h*       (make-hash-table :test 'equalp))
 	  (*functions-h*   (make-hash-table :test 'equalp))
@@ -355,6 +365,7 @@
 	  (*enums-lsp*     (make-hash-table :test 'equalp))
 	  (*functions-lsp* (make-hash-table :test 'equalp))
 	  (*pointers-lsp*  (make-hash-table :test 'equalp))
+      (*sizes-lsp*     nil)
 	  (functions-found 0)
 	  (enums-found     0)
 	  (pointers-found  0))
@@ -458,3 +469,42 @@
 		    date month year hour minute))
 	  (write-line "" s)
 	  t)))))
+
+;; Генерация языковой привязки из файла-шаблона
+;; template-file, файла данных data-file (*.lsp),
+;; с учетом языка lang.
+;; Параметр output указывает, что результат выводится
+;; на консоль (:no), либо в файл (путь указывается в output).
+(defun do-render (template-file
+                  data-file
+                  &optional &key
+                              (lang *language*)
+                              (output :no))
+  (when (not (eql output :no))
+    (princ (format nil "Processing ~A...~%" data-file)))
+
+  (mapcar #'(lambda (x)
+              (let* ((str (string x))
+                     (key (intern str :keyword))
+                     (val (string-downcase (concatenate 'string ":" str)))
+                     (substitute (gethash (cons val *language*) *substitutes*)))
+                (setf (getf djula:*default-template-arguments* key) substitute)))
+          +given-substitutes+)
+
+  (let* ((*language* lang)
+         (template (djula:compile-template* template-file))
+         (data (with-open-file (s data-file) (read s))))
+    (let ((res (apply #'djula:render-template*
+                      (cons template
+                            (cons nil
+                                  data)))))
+
+      (if (eq output :no)
+          res
+          (progn
+            (alexandria:write-string-into-file
+               res
+               output
+               :if-exists :supersede
+               :if-does-not-exist :create)
+            res)))))
