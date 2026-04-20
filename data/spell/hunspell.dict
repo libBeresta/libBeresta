@@ -23,6 +23,8 @@ AnnotType
 APDF
 AppendOutputIntents
 arg
+argc
+argv
 ARTBOX
 asian
 ASIS
@@ -430,6 +432,7 @@ ShowTextNextLineEx
 SimHei
 SimSun
 Soleil
+src
 StampAnnotName
 StrCopy
 StrokeColorSpace
