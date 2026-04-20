@@ -25,8 +25,7 @@
 */
 
 #include "brst.h"
-#include "handler.h"
-#include <setjmp.h>
+#include "cli.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -35,22 +34,16 @@ int main(int argc, char** argv)
     BRST_Doc pdf;
     BRST_Page page;
 
-    char fname[FNAME_BUFFER_SIZE];
-    char* pbuf = fname;
-    char* eptr = fname + FNAME_BUFFER_SIZE - 1;
-
-    pbuf = BRST_StrCopy(pbuf, argv[0], eptr);
-    BRST_StrCopy(pbuf, ".pdf",  eptr);
-
     // Создание объекта документа
-    pdf = BRST_Doc_New(demo_error_handler, NULL);
+    pdf = BRST_Doc_New_Empty();
     if (!pdf) {
         printf("Error: cannot create Doc object\n");
         return 1;
     }
 
-    if (setjmp(env)) {
-        BRST_Doc_Free(pdf);
+    char* fname = prepare_output(argc, argv);
+    if (fname == NULL) {
+        // Сообщение будет выведено в функции
         return 1;
     }
 

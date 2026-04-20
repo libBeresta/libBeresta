@@ -8,17 +8,17 @@ set(
     properties
     pattern
     pattern2
-    xobject
-    xobject_pattern
-    xobject_text
-    xobject_xobject
     scissors
 )
 
 set(
   demos_NO_HANDLER
     circle
+    xobject_text
+    xobject_xobject
+    xobject_pattern
     xobject_circle
+    xobject
     minimal_empty
     minimal_text
 )
@@ -59,7 +59,7 @@ endforeach()
 # Создаем примеры без обработчика
 # =======================================================================
 foreach(demo ${demos_NO_HANDLER})
-  add_executable(${demo} ${demo}.c)
+  add_executable(${demo} ${demo}.c cli.c)
   target_link_libraries(${demo} PUBLIC brst)
   if(UNIX AND NOT APPLE)
     target_link_libraries(${demo} PUBLIC m)
