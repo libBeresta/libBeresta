@@ -29,3 +29,9 @@ char* prepare_output(int argc, char** argv) {
 
   return (char*)&_fname;
 }
+
+void print_error(const char* message) {
+    fputs("Error: ", stderr);
+    fputs(message, stderr);
+    fputc('\n', stderr);
+}
