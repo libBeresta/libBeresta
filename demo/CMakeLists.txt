@@ -45,7 +45,7 @@ endif(WIN32 AND NOT CYGWIN)
 # Создаем примеры с обработчиком
 # =======================================================================
 foreach(demo ${demos_NAMES})
-  add_executable(${demo} ${demo}.c handler.c)
+  add_executable(${demo} ${demo}.c handler.c cli.c)
   target_link_libraries(${demo} PUBLIC brst)
   if(UNIX AND NOT APPLE)
     target_link_libraries(${demo} PUBLIC m)
@@ -73,7 +73,7 @@ endforeach()
 # Создаем примеры с миллиметровкой
 # =======================================================================
 foreach(demo ${demos_with_grid_NAMES})
-  add_executable(${demo} ${demo}.c grid_sheet.c handler.c)
+  add_executable(${demo} ${demo}.c grid_sheet.c handler.c cli.c)
   target_link_libraries(${demo} PUBLIC brst)
   if(UNIX AND NOT APPLE)
     target_link_libraries(${demo} PUBLIC m)

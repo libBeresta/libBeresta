@@ -11,7 +11,6 @@ char* prepare_output(int argc, char** argv) {
 
       // Проверка, что имя программы не слишком длинное
       if (src_len > FNAME_BUFFER_SIZE - 5) { // -5 для ".pdf" и нулевого байта
-          printf("Error: program name too long\n");
           return NULL;
       }
 

@@ -29,9 +29,9 @@
 */
 
 #include "brst.h"
+#include "cli.h"
 #include <stdio.h>
 #include <string.h>
-#include "cli.h"
 
 int main(int argc, char** argv)
 {
@@ -40,7 +40,7 @@ int main(int argc, char** argv)
 
     char* fname = prepare_output(argc, argv);
     if (fname == NULL) {
-        // Сообщение будет выведено в функции
+        print_error("file name too long");
         return 1;
     }
 

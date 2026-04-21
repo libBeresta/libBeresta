@@ -34,16 +34,16 @@ int main(int argc, char** argv)
     BRST_Doc pdf;
     BRST_Page page;
 
+    char* fname = prepare_output(argc, argv);
+    if (fname == NULL) {
+        print_error("file name too long");
+        return 1;
+    }
+
     // Создание объекта документа
     pdf = BRST_Doc_New_Empty();
     if (!pdf) {
         print_error("cannot create Doc object");
-        return 1;
-    }
-
-    char* fname = prepare_output(argc, argv);
-    if (fname == NULL) {
-        // Сообщение будет выведено в функции
         return 1;
     }
 

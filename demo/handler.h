@@ -4,8 +4,6 @@
 #include "brst.h"
 #include <setjmp.h>
 
-#define FNAME_BUFFER_SIZE 256
-
 BRST_HANDLER(void)
 demo_error_handler(BRST_STATUS error_no,
     BRST_STATUS detail_no,

@@ -13,6 +13,7 @@
 #include <setjmp.h>
 #include "brst.h"
 #include "handler.h"
+#include "cli.h"
 
 const char *text = "This PDF should have an attachment named basn3p08.png";
 
@@ -22,16 +23,15 @@ main (int argc, char **argv)
     BRST_Doc  pdf;
     BRST_Page page;
 
-    char fname[FNAME_BUFFER_SIZE];
-    char* pbuf = fname;
-    char* eptr = fname + FNAME_BUFFER_SIZE - 1;
-
-    pbuf = BRST_StrCopy(pbuf, argv[0], eptr);
-    BRST_StrCopy(pbuf, ".pdf",  eptr);
+    char* fname = prepare_output(argc, argv);
+    if (fname == NULL) {
+        print_error("file name too long");
+        return 1;
+    }
 
     pdf = BRST_Doc_New(demo_error_handler, NULL);
     if (!pdf) {
-        printf ("error: cannot create PdfDoc object\n");
+        print_error("cannot create Doc object");
         return 1;
     }
 

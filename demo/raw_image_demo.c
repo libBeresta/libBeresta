@@ -4,6 +4,7 @@
 #include <math.h>
 #include "brst.h"
 #include "handler.h"
+#include "cli.h"
 
 const BRST_BYTE RAW_IMAGE_DATA[128] = {
     0xff, 0xff, 0xff, 0xfe, 0xff, 0xff, 0xff, 0xfc,
@@ -30,12 +31,11 @@ int main(int argc, char **argv)
     BRST_Font font;
     BRST_Page page;
 
-    char fname[FNAME_BUFFER_SIZE];
-    char* pbuf = fname;
-    char* eptr = fname + FNAME_BUFFER_SIZE - 1;
-
-    pbuf = BRST_StrCopy(pbuf, argv[0], eptr);
-    BRST_StrCopy(pbuf, ".pdf",  eptr);
+    char* fname = prepare_output(argc, argv);
+    if (fname == NULL) {
+        print_error("file name too long");
+        return 1;
+    }
     
     BRST_Image image;
     BRST_REAL x, y;
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
     // Создание объекта документа
     pdf = BRST_Doc_New(demo_error_handler, NULL);
     if (!pdf) {
-        printf("Error: cannot create Doc object\n");
+        print_error("cannot create Doc object");
         return 1;
     }
 

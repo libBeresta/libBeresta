@@ -31,7 +31,7 @@ int main(int argc, char** argv)
 
     char* fname = prepare_output(argc, argv);
     if (fname == NULL) {
-        // Сообщение будет выведено в функции
+        print_error("file name too long");
         return 1;
     }
 
