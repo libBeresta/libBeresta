@@ -255,6 +255,7 @@
 (defvar *pointers-h*  (make-hash-table :test 'equalp))
 
 (defvar *enums-lsp*     (make-hash-table :test 'equalp))
+(defvar *consts-lsp*    (make-hash-table :test 'equalp))
 (defvar *functions-lsp* (make-hash-table :test 'equalp))
 (defvar *pointers-lsp*  (make-hash-table :test 'equalp))
 (defvar *sizes-lsp*     nil)
@@ -298,8 +299,7 @@
 							    (str:substring 5 t (cadr fns)))
 					     res)))
 		   (t (extract-functions (cdr fns) res)))))
-	(dolist (fn (extract-functions functions nil))
-	  (setf (gethash fn *functions-h*) header-name)))
+	(setf (gethash fn *functions-h*) header-name))
       ;; Извлечение указателей
       ;; Ожидается, что указатель записан в формате
       ;;
@@ -330,6 +330,7 @@
   (when (probe-file data)
     (let* ((raw-data (with-open-file (s data)
 		       (read s)))
+	   (consts    (getf raw-data   :consts))
 	   (enums     (getf raw-data   :enums))
 	   (pointers  (getf raw-data   :pointers))
 	   (functions (getf raw-data   :functions))
@@ -344,6 +345,10 @@
       (dolist (p pointers)
 	(let ((pointer (getf p :name)))
 	  (setf (gethash pointer *pointers-lsp*) (cons data-name p))))
+
+      (dolist (c consts)
+	(let ((const (getf c :name)))
+	  (setf (gethash const *consts-lsp*) (cons data-name c))))
 
       (dolist (e enums)
 	(let ((enum (getf e :name)))
@@ -360,12 +365,13 @@
 	     ((string-equal (cadr a) (cadr b)) (string-lessp (car a) (car b)))
 	     (t nil))))
     (let ((*enums-h*       (make-hash-table :test 'equalp))
+	  ;;(*consts-h*      (make-hash-table :test 'equalp))
 	  (*functions-h*   (make-hash-table :test 'equalp))
 	  (*pointers-h*    (make-hash-table :test 'equalp))
 	  (*enums-lsp*     (make-hash-table :test 'equalp))
 	  (*functions-lsp* (make-hash-table :test 'equalp))
 	  (*pointers-lsp*  (make-hash-table :test 'equalp))
-      (*sizes-lsp*     nil)
+          (*sizes-lsp*     nil)
 	  (functions-found 0)
 	  (enums-found     0)
 	  (pointers-found  0))
