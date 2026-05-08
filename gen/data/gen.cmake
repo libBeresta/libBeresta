@@ -29,6 +29,7 @@ set(
     doc_viewer
     doc_xobject
     encrypt
+    encoder
     error
     exdata
     ext_gstate
