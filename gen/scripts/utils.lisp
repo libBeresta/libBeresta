@@ -209,7 +209,7 @@
                     :type ext)
                    ;; TODO Вероятно, что для Windows
                    ;; здесь потребуется использование
-                   ;; другого разделителя "\\" 
+                   ;; другого разделителя "\\"
                    (concatenate 'string dir "/")))
 
 ;; Функция преобразует содержимое файлов-шаблонов
@@ -299,7 +299,8 @@
                                                             (str:substring 5 t (cadr fns)))
                                              res)))
                    (t (extract-functions (cdr fns) res)))))
-        (setf (gethash fn *functions-h*) header-name))
+        (dolist (fn (extract-functions functions nil))
+          (setf (gethash fn *functions-h*) header-name)))
       ;; Извлечение указателей
       ;; Ожидается, что указатель записан в формате
       ;;
@@ -330,8 +331,8 @@
   (when (probe-file data)
     (let* ((raw-data (with-open-file (s data)
                        (read s)))
-           (consts    (getf raw-data   :consts))
            (enums     (getf raw-data   :enums))
+           (consts    (getf raw-data   :consts))
            (pointers  (getf raw-data   :pointers))
            (functions (getf raw-data   :functions))
            (sizes     (getf raw-data   :sizes))
@@ -346,13 +347,13 @@
         (let ((pointer (getf p :name)))
           (setf (gethash pointer *pointers-lsp*) (cons data-name p))))
 
-      (dolist (c consts)
-        (let ((const (getf c :name)))
-          (setf (gethash const *consts-lsp*) (cons data-name c))))
-
       (dolist (e enums)
         (let ((enum (getf e :name)))
           (setf (gethash enum *enums-lsp*) (cons data-name e))))
+
+      (dolist (c consts)
+        (let ((const (getf c :name)))
+          (setf (gethash const *consts-lsp*) (cons data-name c))))
 
       (dolist (f functions)
         (let ((fn (getf f :caption)))
@@ -361,11 +362,10 @@
 (defun fill-stats (headers lsps target)
   (flet ((sorter (a b)
            (cond
-             ((string-lessp (cadr a) (cadr b)) t)
-             ((string-equal (cadr a) (cadr b)) (string-lessp (car a) (car b)))
+             ((string-lessp (cdr a) (cdr b)) t)
+             ((string-equal (cdr a) (cdr b)) (string-lessp (car a) (car b)))
              (t nil))))
     (let ((*enums-h*       (make-hash-table :test 'equalp))
-          ;;(*consts-h*      (make-hash-table :test 'equalp))
           (*functions-h*   (make-hash-table :test 'equalp))
           (*pointers-h*    (make-hash-table :test 'equalp))
           (*enums-lsp*     (make-hash-table :test 'equalp))
@@ -385,7 +385,7 @@
       (let ((enums (mapcar #'(lambda (x)
                                (let ((enum-name (car x))
                                      (enum-header (cdr x))
-                                     (enum-lsp (gethash (car x) *enums-lsp*)))
+                                     (enum-lsp (car (gethash (car x) *enums-lsp*))))
                                  (when enum-lsp
                                    (incf enums-found))
                                  (format nil "|~25A|~25A|~25A|"
@@ -399,7 +399,7 @@
             (pointers (mapcar #'(lambda (x)
                                   (let ((pointer-name (car x))
                                         (pointer-header (cdr x))
-                                        (pointer-lsp (gethash (car x) *pointers-lsp*)))
+                                        (pointer-lsp (car (gethash (car x) *pointers-lsp*))))
                                     (when pointer-lsp
                                       (incf pointers-found))
                                     (format nil "|~25A|~25A|~25A|"
@@ -413,7 +413,7 @@
             (functions (mapcar #'(lambda (x)
                                    (let ((function-name (car x))
                                          (function-header (cdr x))
-                                         (function-lsp (gethash (car x) *functions-lsp*)))
+                                         (function-lsp (car (gethash (car x) *functions-lsp*))))
                                      (when function-lsp
                                        (incf functions-found))
                                      (format nil "|~25A|~25A|~25A|"
