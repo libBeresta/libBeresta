@@ -1,78 +1,81 @@
 (:file "doc_xobject"
  :group "doc"
  :functions (
-	   ;; BRST_Doc_XObject_CreateFromImage
-	   (:caption "Doc_XObject_CreateFromImage" 
-            :ru "Создание XObject из изображения"
-            :en "Create XObject from an image"
-            :params ((:type "Doc"
-                         :name "pdf"
-                         :ru ":param_pdf"
-                         :en ":param_pdf")
-			(:type "Rect"
-                         :name "rect"
-                         :ru "Прямоугольник размещения"
-                         :en "Rectangle position")
-			(:type "Image"
-                         :name "image"
-                         :ru "Изображение"
-                         :en "Source image")
-			(:type "BOOL"
-                         :name "zoom"
-                         :ру "Флаг масштабирования"
-                         :en "Zoom flag"))
-            :result (:type "XObject"
-                        :ru ":param_xobject"
-                        :en ":param_xobject"))
+             ;;
+             ;; Disable function until `rect` implementation changed
+             ;;
+             ;; BRST_Doc_XObject_CreateFromImage
+             ;; (:caption "Doc_XObject_CreateFromImage"
+             ;;      :ru "Создание XObject из изображения"
+             ;;      :en "Create XObject from an image"
+             ;;      :params ((:type "Doc"
+             ;;                   :name "pdf"
+             ;;                   :ru ":param_pdf"
+             ;;                   :en ":param_pdf")
+             ;; (:type "Rect"
+             ;;                 :name "rect"
+             ;;                 :ru "Прямоугольник размещения"
+             ;;                 :en "Rectangle position")
+             ;; (:type "Image"
+             ;;              :name "image"
+             ;;              :ru "Изображение"
+             ;;              :en "Source image")
+             ;; (:type "BOOL"
+             ;;              :name "zoom"
+             ;;              :ru "Флаг масштабирования"
+             ;;              :en "Zoom flag"))
+             ;; :result (:type "XObject"
+             ;;             :ru ":param_xobject"
+             ;;             :en ":param_xobject"))
 
-	   ;; BRST_Doc_XObject_CreateAsWhiteRect
-	   (:caption "Doc_XObject_CreateAsWhiteRect" 
-            :ru "Создать белый прямоугольник XObject"
-            :en "Create white rectangle as XObject"
-            :params ((:type "Doc"
-                         :name "pdf"
-                         :ru ":param_pdf"
-                         :en ":param_pdf")
-			(:type "Rect"
-                         :name "rect"
-                         :ru "Размеры белого прямоугольника"
-                         :en "Dimensions of the white rectangle"))
-            :result (:type "XObject"
-                        :ru ":param_xobject"
-                        :en ":param_xobject"))
+             ;; BRST_Doc_XObject_CreateAsWhiteRect
+             ;; (:caption "Doc_XObject_CreateAsWhiteRect"
+             ;;  :ru "Создать белый прямоугольник XObject"
+             ;;  :en "Create white rectangle as XObject"
+             ;;  :params ((:type "Doc"
+             ;;            :name "pdf"
+             ;;            :ru ":param_pdf"
+             ;;            :en ":param_pdf")
+             ;;                (:type "Rect"
+             ;;            :name "rect"
+             ;;            :ru "Размеры белого прямоугольника"
+             ;;            :en "Dimensions of the white rectangle"))
+             ;;  :result (:type "XObject"
+             ;;           :ru ":param_xobject"
+             ;;           :en ":param_xobject"))
 
-	   ;; BRST_Doc_XObject_Create
-	   (:caption "Doc_XObject_Create"
-            :group "doc"
-            :ru "Создание объекта XObject Form"
-            :en "XObject Form object creation"
-            :see ("Page_XObject_Execute"
-                 "Page_DrawImage"
-                 "Page_GSave"
-                 "Page_GRestore"
-                 "Page_Concat"
-                 "XObject_Stream")
-            :result (:type "XObject"
-                        :ru ":param_xobject"
-                        :en ":param_xobject")
-            :params ((:type "Doc"
-                         :name "pdf"
-                         :ru ":param_pdf"
-                         :en ":param_pdf")
-                        (:type "REAL"
-                         :name "width"
-                         :ru "Ширина XObject в логических единицах"
-                         :en "XObject logical width")
-                        (:type "REAL"
-                         :name "height"
-                         :ru "Высота XObject в логических единицах"
-                         :en "XObject logical height")
-                        (:type "REAL"
-                         :name "scalex"
-                         :ru "Горизонтальное соотношение единиц в XObject и в документе"
-                         :en "XObject horizontal logical unit scale")
-                        (:type "REAL"
-                         :name "scaley"
-                         :ru "Вертикальное соотношение единиц в XObject и в документе"
-                         :en "XObject vertical logical unit scale")
-                        ))))
+             ;; BRST_Doc_XObject_Create
+             (:caption "Doc_XObject_Create"
+              :group "doc"
+              :ru "Создание объекта XObject Form"
+              :en "XObject Form object creation"
+              :see ("Page_XObject_Execute"
+                    "Page_DrawImage"
+                    "Page_GSave"
+                    "Page_GRestore"
+                    "Page_Concat"
+                    "XObject_Stream")
+              :result (:type "XObject"
+                       :ru ":param_xobject"
+                       :en ":param_xobject")
+              :params ((:type "Doc"
+                        :name "pdf"
+                        :ru ":param_pdf"
+                        :en ":param_pdf")
+                       (:type "REAL"
+                        :name "width"
+                        :ru "Ширина XObject в логических единицах"
+                        :en "XObject logical width")
+                       (:type "REAL"
+                        :name "height"
+                        :ru "Высота XObject в логических единицах"
+                        :en "XObject logical height")
+                       (:type "REAL"
+                        :name "scalex"
+                        :ru "Горизонтальное соотношение единиц в XObject и в документе"
+                        :en "XObject horizontal logical unit scale")
+                       (:type "REAL"
+                        :name "scaley"
+                        :ru "Вертикальное соотношение единиц в XObject и в документе"
+                        :en "XObject vertical logical unit scale")
+                       ))))
