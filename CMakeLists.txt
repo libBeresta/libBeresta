@@ -30,8 +30,6 @@ option(LIBBRST_U3D_SUPPORT "PDF: Включить поддержку U3D" OFF)
 option(LIBBRST_ANNOTATIONS_SUPPORT "PDF: Включить поддержку аннотаций" ON)
 
 option(LIBBRST_MEM_DEBUG "Отладка выделения памяти" OFF)
-option(LIBBRST_ISO_216_ONLY "Использование форматов бумаги ISO 216" ON)
-
 option(LIBBRST_TESTS "Построить тесты" ON)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic -fPIC")
