@@ -1,3 +1,0 @@
-
-  ;; Размеры страниц{% if sizes %}{% for size in sizes %}{%ifequal size.origin "ISO 216"%}
-  #:PAGE-SIZE-{{ size.id | under }}{% endifequal %}{% endfor %}{% endif %}
