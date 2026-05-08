@@ -8,14 +8,14 @@
 |Date                     |brst_date.h              |date.lsp                 |
 |Dict                     |brst_dict.h              |dict.lsp                 |
 |Doc                      |brst_doc.h               |doc.lsp                  |
-|Encoder                  |brst_encoder.h           |&ndash;                  |
+|Encoder                  |brst_encoder.h           |encoder.lsp              |
 |Error                    |brst_error.h             |error.lsp                |
 |FontDef                  |brst_fontdef.h           |fontdef.lsp              |
 |Matrix                   |brst_matrix.h            |matrix.lsp               |
 |MMgr                     |brst_mmgr.h              |mmgr.lsp                 |
 |Stream                   |brst_stream.h            |stream.lsp               |
 |Xref                     |brst_xref.h              |xref.lsp                 |
-| Total | 10 of 11 | 90.91% |
+| Total | 11 of 11 | 100.00% |
 
 ## Enums
 
@@ -50,7 +50,7 @@
 |PageNum                  |brst_page.h              |page.lsp                 |
 |PageOrientation          |brst_page.h              |page.lsp                 |
 |PageTransition           |brst_page.h              |page.lsp                 |
-|PageSizes                |brst_page_sizes_iso_216.h|&ndash;                  |
+|PageSizes                |brst_page_sizes.h        |&ndash;                  |
 |PDFA_TYPE                |brst_pdfa.h              |&ndash;                  |
 |ShadingType              |brst_shading.h           |&ndash;                  |
 |Shading_FreeFormTriangleMeshEdgeFlag|brst_shading.h           |&ndash;                  |
@@ -150,8 +150,8 @@
 |Doc_Page_RGBPatternFillHex_Select|brst_doc_page_pattern.h  |doc_page_pattern.lsp     |
 |Doc_Page_RGBPatternFillUint_Select|brst_doc_page_pattern.h  |doc_page_pattern.lsp     |
 |Doc_Page_RGBPatternFill_Select|brst_doc_page_pattern.h  |doc_page_pattern.lsp     |
-|Doc_Pattern_Stream       |brst_doc_pattern.h       |doc_page_pattern.lsp     |
-|Doc_Pattern_Tiling_Create|brst_doc_pattern.h       |doc_page_pattern.lsp     |
+|Doc_Pattern_Stream       |brst_doc_pattern.h       |doc_pattern.lsp          |
+|Doc_Pattern_Tiling_Create|brst_doc_pattern.h       |doc_pattern.lsp          |
 |Doc_PDFA_AddXmpExtension |brst_doc_pdfa.h          |doc_pdfa.lsp             |
 |Doc_PDFA_AppendOutputIntents|brst_doc_pdfa.h          |doc_pdfa.lsp             |
 |Doc_PDFA_SetConformance  |brst_doc_pdfa.h          |doc_pdfa.lsp             |
@@ -167,8 +167,8 @@
 |Doc_SetViewerPreference  |brst_doc_viewer.h        |doc_viewer.lsp           |
 |Doc_ViewerPreference     |brst_doc_viewer.h        |doc_viewer.lsp           |
 |Doc_XObject_Create       |brst_doc_xobject.h       |doc_xobject.lsp          |
-|Doc_XObject_CreateAsWhiteRect|brst_doc_xobject.h       |doc_xobject.lsp          |
-|Doc_XObject_CreateFromImage|brst_doc_xobject.h       |doc_xobject.lsp          |
+|Doc_XObject_CreateAsWhiteRect|brst_doc_xobject.h       |&ndash;                  |
+|Doc_XObject_CreateFromImage|brst_doc_xobject.h       |&ndash;                  |
 |EmbeddedFile_SetAFRelationship|brst_embedded_file.h     |&ndash;                  |
 |EmbeddedFile_SetCreationDate|brst_embedded_file.h     |&ndash;                  |
 |EmbeddedFile_SetDescription|brst_embedded_file.h     |&ndash;                  |
@@ -435,6 +435,6 @@
 |Page_TextWidth           |brst_text.h              |text.lsp                 |
 |Page_WordSpace           |brst_text.h              |text.lsp                 |
 |XObject_Stream           |brst_xobject.h           |xobject.lsp              |
-| Total | 256 of 372 | 68.82% |
+| Total | 254 of 372 | 68.28% |
 
-<small>Generated on: 03.05.2026 16:56</small>
+<small>Generated on: 08.05.2026 18:29</small>
