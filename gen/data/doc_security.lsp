@@ -14,7 +14,7 @@
                          :en "Owner password of the document.")
                         (:type "CSTR"
                          :name "user_password"
-                         :ру "Пользовательский пароль"
+                         :ru "Пользовательский пароль"
                          :en "User password of the document."))
             :result (:type "STATUS"
                         :ru ":return_ok"

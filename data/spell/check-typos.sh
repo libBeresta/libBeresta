@@ -13,16 +13,23 @@ ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 errors=0
 
-typos -c "$SCRIPT_DIR/typos.toml" "$ROOT_DIR/src"       || errors=$((errors + 1))
+typos -c "$SCRIPT_DIR/typos.toml" "$ROOT_DIR/src"        || errors=$((errors + 1))
 typos -c "$SCRIPT_DIR/typos.toml" "$ROOT_DIR/include"    || errors=$((errors + 1))
 typos -c "$SCRIPT_DIR/typos.toml" "$ROOT_DIR/demo"       || errors=$((errors + 1))
 typos -c "$SCRIPT_DIR/typos.toml" "$ROOT_DIR/gen"        || errors=$((errors + 1))
+typos -c "$SCRIPT_DIR/typos.toml" "$ROOT_DIR/docs"       || errors=$((errors + 1))
 
 result=""
 result+=$(rg -I "//" "$ROOT_DIR/src" | rg -v http | hunspell -d ru_RU,en_US -p "$SCRIPT_DIR/hunspell.dict" -l 2>/dev/null)
 result+=$(rg -I "//" "$ROOT_DIR/include" | rg -v http | hunspell -d ru_RU,en_US -p "$SCRIPT_DIR/hunspell.dict" -l 2>/dev/null)
 result+=$(rg -I "//" "$ROOT_DIR/demo" | hunspell -d ru_RU,en_US -p "$SCRIPT_DIR/hunspell.dict" -l 2>/dev/null)
 result+=$(cat "$ROOT_DIR"/gen/*.lsp 2>/dev/null | hunspell -d ru_RU,en_US -p "$SCRIPT_DIR/hunspell.dict" -l 2>/dev/null)
+result+=$(cat "$ROOT_DIR"/docs/CONTRIBUTING.md 2>/dev/null | hunspell -d ru_RU,en_US -p "$SCRIPT_DIR/hunspell.dict" -l 2>/dev/null)
+result+=$(cat "$ROOT_DIR"/docs/CONTRIBUTING.ru.md 2>/dev/null | hunspell -d ru_RU,en_US -p "$SCRIPT_DIR/hunspell.dict" -l 2>/dev/null)
+result+=$(cat "$ROOT_DIR"/docs/QUICKSTART.md 2>/dev/null | hunspell -d ru_RU,en_US -p "$SCRIPT_DIR/hunspell.dict" -l 2>/dev/null)
+result+=$(cat "$ROOT_DIR"/docs/QUICKSTART.ru.md 2>/dev/null | hunspell -d ru_RU,en_US -p "$SCRIPT_DIR/hunspell.dict" -l 2>/dev/null)
+result+=$(cat "$ROOT_DIR"/docs/ПЛАНЫ.md 2>/dev/null | hunspell -d ru_RU,en_US -p "$SCRIPT_DIR/hunspell.dict" -l 2>/dev/null)
+result+=$(cat "$ROOT_DIR"/docs/РАЗРАБОТКА.md 2>/dev/null | hunspell -d ru_RU,en_US -p "$SCRIPT_DIR/hunspell.dict" -l 2>/dev/null)
 
 if [ -n "$result" ]; then
   echo "Spelling issues found in comments:"

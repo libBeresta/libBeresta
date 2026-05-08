@@ -10,7 +10,7 @@
 
 #define BRST_MALLOC                 malloc
 #define BRST_FREE                   free
-#define BRST_PRINTF                 printf
+#define BRST_PRINTF(...)           fprintf(stdout, __VA_ARGS__)
 #define BRST_FILEP                  FILE*
 #define BRST_FREAD                  fread
 #define BRST_FEOF                   feof

@@ -27,4 +27,4 @@
 		     :value "4"
 		     :en "The security handler defines the use of encryption and decryption in the document."
 		     :ru "Управление шифрованием документа определяется настройками безопасности в документе."
-		     :version "1.5"))))))
+		     :version "1.5")))))

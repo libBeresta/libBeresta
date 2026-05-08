@@ -4,7 +4,7 @@ The `gen` folder contains files intended for creating language bindings.
 The generation is based on generator data files in the format of
 [S-expressions](https://en.wikipedia.org/wiki/S-expression).
 
-Historically, the *libBeresta* project grew out of the need to output *.pdf* files in a project
+Historically, the *libBeresta* project grew out of the need to output `*.pdf` files in a project
 written in *Common Lisp*, so the choice of this format was a logical consequence of the work.
 
 As the list of functions accumulated and language bindings for [ECL](https://ecl.common-lisp.dev/)
@@ -40,4 +40,4 @@ For the mechanism to work correctly, it is necessary to install the utility [`yq
 
 # Coverage statistics
 
-See [stats.md](../doc/STATS.md).
+See [STATS.md](../docs/STATS.md).

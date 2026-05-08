@@ -75,5 +75,5 @@ endforeach()
 add_custom_command(
   TARGET stats
   COMMAND ecl 
-  ARGS --load ${CMAKE_SOURCE_DIR}/gen/scripts/utils.lisp --load ${CMAKE_SOURCE_DIR}/gen/scripts/stats.lisp -- ${CMAKE_SOURCE_DIR}/include/ ${CMAKE_SOURCE_DIR}/gen/data/ ${CMAKE_SOURCE_DIR}/doc/STATS.md
+  ARGS --load ${CMAKE_SOURCE_DIR}/gen/scripts/utils.lisp --load ${CMAKE_SOURCE_DIR}/gen/scripts/stats.lisp -- ${CMAKE_SOURCE_DIR}/include/ ${CMAKE_SOURCE_DIR}/gen/data/ ${CMAKE_SOURCE_DIR}/docs/STATS.md
 )

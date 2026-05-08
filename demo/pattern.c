@@ -30,6 +30,7 @@
 */
 
 #include "brst.h"
+#include "cli.h"
 #include "handler.h"
 #include <setjmp.h>
 #include <stdio.h>
@@ -40,17 +41,16 @@ int main(int argc, char** argv)
     BRST_Doc pdf;
     BRST_Page page;
 
-    char fname[FNAME_BUFFER_SIZE];
-    char* pbuf = fname;
-    char* eptr = fname + FNAME_BUFFER_SIZE - 1;
-
-    pbuf = BRST_StrCopy(pbuf, argv[0], eptr);
-    BRST_StrCopy(pbuf, ".pdf",  eptr);
+    char* fname = prepare_output(argc, argv);
+    if (fname == NULL) {
+        print_error("file name too long");
+        return 1;
+    }
 
     // Создание объекта документа
     pdf = BRST_Doc_New(demo_error_handler, NULL);
     if (!pdf) {
-        printf("Error: cannot create Doc object\n");
+        print_error("cannot create Doc object");
         return 1;
     }
 

@@ -11,7 +11,7 @@
                       :en ":param_pdf")
                      (:type "Destination"
                       :name "open_action"
-                      :ру "Действие открытия страницы"
+                      :ru "Действие открытия страницы"
                       :en "Set a valid destination object."))
          :result (:type "STATUS"
                      :ru ":return_ok"
@@ -39,7 +39,7 @@
                       :en ":param_pdf")
                      (:type "ViewerPreference"
                       :name "value"
-                      :ру "Значение параметра"
+                      :ru "Значение параметра"
                       :en "Viewer preference value"))
          :result (:type "STATUS"
                      :ru ":return_ok"

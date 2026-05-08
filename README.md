@@ -23,7 +23,6 @@ The library allows creating PDF documents without requiring an understanding of 
 
 Programming Language: ANSI C
 
-
 ## Name and History
 
 Beresta is a material that refers us back to ancient Russian writings.
@@ -33,6 +32,15 @@ One of the most popular materials used for writing in the 11th–15th centuries.
 
 The word “beresta” comes from the same root as “birch.” Literally it means “white tree.” 
 The term “birchbark” was coined because birch bark was most commonly used for their creation.
+
+## Quick start
+
+See [QUICKSTART.md](docs/QUICKSTART.md)
+
+## Contribution
+Contributions are welcome!
+
+Please take a look to [CONTRIBUTING.md](docs/CONTRIBUTING.md).
 
 ## Development Principles
 

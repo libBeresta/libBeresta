@@ -36,6 +36,15 @@ For international introduction see [`README.md`](README.md).
 из-за того, что именно кора березы использовалась для их изготовления
 чаще всего.
 
+## Как начать
+
+См. [QUICKSTART.ru.md](docs/QUICKSTART.ru.md)
+
+## Предложения и доработки
+Любая помощь в развитии библиотеки приветствуется!
+
+См. [CONTRIBUTING.ru.md](docs/CONTRIBUTING.ru.md).
+
 ## Принципы разработки библиотеки
 
 - язык разработки – ANSI C;

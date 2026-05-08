@@ -71,7 +71,7 @@
                          :en "Path of AFM file")
                         (:type "CSTR"
                          :name "data_filename"
-                         :ру "Путь к файлу PFA/PFB"
+                         :ru "Путь к файлу PFA/PFB"
                          :en "Path of PFA/PFB file"))
             :result (:type "CSTR"
                         :ru "Наименование (идентификатор) шрифта при успехе, в противном случае возвращается \\c NULL и вызывается обработчик ошибок."
