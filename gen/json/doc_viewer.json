@@ -16,7 +16,7 @@
         {
           "type": "Destination",
           "name": "open_action",
-          "ру": "Действие открытия страницы",
+          "ru": "Действие открытия страницы",
           "en": "Set a valid destination object."
         }
       ],
@@ -58,7 +58,7 @@
         {
           "type": "ViewerPreference",
           "name": "value",
-          "ру": "Значение параметра",
+          "ru": "Значение параметра",
           "en": "Viewer preference value"
         }
       ],

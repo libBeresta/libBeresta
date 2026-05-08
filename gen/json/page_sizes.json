@@ -1541,7 +1541,7 @@
       "origin": "Billboard",
       "width": "6096.0",
       "height": "3048.0",
-      "пропуск": "да"
+      "skip": "yes"
     },
     {
       "caption": "64 Sheet",
@@ -1549,7 +1549,7 @@
       "origin": "Billboard",
       "width": "8128.0",
       "height": "3048.0",
-      "пропуск": "да"
+      "skip": "yes"
     },
     {
       "caption": "96 Sheet",
@@ -1557,7 +1557,7 @@
       "origin": "Billboard",
       "width": "12192.0",
       "height": "3048.0",
-      "пропуск": "да"
+      "skip": "yes"
     },
     {
       "caption": "JB0",
