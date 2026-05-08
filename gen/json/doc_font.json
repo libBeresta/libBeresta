@@ -99,7 +99,7 @@
         {
           "type": "CSTR",
           "name": "data_filename",
-          "ру": "Путь к файлу PFA/PFB",
+          "ru": "Путь к файлу PFA/PFB",
           "en": "Path of PFA/PFB file"
         }
       ],
