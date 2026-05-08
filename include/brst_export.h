@@ -40,12 +40,7 @@
 #include "brst_doc.h"
 #include "brst_error.h"
 #include "brst_pdfa.h"
-
-#ifdef LIBBRST_ISO_216_ONLY
-#include "brst_page_sizes_iso_216.h"
-#else
 #include "brst_page_sizes.h"
-#endif
 
 #endif /* BRST_SHARED */
 

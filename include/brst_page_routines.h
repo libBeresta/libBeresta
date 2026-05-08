@@ -4,13 +4,7 @@
 #include "brst_external.h"
 #include "brst_types.h"
 #include "brst_dict.h"
-
-#ifdef LIBBRST_ISO_216_ONLY
-#include "brst_page_sizes_iso_216.h"
-#else
 #include "brst_page_sizes.h"
-#endif
-
 #include "brst_mmgr.h"
 #include "brst_destination.h"
 
