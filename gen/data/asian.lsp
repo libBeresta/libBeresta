@@ -1,8 +1,8 @@
 (:file "asian"
  :functions
        (
-	;; === UseJPFonts
-	(:caption "UseJPFonts"
+	;; === Doc_UseJPFonts
+	(:caption "Doc_UseJPFonts"
 	 :group "font"
 	 :en "Enable Japanese fonts. Application can use following Japanese fonts after call:
 
@@ -57,8 +57,8 @@
 		  "FAILED_TO_ALLOC_MEM"
 		  "DUPLICATE_REGISTRATION"))
 
-	;; === UseKRFonts
-	(:caption "UseKRFonts"
+	;; === Doc_UseKRFonts
+	(:caption "Doc_UseKRFonts"
 	 :group "font"
 	 :en "Enable Korean fonts. Application can use following fonts after call:
 
@@ -114,7 +114,7 @@
 		  "DUPLICATE_REGISTRATION"))
 
 	;; === UseCNSFonts
-	(:caption "UseCNSFonts"
+	(:caption "Doc_UseCNSFonts"
 	 :group "font"
 	 :en "Enable Chinese Simplified fonts. Application can use following fonts after call:
 
@@ -153,8 +153,8 @@
 		  "FAILED_TO_ALLOC_MEM"
 		  "DUPLICATE_REGISTRATION"))
 
-	;; === UseCNTFonts
-	(:caption "UseCNTFonts"
+	;; === Doc_UseCNTFonts
+	(:caption "Doc_UseCNTFonts"
 	 :group "font"
 	 :en "Enable Chinese Traditional fonts. Application can use following fonts after call:
 
@@ -185,8 +185,8 @@
 		  "FAILED_TO_ALLOC_MEM"
 		  "DUPLICATE_REGISTRATION"))
 
-	;; === UseJPEncodings
-	(:caption "UseJPEncodings"
+	;; === Doc_UseJPEncodings
+	(:caption "Doc_UseJPEncodings"
 	 :group "encode"
 	 :en "Enable Japanese encodings. Application can use following encodings after call:
 
@@ -219,8 +219,8 @@
 		  "FAILED_TO_ALLOC_MEM"
 		  "DUPLICATE_REGISTRATION"))
 
-	;; === UseKREncodings
-	(:caption "UseKREncodings"
+	;; === Doc_UseKREncodings
+	(:caption "Doc_UseKREncodings"
 	 :group "encode"
 	 :en "Enable Korean encodings. Application can use following encodings after call:
 
@@ -253,8 +253,8 @@
 		  "FAILED_TO_ALLOC_MEM"
 		  "DUPLICATE_REGISTRATION"))
 
-	;; === UseCNSEncodings
-	(:caption "UseCNSEncodings"
+	;; === Doc_UseCNSEncodings
+	(:caption "Doc_UseCNSEncodings"
 	 :group "encode"
 	 :en "Enable Chinese Simplified encodings. Application can use following encodings after call:
 
@@ -285,8 +285,8 @@
 		  "FAILED_TO_ALLOC_MEM"
 		  "DUPLICATE_REGISTRATION"))
 
-	;; === UseCNTEncodings
-	(:caption "UseCNTEncodings"
+	;; === Doc_UseCNTEncodings
+	(:caption "Doc_UseCNTEncodings"
 	 :group "encode"
 	 :en "Enable Chinese Traditional encodings. Application can use following encodings after call:
 
