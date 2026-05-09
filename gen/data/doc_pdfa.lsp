@@ -1,4 +1,7 @@
 (:file "doc_pdfa"
+ :definitions
+      ((:name "PDFAType"
+        :original "Dict"))
  :functions (
            ;; BRST_Doc_PDFA_SetConformance
            (:caption "Doc_PDFA_SetConformance" 
