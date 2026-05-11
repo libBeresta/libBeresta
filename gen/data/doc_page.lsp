@@ -234,7 +234,7 @@
             :name "page_num"
             :ru "Начальная страница диапазона страниц с собственной нумерацией."
             :en "Page number range with a style.")
-           (:type "PageNumStyle"
+           (:type "PageNum"
             :name "style"
             :ru "Стиль нумерации диапазона страниц."
             :en "Page numbering style for page number range.")
