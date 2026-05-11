@@ -1,4 +1,7 @@
 (:file "doc_embedded_file"
+ :definitions
+      ((:name "EmbeddedFile"
+        :original "Dict"))
  :functions
        ((:caption "Doc_AttachFile"
 	 :group "doc"
