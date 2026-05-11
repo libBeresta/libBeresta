@@ -36,6 +36,13 @@ S-выражений может быть не очень удобно в язы�
 [`yq`](https://github.com/mikefarah/yq) версии не ниже 4.52 и сделать её
 доступной в переменной `$PATH`.
 
+## Подготовленные языковые привязки
+- [Ruby][ruby]
+- [ECL (Embeddable Common Lisp)][ecl]
+
 # Статистика покрытия генератора
 
 Смотри [stats.md](../doc/STATS.md).
+
+[ruby]: https://github.com/libBeresta/brst-binding-ruby
+[ecl]: https://github.com/libBeresta/brst-binding-ecl

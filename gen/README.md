@@ -38,6 +38,14 @@ The `yaml` target depends on the `json` target.
 For the mechanism to work correctly, it is necessary to install the utility [`yq`](https://github.com/mikefarah/yq) version
 4.52 or higher and make it available in the `$PATH` variable.
 
+## Prepared language bindings
+- [Ruby][ruby]
+- [ECL (Embeddable Common Lisp)][ecl]
+
+
 # Coverage statistics
 
 See [STATS.md](../docs/STATS.md).
+
+[ruby]: https://github.com/libBeresta/brst-binding-ruby
+[ecl]: https://github.com/libBeresta/brst-binding-ecl
