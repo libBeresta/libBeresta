@@ -52,7 +52,7 @@ Please take a look to [CONTRIBUTING.md](docs/CONTRIBUTING.md).
 * Spelling checks for code and documentation;
 * Unit testing of library functions;
 * Testing documented error states (such as `BRST_INVALID_DOCUMENT`);
-* Preparation of the library for future generation of bindings;
+* Ability to [generate language bindings](./gen/README.md) from prepared data files;
 * Examples covering all library functions;
 * Examples illustrating each section of supported PDF standards. 
 
