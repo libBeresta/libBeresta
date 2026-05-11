@@ -132,10 +132,10 @@ BRST_Page_SetRotate(
 */
 BRST_EXPORT(BRST_STATUS)
 BRST_Page_SetSlideShow(
-    BRST_Page            page,
-    BRST_TransitionStyle type,
-    BRST_REAL            disp_time,
-    BRST_REAL            trans_time
+    BRST_Page           page,
+    BRST_PageTransition type,
+    BRST_REAL           disp_time,
+    BRST_REAL           trans_time
 );
 
 /**

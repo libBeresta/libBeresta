@@ -32,7 +32,7 @@ typedef enum _BRST_PageNum {
     BRST_PAGE_NUM_UPPER_LETTERS,
     BRST_PAGE_NUM_LOWER_LETTERS,
     BRST_PAGE_NUM_EOF
-} BRST_PageNumStyle;
+} BRST_PageNum;
 
 /*----- slide show -----------------------------------------------------------*/
 
@@ -55,7 +55,7 @@ typedef enum _BRST_PageTransition {
     BRST_PAGE_TRANSITION_GLITTER_TOP_LEFT_TO_BOTTOM_RIGHT,
     BRST_PAGE_TRANSITION_REPLACE,
     BRST_PAGE_TRANSITION_EOF
-} BRST_TransitionStyle;
+} BRST_PageTransition;
 
 /*----------------------------------------------------------------------------*/
 

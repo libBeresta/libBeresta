@@ -240,11 +240,11 @@ BRST_Doc_Page_Insert(
 */
 BRST_EXPORT(BRST_STATUS)
 BRST_Doc_Page_AddLabel(
-    BRST_Doc          pdf,
-    BRST_UINT         page_num,
-    BRST_PageNumStyle style,
-    BRST_UINT         first_page,
-    BRST_CSTR         prefix
+    BRST_Doc     pdf,
+    BRST_UINT    page_num,
+    BRST_PageNum style,
+    BRST_UINT    first_page,
+    BRST_CSTR    prefix
 );
 
 #endif /* BRST_DOC_PAGE_H */

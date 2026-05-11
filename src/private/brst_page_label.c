@@ -23,7 +23,7 @@
 
 BRST_Dict
 BRST_PageLabel_New(BRST_Doc pdf,
-    BRST_PageNumStyle style,
+    BRST_PageNum style,
     BRST_INT first_page,
     const char* prefix)
 {

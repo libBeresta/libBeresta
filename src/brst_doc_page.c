@@ -225,7 +225,7 @@ BRST_Doc_Page_ByIndex(BRST_Doc pdf,
 BRST_EXPORT(BRST_STATUS)
 BRST_Doc_Page_AddLabel(BRST_Doc pdf,
     BRST_UINT page_num,
-    BRST_PageNumStyle style,
+    BRST_PageNum style,
     BRST_UINT first_page,
     const char* prefix)
 {
