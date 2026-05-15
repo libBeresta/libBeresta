@@ -31,14 +31,14 @@
 #include <string.h>
 
 BRST_EXPORT(BRST_Image)
-BRST_Doc_Png_LoadFromMemory(BRST_Doc pdf,
+BRST_Doc_Image_Png_LoadFromMemory(BRST_Doc pdf,
     const BRST_BYTE* buffer,
     BRST_UINT size)
 {
     BRST_Stream imagedata;
     BRST_Image image;
 
-    BRST_PTRACE(" BRST_Doc_Png_LoadFromMemory\n");
+    BRST_PTRACE(" BRST_Doc_Image_Png_LoadFromMemory\n");
 
     if (!BRST_Doc_Initialized(pdf)) {
         return NULL;
@@ -57,7 +57,7 @@ BRST_Doc_Png_LoadFromMemory(BRST_Doc pdf,
         return NULL;
     }
 
-    image = BRST_Image_Png_LoadFromStream(pdf->mmgr, pdf->xref, pdf->compression_mode, imagedata, BRST_FALSE);
+    image = BRST_Image_Png_LoadFromStream_Compression(pdf->mmgr, pdf->xref, pdf->compression_mode, imagedata, BRST_FALSE);
 
     /* destroy file stream */
     BRST_Stream_Free(imagedata);
@@ -70,13 +70,13 @@ BRST_Doc_Png_LoadFromMemory(BRST_Doc pdf,
 }
 
 BRST_EXPORT(BRST_Image)
-BRST_Doc_Png_LoadFromFile(BRST_Doc pdf,
+BRST_Doc_Image_Png_LoadFromFile(BRST_Doc pdf,
     const char* filename)
 {
     BRST_Stream imagedata;
     BRST_Image image;
 
-    BRST_PTRACE(" BRST_Doc_Png_LoadFromFile\n");
+    BRST_PTRACE(" BRST_Doc_Image_Png_LoadFromFile\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -85,7 +85,7 @@ BRST_Doc_Png_LoadFromFile(BRST_Doc pdf,
     imagedata = BRST_FileReader_New(pdf->mmgr, filename);
 
     if (BRST_Stream_Validate(imagedata))
-        image = BRST_Image_Png_LoadFromStream(pdf->mmgr, pdf->xref, pdf->compression_mode, imagedata, BRST_FALSE);
+        image = BRST_Image_Png_LoadFromStream_Compression(pdf->mmgr, pdf->xref, pdf->compression_mode, imagedata, BRST_FALSE);
     else
         image = NULL;
 
@@ -99,16 +99,16 @@ BRST_Doc_Png_LoadFromFile(BRST_Doc pdf,
     return image;
 }
 
-/* delayed loading version of BRST_LoadPngImageFromFile */
+/* Delayed loading version of BRST_Doc_Image_Png_LoadFromFile */
 BRST_EXPORT(BRST_Image)
-BRST_Doc_Png_LoadFromFile2(BRST_Doc pdf,
+BRST_Doc_Image_Png_LoadFromFile2(BRST_Doc pdf,
     const char* filename)
 {
     BRST_Stream imagedata;
     BRST_Image image;
     BRST_String fname;
 
-    BRST_PTRACE(" BRST_Doc_Png_LoadFromFile2\n");
+    BRST_PTRACE(" BRST_Doc_Image_Png_LoadFromFile2\n");
 
     if (!BRST_Doc_Initialized(pdf))
         return NULL;
@@ -117,7 +117,7 @@ BRST_Doc_Png_LoadFromFile2(BRST_Doc pdf,
     imagedata = BRST_FileReader_New(pdf->mmgr, filename);
 
     if (BRST_Stream_Validate(imagedata))
-        image = BRST_Image_Png_LoadFromStream(pdf->mmgr, pdf->xref, pdf->compression_mode, imagedata, BRST_TRUE);
+        image = BRST_Image_Png_LoadFromStream_Compression(pdf->mmgr, pdf->xref, pdf->compression_mode, imagedata, BRST_TRUE);
     else
         image = NULL;
 

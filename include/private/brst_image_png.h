@@ -2,7 +2,7 @@
 #define PRIVATE_BRST_IMAGE_PNG_H
 
 BRST_Image
-BRST_Image_Png_Load(
+BRST_Image_Png_LoadFromStream(
     BRST_MMgr   mmgr,
     BRST_Stream png_data,
     BRST_Xref   xref,
@@ -10,7 +10,7 @@ BRST_Image_Png_Load(
 );
 
 BRST_Image
-BRST_Image_Png_LoadFromStream(
+BRST_Image_Png_LoadFromStream_Compression(
     BRST_MMgr mmgr,
     BRST_Xref xref,
     BRST_BOOL compression_mode,

@@ -93,7 +93,7 @@ BRST_Doc_Image_Raw_LoadFromFile(BRST_Doc pdf,
     imagedata = BRST_FileReader_New(pdf->mmgr, filename);
 
     if (BRST_Stream_Validate(imagedata))
-        image = BRST_Image_Raw_Load(pdf->mmgr, imagedata, pdf->xref, width,
+        image = BRST_Image_Raw_LoadFromStream(pdf->mmgr, imagedata, pdf->xref, width,
             height, color_space);
     else
         image = NULL;

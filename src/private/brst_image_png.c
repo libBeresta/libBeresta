@@ -27,7 +27,7 @@
 #include <string.h>
 
 BRST_Image
-BRST_Image_Png_LoadFromStream(BRST_MMgr mmgr,
+BRST_Image_Png_LoadFromStream_Compression(BRST_MMgr mmgr,
     BRST_Xref xref,
     BRST_BOOL compression_mode,
     BRST_Stream imagedata,
@@ -36,9 +36,9 @@ BRST_Image_Png_LoadFromStream(BRST_MMgr mmgr,
     BRST_Image image;
     BRST_Dict smask;
 
-    BRST_PTRACE(" BRST_Image_LoadPngImage\n");
+    BRST_PTRACE(" BRST_Image_Png_LoadFromStream_Compression\n");
 
-    image = BRST_Image_Png_Load(mmgr, imagedata, xref,
+    image = BRST_Image_Png_LoadFromStream(mmgr, imagedata, xref,
         delayed_loading);
 
     if (image && (compression_mode & BRST_COMP_IMAGE)) {
@@ -407,7 +407,7 @@ CreatePallet(BRST_Dict image,
 #define BRST_PNG_BYTES_TO_CHECK 8
 
 BRST_Image
-BRST_Image_Png_Load(BRST_MMgr mmgr,
+BRST_Image_Png_LoadFromStream(BRST_MMgr mmgr,
     BRST_Stream png_data,
     BRST_Xref xref,
     BRST_BOOL delayed_loading)
@@ -417,7 +417,7 @@ BRST_Image_Png_Load(BRST_MMgr mmgr,
     png_byte header[BRST_PNG_BYTES_TO_CHECK];
     BRST_UINT len = BRST_PNG_BYTES_TO_CHECK;
 
-    BRST_PTRACE(" BRST_Image_Png_Load\n");
+    BRST_PTRACE(" BRST_Image_Png_LoadFromStream\n");
 
     BRST_MemSet(header, 0x00, BRST_PNG_BYTES_TO_CHECK);
     ret = BRST_Stream_Read(png_data, header, &len);
@@ -455,7 +455,7 @@ LoadPngData(BRST_Dict image,
     png_structp png_ptr = NULL;
     png_infop info_ptr  = NULL;
 
-    BRST_PTRACE(" BRST_Image_LoadPngImage\n");
+    BRST_PTRACE(" LoadPngData\n");
 
     /* create read_struct. */
     png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING,
