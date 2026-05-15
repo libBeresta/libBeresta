@@ -9,6 +9,7 @@ set(
     pattern
     pattern2
     scissors
+    png_image
 )
 
 set(
