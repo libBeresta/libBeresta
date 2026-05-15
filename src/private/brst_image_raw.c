@@ -6,6 +6,7 @@
 #include "brst_array.h"
 #include "brst_image.h"
 #include "private/brst_image.h"
+#include "private/brst_image_ccitt.h"
 #include "brst_xref.h"
 #include "private/brst_xref.h"
 #include "brst_geometry_defines.h"
@@ -16,7 +17,52 @@
 #include "private/brst_dict.h"
 
 BRST_Image
-BRST_Image_Raw_Load(BRST_MMgr mmgr,
+BRST_Image_Raw1Bit_LoadFromMemory(BRST_MMgr mmgr,
+    const BRST_BYTE* buf,
+    BRST_Xref xref,
+    BRST_UINT width,
+    BRST_UINT height,
+    BRST_UINT line_width,
+    BRST_BOOL top_is_first)
+{
+    BRST_Dict image;
+    BRST_STATUS ret = BRST_OK;
+    /* BRST_UINT size; */
+
+    BRST_PTRACE(" BRST_Image_Raw1Bit_LoadFromMemory\n");
+
+    image = BRST_Dict_New_Stream_Init(mmgr, xref);
+    if (!image)
+        return NULL;
+
+    image->header.obj_class |= BRST_OSUBCLASS_XOBJECT;
+    ret += BRST_Dict_AddName(image, "Type", "XObject");
+    ret += BRST_Dict_AddName(image, "Subtype", "Image");
+    if (ret != BRST_OK)
+        return NULL;
+
+    /* size = width * height; */
+    ret = BRST_Dict_AddName(image, "ColorSpace", "DeviceGray");
+    if (ret != BRST_OK)
+        return NULL;
+
+    if (BRST_Dict_AddNumber(image, "Width", width) != BRST_OK)
+        return NULL;
+
+    if (BRST_Dict_AddNumber(image, "Height", height) != BRST_OK)
+        return NULL;
+
+    if (BRST_Dict_AddNumber(image, "BitsPerComponent", 1) != BRST_OK)
+        return NULL;
+
+    if (BRST_Stream_CcittToStream(buf, image->stream, NULL, width, height, line_width, top_is_first) != BRST_OK)
+        return NULL;
+
+    return image;
+}
+
+BRST_Image
+BRST_Image_Raw_LoadFromStream(BRST_MMgr mmgr,
     BRST_Stream raw_data,
     BRST_Xref xref,
     BRST_UINT width,
@@ -27,7 +73,7 @@ BRST_Image_Raw_Load(BRST_MMgr mmgr,
     BRST_STATUS ret = BRST_OK;
     BRST_UINT size;
 
-    BRST_PTRACE(" BRST_Image_Raw_Load\n");
+    BRST_PTRACE(" BRST_Image_Raw_LoadFromStream\n");
 
     if (color_space != BRST_CS_DEVICE_GRAY && color_space != BRST_CS_DEVICE_RGB && color_space != BRST_CS_DEVICE_CMYK) {
         BRST_Error_Set(BRST_MMgr_Error(mmgr), BRST_INVALID_COLOR_SPACE, 0);
@@ -91,7 +137,7 @@ BRST_Image_Raw_LoadFromMemory(BRST_MMgr mmgr,
     BRST_STATUS ret = BRST_OK;
     BRST_UINT size  = 0;
 
-    BRST_PTRACE(" BRST_Image_LoadRawImageFromMem\n");
+    BRST_PTRACE(" BRST_Image_Raw_LoadFromMemory\n");
 
     if (color_space != BRST_CS_DEVICE_GRAY && color_space != BRST_CS_DEVICE_RGB && color_space != BRST_CS_DEVICE_CMYK) {
         BRST_Error_Set(BRST_MMgr_Error(mmgr), BRST_INVALID_COLOR_SPACE, 0);
