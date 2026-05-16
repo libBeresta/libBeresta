@@ -158,14 +158,14 @@ LoadJpegHeader(BRST_Image image,
 }
 
 BRST_Image
-BRST_Image_Jpeg_Load(BRST_MMgr mmgr,
+BRST_Image_Jpeg_LoadFromStream(BRST_MMgr mmgr,
     BRST_Stream jpeg_data,
     BRST_Xref xref)
 {
     BRST_Dict image;
     BRST_STATUS ret = BRST_OK;
 
-    BRST_PTRACE(" BRST_Image_Jpeg_Load\n");
+    BRST_PTRACE(" BRST_Image_Jpeg_LoadFromStream\n");
 
     image = BRST_Dict_New_Stream_Init(mmgr, xref);
     if (!image)
@@ -233,7 +233,7 @@ BRST_Image_Jpeg_LoadFromMemory(BRST_MMgr mmgr,
         return NULL;
     }
 
-    image = BRST_Image_Jpeg_Load(mmgr, jpeg_data, xref);
+    image = BRST_Image_Jpeg_LoadFromStream(mmgr, jpeg_data, xref);
 
     /* destroy file stream */
     BRST_Stream_Free(jpeg_data);

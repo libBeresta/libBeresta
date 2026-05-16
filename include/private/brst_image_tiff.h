@@ -13,7 +13,7 @@ BRST_Image_Raw1Bit_LoadFromMemory(
 );
 
 BRST_Image
-BRST_Image_Raw_Load(
+BRST_Image_Raw_LoadFromStream(
     BRST_MMgr       mmgr,
     BRST_Stream     stream,
     BRST_Xref       xref,

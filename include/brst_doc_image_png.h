@@ -56,7 +56,7 @@ BRST_Doc_Image_Png_LoadFromFile(
   \ingroup image
   \brief Load external PNG image file.
 
-  Unlike BRST_LoadPngImageFromFile(), BRST_LoadPngImageFromFile2() does not load
+  Unlike BRST_Doc_Image_Png_LoadFromFile(), BRST_Doc_Image_Png_LoadFromFile2() does not load
   all the data immediately (only size and color properties are loaded).
   The main data are loaded just before the image object is written to PDF, and then loaded data is deleted.
 

@@ -25,6 +25,8 @@
 #include "brst_doc_embedded_file.h"
 #include "brst_image.h"
 #include "brst_doc_image_tiff.h"
+#include "brst_doc_image_png.h"
+#include "brst_doc_image_jpeg.h"
 #include "brst_page_image.h"
 #include "brst_doc_compression.h"
 #include "brst_doc_ext_gstate.h"

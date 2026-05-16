@@ -41,7 +41,7 @@ BRST_Doc_Image_Jpeg_LoadFromFile(BRST_Doc pdf,
     imagedata = BRST_FileReader_New(pdf->mmgr, filename);
 
     if (BRST_Stream_Validate(imagedata))
-        image = BRST_Image_Jpeg_Load(pdf->mmgr, imagedata, pdf->xref);
+        image = BRST_Image_Jpeg_LoadFromStream(pdf->mmgr, imagedata, pdf->xref);
     else
         image = NULL;
 

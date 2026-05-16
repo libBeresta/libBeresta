@@ -2,7 +2,7 @@
 #define PRIVATE_BRST_IMAGE_JPEG_H
 
 BRST_Image
-BRST_Image_Jpeg_Load(
+BRST_Image_Jpeg_LoadFromStream(
     BRST_MMgr   mmgr,
     BRST_Stream jpeg_data,
     BRST_Xref   xref
