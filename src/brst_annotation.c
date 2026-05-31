@@ -889,7 +889,7 @@ BRST_ProjectionAnnot_SetExData(BRST_Annotation annot, BRST_ExData exdata)
 #ifdef LIBBRST_U3D_SUPPORT
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_Create3DAnnot(BRST_Page page,
+BRST_Page_3DAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     BRST_BOOL tb,
     BRST_BOOL np,
@@ -899,7 +899,7 @@ BRST_Page_Create3DAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_Page_Create3DAnnot\n");
+    BRST_PTRACE(" BRST_Page_3DAnnot_New\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -921,7 +921,7 @@ BRST_Page_Create3DAnnot(BRST_Page page,
 #endif /* LIBBRST_U3D_SUPPORT */
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateTextAnnot(BRST_Page page,
+BRST_Page_TextAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     const char* text,
     BRST_Encoder encoder)
@@ -954,7 +954,7 @@ BRST_Page_CreateTextAnnot(BRST_Page page,
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateFreeTextAnnot(BRST_Page page,
+BRST_Page_FreeTextAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     const char* text,
     BRST_Encoder encoder)
@@ -962,7 +962,7 @@ BRST_Page_CreateFreeTextAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_Page_CreateFreeTextAnnot\n");
+    BRST_PTRACE(" BRST_Page_FreeTextAnnotation_New\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -987,7 +987,7 @@ BRST_Page_CreateFreeTextAnnot(BRST_Page page,
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateLineAnnot(BRST_Page page,
+BRST_Page_LineAnnotation_New(BRST_Page page,
     const char* text,
     BRST_Encoder encoder)
 {
@@ -995,7 +995,7 @@ BRST_Page_CreateLineAnnot(BRST_Page page,
     BRST_Annotation annot;
     BRST_Rect rect = { 0, 0, 0, 0 };
 
-    BRST_PTRACE(" BRST_Page_CreateLineAnnot\n");
+    BRST_PTRACE(" BRST_Page_LineAnnotation_New\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1020,13 +1020,13 @@ BRST_Page_CreateLineAnnot(BRST_Page page,
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateWidgetAnnot(BRST_Page page,
+BRST_Page_WidgetAnnotation_New(BRST_Page page,
     BRST_Rect rect)
 {
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_Page_CreateWidgetAnnot\n");
+    BRST_PTRACE(" BRST_Page_WidgetAnnotation_New\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1047,14 +1047,14 @@ BRST_Page_CreateWidgetAnnot(BRST_Page page,
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateLinkAnnot(BRST_Page page,
+BRST_Page_LinkAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     BRST_Destination dst)
 {
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_Page_CreateLinkAnnot\n");
+    BRST_PTRACE(" BRST_Page_LinkAnnotation_New\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1081,14 +1081,14 @@ BRST_Page_CreateLinkAnnot(BRST_Page page,
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateURILinkAnnot(BRST_Page page,
+BRST_Page_URILinkAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     const char* uri)
 {
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_Page_CreateURILinkAnnot\n");
+    BRST_PTRACE(" BRST_Page_URILinkAnnotation_New\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1113,7 +1113,7 @@ BRST_Page_CreateURILinkAnnot(BRST_Page page,
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateCircleAnnot(BRST_Page page,
+BRST_Page_CircleAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     const char* text,
     BRST_Encoder encoder)
@@ -1121,7 +1121,7 @@ BRST_Page_CreateCircleAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_Page_CreateCircleAnnot\n");
+    BRST_PTRACE(" BRST_Page_CircleAnnotation_New\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1146,7 +1146,7 @@ BRST_Page_CreateCircleAnnot(BRST_Page page,
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateSquareAnnot(BRST_Page page,
+BRST_Page_SquareAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     const char* text,
     BRST_Encoder encoder)
@@ -1154,7 +1154,7 @@ BRST_Page_CreateSquareAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_Page_CreateCircleAnnot\n");
+    BRST_PTRACE(" BRST_Page_SquareAnnotation_New\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1179,7 +1179,7 @@ BRST_Page_CreateSquareAnnot(BRST_Page page,
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateTextMarkupAnnot(BRST_Page page,
+BRST_Page_TextMarkupAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     const char* text,
     BRST_Encoder encoder,
@@ -1188,7 +1188,7 @@ BRST_Page_CreateTextMarkupAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_Page_CreateTextMarkupAnnot\n");
+    BRST_PTRACE(" BRST_Page_TextMarkupAnnotation_New\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1213,58 +1213,58 @@ BRST_Page_CreateTextMarkupAnnot(BRST_Page page,
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateHighlightAnnot(BRST_Page page,
+BRST_Page_HighlightAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     const char* text,
     BRST_Encoder encoder)
 {
-    BRST_PTRACE(" BRST_Page_CreateHighlightAnnot\n");
+    BRST_PTRACE(" BRST_Page_HighlightAnnotation_New\n");
 
-    return BRST_Page_CreateTextMarkupAnnot(page, rect, text, encoder, BRST_ANNOT_HIGHLIGHT);
+    return BRST_Page_TextMarkupAnnotation_New(page, rect, text, encoder, BRST_ANNOT_HIGHLIGHT);
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateSquigglyAnnot(BRST_Page page,
+BRST_Page_SquigglyAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     const char* text,
     BRST_Encoder encoder)
 {
-    BRST_PTRACE(" BRST_Page_CreateSquigglyAnnot\n");
+    BRST_PTRACE(" BRST_Page_SquigglyAnnotation_New\n");
 
-    return BRST_Page_CreateTextMarkupAnnot(page, rect, text, encoder, BRST_ANNOT_SQUIGGLY);
+    return BRST_Page_TextMarkupAnnotation_New(page, rect, text, encoder, BRST_ANNOT_SQUIGGLY);
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateUnderlineAnnot(BRST_Page page,
+BRST_Page_UnderlineAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     const char* text,
     BRST_Encoder encoder)
 {
-    BRST_PTRACE(" BRST_Page_CreateUnderlineAnnot\n");
+    BRST_PTRACE(" BRST_Page_UnderlineAnnotation_New\n");
 
-    return BRST_Page_CreateTextMarkupAnnot(page, rect, text, encoder, BRST_ANNOT_UNDERLINE);
+    return BRST_Page_TextMarkupAnnotation_New(page, rect, text, encoder, BRST_ANNOT_UNDERLINE);
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateStrikeOutAnnot(BRST_Page page,
+BRST_Page_StrikeOutAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     const char* text,
     BRST_Encoder encoder)
 {
-    BRST_PTRACE(" BRST_Page_CreateStrikeOutAnnot\n");
+    BRST_PTRACE(" BRST_Page_StrikeOutAnnotation_New\n");
 
-    return BRST_Page_CreateTextMarkupAnnot(page, rect, text, encoder, BRST_ANNOT_STRIKE_OUT);
+    return BRST_Page_TextMarkupAnnotation_New(page, rect, text, encoder, BRST_ANNOT_STRIKE_OUT);
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreatePopupAnnot(BRST_Page page,
+BRST_Page_PopupAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     BRST_Annotation parent)
 {
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_Page_CreatePopupAnnot\n");
+    BRST_PTRACE(" BRST_Page_PopupAnnotation_New\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1284,7 +1284,7 @@ BRST_Page_CreatePopupAnnot(BRST_Page page,
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateStampAnnot(BRST_Page page,
+BRST_Page_StampAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     BRST_StampAnnotName name,
     const char* text,
@@ -1293,7 +1293,7 @@ BRST_Page_CreateStampAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_Page_CreateStampAnnot\n");
+    BRST_PTRACE(" BRST_Page_StampAnnotation_New\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
@@ -1313,7 +1313,7 @@ BRST_Page_CreateStampAnnot(BRST_Page page,
 }
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateProjectionAnnot(BRST_Page page,
+BRST_Page_ProjectionAnnotation_New(BRST_Page page,
     BRST_Rect rect,
     const char* text,
     BRST_Encoder encoder)
@@ -1321,7 +1321,7 @@ BRST_Page_CreateProjectionAnnot(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_Page_CreateProjectionAnnot\n");
+    BRST_PTRACE(" BRST_Page_ProjectionAnnotation_New\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;

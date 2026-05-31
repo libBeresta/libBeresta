@@ -35,7 +35,7 @@
 #include "private/brst_xobject.h"
 
 BRST_EXPORT(BRST_XObject)
-BRST_Doc_XObject_CreateFromImage(
+BRST_Doc_XObject_NewFromImage(
     BRST_Doc pdf,
     BRST_Rect rect,
     BRST_Image image,
@@ -165,7 +165,7 @@ BRST_Doc_XObject_CreateFromImage(
 }
 
 BRST_EXPORT(BRST_XObject)
-BRST_Doc_XObject_CreateAsWhiteRect(
+BRST_Doc_XObject_NewAsWhiteRect(
     BRST_Doc pdf,
     BRST_Rect rect)
 {
@@ -284,7 +284,7 @@ BRST_Doc_XObject_CreateAsWhiteRect(
 }
 
 BRST_EXPORT(BRST_XObject)
-BRST_Doc_XObject_Create(
+BRST_Doc_XObject_New(
     BRST_Doc pdf,
     BRST_REAL width,
     BRST_REAL height,

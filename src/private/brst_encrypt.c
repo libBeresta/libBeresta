@@ -34,14 +34,14 @@ void BRST_Encrypt_Init(BRST_Encrypt attr)
     attr->permission = BRST_ENABLE_PRINT | BRST_ENABLE_EDIT_ALL | BRST_ENABLE_COPY | BRST_ENABLE_EDIT | BRST_PERMISSION_PAD;
 }
 
-void BRST_Encrypt_CreateOwnerKey(BRST_Encrypt attr)
+void BRST_Encrypt_NewOwnerKey(BRST_Encrypt attr)
 {
     BRST_ARC4_Ctx_Rec rc4_ctx;
     BRST_MD5_CTX md5_ctx;
     BRST_BYTE digest[BRST_MD5_KEY_LEN];
     BRST_BYTE tmppwd[BRST_PASSWD_LEN];
 
-    BRST_PTRACE(" BRST_Encrypt_CreateOwnerKey\n");
+    BRST_PTRACE(" BRST_Encrypt_NewOwnerKey\n");
 
     /* create md5-digest using the value of owner_passwd */
 
@@ -105,12 +105,12 @@ void BRST_Encrypt_CreateOwnerKey(BRST_Encrypt attr)
     BRST_MemCopy(attr->owner_key, tmppwd, BRST_PASSWD_LEN);
 }
 
-void BRST_Encrypt_CreateEncryptionKey(BRST_Encrypt attr)
+void BRST_Encrypt_NewEncryptionKey(BRST_Encrypt attr)
 {
     BRST_MD5_CTX md5_ctx;
     BRST_BYTE tmp_flg[4];
 
-    BRST_PTRACE(" BRST_Encrypt_CreateEncryptionKey\n");
+    BRST_PTRACE(" BRST_Encrypt_NewEncryptionKey\n");
 
     /* Algorithm3.2 step2 */
     BRST_MD5Init(&md5_ctx);
@@ -147,11 +147,11 @@ void BRST_Encrypt_CreateEncryptionKey(BRST_Encrypt attr)
     }
 }
 
-void BRST_Encrypt_CreateUserKey(BRST_Encrypt attr)
+void BRST_Encrypt_NewUserKey(BRST_Encrypt attr)
 {
     BRST_ARC4_Ctx_Rec ctx;
 
-    BRST_PTRACE(" BRST_Encrypt_CreateUserKey\n");
+    BRST_PTRACE(" BRST_Encrypt_NewUserKey\n");
 
     /* Algorithm 3.4/5 step1 */
 

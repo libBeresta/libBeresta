@@ -2,7 +2,7 @@
 #define BRST_DOC_EXT_GSTATE_H
 
 BRST_EXPORT(BRST_ExtGState)
-BRST_Doc_Create_ExtGState(
+BRST_Doc_ExtGState_New(
     BRST_Doc pdf
 );
 

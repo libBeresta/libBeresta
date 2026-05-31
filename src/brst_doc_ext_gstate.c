@@ -23,7 +23,7 @@
 #include "private/brst_ext_gstate.h"
 
 BRST_EXPORT(BRST_ExtGState)
-BRST_Doc_Create_ExtGState(BRST_Doc pdf)
+BRST_Doc_ExtGState_New(BRST_Doc pdf)
 {
     BRST_ExtGState ext_gstate;
 

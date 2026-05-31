@@ -18,7 +18,7 @@
 #include "private/brst_pattern.h"
 
 BRST_EXPORT(BRST_Pattern)
-BRST_Doc_Pattern_Tiling_Create(
+BRST_Doc_Pattern_Tiling_New(
     BRST_Doc pdf,
     BRST_REAL left,
     BRST_REAL bottom,

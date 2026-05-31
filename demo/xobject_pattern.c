@@ -59,13 +59,13 @@ int main(int argc, char** argv)
     BRST_REAL height = BRST_Page_Height(page);
 
     // Создание XObject Form
-    BRST_XObject xobj = BRST_Doc_XObject_Create(pdf, 100, 100, 1, 1);
+    BRST_XObject xobj = BRST_Doc_XObject_New(pdf, 100, 100, 1, 1);
 
     // Матрица преобразований для узора
     BRST_Matrix matrix = BRST_Doc_Matrix_Scale(pdf, BRST_Doc_Matrix_Identity(pdf), 0.5, 0.5);
 
     // Создание узора
-    BRST_Pattern pattern = BRST_Doc_Pattern_Tiling_Create(pdf, 0, 0, 10, 10, 10, 10, matrix);
+    BRST_Pattern pattern = BRST_Doc_Pattern_Tiling_New(pdf, 0, 0, 10, 10, 10, 10, matrix);
 
     // Поток узора (нужен для записи графических команд
     BRST_Stream pattern_stream = BRST_Doc_Pattern_Stream(pattern);

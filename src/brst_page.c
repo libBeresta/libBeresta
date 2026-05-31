@@ -568,12 +568,12 @@ BRST_Page_SetExtGState(BRST_Page page,
 }
 
 BRST_EXPORT(BRST_Destination)
-BRST_Page_CreateDestination(BRST_Page page)
+BRST_Page_Destination_New(BRST_Page page)
 {
     BRST_PageAttr attr;
     BRST_Destination dst;
 
-    BRST_PTRACE(" BRST_Page_CreateDestination\n");
+    BRST_PTRACE(" BRST_Page_Destination_New\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;

@@ -23,7 +23,7 @@
 
 */
 BRST_EXPORT(BRST_Outline)
-BRST_Doc_Outline_Create(
+BRST_Doc_Outline_New(
     BRST_Doc     pdf,
     BRST_Outline parent,
     BRST_CSTR    title,
