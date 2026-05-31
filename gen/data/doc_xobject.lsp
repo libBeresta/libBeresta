@@ -44,8 +44,8 @@
              ;;           :ru ":param_xobject"
              ;;           :en ":param_xobject"))
 
-             ;; BRST_Doc_XObject_Create
-             (:caption "Doc_XObject_Create"
+             ;; BRST_Doc_XObject_New
+             (:caption "Doc_XObject_New"
               :group "doc"
               :ru "Создание объекта XObject Form"
               :en "XObject Form object creation"

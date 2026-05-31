@@ -1,5 +1,5 @@
 (:file "doc_page_pattern"
- :functions ((:caption "Doc_Pattern_Tiling_Create"
+ :functions ((:caption "Doc_Pattern_Tiling_New"
             :ru ""
             :en ""
             :result (:type "Pattern"

@@ -4,19 +4,19 @@
             :group "page"
             :ru "Отображает объект XObject в текущем графическом контексте.
 
-  XObject можно создать с помощью функции \\ref BRST_Doc_Page_XObject_Create(), он может включать в себя
+  XObject можно создать с помощью функции \\ref BRST_Doc_Page_XObject_New(), он может включать в себя
   графические команды, а также другие данные.
 
   Также эта функция используется \\ref BRST_Page_DrawImage() для отображения изображения \\ref BRST_Image."
             :en "Draw XObject using current graphics context.
 
-  XObject can be created using \\ref BRST_Doc_Page_XObject_Create() and can include drawing commands as well
+  XObject can be created using \\ref BRST_Doc_Page_XObject_New() and can include drawing commands as well
   other data.
 
   This is also used by \\ref BRST_Page_DrawImage() to draw the \\ref BRST_Image by first calling
   \\ref BRST_Page_GSave() and \\ref BRST_Page_Concat() and then calling \\ref BRST_Page_GRestore()
   after BRST_Page_XObject_Execute(). It could be used manually to rotate an image."
-            :see ("Doc_Page_XObject_Create"
+            :see ("Doc_Page_XObject_New"
                  "Page_DrawImage"
                  "Page_GSave"
                  "Page_GRestore"
@@ -37,7 +37,7 @@
             :group "page"
             :ru ""
             :en ""
-            :see ("Doc_Page_XObject_Create"
+            :see ("Doc_Page_XObject_New"
                  "Page_DrawImage"
                  "Page_GSave"
                  "Page_GRestore"

@@ -1,6 +1,6 @@
 (:file "doc_ext_gstate"
  :functions
-       ((:caption "Doc_Create_ExtGState"
+       ((:caption "Doc_ExtGState_New"
      :ru "Добавляет в документ словарь расширенного графического состояния ExtGState. (Таблица 58)."
      :en "Create extended graphical state object descriptor ExtGState. (Table 58)."
 	 :group "doc"
