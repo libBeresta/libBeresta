@@ -899,14 +899,14 @@ BRST_Page_3DAnnotation_New(BRST_Page page,
     BRST_PageAttr attr;
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_Page_3DAnnot_New\n");
+    BRST_PTRACE(" BRST_Page_3DAnnotation_New\n");
 
     if (!BRST_Page_Validate(page))
         return NULL;
 
     attr = (BRST_PageAttr)page->attr;
 
-    annot = BRST_3DAnnot_New(page->mmgr, attr->xref, rect, tb, np, u3d, ap);
+    annot = BRST_3DAnnotation_New(page->mmgr, attr->xref, rect, tb, np, u3d, ap);
     if (annot) {
         if (AddAnnotation(page, annot) != BRST_OK) {
             BRST_Error_Check(page->error);
@@ -941,7 +941,7 @@ BRST_Page_TextAnnotation_New(BRST_Page page,
         return NULL;
     }
 
-    annot = BRST_MarkupAnnot_New(page->mmgr, attr->xref, rect, text, encoder, BRST_ANNOT_TEXT_NOTES);
+    annot = BRST_MarkupAnnotation_New(page->mmgr, attr->xref, rect, text, encoder, BRST_ANNOT_TEXT_NOTES);
     if (annot) {
         if (AddAnnotation(page, annot) != BRST_OK) {
             BRST_Error_Check(page->error);
@@ -974,7 +974,7 @@ BRST_Page_FreeTextAnnotation_New(BRST_Page page,
         return NULL;
     }
 
-    annot = BRST_MarkupAnnot_New(page->mmgr, attr->xref, rect, text, encoder, BRST_ANNOT_FREE_TEXT);
+    annot = BRST_MarkupAnnotation_New(page->mmgr, attr->xref, rect, text, encoder, BRST_ANNOT_FREE_TEXT);
     if (annot) {
         if (AddAnnotation(page, annot) != BRST_OK) {
             BRST_Error_Check(page->error);
@@ -1007,7 +1007,7 @@ BRST_Page_LineAnnotation_New(BRST_Page page,
         return NULL;
     }
 
-    annot = BRST_MarkupAnnot_New(page->mmgr, attr->xref, rect, text, encoder, BRST_ANNOT_LINE);
+    annot = BRST_MarkupAnnotation_New(page->mmgr, attr->xref, rect, text, encoder, BRST_ANNOT_LINE);
     if (annot) {
         if (AddAnnotation(page, annot) != BRST_OK) {
             BRST_Error_Check(page->error);
@@ -1033,7 +1033,7 @@ BRST_Page_WidgetAnnotation_New(BRST_Page page,
 
     attr = (BRST_PageAttr)page->attr;
 
-    annot = BRST_WidgetAnnot_New(page->mmgr, attr->xref, rect);
+    annot = BRST_WidgetAnnotation_New(page->mmgr, attr->xref, rect);
 
     if (annot) {
         if (AddAnnotation(page, annot) != BRST_OK) {
@@ -1068,7 +1068,7 @@ BRST_Page_LinkAnnotation_New(BRST_Page page,
         }
     }
 
-    annot = BRST_LinkAnnot_New(page->mmgr, attr->xref, rect, dst);
+    annot = BRST_LinkAnnotation_New(page->mmgr, attr->xref, rect, dst);
     if (annot) {
         if (AddAnnotation(page, annot) != BRST_OK) {
             BRST_Error_Check(page->error);
@@ -1100,7 +1100,7 @@ BRST_Page_URILinkAnnotation_New(BRST_Page page,
         return NULL;
     }
 
-    annot = BRST_URILinkAnnot_New(page->mmgr, attr->xref, rect, uri);
+    annot = BRST_URILinkAnnotation_New(page->mmgr, attr->xref, rect, uri);
     if (annot) {
         if (AddAnnotation(page, annot) != BRST_OK) {
             BRST_Error_Check(page->error);
@@ -1133,7 +1133,7 @@ BRST_Page_CircleAnnotation_New(BRST_Page page,
         return NULL;
     }
 
-    annot = BRST_MarkupAnnot_New(page->mmgr, attr->xref, rect, text, encoder, BRST_ANNOT_CIRCLE);
+    annot = BRST_MarkupAnnotation_New(page->mmgr, attr->xref, rect, text, encoder, BRST_ANNOT_CIRCLE);
     if (annot) {
         if (AddAnnotation(page, annot) != BRST_OK) {
             BRST_Error_Check(page->error);
@@ -1166,7 +1166,7 @@ BRST_Page_SquareAnnotation_New(BRST_Page page,
         return NULL;
     }
 
-    annot = BRST_MarkupAnnot_New(page->mmgr, attr->xref, rect, text, encoder, BRST_ANNOT_SQUARE);
+    annot = BRST_MarkupAnnotation_New(page->mmgr, attr->xref, rect, text, encoder, BRST_ANNOT_SQUARE);
     if (annot) {
         if (AddAnnotation(page, annot) != BRST_OK) {
             BRST_Error_Check(page->error);
@@ -1200,7 +1200,7 @@ BRST_Page_TextMarkupAnnotation_New(BRST_Page page,
         return NULL;
     }
 
-    annot = BRST_MarkupAnnot_New(page->mmgr, attr->xref, rect, text, encoder, subType);
+    annot = BRST_MarkupAnnotation_New(page->mmgr, attr->xref, rect, text, encoder, subType);
     if (annot) {
         if (AddAnnotation(page, annot) != BRST_OK) {
             BRST_Error_Check(page->error);
@@ -1271,7 +1271,7 @@ BRST_Page_PopupAnnotation_New(BRST_Page page,
 
     attr = (BRST_PageAttr)page->attr;
 
-    annot = BRST_PopupAnnot_New(page->mmgr, attr->xref, rect, parent);
+    annot = BRST_PopupAnnotation_New(page->mmgr, attr->xref, rect, parent);
     if (annot) {
         if (AddAnnotation(page, annot) != BRST_OK) {
             BRST_Error_Check(page->error);
@@ -1300,7 +1300,7 @@ BRST_Page_StampAnnotation_New(BRST_Page page,
 
     attr = (BRST_PageAttr)page->attr;
 
-    annot = BRST_StampAnnot_New(page->mmgr, attr->xref, rect, name, text, encoder);
+    annot = BRST_StampAnnotation_New(page->mmgr, attr->xref, rect, name, text, encoder);
     if (annot) {
         if (AddAnnotation(page, annot) != BRST_OK) {
             BRST_Error_Check(page->error);
@@ -1328,7 +1328,7 @@ BRST_Page_ProjectionAnnotation_New(BRST_Page page,
 
     attr = (BRST_PageAttr)page->attr;
 
-    annot = BRST_ProjectionAnnot_New(page->mmgr, attr->xref, rect, text, encoder);
+    annot = BRST_ProjectionAnnotation_New(page->mmgr, attr->xref, rect, text, encoder);
     if (annot) {
         if (AddAnnotation(page, annot) != BRST_OK) {
             BRST_Error_Check(page->error);
