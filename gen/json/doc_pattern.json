@@ -3,7 +3,7 @@
   "file": "doc_pattern",
   "functions": [
     {
-      "caption": "Doc_Pattern_Tiling_Create",
+      "caption": "Doc_Pattern_Tiling_New",
       "ru": "Создание узора-плитки",
       "en": "Create tiled pattern",
       "params": [
