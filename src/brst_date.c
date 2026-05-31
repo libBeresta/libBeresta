@@ -22,7 +22,7 @@
 #include "private/brst_mmgr.h"
 
 BRST_EXPORT(BRST_Date)
-BRST_Date_New(
+BRST_Doc_Date_New(
     BRST_Doc pdf,
     BRST_INT year,
     BRST_INT mm,
@@ -34,7 +34,7 @@ BRST_Date_New(
     BRST_INT ho,
     BRST_INT mo)
 {
-    BRST_PTRACE(" BRST_Date_New\n");
+    BRST_PTRACE(" BRST_Doc_Date_New\n");
 
     BRST_MMgr mmgr = BRST_Doc_MMgr(pdf);
     BRST_Date date = BRST_GetMem(mmgr, sizeof(BRST_Date_Rec));
@@ -64,9 +64,9 @@ BRST_Date_New(
 }
 
 BRST_EXPORT(BRST_Date)
-BRST_Date_Now(BRST_Doc pdf)
+BRST_Doc_Date_Now(BRST_Doc pdf)
 {
-    BRST_PTRACE(" BRST_Date_Now\n");
+    BRST_PTRACE(" BRST_Doc_Date_Now\n");
 
 #ifndef _MSC_VER
     time_t now;
@@ -83,7 +83,7 @@ BRST_Date_Now(BRST_Doc pdf)
         ind = BRST_UT_RELATIONSHIP_ZERO;
     }
 
-    return BRST_Date_New(
+    return BRST_Doc_Date_New(
         pdf,
         t->tm_year + 1900,
         t->tm_mon + 1,

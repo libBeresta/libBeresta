@@ -62,7 +62,7 @@ int main(int argc, char** argv)
     BRST_Page_SetSize(page, BRST_PAGE_SIZE_A4, BRST_PAGE_ORIENTATION_LANDSCAPE);
 
     // Создание даты (создания и модификации)
-    BRST_Date date = BRST_Date_Now(pdf);
+    BRST_Date date = BRST_Doc_Date_Now(pdf);
 
     BRST_Doc_SetInfoDateAttr(pdf, BRST_INFO_CREATION_DATE, date);
     BRST_Doc_SetInfoDateAttr(pdf, BRST_INFO_MOD_DATE, date);
