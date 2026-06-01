@@ -92,6 +92,7 @@ install(
     TARGETS brst
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
 # --- Установка .pc файла для pkg-config ---
@@ -125,5 +126,18 @@ set(CPACK_FREEBSD_FILE_NAME "libbrst-dev-${CPACK_PACKAGE_VERSION}.pkg")
 
 # HaikuOS / универсальный: tar.gz архив
 set(CPACK_TGZ_FILE_NAME "libbrst-dev-${CPACK_PACKAGE_VERSION}-${CMAKE_SYSTEM_PROCESSOR}.tar.gz")
+
+# Windows: NSIS-инсталлятор
+set(CPACK_NSIS_DISPLAY_NAME "libBeresta ${CPACK_PACKAGE_VERSION}")
+set(CPACK_NSIS_PACKAGE_NAME "libBeresta")
+set(CPACK_NSIS_CONTACT "Dmitry Solomennikov <dmitrys99@mail.ru>")
+set(CPACK_NSIS_URL_INFO_ABOUT "https://github.com/libBeresta/libBeresta")
+set(CPACK_NSIS_HELP_LINK "https://github.com/libBeresta/libBeresta")
+set(CPACK_NSIS_MODIFY_PATH ON)
+set(CPACK_NSIS_INSTALL_ROOT "$PROGRAMFILES64")
+set(CPACK_NSIS_CREATE_ICONS_EXTRA "
+  CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\libBeresta.lnk' '$INSTDIR\\\\bin\\\\libbrst.dll'
+")
+set(CPACK_NSIS_FILE_NAME "libbrst-dev-${CPACK_PACKAGE_VERSION}-${CMAKE_SYSTEM_PROCESSOR}.exe")
 
 include(CPack)
