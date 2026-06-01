@@ -105,16 +105,22 @@ install(
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
 )
 
-# --- CPack: генерация deb-пакета ---
-set(CPACK_GENERATOR "DEB")
-set(CPACK_PACKAGE_NAME "libbrst-dev")
+# --- CPack: генерация пакетов ---
 set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY ${PROJECT_DESCRIPTION})
 set(CPACK_PACKAGE_VENDOR "libBeresta")
+set(CPACK_PACKAGE_FILE_NAME "libbrst-dev-${CPACK_PACKAGE_VERSION}")
+
+# Linux: deb-пакет
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Dmitry Solomennikov <dmitrys99@mail.ru>")
 set(CPACK_DEBIAN_PACKAGE_SECTION "libs")
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "zlib1g-dev, libpng-dev")
 set(CPACK_DEBIAN_FILE_NAME "libbrst-dev-${CPACK_PACKAGE_VERSION}-${CMAKE_SYSTEM_PROCESSOR}.deb")
-set(CPACK_PACKAGE_FILE_NAME "libbrst-dev-${CPACK_PACKAGE_VERSION}")
+
+# FreeBSD: pkg-пакет
+set(CPACK_FREEBSD_PACKAGE_MAINTAINER "Dmitry Solomennikov <dmitrys99@mail.ru>")
+set(CPACK_FREEBSD_PACKAGE_CATEGORY "devel")
+set(CPACK_FREEBSD_PACKAGE_DEPENDS "zlib, png")
+set(CPACK_FREEBSD_FILE_NAME "libbrst-dev-${CPACK_PACKAGE_VERSION}.pkg")
 
 include(CPack)
