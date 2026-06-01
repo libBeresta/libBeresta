@@ -50,7 +50,7 @@
               :ru "Создание объекта XObject Form"
               :en "XObject Form object creation"
               :see ("Page_XObject_Execute"
-                    "Page_DrawImage"
+                    "Page_Image_Draw"
                     "Page_GSave"
                     "Page_GRestore"
                     "Page_Concat"
