@@ -323,7 +323,7 @@
 |TextAnnotation_SetIcon   |brst_page_annotation.h   |&ndash;                  |
 |TextAnnotation_SetOpened |brst_page_annotation.h   |&ndash;                  |
 |TextMarkupAnnotation_SetQuadPoints|brst_page_annotation.h   |&ndash;                  |
-|Page_DrawImage           |brst_page_image.h        |&ndash;                  |
+|Page_Image_Draw          |brst_page_image.h        |&ndash;                  |
 |Page_CurrentPos          |brst_page_routines.h     |&ndash;                  |
 |Page_CurrentPos2         |brst_page_routines.h     |&ndash;                  |
 |Page_Destination_New     |brst_page_routines.h     |page_routines.lsp        |
@@ -437,4 +437,4 @@
 |XObject_Stream           |brst_xobject.h           |xobject.lsp              |
 | Total | 269 of 372 | 72.31% |
 
-<small>Generated on: 31.05.2026 20:51</small>
+<small>Generated on: 01.06.2026 08:56</small>
