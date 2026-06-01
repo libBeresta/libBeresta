@@ -2,12 +2,12 @@
 on:
   # Запуск рабочего процесса по отправке изменений в ветку main
   push:
-    - workflows: [cmake-build]
+    - workflows: [cmake-build, build-deb-package]
       filter:
         branches: ["master"]
   # Запуск рабочего процесса при создании предложений изменений
   pull_request:
-    - workflows: [cmake-build]
+    - workflows: [cmake-build, build-deb-package]
       filter:
         target_branches: ["master"]
 
@@ -15,6 +15,10 @@ workflows:
   cmake-build:
     tasks:
       - cmake-build-task
+
+  build-deb-package:
+    tasks:
+      - build-deb-task
 
 tasks:
   - name: cmake-build-task
@@ -54,3 +58,36 @@ tasks:
           - apt install -y clitest qpdf
           - cd build/tests
           - ctest -R test_beresta --verbose
+
+  - name: build-deb-task
+    cubes:
+      # Установка зависимостей для сборки deb-пакета
+      - name: install-dependencies
+        image: ubuntu:latest
+        script:
+          - apt-get update
+          - apt-get install -y build-essential cmake zlib1g-dev libpng-dev pkg-config
+
+      # Конфигурация проекта с CMake (shared library)
+      - name: configure-project
+        needs: ["install-dependencies"]
+        script:
+          - mkdir -p build
+          - cd build
+          - cmake .. -DCMAKE_BUILD_TYPE=Release -DLIBBRST_SHARED_LIB=ON -DLIBBRST_EXAMPLES=OFF -DLIBBRST_TESTS=OFF
+
+      # Сборка проекта
+      - name: build-project
+        needs: ["configure-project"]
+        script:
+          - cd build
+          - make -j$(nproc)
+
+      # Генерация deb-пакета
+      - name: package-deb
+        needs: ["build-project"]
+        script:
+          - cd build
+          - cpack -G DEB
+          - echo "=== Создан deb-пакет ==="
+          - ls -la *.deb
