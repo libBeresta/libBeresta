@@ -2,12 +2,12 @@
 on:
   # Запуск рабочего процесса по отправке изменений в ветку main
   push:
-    - workflows: [cmake-build, build-deb-package]
+    - workflows: [cmake-build, build-deb-package, build-windows-package, build-haiku-package]
       filter:
         branches: ["master"]
   # Запуск рабочего процесса при создании предложений изменений
   pull_request:
-    - workflows: [cmake-build, build-deb-package]
+    - workflows: [cmake-build, build-deb-package, build-windows-package, build-haiku-package]
       filter:
         target_branches: ["master"]
 
@@ -19,6 +19,14 @@ workflows:
   build-deb-package:
     tasks:
       - build-deb-task
+
+  build-windows-package:
+    tasks:
+      - build-windows-task
+
+  build-haiku-package:
+    tasks:
+      - build-haiku-task
 
 tasks:
   - name: cmake-build-task
@@ -91,3 +99,74 @@ tasks:
           - cpack -G DEB
           - echo "=== Создан deb-пакет ==="
           - ls -la *.deb
+
+  - name: build-windows-task
+    cubes:
+      # Установка зависимостей для кросс-компиляции под Windows
+      - name: install-dependencies
+        image: ubuntu:latest
+        script:
+          - apt-get update
+          - apt-get install -y build-essential cmake mingw-w64 nsis pkg-config
+
+      # Конфигурация проекта с CMake под Windows (mingw)
+      - name: configure-project
+        needs: ["install-dependencies"]
+        script:
+          - mkdir -p build-windows
+          - cd build-windows
+          - cmake .. -DCMAKE_BUILD_TYPE=Release -DLIBBRST_SHARED_LIB=ON -DLIBBRST_EXAMPLES=OFF -DLIBBRST_TESTS=OFF \
+              -DCMAKE_SYSTEM_NAME=Windows \
+              -DCMAKE_C_COMPILER=x86_64-w64-mingw32-gcc \
+              -DCMAKE_CXX_COMPILER=x86_64-w64-mingw32-g++ \
+              -DCMAKE_FIND_ROOT_PATH=/usr/x86_64-w64-mingw32 \
+              -DCMAKE_INSTALL_PREFIX=/usr/x86_64-w64-mingw32
+
+      # Сборка проекта
+      - name: build-project
+        needs: ["configure-project"]
+        script:
+          - cd build-windows
+          - make -j$(nproc)
+
+      # Генерация NSIS-инсталлятора
+      - name: package-nsis
+        needs: ["build-project"]
+        script:
+          - cd build-windows
+          - cpack -G NSIS
+          - echo "=== Создан NSIS-инсталлятор ==="
+          - ls -la *.exe
+
+  - name: build-haiku-task
+    cubes:
+      # Установка зависимостей для сборки tar.gz-архива
+      - name: install-dependencies
+        image: ubuntu:latest
+        script:
+          - apt-get update
+          - apt-get install -y build-essential cmake zlib1g-dev libpng-dev pkg-config
+
+      # Конфигурация проекта с CMake (shared library)
+      - name: configure-project
+        needs: ["install-dependencies"]
+        script:
+          - mkdir -p build-haiku
+          - cd build-haiku
+          - cmake .. -DCMAKE_BUILD_TYPE=Release -DLIBBRST_SHARED_LIB=ON -DLIBBRST_EXAMPLES=OFF -DLIBBRST_TESTS=OFF
+
+      # Сборка проекта
+      - name: build-project
+        needs: ["configure-project"]
+        script:
+          - cd build-haiku
+          - make -j$(nproc)
+
+      # Генерация tar.gz-архива
+      - name: package-tgz
+        needs: ["build-project"]
+        script:
+          - cd build-haiku
+          - cpack -G TGZ
+          - echo "=== Создан tar.gz-архив ==="
+          - ls -la *.tar.gz
