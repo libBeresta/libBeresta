@@ -394,7 +394,7 @@ BRST_Page_SetExtGState(
 
 */
 BRST_EXPORT(BRST_Destination)
-BRST_Page_CreateDestination(
+BRST_Page_Destination_New(
     BRST_Page page
 );
 

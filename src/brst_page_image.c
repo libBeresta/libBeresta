@@ -23,7 +23,7 @@
 #include "private/brst_utils.h"
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Page_DrawImage(BRST_Page page,
+BRST_Page_Image_Draw(BRST_Page page,
     BRST_Image image,
     BRST_REAL x,
     BRST_REAL y,

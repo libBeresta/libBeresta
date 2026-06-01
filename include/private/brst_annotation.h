@@ -13,14 +13,14 @@ BRST_Annotation_New(
 );
 
 BRST_Annotation
-BRST_WidgetAnnot_New(
+BRST_WidgetAnnotation_New(
     BRST_MMgr mmgr,
     BRST_Xref xref,
     BRST_Rect rect
 );
 
 BRST_Annotation
-BRST_LinkAnnot_New(
+BRST_LinkAnnotation_New(
     BRST_MMgr        mmgr,
     BRST_Xref        xref,
     BRST_Rect        rect,
@@ -28,7 +28,7 @@ BRST_LinkAnnot_New(
 );
 
 BRST_Annotation
-BRST_URILinkAnnot_New(
+BRST_URILinkAnnotation_New(
     BRST_MMgr   mmgr,
     BRST_Xref   xref,
     BRST_Rect   rect,
@@ -36,7 +36,7 @@ BRST_URILinkAnnot_New(
 );
 
 BRST_Annotation
-BRST_MarkupAnnot_New(
+BRST_MarkupAnnotation_New(
     BRST_MMgr      mmgr,
 	BRST_Xref      xref,
 	BRST_Rect      rect,
@@ -46,7 +46,7 @@ BRST_MarkupAnnot_New(
 );
 
 BRST_Annotation
-BRST_PopupAnnot_New(
+BRST_PopupAnnotation_New(
     BRST_MMgr       mmgr,
     BRST_Xref       xref,
     BRST_Rect       rect,
@@ -54,7 +54,7 @@ BRST_PopupAnnot_New(
 );
 
 BRST_Annotation
-BRST_StampAnnot_New(
+BRST_StampAnnotation_New(
     BRST_MMgr           mmgr,
     BRST_Xref           xref,
     BRST_Rect           rect,
@@ -64,7 +64,7 @@ BRST_StampAnnot_New(
 );
 
 BRST_Annotation
-BRST_ProjectionAnnot_New(
+BRST_ProjectionAnnotation_New(
     BRST_MMgr    mmgr,
 	BRST_Xref    xref,
 	BRST_Rect    rect,
@@ -80,7 +80,7 @@ BRST_Annotation_Validate(
 #ifdef LIBBRST_U3D_SUPPORT
 
 BRST_Annotation
-BRST_3DAnnot_New(
+BRST_3DAnnotation_New(
     BRST_MMgr  mmgr,
     BRST_Xref  xref,
     BRST_Rect  rect,

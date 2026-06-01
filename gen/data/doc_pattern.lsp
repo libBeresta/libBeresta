@@ -1,7 +1,7 @@
 (:file "doc_pattern"
  :functions (
-           ;; BRST_Doc_Pattern_Tiling_Create
-           (:caption "Doc_Pattern_Tiling_Create" 
+           ;; BRST_Doc_Pattern_Tiling_New
+           (:caption "Doc_Pattern_Tiling_New"
             :ru "Создание узора-плитки"
             :en "Create tiled pattern"
             :params ((:type "Doc"

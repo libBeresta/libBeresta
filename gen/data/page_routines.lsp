@@ -367,7 +367,7 @@
                          :ru ""
                          :en "")))
 
-           (:caption "Page_CreateDestination"
+           (:caption "Page_Destination_New"
             :group "link"
             :errors ("INVALID_DOCUMENT"
                      "FAILED_TO_ALLOC_MEM")

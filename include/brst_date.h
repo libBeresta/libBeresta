@@ -34,7 +34,7 @@ struct _BRST_Date_Rec;
 typedef struct _BRST_Date_Rec* BRST_Date;
 
 BRST_EXPORT(BRST_Date)
-BRST_Date_New(
+BRST_Doc_Date_New(
   BRST_Doc pdf,
   BRST_INT yyyy,
   BRST_INT mm,
@@ -48,7 +48,7 @@ BRST_Date_New(
 );
 
 BRST_EXPORT(BRST_Date)
-BRST_Date_Now(
+BRST_Doc_Date_Now(
     BRST_Doc pdf
 );
 

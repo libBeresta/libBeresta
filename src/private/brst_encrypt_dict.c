@@ -48,7 +48,7 @@ BRST_EncryptDict_New(BRST_MMgr mmgr,
     return dict;
 }
 
-void BRST_EncryptDict_CreateID(BRST_EncryptDict dict,
+void BRST_EncryptDict_NewID(BRST_EncryptDict dict,
     BRST_Dict info,
     BRST_Xref xref)
 {
@@ -124,10 +124,10 @@ BRST_EncryptDict_Prepare(BRST_EncryptDict dict,
 
     BRST_PTRACE(" BRST_EncryptDict_Prepare\n");
 
-    BRST_EncryptDict_CreateID(dict, info, xref);
-    BRST_Encrypt_CreateOwnerKey(attr);
-    BRST_Encrypt_CreateEncryptionKey(attr);
-    BRST_Encrypt_CreateUserKey(attr);
+    BRST_EncryptDict_NewID(dict, info, xref);
+    BRST_Encrypt_NewOwnerKey(attr);
+    BRST_Encrypt_NewEncryptionKey(attr);
+    BRST_Encrypt_NewUserKey(attr);
 
     owner_key = BRST_Binary_New(dict->mmgr, attr->owner_key, BRST_PASSWD_LEN);
     if (!owner_key)

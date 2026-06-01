@@ -62,7 +62,7 @@ int main(int argc, char** argv)
     BRST_REAL height = BRST_Page_Height(page);
 
     // Создание XObject Form
-    BRST_XObject xobj = BRST_Doc_XObject_Create(pdf, 100, 100, 1, 1);
+    BRST_XObject xobj = BRST_Doc_XObject_New(pdf, 100, 100, 1, 1);
     BRST_Dict_SetFontAndSize(xobj, font, 24);
 
     // Получение и наполнение потока XObject

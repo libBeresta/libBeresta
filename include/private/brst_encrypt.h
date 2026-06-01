@@ -58,15 +58,15 @@ BRST_Encrypt_Init(
     BRST_Encrypt attr);
 
 void
-BRST_Encrypt_CreateUserKey(
+BRST_Encrypt_NewUserKey(
     BRST_Encrypt attr);
 
 void
-BRST_Encrypt_CreateOwnerKey(
+BRST_Encrypt_NewOwnerKey(
     BRST_Encrypt attr);
 
 void
-BRST_Encrypt_CreateEncryptionKey(
+BRST_Encrypt_NewEncryptionKey(
     BRST_Encrypt attr);
 
 void

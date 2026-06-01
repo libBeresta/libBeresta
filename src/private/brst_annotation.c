@@ -36,7 +36,7 @@ const char* const BRST_STAMP_ANNOT_NAME_NAMES[] = {
 };
 
 /*
-BRST_3DAnnot_New
+BRST_3DAnnotation_New
 */
 
 const char* const BRST_ANNOT_TYPE_NAMES[] = {
@@ -111,13 +111,13 @@ BRST_Annotation_New(BRST_MMgr mmgr,
 }
 
 BRST_Annotation
-BRST_WidgetAnnot_New(BRST_MMgr mmgr,
+BRST_WidgetAnnotation_New(BRST_MMgr mmgr,
     BRST_Xref xref,
     BRST_Rect rect)
 {
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_WidgetAnnot_New\n");
+    BRST_PTRACE(" BRST_WidgetAnnotation_New\n");
 
     annot = BRST_Annotation_New(mmgr, xref, BRST_ANNOT_WIDGET, rect);
     if (!annot)
@@ -127,14 +127,14 @@ BRST_WidgetAnnot_New(BRST_MMgr mmgr,
 }
 
 BRST_Annotation
-BRST_LinkAnnot_New(BRST_MMgr mmgr,
+BRST_LinkAnnotation_New(BRST_MMgr mmgr,
     BRST_Xref xref,
     BRST_Rect rect,
     BRST_Destination dst)
 {
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_LinkAnnot_New\n");
+    BRST_PTRACE(" BRST_LinkAnnotation_New\n");
 
     annot = BRST_Annotation_New(mmgr, xref, BRST_ANNOT_LINK, rect);
     if (!annot)
@@ -149,7 +149,7 @@ BRST_LinkAnnot_New(BRST_MMgr mmgr,
 }
 
 BRST_Annotation
-BRST_URILinkAnnot_New(BRST_MMgr mmgr,
+BRST_URILinkAnnotation_New(BRST_MMgr mmgr,
     BRST_Xref xref,
     BRST_Rect rect,
     const char* uri)
@@ -158,7 +158,7 @@ BRST_URILinkAnnot_New(BRST_MMgr mmgr,
     BRST_Dict action;
     BRST_STATUS ret;
 
-    BRST_PTRACE(" BRST_URILinkAnnot_New\n");
+    BRST_PTRACE(" BRST_URILinkAnnotation_New\n");
 
     annot = BRST_Annotation_New(mmgr, xref, BRST_ANNOT_LINK, rect);
     if (!annot)
@@ -184,7 +184,7 @@ BRST_URILinkAnnot_New(BRST_MMgr mmgr,
 }
 
 BRST_Annotation
-BRST_MarkupAnnot_New(BRST_MMgr mmgr,
+BRST_MarkupAnnotation_New(BRST_MMgr mmgr,
     BRST_Xref xref,
     BRST_Rect rect,
     const char* text,
@@ -194,7 +194,7 @@ BRST_MarkupAnnot_New(BRST_MMgr mmgr,
     BRST_Annotation annot;
     BRST_String s;
 
-    BRST_PTRACE(" BRST_MarkupAnnot_New\n");
+    BRST_PTRACE(" BRST_MarkupAnnotation_New\n");
 
     annot = BRST_Annotation_New(mmgr, xref, subtype, rect);
     if (!annot)
@@ -211,14 +211,14 @@ BRST_MarkupAnnot_New(BRST_MMgr mmgr,
 }
 
 BRST_Annotation
-BRST_PopupAnnot_New(BRST_MMgr mmgr,
+BRST_PopupAnnotation_New(BRST_MMgr mmgr,
     BRST_Xref xref,
     BRST_Rect rect,
     BRST_Annotation parent)
 {
     BRST_Annotation annot;
 
-    BRST_PTRACE(" BRST_PopupAnnot_New\n");
+    BRST_PTRACE(" BRST_PopupAnnotation_New\n");
 
     annot = BRST_Annotation_New(mmgr, xref, BRST_ANNOT_POPUP, rect);
     if (!annot)
@@ -231,7 +231,7 @@ BRST_PopupAnnot_New(BRST_MMgr mmgr,
 }
 
 BRST_Annotation
-BRST_StampAnnot_New(BRST_MMgr mmgr,
+BRST_StampAnnotation_New(BRST_MMgr mmgr,
     BRST_Xref xref,
     BRST_Rect rect,
     BRST_StampAnnotName name,
@@ -240,7 +240,7 @@ BRST_StampAnnot_New(BRST_MMgr mmgr,
 {
     BRST_Annotation annot;
     BRST_String s;
-    BRST_PTRACE(" BRST_StampAnnot_New\n");
+    BRST_PTRACE(" BRST_StampAnnotation_New\n");
 
     annot = BRST_Annotation_New(mmgr, xref, BRST_ANNOT_STAMP, rect);
     if (!annot)
@@ -260,7 +260,7 @@ BRST_StampAnnot_New(BRST_MMgr mmgr,
 }
 
 BRST_Annotation
-BRST_ProjectionAnnot_New(BRST_MMgr mmgr,
+BRST_ProjectionAnnotation_New(BRST_MMgr mmgr,
     BRST_Xref xref,
     BRST_Rect rect,
     const char* text,
@@ -268,7 +268,7 @@ BRST_ProjectionAnnot_New(BRST_MMgr mmgr,
 {
     BRST_Annotation annot;
     BRST_String s;
-    BRST_PTRACE(" BRST_StampAnnot_New\n");
+    BRST_PTRACE(" BRST_ProjectionAnnotation_New\n");
     annot = BRST_Annotation_New(mmgr, xref, BRST_ANNOT_PROJECTION, rect);
 
     if (!annot)
@@ -301,7 +301,7 @@ BRST_Annotation_Validate(BRST_Annotation annot)
 #ifdef LIBBRST_U3D_SUPPORT
 
 BRST_Annotation
-BRST_3DAnnot_New(BRST_MMgr mmgr,
+BRST_3DAnnotation_New(BRST_MMgr mmgr,
     BRST_Xref xref,
     BRST_Rect rect,
     BRST_BOOL tb,
@@ -313,7 +313,7 @@ BRST_3DAnnot_New(BRST_MMgr mmgr,
     BRST_Dict action, appearance, stream;
     BRST_STATUS ret;
 
-    BRST_PTRACE(" BRST_3DAnnot_New\n");
+    BRST_PTRACE(" BRST_3DAnnotation_New\n");
 
     annot = BRST_Annotation_New(mmgr, xref, BRST_ANNOT_3D, rect);
     if (!annot) {

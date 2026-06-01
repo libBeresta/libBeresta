@@ -35,7 +35,7 @@ BRST_Doc_Image_Raw1Bit_LoadFromMemory(
   - \ref BRST_INVALID_IMAGE
   - \ref BRST_FILE_IO_ERROR
 
-  \see \ref colorspaces, BRST_LoadRawImageFromMem()
+  \see \ref colorspaces, BRST_Doc_Image_Raw_LoadFromMemory()
 */
 BRST_EXPORT(BRST_Image)
 BRST_Doc_Image_Raw_LoadFromFile(
@@ -69,7 +69,7 @@ BRST_Doc_Image_Raw_LoadFromFile(
   - \ref BRST_INVALID_COLOR_SPACE
   - \ref BRST_INVALID_IMAGE
 
-  \see \ref colorspaces, BRST_LoadRawImageFromFile()
+  \see \ref colorspaces, BRST_Doc_Image_Raw_LoadFromFile()
 
 */
 BRST_EXPORT(BRST_Image)

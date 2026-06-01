@@ -77,10 +77,10 @@
 |PageSize_Width           |brst_base.h              |base.lsp                 |
 |Version                  |brst_base.h              |base.lsp                 |
 |Date_Free                |brst_date.h              |date.lsp                 |
-|Date_New                 |brst_date.h              |&ndash;                  |
-|Date_Now                 |brst_date.h              |date.lsp                 |
 |Date_Part                |brst_date.h              |date.lsp                 |
 |Date_Validate            |brst_date.h              |date.lsp                 |
+|Doc_Date_New             |brst_date.h              |&ndash;                  |
+|Doc_Date_Now             |brst_date.h              |date.lsp                 |
 |Destination_SetFit       |brst_destination.h       |destination.lsp          |
 |Destination_SetFitB      |brst_destination.h       |destination.lsp          |
 |Destination_SetFitBH     |brst_destination.h       |destination.lsp          |
@@ -89,7 +89,7 @@
 |Destination_SetFitR      |brst_destination.h       |destination.lsp          |
 |Destination_SetFitV      |brst_destination.h       |destination.lsp          |
 |Destination_SetXYZ       |brst_destination.h       |destination.lsp          |
-|Doc_Page_CreateWidgetAnnot_WhiteOnlyWhilePrint|brst_doc_annotation.h    |&ndash;                  |
+|Doc_Page_WidgetAnnotWhiteOnlyWhilePrint_New|brst_doc_annotation.h    |&ndash;                  |
 |Doc_SetCompressionMode   |brst_doc_compression.h   |doc_compression.lsp      |
 |Doc_AttachFile           |brst_doc_embedded_file.h |doc_embedded_file.lsp    |
 |Doc_Encoder_Current      |brst_doc_encoder.h       |doc_encoder.lsp          |
@@ -104,7 +104,7 @@
 |Doc_UseKREncodings       |brst_doc_encoding_kr.h   |asian.lsp                |
 |Doc_UseKRFonts           |brst_doc_encoding_kr.h   |asian.lsp                |
 |Doc_UseUTFEncodings      |brst_doc_encoding_utf.h  |doc_encoding_utf.lsp     |
-|Doc_Create_ExtGState     |brst_doc_ext_gstate.h    |doc_ext_gstate.lsp       |
+|Doc_ExtGState_New        |brst_doc_ext_gstate.h    |doc_ext_gstate.lsp       |
 |Doc_Font                 |brst_doc_font.h          |doc_font.lsp             |
 |Doc_TTFont_LoadFromFile  |brst_doc_font.h          |doc_font.lsp             |
 |Doc_TTFont_LoadFromFile2 |brst_doc_font.h          |doc_font.lsp             |
@@ -131,7 +131,7 @@
 |Doc_Matrix_Scale         |brst_doc_matrix.h        |doc_matrix.lsp           |
 |Doc_Matrix_Skew          |brst_doc_matrix.h        |doc_matrix.lsp           |
 |Doc_Matrix_Translate     |brst_doc_matrix.h        |doc_matrix.lsp           |
-|Doc_Outline_Create       |brst_doc_outline.h       |&ndash;                  |
+|Doc_Outline_New          |brst_doc_outline.h       |&ndash;                  |
 |Doc_OutputIntent_Add     |brst_doc_output_intent.h |doc_output_intent.lsp    |
 |Doc_OutputIntent_New     |brst_doc_output_intent.h |doc_output_intent.lsp    |
 |Doc_Pages_SetConfiguration|brst_doc_page.h          |doc_page.lsp             |
@@ -151,7 +151,7 @@
 |Doc_Page_RGBPatternFillUint_Select|brst_doc_page_pattern.h  |doc_page_pattern.lsp     |
 |Doc_Page_RGBPatternFill_Select|brst_doc_page_pattern.h  |doc_page_pattern.lsp     |
 |Doc_Pattern_Stream       |brst_doc_pattern.h       |doc_pattern.lsp          |
-|Doc_Pattern_Tiling_Create|brst_doc_pattern.h       |doc_pattern.lsp          |
+|Doc_Pattern_Tiling_New   |brst_doc_pattern.h       |doc_pattern.lsp          |
 |Doc_PDFA_AddXmpExtension |brst_doc_pdfa.h          |doc_pdfa.lsp             |
 |Doc_PDFA_AppendOutputIntents|brst_doc_pdfa.h          |doc_pdfa.lsp             |
 |Doc_PDFA_SetConformance  |brst_doc_pdfa.h          |doc_pdfa.lsp             |
@@ -166,9 +166,9 @@
 |Doc_SetOpenAction        |brst_doc_viewer.h        |doc_viewer.lsp           |
 |Doc_SetViewerPreference  |brst_doc_viewer.h        |doc_viewer.lsp           |
 |Doc_ViewerPreference     |brst_doc_viewer.h        |doc_viewer.lsp           |
-|Doc_XObject_Create       |brst_doc_xobject.h       |doc_xobject.lsp          |
-|Doc_XObject_CreateAsWhiteRect|brst_doc_xobject.h       |&ndash;                  |
-|Doc_XObject_CreateFromImage|brst_doc_xobject.h       |&ndash;                  |
+|Doc_XObject_New          |brst_doc_xobject.h       |doc_xobject.lsp          |
+|Doc_XObject_NewAsWhiteRect|brst_doc_xobject.h       |&ndash;                  |
+|Doc_XObject_NewFromImage |brst_doc_xobject.h       |&ndash;                  |
 |EmbeddedFile_SetAFRelationship|brst_embedded_file.h     |&ndash;                  |
 |EmbeddedFile_SetCreationDate|brst_embedded_file.h     |&ndash;                  |
 |EmbeddedFile_SetDescription|brst_embedded_file.h     |&ndash;                  |
@@ -274,59 +274,59 @@
 |Image_Width              |brst_image.h             |image.lsp                |
 |Outline_SetDestination   |brst_outline.h           |&ndash;                  |
 |Outline_SetOpened        |brst_outline.h           |&ndash;                  |
+|Annotation_Set3DView     |brst_page_annotation.h   |&ndash;                  |
 |Annotation_SetBorderStyle|brst_page_annotation.h   |&ndash;                  |
-|Annot_Set3DView          |brst_page_annotation.h   |&ndash;                  |
-|Annot_SetCMYKColor       |brst_page_annotation.h   |&ndash;                  |
-|Annot_SetGrayColor       |brst_page_annotation.h   |&ndash;                  |
-|Annot_SetNoColor         |brst_page_annotation.h   |&ndash;                  |
-|Annot_SetRGBColor        |brst_page_annotation.h   |&ndash;                  |
-|FreeTextAnnot_Set2PointCalloutLine|brst_page_annotation.h   |&ndash;                  |
-|FreeTextAnnot_Set3PointCalloutLine|brst_page_annotation.h   |&ndash;                  |
-|FreeTextAnnot_SetDefaultStyle|brst_page_annotation.h   |&ndash;                  |
-|FreeTextAnnot_SetLineEndingStyle|brst_page_annotation.h   |&ndash;                  |
-|LineAnnot_SetCaption     |brst_page_annotation.h   |&ndash;                  |
-|LineAnnot_SetLeader      |brst_page_annotation.h   |&ndash;                  |
-|LineAnnot_SetPosition    |brst_page_annotation.h   |&ndash;                  |
-|LinkAnnot_SetBorderStyle |brst_page_annotation.h   |&ndash;                  |
-|LinkAnnot_SetHighlightMode|brst_page_annotation.h   |&ndash;                  |
-|LinkAnnot_SetJavaScript  |brst_page_annotation.h   |&ndash;                  |
-|MarkupAnnot_SetCloudEffect|brst_page_annotation.h   |&ndash;                  |
-|MarkupAnnot_SetCreationDate|brst_page_annotation.h   |&ndash;                  |
-|MarkupAnnot_SetIntent    |brst_page_annotation.h   |&ndash;                  |
-|MarkupAnnot_SetInteriorCMYKColor|brst_page_annotation.h   |&ndash;                  |
-|MarkupAnnot_SetInteriorGrayColor|brst_page_annotation.h   |&ndash;                  |
-|MarkupAnnot_SetInteriorRGBColor|brst_page_annotation.h   |&ndash;                  |
-|MarkupAnnot_SetInteriorTransparent|brst_page_annotation.h   |&ndash;                  |
-|MarkupAnnot_SetPopup     |brst_page_annotation.h   |&ndash;                  |
-|MarkupAnnot_SetRectDiff  |brst_page_annotation.h   |&ndash;                  |
-|MarkupAnnot_SetSubject   |brst_page_annotation.h   |&ndash;                  |
-|MarkupAnnot_SetTitle     |brst_page_annotation.h   |&ndash;                  |
-|MarkupAnnot_SetTransparency|brst_page_annotation.h   |&ndash;                  |
-|Page_Create3DAnnot       |brst_page_annotation.h   |&ndash;                  |
-|Page_CreateCircleAnnot   |brst_page_annotation.h   |&ndash;                  |
-|Page_CreateFreeTextAnnot |brst_page_annotation.h   |&ndash;                  |
-|Page_CreateHighlightAnnot|brst_page_annotation.h   |&ndash;                  |
-|Page_CreateLineAnnot     |brst_page_annotation.h   |&ndash;                  |
-|Page_CreateLinkAnnot     |brst_page_annotation.h   |&ndash;                  |
-|Page_CreatePopupAnnot    |brst_page_annotation.h   |&ndash;                  |
-|Page_CreateProjectionAnnot|brst_page_annotation.h   |&ndash;                  |
-|Page_CreateSquareAnnot   |brst_page_annotation.h   |&ndash;                  |
-|Page_CreateSquigglyAnnot |brst_page_annotation.h   |&ndash;                  |
-|Page_CreateStampAnnot    |brst_page_annotation.h   |&ndash;                  |
-|Page_CreateStrikeOutAnnot|brst_page_annotation.h   |&ndash;                  |
-|Page_CreateTextAnnot     |brst_page_annotation.h   |&ndash;                  |
-|Page_CreateUnderlineAnnot|brst_page_annotation.h   |&ndash;                  |
-|Page_CreateURILinkAnnot  |brst_page_annotation.h   |&ndash;                  |
-|Page_CreateWidgetAnnot   |brst_page_annotation.h   |&ndash;                  |
-|PopupAnnot_SetOpened     |brst_page_annotation.h   |&ndash;                  |
-|ProjectionAnnot_SetExData|brst_page_annotation.h   |&ndash;                  |
-|TextAnnot_SetIcon        |brst_page_annotation.h   |&ndash;                  |
-|TextAnnot_SetOpened      |brst_page_annotation.h   |&ndash;                  |
-|TextMarkupAnnot_SetQuadPoints|brst_page_annotation.h   |&ndash;                  |
-|Page_DrawImage           |brst_page_image.h        |&ndash;                  |
-|Page_CreateDestination   |brst_page_routines.h     |page_routines.lsp        |
+|Annotation_SetCMYKColor  |brst_page_annotation.h   |&ndash;                  |
+|Annotation_SetGrayColor  |brst_page_annotation.h   |&ndash;                  |
+|Annotation_SetNoColor    |brst_page_annotation.h   |&ndash;                  |
+|Annotation_SetRGBColor   |brst_page_annotation.h   |&ndash;                  |
+|FreeTextAnnotation_Set2PointCalloutLine|brst_page_annotation.h   |&ndash;                  |
+|FreeTextAnnotation_Set3PointCalloutLine|brst_page_annotation.h   |&ndash;                  |
+|FreeTextAnnotation_SetDefaultStyle|brst_page_annotation.h   |&ndash;                  |
+|FreeTextAnnotation_SetLineEndingStyle|brst_page_annotation.h   |&ndash;                  |
+|LineAnnotation_SetCaption|brst_page_annotation.h   |&ndash;                  |
+|LineAnnotation_SetLeader |brst_page_annotation.h   |&ndash;                  |
+|LineAnnotation_SetPosition|brst_page_annotation.h   |&ndash;                  |
+|LinkAnnotation_SetBorderStyle|brst_page_annotation.h   |&ndash;                  |
+|LinkAnnotation_SetHighlightMode|brst_page_annotation.h   |&ndash;                  |
+|LinkAnnotation_SetJavaScript|brst_page_annotation.h   |&ndash;                  |
+|MarkupAnnotation_SetCloudEffect|brst_page_annotation.h   |&ndash;                  |
+|MarkupAnnotation_SetCreationDate|brst_page_annotation.h   |&ndash;                  |
+|MarkupAnnotation_SetIntent|brst_page_annotation.h   |&ndash;                  |
+|MarkupAnnotation_SetInteriorCMYKColor|brst_page_annotation.h   |&ndash;                  |
+|MarkupAnnotation_SetInteriorGrayColor|brst_page_annotation.h   |&ndash;                  |
+|MarkupAnnotation_SetInteriorRGBColor|brst_page_annotation.h   |&ndash;                  |
+|MarkupAnnotation_SetInteriorTransparent|brst_page_annotation.h   |&ndash;                  |
+|MarkupAnnotation_SetPopup|brst_page_annotation.h   |&ndash;                  |
+|MarkupAnnotation_SetRectDiff|brst_page_annotation.h   |&ndash;                  |
+|MarkupAnnotation_SetSubject|brst_page_annotation.h   |&ndash;                  |
+|MarkupAnnotation_SetTitle|brst_page_annotation.h   |&ndash;                  |
+|MarkupAnnotation_SetTransparency|brst_page_annotation.h   |&ndash;                  |
+|Page_3DAnnotation_New    |brst_page_annotation.h   |&ndash;                  |
+|Page_CircleAnnotation_New|brst_page_annotation.h   |&ndash;                  |
+|Page_FreeTextAnnotation_New|brst_page_annotation.h   |&ndash;                  |
+|Page_HighlightAnnotation_New|brst_page_annotation.h   |&ndash;                  |
+|Page_LineAnnotation_New  |brst_page_annotation.h   |&ndash;                  |
+|Page_LinkAnnotation_New  |brst_page_annotation.h   |&ndash;                  |
+|Page_PopupAnnotation_New |brst_page_annotation.h   |&ndash;                  |
+|Page_ProjectionAnnotation_New|brst_page_annotation.h   |&ndash;                  |
+|Page_SquareAnnotation_New|brst_page_annotation.h   |&ndash;                  |
+|Page_SquigglyAnnotation_New|brst_page_annotation.h   |&ndash;                  |
+|Page_StampAnnotation_New |brst_page_annotation.h   |&ndash;                  |
+|Page_StrikeOutAnnotation_New|brst_page_annotation.h   |&ndash;                  |
+|Page_TextAnnotation_New  |brst_page_annotation.h   |&ndash;                  |
+|Page_UnderlineAnnotation_New|brst_page_annotation.h   |&ndash;                  |
+|Page_URILinkAnnotation_New|brst_page_annotation.h   |&ndash;                  |
+|Page_WidgetAnnotation_New|brst_page_annotation.h   |&ndash;                  |
+|PopupAnnotation_SetOpened|brst_page_annotation.h   |&ndash;                  |
+|ProjectionAnnotation_SetExData|brst_page_annotation.h   |&ndash;                  |
+|TextAnnotation_SetIcon   |brst_page_annotation.h   |&ndash;                  |
+|TextAnnotation_SetOpened |brst_page_annotation.h   |&ndash;                  |
+|TextMarkupAnnotation_SetQuadPoints|brst_page_annotation.h   |&ndash;                  |
+|Page_Image_Draw          |brst_page_image.h        |&ndash;                  |
 |Page_CurrentPos          |brst_page_routines.h     |&ndash;                  |
 |Page_CurrentPos2         |brst_page_routines.h     |&ndash;                  |
+|Page_Destination_New     |brst_page_routines.h     |page_routines.lsp        |
 |Page_GMode               |brst_page_routines.h     |page_routines.lsp        |
 |Page_GStateDepth         |brst_page_routines.h     |page_routines.lsp        |
 |Page_Height              |brst_page_routines.h     |page_routines.lsp        |
@@ -437,4 +437,4 @@
 |XObject_Stream           |brst_xobject.h           |xobject.lsp              |
 | Total | 269 of 372 | 72.31% |
 
-<small>Generated on: 11.05.2026 12:45</small>
+<small>Generated on: 01.06.2026 08:56</small>

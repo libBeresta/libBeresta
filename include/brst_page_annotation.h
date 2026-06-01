@@ -23,30 +23,30 @@
 
 */
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateTextAnnot(
+BRST_Page_TextAnnotation_New(
     BRST_Page    page,
     BRST_Rect    rect,
-    BRST_CSTR  text,
+    BRST_CSTR    text,
     BRST_Encoder encoder
 );
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateFreeTextAnnot(
+BRST_Page_FreeTextAnnotation_New(
     BRST_Page    page,
     BRST_Rect    rect,
-    BRST_CSTR  text,
+    BRST_CSTR    text,
     BRST_Encoder encoder
 );
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateLineAnnot(
+BRST_Page_LineAnnotation_New(
     BRST_Page    page,
-    BRST_CSTR  text,
+    BRST_CSTR    text,
     BRST_Encoder encoder
 );
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateWidgetAnnot(
+BRST_Page_WidgetAnnotation_New(
     BRST_Page page,
     BRST_Rect rect
 );
@@ -70,7 +70,7 @@ BRST_Page_CreateWidgetAnnot(
 
 */
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateLinkAnnot(
+BRST_Page_LinkAnnotation_New(
     BRST_Page        page,
     BRST_Rect        rect,
     BRST_Destination dst
@@ -94,14 +94,14 @@ BRST_Page_CreateLinkAnnot(
 
 */
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateURILinkAnnot(
+BRST_Page_URILinkAnnotation_New(
     BRST_Page page,
     BRST_Rect rect,
     BRST_CSTR uri
 );
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateHighlightAnnot(
+BRST_Page_HighlightAnnotation_New(
     BRST_Page    page,
     BRST_Rect    rect,
     BRST_CSTR    text,
@@ -109,7 +109,7 @@ BRST_Page_CreateHighlightAnnot(
 );
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateUnderlineAnnot(
+BRST_Page_UnderlineAnnotation_New(
     BRST_Page    page,
     BRST_Rect    rect,
     BRST_CSTR    text,
@@ -117,7 +117,7 @@ BRST_Page_CreateUnderlineAnnot(
 );
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateSquigglyAnnot(
+BRST_Page_SquigglyAnnotation_New(
     BRST_Page    page,
     BRST_Rect    rect,
     BRST_CSTR    text,
@@ -125,7 +125,7 @@ BRST_Page_CreateSquigglyAnnot(
 );
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateStrikeOutAnnot(
+BRST_Page_StrikeOutAnnotation_New(
     BRST_Page    page,
     BRST_Rect    rect,
     BRST_CSTR    text,
@@ -133,14 +133,14 @@ BRST_Page_CreateStrikeOutAnnot(
 );
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreatePopupAnnot(
+BRST_Page_PopupAnnotation_New(
     BRST_Page       page,
     BRST_Rect       rect,
     BRST_Annotation parent
 );
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateStampAnnot(
+BRST_Page_StampAnnotation_New(
     BRST_Page           page,
     BRST_Rect           rect,
     BRST_StampAnnotName name,
@@ -149,7 +149,7 @@ BRST_Page_CreateStampAnnot(
 );
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateProjectionAnnot(
+BRST_Page_ProjectionAnnotation_New(
     BRST_Page    page,
     BRST_Rect    rect,
     BRST_CSTR    text,
@@ -157,7 +157,7 @@ BRST_Page_CreateProjectionAnnot(
 );
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateSquareAnnot(
+BRST_Page_SquareAnnotation_New(
     BRST_Page    page,
     BRST_Rect    rect,
     BRST_CSTR    text,
@@ -165,7 +165,7 @@ BRST_Page_CreateSquareAnnot(
 );
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_CreateCircleAnnot(
+BRST_Page_CircleAnnotation_New(
     BRST_Page    page,
     BRST_Rect    rect,
     BRST_CSTR    text,
@@ -190,13 +190,13 @@ BRST_Page_CreateCircleAnnot(
   \see _BRST_AnnotHighlightMode
 */
 BRST_EXPORT(BRST_STATUS)
-BRST_LinkAnnot_SetHighlightMode(
+BRST_LinkAnnotation_SetHighlightMode(
     BRST_Annotation         annot,
     BRST_AnnotHighlightMode mode
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_LinkAnnot_SetJavaScript(
+BRST_LinkAnnotation_SetJavaScript(
     BRST_Annotation annot,
     BRST_JavaScript javascript
 );
@@ -220,7 +220,7 @@ BRST_LinkAnnot_SetJavaScript(
 
 */
 BRST_EXPORT(BRST_STATUS)
-BRST_LinkAnnot_SetBorderStyle(
+BRST_LinkAnnotation_SetBorderStyle(
     BRST_Annotation annot,
     BRST_REAL       width,
     BRST_UINT16     dash_on,
@@ -247,7 +247,7 @@ BRST_LinkAnnot_SetBorderStyle(
 
 */
 BRST_EXPORT(BRST_STATUS)
-BRST_TextAnnot_SetIcon(
+BRST_TextAnnotation_SetIcon(
     BRST_Annotation annot,
     BRST_AnnotIcon  icon
 );
@@ -269,114 +269,114 @@ BRST_TextAnnot_SetIcon(
 
 */
 BRST_EXPORT(BRST_STATUS)
-BRST_TextAnnot_SetOpened(
+BRST_TextAnnotation_SetOpened(
     BRST_Annotation annot,
     BRST_BOOL       opened
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Annot_SetRGBColor(
+BRST_Annotation_SetRGBColor(
     BRST_Annotation annot,
     BRST_RGBColor   color
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Annot_SetCMYKColor(
+BRST_Annotation_SetCMYKColor(
     BRST_Annotation annot,
     BRST_CMYKColor  color
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Annot_SetGrayColor(
+BRST_Annotation_SetGrayColor(
     BRST_Annotation annot,
     BRST_REAL       color
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Annot_SetNoColor(
+BRST_Annotation_SetNoColor(
     BRST_Annotation annot
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_MarkupAnnot_SetTitle(
+BRST_MarkupAnnotation_SetTitle(
     BRST_Annotation annot,
     BRST_CSTR       name
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_MarkupAnnot_SetSubject(
+BRST_MarkupAnnotation_SetSubject(
     BRST_Annotation annot,
     BRST_CSTR       name
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_MarkupAnnot_SetCreationDate(
+BRST_MarkupAnnotation_SetCreationDate(
     BRST_Annotation annot,
     BRST_Date       value
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_MarkupAnnot_SetTransparency(
+BRST_MarkupAnnotation_SetTransparency(
     BRST_Annotation annot,
     BRST_REAL       value
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_MarkupAnnot_SetIntent(
+BRST_MarkupAnnotation_SetIntent(
     BRST_Annotation  annot,
     BRST_AnnotIntent intent
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_MarkupAnnot_SetPopup(
+BRST_MarkupAnnotation_SetPopup(
     BRST_Annotation annot,
     BRST_Annotation popup
 );
 
 /* RD entry */
 BRST_EXPORT(BRST_STATUS)
-BRST_MarkupAnnot_SetRectDiff(
+BRST_MarkupAnnotation_SetRectDiff(
     BRST_Annotation annot,
     BRST_Rect       rect
 ); 
 
 /* BE entry */
 BRST_EXPORT(BRST_STATUS)
-BRST_MarkupAnnot_SetCloudEffect(
+BRST_MarkupAnnotation_SetCloudEffect(
     BRST_Annotation annot,
     BRST_INT        cloudIntensity
 );
 
 /* IC with RGB entry */
 BRST_EXPORT(BRST_STATUS)
-BRST_MarkupAnnot_SetInteriorRGBColor(
+BRST_MarkupAnnotation_SetInteriorRGBColor(
     BRST_Annotation annot,
     BRST_RGBColor   color
 );
 
 /* IC with CMYK entry */
 BRST_EXPORT(BRST_STATUS)
-BRST_MarkupAnnot_SetInteriorCMYKColor(
+BRST_MarkupAnnotation_SetInteriorCMYKColor(
     BRST_Annotation annot,
     BRST_CMYKColor  color
 );
 
 /* IC with Gray entry */
 BRST_EXPORT(BRST_STATUS)
-BRST_MarkupAnnot_SetInteriorGrayColor(
+BRST_MarkupAnnotation_SetInteriorGrayColor(
     BRST_Annotation annot,
     BRST_REAL       color
 );
 
 /* IC with No Color entry */
 BRST_EXPORT(BRST_STATUS)
-BRST_MarkupAnnot_SetInteriorTransparent(
+BRST_MarkupAnnotation_SetInteriorTransparent(
     BRST_Annotation annot
 ); 
 
 /* l-left, r-right, b-bottom, t-top positions */
 BRST_EXPORT(BRST_STATUS)
-BRST_TextMarkupAnnot_SetQuadPoints(
+BRST_TextMarkupAnnotation_SetQuadPoints(
     BRST_Annotation annot,
     BRST_Point      lb,
     BRST_Point      rb,
@@ -385,7 +385,7 @@ BRST_TextMarkupAnnot_SetQuadPoints(
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_Annot_Set3DView(
+BRST_Annotation_Set3DView(
     BRST_MMgr       mmgr,
     BRST_Annotation annot,
     BRST_Annotation annot3d,
@@ -393,13 +393,13 @@ BRST_Annot_Set3DView(
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_PopupAnnot_SetOpened(
+BRST_PopupAnnotation_SetOpened(
     BRST_Annotation annot,
     BRST_BOOL       opened
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_FreeTextAnnot_SetLineEndingStyle(
+BRST_FreeTextAnnotation_SetLineEndingStyle(
     BRST_Annotation           annot, 
     BRST_LineAnnotEndingStyle startStyle, 
     BRST_LineAnnotEndingStyle endStyle
@@ -407,7 +407,7 @@ BRST_FreeTextAnnot_SetLineEndingStyle(
 
 /* Callout line will be in default user space */
 BRST_EXPORT(BRST_STATUS)
-BRST_FreeTextAnnot_Set3PointCalloutLine(
+BRST_FreeTextAnnotation_Set3PointCalloutLine(
     BRST_Annotation annot,
     BRST_Point      startPoint,
     BRST_Point      kneePoint,
@@ -416,20 +416,20 @@ BRST_FreeTextAnnot_Set3PointCalloutLine(
 
 /* Callout line will be in default user space */
 BRST_EXPORT(BRST_STATUS)
-BRST_FreeTextAnnot_Set2PointCalloutLine(
+BRST_FreeTextAnnotation_Set2PointCalloutLine(
     BRST_Annotation annot,
     BRST_Point      startPoint,
     BRST_Point      endPoint
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_FreeTextAnnot_SetDefaultStyle(
+BRST_FreeTextAnnotation_SetDefaultStyle(
     BRST_Annotation annot,
     BRST_CSTR       style
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_LineAnnot_SetPosition(
+BRST_LineAnnotation_SetPosition(
     BRST_Annotation           annot,
     BRST_Point                startPoint,
     BRST_LineAnnotEndingStyle startStyle,
@@ -438,7 +438,7 @@ BRST_LineAnnot_SetPosition(
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_LineAnnot_SetLeader(
+BRST_LineAnnotation_SetLeader(
     BRST_Annotation annot,
     BRST_INT        leaderLen,
     BRST_INT        leaderExtLen,
@@ -446,7 +446,7 @@ BRST_LineAnnot_SetLeader(
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_LineAnnot_SetCaption(
+BRST_LineAnnotation_SetCaption(
     BRST_Annotation           annot,
     BRST_BOOL                 showCaption,
     BRST_LineAnnotCapPosition position,
@@ -485,13 +485,13 @@ BRST_Annotation_SetBorderStyle(
 );
 
 BRST_EXPORT(BRST_STATUS)
-BRST_ProjectionAnnot_SetExData(
+BRST_ProjectionAnnotation_SetExData(
     BRST_Annotation annot, 
     BRST_ExData exdata
 );
 
 BRST_Annotation
-BRST_Page_CreateTextMarkupAnnot(
+BRST_Page_TextMarkupAnnotation_New(
     BRST_Page      page,
     BRST_Rect      rect,
     BRST_CSTR      text,
@@ -502,7 +502,7 @@ BRST_Page_CreateTextMarkupAnnot(
 #ifdef LIBBRST_U3D_SUPPORT
 
 BRST_EXPORT(BRST_Annotation)
-BRST_Page_Create3DAnnot(
+BRST_Page_3DAnnotation_New(
     BRST_Page  page,
     BRST_Rect  rect,
     BRST_BOOL  tb,

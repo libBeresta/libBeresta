@@ -12,7 +12,7 @@ BRST_EncryptDict_New(
 );
 
 void
-BRST_EncryptDict_CreateID(
+BRST_EncryptDict_NewID(
     BRST_EncryptDict dict,
     BRST_Dict        info,
     BRST_Xref        xref

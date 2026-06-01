@@ -8,7 +8,7 @@
   \ingroup graphics
   \brief Draw XObject using current graphics context.
 
-  This is used by BRST_Page_DrawImage() to draw the \ref BRST_Image by first calling
+  This is used by BRST_Page_Image_Draw() to draw the \ref BRST_Image by first calling
   BRST_Page_GSave() and BRST_Page_Concat() and then calling BRST_Page_GRestore() 
   after BRST_Page_XObject_Execute(). It could be used manually to rotate an image.
 

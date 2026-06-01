@@ -31,7 +31,7 @@ BRST_Pattern createPattern(BRST_Doc pdf, BRST_Page page, BRST_REAL degrees, BRST
     BRST_Matrix matrix = BRST_Doc_Matrix_RotateDeg(pdf, BRST_Doc_Matrix_Scale(pdf, BRST_Doc_Matrix_Identity(pdf), scale, scale), degrees);
 
     // Создание узора
-    BRST_Pattern pattern = BRST_Doc_Pattern_Tiling_Create(pdf, 0, 0, 10, 10, 10, 10, matrix);
+    BRST_Pattern pattern = BRST_Doc_Pattern_Tiling_New(pdf, 0, 0, 10, 10, 10, 10, matrix);
     BRST_Stream stream = BRST_Doc_Pattern_Stream(pattern);
 
     // Наполнение узора

@@ -82,7 +82,7 @@ int main(int argc, char **argv)
     y = 20;
 
     // Отображение изображения на холсте
-    BRST_Page_DrawImage(page, image, x, y, 32, 32);
+    BRST_Page_Image_Draw(page, image, x, y, 32, 32);
 
     // Загрузка полутонового изображения из файла
     #ifndef __WIN32__
@@ -97,7 +97,7 @@ int main(int argc, char **argv)
     y = 20;
 
     // Отображение изображения на холсте
-    BRST_Page_DrawImage(page, image, x, y, 32, 32);
+    BRST_Page_Image_Draw(page, image, x, y, 32, 32);
 
     // Загрузка полутонового одно-битного изображения из памяти
     image = BRST_Doc_Image_Raw_LoadFromMemory(pdf, RAW_IMAGE_DATA, 32, 32,
@@ -107,7 +107,7 @@ int main(int argc, char **argv)
     y = 20;
 
     // Отображение изображения на холсте
-    BRST_Page_DrawImage(page, image, x, y, 32, 32);
+    BRST_Page_Image_Draw(page, image, x, y, 32, 32);
 
     // Сохранение документа в файл
     BRST_Doc_SaveToFile(pdf, fname);
