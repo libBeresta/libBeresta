@@ -123,4 +123,7 @@ set(CPACK_FREEBSD_PACKAGE_CATEGORY "devel")
 set(CPACK_FREEBSD_PACKAGE_DEPENDS "zlib, png")
 set(CPACK_FREEBSD_FILE_NAME "libbrst-dev-${CPACK_PACKAGE_VERSION}.pkg")
 
+# HaikuOS / универсальный: tar.gz архив
+set(CPACK_TGZ_FILE_NAME "libbrst-dev-${CPACK_PACKAGE_VERSION}-${CMAKE_SYSTEM_PROCESSOR}.tar.gz")
+
 include(CPack)
