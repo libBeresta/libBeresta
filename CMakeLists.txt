@@ -79,4 +79,42 @@ if(LIBBRST_JSON_YAML)
     add_subdirectory(gen)
 endif(LIBBRST_JSON_YAML)
 
+# --- Установка заголовочных файлов ---
+install(
+    DIRECTORY ${PROJECT_SOURCE_DIR}/include/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    FILES_MATCHING
+        PATTERN "*.h"
+)
 
+# --- Установка библиотеки ---
+install(
+    TARGETS brst
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+
+# --- Установка .pc файла для pkg-config ---
+configure_file(
+    ${PROJECT_SOURCE_DIR}/libbrst.pc.in
+    ${PROJECT_BINARY_DIR}/libbrst.pc
+    @ONLY
+)
+install(
+    FILES ${PROJECT_BINARY_DIR}/libbrst.pc
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
+)
+
+# --- CPack: генерация deb-пакета ---
+set(CPACK_GENERATOR "DEB")
+set(CPACK_PACKAGE_NAME "libbrst-dev")
+set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY ${PROJECT_DESCRIPTION})
+set(CPACK_PACKAGE_VENDOR "libBeresta")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Dmitry Solomennikov <dmitrys99@mail.ru>")
+set(CPACK_DEBIAN_PACKAGE_SECTION "libs")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "zlib1g-dev, libpng-dev")
+set(CPACK_DEBIAN_FILE_NAME "libbrst-dev-${CPACK_PACKAGE_VERSION}-${CMAKE_SYSTEM_PROCESSOR}.deb")
+set(CPACK_PACKAGE_FILE_NAME "libbrst-dev-${CPACK_PACKAGE_VERSION}")
+
+include(CPack)
