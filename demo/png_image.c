@@ -63,7 +63,7 @@ int main(int argc, char** argv)
     double ih = BRST_Image_Height(image);
 
     // Отображение изображения на холсте
-    BRST_Page_DrawImage(page, image, 20*BRST_MM, 20*BRST_MM, iw, ih);
+    BRST_Page_Image_Draw(page, image, 20*BRST_MM, 20*BRST_MM, iw, ih);
 
     // Сохранение документа в файл
     BRST_Doc_SaveToFile(pdf, fname);
