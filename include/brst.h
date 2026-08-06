@@ -44,8 +44,5 @@
 #include "brst_doc_pattern.h"
 #include "brst_doc_page_pattern.h"
 #include "brst_stream_text.h"
-// TODO Вынести эти функции на публичный уровень
-// TODO Или вынести только StrCopy()
-#include "private/brst_utils.h"
 
 #endif /* BRST_H */

@@ -1,7 +1,6 @@
 #ifndef PRIVATE_BRST_DEFINES_H
 #define PRIVATE_BRST_DEFINES_H
 
-#include "private/brst_utils.h"
 #include "brst_geometry_defines.h"
 
 #define G3CODES
