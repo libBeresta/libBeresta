@@ -1,0 +1,54 @@
+// license
+#ifndef BRST_TEXT_DEFINES_H
+#define BRST_TEXT_DEFINES_H
+
+/**
+ 
+ */
+typedef enum _BRST_TextRenderingMode { 
+    /// 
+    BRST_TEXT_RENDERING_MODE_FILL,
+    /// 
+    BRST_TEXT_RENDERING_MODE_STROKE,
+    /// 
+    BRST_TEXT_RENDERING_MODE_FILL_THEN_STROKE,
+    /// 
+    BRST_TEXT_RENDERING_MODE_INVISIBLE,
+    /// 
+    BRST_TEXT_RENDERING_MODE_FILL_CLIPPING,
+    /// 
+    BRST_TEXT_RENDERING_MODE_STROKE_CLIPPING,
+    /// 
+    BRST_TEXT_RENDERING_MODE_FILL_STROKE_CLIPPING,
+    /// 
+    BRST_TEXT_RENDERING_MODE_CLIPPING,
+    BRST_TEXTRENDERINGMODE_LAST
+} BRST_TextRenderingMode;
+
+/**
+ 
+ */
+typedef enum _BRST_TextAlignment { 
+    /// 
+    BRST_TEXT_ALIGN_LEFT,
+    /// 
+    BRST_TEXT_ALIGN_RIGHT,
+    /// 
+    BRST_TEXT_ALIGN_CENTER,
+    /// 
+    BRST_TEXT_ALIGN_JUSTIFY,
+    BRST_TEXTALIGNMENT_LAST
+} BRST_TextAlignment;
+
+/**
+ 
+ */
+typedef enum _BRST_WritingMode { 
+    /// 
+    BRST_WRITING_MODE_HORIZONTAL,
+    /// 
+    BRST_WRITING_MODE_VERTICAL,
+    BRST_WRITINGMODE_LAST
+} BRST_WritingMode;
+
+#endif /* BRST_TEXT_DEFINES_H */
