@@ -243,7 +243,7 @@ BRST_Doc_Page_AddLabel(BRST_Doc pdf,
         return BRST_Error_Check(pdf->error);
 
     if (style < 0 || style >= BRST_PAGE_NUM_EOF)
-        return BRST_Error_Raise(pdf->error, BRST_PAGE_NUM_OUT_OF_RANGE,
+        return BRST_Error_Raise(pdf->error, BRST_PAGE_NUM_STYLE_OUT_OF_RANGE,
             (BRST_STATUS)style);
 
     ret = BRST_Catalog_AddPageLabel(pdf->catalog, page_num, page_label);
