@@ -126,7 +126,7 @@ BRST_Doc_Image_Raw_LoadFromMemory(BRST_Doc pdf,
         return NULL;
 
     /* Use directly BRST_Image_LoadRaw1BitImageFromMem to save B/W images */
-    if (color_space == BRST_CS_DEVICE_GRAY && bits_per_component == 1) {
+    if (color_space == BRST_COLORSPACE_DEVICEGRAY && bits_per_component == 1) {
         return BRST_Doc_Image_Raw1Bit_LoadFromMemory(pdf, buf, width, height, (width + 7) / 8, BRST_TRUE, BRST_TRUE);
     }
 

@@ -75,7 +75,7 @@ BRST_Image_Raw_LoadFromStream(BRST_MMgr mmgr,
 
     BRST_PTRACE(" BRST_Image_Raw_LoadFromStream\n");
 
-    if (color_space != BRST_CS_DEVICE_GRAY && color_space != BRST_CS_DEVICE_RGB && color_space != BRST_CS_DEVICE_CMYK) {
+    if (color_space != BRST_COLORSPACE_DEVICEGRAY && color_space != BRST_COLORSPACE_DEVICERGB && color_space != BRST_COLORSPACE_DEVICECMYK) {
         BRST_Error_Set(BRST_MMgr_Error(mmgr), BRST_INVALID_COLOR_SPACE, 0);
         return NULL;
     }
@@ -90,10 +90,10 @@ BRST_Image_Raw_LoadFromStream(BRST_MMgr mmgr,
     if (ret != BRST_OK)
         return NULL;
 
-    if (color_space == BRST_CS_DEVICE_GRAY) {
+    if (color_space == BRST_COLORSPACE_DEVICEGRAY) {
         size = width * height;
         ret  = BRST_Dict_AddName(image, "ColorSpace", COL_GRAY);
-    } else if (color_space == BRST_CS_DEVICE_CMYK) {
+    } else if (color_space == BRST_COLORSPACE_DEVICECMYK) {
         size = width * height * 4;
         ret  = BRST_Dict_AddName(image, "ColorSpace", COL_CMYK);
     } else {
@@ -139,7 +139,7 @@ BRST_Image_Raw_LoadFromMemory(BRST_MMgr mmgr,
 
     BRST_PTRACE(" BRST_Image_Raw_LoadFromMemory\n");
 
-    if (color_space != BRST_CS_DEVICE_GRAY && color_space != BRST_CS_DEVICE_RGB && color_space != BRST_CS_DEVICE_CMYK) {
+    if (color_space != BRST_COLORSPACE_DEVICEGRAY && color_space != BRST_COLORSPACE_DEVICERGB && color_space != BRST_COLORSPACE_DEVICECMYK) {
         BRST_Error_Set(BRST_MMgr_Error(mmgr), BRST_INVALID_COLOR_SPACE, 0);
         return NULL;
     }
@@ -160,16 +160,16 @@ BRST_Image_Raw_LoadFromMemory(BRST_MMgr mmgr,
         return NULL;
 
     switch (color_space) {
-    case BRST_CS_DEVICE_GRAY:
+    case BRST_COLORSPACE_DEVICEGRAY:
         size = (BRST_UINT)((BRST_DOUBLE)width * height / (8 / bits_per_component) + 0.876);
         ret  = BRST_Dict_AddName(image, "ColorSpace", COL_GRAY);
         break;
-    case BRST_CS_DEVICE_RGB:
+    case BRST_COLORSPACE_DEVICERGB:
         size = (BRST_UINT)((BRST_DOUBLE)width * height / (8 / bits_per_component) + 0.876);
         size *= 3;
         ret = BRST_Dict_AddName(image, "ColorSpace", COL_RGB);
         break;
-    case BRST_CS_DEVICE_CMYK:
+    case BRST_COLORSPACE_DEVICECMYK:
         size = (BRST_UINT)((BRST_DOUBLE)width * height / (8 / bits_per_component) + 0.876);
         size *= 4;
         ret = BRST_Dict_AddName(image, "ColorSpace", COL_CMYK);

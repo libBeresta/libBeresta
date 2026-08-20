@@ -72,10 +72,10 @@ int main(int argc, char **argv)
     // Загрузка RGB изображений из файлов
     #ifndef __WIN32__
     image = BRST_Doc_Image_Raw_LoadFromFile(pdf, "../../data/images/rawimage/32_32_rgb.dat",
-            32, 32, BRST_CS_DEVICE_RGB);
+            32, 32, BRST_COLORSPACE_DEVICERGB);
     #else
     image = BRST_Doc_Image_Raw_LoadFromFile(pdf, "..\\..\\data\\images\\rawimage\\32_32_rgb.dat",
-            32, 32, BRST_CS_DEVICE_RGB);
+            32, 32, BRST_COLORSPACE_DEVICERGB);
     #endif
 
     x = 20;
@@ -87,10 +87,10 @@ int main(int argc, char **argv)
     // Загрузка полутонового изображения из файла
     #ifndef __WIN32__
     image = BRST_Doc_Image_Raw_LoadFromFile(pdf, "../../data/images/rawimage/32_32_gray.dat",
-            32, 32, BRST_CS_DEVICE_GRAY);
+            32, 32, BRST_COLORSPACE_DEVICEGRAY);
     #else
     image = BRST_Doc_Image_Raw_LoadFromFile(pdf, "..\\..\\data\\images\\rawimage\\32_32_gray.dat",
-            32, 32, BRST_CS_DEVICE_GRAY);
+            32, 32, BRST_COLORSPACE_DEVICEGRAY);
     #endif
 
     x = 70;
@@ -101,7 +101,7 @@ int main(int argc, char **argv)
 
     // Загрузка полутонового одно-битного изображения из памяти
     image = BRST_Doc_Image_Raw_LoadFromMemory(pdf, RAW_IMAGE_DATA, 32, 32,
-                BRST_CS_DEVICE_GRAY, 1);
+                BRST_COLORSPACE_DEVICEGRAY, 1);
 
     x = 120;
     y = 20;
