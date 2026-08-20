@@ -149,7 +149,7 @@ BRST_Annotation_SetBorderStyle(BRST_Annotation annot,
     if ((ret = BRST_Dict_Add(annot, "BS", bs)) != BRST_OK)
         return ret;
 
-    if (subtype == BRST_BS_DASHED) {
+    if (subtype == BRST_BORDERSTYLE_DASHED) {
         dash = BRST_Array_New(annot->mmgr);
         if (!dash)
             return BRST_Error_Code(annot->error);
@@ -166,19 +166,19 @@ BRST_Annotation_SetBorderStyle(BRST_Annotation annot,
     }
 
     switch (subtype) {
-    case BRST_BS_SOLID:
+    case BRST_BORDERSTYLE_SOLID:
         ret += BRST_Dict_AddName(bs, "S", "S");
         break;
-    case BRST_BS_DASHED:
+    case BRST_BORDERSTYLE_DASHED:
         ret += BRST_Dict_AddName(bs, "S", "D");
         break;
-    case BRST_BS_BEVELED:
+    case BRST_BORDERSTYLE_BEVELED:
         ret += BRST_Dict_AddName(bs, "S", "B");
         break;
-    case BRST_BS_INSET:
+    case BRST_BORDERSTYLE_INSET:
         ret += BRST_Dict_AddName(bs, "S", "I");
         break;
-    case BRST_BS_UNDERLINED:
+    case BRST_BORDERSTYLE_UNDERLINED:
         ret += BRST_Dict_AddName(bs, "S", "U");
         break;
     default:

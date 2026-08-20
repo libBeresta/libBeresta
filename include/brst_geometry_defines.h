@@ -48,15 +48,16 @@ typedef enum _BRST_LineJoin {
 
 typedef enum _BRST_BSSubtype {
     /// Solid rectangle
-    BRST_BS_SOLID,
+    BRST_BORDERSTYLE_SOLID,
     /// Dashed rectangle
-    BRST_BS_DASHED,
+    BRST_BORDERSTYLE_DASHED,
     /// Embossed rectangle
-    BRST_BS_BEVELED,
+    BRST_BORDERSTYLE_BEVELED,
     /// Engraved rectangle
-    BRST_BS_INSET,
+    BRST_BORDERSTYLE_INSET,
     /// Single line under the bottom of the annotation
-    BRST_BS_UNDERLINED
+    BRST_BORDERSTYLE_UNDERLINED,
+    BRST_BORDERSTYLE_EOF
 } BRST_BSSubtype;
 
 /*----- blend modes ----------------------------------------------------------*/
