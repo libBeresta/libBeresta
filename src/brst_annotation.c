@@ -284,16 +284,16 @@ BRST_LinkAnnot_SetHighlightMode(BRST_Annotation annot,
         return BRST_INVALID_ANNOTATION;
 
     switch (mode) {
-    case BRST_ANNOT_NO_HIGHLIGHT:
+    case BRST_ANNOT_HIGHLIGHT_MODE_NONE:
         ret = BRST_Dict_AddName(annot, "H", "N");
         break;
-    case BRST_ANNOT_INVERT_BORDER:
+    case BRST_ANNOT_HIGHLIGHT_MODE_OUTLINE:
         ret = BRST_Dict_AddName(annot, "H", "O");
         break;
-    case BRST_ANNOT_DOWN_APPEARANCE:
+    case BRST_ANNOT_HIGHLIGHT_MODE_PUSH:
         ret = BRST_Dict_AddName(annot, "H", "P");
         break;
-    default: /* BRST_ANNOT_INVERT_BOX */
+    default: /* BRST_ANNOT_HIGHLIGHT_MODE_INVERT */
         /* default value */
         BRST_Dict_RemoveElement(annot, "H");
         ret = BRST_OK;
@@ -397,7 +397,7 @@ BRST_TextAnnot_SetIcon(BRST_Annotation annot,
 {
     BRST_PTRACE(" BRST_TextAnnot_SetIcon\n");
 
-    if (!CheckSubType(annot, BRST_ANNOT_TEXT_NOTES))
+    if (!CheckSubType(annot, BRST_ANNOT_TEXT))
         return BRST_INVALID_ANNOTATION;
 
     if (icon >= BRST_ANNOT_ICON_EOF)
@@ -420,7 +420,7 @@ BRST_TextAnnot_SetOpened(BRST_Annotation annot,
 
     BRST_PTRACE(" BRST_TextAnnot_SetOpened\n");
 
-    if (!CheckSubType(annot, BRST_ANNOT_TEXT_NOTES))
+    if (!CheckSubType(annot, BRST_ANNOT_TEXT))
         return BRST_INVALID_ANNOTATION;
 
     b = BRST_Boolean_New(annot->mmgr, opened);
@@ -640,7 +640,7 @@ BRST_TextMarkupAnnot_SetQuadPoints(BRST_Annotation annot, BRST_Point lb, BRST_Po
 }
 
 BRST_EXPORT(BRST_STATUS)
-BRST_FreeTextAnnot_SetLineEndingStyle(BRST_Annotation annot, BRST_LineAnnotEndingStyle startStyle, BRST_LineAnnotEndingStyle endStyle)
+BRST_FreeTextAnnot_SetLineEndingStyle(BRST_Annotation annot, BRST_AnnotLineEnd startStyle, BRST_AnnotLineEnd endStyle)
 {
     BRST_Array lineEndStyles;
     BRST_STATUS ret = BRST_OK;
@@ -792,8 +792,8 @@ BRST_MarkupAnnot_SetCloudEffect(BRST_Annotation annot, BRST_INT cloudIntensity) 
 
 BRST_EXPORT(BRST_STATUS)
 BRST_LineAnnot_SetPosition(BRST_Annotation annot,
-    BRST_Point startPoint, BRST_LineAnnotEndingStyle startStyle,
-    BRST_Point endPoint, BRST_LineAnnotEndingStyle endStyle)
+    BRST_Point startPoint, BRST_AnnotLineEnd startStyle,
+    BRST_Point endPoint, BRST_AnnotLineEnd endStyle)
 {
     BRST_Array lineEndPoints;
     BRST_Array lineEndStyles;
@@ -941,7 +941,7 @@ BRST_Page_TextAnnotation_New(BRST_Page page,
         return NULL;
     }
 
-    annot = BRST_MarkupAnnotation_New(page->mmgr, attr->xref, rect, text, encoder, BRST_ANNOT_TEXT_NOTES);
+    annot = BRST_MarkupAnnotation_New(page->mmgr, attr->xref, rect, text, encoder, BRST_ANNOT_TEXT);
     if (annot) {
         if (AddAnnotation(page, annot) != BRST_OK) {
             BRST_Error_Check(page->error);
@@ -1253,7 +1253,7 @@ BRST_Page_StrikeOutAnnotation_New(BRST_Page page,
 {
     BRST_PTRACE(" BRST_Page_StrikeOutAnnotation_New\n");
 
-    return BRST_Page_TextMarkupAnnotation_New(page, rect, text, encoder, BRST_ANNOT_STRIKE_OUT);
+    return BRST_Page_TextMarkupAnnotation_New(page, rect, text, encoder, BRST_ANNOT_STRIKEOUT);
 }
 
 BRST_EXPORT(BRST_Annotation)
@@ -1286,7 +1286,7 @@ BRST_Page_PopupAnnotation_New(BRST_Page page,
 BRST_EXPORT(BRST_Annotation)
 BRST_Page_StampAnnotation_New(BRST_Page page,
     BRST_Rect rect,
-    BRST_StampAnnotName name,
+    BRST_AnnotStampStyle name,
     const char* text,
     BRST_Encoder encoder)
 {

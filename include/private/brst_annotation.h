@@ -55,12 +55,12 @@ BRST_PopupAnnotation_New(
 
 BRST_Annotation
 BRST_StampAnnotation_New(
-    BRST_MMgr           mmgr,
-    BRST_Xref           xref,
-    BRST_Rect           rect,
-	BRST_StampAnnotName name,
-	const char*	        text,
-	BRST_Encoder	    encoder
+    BRST_MMgr            mmgr,
+    BRST_Xref            xref,
+    BRST_Rect            rect,
+	BRST_AnnotStampStyle name,
+	const char*	         text,
+	BRST_Encoder	     encoder
 );
 
 BRST_Annotation
