@@ -28,7 +28,7 @@
                          :name "pdf"
                          :ru ":param_pdf"
                          :en ":param_pdf")
-                        (:type "Permission"
+                        (:type "UINT"
                          :name "permission"
                          :ru "Флаги разрешений"
                          :en "Permission flags."))

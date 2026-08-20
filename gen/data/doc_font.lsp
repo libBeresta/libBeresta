@@ -43,7 +43,7 @@
                          :name "embedding"
                          :ru "Если этот параметр равен \\ref BRST_TRUE, данные о глифах шрифта встраиваются в PDF-файл, иначе в PDF-файл включаются только матричные данные."
                          :en "If this parameter is set to \\ref BRST_TRUE, the glyph data of the font is included to PDF file, otherwise only the matrix data is included to PDF file."))
-            :result (:type "Font"
+            :result (:type "CSTR"
                         :ru "Наименование (идентификатор) шрифта при успехе, в противном случае возвращается \\c NULL и вызывается обработчик ошибок."
                         :en "Name of the font on success, otherwise, it returns \\c NULL and calls error handler.")
             :see ("fonts")

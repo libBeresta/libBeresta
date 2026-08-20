@@ -107,7 +107,7 @@
                     (:element "PAGE_NUM_STYLE_OUT_OF_RANGE" :ru "" :en "" :value "0x1071")
                     (:element "ANNOT_INVALID_ICON"          :ru "" :en "" :value "0x1072")
                     (:element "ANNOT_INVALID_BORDER_STYLE"  :ru "" :en "" :value "0x1073")
-                    (:element "PAGE_INVALID_DIRECTION"      :ru "" :en "" :value "0x1074")
+                    (:element "PAGE_INVALID_ORIENTATION"    :ru "" :en "" :value "0x1074")
                     (:element "PAGE_INSUFFICIENT_SPACE"     :ru "" :en "" :value "0x1076")
                     (:element "PAGE_INVALID_DISPLAY_TIME"   :ru "" :en "" :value "0x1077")
                     (:element "PAGE_INVALID_TRANSITION_TIME":ru "" :en "" :value "0x1078")
