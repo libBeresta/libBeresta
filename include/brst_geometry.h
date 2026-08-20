@@ -1133,11 +1133,11 @@ BRST_Page_SetLineWidth(
 
   | Value                           | Image                    | Description                                                             |
   | -----                           | -----                    | -----------                                                             |
-  | \ref BRST_BUTT_END              | \image html linecap1.png | Line is squared off at path endpoint.                                   |
-  | \ref BRST_ROUND_END             | \image html linecap2.png | End of line becomes a semicircle with center  at path endpoint.         |
-  | \ref BRST_PROJECTING_SQUARE_END | \image html linecap3.png | Line continues beyond endpoint, goes on half the endpoint stroke width. |
+  | \ref BRST_BUTT_CAP              | \image html linecap1.png | Line is squared off at path endpoint.                                   |
+  | \ref BRST_ROUND_CAP             | \image html linecap2.png | End of line becomes a semicircle with center  at path endpoint.         |
+  | \ref BRST_PROJECTING_SQUARE_CAP | \image html linecap3.png | Line continues beyond endpoint, goes on half the endpoint stroke width. |
 
-  Default \c line_cap is \ref BRST_BUTT_END
+  Default \c line_cap is \ref BRST_BUTT_CAP
 
   \copydoc dox_graphics_mode
 

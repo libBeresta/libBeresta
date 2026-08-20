@@ -27,9 +27,9 @@ typedef struct _BRST_CMYKColor {
 /*------ The line cap style -------------------------------------------------*/
 
 typedef enum _BRST_LineCap {
-    BRST_BUTT_END = 0,
-    BRST_ROUND_END,
-    BRST_PROJECTING_SQUARE_END,
+    BRST_BUTT_CAP = 0,
+    BRST_ROUND_CAP,
+    BRST_PROJECTING_SQUARE_CAP,
     BRST_LINECAP_EOF
 } BRST_LineCap;
 
@@ -108,7 +108,7 @@ static const BRST_CMYKColor DEF_CMYK_COLOR = {0, 0, 0, 0};
 static const BRST_DashMode DEF_DASH_MODE = {{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f}, 0, 0.0f};
 
 #define BRST_DEF_LINEWIDTH          1
-#define BRST_DEF_LINECAP            BRST_BUTT_END
+#define BRST_DEF_LINECAP            BRST_BUTT_CAP
 #define BRST_DEF_LINEJOIN           BRST_MITER_JOIN
 #define BRST_DEF_MITERLIMIT         10
 #define BRST_DEF_FLATNESS           1
