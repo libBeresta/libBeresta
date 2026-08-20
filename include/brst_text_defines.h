@@ -20,10 +20,10 @@ typedef enum _BRST_TextRenderingMode {
 
 
 typedef enum _BRST_TextAlignment {
-    BRST_TALIGN_LEFT = 0,
-    BRST_TALIGN_RIGHT,
-    BRST_TALIGN_CENTER,
-    BRST_TALIGN_JUSTIFY
+    BRST_TEXT_ALIGN_LEFT = 0,
+    BRST_TEXT_ALIGN_RIGHT,
+    BRST_TEXT_ALIGN_CENTER,
+    BRST_TEXT_ALIGN_JUSTIFY
 } BRST_TextAlignment;
 
 typedef enum _BRST_WritingMode {
