@@ -43,6 +43,16 @@
  * #define  BRST_COMP_BEST_SPEED      0x20
  */
 #define  BRST_COMP_MASK            0xFF
+/*----------------------------------------------------------------------------*/
+/*------ viewer preferences definitions --------------------------------------*/
+
+#define BRST_HIDE_TOOLBAR    1
+#define BRST_HIDE_MENUBAR    2
+#define BRST_HIDE_WINDOW_UI  4
+#define BRST_FIT_WINDOW      8
+#define BRST_CENTER_WINDOW   16
+#define BRST_PRINT_SCALING_NONE 32
+#define BRST_DISPLAY_DOC_TITLE 64
 
 
 /**

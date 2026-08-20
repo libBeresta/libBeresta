@@ -53,17 +53,6 @@
 #define BRST_DEF_CHAR_WIDTHS_NUM    128
 
 
-/*----------------------------------------------------------------------------*/
-/*------ viewer preferences definitions --------------------------------------*/
-
-#define BRST_HIDE_TOOLBAR    1
-#define BRST_HIDE_MENUBAR    2
-#define BRST_HIDE_WINDOW_UI  4
-#define BRST_FIT_WINDOW      8
-#define BRST_CENTER_WINDOW   16
-#define BRST_PRINT_SCALING_NONE 32
-#define BRST_DISPLAY_DOC_TITLE 64
-
 /* default page-size */
 #define BRST_DEF_PAGE_WIDTH         595.276F
 #define BRST_DEF_PAGE_HEIGHT        841.89F
