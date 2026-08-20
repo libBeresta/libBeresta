@@ -107,7 +107,7 @@ InternalShowTextNextLine(BRST_Page page,
     attr->text_pos.x = attr->text_matrix->x;
     attr->text_pos.y = attr->text_matrix->y;
 
-    if (attr->gstate->writing_mode == BRST_WMODE_HORIZONTAL) {
+    if (attr->gstate->writing_mode == BRST_WRITING_MODE_HORIZONTAL) {
         attr->text_pos.x += tw * attr->text_matrix->a;
         attr->text_pos.y += tw * attr->text_matrix->b;
     } else {

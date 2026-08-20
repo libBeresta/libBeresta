@@ -141,11 +141,11 @@ BRST_Page_PopupAnnotation_New(
 
 BRST_EXPORT(BRST_Annotation)
 BRST_Page_StampAnnotation_New(
-    BRST_Page           page,
-    BRST_Rect           rect,
-    BRST_StampAnnotName name,
-    BRST_CSTR           text,
-    BRST_Encoder        encoder
+    BRST_Page            page,
+    BRST_Rect            rect,
+    BRST_AnnotStampStyle name,
+    BRST_CSTR            text,
+    BRST_Encoder         encoder
 );
 
 BRST_EXPORT(BRST_Annotation)
@@ -400,9 +400,9 @@ BRST_PopupAnnotation_SetOpened(
 
 BRST_EXPORT(BRST_STATUS)
 BRST_FreeTextAnnotation_SetLineEndingStyle(
-    BRST_Annotation           annot, 
-    BRST_LineAnnotEndingStyle startStyle, 
-    BRST_LineAnnotEndingStyle endStyle
+    BRST_Annotation   annot,
+    BRST_AnnotLineEnd startStyle,
+    BRST_AnnotLineEnd endStyle
 );
 
 /* Callout line will be in default user space */
@@ -430,11 +430,11 @@ BRST_FreeTextAnnotation_SetDefaultStyle(
 
 BRST_EXPORT(BRST_STATUS)
 BRST_LineAnnotation_SetPosition(
-    BRST_Annotation           annot,
-    BRST_Point                startPoint,
-    BRST_LineAnnotEndingStyle startStyle,
-    BRST_Point                endPoint,
-    BRST_LineAnnotEndingStyle endStyle
+    BRST_Annotation   annot,
+    BRST_Point        startPoint,
+    BRST_AnnotLineEnd startStyle,
+    BRST_Point        endPoint,
+    BRST_AnnotLineEnd endStyle
 );
 
 BRST_EXPORT(BRST_STATUS)

@@ -34,15 +34,26 @@
 /*---------------------------------------------------------------------------*/
 /*----- compression mode ----------------------------------------------------*/
 
-#define  BRST_COMP_NONE            0x00
-#define  BRST_COMP_TEXT            0x01
-#define  BRST_COMP_IMAGE           0x02
-#define  BRST_COMP_METADATA        0x04
-#define  BRST_COMP_ALL             0x0F
+#define  BRST_COMP_MODE_NONE            0x00
+#define  BRST_COMP_MODE_TEXT            0x01
+#define  BRST_COMP_MODE_IMAGE           0x02
+#define  BRST_COMP_MODE_METADATA        0x04
+#define  BRST_COMP_MODE_ALL             0x0F
 /* #define  BRST_COMP_BEST_COMPRESS   0x10
  * #define  BRST_COMP_BEST_SPEED      0x20
  */
-#define  BRST_COMP_MASK            0xFF
+#define  BRST_COMP_MODE_MASK            0xFF
+
+/*----------------------------------------------------------------------------*/
+/*------ viewer preferences definitions --------------------------------------*/
+
+#define BRST_HIDE_TOOLBAR    1
+#define BRST_HIDE_MENUBAR    2
+#define BRST_HIDE_WINDOW_UI  4
+#define BRST_FIT_WINDOW      8
+#define BRST_CENTER_WINDOW   16
+#define BRST_PRINT_SCALING_NONE 32
+#define BRST_DISPLAY_DOC_TITLE 64
 
 
 /**

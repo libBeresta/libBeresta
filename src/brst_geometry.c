@@ -481,7 +481,7 @@ BRST_Page_SetGrayFill(BRST_Page page,
     }
 
     attr->gstate->gray_fill = gray;
-    attr->gstate->cs_fill   = BRST_CS_DEVICE_GRAY;
+    attr->gstate->cs_fill   = BRST_COLORSPACE_DEVICEGRAY;
 
     return ret;
 }
@@ -507,7 +507,7 @@ BRST_Page_SetGrayStroke(BRST_Page page,
     }
 
     attr->gstate->gray_stroke = gray;
-    attr->gstate->cs_stroke   = BRST_CS_DEVICE_GRAY;
+    attr->gstate->cs_stroke   = BRST_COLORSPACE_DEVICEGRAY;
 
     return ret;
 }
@@ -550,7 +550,7 @@ BRST_Dict_SetRGBPatternFill(BRST_Dict dict,
         attr->gstate->rgb_fill.r = r;
         attr->gstate->rgb_fill.g = g;
         attr->gstate->rgb_fill.b = b;
-        attr->gstate->cs_fill    = BRST_CS_DEVICE_RGB;
+        attr->gstate->cs_fill    = BRST_COLORSPACE_DEVICERGB;
         attr->gstate->pattern    = pattern;
     }
 
@@ -602,7 +602,7 @@ BRST_Page_SetRGBFill(BRST_Page page,
     attr->gstate->rgb_fill.r = r;
     attr->gstate->rgb_fill.g = g;
     attr->gstate->rgb_fill.b = b;
-    attr->gstate->cs_fill    = BRST_CS_DEVICE_RGB;
+    attr->gstate->cs_fill    = BRST_COLORSPACE_DEVICERGB;
     attr->gstate->pattern     = NULL;
 
     return ret;
@@ -632,7 +632,7 @@ BRST_Page_SetRGBStroke(BRST_Page page,
     attr->gstate->rgb_stroke.r = r;
     attr->gstate->rgb_stroke.g = g;
     attr->gstate->rgb_stroke.b = b;
-    attr->gstate->cs_stroke    = BRST_CS_DEVICE_RGB;
+    attr->gstate->cs_stroke    = BRST_COLORSPACE_DEVICERGB;
 
     return ret;
 }
@@ -701,7 +701,7 @@ BRST_Page_SetCMYKFill(BRST_Page page,
     attr->gstate->cmyk_fill.m = m;
     attr->gstate->cmyk_fill.y = y;
     attr->gstate->cmyk_fill.k = k;
-    attr->gstate->cs_fill     = BRST_CS_DEVICE_CMYK;
+    attr->gstate->cs_fill     = BRST_COLORSPACE_DEVICECMYK;
     attr->gstate->pattern     = NULL;
 
     return ret;
@@ -733,7 +733,7 @@ BRST_Page_SetCMYKStroke(BRST_Page page,
     attr->gstate->cmyk_stroke.m = m;
     attr->gstate->cmyk_stroke.y = y;
     attr->gstate->cmyk_stroke.k = k;
-    attr->gstate->cs_stroke     = BRST_CS_DEVICE_CMYK;
+    attr->gstate->cs_stroke     = BRST_COLORSPACE_DEVICECMYK;
 
     return ret;
 }
@@ -1353,7 +1353,7 @@ BRST_Page_RGBFill(BRST_Page page)
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-        if (attr->gstate->cs_fill == BRST_CS_DEVICE_RGB)
+        if (attr->gstate->cs_fill == BRST_COLORSPACE_DEVICERGB)
             return attr->gstate->rgb_fill;
     }
 
@@ -1368,7 +1368,7 @@ BRST_Page_RGBStroke(BRST_Page page)
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-        if (attr->gstate->cs_stroke == BRST_CS_DEVICE_RGB)
+        if (attr->gstate->cs_stroke == BRST_COLORSPACE_DEVICERGB)
             return attr->gstate->rgb_stroke;
     }
 
@@ -1383,7 +1383,7 @@ BRST_Page_CMYKFill(BRST_Page page)
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-        if (attr->gstate->cs_fill == BRST_CS_DEVICE_CMYK)
+        if (attr->gstate->cs_fill == BRST_COLORSPACE_DEVICECMYK)
             return attr->gstate->cmyk_fill;
     }
 
@@ -1398,7 +1398,7 @@ BRST_Page_CMYKStroke(BRST_Page page)
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-        if (attr->gstate->cs_stroke == BRST_CS_DEVICE_CMYK)
+        if (attr->gstate->cs_stroke == BRST_COLORSPACE_DEVICECMYK)
             return attr->gstate->cmyk_stroke;
     }
 
@@ -1413,7 +1413,7 @@ BRST_Page_GrayFill(BRST_Page page)
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-        if (attr->gstate->cs_fill == BRST_CS_DEVICE_GRAY)
+        if (attr->gstate->cs_fill == BRST_COLORSPACE_DEVICEGRAY)
             return attr->gstate->gray_fill;
     }
 
@@ -1428,7 +1428,7 @@ BRST_Page_GrayStroke(BRST_Page page)
     if (BRST_Page_Validate(page)) {
         BRST_PageAttr attr = (BRST_PageAttr)page->attr;
 
-        if (attr->gstate->cs_stroke == BRST_CS_DEVICE_GRAY)
+        if (attr->gstate->cs_stroke == BRST_COLORSPACE_DEVICEGRAY)
             return attr->gstate->gray_stroke;
     }
 
@@ -1443,7 +1443,7 @@ BRST_Page_StrokeColorSpace(BRST_Page page)
     if (BRST_Page_Validate(page))
         return ((BRST_PageAttr)page->attr)->gstate->cs_stroke;
 
-    return BRST_CS_EOF;
+    return BRST_COLORSPACE_EOF;
 }
 
 BRST_EXPORT(BRST_ColorSpace)
@@ -1454,7 +1454,7 @@ BRST_Page_FillColorSpace(BRST_Page page)
     if (BRST_Page_Validate(page))
         return ((BRST_PageAttr)page->attr)->gstate->cs_fill;
 
-    return BRST_CS_EOF;
+    return BRST_COLORSPACE_EOF;
 }
 
 BRST_EXPORT(BRST_REAL)

@@ -157,7 +157,7 @@ GBK_EUC_V_Init(BRST_Encoder encoder)
     attr->xuid[1]    = 10;
     attr->xuid[2]    = 25378;
 
-    attr->writing_mode = BRST_WMODE_VERTICAL;
+    attr->writing_mode = BRST_WRITING_MODE_VERTICAL;
 
     encoder->type = BRST_ENCODER_TYPE_DOUBLE_BYTE;
 
@@ -264,7 +264,7 @@ GB_EUC_V_Init(BRST_Encoder encoder)
     BRST_StrCopy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
     BRST_StrCopy(attr->ordering, "GB1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
     attr->supplement   = 0;
-    attr->writing_mode = BRST_WMODE_VERTICAL;
+    attr->writing_mode = BRST_WRITING_MODE_VERTICAL;
     attr->uid_offset   = 310;
     attr->xuid[0]      = 1;
     attr->xuid[1]      = 10;

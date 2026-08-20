@@ -12,7 +12,7 @@
 #include "private/brst_ext_gstate.h"
 #include "private/brst_dict.h"
 
-static const char* const BRST_BM_NAMES[] = {
+static const char* const BRST_BLENDMODE_NAMES[] = {
     "Normal",
     "Multiply",
     "Screen",
@@ -68,11 +68,11 @@ BRST_ExtGState_SetBlendMode(BRST_ExtGState ext_gstate,
     if (ret != BRST_OK)
         return ret;
 
-    if ((int)bmode < 0 || (int)bmode > (int)BRST_BM_EOF)
+    if ((int)bmode < 0 || (int)bmode > (int)BRST_BLENDMODE_EOF)
         return BRST_Error_Raise(ext_gstate->error,
             BRST_EXT_GSTATE_OUT_OF_RANGE, 0);
 
-    return BRST_Dict_AddName(ext_gstate, "BM", BRST_BM_NAMES[(int)bmode]);
+    return BRST_Dict_AddName(ext_gstate, "BM", BRST_BLENDMODE_NAMES[(int)bmode]);
 }
 
 /*

@@ -84,8 +84,8 @@ BRST_GState_New(BRST_MMgr mmgr,
         gstate->rendering_mode = BRST_DEF_RENDERING_MODE;
         gstate->text_rise      = BRST_DEF_RISE;
 
-        gstate->cs_stroke   = BRST_CS_DEVICE_GRAY;
-        gstate->cs_fill     = BRST_CS_DEVICE_GRAY;
+        gstate->cs_stroke   = BRST_COLORSPACE_DEVICEGRAY;
+        gstate->cs_fill     = BRST_COLORSPACE_DEVICEGRAY;
         gstate->rgb_fill    = DEF_RGB_COLOR;
         gstate->rgb_stroke  = DEF_RGB_COLOR;
         gstate->cmyk_fill   = DEF_CMYK_COLOR;
@@ -95,7 +95,7 @@ BRST_GState_New(BRST_MMgr mmgr,
 
         gstate->font         = NULL;
         gstate->font_size    = 0;
-        gstate->writing_mode = BRST_WMODE_HORIZONTAL;
+        gstate->writing_mode = BRST_WRITING_MODE_HORIZONTAL;
 
         gstate->prev  = NULL;
         gstate->depth = 1;

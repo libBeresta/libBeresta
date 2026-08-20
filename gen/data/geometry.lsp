@@ -1149,20 +1149,20 @@ and \\c height in user space."
 
   | Значение                         | Изображение               | Описание                                                                  |
   | --------                         | -----------               | --------                                                                  |
-  | \\ref BRST_BUTT_END               | \\image html linecap1.png  | Линия заканчивается прямоугольником в конечной точке.                     |
-  | \\ref BRST_ROUND_END              | \\image html linecap2.png  | Линия заканчивается полуокружностью с центром в конечной точке.           |
-  | \\ref BRST_PROJECTING_SQUARE_END  | \\image html linecap3.png  | Линия продолжается, выступая за конечную точку на половину толщины линии. |
+  | \\ref BRST_BUTT_CAP               | \\image html linecap1.png  | Линия заканчивается прямоугольником в конечной точке.                     |
+  | \\ref BRST_ROUND_CAP              | \\image html linecap2.png  | Линия заканчивается полуокружностью с центром в конечной точке.           |
+  | \\ref BRST_PROJECTING_SQUARE_CAP  | \\image html linecap3.png  | Линия продолжается, выступая за конечную точку на половину толщины линии. |
 
-  По умолчанию стиль окончания линии \\c line_cap равен \\ref BRST_BUTT_END"
+  По умолчанию стиль окончания линии \\c line_cap равен \\ref BRST_BUTT_CAP"
                      :en "The line cap style (one of the following).
 
   | Value                            | Image                     | Description                                                             |
   | -----                            | -----                     | -----------                                                             |
-  | \\ref BRST_BUTT_END               | \\image html linecap1.png  | Line is squared off at path endpoint.                                   |
-  | \\ref BRST_ROUND_END              | \\image html linecap2.png  | End of line becomes a semicircle with center  at path endpoint.         |
-  | \\ref BRST_PROJECTING_SQUARE_END  | \\image html linecap3.png  | Line continues beyond endpoint, goes on half the endpoint stroke width. |
+  | \\ref BRST_BUTT_CAP               | \\image html linecap1.png  | Line is squared off at path endpoint.                                   |
+  | \\ref BRST_ROUND_CAP              | \\image html linecap2.png  | End of line becomes a semicircle with center  at path endpoint.         |
+  | \\ref BRST_PROJECTING_SQUARE_CAP  | \\image html linecap3.png  | Line continues beyond endpoint, goes on half the endpoint stroke width. |
 
-  Default \\c line_cap is \\ref BRST_BUTT_END.
+  Default \\c line_cap is \\ref BRST_BUTT_CAP.
 ")))
 
        ;; BRST_Page_SetLineJoin

@@ -73,12 +73,12 @@ BRST_Encoder_WritingMode(BRST_Encoder encoder)
     BRST_PTRACE(" BRST_Encoder_WritingMode\n");
 
     if (!BRST_Encoder_Validate(encoder))
-        return BRST_WMODE_HORIZONTAL;
+        return BRST_WRITING_MODE_HORIZONTAL;
 
     if (encoder->type == BRST_ENCODER_TYPE_DOUBLE_BYTE) {
         BRST_CMapEncoderAttr attr = (BRST_CMapEncoderAttr)encoder->attr;
         return attr->writing_mode;
     }
 
-    return BRST_WMODE_HORIZONTAL;
+    return BRST_WRITING_MODE_HORIZONTAL;
 }

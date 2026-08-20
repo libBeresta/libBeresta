@@ -258,6 +258,7 @@
 (defvar *consts-lsp*    (make-hash-table :test 'equalp))
 (defvar *functions-lsp* (make-hash-table :test 'equalp))
 (defvar *pointers-lsp*  (make-hash-table :test 'equalp))
+(defvar *defs-lsp*      (make-hash-table :test 'equalp))
 (defvar *sizes-lsp*     nil)
 
 ;; Функция извлекает из заголовочных файлов *.c перечисления, объявления указателей и названия функций.
@@ -335,6 +336,7 @@
            (consts    (getf raw-data   :consts))
            (pointers  (getf raw-data   :pointers))
            (functions (getf raw-data   :functions))
+           (defs      (getf raw-data   :definitions))
            (sizes     (getf raw-data   :sizes))
            (data-name (file-namestring data)))
       ;; В перечне файлов *.lsp есть page_sizes.lsp,
@@ -354,6 +356,10 @@
       (dolist (c consts)
         (let ((const (getf c :name)))
           (setf (gethash const *consts-lsp*) (cons data-name c))))
+
+      (dolist (c defs)
+        (let ((def (getf c :name)))
+          (setf (gethash def *defs-lsp*) (cons data-name c))))
 
       (dolist (f functions)
         (let ((fn (getf f :caption)))

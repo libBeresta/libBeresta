@@ -124,7 +124,7 @@ BRST_Doc_Destroy_All(BRST_Doc pdf)
         if (pdf->encoder_list)
             FreeEncoderList(pdf);
 
-        pdf->compression_mode = BRST_COMP_NONE;
+        pdf->compression_mode = BRST_COMP_MODE_NONE;
 
         BRST_Error_Reset(pdf->error);
 
@@ -259,7 +259,7 @@ BRST_Doc_New_Ex(BRST_Error_Handler user_error_fn,
     pdf->sig_bytes        = BRST_SIG_BYTES;
     pdf->mmgr             = mmgr;
     pdf->pdf_version      = BRST_VER_13;
-    pdf->compression_mode = BRST_COMP_NONE;
+    pdf->compression_mode = BRST_COMP_MODE_NONE;
 
     BRST_PTRACE(" BRST_New_Doc_Ex3\n");
 
