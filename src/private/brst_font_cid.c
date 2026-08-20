@@ -618,7 +618,7 @@ TextWidth(BRST_Font font,
         }
 
         if (btype != BRST_BYTE_TYPE_TRAIL) {
-            if (attr->writing_mode == BRST_WMODE_HORIZONTAL) {
+            if (attr->writing_mode == BRST_WRITING_MODE_HORIZONTAL) {
                 if (attr->fontdef->type == BRST_FONTDEF_TYPE_CID) {
                     /* cid-based font */
                     cid = BRST_CMapEncoder_ToCID(encoder, code);
@@ -733,7 +733,7 @@ MeasureText(BRST_Font font,
         }
 
         if (btype != BRST_BYTE_TYPE_TRAIL) {
-            if (attr->writing_mode == BRST_WMODE_HORIZONTAL) {
+            if (attr->writing_mode == BRST_WRITING_MODE_HORIZONTAL) {
                 if (attr->fontdef->type == BRST_FONTDEF_TYPE_CID) {
                     /* cid-based font */
                     BRST_UINT16 cid = BRST_CMapEncoder_ToCID(encoder, code);

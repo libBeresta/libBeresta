@@ -181,7 +181,7 @@ BRST_Page_SetTextRenderingMode(BRST_Page page,
     if (ret != BRST_OK)
         return ret;
 
-    if (mode >= BRST_RENDERING_MODE_EOF)
+    if (mode >= BRST_TEXT_RENDERING_MODE_EOF)
         return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE,
             (BRST_STATUS)mode);
 
@@ -372,7 +372,7 @@ BRST_Page_ShowText(BRST_Page page,
     }
 
     /* calculate the reference point of text */
-    if (attr->gstate->writing_mode == BRST_WMODE_HORIZONTAL) {
+    if (attr->gstate->writing_mode == BRST_WRITING_MODE_HORIZONTAL) {
         attr->text_pos.x += tw * attr->text_matrix->a;
         attr->text_pos.y += tw * attr->text_matrix->b;
     } else {
@@ -422,7 +422,7 @@ BRST_Page_ShowTextNextLine(BRST_Page page,
     attr->text_pos.x = attr->text_matrix->x;
     attr->text_pos.y = attr->text_matrix->y;
 
-    if (attr->gstate->writing_mode == BRST_WMODE_HORIZONTAL) {
+    if (attr->gstate->writing_mode == BRST_WRITING_MODE_HORIZONTAL) {
         attr->text_pos.x += tw * attr->text_matrix->a;
         attr->text_pos.y += tw * attr->text_matrix->b;
     } else {
@@ -494,7 +494,7 @@ BRST_Page_ShowTextNextLineEx(BRST_Page page,
     attr->text_pos.x = attr->text_matrix->x;
     attr->text_pos.y = attr->text_matrix->y;
 
-    if (attr->gstate->writing_mode == BRST_WMODE_HORIZONTAL) {
+    if (attr->gstate->writing_mode == BRST_WRITING_MODE_HORIZONTAL) {
         attr->text_pos.x += tw * attr->text_matrix->a;
         attr->text_pos.y += tw * attr->text_matrix->b;
     } else {

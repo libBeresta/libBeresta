@@ -211,7 +211,7 @@ MS_RKSJ_V_Init(BRST_Encoder encoder)
     attr->xuid[1]    = 10;
     attr->xuid[2]    = 25344;
 
-    attr->writing_mode = BRST_WMODE_VERTICAL;
+    attr->writing_mode = BRST_WRITING_MODE_VERTICAL;
 
     encoder->type = BRST_ENCODER_TYPE_DOUBLE_BYTE;
 
@@ -327,7 +327,7 @@ EUC_V_Init(BRST_Encoder encoder)
     BRST_StrCopy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
     BRST_StrCopy(attr->ordering, "Japan1", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
     attr->supplement   = 1;
-    attr->writing_mode = BRST_WMODE_VERTICAL;
+    attr->writing_mode = BRST_WRITING_MODE_VERTICAL;
     attr->uid_offset   = 800;
     attr->xuid[0]      = 1;
     attr->xuid[1]      = 10;

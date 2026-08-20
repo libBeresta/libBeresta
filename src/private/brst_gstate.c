@@ -95,7 +95,7 @@ BRST_GState_New(BRST_MMgr mmgr,
 
         gstate->font         = NULL;
         gstate->font_size    = 0;
-        gstate->writing_mode = BRST_WMODE_HORIZONTAL;
+        gstate->writing_mode = BRST_WRITING_MODE_HORIZONTAL;
 
         gstate->prev  = NULL;
         gstate->depth = 1;

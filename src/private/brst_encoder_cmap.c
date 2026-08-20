@@ -77,7 +77,7 @@ BRST_CMapEncoder_InitAttr(BRST_Encoder encoder)
     BRST_MemSet(encoder_attr, 0, sizeof(BRST_CMapEncoderAttr_Rec));
     encoder->attr = encoder_attr;
 
-    encoder_attr->writing_mode = BRST_WMODE_HORIZONTAL;
+    encoder_attr->writing_mode = BRST_WRITING_MODE_HORIZONTAL;
 
     for (i = 0; i <= 255; i++) {
         for (j = 0; j <= 255; j++) {

@@ -28,11 +28,11 @@ typedef enum _BRST_TextAlignment {
 
 typedef enum _BRST_WritingMode {
     /// Horizontal writing mode
-    BRST_WMODE_HORIZONTAL = 0,
+    BRST_WRITING_MODE_HORIZONTAL = 0,
     /// Vertical writing mode
-    BRST_WMODE_VERTICAL,
+    BRST_WRITING_MODE_VERTICAL,
     /// Last writing mode in enumeration
-    BRST_WMODE_EOF
+    BRST_WRITING_MODE_EOF
 } BRST_WritingMode;
 
 /*---------------------------------------------------------------------------*/

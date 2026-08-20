@@ -96,7 +96,7 @@ BRST_Type1Font_New(BRST_MMgr mmgr,
 
     font->attr            = attr;
     attr->type            = BRST_FONT_TYPE1;
-    attr->writing_mode    = BRST_WMODE_HORIZONTAL;
+    attr->writing_mode    = BRST_WRITING_MODE_HORIZONTAL;
     attr->text_width_fn   = Type1Font_TextWidth;
     attr->measure_text_fn = Type1Font_MeasureText;
     attr->fontdef         = fontdef;
