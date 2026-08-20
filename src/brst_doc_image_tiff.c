@@ -55,7 +55,7 @@ BRST_Doc_Image_Raw1Bit_LoadFromMemory(BRST_Doc pdf,
     if (!image)
         BRST_Error_Check(pdf->error);
 
-    if (pdf->compression_mode & BRST_COMP_IMAGE) {
+    if (pdf->compression_mode & BRST_COMP_MODE_IMAGE) {
         image->filter       = BRST_STREAM_FILTER_CCITT_DECODE;
         image->filterParams = BRST_Dict_New(pdf->mmgr);
         if (image->filterParams == NULL) {
@@ -104,7 +104,7 @@ BRST_Doc_Image_Raw_LoadFromFile(BRST_Doc pdf,
     if (!image)
         BRST_Error_Check(pdf->error);
 
-    if (image && pdf->compression_mode & BRST_COMP_IMAGE)
+    if (image && pdf->compression_mode & BRST_COMP_MODE_IMAGE)
         image->filter = BRST_STREAM_FILTER_FLATE_DECODE;
 
     return image;
@@ -135,7 +135,7 @@ BRST_Doc_Image_Raw_LoadFromMemory(BRST_Doc pdf,
     if (!image)
         BRST_Error_Check(pdf->error);
 
-    if (image && pdf->compression_mode & BRST_COMP_IMAGE) {
+    if (image && pdf->compression_mode & BRST_COMP_MODE_IMAGE) {
         image->filter = BRST_STREAM_FILTER_FLATE_DECODE;
     }
 

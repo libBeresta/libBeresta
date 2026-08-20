@@ -136,7 +136,7 @@ BRST_Doc_Font(BRST_Doc pdf,
     if (!font)
         BRST_Error_Check(pdf->error);
 
-    if (font && (pdf->compression_mode & BRST_COMP_METADATA))
+    if (font && (pdf->compression_mode & BRST_COMP_MODE_METADATA))
         font->filter = BRST_STREAM_FILTER_FLATE_DECODE;
 
     return font;

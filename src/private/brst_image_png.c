@@ -41,7 +41,7 @@ BRST_Image_Png_LoadFromStream_Compression(BRST_MMgr mmgr,
     image = BRST_Image_Png_LoadFromStream(mmgr, imagedata, xref,
         delayed_loading);
 
-    if (image && (compression_mode & BRST_COMP_IMAGE)) {
+    if (image && (compression_mode & BRST_COMP_MODE_IMAGE)) {
         image->filter = BRST_STREAM_FILTER_FLATE_DECODE;
 
         // is there an alpha layer? then compress it also

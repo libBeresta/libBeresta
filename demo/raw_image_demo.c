@@ -52,7 +52,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    BRST_Doc_SetCompressionMode(pdf, BRST_COMP_ALL);
+    BRST_Doc_SetCompressionMode(pdf, BRST_COMP_MODE_ALL);
 
     // Подготовка шрифта для отображения текста примера
     font = BRST_Doc_Font(pdf, "Helvetica", NULL);

@@ -69,7 +69,7 @@ BRST_Doc_Page_Insert(BRST_Doc pdf,
         return NULL;
     }
 
-    if (pdf->compression_mode & BRST_COMP_TEXT)
+    if (pdf->compression_mode & BRST_COMP_MODE_TEXT)
         BRST_Page_SetFilter(page, BRST_STREAM_FILTER_FLATE_DECODE);
 
     return page;
@@ -114,7 +114,7 @@ BRST_Doc_Page_Add(BRST_Doc pdf)
 
     pdf->cur_page = page;
 
-    if (pdf->compression_mode & BRST_COMP_TEXT)
+    if (pdf->compression_mode & BRST_COMP_MODE_TEXT)
         BRST_Page_SetFilter(page, BRST_STREAM_FILTER_FLATE_DECODE);
 
     pdf->cur_page_num++;
