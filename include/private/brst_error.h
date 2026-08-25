@@ -9,10 +9,10 @@ struct _BRST_Error_Rec;
 typedef struct _BRST_Error_Rec* BRST_Error;
 
 BRST_Error
-BRST_Error_New();
+BRST_Error_New(void);
 
 void 
-BRST_Error_Free();
+BRST_Error_Free(BRST_Error error);
 
 /*  BRST_Error_Init
  *

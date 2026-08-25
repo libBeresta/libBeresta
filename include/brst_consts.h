@@ -7,7 +7,7 @@
 #define  BRST_OK                    0
 #define  BRST_NOERROR               0
 
-#define  BRST_PI                    3.14159265358979323846
+#define  BRST_PI                    3.14159265358979323846f
 
 /*----------------------------------------------------------------------------*/
 /*----- permission flags (only Revision 2 is supported)-----------------------*/
@@ -59,13 +59,13 @@
 /**
   \brief Предопределенное значение для вычислений в миллиметрах, равно 72.0/25.4 (72 точки на дюйм на мм).
 */
-#define BRST_MM                             2.834646
+#define BRST_MM                             2.834646f
 
 /**
   \brief Предопределенное значение для вычислений в дюймах (72 точки на дюйм)
 */
-#define BRST_IN                             72.00000
+#define BRST_IN                             72.00000f
 
-#define KAPPA                     0.552284749830793F
+#define KAPPA                     0.552284749830793f
 
 #endif /* BRST_CONSTS_H */

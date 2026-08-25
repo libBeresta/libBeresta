@@ -61,7 +61,7 @@ BRST_List_Clear(
     BRST_List list
 );
 
-BRST_INT32
+BRST_UINT
 BRST_List_Count(
     BRST_List list
 );

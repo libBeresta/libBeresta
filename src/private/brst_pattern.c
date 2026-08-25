@@ -42,8 +42,8 @@ BRST_Pattern_Tiling_New(
     ret += BRST_Dict_AddNumber(pat, "TilingType", 1);
 
     // TODO Проверить xstep/ystep на 0
-    ret += BRST_Dict_AddNumber(pat, "XStep", xstep);
-    ret += BRST_Dict_AddNumber(pat, "YStep", ystep);
+    ret += BRST_Dict_AddReal(pat, "XStep", xstep);
+    ret += BRST_Dict_AddReal(pat, "YStep", ystep);
 
     ret += BRST_Dict_Add(pat, "BBox", BRST_Box_Array_New(mmgr, BRST_ToRect(left, bottom, right, top)));
     ret += BRST_Dict_Add(pat, "Matrix", BRST_Matrix_Array_New(mmgr, matrix));
