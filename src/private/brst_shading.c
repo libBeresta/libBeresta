@@ -120,7 +120,7 @@ BRST_Shading_New(
 
     const char* colName = NULL;
     switch (colorSpace) {
-    case BRST_CS_DEVICE_RGB:
+    case BRST_COLORSPACE_DEVICERGB:
         colName = COL_RGB;
         for (i = 0; i < 3; ++i) {
             ret += BRST_Array_AddReal(decodeArray, 0.0);

@@ -40,24 +40,34 @@ BRST_3DAnnotation_New
 */
 
 const char* const BRST_ANNOT_TYPE_NAMES[] = {
-    "Text",
-    "Link",
-    "Sound",
-    "FreeText",
-    "Stamp",
-    "Square",
-    "Circle",
-    "StrikeOut",
-    "Highlight",
-    "Underline",
-    "Ink",
-    "FileAttachment",
-    "Popup",
-    "3D",
-    "Squiggly",
-    "Line",
-    "Projection",
-    "Widget"
+  "Text",
+  "Link",
+  "FreeText",
+  "Line",
+  "Square",
+  "Circle",
+  "Polygon",
+  "Polyline",
+  "Highlight",
+  "Underline",
+  "Squiggly",
+  "StrikeOut",
+  "Stamp",
+  "Caret",
+  "Ink",
+  "Popup",
+  "FileAttachment",
+  "Sound",
+  "Movie",
+  "Widget",
+  "Screen",
+  "PrinterMark",
+  "Trapnet"
+  "Watermark",
+  "3D",
+  "Redact",
+  "RichMedia",
+  "Projection"
 };
 
 BRST_Annotation
@@ -234,7 +244,7 @@ BRST_Annotation
 BRST_StampAnnotation_New(BRST_MMgr mmgr,
     BRST_Xref xref,
     BRST_Rect rect,
-    BRST_StampAnnotName name,
+    BRST_AnnotStampStyle name,
     const char* text,
     BRST_Encoder encoder)
 {

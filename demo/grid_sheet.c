@@ -161,7 +161,7 @@ void print_grid(BRST_Doc pdf, BRST_Page page, BRST_UINT32 page_lines_color)
     // Отображение текста версии библиотеки
     BRST_Page_TextRect(page,
         0, 0, 190 * BRST_MM, -10 * BRST_MM,
-        buf, BRST_TALIGN_RIGHT, NULL);
+        buf, BRST_TEXT_ALIGN_RIGHT, NULL);
 
     // Выход из текстового режима
     BRST_Page_EndText(page);

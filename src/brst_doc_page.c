@@ -69,7 +69,7 @@ BRST_Doc_Page_Insert(BRST_Doc pdf,
         return NULL;
     }
 
-    if (pdf->compression_mode & BRST_COMP_TEXT)
+    if (pdf->compression_mode & BRST_COMP_MODE_TEXT)
         BRST_Page_SetFilter(page, BRST_STREAM_FILTER_FLATE_DECODE);
 
     return page;
@@ -114,7 +114,7 @@ BRST_Doc_Page_Add(BRST_Doc pdf)
 
     pdf->cur_page = page;
 
-    if (pdf->compression_mode & BRST_COMP_TEXT)
+    if (pdf->compression_mode & BRST_COMP_MODE_TEXT)
         BRST_Page_SetFilter(page, BRST_STREAM_FILTER_FLATE_DECODE);
 
     pdf->cur_page_num++;
@@ -243,7 +243,7 @@ BRST_Doc_Page_AddLabel(BRST_Doc pdf,
         return BRST_Error_Check(pdf->error);
 
     if (style < 0 || style >= BRST_PAGE_NUM_EOF)
-        return BRST_Error_Raise(pdf->error, BRST_PAGE_NUM_OUT_OF_RANGE,
+        return BRST_Error_Raise(pdf->error, BRST_PAGE_NUM_STYLE_OUT_OF_RANGE,
             (BRST_STATUS)style);
 
     ret = BRST_Catalog_AddPageLabel(pdf->catalog, page_num, page_label);

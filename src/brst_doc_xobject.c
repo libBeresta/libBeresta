@@ -292,7 +292,7 @@ BRST_Doc_XObject_New(
     BRST_REAL scaley
 ) {
     BRST_Dict ret = BRST_XObject_New(pdf->mmgr, pdf->xref, width, height, scalex, scaley);
-    if (ret && (pdf->compression_mode & BRST_COMP_TEXT)) {
+    if (ret && (pdf->compression_mode & BRST_COMP_MODE_TEXT)) {
         ret->filter = BRST_STREAM_FILTER_FLATE_DECODE;
     }
     return ret;

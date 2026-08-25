@@ -229,7 +229,7 @@ UTF8_Init(BRST_Encoder encoder)
     BRST_StrCopy(attr->registry, "Adobe", attr->registry + BRST_LIMIT_MAX_NAME_LEN);
     BRST_StrCopy(attr->ordering, "Identity-H", attr->ordering + BRST_LIMIT_MAX_NAME_LEN);
     attr->supplement   = 0;
-    attr->writing_mode = BRST_WMODE_HORIZONTAL;
+    attr->writing_mode = BRST_WRITING_MODE_HORIZONTAL;
 
     /* Not sure about this
     attr->uid_offset = 0;

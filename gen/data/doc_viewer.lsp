@@ -25,7 +25,7 @@
                       :name "pdf"
                       :ru ":param_pdf"
                       :en ":param_pdf"))
-         :result (:type "ViewerPreference"
+         :result (:type "UINT"
                      :ru "Набор предпочтений программы просмотра."
                      :en "Viewer preferences of a document"))
 
@@ -37,7 +37,7 @@
                       :name "pdf"
                       :ru ":param_pdf"
                       :en ":param_pdf")
-                     (:type "ViewerPreference"
+                     (:type "UINT"
                       :name "value"
                       :ru "Значение параметра"
                       :en "Viewer preference value"))

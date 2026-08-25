@@ -32,7 +32,9 @@
                     (:element "ANNOT_TRAPNET"         :version "1.3" :en "Trap network annotation"       :ru "Пометка цветового перекрытия")
                     (:element "ANNOT_WATERMARK"       :version "1.6" :en "Watermark annotation"          :ru "Пометка водным знаком")
                     (:element "ANNOT_3D"              :version "1.6" :en "3D annotation"                 :ru "3D пометка")
-                    (:element "ANNOT_REDACT"          :version "1.7" :en "Redact annotation"             :ru "Редакторская пометка")))
+                    (:element "ANNOT_REDACT"          :version "1.7" :en "Redact annotation"             :ru "Редакторская пометка")
+                    (:element "ANNOT_RICH_MEDIA"      :version "2.0" :en "RichMedia annotation"          :ru "Пометка RichMedia")
+                    (:element "ANNOT_PROJECTION"      :version "2.0" :en "Projection annotation"         :ru "Проекционная пометка")))
 
         (:name "AnnotFlags"
          :ru "Флаги аннотации (12.5.3 Annotation Flags)"

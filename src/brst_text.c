@@ -181,7 +181,7 @@ BRST_Page_SetTextRenderingMode(BRST_Page page,
     if (ret != BRST_OK)
         return ret;
 
-    if (mode >= BRST_RENDERING_MODE_EOF)
+    if (mode >= BRST_TEXT_RENDERING_MODE_EOF)
         return BRST_Error_Raise(page->error, BRST_PAGE_OUT_OF_RANGE,
             (BRST_STATUS)mode);
 
@@ -372,7 +372,7 @@ BRST_Page_ShowText(BRST_Page page,
     }
 
     /* calculate the reference point of text */
-    if (attr->gstate->writing_mode == BRST_WMODE_HORIZONTAL) {
+    if (attr->gstate->writing_mode == BRST_WRITING_MODE_HORIZONTAL) {
         attr->text_pos.x += tw * attr->text_matrix->a;
         attr->text_pos.y += tw * attr->text_matrix->b;
     } else {
@@ -422,7 +422,7 @@ BRST_Page_ShowTextNextLine(BRST_Page page,
     attr->text_pos.x = attr->text_matrix->x;
     attr->text_pos.y = attr->text_matrix->y;
 
-    if (attr->gstate->writing_mode == BRST_WMODE_HORIZONTAL) {
+    if (attr->gstate->writing_mode == BRST_WRITING_MODE_HORIZONTAL) {
         attr->text_pos.x += tw * attr->text_matrix->a;
         attr->text_pos.y += tw * attr->text_matrix->b;
     } else {
@@ -494,7 +494,7 @@ BRST_Page_ShowTextNextLineEx(BRST_Page page,
     attr->text_pos.x = attr->text_matrix->x;
     attr->text_pos.y = attr->text_matrix->y;
 
-    if (attr->gstate->writing_mode == BRST_WMODE_HORIZONTAL) {
+    if (attr->gstate->writing_mode == BRST_WRITING_MODE_HORIZONTAL) {
         attr->text_pos.x += tw * attr->text_matrix->a;
         attr->text_pos.y += tw * attr->text_matrix->b;
     } else {
@@ -578,7 +578,7 @@ BRST_Page_TextRect(BRST_Page page,
     top    = top - bbox.top / 1000 * attr->gstate->font_size + attr->gstate->text_leading;
     bottom = bottom - bbox.bottom / 1000 * attr->gstate->font_size;
 
-    if (align == BRST_TALIGN_JUSTIFY) {
+    if (align == BRST_TEXT_ALIGN_JUSTIFY) {
         save_char_space          = attr->gstate->char_space;
         attr->gstate->char_space = 0;
     }
@@ -611,7 +611,7 @@ BRST_Page_TextRect(BRST_Page page,
 
         switch (align) {
 
-        case BRST_TALIGN_RIGHT:
+        case BRST_TEXT_ALIGN_RIGHT:
             TextPos_AbsToRel(attr->text_matrix, right - rw, top, &x, &y);
             if (!pos_initialized) {
                 pos_initialized = BRST_TRUE;
@@ -622,7 +622,7 @@ BRST_Page_TextRect(BRST_Page page,
                 return ret;
             break;
 
-        case BRST_TALIGN_CENTER:
+        case BRST_TEXT_ALIGN_CENTER:
             TextPos_AbsToRel(attr->text_matrix, left + (right - left - rw) / 2, top, &x, &y);
             if (!pos_initialized) {
                 pos_initialized = BRST_TRUE;
@@ -633,7 +633,7 @@ BRST_Page_TextRect(BRST_Page page,
                 return ret;
             break;
 
-        case BRST_TALIGN_JUSTIFY:
+        case BRST_TEXT_ALIGN_JUSTIFY:
             if (!pos_initialized) {
                 pos_initialized = BRST_TRUE;
                 TextPos_AbsToRel(attr->text_matrix, left, top, &x, &y);

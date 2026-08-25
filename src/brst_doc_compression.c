@@ -26,7 +26,7 @@ BRST_Doc_SetCompressionMode(BRST_Doc pdf,
     if (!BRST_Doc_Validate(pdf))
         return BRST_INVALID_DOCUMENT;
 
-    if (mode != (mode & BRST_COMP_MASK))
+    if (mode != (mode & BRST_COMP_MODE_MASK))
         return BRST_Error_Raise(pdf->error, BRST_INVALID_COMPRESSION_MODE, 0);
 
     pdf->compression_mode = mode;

@@ -27,9 +27,9 @@ typedef struct _BRST_CMYKColor {
 /*------ The line cap style -------------------------------------------------*/
 
 typedef enum _BRST_LineCap {
-    BRST_BUTT_END = 0,
-    BRST_ROUND_END,
-    BRST_PROJECTING_SQUARE_END,
+    BRST_BUTT_CAP = 0,
+    BRST_ROUND_CAP,
+    BRST_PROJECTING_SQUARE_CAP,
     BRST_LINECAP_EOF
 } BRST_LineCap;
 
@@ -48,48 +48,50 @@ typedef enum _BRST_LineJoin {
 
 typedef enum _BRST_BSSubtype {
     /// Solid rectangle
-    BRST_BS_SOLID,
+    BRST_BORDERSTYLE_SOLID,
     /// Dashed rectangle
-    BRST_BS_DASHED,
+    BRST_BORDERSTYLE_DASHED,
     /// Embossed rectangle
-    BRST_BS_BEVELED,
+    BRST_BORDERSTYLE_BEVELED,
     /// Engraved rectangle
-    BRST_BS_INSET,
+    BRST_BORDERSTYLE_INSET,
     /// Single line under the bottom of the annotation
-    BRST_BS_UNDERLINED
+    BRST_BORDERSTYLE_UNDERLINED,
+    BRST_BORDERSTYLE_EOF
 } BRST_BSSubtype;
 
 /*----- blend modes ----------------------------------------------------------*/
 
 typedef enum _BRST_BlendMode {
-    BRST_BM_NORMAL,
-    BRST_BM_MULTIPLY,
-    BRST_BM_SCREEN,
-    BRST_BM_OVERLAY,
-    BRST_BM_DARKEN,
-    BRST_BM_LIGHTEN,
-    BRST_BM_COLOR_DODGE,
-    BRST_BM_COLOR_BUM,
-    BRST_BM_HARD_LIGHT,
-    BRST_BM_SOFT_LIGHT,
-    BRST_BM_DIFFERENCE,
-    BRST_BM_EXCLUSHON,
-    BRST_BM_EOF
+    BRST_BLENDMODE_NORMAL = 0,
+    BRST_BLENDMODE_COMPATIBLE = BRST_BLENDMODE_NORMAL,
+    BRST_BLENDMODE_MULTIPLY,
+    BRST_BLENDMODE_SCREEN,
+    BRST_BLENDMODE_OVERLAY,
+    BRST_BLENDMODE_DARKEN,
+    BRST_BLENDMODE_LIGHTEN,
+    BRST_BLENDMODE_COLOR_DODGE,
+    BRST_BLENDMODE_COLOR_BURN,
+    BRST_BLENDMODE_HARD_LIGHT,
+    BRST_BLENDMODE_SOFT_LIGHT,
+    BRST_BLENDMODE_DIFFERENCE,
+    BRST_BLENDMODE_EXCLUSION,
+    BRST_BLENDMODE_EOF
 } BRST_BlendMode;
 
 typedef enum _BRST_ColorSpace {
-    BRST_CS_DEVICE_GRAY = 0,
-    BRST_CS_DEVICE_RGB,
-    BRST_CS_DEVICE_CMYK,
-    BRST_CS_CAL_GRAY,
-    BRST_CS_CAL_RGB,
-    BRST_CS_LAB,
-    BRST_CS_ICC_BASED,
-    BRST_CS_SEPARATION,
-    BRST_CS_DEVICE_N,
-    BRST_CS_INDEXED,
-    BRST_CS_PATTERN,
-    BRST_CS_EOF
+    BRST_COLORSPACE_DEVICEGRAY = 0,
+    BRST_COLORSPACE_DEVICERGB,
+    BRST_COLORSPACE_DEVICECMYK,
+    BRST_COLORSPACE_CALGRAY,
+    BRST_COLORSPACE_CALRGB,
+    BRST_COLORSPACE_LAB,
+    BRST_COLORSPACE_ICCBASED,
+    BRST_COLORSPACE_SEPARATION,
+    BRST_COLORSPACE_DEVICEN,
+    BRST_COLORSPACE_INDEXED,
+    BRST_COLORSPACE_PATTERN,
+    BRST_COLORSPACE_EOF
 } BRST_ColorSpace;
 
 /*---------------------------------------------------------------------------*/
@@ -106,7 +108,7 @@ static const BRST_CMYKColor DEF_CMYK_COLOR = {0, 0, 0, 0};
 static const BRST_DashMode DEF_DASH_MODE = {{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f}, 0, 0.0f};
 
 #define BRST_DEF_LINEWIDTH          1
-#define BRST_DEF_LINECAP            BRST_BUTT_END
+#define BRST_DEF_LINECAP            BRST_BUTT_CAP
 #define BRST_DEF_LINEJOIN           BRST_MITER_JOIN
 #define BRST_DEF_MITERLIMIT         10
 #define BRST_DEF_FLATNESS           1

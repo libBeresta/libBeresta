@@ -8,7 +8,7 @@
                   :name "pdf"
                   :ru ":param_pdf"
                   :en ":param_pdf")
-                 (:type "CompressionMode"
+                 (:type "UINT"
                    :name "mode"
                    :ru "Режим сжатия документа. \\parblock Одно или несколько значение, объединенных битовым \\c OR:
   | Режим                   | Описание                                                   |

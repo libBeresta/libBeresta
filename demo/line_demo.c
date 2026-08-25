@@ -146,14 +146,14 @@ int main(int argc, char** argv)
     BRST_Page_SetRGBStroke(page, 0.0, 0.5, 0.0);
 
     // Стиль окончания линий
-    BRST_Page_SetLineCap(page, BRST_BUTT_END);
-    draw_line2(page, 60, 570, "PDF_BUTT_END");
+    BRST_Page_SetLineCap(page, BRST_BUTT_CAP);
+    draw_line2(page, 60, 570, "PDF_BUTT_CAP");
 
-    BRST_Page_SetLineCap(page, BRST_ROUND_END);
-    draw_line2(page, 60, 505, "PDF_ROUND_END");
+    BRST_Page_SetLineCap(page, BRST_ROUND_CAP);
+    draw_line2(page, 60, 505, "PDF_ROUND_CAP");
 
-    BRST_Page_SetLineCap(page, BRST_PROJECTING_SQUARE_END);
-    draw_line2(page, 60, 440, "PDF_PROJECTING_SQUARE_END");
+    BRST_Page_SetLineCap(page, BRST_PROJECTING_SQUARE_CAP);
+    draw_line2(page, 60, 440, "PDF_PROJECTING_SQUARE_CAP");
 
     // Стиль соединения линий
     BRST_Page_SetLineWidth(page, 30);

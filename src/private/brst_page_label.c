@@ -56,7 +56,7 @@ BRST_PageLabel_New(BRST_Doc pdf,
             goto Fail;
         break;
     default:
-        BRST_Error_Set(pdf->error, BRST_PAGE_NUM_OUT_OF_RANGE,
+        BRST_Error_Set(pdf->error, BRST_PAGE_NUM_STYLE_OUT_OF_RANGE,
             (BRST_STATUS)style);
         goto Fail;
     }

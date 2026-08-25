@@ -2,7 +2,9 @@
 #define BRST_DOC_H
 
 typedef enum _BRST_PdfVer {
-    BRST_VER_12 = 0,
+    BRST_VER_10 = 0,
+    BRST_VER_11,
+    BRST_VER_12,
     BRST_VER_13,
     BRST_VER_14,
     BRST_VER_15,

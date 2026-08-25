@@ -52,9 +52,9 @@ BRST_Doc_Page_Pattern_EnsureColorSpace(
     }
 
     BRST_CSTR cs_name;
-    if (cs == BRST_CS_DEVICE_RGB) {
+    if (cs == BRST_COLORSPACE_DEVICERGB) {
         cs_name = BRST_PATTERN_COLORSPACE_NAMES[0];
-    } else if (cs == BRST_CS_DEVICE_CMYK) {
+    } else if (cs == BRST_COLORSPACE_DEVICECMYK) {
         cs_name = BRST_PATTERN_COLORSPACE_NAMES[1];
     } else {
         cs_name = NULL;
@@ -68,9 +68,9 @@ BRST_Doc_Page_Pattern_EnsureColorSpace(
         BRST_Array_AddName(cs_data, "Pattern");
         BRST_CSTR dev;
         // TODO Вынести куда-то в общее место
-        if (cs == BRST_CS_DEVICE_RGB) {
+        if (cs == BRST_COLORSPACE_DEVICERGB) {
             dev = "DeviceRGB";
-        } else if (cs == BRST_CS_DEVICE_CMYK) {
+        } else if (cs == BRST_COLORSPACE_DEVICECMYK) {
             dev = "DeviceCMYK";
         } else {
             cs_name = NULL;
@@ -118,7 +118,7 @@ BRST_Doc_Dict_RGBPatternFill_Select(
     BRST_Stream stream = attr ? attr->stream : dict->stream;
 
     if (!isPage || (isPage && attr && attr->gstate->pattern == NULL)) {
-        BRST_Doc_Page_Pattern_EnsureColorSpace(dict, BRST_CS_DEVICE_RGB);
+        BRST_Doc_Page_Pattern_EnsureColorSpace(dict, BRST_COLORSPACE_DEVICERGB);
 
         BRST_CSTR cs_name = BRST_PATTERN_COLORSPACE_NAMES[0];
 

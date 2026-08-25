@@ -66,6 +66,40 @@ configure_file(
 
 include_directories(${PROJECT_BINARY_DIR}/include)
 
+# brst.pc file for pkg-config
+set(BRST_PC_REQUIRES_PRIVATE "")
+if (PNG_FOUND)
+  list(APPEND BRST_PC_REQUIRES_PRIVATE "libpng")
+endif()
+if (ZLIB_FOUND)
+  list(APPEND BRST_PC_REQUIRES_PRIVATE "zlib")
+endif()
+string(REPLACE ";" " " BRST_PC_REQUIRES_PRIVATE "${BRST_PC_REQUIRES_PRIVATE}")
+if (M_LIB)
+  set(BRST_PC_LIBS_PRIVATE "-lm")
+else()
+  set(BRST_PC_LIBS_PRIVATE "")
+endif()
+
+configure_file(
+  ${PROJECT_SOURCE_DIR}/config/brst.pc.in
+  ${PROJECT_BINARY_DIR}/brst.pc
+  @ONLY
+)
+
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    FILES_MATCHING
+        PATTERN "*.h"
+        PATTERN "private" EXCLUDE
+)
+install(FILES ${PROJECT_BINARY_DIR}/include/brst_config.h
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+install(FILES ${PROJECT_BINARY_DIR}/brst.pc
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
+)
+
 add_subdirectory(src)
 if(LIBBRST_EXAMPLES)
     add_subdirectory(demo)

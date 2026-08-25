@@ -1,0 +1,13 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+
+Name: brst
+Description: libBeresta -- free, cross-platform, open-source library for generating PDF files
+URL: https://github.com/libBeresta/libBeresta
+Version: @BRST_VERSION@
+Requires.private: @BRST_PC_REQUIRES_PRIVATE@
+Libs: -L${libdir} -lbrst
+Libs.private: @BRST_PC_LIBS_PRIVATE@
+Cflags: -I${includedir}
