@@ -13,7 +13,7 @@
 #define BRST_BASIC_ENCODER_FIRST_CHAR 32
 #define BRST_BASIC_ENCODER_LAST_CHAR 255
 
-#include "../src/private/data/encoding.data"
+#include "src/private/data/encoding.data"
 
 // TODO Нужны предварительные объявления?
 const BRST_BuiltinEncodingData*

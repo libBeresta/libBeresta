@@ -21,7 +21,7 @@
 #include "private/brst_doc_encoder.h"
 #include "brst_base.h"
 
-#include "../src/private/data/encoder_cns.data"
+#include "src/private/data/encoder_cns.data"
 
 static const BRST_CidRange_Rec GBK_EUC_NOTDEF_RANGE = { 0x00, 0x1F, 7716 };
 static const BRST_CidRange_Rec GB_EUC_NOTDEF_RANGE  = { 0x00, 0x1F, 7716 };

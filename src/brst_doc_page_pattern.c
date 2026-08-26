@@ -94,6 +94,9 @@ BRST_Doc_Dict_RGBPatternFill_Select(
     BRST_Pattern pattern)
 {
 
+   // TODO pdf не используется
+   (void)pdf;
+
     BRST_PTRACE(" BRST_Doc_Dict_RGBPatternFill_Select\n");
 
     BRST_STATUS ret = BRST_OK;

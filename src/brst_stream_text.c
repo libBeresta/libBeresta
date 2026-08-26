@@ -187,6 +187,8 @@ BRST_Stream_SetTextMatrix(BRST_Stream stream,
     ret += BRST_Stream_WriteStr(stream, " ");
     ret += BRST_Stream_WriteReal(stream, d);
     ret += BRST_Stream_WriteStr(stream, " ");
+    ret += BRST_Stream_WriteReal(stream, x);
+    ret += BRST_Stream_WriteStr(stream, " ");
     ret += BRST_Stream_WriteReal(stream, y);
     ret += BRST_Stream_WriteStr(stream, " Tm\012");
 

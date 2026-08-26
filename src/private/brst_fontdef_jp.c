@@ -14,7 +14,7 @@
 #include "private/brst_utils.h"
 #include "brst_consts.h"
 
-#include "../src/private/data/jp.data"
+#include "src/private/data/jp.data"
 
 BRST_STATUS
 MS_Gothic_Init(BRST_FontDef fontdef)

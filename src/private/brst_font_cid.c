@@ -400,7 +400,7 @@ CIDFontType2_New(BRST_Font parent, BRST_Xref xref)
                         max = cid;
                 }
             } else {
-                BRST_UNICODE unicode = (i << 8) | j;
+                BRST_UNICODE unicode = (BRST_UNICODE)((i << 8) | j);
                 BRST_UINT16 gid      = BRST_TTFontDef_Glyphid(fontdef,
                          unicode);
                 tmp_map[unicode]     = gid;

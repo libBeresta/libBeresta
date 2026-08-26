@@ -14,7 +14,7 @@
 #include "private/brst_utils.h"
 #include "brst_consts.h"
 
-#include "../src/private/data/kr.data"
+#include "src/private/data/kr.data"
 
 BRST_STATUS
 DotumChe_Init(BRST_FontDef fontdef)

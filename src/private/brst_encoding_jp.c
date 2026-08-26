@@ -22,7 +22,7 @@
 #include "brst_base.h"
 #include "private/brst_encoding_jp.h"
 
-#include "../src/private/data/encoder_jp.data"
+#include "src/private/data/encoder_jp.data"
 
 static const BRST_CidRange_Rec MS_RKSJ_NOTDEF_RANGE  = { 0x00, 0x1F, 231 };
 static const BRST_CidRange_Rec MSP_RKSJ_NOTDEF_RANGE = { 0x00, 0x1F, 1 };

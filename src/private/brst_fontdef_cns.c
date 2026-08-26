@@ -14,7 +14,7 @@
 #include "private/brst_utils.h"
 #include "brst_consts.h"
 
-#include "../src/private/data/cns.data"
+#include "src/private/data/cns.data"
 
 BRST_STATUS
 SimSun_Init(BRST_FontDef fontdef)
