@@ -128,7 +128,7 @@ static BRST_UNICODE
 UTF8_Encoder_ToUnicode_Func(BRST_Encoder encoder,
     BRST_UINT16 code)
 {
-    (void)code; // Не используется, убираем предупреждение
+    (void)code; // РќРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ, СѓР±РёСЂР°РµРј РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ
 
     // Supposed to convert CODE to unicode.
     // This function is always called after ByteType_Func.
