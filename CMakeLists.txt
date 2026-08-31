@@ -32,10 +32,15 @@ option(LIBBRST_ANNOTATIONS_SUPPORT "PDF: Включить поддержку а�
 option(LIBBRST_MEM_DEBUG "Отладка выделения памяти" OFF)
 option(LIBBRST_TESTS "Построить тесты" ON)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic -fPIC")
+if (MSVC)
+  # Имеет смысл когда-нибудь включить предупреждения и разобраться с ними
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /Wall /wd4820 /wd5045")
+else()
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic -fPIC")
+endif()
 
 set(BRST_INCLUDE_DIR "${CMAKE_CURRENT_LIST_DIR}/include" CACHE INTERNAL "")
-include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/)
 set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib)
 
 if (${LIBBRST_SHARED_LIB})

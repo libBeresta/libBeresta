@@ -128,6 +128,8 @@ static BRST_UNICODE
 UTF8_Encoder_ToUnicode_Func(BRST_Encoder encoder,
     BRST_UINT16 code)
 {
+    (void)code; // Не используется, убираем предупреждение
+
     // Supposed to convert CODE to unicode.
     // This function is always called after ByteType_Func.
     // ByteType_Func recognizes the utf-8 bytes belonging to one character.
@@ -159,7 +161,7 @@ UTF8_Encoder_ToUnicode_Func(BRST_Encoder encoder,
     if (val > 65535) // Convert everything outside UCS-2 to space
         val = 32;
 
-    return val;
+    return (BRST_UNICODE)val;
 }
 
 static char*

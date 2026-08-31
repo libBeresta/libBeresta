@@ -672,7 +672,7 @@ BRST_Page_TextRect(BRST_Page page,
             }
             break;
 
-        default:
+        case BRST_TEXT_ALIGN_LEFT:
             if (!pos_initialized) {
                 pos_initialized = BRST_TRUE;
                 TextPos_AbsToRel(attr->text_matrix, left, top, &x, &y);

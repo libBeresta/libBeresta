@@ -34,7 +34,8 @@ BRST_Doc_SetCompressionMode(BRST_Doc pdf,
     return BRST_OK;
 
 #else /* LIBBRST_HAVE_ZLIB */
-
+    (void)pdf;
+    (void)mode;
     return BRST_INVALID_COMPRESSION_MODE;
 
 #endif /* LIBBRST_HAVE_ZLIB */

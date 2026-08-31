@@ -97,6 +97,7 @@ BRST_Doc_Date_Now(BRST_Doc pdf)
 
 #else
     // TODO Реализация не для Unix
+    (void)pdf;
     return NULL;
 #endif
 }
@@ -129,7 +130,6 @@ BRST_Date_Part(BRST_Date date, BRST_Date_Parts part)
     default:
         return -2;
     }
-    return 0;
 }
 
 BRST_BOOL

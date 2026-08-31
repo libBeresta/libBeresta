@@ -12,7 +12,7 @@ struct _BRST_Error_Rec {
     void* user_data;
 } BRST_Error_Rec;
 
-BRST_Error BRST_Error_New()
+BRST_Error BRST_Error_New(void)
 {
     BRST_Error error = (BRST_Error)BRST_MALLOC(sizeof(BRST_Error_Rec));
     if (error) {

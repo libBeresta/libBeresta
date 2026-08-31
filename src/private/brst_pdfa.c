@@ -167,7 +167,14 @@ BRST_PDFA_GenerateID(BRST_Doc pdf)
     time_t ltime;
 
     ltime       = time(NULL);
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable : 4996)
+#endif
     currentTime = (BRST_BYTE*)ctime(&ltime);
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
     id = BRST_Dict_Item(pdf->trailer, "ID", BRST_OCLASS_ARRAY);
     if (!id) {
@@ -433,7 +440,14 @@ BRST_PDFA_AddXmpExtension(BRST_Doc pdf,
     if (xmp_extension_copy == NULL)
         return BRST_Error_Check(pdf->error);
 
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable : 4996)
+#endif
     strcpy(xmp_extension_copy, xmp_extension);
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
     return BRST_List_Add(pdf->xmp_extensions, xmp_extension_copy);
 }
 

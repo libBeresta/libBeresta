@@ -56,8 +56,7 @@ typedef enum _BRST_BSSubtype {
     /// Engraved rectangle
     BRST_BORDERSTYLE_INSET,
     /// Single line under the bottom of the annotation
-    BRST_BORDERSTYLE_UNDERLINED,
-    BRST_BORDERSTYLE_EOF
+    BRST_BORDERSTYLE_UNDERLINED
 } BRST_BSSubtype;
 
 /*----- blend modes ----------------------------------------------------------*/

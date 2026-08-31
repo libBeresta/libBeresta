@@ -324,14 +324,14 @@ BRST_List_Find(BRST_List list,
     return -1;
 }
 
-BRST_INT32
+BRST_UINT
 BRST_List_Count(BRST_List list)
 {
 
     BRST_PTRACE(" BRST_List_Count\n");
 
     if (!list)
-        return -1;
+        return 0xFFFFFFFF;
 
     return list->count;
 }

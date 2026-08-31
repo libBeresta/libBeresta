@@ -1993,7 +1993,7 @@ BRST_TTFontDef_SaveFontData(BRST_FontDef fontdef,
         } else if (BRST_MemCmp((BRST_BYTE*)tbl->tag, (BRST_BYTE*)"glyf", 4) == 0) {
             ret = RecreateGLYF(fontdef, new_offsets, tmp_stream);
         } else if (BRST_MemCmp((BRST_BYTE*)tbl->tag, (BRST_BYTE*)"hmtx", 4) == 0) {
-            BRST_UINT j;
+            BRST_INT j;
             BRST_TTF_LongHorMetric* pmetric;
 
             BRST_MemSet(&value, 0, 4);
@@ -2004,8 +2004,8 @@ BRST_TTFontDef_SaveFontData(BRST_FontDef fontdef,
                     ret += WriteUINT16(tmp_stream, pmetric->advance_width);
                     ret += WriteINT16(tmp_stream, pmetric->lsb);
                 } else {
-                    ret += WriteUINT16(tmp_stream, value);
-                    ret += WriteINT16(tmp_stream, value);
+                    ret += WriteUINT16(tmp_stream, (BRST_UINT16)value);
+                    ret += WriteINT16(tmp_stream, (BRST_INT16)value);
                 }
                 pmetric++;
             }
@@ -2014,7 +2014,7 @@ BRST_TTFontDef_SaveFontData(BRST_FontDef fontdef,
                 if (attr->glyph_tbl.flgs[j] == 1) {
                     ret += WriteINT16(tmp_stream, pmetric->lsb);
                 } else
-                    ret += WriteINT16(tmp_stream, value);
+                    ret += WriteINT16(tmp_stream, (BRST_INT16)value);
                 pmetric++;
                 j++;
             }

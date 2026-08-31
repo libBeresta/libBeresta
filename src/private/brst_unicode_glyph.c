@@ -6,7 +6,7 @@
 #include "private/brst_encoder.h"
 #include "private/brst_utils.h"
 
-#include "../src/private/data/unicode.glyph.data"
+#include "src/private/data/unicode.glyph.data"
 
 const char*
 BRST_UnicodeToGlyphName(BRST_UNICODE unicode)

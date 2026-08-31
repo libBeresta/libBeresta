@@ -71,7 +71,7 @@ BRST_CMapEncoder_InitAttr(BRST_Encoder encoder)
         BRST_Error error = encoder->error;
         if (error)
             return BRST_Error_Code(error);
-        return -1;
+        return BRST_INVALID_ENCODER;
     }
 
     BRST_MemSet(encoder_attr, 0, sizeof(BRST_CMapEncoderAttr_Rec));
@@ -93,7 +93,7 @@ BRST_CMapEncoder_InitAttr(BRST_Encoder encoder)
         BRST_Error error = encoder->error;
         if (error)
             return BRST_Error_Code(error);
-        return -1;
+        return BRST_INVALID_ENCODER;
     }
 
     encoder_attr->notdef_range = BRST_List_New(encoder->mmgr,
@@ -102,7 +102,7 @@ BRST_CMapEncoder_InitAttr(BRST_Encoder encoder)
         BRST_Error error = encoder->error;
         if (error)
             return BRST_Error_Code(error);
-        return -1;
+        return BRST_INVALID_ENCODER;
     }
 
     encoder_attr->code_space_range = BRST_List_New(encoder->mmgr,
@@ -111,7 +111,7 @@ BRST_CMapEncoder_InitAttr(BRST_Encoder encoder)
         BRST_Error error = encoder->error;
         if (error)
             return BRST_Error_Code(error);
-        return -1;
+        return BRST_INVALID_ENCODER;
     }
 
     return BRST_OK;
@@ -230,7 +230,7 @@ BRST_CMapEncoder_AddCMap(BRST_Encoder encoder,
             BRST_Error error = encoder->error;
             if (error)
                 return BRST_Error_Code(error);
-            return -1;
+            return BRST_FAILED_TO_ALLOC_MEM;
         }
 
         prange->from = range->from;
@@ -360,7 +360,7 @@ AddCidRange(BRST_MMgr mmgr,
         BRST_Error error = BRST_MMgr_Error(mmgr);
         if (error)
             return BRST_Error_Code(error);
-        return -1;
+        return BRST_FAILED_TO_ALLOC_MEM;
     }
 
     prange->from = range.from;

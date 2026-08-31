@@ -276,7 +276,7 @@ BRST_EXPORT(BRST_STATUS)
 BRST_LinkAnnot_SetHighlightMode(BRST_Annotation annot,
     BRST_AnnotHighlightMode mode)
 {
-    BRST_STATUS ret;
+    BRST_STATUS ret = BRST_OK;
 
     BRST_PTRACE(" BRST_LinkAnnot_SetHighlightMode\n");
 
@@ -293,7 +293,7 @@ BRST_LinkAnnot_SetHighlightMode(BRST_Annotation annot,
     case BRST_ANNOT_HIGHLIGHT_MODE_PUSH:
         ret = BRST_Dict_AddName(annot, "H", "P");
         break;
-    default: /* BRST_ANNOT_HIGHLIGHT_MODE_INVERT */
+    case BRST_ANNOT_HIGHLIGHT_MODE_INVERT:
         /* default value */
         BRST_Dict_RemoveElement(annot, "H");
         ret = BRST_OK;

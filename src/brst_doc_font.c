@@ -128,7 +128,7 @@ BRST_Doc_Font(BRST_Doc pdf,
             BRST_List_Add(pdf->font_mgr, font);
 
         break;
-    default:
+    case BRST_FONTDEF_TYPE_UNINITIALIZED:
         BRST_Error_Raise(pdf->error, BRST_UNSUPPORTED_FONT_TYPE, 0);
         return NULL;
     }
