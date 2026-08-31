@@ -1,3 +1,4 @@
+#define __STDC_WANT_LIB_EXT1__ 1
 #include "brst.h"
 #include <stdio.h>
 #include <string.h>
@@ -9,10 +10,21 @@ int main(int argc, char** argv)
     
     BRST_Doc pdf;
     BRST_Page page;
-    char fname[256];
+    char fname[FNAME_SIZE];
 
-    strcpy(fname, argv[0]);
-    strcat(fname, ".pdf");
+    // TODO переработать и убрать в общее место
+    int res = strcpy_s(fname, FNAME_SIZE, argv[0]);
+
+    if (res != 0) {
+        printf("Error: cannot prepare filename\n");
+        return 1;
+    }
+
+    res = strcat_s(fname, FNAME_SIZE, ".pdf");
+    if (res != 0) {
+        printf("Error: cannot append '.pdf' to filename\n");
+        return 1;
+    }
 
     // Создание объекта документа
     pdf = BRST_Doc_New_Empty();
