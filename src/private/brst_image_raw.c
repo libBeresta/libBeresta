@@ -174,7 +174,18 @@ BRST_Image_Raw_LoadFromMemory(BRST_MMgr mmgr,
         size *= 4;
         ret = BRST_Dict_AddName(image, "ColorSpace", COL_CMYK);
         break;
-    default:;
+    case BRST_COLORSPACE_CALGRAY:
+    case BRST_COLORSPACE_CALRGB:
+    case BRST_COLORSPACE_LAB:
+    case BRST_COLORSPACE_ICCBASED:
+    case BRST_COLORSPACE_SEPARATION:
+    case BRST_COLORSPACE_DEVICEN:
+    case BRST_COLORSPACE_INDEXED:
+    case BRST_COLORSPACE_PATTERN:
+    case BRST_COLORSPACE_EOF:
+        BRST_Error_Set(BRST_MMgr_Error(mmgr), BRST_INVALID_COLOR_SPACE, 0);
+        return NULL;
+
     }
 
     if (ret != BRST_OK)

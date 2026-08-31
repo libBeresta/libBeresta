@@ -97,6 +97,7 @@ BRST_Doc_Date_Now(BRST_Doc pdf)
 
 #else
     // TODO Реализация не для Unix
+    (void)pdf;
     return NULL;
 #endif
 }

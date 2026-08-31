@@ -53,8 +53,7 @@ typedef enum _BRST_PageTransition {
     BRST_PAGE_TRANSITION_GLITTER_RIGHT,
     BRST_PAGE_TRANSITION_GLITTER_DOWN,
     BRST_PAGE_TRANSITION_GLITTER_TOP_LEFT_TO_BOTTOM_RIGHT,
-    BRST_PAGE_TRANSITION_REPLACE,
-    BRST_PAGE_TRANSITION_EOF
+    BRST_PAGE_TRANSITION_REPLACE
 } BRST_PageTransition;
 
 /*----------------------------------------------------------------------------*/

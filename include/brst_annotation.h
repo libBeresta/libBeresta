@@ -60,9 +60,7 @@ typedef enum _BRST_AnnotHighlightMode {
     /// Invert annotation border.
     BRST_ANNOT_HIGHLIGHT_MODE_OUTLINE,
     /// Display the annotation as if it were being pushed below the surface of the page.
-    BRST_ANNOT_HIGHLIGHT_MODE_PUSH,
-    /// Last annotation highlight mode at enumeration.
-    BRST_ANNOT_HIGHLIGHT_MODE_EOF
+    BRST_ANNOT_HIGHLIGHT_MODE_PUSH
 } BRST_AnnotHighlightMode;
 
 /**

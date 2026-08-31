@@ -95,11 +95,14 @@ BRST_BasicEncoder_New(BRST_MMgr mmgr,
             BRST_ENCODING_MAC_ROMAN, eptr);
         BRST_BasicEncoder_CopyMap(encoder, BRST_UNICODE_MAP_MAC_ROMAN);
         break;
-    default:
+    case BRST_BASE_ENCODING_FONT_SPECIFIC:
         BRST_StrCopy(encoder_attr->base_encoding,
             BRST_ENCODING_FONT_SPECIFIC, eptr);
         BRST_BasicEncoder_CopyMap(encoder,
             BRST_UNICODE_MAP_FONT_SPECIFIC);
+    case BRST_BASE_ENCODING_EOF:
+        BRST_Error_Set(BRST_MMgr_Error(mmgr), BRST_INVALID_ENCODING_NAME, 0);
+        return NULL;
     }
 
     if (data->ovewrride_map)

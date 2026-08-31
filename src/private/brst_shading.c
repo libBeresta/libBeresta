@@ -100,7 +100,12 @@ BRST_Shading_New(
     case BRST_SHADING_FREE_FORM_TRIANGLE_MESH:
         break;
 
-    default:
+    case BRST_SHADING_FUNCTION_BASED:
+    case BRST_SHADING_AXIAL:
+    case BRST_SHADING_RADIAL:
+    case BRST_SHADING_LATTICE_FORM_TRIANGLE_MESH:
+    case BRST_SHADING_COONS_PATCH_MESH:
+    case BRST_SHADING_TENSOR_PRODUCT_PATCH_MESH:
         BRST_Error_Set(BRST_MMgr_Error(mmgr), BRST_INVALID_SHADING_TYPE, 0);
         return NULL;
     }
@@ -127,8 +132,17 @@ BRST_Shading_New(
             ret += BRST_Array_AddReal(decodeArray, 1.0);
         }
         break;
-
-    default:
+    case BRST_COLORSPACE_DEVICEGRAY:
+    case BRST_COLORSPACE_DEVICECMYK:
+    case BRST_COLORSPACE_CALGRAY:
+    case BRST_COLORSPACE_CALRGB:
+    case BRST_COLORSPACE_LAB:
+    case BRST_COLORSPACE_ICCBASED:
+    case BRST_COLORSPACE_SEPARATION:
+    case BRST_COLORSPACE_DEVICEN:
+    case BRST_COLORSPACE_INDEXED:
+    case BRST_COLORSPACE_PATTERN:
+    case BRST_COLORSPACE_EOF:
         BRST_Error_Set(BRST_MMgr_Error(mmgr), BRST_INVALID_COLOR_SPACE, 0);
         return NULL;
     }
@@ -154,7 +168,12 @@ BRST_Shading_New(
         ret += BRST_Dict_Add(shading, "Decode", decodeArray);
         break;
 
-    default:
+    case BRST_SHADING_FUNCTION_BASED:
+    case BRST_SHADING_AXIAL:
+    case BRST_SHADING_RADIAL:
+    case BRST_SHADING_LATTICE_FORM_TRIANGLE_MESH:
+    case BRST_SHADING_COONS_PATCH_MESH:
+    case BRST_SHADING_TENSOR_PRODUCT_PATCH_MESH:
         BRST_Error_Set(BRST_MMgr_Error(mmgr), BRST_INVALID_SHADING_TYPE, 0);
         return NULL;
     }
