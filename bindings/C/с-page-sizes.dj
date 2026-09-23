@@ -1,0 +1,3 @@
+
+  ;; Размеры страниц{% if sizes %}{% for size in sizes %}
+  #:PAGE-SIZE-{{ size.id | under }}{% endfor %}{% endif %}
