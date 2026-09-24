@@ -22,6 +22,9 @@ set(
     xobject
     minimal_empty
     minimal_text
+
+    # libHaru demo
+    font_demo
 )
 
 set(
