@@ -12,19 +12,7 @@ int main(int argc, char** argv)
     BRST_Page page;
     char fname[FNAME_SIZE];
 
-    // TODO переработать и убрать в общее место
-    int res = strcpy_s(fname, FNAME_SIZE, argv[0]);
-
-    if (res != 0) {
-        printf("Error: cannot prepare filename\n");
-        return 1;
-    }
-
-    res = strcat_s(fname, FNAME_SIZE, ".pdf");
-    if (res != 0) {
-        printf("Error: cannot append '.pdf' to filename\n");
-        return 1;
-    }
+    BRST_snprintf(fname, FNAME_SIZE, "%s.pdf", argv[0]);
 
     // Создание объекта документа
     pdf = BRST_Doc_New_Empty();
