@@ -119,7 +119,7 @@ BRST_Stream_Rotate(BRST_Stream stream,
     BRST_REAL a)
 {
     BRST_PTRACE((" BRST_Stream_Rotate\n"));
-    return BRST_Stream_Concat(stream, cos(a), sin(a), -sin(a), cos(a), 0, 0);
+    return BRST_Stream_Concat(stream, (BRST_REAL)cos(a), (BRST_REAL)sin(a), -(BRST_REAL)sin(a), (BRST_REAL)cos(a), 0.0f, 0.0f);
 }
 
 BRST_EXPORT(BRST_STATUS)
@@ -127,8 +127,8 @@ BRST_Stream_RotateDeg(BRST_Stream stream,
     BRST_REAL degrees)
 {
     BRST_PTRACE((" BRST_Stream_RotateDeg\n"));
-    BRST_REAL a = degrees * BRST_PI / 180.0;
-    return BRST_Stream_Concat(stream, cos(a), sin(a), -sin(a), cos(a), 0, 0);
+    BRST_REAL a = degrees * BRST_PI / 180.0f;
+    return BRST_Stream_Concat(stream, (BRST_REAL)cos(a), (BRST_REAL)sin(a), -(BRST_REAL)sin(a), (BRST_REAL)cos(a), 0.0f, 0.0f);
 }
 
 BRST_EXPORT(BRST_STATUS)
@@ -137,7 +137,7 @@ BRST_Stream_Skew(BRST_Stream stream,
     BRST_REAL b)
 {
     BRST_PTRACE((" BRST_Stream_Skew\n"));
-    return BRST_Stream_Concat(stream, 1, tan(a), tan(b), 1, 0, 0);
+    return BRST_Stream_Concat(stream, 1.0, (BRST_REAL)tan(a), (BRST_REAL)tan(b), 1.0f, 0.0f, 0.0f);
 }
 
 /*
@@ -363,9 +363,9 @@ BRST_Stream_SetRGBFillUint(BRST_Stream stream,
     BRST_UINT8 g,
     BRST_UINT8 b)
 {
-    BRST_REAL rr = (BRST_REAL)r / 255.0;
-    BRST_REAL rg = (BRST_REAL)g / 255.0;
-    BRST_REAL rb = (BRST_REAL)b / 255.0;
+    BRST_REAL rr = (BRST_REAL)r / 255.0f;
+    BRST_REAL rg = (BRST_REAL)g / 255.0f;
+    BRST_REAL rb = (BRST_REAL)b / 255.0f;
 
     return BRST_Stream_SetRGBFill(stream, rr, rg, rb);
 }
@@ -418,9 +418,9 @@ BRST_Stream_SetRGBStrokeUint(BRST_Stream stream,
     BRST_UINT8 g,
     BRST_UINT8 b)
 {
-    BRST_REAL rr = (BRST_REAL)r / 255.0;
-    BRST_REAL rg = (BRST_REAL)g / 255.0;
-    BRST_REAL rb = (BRST_REAL)b / 255.0;
+    BRST_REAL rr = (BRST_REAL)r / 255.0f;
+    BRST_REAL rg = (BRST_REAL)g / 255.0f;
+    BRST_REAL rb = (BRST_REAL)b / 255.0f;
 
     return BRST_Stream_SetRGBStroke(stream, rr, rg, rb);
 }

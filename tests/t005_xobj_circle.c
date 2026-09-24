@@ -1,3 +1,4 @@
+#define __STDC_WANT_LIB_EXT1__ 1
 #include "brst.h"
 #include <stdio.h>
 #include <string.h>
@@ -9,10 +10,9 @@ int main(int argc, char** argv)
 
     BRST_Doc pdf;
     BRST_Page page;
-    char fname[256];
+    char fname[FNAME_SIZE];
 
-    strcpy(fname, argv[0]);
-    strcat(fname, ".pdf");
+    BRST_snprintf(fname, FNAME_SIZE, "%s.pdf", argv[0]);
 
     // Создание объекта документа
     pdf = BRST_Doc_New_Empty();

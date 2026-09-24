@@ -189,7 +189,7 @@ BRST_Image_Jpeg_LoadFromStream(BRST_MMgr mmgr,
     for (;;) {
         BRST_BYTE buf[BRST_STREAM_BUF_SIZE];
         BRST_UINT len   = BRST_STREAM_BUF_SIZE;
-        BRST_STATUS ret = BRST_Stream_Read(jpeg_data, buf,
+        ret = BRST_Stream_Read(jpeg_data, buf,
             &len);
 
         if (ret != BRST_OK) {

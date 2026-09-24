@@ -94,6 +94,9 @@ BRST_Doc_Dict_RGBPatternFill_Select(
     BRST_Pattern pattern)
 {
 
+   // TODO pdf не используется
+   (void)pdf;
+
     BRST_PTRACE(" BRST_Doc_Dict_RGBPatternFill_Select\n");
 
     BRST_STATUS ret = BRST_OK;
@@ -160,9 +163,9 @@ BRST_Doc_Dict_RGBPatternFillUint_Select(
     BRST_UINT8   b,
     BRST_Pattern pattern) {
 
-    BRST_REAL rr = (BRST_REAL)r / 255.0;
-    BRST_REAL gg = (BRST_REAL)g / 255.0;
-    BRST_REAL bb = (BRST_REAL)b / 255.0;
+    BRST_REAL rr = ((BRST_REAL)r) / 255.0f;
+    BRST_REAL gg = ((BRST_REAL)g) / 255.0f;
+    BRST_REAL bb = ((BRST_REAL)b) / 255.0f;
 
     return BRST_Doc_Dict_RGBPatternFill_Select(pdf, dict, rr, gg, bb, pattern);
 }
@@ -187,7 +190,10 @@ BRST_Doc_Dict_RGBPatternFillHex_Select(
     BRST_UINT32  rgb,
     BRST_Pattern pattern) {
 
-    return BRST_Doc_Dict_RGBPatternFill_Select(pdf, dict, (rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF, pattern);
+    return BRST_Doc_Dict_RGBPatternFill_Select(pdf, dict, 
+        (BRST_REAL)((rgb >> 16) & 0xFF), 
+        (BRST_REAL)((rgb >>  8) & 0xFF), 
+        (BRST_REAL)(rgb & 0xFF), pattern);
 }
 
 BRST_EXPORT(BRST_STATUS)

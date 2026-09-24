@@ -326,7 +326,7 @@ BRST_Page_Translate(BRST_Page page,
     BRST_REAL dy)
 {
     BRST_PTRACE(" BRST_Page_Translate\n");
-    return BRST_Page_Concat(page, 1, 0, 0, 1, dx, dy);
+    return BRST_Page_Concat(page, 1.0f, 0.0f, 0.0f, 1.0f, dx, dy);
 }
 
 BRST_EXPORT(BRST_STATUS)
@@ -335,7 +335,7 @@ BRST_Page_Scale(BRST_Page page,
     BRST_REAL sy)
 {
     BRST_PTRACE(" BRST_Page_Scale\n");
-    return BRST_Page_Concat(page, sx, 0, 0, sy, 0, 0);
+    return BRST_Page_Concat(page, sx, 0.0f, 0.0f, sy, 0.0f, 0.0f);
 }
 
 BRST_EXPORT(BRST_STATUS)
@@ -343,7 +343,7 @@ BRST_Page_Rotate(BRST_Page page,
     BRST_REAL a)
 {
     BRST_PTRACE(" BRST_Page_Rotate\n");
-    return BRST_Page_Concat(page, cos(a), sin(a), -sin(a), cos(a), 0, 0);
+    return BRST_Page_Concat(page, BRST_COSF(a), BRST_SINF(a), -BRST_SINF(a), BRST_COSF(a), 0.0f, 0.0f);
 }
 
 BRST_EXPORT(BRST_STATUS)
@@ -351,8 +351,8 @@ BRST_Page_RotateDeg(BRST_Page page,
     BRST_REAL degrees)
 {
     BRST_PTRACE(" BRST_Page_RotateDeg\n");
-    BRST_REAL a = degrees * BRST_PI / 180.0;
-    return BRST_Page_Concat(page, cos(a), sin(a), -sin(a), cos(a), 0, 0);
+    BRST_REAL a = degrees * BRST_PI / 180.0f;
+    return BRST_Page_Concat(page, BRST_COSF(a), BRST_SINF(a), -BRST_SINF(a), BRST_COSF(a), 0.0f, 0.0f);
 }
 
 BRST_EXPORT(BRST_STATUS)
@@ -361,7 +361,7 @@ BRST_Page_Skew(BRST_Page page,
     BRST_REAL b)
 {
     BRST_PTRACE(" BRST_Page_Skew\n");
-    return BRST_Page_Concat(page, 1, tan(a), tan(b), 1, 0, 0);
+    return BRST_Page_Concat(page, 1.0f, BRST_TANF(a), BRST_TANF(b), 1.0f, 0.0f, 0.0f);
 }
 
 BRST_EXPORT(BRST_STATUS)
@@ -564,9 +564,9 @@ BRST_Dict_SetRGBPatternFillUint(BRST_Dict dict,
     BRST_UINT8 b,
     BRST_Pattern pattern)
 {
-    BRST_REAL rr = (BRST_REAL)r / 255.0;
-    BRST_REAL gg = (BRST_REAL)g / 255.0;
-    BRST_REAL bb = (BRST_REAL)b / 255.0;
+    BRST_REAL rr = (BRST_REAL)r / 255.0f;
+    BRST_REAL gg = (BRST_REAL)g / 255.0f;
+    BRST_REAL bb = (BRST_REAL)b / 255.0f;
 
     return BRST_Dict_SetRGBPatternFill(dict, rr, gg, bb, pattern);
 }
@@ -643,9 +643,9 @@ BRST_Page_SetRGBStrokeUint(BRST_Page page,
     BRST_UINT8 g,
     BRST_UINT8 b)
 {
-    BRST_REAL rr = (BRST_REAL)r / 255.0;
-    BRST_REAL rg = (BRST_REAL)g / 255.0;
-    BRST_REAL rb = (BRST_REAL)b / 255.0;
+    BRST_REAL rr = (BRST_REAL)r / 255.0f;
+    BRST_REAL rg = (BRST_REAL)g / 255.0f;
+    BRST_REAL rb = (BRST_REAL)b / 255.0f;
 
     return BRST_Page_SetRGBStroke(page, rr, rg, rb);
 }
@@ -662,9 +662,9 @@ BRST_Page_SetRGBFillUint(BRST_Page page,
     BRST_UINT8 g,
     BRST_UINT8 b)
 {
-    BRST_REAL rr = (BRST_REAL)r / 255.0;
-    BRST_REAL rg = (BRST_REAL)g / 255.0;
-    BRST_REAL rb = (BRST_REAL)b / 255.0;
+    BRST_REAL rr = (BRST_REAL)r / 255.0f;
+    BRST_REAL rg = (BRST_REAL)g / 255.0f;
+    BRST_REAL rb = (BRST_REAL)b / 255.0f;
 
     return BRST_Page_SetRGBFill(page, rr, rg, rb);
 }
@@ -1313,7 +1313,7 @@ BRST_Page_SetDash(BRST_Page page,
     attr->gstate->dash_mode.phase   = phase;
 
     BRST_DASH_PATTERN pdash_ptn = dash_ptn;
-    for (int i = 0; i < num_param; i++) {
+    for (BRST_UINT i = 0; i < num_param; i++) {
         attr->gstate->dash_mode.ptn[i] = *pdash_ptn;
         pdash_ptn++;
     }

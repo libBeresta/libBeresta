@@ -42,7 +42,7 @@ typedef struct _BRST_Base14FontDefData {
     BRST_Box bbox;
 } BRST_Base14FontDefData;
 
-#include "../src/private/data/base14.data"
+#include "src/private/data/base14.data"
 
 static const BRST_Base14FontDefData BRST_BUILTIN_FONTS[] = {
     { BRST_FONT_COURIER,

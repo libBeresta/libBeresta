@@ -22,8 +22,14 @@
 #define BRST_FERROR                 ferror
 #define BRST_FFLUSH                 fflush
 #define BRST_TIME                   time
+#define BRST_SINF                   sinf
+#define BRST_COSF                   cosf
+#define BRST_TANF                   tanf
 #define BRST_SIN                    sin
 #define BRST_COS                    cos
 #define BRST_TAN                    tan
+#define BRST_ROUNDF                 roundf
+#define BRST_ROUND                  round
+
 
 #endif /* PRIVATE_BRST_C_H */

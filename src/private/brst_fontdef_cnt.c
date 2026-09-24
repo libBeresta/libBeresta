@@ -14,7 +14,7 @@
 #include "private/brst_utils.h"
 #include "brst_consts.h"
 
-#include "../src/private/data/cnt.data"
+#include "src/private/data/cnt.data"
 
 BRST_STATUS
 MingLiU_Init(BRST_FontDef fontdef)

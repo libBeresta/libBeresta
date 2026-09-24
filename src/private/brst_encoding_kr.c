@@ -22,7 +22,7 @@
 #include "brst_base.h"
 #include "private/brst_encoding_kr.h"
 
-#include "../src/private/data/encoder_kr.data"
+#include "src/private/data/encoder_kr.data"
 
 static const BRST_CidRange_Rec KSCms_UHC_NOTDEF_RANGE    = { 0x00, 0x1F, 1 };
 static const BRST_CidRange_Rec KSCms_UHC_HW_NOTDEF_RANGE = { 0x00, 0x1F, 8094 };

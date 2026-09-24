@@ -540,7 +540,7 @@ BRST_FileReader_SeekFunc(BRST_Stream stream,
     BRST_WhenceMode mode)
 {
     BRST_FILEP fp = (BRST_FILEP)stream->attr;
-    BRST_INT whence;
+    BRST_INT whence = SEEK_CUR;
 
     BRST_PTRACE(" BRST_FileReader_SeekFunc\n");
 
@@ -551,8 +551,9 @@ BRST_FileReader_SeekFunc(BRST_Stream stream,
     case BRST_SEEK_END:
         whence = SEEK_END;
         break;
-    default:
+    case BRST_SEEK_SET:
         whence = SEEK_SET;
+        break;
     }
 
     if (BRST_FSEEK(fp, pos, whence) != 0) {

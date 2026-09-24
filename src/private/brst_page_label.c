@@ -55,6 +55,7 @@ BRST_PageLabel_New(BRST_Doc pdf,
         if (BRST_Dict_AddName(obj, "S", "a") != BRST_OK)
             goto Fail;
         break;
+    case BRST_PAGE_NUM_EOF:
     default:
         BRST_Error_Set(pdf->error, BRST_PAGE_NUM_STYLE_OUT_OF_RANGE,
             (BRST_STATUS)style);

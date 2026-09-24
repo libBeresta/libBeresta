@@ -143,6 +143,9 @@ set_target_properties(brst
         VERSION ${BRST_VERSION}
         INSTALL_NAME_DIR ${CMAKE_INSTALL_FULL_LIBDIR}
     )
+if (MSVC)
+  set_target_properties(brst PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+endif()
 
 if (PNG_FOUND)
     include_directories(${PNG_INCLUDE_DIRS})

@@ -76,7 +76,7 @@ BRST_Matrix_Multiply(BRST_MMgr mmgr, BRST_Matrix m, BRST_Matrix n)
 BRST_Matrix
 BRST_Matrix_Translate(BRST_MMgr mmgr, BRST_Matrix m, BRST_REAL dx, BRST_REAL dy)
 {
-    BRST_Matrix translate =  BRST_Matrix_New(mmgr, 1, 0, 0, 1, dx, dy);
+    BRST_Matrix translate =  BRST_Matrix_New(mmgr, 1.0f, 0.0f, 0.0f, 1.0f, dx, dy);
     BRST_Matrix res = BRST_Matrix_Multiply(mmgr, m, translate);
     BRST_Matrix_Free(translate);
     return res;
@@ -85,7 +85,7 @@ BRST_Matrix_Translate(BRST_MMgr mmgr, BRST_Matrix m, BRST_REAL dx, BRST_REAL dy)
 BRST_Matrix
 BRST_Matrix_Scale(BRST_MMgr mmgr, BRST_Matrix m, BRST_REAL sx, BRST_REAL sy)
 {
-    BRST_Matrix scale =  BRST_Matrix_New(mmgr, sx, 0, 0, sy, 0, 0);
+    BRST_Matrix scale =  BRST_Matrix_New(mmgr, sx, 0.0f, 0.0f, sy, 0.0f, 0.0f);
     BRST_Matrix res = BRST_Matrix_Multiply(mmgr, m, scale);
     BRST_Matrix_Free(scale);
     return res;
@@ -94,7 +94,7 @@ BRST_Matrix_Scale(BRST_MMgr mmgr, BRST_Matrix m, BRST_REAL sx, BRST_REAL sy)
 BRST_Matrix
 BRST_Matrix_Rotate(BRST_MMgr mmgr, BRST_Matrix m, BRST_REAL angle)
 {
-    BRST_Matrix rotate = BRST_Matrix_New(mmgr, BRST_COS(angle), BRST_SIN(angle), -BRST_SIN(angle), BRST_COS(angle), 0, 0);
+    BRST_Matrix rotate = BRST_Matrix_New(mmgr, BRST_COSF(angle), BRST_SINF(angle), -BRST_SINF(angle), BRST_COSF(angle), 0.0f, 0.0f);
     BRST_Matrix res = BRST_Matrix_Multiply(mmgr, rotate, m);
     BRST_Matrix_Free(rotate);
     return res;
@@ -103,9 +103,9 @@ BRST_Matrix_Rotate(BRST_MMgr mmgr, BRST_Matrix m, BRST_REAL angle)
 BRST_Matrix
 BRST_Matrix_RotateDeg(BRST_MMgr mmgr, BRST_Matrix m, BRST_REAL degrees)
 {
-    BRST_REAL angle = degrees * BRST_PI / 180.0;
+    BRST_REAL angle = degrees * BRST_PI / 180.0f;
 
-    BRST_Matrix rotate =  BRST_Matrix_New(mmgr, BRST_COS(angle), BRST_SIN(angle), -BRST_SIN(angle), BRST_COS(angle), 0, 0);
+    BRST_Matrix rotate =  BRST_Matrix_New(mmgr, BRST_COSF(angle), BRST_SINF(angle), -BRST_SINF(angle), BRST_COSF(angle), 0.0f, 0.0f);
     BRST_Matrix res = BRST_Matrix_Multiply(mmgr, m, rotate);
     BRST_Matrix_Free(rotate);
     return res;
@@ -114,7 +114,7 @@ BRST_Matrix_RotateDeg(BRST_MMgr mmgr, BRST_Matrix m, BRST_REAL degrees)
 BRST_Matrix
 BRST_Matrix_Skew(BRST_MMgr mmgr, BRST_Matrix m, BRST_REAL a, BRST_REAL b)
 {
-    BRST_Matrix skew =  BRST_Matrix_New(mmgr, 1, BRST_TAN(a), BRST_TAN(b), 1, 0, 0);
+    BRST_Matrix skew =  BRST_Matrix_New(mmgr, 1, BRST_TANF(a), BRST_TANF(b), 1.0f, 0.0f, 0.0f);
     BRST_Matrix res = BRST_Matrix_Multiply(mmgr, m, skew);
     BRST_Matrix_Free(skew);
     return res;

@@ -42,7 +42,7 @@ BRST_Page_SetWidth(BRST_Page page,
     BRST_PTRACE(" BRST_Page_SetWidth\n");
 
     if (value < BRST_MIN_PAGE_MEASURE || value > BRST_MAX_PAGE_MEASURE)
-        return BRST_Error_Raise(page->error, BRST_PAGE_INVALID_SIZE, value);
+        return BRST_Error_Raise(page->error, BRST_PAGE_INVALID_SIZE, (BRST_STATUS)BRST_ROUND(value));
 
     if (BRST_Page_SetBoxValue(page, "MediaBox", 2, value) != BRST_OK)
         return BRST_Error_Check(page->error);
@@ -57,7 +57,7 @@ BRST_Page_SetHeight(BRST_Page page,
     BRST_PTRACE(" BRST_Page_SetWidth\n");
 
     if (value < BRST_MIN_PAGE_MEASURE || value > BRST_MAX_PAGE_MEASURE)
-        return BRST_Error_Raise(page->error, BRST_PAGE_INVALID_SIZE, value);
+        return BRST_Error_Raise(page->error, BRST_PAGE_INVALID_SIZE, (BRST_STATUS)BRST_ROUND(value));
 
     if (BRST_Page_SetBoxValue(page, "MediaBox", 3, value) != BRST_OK)
         return BRST_Error_Check(page->error);

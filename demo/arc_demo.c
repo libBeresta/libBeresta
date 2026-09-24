@@ -74,15 +74,15 @@ int main(int argc, char** argv)
     // C: 15% Зеленый
     // D: Другое
 
-    BRST_REAL cx = BRST_Page_Width(page) / 2.0;
-    BRST_REAL cy = BRST_Page_Height(page) / 2.0;
-    BRST_REAL r  = BRST_Page_Width(page) / 3.0;
+    BRST_REAL cx = BRST_Page_Width(page) / 2.0f;
+    BRST_REAL cy = BRST_Page_Height(page) / 2.0f;
+    BRST_REAL r  = BRST_Page_Width(page) / 3.0f;
 
     // A
     BRST_Page_SetRGBFillHex(page, 0xC51D34);
     BRST_Page_MoveTo(page, cx, cy);
     BRST_Page_LineTo(page, cx, cx + r);
-    BRST_Page_Arc(page, cx, cy, r, 0, 360 * 0.45);
+    BRST_Page_Arc(page, cx, cy, r, 0, 360 * 0.45f);
     BRST_Point pos = BRST_Page_CurrentPos(page);
     BRST_Page_LineTo(page, cx, cy);
     BRST_Page_Fill(page);
@@ -91,7 +91,7 @@ int main(int argc, char** argv)
     BRST_Page_SetRGBFillHex(page, 0x0047AB);
     BRST_Page_MoveTo(page, cx, cy);
     BRST_Page_LineTo(page, pos.x, pos.y);
-    BRST_Page_Arc(page, cx, cy, r, 360 * 0.45, 360 * 0.7);
+    BRST_Page_Arc(page, cx, cy, r, 360 * 0.45f, 360 * 0.7f);
     pos = BRST_Page_CurrentPos(page);
     BRST_Page_LineTo(page, cx, cy);
     BRST_Page_Fill(page);
@@ -100,7 +100,7 @@ int main(int argc, char** argv)
     BRST_Page_SetRGBFillHex(page, 0x20603D);
     BRST_Page_MoveTo(page, cx, cy);
     BRST_Page_LineTo(page, pos.x, pos.y);
-    BRST_Page_Arc(page, cx, cy, r, 360 * 0.7, 360 * 0.85);
+    BRST_Page_Arc(page, cx, cy, r, 360 * 0.7f, 360 * 0.85f);
     pos = BRST_Page_CurrentPos(page);
     BRST_Page_LineTo(page, cx, cy);
     BRST_Page_Fill(page);
@@ -109,7 +109,7 @@ int main(int argc, char** argv)
     BRST_Page_SetRGBFillHex(page, 0xFFDC33);
     BRST_Page_MoveTo(page, cx, cy);
     BRST_Page_LineTo(page, pos.x, pos.y);
-    BRST_Page_Arc(page, cx, cy, r, 360 * 0.85, 360);
+    BRST_Page_Arc(page, cx, cy, r, 360 * 0.85f, 360);
     pos = BRST_Page_CurrentPos(page);
     BRST_Page_LineTo(page, cx, cy);
     BRST_Page_Fill(page);
@@ -117,7 +117,7 @@ int main(int argc, char** argv)
     // Отображение центральной окружности
     BRST_Page_SetGrayStroke(page, 0);
     BRST_Page_SetRGBFillHex(page, 0xF5FFFA);
-    BRST_Page_Circle(page, cx, cy, r / 2.0);
+    BRST_Page_Circle(page, cx, cy, r / 2.0f);
     BRST_Page_Fill(page);
 
     // Сохранение документа в файл

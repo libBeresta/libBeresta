@@ -22,7 +22,7 @@
 #include "brst_base.h"
 #include "private/brst_encoding_cnt.h"
 
-#include "../src/private/data/encoder_cnt.data"
+#include "src/private/data/encoder_cnt.data"
 
 static const BRST_CidRange_Rec ETen_B5_NOTDEF_RANGE = { 0x00, 0x1F, 13648 };
 

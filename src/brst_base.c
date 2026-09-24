@@ -298,7 +298,7 @@ BRST_Doc_New(BRST_Error_Handler user_error_fn,
 }
 
 BRST_EXPORT(BRST_Doc)
-BRST_Doc_New_Empty()
+BRST_Doc_New_Empty(void)
 {
     BRST_PTRACE(" BRST_Doc_New_Empty\n");
 

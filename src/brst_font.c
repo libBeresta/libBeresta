@@ -203,7 +203,7 @@ BRST_Font_Ascent(BRST_Font font, BRST_REAL font_size)
     BRST_PTRACE(" BRST_Font_Ascent\n");
 
     if (BRST_Font_Validate(font))
-        return ((BRST_FontAttr)font->attr)->fontdef->ascent  * font_size / 1000.0;
+        return (BRST_INT)BRST_ROUNDF(((BRST_FontAttr)font->attr)->fontdef->ascent * font_size / 1000.0f);
 
     return 0;
 }
@@ -214,7 +214,7 @@ BRST_Font_Descent(BRST_Font font, BRST_REAL font_size)
     BRST_PTRACE(" BRST_Font_Descent\n");
 
     if (BRST_Font_Validate(font))
-        return ((BRST_FontAttr)font->attr)->fontdef->descent * font_size / 1000.0;
+        return (BRST_INT)BRST_ROUNDF(((BRST_FontAttr)font->attr)->fontdef->descent * font_size / 1000.0f);
 
     return 0;
 }
@@ -225,7 +225,7 @@ BRST_Font_XHeight(BRST_Font font, BRST_REAL font_size)
     BRST_PTRACE(" BRST_Font_XHeight\n");
 
     if (BRST_Font_Validate(font))
-        return ((BRST_FontAttr)font->attr)->fontdef->x_height * font_size / 1000.0;
+        return (BRST_INT)BRST_ROUNDF(((BRST_FontAttr)font->attr)->fontdef->x_height * font_size / 1000.0f);
 
     return 0;
 }
@@ -236,7 +236,7 @@ BRST_Font_CapHeight(BRST_Font font, BRST_REAL font_size)
     BRST_PTRACE(" BRST_Font_CapHeight\n");
 
     if (BRST_Font_Validate(font))
-        return ((BRST_FontAttr)font->attr)->fontdef->cap_height * font_size / 1000.0;
+        return (BRST_INT)BRST_ROUNDF(((BRST_FontAttr)font->attr)->fontdef->cap_height * font_size / 1000.0f);
 
     return 0;
 }
