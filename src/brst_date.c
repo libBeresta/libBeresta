@@ -1,9 +1,9 @@
-#ifndef _MSC_VER
+#ifdef _MSC_VER
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#else
 #include <time.h>
 #include <sys/time.h>
-#else
-//    #include <Windows.h>
-//    #include <sys/timeb.h>
 #endif
 
 #include "brst_config.h"
@@ -96,9 +96,43 @@ BRST_Doc_Date_Now(BRST_Doc pdf)
         abs(t->tm_gmtoff % 3600));
 
 #else
-    // TODO Реализация не для Unix
-    (void)pdf;
-    return NULL;
+    SYSTEMTIME now;
+    // Получаем локальное время.
+    // GetSystemTime() получает время в UTC,
+    // потребовалась бы арифметика для получения локального времени.
+    GetLocalTime(&now);
+
+    // Получаем часовой пояс
+    TIME_ZONE_INFORMATION tzi;
+    DWORD result = GetTimeZoneInformation(&tzi);
+    if (result == TIME_ZONE_ID_INVALID) {
+        return NULL;
+    }
+
+    // GetTimeZoneInformation возвращает часовой пояс как смещение локального
+    // времени в минутах, то есть UTC+03 возвращается как -180 минут.
+    // Поэтому для расчета используется знак минус.
+    BRST_UT_Relationship ind = BRST_UT_RELATIONSHIP_NONE;
+    if (-tzi.Bias > 0) {
+        ind = BRST_UT_RELATIONSHIP_PLUS;
+    } else if (-tzi.Bias < 0) {
+        ind = BRST_UT_RELATIONSHIP_MINUS;
+    } else {
+        ind = BRST_UT_RELATIONSHIP_ZERO;
+    }
+
+    // Возвращаем созданную дату
+    return BRST_Doc_Date_New(
+        pdf,
+        now.wYear,
+        now.wMonth,
+        now.wDay,
+        now.wHour,
+        now.wMinute,
+        now.wSecond, // TODO исправить, не используется leap second
+        ind,
+        abs(tzi.Bias / 60),
+        abs(tzi.Bias % 60));
 #endif
 }
 
