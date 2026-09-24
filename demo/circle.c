@@ -24,7 +24,7 @@
 #include <string.h>
 
 void circle(BRST_Page page, BRST_REAL x, BRST_REAL y, BRST_REAL radius) {
-    BRST_REAL a = 0.552284749830793 * radius;
+    BRST_REAL a = 0.552284749830793f * radius;
 
     BRST_REAL xpr = x + radius;
     BRST_REAL ypr = y + radius;

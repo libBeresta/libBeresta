@@ -75,7 +75,7 @@ int main(int argc, char** argv)
     // а в узор.
     BRST_Stream stream = BRST_Doc_Pattern_Stream(pattern);
 
-    BRST_Stream_SetLineWidth(stream, 0.49814);
+    BRST_Stream_SetLineWidth(stream, 0.49814f);
     BRST_Stream_MoveTo(stream, -1,  4);
     BRST_Stream_LineTo(stream,  6, 11);
     BRST_Stream_MoveTo(stream,  4, -1);

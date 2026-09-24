@@ -71,7 +71,7 @@ int main(int argc, char** argv)
     BRST_Stream pattern_stream = BRST_Doc_Pattern_Stream(pattern);
 
     // Графические команды узора
-    BRST_Stream_SetLineWidth(pattern_stream, 0.49814);
+    BRST_Stream_SetLineWidth(pattern_stream, 0.49814f);
     BRST_Stream_MoveTo(pattern_stream, -1,  4);
     BRST_Stream_LineTo(pattern_stream,  6, 11);
     BRST_Stream_MoveTo(pattern_stream,  4, -1);

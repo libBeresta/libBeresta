@@ -15,15 +15,11 @@ char* prepare_output(int argc, char** argv) {
       }
 
       // Безопасное копирование имени программы
-      strncpy(_fname, argv[0], FNAME_BUFFER_SIZE - 1);
-      _fname[FNAME_BUFFER_SIZE - 1] = '\0';
+      BRST_snprintf(_fname, FNAME_BUFFER_SIZE, "%s.pdf", argv[0]);
 
-      // Безопасное добавление расширения
-      strncat(_fname, ".pdf", FNAME_BUFFER_SIZE - strnlen(_fname, FNAME_BUFFER_SIZE) - 1);
   } else {
       // Имя по умолчанию, если argv[0] недоступен
-      strncpy(_fname, "output.pdf", FNAME_BUFFER_SIZE - 1);
-      _fname[FNAME_BUFFER_SIZE - 1] = '\0';
+      BRST_snprintf(_fname, FNAME_BUFFER_SIZE, "%s", "output.pdf");
   }
 
   return (char*)&_fname;

@@ -40,7 +40,7 @@ void draw_line2(BRST_Page page, float x, float y, BRST_CSTR label)
     BRST_Page_Stroke(page);
 }
 
-void draw_rect(BRST_Page page, double x, double y, BRST_CSTR label)
+void draw_rect(BRST_Page page, BRST_REAL x, BRST_REAL y, BRST_CSTR label)
 {
     BRST_Page_BeginText(page);
     BRST_Page_MoveTextPos(page, x, y - 10);
@@ -68,14 +68,14 @@ int main(int argc, char** argv)
     const BRST_REAL DASH_MODE2[] = { 3, 7 };
     const BRST_REAL DASH_MODE3[] = { 8, 7, 2, 7 };
 
-    double x;
-    double y;
-    double x1;
-    double y1;
-    double x2;
-    double y2;
-    double x3;
-    double y3;
+    BRST_REAL x;
+    BRST_REAL y;
+    BRST_REAL x1;
+    BRST_REAL y1;
+    BRST_REAL x2;
+    BRST_REAL y2;
+    BRST_REAL x3;
+    BRST_REAL y3;
 
     float tw;
 

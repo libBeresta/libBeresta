@@ -17,11 +17,14 @@
   \par Демонстрация загрузки изображения формата PNG.
 */
 
+#include <stdio.h>
+
+#ifdef LIBHPDF_HAVE_LIBPNG
+
 #include "brst.h"
 #include "handler.h"
 #include "cli.h"
 #include <setjmp.h>
-#include <stdio.h>
 #include <string.h>
 
 int main(int argc, char** argv)
@@ -73,3 +76,14 @@ int main(int argc, char** argv)
 
     return 0;
 }
+
+#else /* LIBHPDF_HAVE_LIBPNG */
+
+int main(void)
+{
+    printf("WARNING: png_image was not built correctly. \n"
+           "Make sure libpng is installed and CMake is able to find it.\n");
+    return 0;
+}
+
+#endif /* LIBHPDF_HAVE_LIBPNG */

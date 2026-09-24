@@ -79,7 +79,7 @@ main (int argc, char **argv)
 
     BRST_Page_GSave(page);
     gstate = BRST_Doc_ExtGState_New(pdf);
-    BRST_ExtGState_SetAlphaFill(gstate, 0.7);
+    BRST_ExtGState_SetAlphaFill(gstate, 0.7f);
     BRST_Page_SetExtGState(page, gstate);
     BRST_Page_SetRGBFillHex(page, 0x49A52C);
 
