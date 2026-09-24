@@ -81,8 +81,9 @@ int main(int argc, char** argv)
 
 int main(void)
 {
-    printf("WARNING: png_image was not built correctly. \n"
-           "Make sure libpng is installed and CMake is able to find it.\n");
+    fputs("WARNING: png_image was not built correctly.\n"
+          "Make sure libpng is installed and CMake is able to find it.\n",
+           stderr);
     return 0;
 }
 
